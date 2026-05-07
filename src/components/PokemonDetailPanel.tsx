@@ -528,7 +528,9 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
 
   function formatDamageResult(result: ReturnType<typeof calculateChampionsDamage> | null) {
     if (!result) return '—'
-    return `${result.range[0]} - ${result.range[1]}｜${result.desc}`
+    const percentMatch = result.desc.match(/\(([^)]+%)\)/)
+    const percentText = percentMatch ? ` (${percentMatch[1]})` : ''
+    return `${result.range[0]}-${result.range[1]}${percentText}`
   }
 
   function moveSuggestionsFor(detail: PokemonDetail | null, query: string, selectedIds: string[]) {
