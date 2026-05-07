@@ -1247,11 +1247,13 @@ table.damage-stats-table {
   background: rgba(15, 23, 42, 0.42);
 }
 
-.damage-move-picker {
+.damage-move-picker,
+.damage-search-picker {
   position: relative;
 }
 
-.damage-move-picker input {
+.damage-move-picker input,
+.damage-search-picker input {
   width: 100%;
 }
 

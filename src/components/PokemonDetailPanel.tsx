@@ -195,6 +195,12 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [itemOpen, setItemOpen] = useState(false)
   const [attackerPokemonId, setAttackerPokemonId] = useState('')
   const [defenderPokemonId, setDefenderPokemonId] = useState('')
+  const [attackerPokemonQuery, setAttackerPokemonQuery] = useState('')
+  const [defenderPokemonQuery, setDefenderPokemonQuery] = useState('')
+  const [attackerDamageItemQuery, setAttackerDamageItemQuery] = useState('')
+  const [defenderDamageItemQuery, setDefenderDamageItemQuery] = useState('')
+  const [openPokemonPicker, setOpenPokemonPicker] = useState<'attacker' | 'defender' | null>(null)
+  const [openDamageItemPicker, setOpenDamageItemPicker] = useState<'attacker' | 'defender' | null>(null)
   const [attackerMoveIds, setAttackerMoveIds] = useState<string[]>(['', '', '', ''])
   const [defenderMoveIds, setDefenderMoveIds] = useState<string[]>(['', '', '', ''])
   const [attackerMoveQueries, setAttackerMoveQueries] = useState<string[]>(['', '', '', ''])
@@ -296,12 +302,18 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setAbilityId(draftConfig?.abilityId || pokemon.abilities[0]?.id || '')
     setAttackerPokemonId(pokemon.id)
     setDefenderPokemonId(pokemon.id)
+    setAttackerPokemonQuery(pokemon.zh)
+    setDefenderPokemonQuery(pokemon.zh)
+    setAttackerDamageItemQuery(itemLabel(nextItem) || '无')
+    setDefenderDamageItemQuery(itemLabel(nextItem) || '无')
     const defaultLoadout = defaultMoveLoadout(pokemon)
     setAttackerMoveIds(defaultLoadout.ids)
     setDefenderMoveIds(defaultLoadout.ids)
     setAttackerMoveQueries(defaultLoadout.labels)
     setDefenderMoveQueries(defaultLoadout.labels)
     setOpenMovePicker(null)
+    setOpenPokemonPicker(null)
+    setOpenDamageItemPicker(null)
     setDamageWeather('none')
     setDamageTerrain('none')
     setDefenderAbilityId(draftConfig?.abilityId || pokemon.abilities[0]?.id || '')
@@ -383,6 +395,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       setItemOpen(false)
       setMoveFiltersOpen(false)
       setFavoritePanelOpen(false)
+      setOpenPokemonPicker(null)
+      setOpenDamageItemPicker(null)
     }
     window.addEventListener('pokemon-ui-close-popovers', close as EventListener)
     return () => window.removeEventListener('pokemon-ui-close-popovers', close as EventListener)
@@ -550,6 +564,57 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       .slice(0, 14)
   }
 
+  function pokemonSuggestionsFor(query: string) {
+    const q = normalizeSearch(query)
+    const candidates = q
+      ? damageTargetOptions.filter((target) => normalizeSearch(`${target.zh} ${target.name} ${target.id} ${target.pinyin} ${target.initials}`).includes(q))
+      : damageTargetOptions
+    return candidates
+      .slice()
+      .sort((a, b) => a.zh.localeCompare(b.zh, 'zh-Hans-CN') || a.name.localeCompare(b.name))
+      .slice(0, 16)
+  }
+
+  function itemSuggestionsFor(query: string) {
+    const q = query.trim().toLowerCase()
+    const candidates = q
+      ? ITEM_OPTIONS.filter((option) => `${option.label} ${option.value} ${option.search}`.toLowerCase().includes(q))
+      : ITEM_OPTIONS
+    return candidates.slice(0, 16)
+  }
+
+  function selectDamagePokemon(side: 'attacker' | 'defender', target: PokemonRow) {
+    const nextDetail = championsDetails[target.id] ?? null
+    const loadout = defaultMoveLoadout(nextDetail)
+    if (side === 'attacker') {
+      setAttackerPokemonId(target.id)
+      setAttackerPokemonQuery(target.zh)
+      setAbilityId(nextDetail?.abilities[0]?.id || '')
+      setAttackerMoveIds(loadout.ids)
+      setAttackerMoveQueries(loadout.labels)
+    } else {
+      setDefenderPokemonId(target.id)
+      setDefenderPokemonQuery(target.zh)
+      setDefenderAbilityId(nextDetail?.abilities[0]?.id || '')
+      setDefenderMoveIds(loadout.ids)
+      setDefenderMoveQueries(loadout.labels)
+      onChangeCompareId(target.id)
+    }
+    setOpenPokemonPicker(null)
+  }
+
+  function selectDamageItem(side: 'attacker' | 'defender', option: typeof ITEM_OPTIONS[number]) {
+    if (side === 'attacker') {
+      setItem(option.value)
+      setItemQuery(option.label)
+      setAttackerDamageItemQuery(option.label)
+    } else {
+      setDefenderItem(option.value)
+      setDefenderDamageItemQuery(option.label)
+    }
+    setOpenDamageItemPicker(null)
+  }
+
   function renderMovePicker(side: 'attacker' | 'defender', index: number) {
     const detail = side === 'attacker' ? attackerDetail : defenderDetail
     const moveIds = side === 'attacker' ? attackerMoveIds : defenderMoveIds
@@ -641,13 +706,19 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const detail = isAttacker ? attackerDetail : defenderDetail
     if (!detail) return null
     const pokemonId = isAttacker ? attackerPokemonId : defenderPokemonId
-    const setPokemonId = isAttacker ? setAttackerPokemonId : setDefenderPokemonId
+    const sidePokemonQuery = isAttacker ? attackerPokemonQuery : defenderPokemonQuery
+    const setSidePokemonQuery = isAttacker ? setAttackerPokemonQuery : setDefenderPokemonQuery
+    const sideItemQuery = isAttacker ? attackerDamageItemQuery : defenderDamageItemQuery
+    const setSideItemQuery = isAttacker ? setAttackerDamageItemQuery : setDefenderDamageItemQuery
+    const pokemonPickerOpen = openPokemonPicker === side
+    const damageItemPickerOpen = openDamageItemPicker === side
+    const pokemonSuggestions = pokemonSuggestionsFor(sidePokemonQuery)
+    const itemSuggestions = itemSuggestionsFor(sideItemQuery)
     const sideNature = isAttacker ? nature : defenderNature
     const setSideNature = isAttacker ? setNature : setDefenderNature
     const sideAbilityId = isAttacker ? effectiveAttackerAbilityId : effectiveDefenderAbilityId
     const setSideAbilityId = isAttacker ? setAbilityId : setDefenderAbilityId
     const sideItem = isAttacker ? item : defenderItem
-    const setSideItem = isAttacker ? setItem : setDefenderItem
     const sideStatus = isAttacker ? attackerStatus : defenderStatus
     const setSideStatus = isAttacker ? setAttackerStatus : setDefenderStatus
     const sideHpPercent = isAttacker ? attackerHpPercent : defenderHpPercent
@@ -696,27 +767,10 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       <section className="damage-subpanel">
         <div className="damage-subpanel-title"><h3>{isAttacker ? '我方' : '对方'}</h3><span>{detail.zh}</span></div>
         <div className="damage-config-grid">
-          <label className="popover-field"><span>宝可梦</span><select value={pokemonId} onChange={(event) => {
-            const nextId = event.target.value
-            const nextDetail = championsDetails[nextId] ?? null
-            const loadout = defaultMoveLoadout(nextDetail)
-            setPokemonId(nextId)
-            setSideAbilityId(nextDetail?.abilities[0]?.id || '')
-            if (isAttacker) {
-              setAttackerMoveIds(loadout.ids)
-              setAttackerMoveQueries(loadout.labels)
-            } else {
-              setDefenderMoveIds(loadout.ids)
-              setDefenderMoveQueries(loadout.labels)
-              onChangeCompareId(nextId)
-            }
-          }}>{damageTargetOptions.map((target) => <option key={target.id} value={target.id}>{target.zh}</option>)}</select></label>
+          <label className="popover-field" data-popover-root><span>宝可梦</span><div className="damage-search-picker"><input value={sidePokemonQuery} onFocus={() => setOpenPokemonPicker(side)} onBlur={() => setTimeout(() => setOpenPokemonPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSidePokemonQuery(event.target.value); setOpenPokemonPicker(side) }} placeholder="输入中文、拼音或英文" />{pokemonPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{pokemonSuggestions.map((target) => <button key={target.id} className="item-option-row" type="button" onMouseDown={() => selectDamagePokemon(side, target)}><span>{target.zh}</span><small>{target.name}</small></button>)}{pokemonSuggestions.length === 0 && <div className="popover-note">没有匹配的宝可梦。</div>}</div>}</div><input type="hidden" value={pokemonId} readOnly /></label>
           <label className="popover-field"><span>性格</span><select value={sideNature} onChange={(event) => setSideNature(event.target.value)}>{ALL_NATURES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
           <label className="popover-field"><span>特性</span><select value={sideAbilityId} onChange={(event) => setSideAbilityId(event.target.value)}>{detail.abilities.map((ability) => <option key={ability.id} value={ability.id}>{ability.zh}</option>)}</select></label>
-          <label className="popover-field"><span>道具</span><select value={sideItem} onChange={(event) => {
-            setSideItem(event.target.value)
-            if (isAttacker) setItemQuery(itemLabel(event.target.value))
-          }}>{ITEM_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
+          <label className="popover-field" data-popover-root><span>道具</span><div className="damage-search-picker"><input value={sideItemQuery} onFocus={() => setOpenDamageItemPicker(side)} onBlur={() => setTimeout(() => setOpenDamageItemPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSideItemQuery(event.target.value); setOpenDamageItemPicker(side) }} placeholder="输入中文、拼音或英文" />{damageItemPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{itemSuggestions.map((option) => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => selectDamageItem(side, option)}><span>{option.label}</span><small>{option.value}</small></button>)}{itemSuggestions.length === 0 && <div className="popover-note">没有匹配的道具。</div>}</div>}</div><input type="hidden" value={sideItem} readOnly /></label>
           <label className="popover-field"><span>状态</span><select value={sideStatus} onChange={(event) => setSideStatus(event.target.value as StatusMode)}><option value="healthy">健康</option><option value="poisoned">中毒</option><option value="badlyPoisoned">剧毒</option><option value="burned">烧伤</option><option value="paralyzed">麻痹</option><option value="asleep">睡眠</option><option value="frozen">冰冻</option></select></label>
           <label className="popover-field"><span>当前 HP%</span><input type="number" min={1} max={100} value={sideHpPercent} onChange={(event) => setSideHpPercent(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>
         </div>
@@ -795,7 +849,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       <section className="plain-section">
         <h2>能力设定</h2>
         <div className="setting-row compact-setting-row"><label>性格</label><select value={nature} onChange={(event) => setNature(event.target.value as typeof nature)}>{ALL_NATURES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></div>
-        <div className="setting-row compact-setting-row"><label>道具</label><div className="item-picker" data-popover-root><input value={itemQuery} onFocus={() => setItemOpen(true)} onChange={(event) => { setItemQuery(event.target.value); setItemOpen(true) }} placeholder="输入部分中文、拼音或英文筛选道具" />{itemOpen && <div className="search-dropdown item-dropdown compact-dropdown">{filteredItemOptions.map((option) => <button key={option.value} className="item-option-row" onMouseDown={() => { setItem(option.value); setItemQuery(option.label); setItemOpen(false) }}><span>{option.label}</span><small>{option.value}</small></button>)}</div>}</div></div>
+        <div className="setting-row compact-setting-row"><label>道具</label><div className="item-picker" data-popover-root><input value={itemQuery} onFocus={() => setItemOpen(true)} onChange={(event) => { setItemQuery(event.target.value); setItemOpen(true) }} placeholder="输入部分中文、拼音或英文筛选道具" />{itemOpen && <div className="search-dropdown item-dropdown compact-dropdown">{filteredItemOptions.map((option) => <button key={option.value} className="item-option-row" onMouseDown={() => { setItem(option.value); setItemQuery(option.label); setAttackerDamageItemQuery(option.label); setItemOpen(false) }}><span>{option.label}</span><small>{option.value}</small></button>)}</div>}</div></div>
 
         <div className="stats-setting-table-wrap">
           <table className="stats-setting-table">
