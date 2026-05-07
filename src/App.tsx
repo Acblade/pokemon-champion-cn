@@ -61,13 +61,24 @@ function slugify(value: string) {
   return encodeURIComponent(value)
 }
 
+function withBasePath(path: string) {
+  const base = import.meta.env.BASE_URL || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return `${normalizedBase}${path}` || '/'
+}
+
 function getPokemonHref(pokemon: PokemonRow) {
-  return `/${slugify(pokemon.id)}`
+  return withBasePath(`/${slugify(pokemon.id)}`)
 }
 
 function getCurrentPath() {
   if (typeof window === 'undefined') return ''
-  return decodeURIComponent(window.location.pathname.replace(/^\//, ''))
+  const base = import.meta.env.BASE_URL || '/'
+  let pathname = window.location.pathname
+  if (base !== '/' && pathname.startsWith(base)) {
+    pathname = pathname.slice(base.length - 1)
+  }
+  return decodeURIComponent(pathname.replace(/^\//, ''))
 }
 
 function resolvePokemonFromPath(pathname = getCurrentPath()) {
@@ -299,13 +310,13 @@ function App() {
 
   function navigateToHome() {
     setSelectedPokemonId(championsPokemon[0]?.id ?? null)
-    window.history.pushState({}, '', '/')
+    window.history.pushState({}, '', withBasePath('/'))
     setCurrentPath('')
     window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   function navigateToSaved() {
-    window.history.pushState({}, '', '/saved')
+    window.history.pushState({}, '', withBasePath('/saved'))
     setCurrentPath('saved')
     window.dispatchEvent(new PopStateEvent('popstate'))
   }
