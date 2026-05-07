@@ -224,8 +224,8 @@ function App() {
   const detailMode = !!currentPath && currentPath !== 'saved'
   const savedPageMode = currentPath === 'saved'
   const formFamilyOptions = useMemo(() => selectedPokemon ? championsPokemon.filter((entry) => entry.baseSpeciesId === selectedPokemon.baseSpeciesId) : [], [selectedPokemon])
-  const damageTargetOptions = useMemo(() => filtered.filter((pokemon) => pokemon.id !== selectedPokemonId).slice(0, 40), [filtered, selectedPokemonId])
-  const effectiveDamageTargetId = damageTargetOptions.some((pokemon) => pokemon.id === damageTargetId) ? damageTargetId : (damageTargetOptions[0]?.id ?? '')
+  const damageTargetOptions = useMemo(() => championsPokemon, [])
+  const effectiveDamageTargetId = damageTargetOptions.some((pokemon) => pokemon.id === damageTargetId) ? damageTargetId : (selectedPokemonId ?? damageTargetOptions[0]?.id ?? '')
   const savedGroupNames = useMemo(() => {
     const names = new Set<string>(savedGroups.map(cleanGroupName).filter(Boolean))
     savedPokemon.forEach((entry) => {

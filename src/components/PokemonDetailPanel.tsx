@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { PokemonDetail, PokemonMove } from '../data/championsDetails'
+import { championsDetails, type PokemonDetail, type PokemonMove } from '../data/championsDetails'
 import type { PokemonRow } from '../data/champions'
 import { calculateChampionsDamage, type StatusMode } from '../lib/championsCalc'
 import type { SavedPokemonEntry } from '../lib/savedPokemon'
@@ -123,6 +123,10 @@ function typeLabel(type: string) {
   return TYPE_LABELS[type] || type
 }
 
+function normalizeSearch(value: string) {
+  return value.toLowerCase().replace(/\s+/g, '')
+}
+
 function getNatureMultiplier(statKey: StatKey, nature: string) {
   const boosts: Record<string, [StatKey, StatKey]> = {
     Lonely: ['atk', 'def'],
@@ -161,7 +165,7 @@ function calculateStat(base: number, sp: number, nature: number, isHp: boolean, 
   return Math.floor(raw * (2 / (2 - boost)))
 }
 
-export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, selectedCompareId, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent }: Props) {
+export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent }: Props) {
   const [moveFilter, setMoveFilter] = useState<MoveFilter>('all')
   const [nature, setNature] = useState<string>('Hardy')
   const [abilityId, setAbilityId] = useState('')
@@ -178,13 +182,19 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [moveSortDirection, setMoveSortDirection] = useState<MoveSortDirection>('asc')
   const [itemQuery, setItemQuery] = useState('')
   const [itemOpen, setItemOpen] = useState(false)
+  const [attackerPokemonId, setAttackerPokemonId] = useState('')
+  const [defenderPokemonId, setDefenderPokemonId] = useState('')
+  const [attackerMoveIds, setAttackerMoveIds] = useState<string[]>(['', '', '', ''])
+  const [defenderMoveIds, setDefenderMoveIds] = useState<string[]>(['', '', '', ''])
+  const [attackerMoveQueries, setAttackerMoveQueries] = useState<string[]>(['', '', '', ''])
+  const [defenderMoveQueries, setDefenderMoveQueries] = useState<string[]>(['', '', '', ''])
+  const [openMovePicker, setOpenMovePicker] = useState<string | null>(null)
   const [damageWeather, setDamageWeather] = useState('none')
   const [damageTerrain, setDamageTerrain] = useState('none')
   const [defenderAbilityId, setDefenderAbilityId] = useState('')
   const [defenderItem, setDefenderItem] = useState('无')
   const [defenderSps, setDefenderSps] = useState<Record<StatKey, number>>(DEFAULT_SPS)
   const [defenderBoosts, setDefenderBoosts] = useState<Record<BoostKey, number>>(DEFAULT_BOOTS)
-  const [damageMoveId, setDamageMoveId] = useState('')
   const [damageGameType, setDamageGameType] = useState<'Singles' | 'Doubles'>('Doubles')
   const [damageCrit, setDamageCrit] = useState(false)
   const [damageHits, setDamageHits] = useState(1)
@@ -273,12 +283,25 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setBoosts(draftConfig?.boosts || DEFAULT_BOOTS)
     setIsMega(pokemon.name.toLowerCase().includes('mega'))
     setAbilityId(draftConfig?.abilityId || pokemon.abilities[0]?.id || '')
+    setAttackerPokemonId(pokemon.id)
+    setDefenderPokemonId(pokemon.id)
+    const defaultMoveIds = pokemon.moves.filter((move) => move.category !== 'Status').slice(0, 4).map((move) => move.id)
+    const paddedMoveIds = [...defaultMoveIds, '', '', '', ''].slice(0, 4)
+    const paddedMoveLabels = paddedMoveIds.map((id) => {
+      const move = pokemon.moves.find((entry) => entry.id === id)
+      return move ? move.zh : ''
+    })
+    setAttackerMoveIds(paddedMoveIds)
+    setDefenderMoveIds(paddedMoveIds)
+    setAttackerMoveQueries(paddedMoveLabels)
+    setDefenderMoveQueries(paddedMoveLabels)
+    setOpenMovePicker(null)
     setDamageWeather('none')
     setDamageTerrain('none')
-    setDefenderItem('无')
-    setDefenderSps(DEFAULT_SPS)
-    setDefenderBoosts(DEFAULT_BOOTS)
-    setDamageMoveId('')
+    setDefenderAbilityId(draftConfig?.abilityId || pokemon.abilities[0]?.id || '')
+    setDefenderItem(nextItem)
+    setDefenderSps(draftConfig?.sps || DEFAULT_SPS)
+    setDefenderBoosts(draftConfig?.boosts || DEFAULT_BOOTS)
     setDamageGameType('Doubles')
     setDamageCrit(false)
     setDamageHits(1)
@@ -341,7 +364,16 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setDefenderTailwind(false)
   }, [draftConfig?.abilityId, draftConfig?.boosts, draftConfig?.item, draftConfig?.nature, draftConfig?.sps, pokemon])
 
-  const effectiveDefenderAbilityId = compareTarget?.abilities.some((ability) => ability.id === defenderAbilityId) ? defenderAbilityId : (compareTarget?.abilities[0]?.id || '')
+  const attackerDetail = useMemo(() => championsDetails[attackerPokemonId] ?? pokemon, [attackerPokemonId, pokemon])
+  const defenderDetail = useMemo(() => championsDetails[defenderPokemonId] ?? compareTarget ?? pokemon, [compareTarget, defenderPokemonId, pokemon])
+  const effectiveAttackerAbilityId = attackerDetail?.abilities.some((ability) => ability.id === abilityId) ? abilityId : (attackerDetail?.abilities[0]?.id || '')
+  const effectiveDefenderAbilityId = defenderDetail?.abilities.some((ability) => ability.id === defenderAbilityId) ? defenderAbilityId : (defenderDetail?.abilities[0]?.id || '')
+
+  function defaultMoveLoadout(detail: PokemonDetail | null) {
+    const ids = detail?.moves.filter((move) => move.category !== 'Status').slice(0, 4).map((move) => move.id) ?? []
+    const padded = [...ids, '', '', '', ''].slice(0, 4)
+    return { ids: padded, labels: padded.map((id) => detail?.moves.find((move) => move.id === id)?.zh || '') }
+  }
 
   const totalSps = Object.values(sps).reduce((sum, value) => sum + value, 0)
   const favoriteMoves = useMemo(() => pokemon?.moves.filter((move) => favoriteMoveIds.includes(move.id)) ?? [], [pokemon, favoriteMoveIds])
@@ -406,23 +438,39 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     onDraftChange({ nature, abilityId, item, sps, boosts })
   }, [nature, abilityId, item, sps, boosts, onDraftChange])
 
-  const selectedDamageMove = useMemo(() => {
-    if (!pokemon) return null
-    return pokemon.moves.find((move) => move.id === damageMoveId) || filteredMoves.find((move) => move.category !== 'Status') || pokemon.moves.find((move) => move.category !== 'Status') || null
-  }, [pokemon, damageMoveId, filteredMoves])
+  function sideState(side: 'attacker' | 'defender') {
+    const source = side === 'attacker'
+    return {
+      sps: source ? sps : defenderSps,
+      nature: source ? nature : defenderNature,
+      abilityId: source ? effectiveAttackerAbilityId : effectiveDefenderAbilityId,
+      item: source ? item : defenderItem,
+      boosts: source ? boosts : defenderBoosts,
+      abilityOn: source ? attackerAbilityOn : defenderAbilityOn,
+      status: source ? attackerStatus : defenderStatus,
+      toxicCounter: source ? attackerToxicCounter : defenderToxicCounter,
+      hpPercent: source ? attackerHpPercent : defenderHpPercent,
+      side: source
+        ? { spikes: attackerSpikes, isSR: attackerStealthRock, isReflect: attackerReflect, isLightScreen: attackerLightScreen, isAuroraVeil: attackerAuroraVeil, isTailwind: attackerTailwind, isHelpingHand: attackerHelpingHand, isProtected: attackerProtected, isSeeded: attackerSeeded, isSaltCured: attackerSaltCured, isForesight: attackerForesight, isFlowerGift: attackerFlowerGift, isPowerTrick: attackerPowerTrick, isSteelySpirit: attackerSteelySpirit, isFriendGuard: attackerFriendGuard, isBattery: attackerBattery, isPowerSpot: attackerPowerSpot, isSwitching: attackerSwitchingOut ? ('out' as const) : undefined }
+        : { spikes: defenderSpikes, isSR: defenderStealthRock, isReflect: defenderReflect, isLightScreen: defenderLightScreen, isAuroraVeil: defenderAuroraVeil, isTailwind: defenderTailwind, isHelpingHand: defenderHelpingHand, isProtected: defenderProtected, isSeeded: defenderSeeded, isSaltCured: defenderSaltCured, isForesight: defenderForesight, isFlowerGift: defenderFlowerGift, isPowerTrick: defenderPowerTrick, isSteelySpirit: defenderSteelySpirit, isFriendGuard: defenderFriendGuard, isBattery: defenderBattery, isPowerSpot: defenderPowerSpot, isSwitching: defenderSwitchingOut ? ('out' as const) : undefined },
+    }
+  }
 
-  const previewDamage = useMemo(() => {
-    if (!pokemon || !compareTarget) return null
-    if (!selectedDamageMove) return null
-    const attackerMaxHp = calculateStat(pokemon.baseStats.hp, sps.hp, 1, true)
-    const defenderMaxHp = calculateStat(compareTarget.baseStats.hp, defenderSps.hp, 1, true)
+  function calculateMoveDamage(move: PokemonMove | null | undefined, sourceSide: 'attacker' | 'defender') {
+    if (!attackerDetail || !defenderDetail || !move || move.category === 'Status') return null
+    const sourcePokemon = sourceSide === 'attacker' ? attackerDetail : defenderDetail
+    const targetPokemon = sourceSide === 'attacker' ? defenderDetail : attackerDetail
+    const source = sideState(sourceSide)
+    const target = sideState(sourceSide === 'attacker' ? 'defender' : 'attacker')
+    const sourceMaxHp = calculateStat(sourcePokemon.baseStats.hp, source.sps.hp, 1, true)
+    const targetMaxHp = calculateStat(targetPokemon.baseStats.hp, target.sps.hp, 1, true)
     try {
       return calculateChampionsDamage({
-        attacker: pokemon,
-        defender: compareTarget,
-        moveName: selectedDamageMove.en,
+        attacker: sourcePokemon,
+        defender: targetPokemon,
+        moveName: move.en,
         moveState: {
-          move: selectedDamageMove,
+          move,
           isCrit: damageCrit,
           hits: damageHits,
           timesUsed: damageTimesUsed,
@@ -431,18 +479,18 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           type: damageMoveTypeOverride || undefined,
           category: damageMoveCategoryOverride as PokemonMove['category'] || undefined,
         },
-        attackerSps: sps,
-        defenderSps,
-        attackerNature: nature,
-        defenderNature,
-        attackerAbility: pokemon.abilities.find((entry) => entry.id === abilityId)?.en || pokemon.abilities[0]?.en,
-        attackerItem: item,
-        attackerBoosts: boosts,
-        attackerState: { abilityOn: attackerAbilityOn, status: attackerStatus, toxicCounter: attackerToxicCounter, currentHp: Math.max(1, Math.round(attackerMaxHp * attackerHpPercent / 100)) },
-        defenderAbility: compareTarget.abilities.find((entry) => entry.id === effectiveDefenderAbilityId)?.en || compareTarget.abilities[0]?.en,
-        defenderItem,
-        defenderBoosts,
-        defenderState: { abilityOn: defenderAbilityOn, status: defenderStatus, toxicCounter: defenderToxicCounter, currentHp: Math.max(1, Math.round(defenderMaxHp * defenderHpPercent / 100)) },
+        attackerSps: source.sps,
+        defenderSps: target.sps,
+        attackerNature: source.nature,
+        defenderNature: target.nature,
+        attackerAbility: sourcePokemon.abilities.find((entry) => entry.id === source.abilityId)?.en || sourcePokemon.abilities[0]?.en,
+        attackerItem: source.item,
+        attackerBoosts: source.boosts,
+        attackerState: { abilityOn: source.abilityOn, status: source.status, toxicCounter: source.toxicCounter, currentHp: Math.max(1, Math.round(sourceMaxHp * source.hpPercent / 100)) },
+        defenderAbility: targetPokemon.abilities.find((entry) => entry.id === target.abilityId)?.en || targetPokemon.abilities[0]?.en,
+        defenderItem: target.item,
+        defenderBoosts: target.boosts,
+        defenderState: { abilityOn: target.abilityOn, status: target.status, toxicCounter: target.toxicCounter, currentHp: Math.max(1, Math.round(targetMaxHp * target.hpPercent / 100)) },
         field: {
           gameType: damageGameType,
           weather: damageWeather as 'none' | 'sun' | 'rain' | 'sand' | 'snow',
@@ -454,14 +502,14 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           isTabletsOfRuin,
           isSwordOfRuin,
           isVesselOfRuin,
-          attackerSide: { spikes: attackerSpikes, isSR: attackerStealthRock, isReflect: attackerReflect, isLightScreen: attackerLightScreen, isAuroraVeil: attackerAuroraVeil, isTailwind: attackerTailwind, isHelpingHand: attackerHelpingHand, isProtected: attackerProtected, isSeeded: attackerSeeded, isSaltCured: attackerSaltCured, isForesight: attackerForesight, isFlowerGift: attackerFlowerGift, isPowerTrick: attackerPowerTrick, isSteelySpirit: attackerSteelySpirit, isFriendGuard: attackerFriendGuard, isBattery: attackerBattery, isPowerSpot: attackerPowerSpot, isSwitching: attackerSwitchingOut ? 'out' : undefined },
-          defenderSide: { spikes: defenderSpikes, isSR: defenderStealthRock, isReflect: defenderReflect, isLightScreen: defenderLightScreen, isAuroraVeil: defenderAuroraVeil, isTailwind: defenderTailwind, isHelpingHand: defenderHelpingHand, isProtected: defenderProtected, isSeeded: defenderSeeded, isSaltCured: defenderSaltCured, isForesight: defenderForesight, isFlowerGift: defenderFlowerGift, isPowerTrick: defenderPowerTrick, isSteelySpirit: defenderSteelySpirit, isFriendGuard: defenderFriendGuard, isBattery: defenderBattery, isPowerSpot: defenderPowerSpot, isSwitching: defenderSwitchingOut ? 'out' : undefined },
+          attackerSide: source.side,
+          defenderSide: target.side,
         },
       })
     } catch {
       return null
     }
-  }, [pokemon, compareTarget, selectedDamageMove, sps, defenderSps, nature, abilityId, item, boosts, damageCrit, damageHits, damageTimesUsed, damageMetronomeTimes, damageMovePowerOverride, damageMoveTypeOverride, damageMoveCategoryOverride, attackerAbilityOn, attackerStatus, attackerToxicCounter, attackerHpPercent, effectiveDefenderAbilityId, defenderItem, defenderBoosts, defenderAbilityOn, defenderNature, defenderStatus, defenderToxicCounter, defenderHpPercent, damageGameType, damageWeather, damageTerrain, isMagicRoom, isWonderRoom, isGravity, isBeadsOfRuin, isTabletsOfRuin, isSwordOfRuin, isVesselOfRuin, attackerSpikes, attackerStealthRock, attackerReflect, attackerLightScreen, attackerAuroraVeil, attackerTailwind, attackerHelpingHand, attackerProtected, attackerSeeded, attackerSaltCured, attackerForesight, attackerFlowerGift, attackerPowerTrick, attackerSteelySpirit, attackerFriendGuard, attackerBattery, attackerPowerSpot, attackerSwitchingOut, defenderSpikes, defenderStealthRock, defenderReflect, defenderLightScreen, defenderAuroraVeil, defenderTailwind, defenderHelpingHand, defenderProtected, defenderSeeded, defenderSaltCured, defenderForesight, defenderFlowerGift, defenderPowerTrick, defenderSteelySpirit, defenderFriendGuard, defenderBattery, defenderPowerSpot, defenderSwitchingOut])
+  }
 
   if (!pokemon || !displayPokemon) {
     return <section className="detail-card empty-detail"><h2>宝可梦详情</h2><p>正在加载详情。</p></section>
@@ -475,6 +523,230 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     { key: 'spd', label: '特防', boostKey: 'spd' },
     { key: 'spe', label: '速度', boostKey: 'spe' },
   ]
+
+
+
+  function formatDamageResult(result: ReturnType<typeof calculateChampionsDamage> | null) {
+    if (!result) return '—'
+    return `${result.range[0]} - ${result.range[1]}｜${result.desc}`
+  }
+
+  function moveSuggestionsFor(detail: PokemonDetail | null, query: string, selectedIds: string[]) {
+    if (!detail) return []
+    const q = normalizeSearch(query)
+    const moves = q
+      ? detail.moves.filter((move) => normalizeSearch(`${move.zh} ${move.en} ${move.id} ${move.pinyin}`).includes(q))
+      : detail.moves
+    return moves
+      .slice()
+      .sort((a, b) => {
+        const aSelected = selectedIds.includes(a.id) ? 1 : 0
+        const bSelected = selectedIds.includes(b.id) ? 1 : 0
+        return aSelected - bSelected || a.zh.localeCompare(b.zh, 'zh-Hans-CN')
+      })
+      .slice(0, 14)
+  }
+
+  function renderMovePicker(side: 'attacker' | 'defender', index: number) {
+    const detail = side === 'attacker' ? attackerDetail : defenderDetail
+    const moveIds = side === 'attacker' ? attackerMoveIds : defenderMoveIds
+    const queries = side === 'attacker' ? attackerMoveQueries : defenderMoveQueries
+    const setMoveIds = side === 'attacker' ? setAttackerMoveIds : setDefenderMoveIds
+    const setQueries = side === 'attacker' ? setAttackerMoveQueries : setDefenderMoveQueries
+    const pickerId = `${side}-${index}`
+    const selectedMove = detail?.moves.find((move) => move.id === moveIds[index]) || null
+    const damage = calculateMoveDamage(selectedMove, side)
+    const suggestions = moveSuggestionsFor(detail, queries[index], moveIds)
+    return (
+      <div className="damage-move-row" key={pickerId} data-popover-root>
+        <div className="damage-move-picker">
+          <input
+            value={queries[index]}
+            placeholder={`技能 ${index + 1}`}
+            onFocus={() => setOpenMovePicker(pickerId)}
+            onChange={(event) => {
+              const value = event.target.value
+              setQueries((current) => current.map((entry, i) => i === index ? value : entry))
+              setOpenMovePicker(pickerId)
+            }}
+            onBlur={() => setTimeout(() => setOpenMovePicker((current) => current === pickerId ? null : current), 120)}
+          />
+          {openMovePicker === pickerId && (
+            <div className="search-dropdown move-damage-dropdown compact-dropdown">
+              {suggestions.map((move) => (
+                <button key={move.id} className="item-option-row" onMouseDown={() => {
+                  setMoveIds((current) => current.map((entry, i) => i === index ? move.id : entry))
+                  setQueries((current) => current.map((entry, i) => i === index ? move.zh : entry))
+                  setOpenMovePicker(null)
+                }}>
+                  <span>{move.zh}</span>
+                  <small>{typeLabel(move.type)} · {categoryLabel(move.category)} · {move.basePower || '—'}</small>
+                </button>
+              ))}
+              {suggestions.length === 0 && <div className="popover-note">没有匹配的技能。</div>}
+            </div>
+          )}
+        </div>
+        <div className="damage-move-result">{selectedMove?.category === 'Status' ? '变化招式' : formatDamageResult(damage)}</div>
+      </div>
+    )
+  }
+
+  function renderStatsTable(side: 'attacker' | 'defender') {
+    const detail = side === 'attacker' ? attackerDetail : defenderDetail
+    const statSps = side === 'attacker' ? sps : defenderSps
+    const setStatSps = side === 'attacker' ? setSps : setDefenderSps
+    const statBoosts = side === 'attacker' ? boosts : defenderBoosts
+    const setStatBoosts = side === 'attacker' ? setBoosts : setDefenderBoosts
+    const statNature = side === 'attacker' ? nature : defenderNature
+    if (!detail) return null
+    return (
+      <div className="damage-stats-table-wrap">
+        <table className="stats-setting-table damage-stats-table">
+          <thead><tr><th>能力</th><th>种族值</th><th>SP</th><th>修正</th><th>最终</th></tr></thead>
+          <tbody>
+            {statRows.map((row) => {
+              const boost = row.boostKey ? statBoosts[row.boostKey] : 0
+              const total = calculateStat(detail.baseStats[row.key], statSps[row.key], getNatureMultiplier(row.key, statNature), row.key === 'hp', boost)
+              return (
+                <tr key={`${side}-stat-${row.key}`}>
+                  <td>{row.label}</td>
+                  <td>{detail.baseStats[row.key]}</td>
+                  <td><div className="inline-slider-cell"><input type="range" min={0} max={32} value={statSps[row.key]} onChange={(event) => {
+                    const nextValue = Number(event.target.value)
+                    setStatSps((current) => {
+                      const next = { ...current, [row.key]: nextValue }
+                      const sum = Object.values(next).reduce((acc, value) => acc + value, 0)
+                      return sum > 66 ? current : next
+                    })
+                  }} /><span>{statSps[row.key]}</span></div></td>
+                  <td>{row.boostKey ? <select value={boost} onChange={(event) => setStatBoosts((current) => ({ ...current, [row.boostKey!]: Number(event.target.value) }))}>{BOOST_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select> : '—'}</td>
+                  <td>{total}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+        <div className="sp-summary compact-sp-summary">已分配 SPs: <strong>{Object.values(statSps).reduce((sum, value) => sum + value, 0)}</strong> / 66</div>
+      </div>
+    )
+  }
+
+  function renderBattleSide(side: 'attacker' | 'defender') {
+    const isAttacker = side === 'attacker'
+    const detail = isAttacker ? attackerDetail : defenderDetail
+    if (!detail) return null
+    const pokemonId = isAttacker ? attackerPokemonId : defenderPokemonId
+    const setPokemonId = isAttacker ? setAttackerPokemonId : setDefenderPokemonId
+    const sideNature = isAttacker ? nature : defenderNature
+    const setSideNature = isAttacker ? setNature : setDefenderNature
+    const sideAbilityId = isAttacker ? effectiveAttackerAbilityId : effectiveDefenderAbilityId
+    const setSideAbilityId = isAttacker ? setAbilityId : setDefenderAbilityId
+    const sideItem = isAttacker ? item : defenderItem
+    const setSideItem = isAttacker ? setItem : setDefenderItem
+    const sideStatus = isAttacker ? attackerStatus : defenderStatus
+    const setSideStatus = isAttacker ? setAttackerStatus : setDefenderStatus
+    const sideHpPercent = isAttacker ? attackerHpPercent : defenderHpPercent
+    const setSideHpPercent = isAttacker ? setAttackerHpPercent : setDefenderHpPercent
+    const sideToxicCounter = isAttacker ? attackerToxicCounter : defenderToxicCounter
+    const setSideToxicCounter = isAttacker ? setAttackerToxicCounter : setDefenderToxicCounter
+    const sideSpikes = isAttacker ? attackerSpikes : defenderSpikes
+    const setSideSpikes = isAttacker ? setAttackerSpikes : setDefenderSpikes
+    const sideStealthRock = isAttacker ? attackerStealthRock : defenderStealthRock
+    const setSideStealthRock = isAttacker ? setAttackerStealthRock : setDefenderStealthRock
+    const abilityOn = isAttacker ? attackerAbilityOn : defenderAbilityOn
+    const setAbilityOn = isAttacker ? setAttackerAbilityOn : setDefenderAbilityOn
+    const reflect = isAttacker ? attackerReflect : defenderReflect
+    const setReflect = isAttacker ? setAttackerReflect : setDefenderReflect
+    const lightScreen = isAttacker ? attackerLightScreen : defenderLightScreen
+    const setLightScreen = isAttacker ? setAttackerLightScreen : setDefenderLightScreen
+    const auroraVeil = isAttacker ? attackerAuroraVeil : defenderAuroraVeil
+    const setAuroraVeil = isAttacker ? setAttackerAuroraVeil : setDefenderAuroraVeil
+    const helpingHand = isAttacker ? attackerHelpingHand : defenderHelpingHand
+    const setHelpingHand = isAttacker ? setAttackerHelpingHand : setDefenderHelpingHand
+    const protectedSide = isAttacker ? attackerProtected : defenderProtected
+    const setProtectedSide = isAttacker ? setAttackerProtected : setDefenderProtected
+    const tailwind = isAttacker ? attackerTailwind : defenderTailwind
+    const setTailwind = isAttacker ? setAttackerTailwind : setDefenderTailwind
+    const seeded = isAttacker ? attackerSeeded : defenderSeeded
+    const setSeeded = isAttacker ? setAttackerSeeded : setDefenderSeeded
+    const saltCured = isAttacker ? attackerSaltCured : defenderSaltCured
+    const setSaltCured = isAttacker ? setAttackerSaltCured : setDefenderSaltCured
+    const foresight = isAttacker ? attackerForesight : defenderForesight
+    const setForesight = isAttacker ? setAttackerForesight : setDefenderForesight
+    const flowerGift = isAttacker ? attackerFlowerGift : defenderFlowerGift
+    const setFlowerGift = isAttacker ? setAttackerFlowerGift : setDefenderFlowerGift
+    const powerTrick = isAttacker ? attackerPowerTrick : defenderPowerTrick
+    const setPowerTrick = isAttacker ? setAttackerPowerTrick : setDefenderPowerTrick
+    const steelySpirit = isAttacker ? attackerSteelySpirit : defenderSteelySpirit
+    const setSteelySpirit = isAttacker ? setAttackerSteelySpirit : setDefenderSteelySpirit
+    const friendGuard = isAttacker ? attackerFriendGuard : defenderFriendGuard
+    const setFriendGuard = isAttacker ? setAttackerFriendGuard : setDefenderFriendGuard
+    const battery = isAttacker ? attackerBattery : defenderBattery
+    const setBattery = isAttacker ? setAttackerBattery : setDefenderBattery
+    const powerSpot = isAttacker ? attackerPowerSpot : defenderPowerSpot
+    const setPowerSpot = isAttacker ? setAttackerPowerSpot : setDefenderPowerSpot
+    const switchingOut = isAttacker ? attackerSwitchingOut : defenderSwitchingOut
+    const setSwitchingOut = isAttacker ? setAttackerSwitchingOut : setDefenderSwitchingOut
+    return (
+      <section className="damage-subpanel">
+        <div className="damage-subpanel-title"><h3>{isAttacker ? '我方' : '对方'}</h3><span>{detail.zh}</span></div>
+        <div className="damage-config-grid">
+          <label className="popover-field"><span>宝可梦</span><select value={pokemonId} onChange={(event) => {
+            const nextId = event.target.value
+            const nextDetail = championsDetails[nextId] ?? null
+            const loadout = defaultMoveLoadout(nextDetail)
+            setPokemonId(nextId)
+            setSideAbilityId(nextDetail?.abilities[0]?.id || '')
+            if (isAttacker) {
+              setAttackerMoveIds(loadout.ids)
+              setAttackerMoveQueries(loadout.labels)
+            } else {
+              setDefenderMoveIds(loadout.ids)
+              setDefenderMoveQueries(loadout.labels)
+              onChangeCompareId(nextId)
+            }
+          }}>{damageTargetOptions.map((target) => <option key={target.id} value={target.id}>{target.zh}</option>)}</select></label>
+          <label className="popover-field"><span>性格</span><select value={sideNature} onChange={(event) => setSideNature(event.target.value)}>{ALL_NATURES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
+          <label className="popover-field"><span>特性</span><select value={sideAbilityId} onChange={(event) => setSideAbilityId(event.target.value)}>{detail.abilities.map((ability) => <option key={ability.id} value={ability.id}>{ability.zh}</option>)}</select></label>
+          <label className="popover-field"><span>道具</span><select value={sideItem} onChange={(event) => {
+            setSideItem(event.target.value)
+            if (isAttacker) setItemQuery(itemLabel(event.target.value))
+          }}>{ITEM_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
+          <label className="popover-field"><span>状态</span><select value={sideStatus} onChange={(event) => setSideStatus(event.target.value as StatusMode)}><option value="healthy">健康</option><option value="poisoned">中毒</option><option value="badlyPoisoned">剧毒</option><option value="burned">烧伤</option><option value="paralyzed">麻痹</option><option value="asleep">睡眠</option><option value="frozen">冰冻</option></select></label>
+          <label className="popover-field"><span>当前 HP%</span><input type="number" min={1} max={100} value={sideHpPercent} onChange={(event) => setSideHpPercent(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>
+        </div>
+        {renderStatsTable(side)}
+        <details className="damage-advanced">
+          <summary>展开</summary>
+          <div className="damage-config-grid">
+            {sideStatus === 'badlyPoisoned' && <label className="popover-field"><span>剧毒回合</span><select value={sideToxicCounter} onChange={(event) => setSideToxicCounter(Number(event.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((value) => <option key={value} value={value}>{value}/16</option>)}</select></label>}
+            <label className="popover-field"><span>撒菱</span><select value={sideSpikes} onChange={(event) => setSideSpikes(Number(event.target.value) as 0 | 1 | 2 | 3)}><option value={0}>0</option><option value={1}>1</option><option value={2}>2</option><option value={3}>3</option></select></label>
+            <label className="toggle-chip"><input type="checkbox" checked={sideStealthRock} onChange={(event) => setSideStealthRock(event.target.checked)} />隐形岩</label>
+          </div>
+          <div className="damage-side-grid">
+            <label className="toggle-chip"><input type="checkbox" checked={abilityOn} onChange={(event) => setAbilityOn(event.target.checked)} />特性生效</label>
+            <label className="toggle-chip"><input type="checkbox" checked={reflect} onChange={(event) => setReflect(event.target.checked)} />反射壁</label>
+            <label className="toggle-chip"><input type="checkbox" checked={lightScreen} onChange={(event) => setLightScreen(event.target.checked)} />光墙</label>
+            <label className="toggle-chip"><input type="checkbox" checked={auroraVeil} onChange={(event) => setAuroraVeil(event.target.checked)} />极光幕</label>
+            <label className="toggle-chip"><input type="checkbox" checked={helpingHand} onChange={(event) => setHelpingHand(event.target.checked)} />帮助</label>
+            <label className="toggle-chip"><input type="checkbox" checked={protectedSide} onChange={(event) => setProtectedSide(event.target.checked)} />守住</label>
+            <label className="toggle-chip"><input type="checkbox" checked={tailwind} onChange={(event) => setTailwind(event.target.checked)} />顺风</label>
+            <label className="toggle-chip"><input type="checkbox" checked={seeded} onChange={(event) => setSeeded(event.target.checked)} />寄生种子</label>
+            <label className="toggle-chip"><input type="checkbox" checked={saltCured} onChange={(event) => setSaltCured(event.target.checked)} />盐腌</label>
+            <label className="toggle-chip"><input type="checkbox" checked={foresight} onChange={(event) => setForesight(event.target.checked)} />识破</label>
+            <label className="toggle-chip"><input type="checkbox" checked={flowerGift} onChange={(event) => setFlowerGift(event.target.checked)} />花之礼</label>
+            <label className="toggle-chip"><input type="checkbox" checked={powerTrick} onChange={(event) => setPowerTrick(event.target.checked)} />力量戏法</label>
+            <label className="toggle-chip"><input type="checkbox" checked={steelySpirit} onChange={(event) => setSteelySpirit(event.target.checked)} />钢之意志</label>
+            <label className="toggle-chip"><input type="checkbox" checked={friendGuard} onChange={(event) => setFriendGuard(event.target.checked)} />友情防守</label>
+            <label className="toggle-chip"><input type="checkbox" checked={battery} onChange={(event) => setBattery(event.target.checked)} />蓄电池</label>
+            <label className="toggle-chip"><input type="checkbox" checked={powerSpot} onChange={(event) => setPowerSpot(event.target.checked)} />能量点</label>
+            <label className="toggle-chip"><input type="checkbox" checked={switchingOut} onChange={(event) => setSwitchingOut(event.target.checked)} />换下</label>
+          </div>
+        </details>
+      </section>
+    )
+  }
 
   return (
     <section className="detail-card detail-page-full">
@@ -565,181 +837,67 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         <div className="sp-summary">已分配 SPs: <strong>{totalSps}</strong> / 66</div>
       </section>
 
-      {compareTarget && (
+      {attackerDetail && defenderDetail && (
         <section className="plain-section damage-panel-section">
           <div className="damage-panel-head">
             <div>
               <h2>伤害计算</h2>
-              <p>分为我方、对方、场地三组；常用项直接显示，高级项折叠。</p>
+              <p>技能与结果集中在中间面板；两侧只保留双方配置。</p>
             </div>
-            {previewDamage && <div className="damage-preview-box compact-damage-result"><strong>{previewDamage.range[0]} - {previewDamage.range[1]}</strong><small>{previewDamage.desc}</small></div>}
           </div>
 
-          <div className="damage-subpanel-grid">
-            <section className="damage-subpanel">
-              <div className="damage-subpanel-title"><h3>我方</h3><span>{displayPokemon.zh}</span></div>
-              <div className="damage-config-grid">
-                <label className="popover-field"><span>计算招式</span><select value={damageMoveId} onChange={(event) => setDamageMoveId(event.target.value)}><option value="">自动选择首个攻击招式</option>{pokemon.moves.map((move) => <option key={move.id} value={move.id}>{move.zh} / {move.en}</option>)}</select></label>
-                <label className="popover-field"><span>性格</span><select value={nature} onChange={(event) => setNature(event.target.value)}>{ALL_NATURES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
-                <label className="popover-field"><span>特性</span><select value={abilityId} onChange={(event) => setAbilityId(event.target.value)}>{displayPokemon.abilities.map((ability) => <option key={ability.id} value={ability.id}>{ability.zh}</option>)}</select></label>
-                <label className="popover-field"><span>道具</span><select value={item} onChange={(event) => { setItem(event.target.value); setItemQuery(itemLabel(event.target.value)) }}>{ITEM_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
-                <label className="popover-field"><span>状态</span><select value={attackerStatus} onChange={(event) => setAttackerStatus(event.target.value as StatusMode)}><option value="healthy">健康</option><option value="poisoned">中毒</option><option value="badlyPoisoned">剧毒</option><option value="burned">烧伤</option><option value="paralyzed">麻痹</option><option value="asleep">睡眠</option><option value="frozen">冰冻</option></select></label>
-                <label className="popover-field"><span>当前 HP%</span><input type="number" min={1} max={100} value={attackerHpPercent} onChange={(event) => setAttackerHpPercent(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>
-              </div>
-              <div className="damage-stats-table-wrap">
-                <table className="stats-setting-table damage-stats-table">
-                  <thead><tr><th>能力</th><th>种族值</th><th>SP</th><th>修正</th><th>最终</th></tr></thead>
-                  <tbody>
-                    {statRows.map((row) => {
-                      const boost = row.boostKey ? boosts[row.boostKey] : 0
-                      const total = calculateStat(displayPokemon.baseStats[row.key], sps[row.key], getNatureMultiplier(row.key, nature), row.key === 'hp', boost)
-                      return (
-                        <tr key={`atk-stat-${row.key}`}>
-                          <td>{row.label}</td>
-                          <td>{displayPokemon.baseStats[row.key]}</td>
-                          <td><div className="inline-slider-cell"><input type="range" min={0} max={32} value={sps[row.key]} onChange={(event) => {
-                            const nextValue = Number(event.target.value)
-                            setSps((current) => {
-                              const next = { ...current, [row.key]: nextValue }
-                              const sum = Object.values(next).reduce((acc, value) => acc + value, 0)
-                              return sum > 66 ? current : next
-                            })
-                          }} /><span>{sps[row.key]}</span></div></td>
-                          <td>{row.boostKey ? <select value={boost} onChange={(event) => setBoosts((current) => ({ ...current, [row.boostKey!]: Number(event.target.value) }))}>{BOOST_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select> : '—'}</td>
-                          <td>{total}</td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
-                <div className="sp-summary compact-sp-summary">已分配 SPs: <strong>{totalSps}</strong> / 66</div>
-              </div>
-              <div className="damage-side-grid compact-side-grid">
-                <label className="toggle-chip"><input type="checkbox" checked={attackerStealthRock} onChange={(event) => setAttackerStealthRock(event.target.checked)} />隐形岩</label>
-                <label className="popover-field"><span>撒菱</span><select value={attackerSpikes} onChange={(event) => setAttackerSpikes(Number(event.target.value) as 0 | 1 | 2 | 3)}><option value={0}>0</option><option value={1}>1</option><option value={2}>2</option><option value={3}>3</option></select></label>
-              </div>
-              <details className="damage-advanced">
-                <summary>展开我方高级项</summary>
+          <div className="damage-subpanel-grid damage-three-column-grid">
+            {renderBattleSide('attacker')}
+
+            <div className="damage-center-stack">
+              <section className="damage-subpanel moves-damage-subpanel">
+                <div className="damage-subpanel-title"><h3>技能</h3><span>选择后直接显示伤害</span></div>
+                <div className="damage-move-columns">
+                  <div className="damage-move-column">
+                    <h4>我方技能</h4>
+                    {[0, 1, 2, 3].map((index) => renderMovePicker('attacker', index))}
+                  </div>
+                  <div className="damage-move-column">
+                    <h4>对方技能</h4>
+                    {[0, 1, 2, 3].map((index) => renderMovePicker('defender', index))}
+                  </div>
+                </div>
+                <details className="damage-advanced">
+                  <summary>展开</summary>
+                  <div className="damage-config-grid">
+                    <label className="popover-field"><span>命中次数</span><select value={damageHits} onChange={(event) => setDamageHits(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+                    <label className="popover-field"><span>连续使用</span><select value={damageTimesUsed} onChange={(event) => setDamageTimesUsed(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+                    <label className="popover-field"><span>节拍器次数</span><select value={damageMetronomeTimes} onChange={(event) => setDamageMetronomeTimes(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+                    <label className="popover-field"><span>覆盖威力</span><input type="number" min={0} value={damageMovePowerOverride} onChange={(event) => setDamageMovePowerOverride(event.target.value)} placeholder="默认" /></label>
+                    <label className="popover-field"><span>覆盖属性</span><select value={damageMoveTypeOverride} onChange={(event) => setDamageMoveTypeOverride(event.target.value)}><option value="">默认</option>{Object.keys(TYPE_LABELS).map((type) => <option key={type} value={type}>{typeLabel(type)}</option>)}</select></label>
+                    <label className="popover-field"><span>覆盖分类</span><select value={damageMoveCategoryOverride} onChange={(event) => setDamageMoveCategoryOverride(event.target.value)}><option value="">默认</option><option value="Physical">物理</option><option value="Special">特殊</option><option value="Status">变化</option></select></label>
+                    <label className="toggle-chip"><input type="checkbox" checked={damageCrit} onChange={(event) => setDamageCrit(event.target.checked)} />CT / 暴击</label>
+                  </div>
+                </details>
+              </section>
+
+              <section className="damage-subpanel field-subpanel">
+                <div className="damage-subpanel-title"><h3>场地信息</h3><select className="battle-mode-toggle" value={damageGameType} onChange={(event) => setDamageGameType(event.target.value as 'Singles' | 'Doubles')}><option value="Singles">单打</option><option value="Doubles">双打</option></select></div>
                 <div className="damage-config-grid">
-                  {attackerStatus === 'badlyPoisoned' && <label className="popover-field"><span>剧毒回合</span><select value={attackerToxicCounter} onChange={(event) => setAttackerToxicCounter(Number(event.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((value) => <option key={value} value={value}>{value}/16</option>)}</select></label>}
-                  <label className="popover-field"><span>命中次数</span><select value={damageHits} onChange={(event) => setDamageHits(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
-                  <label className="popover-field"><span>连续使用</span><select value={damageTimesUsed} onChange={(event) => setDamageTimesUsed(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
-                  <label className="popover-field"><span>节拍器次数</span><select value={damageMetronomeTimes} onChange={(event) => setDamageMetronomeTimes(Number(event.target.value))}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
-                  <label className="popover-field"><span>覆盖威力</span><input type="number" min={0} value={damageMovePowerOverride} onChange={(event) => setDamageMovePowerOverride(event.target.value)} placeholder={selectedDamageMove?.basePower ? String(selectedDamageMove.basePower) : '默认'} /></label>
-                  <label className="popover-field"><span>覆盖属性</span><select value={damageMoveTypeOverride} onChange={(event) => setDamageMoveTypeOverride(event.target.value)}><option value="">默认</option>{Object.keys(TYPE_LABELS).map((type) => <option key={type} value={type}>{typeLabel(type)}</option>)}</select></label>
-                  <label className="popover-field"><span>覆盖分类</span><select value={damageMoveCategoryOverride} onChange={(event) => setDamageMoveCategoryOverride(event.target.value)}><option value="">默认</option><option value="Physical">物理</option><option value="Special">特殊</option><option value="Status">变化</option></select></label>
+                  <label className="popover-field"><span>天气</span><select value={damageWeather} onChange={(event) => setDamageWeather(event.target.value)}><option value="none">无</option><option value="sun">晴天</option><option value="rain">下雨</option><option value="sand">沙暴</option><option value="snow">雪景</option></select></label>
+                  <label className="popover-field"><span>场地</span><select value={damageTerrain} onChange={(event) => setDamageTerrain(event.target.value)}><option value="none">无</option><option value="electric">电气场地</option><option value="grassy">青草场地</option><option value="misty">薄雾场地</option><option value="psychic">精神场地</option></select></label>
                 </div>
-                <div className="damage-side-grid">
-                  <label className="toggle-chip"><input type="checkbox" checked={damageCrit} onChange={(event) => setDamageCrit(event.target.checked)} />CT / 暴击</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerAbilityOn} onChange={(event) => setAttackerAbilityOn(event.target.checked)} />特性生效</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerReflect} onChange={(event) => setAttackerReflect(event.target.checked)} />反射壁</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerLightScreen} onChange={(event) => setAttackerLightScreen(event.target.checked)} />光墙</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerAuroraVeil} onChange={(event) => setAttackerAuroraVeil(event.target.checked)} />极光幕</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerHelpingHand} onChange={(event) => setAttackerHelpingHand(event.target.checked)} />帮助</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerProtected} onChange={(event) => setAttackerProtected(event.target.checked)} />守住</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerTailwind} onChange={(event) => setAttackerTailwind(event.target.checked)} />顺风</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerSeeded} onChange={(event) => setAttackerSeeded(event.target.checked)} />寄生种子</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerSaltCured} onChange={(event) => setAttackerSaltCured(event.target.checked)} />盐腌</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerForesight} onChange={(event) => setAttackerForesight(event.target.checked)} />识破</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerFlowerGift} onChange={(event) => setAttackerFlowerGift(event.target.checked)} />花之礼</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerPowerTrick} onChange={(event) => setAttackerPowerTrick(event.target.checked)} />力量戏法</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerSteelySpirit} onChange={(event) => setAttackerSteelySpirit(event.target.checked)} />钢之意志</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerFriendGuard} onChange={(event) => setAttackerFriendGuard(event.target.checked)} />友情防守</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerBattery} onChange={(event) => setAttackerBattery(event.target.checked)} />蓄电池</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerPowerSpot} onChange={(event) => setAttackerPowerSpot(event.target.checked)} />能量点</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={attackerSwitchingOut} onChange={(event) => setAttackerSwitchingOut(event.target.checked)} />换下</label>
-                </div>
-              </details>
-            </section>
+                <details className="damage-advanced">
+                  <summary>展开</summary>
+                  <div className="damage-side-grid">
+                    <label className="toggle-chip"><input type="checkbox" checked={isMagicRoom} onChange={(event) => setIsMagicRoom(event.target.checked)} />魔法空间</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isWonderRoom} onChange={(event) => setIsWonderRoom(event.target.checked)} />奇妙空间</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isGravity} onChange={(event) => setIsGravity(event.target.checked)} />重力</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isBeadsOfRuin} onChange={(event) => setIsBeadsOfRuin(event.target.checked)} />灾祸之玉</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isTabletsOfRuin} onChange={(event) => setIsTabletsOfRuin(event.target.checked)} />灾祸之简</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isSwordOfRuin} onChange={(event) => setIsSwordOfRuin(event.target.checked)} />灾祸之剑</label>
+                    <label className="toggle-chip"><input type="checkbox" checked={isVesselOfRuin} onChange={(event) => setIsVesselOfRuin(event.target.checked)} />灾祸之鼎</label>
+                  </div>
+                </details>
+              </section>
+            </div>
 
-            <section className="damage-subpanel">
-              <div className="damage-subpanel-title"><h3>对方</h3><span>{compareTarget.zh}</span></div>
-              <div className="damage-config-grid">
-                <label className="popover-field"><span>目标宝可梦</span><select value={selectedCompareId} onChange={(event) => onChangeCompareId(event.target.value)}>{damageTargetOptions.map((target) => <option key={target.id} value={target.id}>{target.zh}</option>)}</select></label>
-                <label className="popover-field"><span>特性</span><select value={effectiveDefenderAbilityId} onChange={(event) => setDefenderAbilityId(event.target.value)}>{compareTarget.abilities.map((ability) => <option key={ability.id} value={ability.id}>{ability.zh}</option>)}</select></label>
-                <label className="popover-field"><span>性格</span><select value={defenderNature} onChange={(event) => setDefenderNature(event.target.value)}>{ALL_NATURES.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
-                <label className="popover-field"><span>道具</span><select value={defenderItem} onChange={(event) => setDefenderItem(event.target.value)}>{ITEM_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select></label>
-                <label className="popover-field"><span>状态</span><select value={defenderStatus} onChange={(event) => setDefenderStatus(event.target.value as StatusMode)}><option value="healthy">健康</option><option value="poisoned">中毒</option><option value="badlyPoisoned">剧毒</option><option value="burned">烧伤</option><option value="paralyzed">麻痹</option><option value="asleep">睡眠</option><option value="frozen">冰冻</option></select></label>
-                <label className="popover-field"><span>当前 HP%</span><input type="number" min={1} max={100} value={defenderHpPercent} onChange={(event) => setDefenderHpPercent(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>
-              </div>
-              <div className="damage-stats-table-wrap">
-                <table className="stats-setting-table damage-stats-table">
-                  <thead><tr><th>能力</th><th>种族值</th><th>SP</th><th>修正</th><th>最终</th></tr></thead>
-                  <tbody>
-                    {statRows.map((row) => {
-                      const boost = row.boostKey ? defenderBoosts[row.boostKey] : 0
-                      const total = calculateStat(compareTarget.baseStats[row.key], defenderSps[row.key], getNatureMultiplier(row.key, defenderNature), row.key === 'hp', boost)
-                      return (
-                        <tr key={`def-stat-${row.key}`}>
-                          <td>{row.label}</td>
-                          <td>{compareTarget.baseStats[row.key]}</td>
-                          <td><div className="inline-slider-cell"><input type="range" min={0} max={32} value={defenderSps[row.key]} onChange={(event) => {
-                            const nextValue = Number(event.target.value)
-                            setDefenderSps((current) => {
-                              const next = { ...current, [row.key]: nextValue }
-                              const sum = Object.values(next).reduce((acc, value) => acc + value, 0)
-                              return sum > 66 ? current : next
-                            })
-                          }} /><span>{defenderSps[row.key]}</span></div></td>
-                          <td>{row.boostKey ? <select value={boost} onChange={(event) => setDefenderBoosts((current) => ({ ...current, [row.boostKey!]: Number(event.target.value) }))}>{BOOST_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select> : '—'}</td>
-                          <td>{total}</td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
-                <div className="sp-summary compact-sp-summary">已分配 SPs: <strong>{Object.values(defenderSps).reduce((sum, value) => sum + value, 0)}</strong> / 66</div>
-              </div>
-              <div className="damage-side-grid compact-side-grid">
-                <label className="toggle-chip"><input type="checkbox" checked={defenderStealthRock} onChange={(event) => setDefenderStealthRock(event.target.checked)} />隐形岩</label>
-                <label className="popover-field"><span>撒菱</span><select value={defenderSpikes} onChange={(event) => setDefenderSpikes(Number(event.target.value) as 0 | 1 | 2 | 3)}><option value={0}>0</option><option value={1}>1</option><option value={2}>2</option><option value={3}>3</option></select></label>
-              </div>
-              <details className="damage-advanced">
-                <summary>展开对方高级项</summary>
-                <div className="damage-boost-grid compact-stat-grid">
-                  {defenderStatus === 'badlyPoisoned' && <label className="popover-field"><span>剧毒回合</span><select value={defenderToxicCounter} onChange={(event) => setDefenderToxicCounter(Number(event.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((value) => <option key={value} value={value}>{value}/16</option>)}</select></label>}
-                </div>
-                <div className="damage-side-grid">
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderAbilityOn} onChange={(event) => setDefenderAbilityOn(event.target.checked)} />特性生效</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderReflect} onChange={(event) => setDefenderReflect(event.target.checked)} />反射壁</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderLightScreen} onChange={(event) => setDefenderLightScreen(event.target.checked)} />光墙</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderAuroraVeil} onChange={(event) => setDefenderAuroraVeil(event.target.checked)} />极光幕</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderHelpingHand} onChange={(event) => setDefenderHelpingHand(event.target.checked)} />帮助</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderProtected} onChange={(event) => setDefenderProtected(event.target.checked)} />守住</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderTailwind} onChange={(event) => setDefenderTailwind(event.target.checked)} />顺风</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderSeeded} onChange={(event) => setDefenderSeeded(event.target.checked)} />寄生种子</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderSaltCured} onChange={(event) => setDefenderSaltCured(event.target.checked)} />盐腌</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderForesight} onChange={(event) => setDefenderForesight(event.target.checked)} />识破</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderFlowerGift} onChange={(event) => setDefenderFlowerGift(event.target.checked)} />花之礼</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderPowerTrick} onChange={(event) => setDefenderPowerTrick(event.target.checked)} />力量戏法</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderSteelySpirit} onChange={(event) => setDefenderSteelySpirit(event.target.checked)} />钢之意志</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderFriendGuard} onChange={(event) => setDefenderFriendGuard(event.target.checked)} />友情防守</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderBattery} onChange={(event) => setDefenderBattery(event.target.checked)} />蓄电池</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderPowerSpot} onChange={(event) => setDefenderPowerSpot(event.target.checked)} />能量点</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={defenderSwitchingOut} onChange={(event) => setDefenderSwitchingOut(event.target.checked)} />换下</label>
-                </div>
-              </details>
-            </section>
-
-            <section className="damage-subpanel field-subpanel">
-              <div className="damage-subpanel-title"><h3>场地信息</h3><select className="battle-mode-toggle" value={damageGameType} onChange={(event) => setDamageGameType(event.target.value as 'Singles' | 'Doubles')}><option value="Singles">单打</option><option value="Doubles">双打</option></select></div>
-              <div className="damage-config-grid">
-                <label className="popover-field"><span>天气</span><select value={damageWeather} onChange={(event) => setDamageWeather(event.target.value)}><option value="none">无</option><option value="sun">晴天</option><option value="rain">下雨</option><option value="sand">沙暴</option><option value="snow">雪景</option></select></label>
-                <label className="popover-field"><span>场地</span><select value={damageTerrain} onChange={(event) => setDamageTerrain(event.target.value)}><option value="none">无</option><option value="electric">电气场地</option><option value="grassy">青草场地</option><option value="misty">薄雾场地</option><option value="psychic">精神场地</option></select></label>
-              </div>
-              <details className="damage-advanced">
-                <summary>展开场地高级项</summary>
-                <div className="damage-side-grid">
-                  <label className="toggle-chip"><input type="checkbox" checked={isMagicRoom} onChange={(event) => setIsMagicRoom(event.target.checked)} />魔法空间</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isWonderRoom} onChange={(event) => setIsWonderRoom(event.target.checked)} />奇妙空间</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isGravity} onChange={(event) => setIsGravity(event.target.checked)} />重力</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isBeadsOfRuin} onChange={(event) => setIsBeadsOfRuin(event.target.checked)} />灾祸之玉</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isTabletsOfRuin} onChange={(event) => setIsTabletsOfRuin(event.target.checked)} />灾祸之简</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isSwordOfRuin} onChange={(event) => setIsSwordOfRuin(event.target.checked)} />灾祸之剑</label>
-                  <label className="toggle-chip"><input type="checkbox" checked={isVesselOfRuin} onChange={(event) => setIsVesselOfRuin(event.target.checked)} />灾祸之鼎</label>
-                </div>
-              </details>
-            </section>
+            {renderBattleSide('defender')}
           </div>
         </section>
       )}
