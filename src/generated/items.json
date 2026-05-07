@@ -1,0 +1,345 @@
+[
+  {
+    "id": "abomasite",
+    "en": "Abomasite",
+    "zh": "暴雪王进化石",
+    "search": "abomasite 暴雪王进化石 baoxuewangjinhuashi bxwjhs abomasite",
+    "isMegaStone": true
+  },
+  {
+    "id": "aerodactylite",
+    "en": "Aerodactylite",
+    "zh": "化石翼龙进化石",
+    "search": "aerodactylite 化石翼龙进化石 huashiyilongjinhuashi hsyljhs aerodactylite",
+    "isMegaStone": true
+  },
+  {
+    "id": "aggronite",
+    "en": "Aggronite",
+    "zh": "波士可多拉进化石",
+    "search": "aggronite 波士可多拉进化石 boshikeduolajinhuashi bskdljhs aggronite",
+    "isMegaStone": true
+  },
+  {
+    "id": "alakazite",
+    "en": "Alakazite",
+    "zh": "胡地进化石",
+    "search": "alakazite 胡地进化石 hudijinhuashi hdjhs alakazite",
+    "isMegaStone": true
+  },
+  {
+    "id": "altarianite",
+    "en": "Altarianite",
+    "zh": "Altarianite",
+    "search": "altarianite altarianite altarianite a altarianite",
+    "isMegaStone": true
+  },
+  {
+    "id": "ampharosite",
+    "en": "Ampharosite",
+    "zh": "电龙进化石",
+    "search": "ampharosite 电龙进化石 dianlongjinhuashi dljhs ampharosite",
+    "isMegaStone": true
+  },
+  {
+    "id": "banettite",
+    "en": "Banettite",
+    "zh": "Banettite",
+    "search": "banettite banettite banettite b banettite",
+    "isMegaStone": true
+  },
+  {
+    "id": "beedrillite",
+    "en": "Beedrillite",
+    "zh": "Beedrillite",
+    "search": "beedrillite beedrillite beedrillite b beedrillite",
+    "isMegaStone": true
+  },
+  {
+    "id": "blackglasses",
+    "en": "Black Glasses",
+    "zh": "黑色眼镜",
+    "search": "blackglasses 黑色眼镜 heiseyanjing hsyj blackglasses",
+    "isMegaStone": false
+  },
+  {
+    "id": "blastoisinite",
+    "en": "Blastoisinite",
+    "zh": "水箭龟进化石",
+    "search": "blastoisinite 水箭龟进化石 shuijianguijinhuashi sjgjhs blastoisinite",
+    "isMegaStone": true
+  },
+  {
+    "id": "cameruptite",
+    "en": "Cameruptite",
+    "zh": "Cameruptite",
+    "search": "cameruptite cameruptite cameruptite c cameruptite",
+    "isMegaStone": true
+  },
+  {
+    "id": "charcoal",
+    "en": "Charcoal",
+    "zh": "木炭",
+    "search": "charcoal 木炭 mutan mt charcoal",
+    "isMegaStone": false
+  },
+  {
+    "id": "charizarditex",
+    "en": "Charizardite X",
+    "zh": "喷火龙进化石X",
+    "search": "charizarditex 喷火龙进化石x penhuolongjinhuashix phljhsx charizarditex",
+    "isMegaStone": true
+  },
+  {
+    "id": "charizarditey",
+    "en": "Charizardite Y",
+    "zh": "喷火龙进化石Y",
+    "search": "charizarditey 喷火龙进化石y penhuolongjinhuashiy phljhsy charizarditey",
+    "isMegaStone": true
+  },
+  {
+    "id": "choicescarf",
+    "en": "Choice Scarf",
+    "zh": "讲究围巾",
+    "search": "choicescarf 讲究围巾 jiangjiuweijin jjwj choicescarf",
+    "isMegaStone": false
+  },
+  {
+    "id": "chopleberry",
+    "en": "Chople Berry",
+    "zh": "Chople Berry",
+    "search": "chopleberry chopleberry chople berry c chopleberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "colburberry",
+    "en": "Colbur Berry",
+    "zh": "Colbur Berry",
+    "search": "colburberry colburberry colbur berry c colburberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "focussash",
+    "en": "Focus Sash",
+    "zh": "气势披带",
+    "search": "focussash 气势披带 qishipidai qspd focussash",
+    "isMegaStone": false
+  },
+  {
+    "id": "galladite",
+    "en": "Galladite",
+    "zh": "艾路雷朵进化石",
+    "search": "galladite 艾路雷朵进化石 ailuleiduojinhuashi alldjhs galladite",
+    "isMegaStone": true
+  },
+  {
+    "id": "garchompite",
+    "en": "Garchompite",
+    "zh": "烈咬陆鲨进化石",
+    "search": "garchompite 烈咬陆鲨进化石 lieyaolushajinhuashi lylsjhs garchompite",
+    "isMegaStone": true
+  },
+  {
+    "id": "gardevoirite",
+    "en": "Gardevoirite",
+    "zh": "沙奈朵进化石",
+    "search": "gardevoirite 沙奈朵进化石 shanaiduojinhuashi sndjhs gardevoirite",
+    "isMegaStone": true
+  },
+  {
+    "id": "gengarite",
+    "en": "Gengarite",
+    "zh": "耿鬼进化石",
+    "search": "gengarite 耿鬼进化石 gengguijinhuashi ggjhs gengarite",
+    "isMegaStone": true
+  },
+  {
+    "id": "gyaradosite",
+    "en": "Gyaradosite",
+    "zh": "暴鲤龙进化石",
+    "search": "gyaradosite 暴鲤龙进化石 baolilongjinhuashi blljhs gyaradosite",
+    "isMegaStone": true
+  },
+  {
+    "id": "heracronite",
+    "en": "Heracronite",
+    "zh": "赫拉克罗斯进化石",
+    "search": "heracronite 赫拉克罗斯进化石 helakeluosijinhuashi hlklsjhs heracronite",
+    "isMegaStone": true
+  },
+  {
+    "id": "houndoominite",
+    "en": "Houndoominite",
+    "zh": "黑鲁加进化石",
+    "search": "houndoominite 黑鲁加进化石 heilujiajinhuashi hljjhs houndoominite",
+    "isMegaStone": true
+  },
+  {
+    "id": "kangaskhanite",
+    "en": "Kangaskhanite",
+    "zh": "袋兽进化石",
+    "search": "kangaskhanite 袋兽进化石 daishoujinhuashi dsjhs kangaskhanite",
+    "isMegaStone": true
+  },
+  {
+    "id": "leftovers",
+    "en": "Leftovers",
+    "zh": "剩饭",
+    "search": "leftovers 剩饭 shengfan sf leftovers",
+    "isMegaStone": false
+  },
+  {
+    "id": "lopunnite",
+    "en": "Lopunnite",
+    "zh": "长耳兔进化石",
+    "search": "lopunnite 长耳兔进化石 changertujinhuashi cetjhs lopunnite",
+    "isMegaStone": true
+  },
+  {
+    "id": "lucarionite",
+    "en": "Lucarionite",
+    "zh": "路卡利欧进化石",
+    "search": "lucarionite 路卡利欧进化石 lukalioujinhuashi lklojhs lucarionite",
+    "isMegaStone": true
+  },
+  {
+    "id": "lumberry",
+    "en": "Lum Berry",
+    "zh": "木子果",
+    "search": "lumberry 木子果 muziguo mzg lumberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "manectite",
+    "en": "Manectite",
+    "zh": "雷电兽进化石",
+    "search": "manectite 雷电兽进化石 leidianshoujinhuashi ldsjhs manectite",
+    "isMegaStone": true
+  },
+  {
+    "id": "medichamite",
+    "en": "Medichamite",
+    "zh": "恰雷姆进化石",
+    "search": "medichamite 恰雷姆进化石 qialeimujinhuashi qlmjhs medichamite",
+    "isMegaStone": true
+  },
+  {
+    "id": "mentalherb",
+    "en": "Mental Herb",
+    "zh": "心灵香草",
+    "search": "mentalherb 心灵香草 xinlingxiangcao xlxc mentalherb",
+    "isMegaStone": false
+  },
+  {
+    "id": "mysticwater",
+    "en": "Mystic Water",
+    "zh": "神秘水滴",
+    "search": "mysticwater 神秘水滴 shenmishuidi smsd mysticwater",
+    "isMegaStone": false
+  },
+  {
+    "id": "occaberry",
+    "en": "Occa Berry",
+    "zh": "Occa Berry",
+    "search": "occaberry occaberry occa berry o occaberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "pidgeotite",
+    "en": "Pidgeotite",
+    "zh": "Pidgeotite",
+    "search": "pidgeotite pidgeotite pidgeotite p pidgeotite",
+    "isMegaStone": true
+  },
+  {
+    "id": "pinsirite",
+    "en": "Pinsirite",
+    "zh": "凯罗斯进化石",
+    "search": "pinsirite 凯罗斯进化石 kailuosijinhuashi klsjhs pinsirite",
+    "isMegaStone": true
+  },
+  {
+    "id": "sablenite",
+    "en": "Sablenite",
+    "zh": "Sablenite",
+    "search": "sablenite sablenite sablenite s sablenite",
+    "isMegaStone": true
+  },
+  {
+    "id": "scizorite",
+    "en": "Scizorite",
+    "zh": "巨钳螳螂进化石",
+    "search": "scizorite 巨钳螳螂进化石 juqiantanglangjinhuashi jqtljhs scizorite",
+    "isMegaStone": true
+  },
+  {
+    "id": "sharpedonite",
+    "en": "Sharpedonite",
+    "zh": "Sharpedonite",
+    "search": "sharpedonite sharpedonite sharpedonite s sharpedonite",
+    "isMegaStone": true
+  },
+  {
+    "id": "shucaberry",
+    "en": "Shuca Berry",
+    "zh": "Shuca Berry",
+    "search": "shucaberry shucaberry shuca berry s shucaberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "silkscarf",
+    "en": "Silk Scarf",
+    "zh": "Silk Scarf",
+    "search": "silkscarf silkscarf silk scarf s silkscarf",
+    "isMegaStone": false
+  },
+  {
+    "id": "sitrusberry",
+    "en": "Sitrus Berry",
+    "zh": "文柚果",
+    "search": "sitrusberry 文柚果 wenyouguo wyg sitrusberry",
+    "isMegaStone": false
+  },
+  {
+    "id": "slowbronite",
+    "en": "Slowbronite",
+    "zh": "Slowbronite",
+    "search": "slowbronite slowbronite slowbronite s slowbronite",
+    "isMegaStone": true
+  },
+  {
+    "id": "spelltag",
+    "en": "Spell Tag",
+    "zh": "诅咒之符",
+    "search": "spelltag 诅咒之符 zuzhouzhifu zzzf spelltag",
+    "isMegaStone": false
+  },
+  {
+    "id": "steelixite",
+    "en": "Steelixite",
+    "zh": "Steelixite",
+    "search": "steelixite steelixite steelixite s steelixite",
+    "isMegaStone": true
+  },
+  {
+    "id": "tyranitarite",
+    "en": "Tyranitarite",
+    "zh": "班基拉斯进化石",
+    "search": "tyranitarite 班基拉斯进化石 banjilasijinhuashi bjlsjhs tyranitarite",
+    "isMegaStone": true
+  },
+  {
+    "id": "venusaurite",
+    "en": "Venusaurite",
+    "zh": "妙蛙花进化石",
+    "search": "venusaurite 妙蛙花进化石 miaowahuajinhuashi mwhjhs venusaurite",
+    "isMegaStone": true
+  },
+  {
+    "id": "yacheberry",
+    "en": "Yache Berry",
+    "zh": "Yache Berry",
+    "search": "yacheberry yacheberry yache berry y yacheberry",
+    "isMegaStone": false
+  }
+]
