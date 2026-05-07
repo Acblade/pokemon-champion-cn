@@ -165,6 +165,17 @@ function calculateStat(base: number, sp: number, nature: number, isHp: boolean, 
   return Math.floor(raw * (2 / (2 - boost)))
 }
 
+function ruleMovesFor(detail: PokemonDetail | null) {
+  return detail?.moves ?? []
+}
+
+function defaultMoveLoadout(detail: PokemonDetail | null) {
+  const ruleMoves = ruleMovesFor(detail)
+  const ids = ruleMoves.filter((move) => move.category !== 'Status').slice(0, 4).map((move) => move.id)
+  const padded = [...ids, '', '', '', ''].slice(0, 4)
+  return { ids: padded, labels: padded.map((id) => ruleMoves.find((move) => move.id === id)?.zh || '') }
+}
+
 export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent }: Props) {
   const [moveFilter, setMoveFilter] = useState<MoveFilter>('all')
   const [nature, setNature] = useState<string>('Hardy')
@@ -285,16 +296,11 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setAbilityId(draftConfig?.abilityId || pokemon.abilities[0]?.id || '')
     setAttackerPokemonId(pokemon.id)
     setDefenderPokemonId(pokemon.id)
-    const defaultMoveIds = pokemon.moves.filter((move) => move.category !== 'Status').slice(0, 4).map((move) => move.id)
-    const paddedMoveIds = [...defaultMoveIds, '', '', '', ''].slice(0, 4)
-    const paddedMoveLabels = paddedMoveIds.map((id) => {
-      const move = pokemon.moves.find((entry) => entry.id === id)
-      return move ? move.zh : ''
-    })
-    setAttackerMoveIds(paddedMoveIds)
-    setDefenderMoveIds(paddedMoveIds)
-    setAttackerMoveQueries(paddedMoveLabels)
-    setDefenderMoveQueries(paddedMoveLabels)
+    const defaultLoadout = defaultMoveLoadout(pokemon)
+    setAttackerMoveIds(defaultLoadout.ids)
+    setDefenderMoveIds(defaultLoadout.ids)
+    setAttackerMoveQueries(defaultLoadout.labels)
+    setDefenderMoveQueries(defaultLoadout.labels)
     setOpenMovePicker(null)
     setDamageWeather('none')
     setDamageTerrain('none')
@@ -369,12 +375,6 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const effectiveAttackerAbilityId = attackerDetail?.abilities.some((ability) => ability.id === abilityId) ? abilityId : (attackerDetail?.abilities[0]?.id || '')
   const effectiveDefenderAbilityId = defenderDetail?.abilities.some((ability) => ability.id === defenderAbilityId) ? defenderAbilityId : (defenderDetail?.abilities[0]?.id || '')
 
-  function defaultMoveLoadout(detail: PokemonDetail | null) {
-    const ids = detail?.moves.filter((move) => move.category !== 'Status').slice(0, 4).map((move) => move.id) ?? []
-    const padded = [...ids, '', '', '', ''].slice(0, 4)
-    return { ids: padded, labels: padded.map((id) => detail?.moves.find((move) => move.id === id)?.zh || '') }
-  }
-
   const totalSps = Object.values(sps).reduce((sum, value) => sum + value, 0)
   const favoriteMoves = useMemo(() => pokemon?.moves.filter((move) => favoriteMoveIds.includes(move.id)) ?? [], [pokemon, favoriteMoveIds])
 
@@ -397,7 +397,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const filteredMoves = useMemo(() => {
     if (!pokemon) return []
     const categoryOrder: Record<PokemonMove['category'], number> = { Status: 0, Physical: 1, Special: 2 }
-    return pokemon.moves
+    return ruleMovesFor(pokemon)
       .filter((move) => {
         const matchesPrimaryFilter = moveFilter === 'favorites'
           ? favoriteMoveIds.includes(move.id)
@@ -534,11 +534,12 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   }
 
   function moveSuggestionsFor(detail: PokemonDetail | null, query: string, selectedIds: string[]) {
-    if (!detail) return []
+    const ruleMoves = ruleMovesFor(detail)
+    if (!ruleMoves.length) return []
     const q = normalizeSearch(query)
     const moves = q
-      ? detail.moves.filter((move) => normalizeSearch(`${move.zh} ${move.en} ${move.id} ${move.pinyin}`).includes(q))
-      : detail.moves
+      ? ruleMoves.filter((move) => normalizeSearch(`${move.zh} ${move.en} ${move.id} ${move.pinyin}`).includes(q))
+      : ruleMoves
     return moves
       .slice()
       .sort((a, b) => {
@@ -556,7 +557,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const setMoveIds = side === 'attacker' ? setAttackerMoveIds : setDefenderMoveIds
     const setQueries = side === 'attacker' ? setAttackerMoveQueries : setDefenderMoveQueries
     const pickerId = `${side}-${index}`
-    const selectedMove = detail?.moves.find((move) => move.id === moveIds[index]) || null
+    const ruleMoves = ruleMovesFor(detail)
+    const selectedMove = ruleMoves.find((move) => move.id === moveIds[index]) || null
     const damage = calculateMoveDamage(selectedMove, side)
     const suggestions = moveSuggestionsFor(detail, queries[index], moveIds)
     return (
