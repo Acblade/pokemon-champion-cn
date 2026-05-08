@@ -201,7 +201,7 @@ function createChampionsPokemon(detail: PokemonDetail, state: PokemonCalcState =
 function createChampionsMove(moveName: string, moveState: MoveCalcState = {}, attackerState: PokemonCalcState = {}, attacker?: PokemonDetail) {
   const move = moveState.move
   const resolvedName = moveState.name || move?.en || moveName
-  return new calc.Move(0, resolvedName, {
+  const calcMove = new calc.Move(0, resolvedName, {
     ability: attackerState.ability,
     item: cleanItem(attackerState.item),
     species: attacker?.name,
@@ -218,6 +218,14 @@ function createChampionsMove(moveName: string, moveState: MoveCalcState = {}, at
       category: moveState.category || move?.category,
     },
   })
+  calcMove.flags ||= {}
+  const clone = calcMove.clone.bind(calcMove)
+  calcMove.clone = () => {
+    const cloned = clone()
+    cloned.flags ||= {}
+    return cloned
+  }
+  return calcMove
 }
 
 function createChampionsField(field: FieldState = {}) {

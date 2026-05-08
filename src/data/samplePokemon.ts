@@ -1,4 +1,4 @@
-export type PokemonRow = {
+﻿export type PokemonRow = {
   id: string
   zh: string
   name: string
@@ -45,7 +45,7 @@ export const samplePokemon: PokemonRow[] = [
     zh: '呆壳兽',
     name: 'Slowbro',
     pinyin: 'daikeshou',
-    types: ['水', '超能力'],
+    types: ['水', '超能'],
     baseStats: { hp: 95, atk: 75, def: 110, spa: 100, spd: 80, spe: 30 },
     bst: 490,
     hasMega: true,

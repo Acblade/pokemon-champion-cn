@@ -5,6 +5,8 @@ export type ItemOption = {
   en: string
   zh: string
   search: string
+  note?: string
+  group?: number
   isMegaStone?: boolean
 }
 

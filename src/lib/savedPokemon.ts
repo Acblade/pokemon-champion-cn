@@ -11,6 +11,7 @@ export type SavedPokemonEntry = {
   nature: string
   sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
   boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
+  blueFavorites?: string[]
 }
 
 const STORAGE_KEY = 'pokemon-champion-cn:saved-pokemon'

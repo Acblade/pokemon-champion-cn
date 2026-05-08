@@ -1275,49 +1275,6 @@
     ]
   },
   {
-    "id": "slowbromega",
-    "num": 80,
-    "zh": "呆壳兽",
-    "name": "Slowbro-Mega",
-    "pinyin": "daikeshou",
-    "initials": "dks",
-    "slugVariants": [
-      "呆壳兽",
-      "slowbromega",
-      "daikeshou"
-    ],
-    "baseSpeciesName": "Slowbro",
-    "baseSpeciesId": "slowbro",
-    "types": [
-      "Water",
-      "Psychic"
-    ],
-    "tier": "OU",
-    "hasMega": false,
-    "abilities": [
-      {
-        "id": "shellarmor",
-        "en": "Shell Armor",
-        "zh": "硬壳盔甲"
-      }
-    ],
-    "baseStats": {
-      "hp": 95,
-      "atk": 75,
-      "def": 180,
-      "spa": 130,
-      "spd": 80,
-      "spe": 30
-    },
-    "bst": 590,
-    "searchKeys": [
-      "呆壳兽",
-      "slowbromega",
-      "daikeshou",
-      "dks"
-    ]
-  },
-  {
     "id": "slowbrogalar",
     "num": 80,
     "zh": "呆壳兽",
@@ -1366,6 +1323,49 @@
     "searchKeys": [
       "呆壳兽",
       "slowbrogalar",
+      "daikeshou",
+      "dks"
+    ]
+  },
+  {
+    "id": "slowbromega",
+    "num": 80,
+    "zh": "呆壳兽",
+    "name": "Slowbro-Mega",
+    "pinyin": "daikeshou",
+    "initials": "dks",
+    "slugVariants": [
+      "呆壳兽",
+      "slowbromega",
+      "daikeshou"
+    ],
+    "baseSpeciesName": "Slowbro",
+    "baseSpeciesId": "slowbro",
+    "types": [
+      "Water",
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "shellarmor",
+        "en": "Shell Armor",
+        "zh": "硬壳盔甲"
+      }
+    ],
+    "baseStats": {
+      "hp": 95,
+      "atk": 75,
+      "def": 180,
+      "spa": 130,
+      "spd": 80,
+      "spe": 30
+    },
+    "bst": 590,
+    "searchKeys": [
+      "呆壳兽",
+      "slowbromega",
       "daikeshou",
       "dks"
     ]
@@ -1794,21 +1794,22 @@
     ]
   },
   {
-    "id": "taurospaldeacombat",
+    "id": "taurospaldeaaqua",
     "num": 128,
     "zh": "肯泰罗",
-    "name": "Tauros-Paldea-Combat",
+    "name": "Tauros-Paldea-Aqua",
     "pinyin": "kentailuo",
     "initials": "ktl",
     "slugVariants": [
       "肯泰罗",
-      "taurospaldeacombat",
+      "taurospaldeaaqua",
       "kentailuo"
     ],
     "baseSpeciesName": "Tauros",
     "baseSpeciesId": "tauros",
     "types": [
-      "Fighting"
+      "Fighting",
+      "Water"
     ],
     "tier": "OU",
     "hasMega": false,
@@ -1840,7 +1841,7 @@
     "bst": 490,
     "searchKeys": [
       "肯泰罗",
-      "taurospaldeacombat",
+      "taurospaldeaaqua",
       "kentailuo",
       "ktl"
     ]
@@ -1899,22 +1900,21 @@
     ]
   },
   {
-    "id": "taurospaldeaaqua",
+    "id": "taurospaldeacombat",
     "num": 128,
     "zh": "肯泰罗",
-    "name": "Tauros-Paldea-Aqua",
+    "name": "Tauros-Paldea-Combat",
     "pinyin": "kentailuo",
     "initials": "ktl",
     "slugVariants": [
       "肯泰罗",
-      "taurospaldeaaqua",
+      "taurospaldeacombat",
       "kentailuo"
     ],
     "baseSpeciesName": "Tauros",
     "baseSpeciesId": "tauros",
     "types": [
-      "Fighting",
-      "Water"
+      "Fighting"
     ],
     "tier": "OU",
     "hasMega": false,
@@ -1946,7 +1946,7 @@
     "bst": 490,
     "searchKeys": [
       "肯泰罗",
-      "taurospaldeaaqua",
+      "taurospaldeacombat",
       "kentailuo",
       "ktl"
     ]
@@ -6524,22 +6524,22 @@
     ]
   },
   {
-    "id": "rotomheat",
+    "id": "rotomfan",
     "num": 479,
     "zh": "洛托姆",
-    "name": "Rotom-Heat",
+    "name": "Rotom-Fan",
     "pinyin": "luotuomu",
     "initials": "ltm",
     "slugVariants": [
       "洛托姆",
-      "rotomheat",
+      "rotomfan",
       "luotuomu"
     ],
     "baseSpeciesName": "Rotom",
     "baseSpeciesId": "rotom",
     "types": [
       "Electric",
-      "Fire"
+      "Flying"
     ],
     "tier": "OU",
     "hasMega": false,
@@ -6561,50 +6561,7 @@
     "bst": 520,
     "searchKeys": [
       "洛托姆",
-      "rotomheat",
-      "luotuomu",
-      "ltm"
-    ]
-  },
-  {
-    "id": "rotomwash",
-    "num": 479,
-    "zh": "洛托姆",
-    "name": "Rotom-Wash",
-    "pinyin": "luotuomu",
-    "initials": "ltm",
-    "slugVariants": [
-      "洛托姆",
-      "rotomwash",
-      "luotuomu"
-    ],
-    "baseSpeciesName": "Rotom",
-    "baseSpeciesId": "rotom",
-    "types": [
-      "Electric",
-      "Water"
-    ],
-    "tier": "OU",
-    "hasMega": false,
-    "abilities": [
-      {
-        "id": "levitate",
-        "en": "Levitate",
-        "zh": "飘浮"
-      }
-    ],
-    "baseStats": {
-      "hp": 50,
-      "atk": 65,
-      "def": 107,
-      "spa": 105,
-      "spd": 107,
-      "spe": 86
-    },
-    "bst": 520,
-    "searchKeys": [
-      "洛托姆",
-      "rotomwash",
+      "rotomfan",
       "luotuomu",
       "ltm"
     ]
@@ -6653,22 +6610,22 @@
     ]
   },
   {
-    "id": "rotomfan",
+    "id": "rotomheat",
     "num": 479,
     "zh": "洛托姆",
-    "name": "Rotom-Fan",
+    "name": "Rotom-Heat",
     "pinyin": "luotuomu",
     "initials": "ltm",
     "slugVariants": [
       "洛托姆",
-      "rotomfan",
+      "rotomheat",
       "luotuomu"
     ],
     "baseSpeciesName": "Rotom",
     "baseSpeciesId": "rotom",
     "types": [
       "Electric",
-      "Flying"
+      "Fire"
     ],
     "tier": "OU",
     "hasMega": false,
@@ -6690,7 +6647,7 @@
     "bst": 520,
     "searchKeys": [
       "洛托姆",
-      "rotomfan",
+      "rotomheat",
       "luotuomu",
       "ltm"
     ]
@@ -6734,6 +6691,49 @@
     "searchKeys": [
       "洛托姆",
       "rotommow",
+      "luotuomu",
+      "ltm"
+    ]
+  },
+  {
+    "id": "rotomwash",
+    "num": 479,
+    "zh": "洛托姆",
+    "name": "Rotom-Wash",
+    "pinyin": "luotuomu",
+    "initials": "ltm",
+    "slugVariants": [
+      "洛托姆",
+      "rotomwash",
+      "luotuomu"
+    ],
+    "baseSpeciesName": "Rotom",
+    "baseSpeciesId": "rotom",
+    "types": [
+      "Electric",
+      "Water"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "levitate",
+        "en": "Levitate",
+        "zh": "飘浮"
+      }
+    ],
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "bst": 520,
+    "searchKeys": [
+      "洛托姆",
+      "rotomwash",
       "luotuomu",
       "ltm"
     ]
@@ -9043,16 +9043,18 @@
     ]
   },
   {
-    "id": "meowsticmmega",
+    "id": "meowsticf",
     "num": 678,
     "zh": "超能妙喵",
-    "name": "Meowstic-M-Mega",
+    "name": "Meowstic-F",
     "pinyin": "chaonengmiaomiao",
     "initials": "cnmm",
     "slugVariants": [
       "超能妙喵",
-      "meowsticmmega",
-      "chaonengmiaomiao"
+      "meowstic",
+      "chaonengmiaomiao",
+      "meowsticf",
+      "meowstic-f"
     ],
     "baseSpeciesName": "Meowstic",
     "baseSpeciesId": "meowstic",
@@ -9060,40 +9062,50 @@
       "Psychic"
     ],
     "tier": "OU",
-    "hasMega": false,
+    "hasMega": true,
     "abilities": [
       {
-        "id": "trace",
-        "en": "Trace",
-        "zh": "复制"
+        "id": "keeneye",
+        "en": "Keen Eye",
+        "zh": "锐利目光"
+      },
+      {
+        "id": "infiltrator",
+        "en": "Infiltrator",
+        "zh": "穿透"
+      },
+      {
+        "id": "competitive",
+        "en": "Competitive",
+        "zh": "好胜"
       }
     ],
     "baseStats": {
       "hp": 74,
       "atk": 48,
       "def": 76,
-      "spa": 143,
-      "spd": 101,
-      "spe": 124
+      "spa": 83,
+      "spd": 81,
+      "spe": 104
     },
-    "bst": 566,
+    "bst": 466,
     "searchKeys": [
       "超能妙喵",
-      "meowsticmmega",
+      "meowstic",
       "chaonengmiaomiao",
       "cnmm"
     ]
   },
   {
-    "id": "meowsticfmega",
+    "id": "meowsticmmega",
     "num": 678,
     "zh": "超能妙喵",
-    "name": "Meowstic-F-Mega",
+    "name": "Meowstic-Mega",
     "pinyin": "chaonengmiaomiao",
     "initials": "cnmm",
     "slugVariants": [
       "超能妙喵",
-      "meowsticfmega",
+      "meowsticmmega",
       "chaonengmiaomiao"
     ],
     "baseSpeciesName": "Meowstic",
@@ -9121,7 +9133,7 @@
     "bst": 566,
     "searchKeys": [
       "超能妙喵",
-      "meowsticfmega",
+      "meowsticmmega",
       "chaonengmiaomiao",
       "cnmm"
     ]
@@ -9910,59 +9922,6 @@
     ]
   },
   {
-    "id": "gourgeistsmall",
-    "num": 711,
-    "zh": "南瓜怪人",
-    "name": "Gourgeist-Small",
-    "pinyin": "nanguaguairen",
-    "initials": "nggr",
-    "slugVariants": [
-      "南瓜怪人",
-      "gourgeistsmall",
-      "nanguaguairen"
-    ],
-    "baseSpeciesName": "Gourgeist",
-    "baseSpeciesId": "gourgeist",
-    "types": [
-      "Ghost",
-      "Grass"
-    ],
-    "tier": "OU",
-    "hasMega": false,
-    "abilities": [
-      {
-        "id": "pickup",
-        "en": "Pickup",
-        "zh": "捡拾"
-      },
-      {
-        "id": "frisk",
-        "en": "Frisk",
-        "zh": "察觉"
-      },
-      {
-        "id": "insomnia",
-        "en": "Insomnia",
-        "zh": "不眠"
-      }
-    ],
-    "baseStats": {
-      "hp": 55,
-      "atk": 85,
-      "def": 122,
-      "spa": 58,
-      "spd": 75,
-      "spe": 99
-    },
-    "bst": 494,
-    "searchKeys": [
-      "南瓜怪人",
-      "gourgeistsmall",
-      "nanguaguairen",
-      "nggr"
-    ]
-  },
-  {
     "id": "gourgeistlarge",
     "num": 711,
     "zh": "南瓜怪人",
@@ -10011,6 +9970,59 @@
     "searchKeys": [
       "南瓜怪人",
       "gourgeistlarge",
+      "nanguaguairen",
+      "nggr"
+    ]
+  },
+  {
+    "id": "gourgeistsmall",
+    "num": 711,
+    "zh": "南瓜怪人",
+    "name": "Gourgeist-Small",
+    "pinyin": "nanguaguairen",
+    "initials": "nggr",
+    "slugVariants": [
+      "南瓜怪人",
+      "gourgeistsmall",
+      "nanguaguairen"
+    ],
+    "baseSpeciesName": "Gourgeist",
+    "baseSpeciesId": "gourgeist",
+    "types": [
+      "Ghost",
+      "Grass"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "pickup",
+        "en": "Pickup",
+        "zh": "捡拾"
+      },
+      {
+        "id": "frisk",
+        "en": "Frisk",
+        "zh": "察觉"
+      },
+      {
+        "id": "insomnia",
+        "en": "Insomnia",
+        "zh": "不眠"
+      }
+    ],
+    "baseStats": {
+      "hp": 55,
+      "atk": 85,
+      "def": 122,
+      "spa": 58,
+      "spd": 75,
+      "spe": 99
+    },
+    "bst": 494,
+    "searchKeys": [
+      "南瓜怪人",
+      "gourgeistsmall",
       "nanguaguairen",
       "nggr"
     ]
@@ -10620,6 +10632,48 @@
     ]
   },
   {
+    "id": "lycanrocdusk",
+    "num": 745,
+    "zh": "鬃岩狼人",
+    "name": "Lycanroc-Dusk",
+    "pinyin": "zongyanlangren",
+    "initials": "zylr",
+    "slugVariants": [
+      "鬃岩狼人",
+      "lycanrocdusk",
+      "zongyanlangren"
+    ],
+    "baseSpeciesName": "Lycanroc",
+    "baseSpeciesId": "lycanroc",
+    "types": [
+      "Rock"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "toughclaws",
+        "en": "Tough Claws",
+        "zh": "硬爪"
+      }
+    ],
+    "baseStats": {
+      "hp": 75,
+      "atk": 117,
+      "def": 65,
+      "spa": 55,
+      "spd": 65,
+      "spe": 110
+    },
+    "bst": 487,
+    "searchKeys": [
+      "鬃岩狼人",
+      "lycanrocdusk",
+      "zongyanlangren",
+      "zylr"
+    ]
+  },
+  {
     "id": "lycanrocmidnight",
     "num": 745,
     "zh": "鬃岩狼人",
@@ -10667,48 +10721,6 @@
     "searchKeys": [
       "鬃岩狼人",
       "lycanrocmidnight",
-      "zongyanlangren",
-      "zylr"
-    ]
-  },
-  {
-    "id": "lycanrocdusk",
-    "num": 745,
-    "zh": "鬃岩狼人",
-    "name": "Lycanroc-Dusk",
-    "pinyin": "zongyanlangren",
-    "initials": "zylr",
-    "slugVariants": [
-      "鬃岩狼人",
-      "lycanrocdusk",
-      "zongyanlangren"
-    ],
-    "baseSpeciesName": "Lycanroc",
-    "baseSpeciesId": "lycanroc",
-    "types": [
-      "Rock"
-    ],
-    "tier": "OU",
-    "hasMega": false,
-    "abilities": [
-      {
-        "id": "toughclaws",
-        "en": "Tough Claws",
-        "zh": "硬爪"
-      }
-    ],
-    "baseStats": {
-      "hp": 75,
-      "atk": 117,
-      "def": 65,
-      "spa": 55,
-      "spd": 65,
-      "spe": 110
-    },
-    "bst": 487,
-    "searchKeys": [
-      "鬃岩狼人",
-      "lycanrocdusk",
       "zongyanlangren",
       "zylr"
     ]
