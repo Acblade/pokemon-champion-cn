@@ -1105,6 +1105,8 @@ tr:hover td {
 .moves-table-wrapper {
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .star-button {
@@ -2130,16 +2132,51 @@ table.damage-stats-table {
   .damage-move-advanced-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Allow tables to scroll horizontally instead of overflowing */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Allow stats-setting-table to scroll horizontally */
+  .stats-setting-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (max-width: 640px) {
   .app-shell {
-    padding: 10px;
+    padding: 8px;
   }
 
-  table,
-  .stats-setting-table {
-    min-width: 680px;
+  .content-card {
+    padding: 12px;
+  }
+
+  /* Pokemon list: remove min-width so hidden columns make it fit */
+  .pokemon-list-table {
+    min-width: 0;
+  }
+
+  /* Keep: 使用率(1) 中文名称(2) 属性(3) 总种族值(10) — hide HP through Speed (4-9) */
+  .pokemon-list-table th:nth-child(n+4):nth-child(-n+9),
+  .pokemon-list-table td:nth-child(n+4):nth-child(-n+9) {
+    display: none;
+  }
+
+  /* Saved page: hide 特性(2) and 努力值(3) — keep name, item, actions */
+  .saved-page-card table th:nth-child(2),
+  .saved-page-card table td:nth-child(2),
+  .saved-page-card table th:nth-child(3),
+  .saved-page-card table td:nth-child(3) {
+    display: none;
+  }
+
+  /* Saved page tables no longer need the 760px min */
+  .saved-page-card table {
+    min-width: 0;
   }
 
   table.damage-stats-table,
@@ -2149,6 +2186,8 @@ table.damage-stats-table {
     width: 100%;
     max-width: 100%;
   }
+
+  /* Stats-setting stays scrollable — kept at 760px via 980px rule */
 
   .detail-title-main,
   .moves-headline,
@@ -2162,12 +2201,69 @@ table.damage-stats-table {
     justify-items: start;
   }
 
+  /* Detail info grid: 2-col → 1-col */
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section title: allow filter button to wrap below heading */
+  .section-title {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
   .damage-config-grid,
   .damage-boost-grid,
   .damage-side-grid,
   .compact-stat-grid,
   .compact-side-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Home tabs: shrink text so all 3 fit on one row */
+  .home-tab {
+    font-size: 13px;
+    padding: 8px 8px;
+  }
+
+  /* Saved group header: wrap actions below title on very narrow screens */
+  .saved-group-header {
+    flex-wrap: wrap;
+  }
+
+  /* Compact setting rows: allow wrapping */
+  .compact-setting-row {
+    flex-wrap: wrap;
+  }
+
+  /* Topbar: tighter padding on small phones */
+  .rule-box,
+  .search-box,
+  .action-box {
+    padding: 10px 12px;
+  }
+
+  /* Inline slider slightly shorter so it fits in single column */
+  .inline-slider-cell input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Trainer rankings: 3 simple cols, no need for 760px min */
+  .trainer-rankings-table {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Stat summary grid: 3-col → 1-col on small phones */
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Popover: keep within viewport on small phones */
+  .popover,
+  .wide-popover {
+    max-width: calc(100vw - 32px);
   }
 }
 
