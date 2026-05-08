@@ -2139,10 +2139,37 @@ table.damage-stats-table {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Allow stats-setting-table to scroll horizontally */
+  /* stats-setting-table-wrap is display:grid by default which blocks overflow-x.
+     Override to block so the inner table can scroll horizontally. */
   .stats-setting-table-wrap {
+    display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Sticky name column: always visible while horizontal-scrolling the list */
+  .pokemon-list-table th:nth-child(2),
+  .pokemon-list-table td:nth-child(2) {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    box-shadow: 2px 0 6px rgba(15, 23, 42, 0.08);
+  }
+  .pokemon-list-table th:nth-child(2) {
+    background: #f8fafc;
+    z-index: 5;
+  }
+  .pokemon-list-table td:nth-child(2) {
+    background: #ffffff;
+  }
+  .pokemon-list-table tr:hover td:nth-child(2) {
+    background: rgba(59, 130, 246, 0.05);
+  }
+  :root[data-theme='dark'] .pokemon-list-table th:nth-child(2) {
+    background: #111827;
+  }
+  :root[data-theme='dark'] .pokemon-list-table td:nth-child(2) {
+    background: rgba(17, 24, 39, 0.92);
   }
 }
 
@@ -2155,30 +2182,14 @@ table.damage-stats-table {
     padding: 12px;
   }
 
-  /* Pokemon list: remove min-width so hidden columns make it fit */
-  .pokemon-list-table {
+  /* Remove all table min-widths on mobile — wrappers already have overflow-x: auto
+     so tables shrink to natural content width and scroll if needed */
+  table,
+  .stats-setting-table {
     min-width: 0;
   }
 
-  /* Keep: 使用率(1) 中文名称(2) 属性(3) 总种族值(10) — hide HP through Speed (4-9) */
-  .pokemon-list-table th:nth-child(n+4):nth-child(-n+9),
-  .pokemon-list-table td:nth-child(n+4):nth-child(-n+9) {
-    display: none;
-  }
-
-  /* Saved page: hide 特性(2) and 努力值(3) — keep name, item, actions */
-  .saved-page-card table th:nth-child(2),
-  .saved-page-card table td:nth-child(2),
-  .saved-page-card table th:nth-child(3),
-  .saved-page-card table td:nth-child(3) {
-    display: none;
-  }
-
-  /* Saved page tables no longer need the 760px min */
-  .saved-page-card table {
-    min-width: 0;
-  }
-
+  /* damage-stats-table always min-width: 0 (already set globally) */
   table.damage-stats-table,
   .stats-setting-table.damage-stats-table,
   .damage-stats-table {
@@ -2186,8 +2197,6 @@ table.damage-stats-table {
     width: 100%;
     max-width: 100%;
   }
-
-  /* Stats-setting stays scrollable — kept at 760px via 980px rule */
 
   .detail-title-main,
   .moves-headline,
@@ -2243,16 +2252,10 @@ table.damage-stats-table {
     padding: 10px 12px;
   }
 
-  /* Inline slider slightly shorter so it fits in single column */
+  /* Range sliders fill cell width instead of fixed 160px */
   .inline-slider-cell input {
     width: 100%;
     min-width: 0;
-  }
-
-  /* Trainer rankings: 3 simple cols, no need for 760px min */
-  .trainer-rankings-table {
-    min-width: 0;
-    width: 100%;
   }
 
   /* Stat summary grid: 3-col → 1-col on small phones */
