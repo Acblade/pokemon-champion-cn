@@ -126535,7 +126535,7 @@
       "Fairy"
     ],
     "tier": "OU",
-    "hasMega": false,
+    "hasMega": true,
     "abilities": [
       {
         "id": "flowerveil",
