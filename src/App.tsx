@@ -198,7 +198,8 @@ function App() {
         const matchesBstMax = !filters.bstMax || pokemon.bst <= Number(filters.bstMax)
         const matchesMove = !moveQ || !!detail?.moves.some((move) => normalize([move.zh, move.en, move.id, move.pinyin].join(' ')).includes(moveQ))
         const matchesMove2 = !moveQ2 || !!detail?.moves.some((move) => normalize([move.zh, move.en, move.id, move.pinyin].join(' ')).includes(moveQ2))
-        return matchesType && matchesStatMin && matchesStatMax && matchesBstMin && matchesBstMax && matchesMove && matchesMove2
+        const isMegaEntry = !pokemon.hasMega && pokemon.name.toLowerCase().includes('-mega')
+        return !isMegaEntry && matchesType && matchesStatMin && matchesStatMax && matchesBstMin && matchesBstMax && matchesMove && matchesMove2
       })
       .sort((a, b) => {
         const factor = sortDirection === 'asc' ? 1 : -1
