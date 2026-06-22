@@ -572,15 +572,22 @@ async function main() {
     for (const rule of TARGET_RULES) {
       SEASON = season
       RULE = rule
-      const output = await fetchUsageDataset(byKey, cache)
-      datasets[output.format] = output
-      if (output.missingPokemon.length) {
-        console.warn(
-          `Missing ${output.missingPokemon.length} Pokemon for ${output.format}: ` +
-          output.missingPokemon.map(p => `${p.key} ${p.jpName}`).join(', '),
-        )
+      const key = datasetKey(season, rule)
+      try {
+        const output = await fetchUsageDataset(byKey, cache)
+        datasets[output.format] = output
+        if (output.missingPokemon.length) {
+          console.warn(
+            `Missing ${output.missingPokemon.length} Pokemon for ${output.format}: ` +
+            output.missingPokemon.map(p => `${p.key} ${p.jpName}`).join(', '),
+          )
+        }
+        console.log(`Fetched ${output.count} Pokemon and ${output.trainerRankings.length} trainers for ${output.format}`)
+      } catch (error) {
+        if (!datasets[key]) throw error
+        const message = error instanceof Error ? error.message : String(error)
+        console.warn(`Keeping existing ${key}; usage sync failed: ${message}`)
       }
-      console.log(`Fetched ${output.count} Pokemon and ${output.trainerRankings.length} trainers for ${output.format}`)
     }
   }
 
