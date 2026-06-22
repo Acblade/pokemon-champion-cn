@@ -8,7 +8,7 @@ import { loadSavedPokemon, saveSavedPokemon, type SavedPokemonEntry } from './li
 import { loadSavedGroups, saveSavedGroups } from './lib/savedGroups'
 import { loadTheme, saveTheme, type ThemeMode } from './lib/viewState'
 import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
-import { getPokemonUsage, usageDataset } from './data/usageStats'
+import { getPokemonUsageFromDataset, getUsageDataset } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 
@@ -25,11 +25,19 @@ const TYPE_LABELS: Record<string, string> = {
   Normal: '一般', Fire: '火', Water: '水', Electric: '电', Grass: '草', Ice: '冰', Fighting: '格斗', Poison: '毒', Ground: '地面', Flying: '飞行', Psychic: '超能', Bug: '虫', Rock: '岩石', Ghost: '幽灵', Dragon: '龙', Dark: '恶', Steel: '钢', Fairy: '妖精'
 }
 
-const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
+const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   '1': { label: 'M-A', seasons: [{ id: '1', label: 'M-1：4/8 ~ 5/13' }] },
 }
 
 
+
+void LEGACY_RULE_META
+
+const BATTLE_USAGE_RULE = '1'
+const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
+  'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
+  'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
+}
 
 type HomeTab = 'list' | 'trainers' | 'damage'
 
@@ -38,6 +46,7 @@ type SortDirection = 'asc' | 'desc'
 
 type FilterState = {
   types: string[]
+  forms: ('normal' | 'mega')[]
   moveQuery: string
   moveQuery2: string
   selectedMoves: string[]
@@ -50,6 +59,7 @@ type FilterState = {
 
 const DEFAULT_FILTERS: FilterState = {
   types: [],
+  forms: ['normal'],
   moveQuery: '',
   moveQuery2: '',
   selectedMoves: [],
@@ -81,6 +91,19 @@ function typeSortValue(types: string[]) {
   const firstIndex = TYPE_ORDER.indexOf(TYPE_LABELS[first] ?? first)
   const secondIndex = second ? TYPE_ORDER.indexOf(TYPE_LABELS[second] ?? second) : -1
   return `${String(firstIndex).padStart(2, '0')}-${String(secondIndex).padStart(2, '0')}`
+}
+
+function isMegaPokemon(pokemon: PokemonRow) {
+  return pokemon.name.toLowerCase().includes('-mega')
+}
+
+function formatDatasetDate(date: string) {
+  const [, month, day] = date.split('-')
+  return month && day ? `${month} 月 ${day} 日` : date
+}
+
+function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: string }) {
+  return dataset.trainerSourceUrl || dataset.sourceUrl.replace('/pokemon/list', '/trainer/list')
 }
 
 function slugify(value: string) {
@@ -171,8 +194,8 @@ function App() {
   const [draftConfigs, setDraftConfigs] = useState<Record<string, { nature: string; abilityId: string; item: string; sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>; boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number> }>>({})
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>('list')
-  const [currentRule, setCurrentRule] = useState('1')
-  const [currentSeason, setCurrentSeason] = useState('1')
+  const [currentRule, setCurrentRule] = useState('M-B')
+  const [currentSeason, setCurrentSeason] = useState('3')
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())
@@ -183,6 +206,8 @@ function App() {
     document.documentElement.dataset.theme = theme
     saveTheme(theme)
   }, [theme])
+
+  const selectedUsageDataset = useMemo(() => getUsageDataset(currentSeason, BATTLE_USAGE_RULE), [currentSeason])
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -198,8 +223,9 @@ function App() {
         const matchesBstMax = !filters.bstMax || pokemon.bst <= Number(filters.bstMax)
         const matchesMove = !moveQ || !!detail?.moves.some((move) => normalize([move.zh, move.en, move.id, move.pinyin].join(' ')).includes(moveQ))
         const matchesMove2 = !moveQ2 || !!detail?.moves.some((move) => normalize([move.zh, move.en, move.id, move.pinyin].join(' ')).includes(moveQ2))
-        const isMegaEntry = !pokemon.hasMega && pokemon.name.toLowerCase().includes('-mega')
-        return !isMegaEntry && matchesType && matchesStatMin && matchesStatMax && matchesBstMin && matchesBstMax && matchesMove && matchesMove2
+        const formKey = isMegaPokemon(pokemon) ? 'mega' : 'normal'
+        const matchesForm = filters.forms.includes(formKey)
+        return matchesForm && matchesType && matchesStatMin && matchesStatMax && matchesBstMin && matchesBstMax && matchesMove && matchesMove2
       })
       .sort((a, b) => {
         const factor = sortDirection === 'asc' ? 1 : -1
@@ -208,8 +234,8 @@ function App() {
           case 'name': return a.name.localeCompare(b.name) * factor
           case 'types': return typeSortValue(a.types).localeCompare(typeSortValue(b.types)) * factor
           case 'usageRank': {
-            const rankA = getPokemonUsage(a.name, a.baseSpeciesName, a.id, a.baseSpeciesId)?.rank ?? Number.MAX_SAFE_INTEGER
-            const rankB = getPokemonUsage(b.name, b.baseSpeciesName, b.id, b.baseSpeciesId)?.rank ?? Number.MAX_SAFE_INTEGER
+            const rankA = getPokemonUsageFromDataset(selectedUsageDataset, a.name, a.baseSpeciesName, a.id, a.baseSpeciesId)?.rank ?? Number.MAX_SAFE_INTEGER
+            const rankB = getPokemonUsageFromDataset(selectedUsageDataset, b.name, b.baseSpeciesName, b.id, b.baseSpeciesId)?.rank ?? Number.MAX_SAFE_INTEGER
             return (rankA - rankB) * factor
           }
           case 'hp': return (a.baseStats.hp - b.baseStats.hp) * factor
@@ -221,7 +247,7 @@ function App() {
           case 'bst': return (a.bst - b.bst) * factor
         }
       })
-  }, [sortKey, sortDirection, filters])
+  }, [sortKey, sortDirection, filters, selectedUsageDataset])
 
   const searchSuggestions = useMemo(() => {
     const q = normalize(query)
@@ -560,6 +586,7 @@ function App() {
                 {filtersOpen && (
                   <div className="popover filter-list-popover filter-grid">
                     <div className="popover-field"><span>属性（可多选）</span><div className="filter-chip-group">{FILTER_TYPE_OPTIONS.map((type) => <button key={type} type="button" className={filters.types.includes(type) ? 'filter-chip active' : 'filter-chip'} onClick={() => setFilters((current) => ({ ...current, types: current.types.includes(type) ? current.types.filter((item) => item !== type) : [...current.types, type] }))}>{type}</button>)}</div></div>
+                    <div className="popover-field"><span>形态</span><div className="filter-chip-group"><button type="button" className={filters.forms.includes('normal') ? 'filter-chip active' : 'filter-chip'} onClick={() => setFilters((current) => ({ ...current, forms: current.forms.includes('normal') ? current.forms.filter((item) => item !== 'normal') : [...current.forms, 'normal'] }))}>普通形态</button><button type="button" className={filters.forms.includes('mega') ? 'filter-chip active' : 'filter-chip'} onClick={() => setFilters((current) => ({ ...current, forms: current.forms.includes('mega') ? current.forms.filter((item) => item !== 'mega') : [...current.forms, 'mega'] }))}>Mega形态</button></div></div>
                     <div className="filter-move-pair">
                       <div className="filter-move-item" data-popover-root><span>技能 1</span><div className="filter-input-wrap"><input value={movePickerOpen === 'move1' ? filters.moveQuery : (moveOptions.find((m) => m.id === filters.selectedMoves[0])?.zh ?? '')} onFocus={() => { setMovePickerOpen('move1'); setFilters((c) => ({ ...c, moveQuery: '' })) }} onBlur={() => setTimeout(() => setMovePickerOpen((current) => current === 'move1' ? null : current), 120)} onChange={(event) => setFilters((current) => ({ ...current, moveQuery: event.target.value }))} placeholder="输入中/英/拼音" />{movePickerOpen === 'move1' && <div className="search-dropdown compact-dropdown filter-suggestion-dropdown">{moveSuggestions1.map((move) => <button key={move.id} className="item-option-row" type="button" onMouseDown={() => { setFilters((current) => ({ ...current, moveQuery: '', selectedMoves: [move.id, current.selectedMoves[1] || ''].filter(Boolean) })); setMovePickerOpen(null) }}><span>{move.zh}</span><small>{move.en}</small></button>)}</div>}</div></div>
                       <div className="filter-move-item" data-popover-root><span>技能 2</span><div className="filter-input-wrap"><input value={movePickerOpen === 'move2' ? filters.moveQuery2 : (moveOptions.find((m) => m.id === filters.selectedMoves[1])?.zh ?? '')} onFocus={() => { setMovePickerOpen('move2'); setFilters((c) => ({ ...c, moveQuery2: '' })) }} onBlur={() => setTimeout(() => setMovePickerOpen((current) => current === 'move2' ? null : current), 120)} onChange={(event) => setFilters((current) => ({ ...current, moveQuery2: event.target.value }))} placeholder="可选" />{movePickerOpen === 'move2' && <div className="search-dropdown compact-dropdown filter-suggestion-dropdown">{moveSuggestions2.map((move) => <button key={move.id} className="item-option-row" type="button" onMouseDown={() => { setFilters((current) => ({ ...current, moveQuery2: '', selectedMoves: [current.selectedMoves[0] || '', move.id].filter(Boolean) })); setMovePickerOpen(null) }}><span>{move.zh}</span><small>{move.en}</small></button>)}</div>}</div></div>
@@ -624,7 +651,7 @@ function App() {
                 </thead>
                 <tbody>
                   {filtered.map((pokemon) => {
-                    const usage = getPokemonUsage(pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId)
+                    const usage = getPokemonUsageFromDataset(selectedUsageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId)
                     return (
                     <tr key={pokemon.id}>
                       <td>{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>
@@ -646,28 +673,38 @@ function App() {
           )}
 
           {homeTab === 'trainers' && (
-            <div className="trainer-rankings-wrap table-wrapper responsive-table-card">
-              <table className="trainer-rankings-table">
-                <thead>
-                  <tr>
-                    <th>排名</th>
-                    <th>名字</th>
-                    <th>分数</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {usageDataset.trainerRankings.map((trainer) => {
-                    return (
-                      <tr key={trainer.rank}>
-                        <td className="rank-cell">#{trainer.rank}</td>
-                        <td>{trainer.name}</td>
-                        <td className="rating-cell">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>
+            <section className="trainer-rankings-section">
+              <div className="data-source-line"><a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">champs.pokedb.tokyo</a> · {formatDatasetDate(selectedUsageDataset.date)}</div>
+              {selectedUsageDataset.trainerRankingsAvailable === false || selectedUsageDataset.trainerRankings.length === 0 ? (
+                <div className="empty-detail trainer-empty-state">
+                  <h2>M-{selectedUsageDataset.season} 玩家排名尚未开放</h2>
+                  <p>{selectedUsageDataset.trainerRankingsNote || '当前赛季玩家排名页面暂无可同步数据。'}</p>
+                </div>
+              ) : (
+                <div className="trainer-rankings-wrap table-wrapper responsive-table-card">
+                  <table className="trainer-rankings-table">
+                    <thead>
+                      <tr>
+                        <th>排名</th>
+                        <th>名字</th>
+                        <th>分数</th>
                       </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
+                    </thead>
+                    <tbody>
+                      {selectedUsageDataset.trainerRankings.map((trainer) => {
+                        return (
+                          <tr key={trainer.rank}>
+                            <td className="rank-cell">#{trainer.rank}</td>
+                            <td>{trainer.name}</td>
+                            <td className="rating-cell">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
           )}
 
           {homeTab === 'damage' && selectedPokemon && (
@@ -688,6 +725,7 @@ function App() {
               savedPokemon={savedPokemon}
               onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
               onUpdateSaved={handleUpdateSaved}
+              usageDataset={selectedUsageDataset}
               onSaveCurrent={(payload) => {
                 setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts } }))
                 setSavedPokemon((current) => [{ ...payload, id: `${Date.now()}-${Math.random()}`, baseId: normalize(selectedPokemon.baseSpeciesName), label: buildSavedLabel(selectedPokemon.zh, normalize(selectedPokemon.baseSpeciesName), current), pokemonId: selectedPokemon.id }, ...current])
@@ -719,6 +757,7 @@ function App() {
             savedPokemon={savedPokemon}
             onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
             onUpdateSaved={handleUpdateSaved}
+            usageDataset={selectedUsageDataset}
             onSaveCurrent={(payload) => {
               if (!selectedPokemon) return
               setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts } }))

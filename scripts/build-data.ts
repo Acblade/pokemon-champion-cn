@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { execFileSync } from 'node:child_process'
 import { pinyin } from 'pinyin-pro'
 
 type Dict<T> = Record<string, T>
@@ -38,13 +39,77 @@ type ItemData = {
 }
 
 const projectRoot = process.cwd()
-const workspaceRoot = path.resolve(projectRoot, '..', '..')
-const showdownRoot = path.resolve(workspaceRoot, 'out', 'tmp', 'pokemon-showdown')
-const pokeApiRoot = path.resolve(workspaceRoot, 'out', 'tmp', 'pokeapi-cache')
+const cacheRoot = path.resolve(process.env.CHAMPIONS_CACHE_ROOT ?? path.join(projectRoot, 'out', 'tmp'))
+const showdownRoot = path.resolve(process.env.POKEMON_SHOWDOWN_ROOT ?? path.join(cacheRoot, 'pokemon-showdown'))
+const damageCalcRoot = path.resolve(process.env.DAMAGE_CALC_ROOT ?? path.join(cacheRoot, 'damage-calc'))
+const pokeApiRoot = path.resolve(process.env.POKEAPI_CACHE_ROOT ?? path.join(cacheRoot, 'pokeapi-cache'))
 const outputDir = path.resolve(projectRoot, 'src', 'generated')
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true })
+}
+
+function ensureGitRepo(dir: string, url: string) {
+  ensureDir(path.dirname(dir))
+  if (fs.existsSync(path.join(dir, '.git'))) {
+    execFileSync('git', ['-C', dir, 'pull', '--ff-only'], { stdio: 'inherit' })
+    return
+  }
+  if (fs.existsSync(dir)) {
+    throw new Error(`${dir} exists but is not a git checkout`)
+  }
+  execFileSync('git', ['clone', '--depth=1', url, dir], { stdio: 'inherit' })
+}
+
+function syncDamageCalcVendor() {
+  const tempOutputDir = path.join(cacheRoot, 'calc-vendor-build')
+  const tsupCli = path.join(projectRoot, 'node_modules', 'tsup', 'dist', 'cli-default.js')
+  execFileSync(process.execPath, [
+    tsupCli,
+    path.join(damageCalcRoot, 'calc', 'src', 'index.ts'),
+    '--format', 'esm',
+    '--platform', 'browser',
+    '--no-splitting',
+    '--no-config',
+    '--out-dir', tempOutputDir,
+    '--clean',
+  ], { stdio: 'inherit' })
+
+  const bundledPath = path.join(tempOutputDir, 'index.js')
+  let bundled = fs.readFileSync(bundledPath, 'utf8')
+  bundled = bundled.replace(
+    'var Acalculate = exports.calculate;',
+    'var Acalculate = typeof exports !== "undefined" ? exports.calculate : void 0;',
+  )
+  ensureDir(path.join(projectRoot, 'vendor', 'smogon-calc'))
+  fs.writeFileSync(path.join(projectRoot, 'vendor', 'smogon-calc', 'index.mjs'), bundled, 'utf8')
+}
+
+async function ensureTextFile(filePath: string, url: string) {
+  if (fs.existsSync(filePath)) return
+  ensureDir(path.dirname(filePath))
+  const res = await fetch(url, { headers: { 'user-agent': 'pokemon-champion-cn/1.0' } })
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`)
+  fs.writeFileSync(filePath, await res.text(), 'utf8')
+}
+
+async function ensureExternalSources() {
+  ensureGitRepo(showdownRoot, 'https://github.com/smogon/pokemon-showdown.git')
+  ensureGitRepo(damageCalcRoot, 'https://github.com/smogon/damage-calc.git')
+  await Promise.all([
+    ensureTextFile(
+      path.join(pokeApiRoot, 'pokemon_species_names_full.csv'),
+      'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/pokemon_species_names.csv',
+    ),
+    ensureTextFile(
+      path.join(pokeApiRoot, 'move_names_full.csv'),
+      'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/move_names.csv',
+    ),
+    ensureTextFile(
+      path.join(pokeApiRoot, 'ability_names_full.csv'),
+      'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/ability_names.csv',
+    ),
+  ])
 }
 
 function parseCsv(text: string) {
@@ -110,6 +175,9 @@ function normalizeSearch(value: string) {
 }
 
 const MOVE_ZH_BY_ID: Record<string, string> = {
+  barbbarrage: '毒千针',
+  makeitrain: '淘金潮',
+  ragefist: '愤怒之拳',
   soak: '浸水',
   accelerock: '冲岩',
   acidarmor: '溶化',
@@ -602,13 +670,15 @@ const MOVE_ZH_BY_ID: Record<string, string> = {
   zenheadbutt: '意念头锤',
 }
 
-function extractChampionsItemIds(calcSetdexText: string, items: Dict<ItemData>) {
+function extractChampionsItemIds(championsItems: Dict<ItemData>, items: Dict<ItemData>) {
   const ids = new Set<string>()
-  const regex = /"item":"([^"]+)"/g
-  for (const match of calcSetdexText.matchAll(regex)) {
-    const englishName = match[1]
-    const found = Object.entries(items).find(([, item]) => item.name === englishName)
-    if (found) ids.add(found[0])
+  for (const [id, item] of Object.entries(items)) {
+    const override = championsItems[id]
+    if (override?.isNonstandard === 'Past') continue
+    if (override?.isNonstandard === null || (item.name && !item.isNonstandard)) ids.add(id)
+  }
+  for (const [id, item] of Object.entries(championsItems)) {
+    if (item.isNonstandard === null) ids.add(id)
   }
   return ids
 }
@@ -673,8 +743,10 @@ function resolveLearnsetId(id: string, species: Species, learnsets: Dict<{ learn
 
 async function main() {
   ensureDir(outputDir)
+  await ensureExternalSources()
+  syncDamageCalcVendor()
 
-  const [pokedex, formatsData, learnsets, moves, championsMoves, abilities, items, championsItems, championsSetdexText] = await Promise.all([
+  const [pokedex, formatsData, learnsets, moves, championsMoves, abilities, items, championsItems] = await Promise.all([
     importData<Dict<Species>>('data/pokedex.ts', 'Pokedex'),
     importData<Dict<FormatData>>('data/mods/champions/formats-data.ts', 'FormatsData'),
     importData<Dict<{ learnset?: Record<string, string[]> }>>('data/mods/champions/learnsets.ts', 'Learnsets'),
@@ -683,7 +755,6 @@ async function main() {
     importData<Dict<{ name: string; num: number }>>('data/abilities.ts', 'Abilities'),
     importData<Dict<ItemData>>('data/items.ts', 'Items'),
     importData<Dict<ItemData>>('data/mods/champions/items.ts', 'Items'),
-    fs.promises.readFile(path.resolve(workspaceRoot, 'out', 'tmp', 'damage-calc', 'src', 'js', 'data', 'sets', 'champions.js'), 'utf8'),
   ])
 
   const pokemonNames = readCsvMap(path.join(pokeApiRoot, 'pokemon_species_names_full.csv'), 'pokemon_species_id', 'name')
@@ -768,7 +839,7 @@ async function main() {
     .map((entry) => entry?.id === 'meowsticmmega' ? { ...entry, name: 'Meowstic-Mega' } : entry)
     .sort((a, b) => (a?.num || 0) - (b?.num || 0) || (a?.name || '').localeCompare(b?.name || ''))
 
-  const allowedItemIds = extractChampionsItemIds(championsSetdexText, items)
+  const allowedItemIds = extractChampionsItemIds(championsItems, items)
 
   const allowedItems = Array.from(allowedItemIds)
     .map((id) => {
@@ -776,7 +847,7 @@ async function main() {
       const modItem = championsItems[id]
       const sourceItem = modItem || baseItem
       if (!sourceItem?.name && !baseItem?.name) return null
-      if (modItem && modItem.isNonstandard !== 'Past' && modItem.isNonstandard !== null) return null
+      if (modItem?.isNonstandard && modItem.isNonstandard !== 'Past') return null
       const en = baseItem?.name || sourceItem.name
       const baseZh = ITEM_ZH_BY_ID[id] || en
       const note = itemNote(id)

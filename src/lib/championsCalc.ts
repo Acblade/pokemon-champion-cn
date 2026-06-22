@@ -1,5 +1,5 @@
 // @ts-expect-error vendor ESM bundle has no local declaration file
-import calc from '../../vendor/smogon-calc/index.mjs'
+import * as calc from '../../vendor/smogon-calc/index.mjs'
 import type { PokemonDetail, PokemonMove } from '../data/championsDetails'
 
 type NatureMode = string
@@ -68,6 +68,14 @@ type MoveCalcState = Partial<{
   isStellarFirstUse: boolean
   useZ: boolean
   useMax: boolean
+}>
+
+type ChampionsMoveData = Partial<{
+  bp: number
+  type: string
+  category: PokemonMove['category']
+  multihit: number | [number, number]
+  multiaccuracy: boolean
 }>
 
 type FieldState = Partial<{
@@ -146,6 +154,57 @@ function cleanItem(item?: string) {
   return item && item !== '无' ? item : undefined
 }
 
+function normalizeMoveId(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '')
+}
+
+function getRawChampionsMoveData(moveName?: string) {
+  if (!moveName) return null
+  const moveTable = calc.MOVES?.[0] as Record<string, ChampionsMoveData> | undefined
+  if (!moveTable) return null
+  if (moveTable[moveName]) return moveTable[moveName]
+  const moveId = normalizeMoveId(moveName)
+  const entry = Object.entries(moveTable).find(([name]) => normalizeMoveId(name) === moveId)
+  return entry?.[1] ?? null
+}
+
+function integerRange(min: number, max: number) {
+  return Array.from({ length: Math.max(0, max - min + 1) }, (_, index) => min + index)
+}
+
+export function getChampionsMoveHitOptions(moveName?: string) {
+  const data = getRawChampionsMoveData(moveName)
+  const multihit = data?.multihit
+  if (Array.isArray(multihit)) {
+    const [min, max] = multihit
+    return integerRange(min, max)
+  }
+  if (typeof multihit === 'number' && data?.multiaccuracy) {
+    return integerRange(1, multihit)
+  }
+  return []
+}
+
+export function getChampionsDefaultMoveHits(moveName?: string, ability?: string) {
+  const data = getRawChampionsMoveData(moveName)
+  const multihit = data?.multihit
+  if (typeof multihit === 'number') return multihit
+  if (Array.isArray(multihit)) {
+    const [min, max] = multihit
+    if (ability === 'Skill Link') return max
+    return min === 1 ? max : min + 1
+  }
+  return 1
+}
+
+function getSpecialMoveBasePower(moveName: string, attackerState: PokemonCalcState) {
+  if (moveName === 'Last Respects') {
+    const alliesFainted = Math.min(5, Math.max(0, Math.floor(attackerState.alliesFainted ?? 0)))
+    return 50 * (alliesFainted + 1)
+  }
+  return undefined
+}
+
 function convertSide(side?: SideState) {
   return new calc.Side({
     spikes: side?.spikes || 0,
@@ -201,19 +260,20 @@ function createChampionsPokemon(detail: PokemonDetail, state: PokemonCalcState =
 function createChampionsMove(moveName: string, moveState: MoveCalcState = {}, attackerState: PokemonCalcState = {}, attacker?: PokemonDetail) {
   const move = moveState.move
   const resolvedName = moveState.name || move?.en || moveName
+  const basePower = moveState.basePower ?? getSpecialMoveBasePower(resolvedName, attackerState) ?? move?.basePower
   const calcMove = new calc.Move(0, resolvedName, {
     ability: attackerState.ability,
     item: cleanItem(attackerState.item),
     species: attacker?.name,
     isCrit: !!moveState.isCrit,
-    hits: moveState.hits || 1,
+    hits: moveState.hits ?? getChampionsDefaultMoveHits(resolvedName, attackerState.ability),
     timesUsed: moveState.timesUsed || 1,
     timesUsedWithMetronome: moveState.timesUsedWithMetronome || 1,
     isStellarFirstUse: !!moveState.isStellarFirstUse,
     useZ: !!moveState.useZ,
     useMax: !!moveState.useMax,
     overrides: {
-      basePower: moveState.basePower ?? move?.basePower,
+      basePower,
       type: moveState.type || move?.type,
       category: moveState.category || move?.category,
     },

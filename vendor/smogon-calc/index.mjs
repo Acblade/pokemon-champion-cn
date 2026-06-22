@@ -1,46 +1,4 @@
-﻿var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-
-// ../../out/tmp/damage-calc/calc/src/index.ts
-var index_exports = {};
-__export(index_exports, {
-  ABILITIES: () => ABILITIES,
-  Field: () => Field,
-  Generations: () => Generations,
-  ITEMS: () => ITEMS,
-  MEGA_STONES: () => MEGA_STONES,
-  MOVES: () => MOVES,
-  Move: () => Move3,
-  NATURES: () => NATURES,
-  Pokemon: () => Pokemon2,
-  Result: () => Result,
-  SPECIES: () => SPECIES,
-  STATS: () => STATS,
-  Side: () => Side,
-  Stats: () => Stats,
-  TYPE_CHART: () => TYPE_CHART,
-  calcStat: () => calcStat,
-  calculate: () => calculate2,
-  toID: () => toID
-});
-var __calc_exports = __toCommonJS(index_exports);
-
-// ../../out/tmp/damage-calc/calc/src/util.ts
+// out/tmp/damage-calc/calc/src/util.ts
 function toID(text) {
   const lcase = ("" + text).toLowerCase();
   if (lcase === "flab\xE9b\xE9") {
@@ -143,7 +101,7 @@ function extend(...args) {
   return target;
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/abilities.ts
+// out/tmp/damage-calc/calc/src/data/abilities.ts
 var RBY = [];
 var GSC = [];
 var ADV = [
@@ -435,7 +393,6 @@ var SV = SS.concat([
   "Commander",
   "Costar",
   "Cud Chew",
-  "Dragonize",
   "Earth Eater",
   "Electromorphosis",
   "Embody Aspect (Cornerstone)",
@@ -447,12 +404,10 @@ var SV = SS.concat([
   "Hadron Engine",
   "Hospitality",
   "Lingering Aroma",
-  "Mega Sol",
   "Mind's Eye",
   "Mycelium Might",
   "Opportunist",
   "Orichalcum Pulse",
-  "Piercing Drill",
   "Poison Puppeteer",
   "Protosynthesis",
   "Purifying Salt",
@@ -460,7 +415,6 @@ var SV = SS.concat([
   "Rocky Payload",
   "Seed Sower",
   "Sharpness",
-  "Spicy Spray",
   "Supersweet Syrup",
   "Supreme Overlord",
   "Sword of Ruin",
@@ -475,20 +429,25 @@ var SV = SS.concat([
   "Well-Baked Body",
   "Wind Power",
   "Wind Rider",
-  "Zero to Hero"
+  "Zero to Hero",
+  // Champions exclusive
+  "Dragonize",
+  "Eelevate",
+  "Fire Mane",
+  "Mega Sol",
+  "Piercing Drill",
+  "Spicy Spray"
 ]);
-var Champions = [
+var CHAMPIONS = [
   "Adaptability",
   "Aerilate",
   "Aftermath",
-  "Air Lock",
   "Analytic",
   "Anger Point",
   "Anticipation",
   "Armor Tail",
   "Aroma Veil",
   "Battle Armor",
-  "Battle Bond",
   "Berserk",
   "Big Pecks",
   "Blaze",
@@ -497,8 +456,6 @@ var Champions = [
   "Chlorophyll",
   "Clear Body",
   "Cloud Nine",
-  "Color Change",
-  "Comatose",
   "Competitive",
   "Compound Eyes",
   "Contrary",
@@ -516,20 +473,25 @@ var Champions = [
   "Dry Skin",
   "Early Bird",
   "Earth Eater",
+  "Eelevate",
+  "Effect Spore",
+  "Electric Surge",
   "Electromorphosis",
   "Fairy Aura",
   "Filter",
+  "Fire Mane",
   "Flame Body",
   "Flash Fire",
   "Flower Veil",
+  "Fluffy",
   "Forecast",
   "Forewarn",
   "Friend Guard",
   "Frisk",
   "Fur Coat",
   "Gale Wings",
-  "Galvanize",
   "Gluttony",
+  "Good as Gold",
   "Gooey",
   "Guts",
   "Harvest",
@@ -560,8 +522,8 @@ var Champions = [
   "Levitate",
   "Light Metal",
   "Lightning Rod",
+  "Ligtning Rod",
   "Limber",
-  "Liquid Ooze",
   "Liquid Voice",
   "Long Reach",
   "Magic Bounce",
@@ -578,12 +540,10 @@ var Champions = [
   "Mold Breaker",
   "Moody",
   "Motor Drive",
-  "Mountaineer",
   "Moxie",
   "Multiscale",
   "Mummy",
   "Natural Cure",
-  "Neutralizing Gas",
   "No Guard",
   "Oblivious",
   "Opportunist",
@@ -591,7 +551,6 @@ var Champions = [
   "Overgrow",
   "Own Tempo",
   "Parental Bond",
-  "Persistent",
   "Pickpocket",
   "Pickup",
   "Piercing Drill",
@@ -600,7 +559,6 @@ var Champions = [
   "Poison Heal",
   "Poison Point",
   "Poison Touch",
-  "Power of Alchemy",
   "Prankster",
   "Pressure",
   "Protean",
@@ -610,8 +568,6 @@ var Champions = [
   "Quick Draw",
   "Quick Feet",
   "Rain Dish",
-  "Rattled",
-  "Rebound",
   "Receiver",
   "Reckless",
   "Refrigerate",
@@ -628,7 +584,6 @@ var Champions = [
   "Sap Sipper",
   "Scrappy",
   "Screen Cleaner",
-  "Serene Grace",
   "Shadow Tag",
   "Sharpness",
   "Shed Skin",
@@ -636,7 +591,6 @@ var Champions = [
   "Shell Armor",
   "Shield Dust",
   "Skill Link",
-  "Slow Start",
   "Slush Rush",
   "Sniper",
   "Snow Cloak",
@@ -654,9 +608,9 @@ var Champions = [
   "Steadfast",
   "Stench",
   "Sticky Hold",
-  "Storm Drain",
   "Strong Jaw",
   "Sturdy",
+  "Suction Cups",
   "Super Luck",
   "Supersweet Syrup",
   "Supreme Overlord",
@@ -670,12 +624,10 @@ var Champions = [
   "Technician",
   "Telepathy",
   "Thick Fat",
-  "Tinted Lens",
   "Torrent",
   "Tough Claws",
   "Toxic Debris",
   "Trace",
-  "Triage",
   "Unaware",
   "Unburden",
   "Unnerve",
@@ -685,12 +637,11 @@ var Champions = [
   "Wandering Spirit",
   "Water Absorb",
   "Water Bubble",
-  "Water Veil",
   "Weak Armor",
   "White Smoke",
   "Zero to Hero"
 ];
-var ABILITIES = [Champions, RBY, GSC, ADV, DPP, BW, XY, SM, SS, SV];
+var ABILITIES = [CHAMPIONS, RBY, GSC, ADV, DPP, BW, XY, SM, SS, SV];
 var Abilities = class {
   gen;
   constructor(gen4) {
@@ -725,7 +676,7 @@ for (const abilities of ABILITIES) {
   ABILITIES_BY_ID.push(map);
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/items.ts
+// out/tmp/damage-calc/calc/src/data/items.ts
 var RBY2 = [];
 var GSC2 = [
   "Berry Juice",
@@ -1258,7 +1209,7 @@ var SV2 = SS2.concat(
     "Wellspring Mask"
   ].sort()
 );
-var Champions2 = [
+var CHAMPIONS2 = [
   "Abomasite",
   "Absolite",
   "Aerodactylite",
@@ -1268,8 +1219,10 @@ var Champions2 = [
   "Ampharosite",
   "Audinite",
   "Banettite",
+  "Barbaracite",
   "Beedrillite",
   "Blastoisinite",
+  "Blazikenite",
   "Cameruptite",
   "Chandelurite",
   "Charizardite X",
@@ -1279,10 +1232,13 @@ var Champions2 = [
   "Clefablite",
   "Crabominite",
   "Delphoxite",
+  "Dragalgite",
   "Dragoninite",
   "Drampanite",
+  "Eelektrossite",
   "Emboarite",
   "Excadrite",
+  "Falinksite",
   "Feraligite",
   "Floettite",
   "Froslassite",
@@ -1301,27 +1257,38 @@ var Champions2 = [
   "Kangaskhanite",
   "Lopunnite",
   "Lucarionite",
+  "Malamarite",
   "Manectite",
+  "Mawilite",
   "Medichamite",
   "Meganiumite",
   "Meowsticite",
+  "Metagrossite",
   "Pidgeotite",
   "Pinsirite",
+  "Pyroarite",
+  "Raichunite X",
+  "Raichunite Y",
   "Sablenite",
+  "Sceptilite",
   "Scizorite",
+  "Scolipite",
   "Scovillainite",
+  "Scraftinite",
   "Sharpedonite",
   "Skarmorite",
   "Slowbronite",
   "Spell Tag",
+  "Staraptite",
   "Starminite",
   "Steelixite",
+  "Swampertite",
   "Tyranitarite",
   "Venusaurite",
   "Victreebelite",
-  "White Herb",
   "Aspear Berry",
   "Babiri Berry",
+  "Big Root",
   "Black Belt",
   "Black Glasses",
   "Bright Powder",
@@ -1334,23 +1301,32 @@ var Champions2 = [
   "Chople Berry",
   "Coba Berry",
   "Colbur Berry",
+  "Damp Rock",
   "Dragon Fang",
+  "Expert Belt",
   "Fairy Feather",
   "Focus Band",
   "Focus Sash",
   "Haban Berry",
   "Hard Stone",
+  "Heat Rock",
+  "Icy Rock",
+  "Iron Ball",
   "Kasib Berry",
   "Kebia Berry",
   "King's Rock",
   "Leftovers",
   "Leppa Berry",
+  "Life Orb",
   "Light Ball",
+  "Light Clay",
   "Lum Berry",
   "Magnet",
   "Mental Herb",
   "Metal Coat",
+  "Metronome",
   "Miracle Seed",
+  "Muscle Band",
   "Mystic Water",
   "Never-Melt Ice",
   "Occa Berry",
@@ -1366,16 +1342,22 @@ var Champions2 = [
   "Roseli Berry",
   "Scope Lens",
   "Sharp Beak",
+  "Shed Shell",
   "Shell Bell",
   "Shuca Berry",
   "Silk Scarf",
   "Silver Powder",
   "Sitrus Berry",
+  "Smooth Rock",
   "Soft Sand",
   "Tanga Berry",
   "Twisted Spoon",
   "Wacan Berry",
-  "Yache Berry"
+  "White Herb",
+  "Wide Lens",
+  "Wise Glasses",
+  "Yache Berry",
+  "Zoom Lens"
 ].sort();
 var BERRIES = {
   "Aguav Berry": { t: "Dragon", p: 80 },
@@ -1457,7 +1439,7 @@ var BERRIES = {
   "Yache Berry": { t: "Ice", p: 80 }
 };
 var MEGA_STONES = Object.assign({}, GEN_6_MEGA_STONES, ZA_MEGA_STONES);
-var ITEMS = [Champions2, RBY2, GSC2, ADV2, DPP2, BW2, XY2, SM2, SS2, SV2];
+var ITEMS = [CHAMPIONS2, RBY2, GSC2, ADV2, DPP2, BW2, XY2, SM2, SS2, SV2];
 var Items = class {
   gen;
   constructor(gen4) {
@@ -1506,7 +1488,7 @@ for (const items of ITEMS) {
   gen++;
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/moves.ts
+// out/tmp/damage-calc/calc/src/data/moves.ts
 var RBY3 = {
   "(No Move)": { bp: 0, category: "Status", type: "Normal" },
   Absorb: { bp: 20, type: "Grass", drain: [1, 2] },
@@ -6381,7 +6363,7 @@ var ZA_PATCH = {
   }
 };
 var SV3 = extend(true, {}, SS3, SV_PATCH, ZA_PATCH);
-var ChampionsLegal = [
+var CHAMPIONS_LIST = [
   "(No Move)",
   "Accelerock",
   "Acid Armor",
@@ -6414,6 +6396,7 @@ var ChampionsLegal = [
   "Axe Kick",
   "Baby-Doll Eyes",
   "Baneful Bunker",
+  "Barb Barrage",
   "Baton Pass",
   "Beak Blast",
   "Beat Up",
@@ -6643,6 +6626,7 @@ var ChampionsLegal = [
   "Magic Room",
   "Magnet Rise",
   "Magnetic Flux",
+  "Make It Rain",
   "Matcha Gotcha",
   "Mean Look",
   "Mega Kick",
@@ -6670,6 +6654,7 @@ var ChampionsLegal = [
   "Night Daze",
   "Night Shade",
   "Night Slash",
+  "No Retreat",
   "Noble Roar",
   "Nuzzle",
   "Outrage",
@@ -6692,7 +6677,6 @@ var ChampionsLegal = [
   "Poltergeist",
   "Population Bomb",
   "Pounce",
-  "Pound",
   "Power Gem",
   "Power Shift",
   "Power Split",
@@ -6713,6 +6697,7 @@ var ChampionsLegal = [
   "Quick Attack",
   "Quick Guard",
   "Quiver Dance",
+  "Rage Fist",
   "Rage Powder",
   "Raging Bull",
   "Raging Fury",
@@ -6782,6 +6767,7 @@ var ChampionsLegal = [
   "Spicy Extract",
   "Spikes",
   "Spiky Shield",
+  "Spirit Break",
   "Spirit Shackle",
   "Spit Up",
   "Spite",
@@ -6836,6 +6822,7 @@ var ChampionsLegal = [
   "Thunderbolt",
   "Tickle",
   "Tidy Up",
+  "Topsy-Turvy",
   "Torch Song",
   "Torment",
   "Toxic",
@@ -6879,38 +6866,47 @@ var ChampionsLegal = [
   "Zap Cannon",
   "Zen Headbutt"
 ];
-var Champions_AVAILABLE = {};
-for (const move of ChampionsLegal) {
-  Champions_AVAILABLE[move] = SV3[move];
-}
-var Champions_PATCH = {
+var CHAMPIONS_PATCH = {
+  "Anchor Shot": { bp: 90 },
   "Apple Acid": { bp: 90 },
+  "Astral Barrage": { bp: 110 },
   "Beak Blast": { bp: 120 },
+  "Blood Moon": { bp: 130 },
+  "Bolt Beak": { bp: 80 },
   "Bone Rush": { bp: 30 },
   "Crush Claw": { isSlicing: true },
   "Dire Claw": { isSlicing: true },
   "Dragon Claw": { isSlicing: true },
   "Dragon Cheer": { isSound: true },
+  "Dragon Hammer": { bp: 100 },
   "Fire Lash": { bp: 90 },
   "First Impression": { bp: 100 },
+  "Fishious Rend": { bp: 80 },
+  "Gear Grind": { bp: 60 },
   "Grav Apple": { bp: 90 },
+  "Hyper Drill": { bp: 120 },
   "Infernal Parade": { bp: 65 },
+  "Make It Rain": { self: { boosts: { spa: -2 } } },
+  "Metal Claw": { isSlicing: true },
   "Mountain Gale": { bp: 120 },
   "Night Daze": { bp: 90 },
   "Psyshield Bash": { bp: 90 },
+  "Revelation Dance": { bp: 100 },
   "Shadow Claw": { isSlicing: true },
   "Snap Trap": { type: "Steel" },
+  "Snipe Shot": { bp: 85 },
   "Spirit Shackle": { bp: 90 },
+  "Triple Dive": { bp: 35 },
   "Trop Kick": { bp: 85 }
 };
-var Champions3 = extend(
+var CHAMPIONS3 = extend(
   true,
   {},
-  Champions_AVAILABLE,
-  Champions_PATCH
+  Object.fromEntries(CHAMPIONS_LIST.map((m) => [m, SV3[m]])),
+  CHAMPIONS_PATCH
 );
-delete Champions3["Freeze-Dry"].secondaries;
-var MOVES = [Champions3, RBY3, GSC3, ADV3, DPP3, BW3, XY3, SM3, SS3, SV3];
+delete CHAMPIONS3["Freeze-Dry"].secondaries;
+var MOVES = [CHAMPIONS3, RBY3, GSC3, ADV3, DPP3, BW3, XY3, SM3, SS3, SV3];
 var Moves = class {
   gen;
   constructor(gen4) {
@@ -7004,7 +7000,7 @@ for (const moves of MOVES) {
   gen2++;
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/species.ts
+// out/tmp/damage-calc/calc/src/data/species.ts
 function removeAttr(set, pokemon, attr) {
   delete set[pokemon][attr];
 }
@@ -15897,8 +15893,29 @@ var SS_PATCH2 = {
   }
 };
 var SS4 = extend(true, {}, SM4, SS_PATCH2);
-delete SS4["Pikachu-Starter"];
 delete SS4["Eevee-Starter"];
+removeAttr(SS4, "Eevee", "otherFormes");
+delete SS4["Pikachu-Starter"];
+var TOTEM_SIZED = [
+  "Araquanid-Totem",
+  "Gumshoos-Totem",
+  "Kommo-o-Totem",
+  "Lurantis-Totem",
+  "Marowak-Alola-Totem",
+  "Mimikyu-Busted-Totem",
+  "Mimikyu-Totem",
+  "Raticate-Alola-Totem",
+  "Ribombee-Totem",
+  "Salazzle-Totem",
+  "Togedemaru-Totem",
+  "Vikavolt-Totem"
+];
+for (const species of TOTEM_SIZED) {
+  const base = SS4[SS4[species].baseSpecies];
+  base.otherFormes = [...new Set(base.otherFormes)].filter((f) => !f.endsWith("-Totem"));
+  if (!base.otherFormes.length) delete base.otherFormes;
+  delete SS4[species];
+}
 var PLA_PATCH = {
   Arcanine: { otherFormes: ["Arcanine-Hisui"] },
   Avalugg: { otherFormes: ["Avalugg-Hisui"] },
@@ -16694,6 +16711,12 @@ var SV_PATCH2 = {
     nfe: true,
     abilities: { 0: "Swarm" }
   },
+  Obliteryx: {
+    types: ["Dark", "Flying"],
+    bs: { hp: 102, at: 128, df: 126, sa: 45, sd: 90, sp: 64 },
+    weightkg: 62,
+    abilities: { 0: "Opportunist" }
+  },
   Ogerpon: {
     types: ["Grass"],
     bs: { hp: 80, at: 120, df: 84, sa: 60, sd: 96, sp: 110 },
@@ -17363,7 +17386,7 @@ var ZA_PATCH2 = {
     types: ["Poison", "Dragon"],
     bs: { hp: 65, at: 85, df: 105, sa: 132, sd: 163, sp: 44 },
     weightkg: 100.3,
-    abilities: { 0: "Poison Point" },
+    abilities: { 0: "Regenerator" },
     baseSpecies: "Dragalge"
   },
   "Dragonite-Mega": {
@@ -17384,7 +17407,7 @@ var ZA_PATCH2 = {
     types: ["Electric"],
     bs: { hp: 85, at: 145, df: 80, sa: 135, sd: 90, sp: 80 },
     weightkg: 180,
-    abilities: { 0: "Levitate" },
+    abilities: { 0: "Eelevate" },
     baseSpecies: "Eelektross"
   },
   "Emboar-Mega": {
@@ -17406,7 +17429,7 @@ var ZA_PATCH2 = {
     bs: { hp: 65, at: 135, df: 135, sa: 70, sd: 65, sp: 100 },
     weightkg: 99,
     gender: "N",
-    abilities: { 0: "Battle Armor" },
+    abilities: { 0: "Defiant" },
     baseSpecies: "Falinks"
   },
   "Feraligatr-Mega": {
@@ -17539,28 +17562,28 @@ var ZA_PATCH2 = {
     types: ["Fire", "Normal"],
     bs: { hp: 86, at: 88, df: 92, sa: 129, sd: 86, sp: 126 },
     weightkg: 93.3,
-    abilities: { 0: "Rivalry" },
+    abilities: { 0: "Fire Mane" },
     baseSpecies: "Pyroar"
   },
   "Raichu-Mega-X": {
     types: ["Electric"],
     bs: { hp: 60, at: 135, df: 95, sa: 90, sd: 95, sp: 110 },
     weightkg: 38,
-    abilities: { 0: "Surge Surfer" },
+    abilities: { 0: "Electric Surge" },
     baseSpecies: "Raichu"
   },
   "Raichu-Mega-Y": {
     types: ["Electric"],
     bs: { hp: 60, at: 100, df: 55, sa: 160, sd: 80, sp: 130 },
     weightkg: 26,
-    abilities: { 0: "Surge Surfer" },
+    abilities: { 0: "No Guard" },
     baseSpecies: "Raichu"
   },
   "Scolipede-Mega": {
     types: ["Bug", "Poison"],
     bs: { hp: 60, at: 140, df: 149, sa: 75, sd: 99, sp: 62 },
     weightkg: 230.5,
-    abilities: { 0: "Poison Point" },
+    abilities: { 0: "Shell Armor" },
     baseSpecies: "Scolipede"
   },
   "Scovillain-Mega": {
@@ -17574,7 +17597,7 @@ var ZA_PATCH2 = {
     types: ["Dark", "Fighting"],
     bs: { hp: 65, at: 130, df: 135, sa: 55, sd: 135, sp: 68 },
     weightkg: 31,
-    abilities: { 0: "Shed Skin" },
+    abilities: { 0: "Intimidate" },
     baseSpecies: "Scrafty"
   },
   "Skarmory-Mega": {
@@ -17588,7 +17611,7 @@ var ZA_PATCH2 = {
     types: ["Fighting", "Flying"],
     bs: { hp: 85, at: 140, df: 100, sa: 60, sd: 90, sp: 110 },
     weightkg: 50,
-    abilities: { 0: "Intimidate" },
+    abilities: { 0: "Contrary" },
     baseSpecies: "Staraptor"
   },
   "Starmie-Mega": {
@@ -17645,7 +17668,17 @@ var ZA_PATCH2 = {
   }
 };
 var SV4 = extend(true, {}, SS4, PLA_PATCH, SV_PATCH2, ZA_PATCH2);
-var ChampionsLegal2 = [
+for (const [name, specie] of Object.entries(SV4)) {
+  if (name.endsWith("-Gmax")) {
+    delete SV4[name];
+    continue;
+  }
+  if (specie.otherFormes) {
+    specie.otherFormes = [...new Set(specie.otherFormes)].filter((f) => !f.endsWith("-Gmax"));
+    if (!specie.otherFormes.length) specie.otherFormes = void 0;
+  }
+}
+var CHAMPIONS_LIST2 = [
   "Abomasnow",
   "Abomasnow-Mega",
   "Absol",
@@ -17664,6 +17697,7 @@ var ChampionsLegal2 = [
   "Altaria-Mega",
   "Ampharos",
   "Ampharos-Mega",
+  "Annihilape",
   "Appletun",
   "Araquanid",
   "Arbok",
@@ -17681,6 +17715,8 @@ var ChampionsLegal2 = [
   "Azumarill",
   "Banette",
   "Banette-Mega",
+  "Barbaracle",
+  "Barbaracle-Mega",
   "Basculegion",
   "Basculegion-F",
   "Bastiodon",
@@ -17690,6 +17726,8 @@ var ChampionsLegal2 = [
   "Bellibolt",
   "Blastoise",
   "Blastoise-Mega",
+  "Blaziken",
+  "Blaziken-Mega",
   "Camerupt",
   "Camerupt-Mega",
   "Castform",
@@ -17721,11 +17759,15 @@ var ChampionsLegal2 = [
   "Delphox-Mega",
   "Diggersby",
   "Ditto",
+  "Dragalge",
+  "Dragalge-Mega",
   "Dragapult",
   "Dragonite",
   "Dragonite-Mega",
   "Drampa",
   "Drampa-Mega",
+  "Eelektross",
+  "Eelektross-Mega",
   "Emboar",
   "Emboar-Mega",
   "Emolga",
@@ -17734,6 +17776,8 @@ var ChampionsLegal2 = [
   "Espeon",
   "Excadrill",
   "Excadrill-Mega",
+  "Falinks",
+  "Falinks-Mega",
   "Farigiraf",
   "Feraligatr",
   "Feraligatr-Mega",
@@ -17756,6 +17800,7 @@ var ChampionsLegal2 = [
   "Garganacl",
   "Gengar",
   "Gengar-Mega",
+  "Gholdengo",
   "Glaceon",
   "Glalie",
   "Glalie-Mega",
@@ -17772,6 +17817,7 @@ var ChampionsLegal2 = [
   "Gourgeist-Super",
   "Greninja",
   "Greninja-Mega",
+  "Grimmsnarl",
   "Gyarados",
   "Gyarados-Mega",
   "Hatterene",
@@ -17783,6 +17829,7 @@ var ChampionsLegal2 = [
   "Hippowdon",
   "Houndoom",
   "Houndoom-Mega",
+  "Houndstone",
   "Hydrapple",
   "Hydreigon",
   "Incineroar",
@@ -17806,11 +17853,15 @@ var ChampionsLegal2 = [
   "Lycanroc-Dusk",
   "Lycanroc-Midnight",
   "Machamp",
+  "Malamar",
+  "Malamar-Mega",
   "Mamoswine",
   "Manectric",
   "Manectric-Mega",
   "Maushold",
   "Maushold-Four",
+  "Mawile",
+  "Mawile-Mega",
   "Medicham",
   "Medicham-Mega",
   "Meganium",
@@ -17820,6 +17871,8 @@ var ChampionsLegal2 = [
   "Meowstic-F",
   "Meowstic-F-Mega",
   "Meowstic-M-Mega",
+  "Metagross",
+  "Metagross-Mega",
   "Milotic",
   "Mimikyu",
   "Mimikyu-Busted",
@@ -17827,11 +17880,13 @@ var ChampionsLegal2 = [
   "Morpeko-Hangry",
   "Mr. Rime",
   "Mudsdale",
+  "Musharna",
   "Ninetales",
   "Ninetales-Alola",
   "Noivern",
   "Oranguru",
   "Orthworm",
+  "Overqwil",
   "Palafin",
   "Palafin-Hero",
   "Pangoro",
@@ -17846,9 +17901,14 @@ var ChampionsLegal2 = [
   "Polteageist",
   "Polteageist-Antique",
   "Primarina",
+  "Pyroar",
+  "Pyroar-Mega",
   "Quaquaval",
+  "Qwilfish",
   "Raichu",
   "Raichu-Alola",
+  "Raichu-Mega-X",
+  "Raichu-Mega-Y",
   "Rampardos",
   "Reuniclus",
   "Rhyperior",
@@ -17866,10 +17926,16 @@ var ChampionsLegal2 = [
   "Samurott",
   "Samurott-Hisui",
   "Sandaconda",
+  "Sceptile",
+  "Sceptile-Mega",
   "Scizor",
   "Scizor-Mega",
+  "Scolipede",
+  "Scolipede-Mega",
   "Scovillain",
   "Scovillain-Mega",
+  "Scrafty",
+  "Scrafty-Mega",
   "Serperior",
   "Sharpedo",
   "Sharpedo-Mega",
@@ -17890,12 +17956,16 @@ var ChampionsLegal2 = [
   "Sneasler",
   "Snorlax",
   "Spiritomb",
+  "Staraptor",
+  "Staraptor-Mega",
   "Starmie",
   "Starmie-Mega",
   "Steelix",
   "Steelix-Mega",
   "Stunfisk",
   "Stunfisk-Galar",
+  "Swampert",
+  "Swampert-Mega",
   "Sylveon",
   "Talonflame",
   "Tauros",
@@ -17922,6 +17992,7 @@ var ChampionsLegal2 = [
   "Venusaur-Mega",
   "Victreebel",
   "Victreebel-Mega",
+  "Vileplume",
   "Vivillon",
   "Vivillon-Fancy",
   "Vivillon-Pokeball",
@@ -17933,39 +18004,24 @@ var ChampionsLegal2 = [
   "Zoroark",
   "Zoroark-Hisui"
 ];
-var Champions_AVAILABLE2 = {};
-for (const pokemon of ChampionsLegal2) {
-  Champions_AVAILABLE2[pokemon] = SV4[pokemon];
-}
-var Champions_PATCH2 = {
-  Blastoise: { otherFormes: ["Blastoise-Mega"] },
-  Charizard: { otherFormes: ["Charizard-Mega-X", "Charizard-Mega-Y"] },
+var CHAMPIONS_PATCH2 = {
   "Floette-Eternal": { otherFormes: ["Floette-Mega"] },
-  "Floette-Mega": { baseSpecies: "Floette-Eternal" },
-  Gengar: { otherFormes: ["Gengar-Mega"] },
-  Mimikyu: { otherFormes: ["Mimikyu-Busted"] },
-  Venusaur: { otherFormes: ["Venusaur-Mega"] }
+  "Floette-Mega": { baseSpecies: "Floette-Eternal" }
 };
-var Champions4 = extend(
+var CHAMPIONS4 = extend(
   true,
   {},
-  Champions_AVAILABLE2,
-  Champions_PATCH2
+  Object.fromEntries(CHAMPIONS_LIST2.map((s) => [s, SV4[s]])),
+  CHAMPIONS_PATCH2
 );
-removeAttr(Champions4, "Alcremie", "otherFormes");
-removeAttr(Champions4, "Appletun", "otherFormes");
-removeAttr(Champions4, "Araquanid", "otherFormes");
-removeAttr(Champions4, "Corviknight", "otherFormes");
-removeAttr(Champions4, "Flapple", "otherFormes");
-removeAttr(Champions4, "Floette-Eternal", "baseSpecies");
-removeAttr(Champions4, "Garbodor", "otherFormes");
-removeAttr(Champions4, "Hatterene", "otherFormes");
-removeAttr(Champions4, "Machamp", "otherFormes");
-removeAttr(Champions4, "Pikachu", "otherFormes");
-removeAttr(Champions4, "Salazzle", "otherFormes");
-removeAttr(Champions4, "Sandaconda", "otherFormes");
-removeAttr(Champions4, "Snorlax", "otherFormes");
-var SPECIES = [Champions4, RBY4, GSC4, ADV4, DPP4, BW4, XY4, SM4, SS4, SV4];
+removeAttr(CHAMPIONS4, "Floette-Eternal", "baseSpecies");
+for (const species of Object.values(CHAMPIONS4)) {
+  if (species.otherFormes) {
+    species.otherFormes = [...new Set(species.otherFormes)].filter((f) => CHAMPIONS_LIST2.includes(f));
+    if (!species.otherFormes.length) delete species.otherFormes;
+  }
+}
+var SPECIES = [CHAMPIONS4, RBY4, GSC4, ADV4, DPP4, BW4, XY4, SM4, SS4, SV4];
 var Species = class {
   gen;
   constructor(gen4) {
@@ -18006,14 +18062,7 @@ var Specie = class _Specie {
     baseStats.spd = gen3 === 0 || gen3 >= 2 ? data.bs.sd : data.bs.sl;
     baseStats.spe = data.bs.sp;
     this.baseStats = baseStats;
-    if (data.otherFormes) {
-      this.otherFormes = data.otherFormes;
-      if (gen3 >= 9 && !["toxtricity", "urshifu"].includes(this.id)) {
-        this.otherFormes = this.otherFormes.filter((f) => !f.endsWith("-Gmax"));
-        if (!this.otherFormes.length) this.otherFormes = void 0;
-        if (this.otherFormes) this.otherFormes = [...new Set(this.otherFormes)];
-      }
-    }
+    this.otherFormes = data.otherFormes;
     assignWithout(this, data, _Specie.EXCLUDE);
   }
 };
@@ -18030,7 +18079,7 @@ for (const species of SPECIES) {
   gen3++;
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/types.ts
+// out/tmp/damage-calc/calc/src/data/types.ts
 var RBY5 = {
   "???": {
     Normal: 1,
@@ -18448,8 +18497,8 @@ var SV5 = extend(true, {}, SS5, {
     "???": 1
   }
 });
-var Champions5 = SS5;
-var TYPE_CHART = [Champions5, RBY5, GSC5, ADV5, DPP5, BW5, XY5, SM5, SS5, SV5];
+var CHAMPIONS5 = SS5;
+var TYPE_CHART = [CHAMPIONS5, RBY5, GSC5, ADV5, DPP5, BW5, XY5, SM5, SS5, SV5];
 var Types = class {
   gen;
   constructor(gen4) {
@@ -18486,7 +18535,7 @@ for (const typeChart of TYPE_CHART) {
   TYPES_BY_ID.push(map);
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/natures.ts
+// out/tmp/damage-calc/calc/src/data/natures.ts
 var NATURES = {
   Adamant: ["atk", "spa"],
   Bashful: ["spa", "spa"],
@@ -18544,7 +18593,7 @@ for (const nature in NATURES) {
   NATURES_BY_ID[n.id] = n;
 }
 
-// ../../out/tmp/damage-calc/calc/src/data/index.ts
+// out/tmp/damage-calc/calc/src/data/index.ts
 var Generations = new class {
   get(gen4) {
     return new Generation(gen4);
@@ -18569,7 +18618,7 @@ var Generation = class {
   }
 };
 
-// ../../out/tmp/damage-calc/calc/src/field.ts
+// out/tmp/damage-calc/calc/src/field.ts
 var Field = class _Field {
   gameType;
   weather;
@@ -18687,7 +18736,7 @@ var Side = class _Side {
   }
 };
 
-// ../../out/tmp/damage-calc/calc/src/items.ts
+// out/tmp/damage-calc/calc/src/items.ts
 var SEED_BOOSTED_STAT = {
   "Electric Seed": "def",
   "Grassy Seed": "def",
@@ -19097,7 +19146,7 @@ function getMultiAttack(item) {
   return void 0;
 }
 
-// ../../out/tmp/damage-calc/calc/src/stats.ts
+// out/tmp/damage-calc/calc/src/stats.ts
 var RBY6 = ["hp", "atk", "def", "spc", "spe"];
 var GSC6 = ["hp", "atk", "def", "spa", "spd", "spe"];
 var ADV6 = GSC6;
@@ -19281,7 +19330,7 @@ var Stats = new class {
   }
 }();
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/util.ts
+// out/tmp/damage-calc/calc/src/mechanics/util.ts
 var EV_ITEMS = [
   "Macho Brace",
   "Power Anklet",
@@ -19292,7 +19341,7 @@ var EV_ITEMS = [
   "Power Weight"
 ];
 function isGrounded(pokemon, field) {
-  return field.isGravity || pokemon.hasItem("Iron Ball") || !pokemon.hasType("Flying") && !pokemon.hasAbility("Levitate") && !pokemon.hasItem("Air Balloon");
+  return field.isGravity || pokemon.hasItem("Iron Ball") || !pokemon.hasType("Flying") && !pokemon.hasAbility("Levitate", "Eelevate") && !pokemon.hasItem("Air Balloon");
 }
 function getModifiedStat(stat, mod, gen4) {
   if (gen4 && gen4.num < 3) {
@@ -19785,7 +19834,7 @@ function OF32(n) {
   return n > 4294967295 ? n % 4294967296 : n;
 }
 
-// ../../out/tmp/damage-calc/calc/src/desc.ts
+// out/tmp/damage-calc/calc/src/desc.ts
 function display(gen4, attacker, defender, move, field, damage, rawDesc, notation = "%", err = true) {
   const [min, max] = damageRange(damage);
   const minDisplay = toDisplay(notation, min, defender.maxHP());
@@ -20145,7 +20194,7 @@ function getHazards(gen4, defender, defenderSide) {
     damage += Math.floor(effectiveness * defender.maxHP() / 8);
     texts.push("Steelsurge");
   }
-  if (!defender.hasType("Flying") && !defender.hasAbility("Magic Guard", "Levitate") && !defender.hasItem("Air Balloon")) {
+  if (!defender.hasType("Flying") && !defender.hasAbility("Magic Guard", "Levitate", "Eelevate") && !defender.hasItem("Air Balloon")) {
     if (defenderSide.spikes === 1) {
       damage += Math.floor(defender.maxHP() / 8);
       if (gen4.num === 2) {
@@ -20532,7 +20581,7 @@ function toDisplay(notation, a, b, f = 1) {
   return notation === "%" ? Math.floor(a * (1e3 / f) / b) / 10 : Math.floor(a * (48 / f) / b);
 }
 
-// ../../out/tmp/damage-calc/calc/src/result.ts
+// out/tmp/damage-calc/calc/src/result.ts
 var Result = class {
   gen;
   attacker;
@@ -20621,7 +20670,7 @@ function multiDamageRange(damage) {
   return [d[0], d[d.length - 1]];
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/champions.ts
+// out/tmp/damage-calc/calc/src/mechanics/champions.ts
 function calculateChampions(gen4, attacker, defender, move, field) {
   checkForecast(attacker, field.weather);
   checkForecast(defender, field.weather);
@@ -20676,6 +20725,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     "Disguise",
     "Dry Skin",
     "Earth Eater",
+    "Eelevate",
     "Filter",
     "Flash Fire",
     "Flower Veil",
@@ -20816,14 +20866,17 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     field.isGravity,
     false
   ) : 1;
-  const typeEffectiveness = type1Effectiveness * type2Effectiveness;
+  let typeEffectiveness = type1Effectiveness * type2Effectiveness;
+  if (typeEffectiveness === 0 && move.hasType("Ground") && defender.hasItem("Iron Ball") && !defender.hasAbility("Klutz")) {
+    typeEffectiveness = 1;
+  }
   if (typeEffectiveness === 0) {
     return result;
   }
   if (move.named("Steel Roller") && !field.terrain || move.named("Poltergeist") && !defender.item) {
     return result;
   }
-  if (move.hasType("Grass") && defender.hasAbility("Sap Sipper") || move.hasType("Fire") && defender.hasAbility("Flash Fire") || move.hasType("Water") && defender.hasAbility("Dry Skin", "Water Absorb") || move.hasType("Electric") && defender.hasAbility("Lightning Rod", "Motor Drive", "Volt Absorb") || move.hasType("Ground") && !field.isGravity && defender.hasAbility("Levitate") || move.flags.bullet && defender.hasAbility("Bulletproof") || move.flags.sound && !move.named("Clangorous Soul") && defender.hasAbility("Soundproof") || move.priority > 0 && defender.hasAbility("Queenly Majesty", "Armor Tail") || move.hasType("Ground") && defender.hasAbility("Earth Eater")) {
+  if (move.hasType("Grass") && defender.hasAbility("Sap Sipper") || move.hasType("Fire") && defender.hasAbility("Flash Fire") || move.hasType("Water") && defender.hasAbility("Dry Skin", "Water Absorb") || move.hasType("Electric") && defender.hasAbility("Lightning Rod", "Motor Drive", "Volt Absorb") || move.hasType("Ground") && !field.isGravity && defender.hasAbility("Levitate", "Eelevate") || move.flags.bullet && defender.hasAbility("Bulletproof") || move.flags.sound && !move.named("Clangorous Soul") && defender.hasAbility("Soundproof") || move.priority > 0 && defender.hasAbility("Queenly Majesty", "Armor Tail") || move.hasType("Ground") && defender.hasAbility("Earth Eater")) {
     desc.defenderAbility = defender.ability;
     return result;
   }
@@ -21222,6 +21275,9 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
   if (attacker.item && move.hasType(getItemBoostType(attacker.item))) {
     bpMods.push(4915);
     desc.attackerItem = attacker.item;
+  } else if (attacker.hasItem("Muscle Band") && move.category === "Physical" || attacker.hasItem("Wise Glasses") && move.category === "Special") {
+    bpMods.push(4505);
+    desc.attackerItem = attacker.item;
   }
   return bpMods;
 }
@@ -21276,6 +21332,9 @@ function calculateAtModsChampions(gen4, attacker, defender, move, field, desc) {
   } else if (attacker.hasAbility("Flash Fire") && attacker.abilityOn && move.hasType("Fire")) {
     atMods.push(6144);
     desc.attackerAbility = "Flash Fire";
+  } else if (attacker.hasAbility("Fire Mane") && move.hasType("Fire")) {
+    atMods.push(6144);
+    desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility("Water Bubble") && move.hasType("Water") || attacker.hasAbility("Huge Power", "Pure Power") && move.category === "Physical") {
     atMods.push(8192);
     desc.attackerAbility = attacker.ability;
@@ -21287,6 +21346,10 @@ function calculateAtModsChampions(gen4, attacker, defender, move, field, desc) {
   if (defender.hasAbility("Heatproof") && move.hasType("Fire")) {
     atMods.push(2048);
     desc.defenderAbility = defender.ability;
+  }
+  if (attacker.hasItem("Light Ball") && attacker.name.includes("Pikachu")) {
+    atMods.push(8192);
+    desc.attackerItem = attacker.item;
   }
   return atMods;
 }
@@ -21399,6 +21462,21 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
     finalMods.push(3072);
     desc.isFriendGuard = true;
   }
+  if (attacker.hasItem("Expert Belt") && typeEffectiveness > 1) {
+    finalMods.push(4915);
+    desc.attackerItem = attacker.item;
+  } else if (attacker.hasItem("Life Orb")) {
+    finalMods.push(5324);
+    desc.attackerItem = attacker.item;
+  } else if (attacker.hasItem("Metronome") && move.timesUsedWithMetronome >= 1) {
+    const timesUsedWithMetronome = Math.floor(move.timesUsedWithMetronome);
+    if (timesUsedWithMetronome <= 4) {
+      finalMods.push(4096 + timesUsedWithMetronome * 819);
+    } else {
+      finalMods.push(8192);
+    }
+    desc.attackerItem = attacker.item;
+  }
   if (move.hasType(getBerryResistType(defender.item)) && (typeEffectiveness > 1 || move.hasType("Normal")) && hitCount === 0 && !attacker.hasAbility("Unnerve")) {
     if (defender.hasAbility("Ripen")) {
       finalMods.push(1024);
@@ -21410,7 +21488,7 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
   return finalMods;
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/gen12.ts
+// out/tmp/damage-calc/calc/src/mechanics/gen12.ts
 function calculateRBYGSC(gen4, attacker, defender, move, field) {
   computeFinalStats(gen4, attacker, defender, field, "atk", "def", "spa", "spd", "spe");
   const desc = {
@@ -21643,7 +21721,7 @@ function calculateRBYGSC(gen4, attacker, defender, move, field) {
   return result;
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/gen3.ts
+// out/tmp/damage-calc/calc/src/mechanics/gen3.ts
 function calculateADV(gen4, attacker, defender, move, field) {
   checkAirLock(attacker, field);
   checkAirLock(defender, field);
@@ -21959,7 +22037,7 @@ function calculateFinalModsADV(baseDamage, attacker, move, field, desc, isCritic
   return baseDamage;
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/gen4.ts
+// out/tmp/damage-calc/calc/src/mechanics/gen4.ts
 function calculateDPP(gen4, attacker, defender, move, field) {
   var _a;
   checkAirLock(attacker, field);
@@ -22512,7 +22590,7 @@ function getSimpleModifiedStat(stat, mod) {
   return simpleMod > 0 ? Math.floor(stat * (2 + simpleMod) / 2) : simpleMod < 0 ? Math.floor(stat * 2 / (2 - simpleMod)) : stat;
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/gen56.ts
+// out/tmp/damage-calc/calc/src/mechanics/gen56.ts
 function calculateBWXY(gen4, attacker, defender, move, field) {
   var _a;
   checkAirLock(attacker, field);
@@ -23346,7 +23424,7 @@ function calculateFinalModsBWXY(gen4, attacker, defender, move, field, desc, isC
   return finalMods;
 }
 
-// ../../out/tmp/damage-calc/calc/src/mechanics/gen789.ts
+// out/tmp/damage-calc/calc/src/mechanics/gen789.ts
 function calculateSMSSSV(gen4, attacker, defender, move, field) {
   var _a;
   checkAirLock(attacker, field);
@@ -23433,6 +23511,7 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     "Disguise",
     "Dry Skin",
     "Earth Eater",
+    "Eelevate",
     "Filter",
     "Flash Fire",
     "Flower Gift",
@@ -23733,7 +23812,7 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     typeEffectiveness = 0.5;
     desc.defenderAbility = defender.ability;
   }
-  if (defender.hasAbility("Wonder Guard") && typeEffectiveness <= 1 || move.hasType("Grass") && defender.hasAbility("Sap Sipper") || move.hasType("Fire") && defender.hasAbility("Flash Fire", "Well-Baked Body") || move.hasType("Water") && defender.hasAbility("Dry Skin", "Storm Drain", "Water Absorb") || move.hasType("Electric") && defender.hasAbility("Lightning Rod", "Motor Drive", "Volt Absorb") || move.hasType("Ground") && !field.isGravity && !move.named("Thousand Arrows") && !defender.hasItem("Iron Ball") && defender.hasAbility("Levitate") || move.flags.bullet && defender.hasAbility("Bulletproof") || move.flags.sound && !move.named("Clangorous Soul") && defender.hasAbility("Soundproof") || move.priority > 0 && defender.hasAbility("Queenly Majesty", "Dazzling", "Armor Tail") || move.hasType("Ground") && defender.hasAbility("Earth Eater") || move.flags.wind && defender.hasAbility("Wind Rider")) {
+  if (defender.hasAbility("Wonder Guard") && typeEffectiveness <= 1 || move.hasType("Grass") && defender.hasAbility("Sap Sipper") || move.hasType("Fire") && defender.hasAbility("Flash Fire", "Well-Baked Body") || move.hasType("Water") && defender.hasAbility("Dry Skin", "Storm Drain", "Water Absorb") || move.hasType("Electric") && defender.hasAbility("Lightning Rod", "Motor Drive", "Volt Absorb") || move.hasType("Ground") && !field.isGravity && !move.named("Thousand Arrows") && !defender.hasItem("Iron Ball") && defender.hasAbility("Levitate", "Eelevate") || move.flags.bullet && defender.hasAbility("Bulletproof") || move.flags.sound && !move.named("Clangorous Soul") && defender.hasAbility("Soundproof") || move.priority > 0 && defender.hasAbility("Queenly Majesty", "Dazzling", "Armor Tail") || move.hasType("Ground") && defender.hasAbility("Earth Eater") || move.flags.wind && defender.hasAbility("Wind Rider")) {
     desc.defenderAbility = defender.ability;
     return result;
   }
@@ -24417,7 +24496,7 @@ function calculateAtModsSMSSSV(gen4, attacker, defender, move, field, desc) {
   } else if (attacker.hasAbility("Flash Fire") && attacker.abilityOn && move.hasType("Fire")) {
     atMods.push(6144);
     desc.attackerAbility = "Flash Fire";
-  } else if (attacker.hasAbility("Steelworker") && move.hasType("Steel") || attacker.hasAbility("Dragon's Maw") && move.hasType("Dragon") || attacker.hasAbility("Rocky Payload") && move.hasType("Rock")) {
+  } else if (attacker.hasAbility("Steelworker") && move.hasType("Steel") || attacker.hasAbility("Dragon's Maw") && move.hasType("Dragon") || attacker.hasAbility("Rocky Payload") && move.hasType("Rock") || attacker.hasAbility("Fire Mane") && move.hasType("Fire")) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility("Transistor") && move.hasType("Electric")) {
@@ -24672,7 +24751,7 @@ function hasTerrainSeed(pokemon) {
   return pokemon.hasItem("Electric Seed", "Misty Seed", "Grassy Seed", "Psychic Seed");
 }
 
-// ../../out/tmp/damage-calc/calc/src/calc.ts
+// out/tmp/damage-calc/calc/src/calc.ts
 var MECHANICS = [
   calculateChampions,
   calculateRBYGSC,
@@ -24695,7 +24774,7 @@ function calculate(gen4, attacker, defender, move, field) {
   );
 }
 
-// ../../out/tmp/damage-calc/calc/src/pokemon.ts
+// out/tmp/damage-calc/calc/src/pokemon.ts
 var STATS2 = ["hp", "atk", "def", "spa", "spd", "spe"];
 var SPC = /* @__PURE__ */ new Set(["spc"]);
 var Pokemon = class _Pokemon {
@@ -24874,7 +24953,7 @@ var Pokemon = class _Pokemon {
   }
 };
 
-// ../../out/tmp/damage-calc/calc/src/move.ts
+// out/tmp/damage-calc/calc/src/move.ts
 var SPECIAL = ["Fire", "Water", "Grass", "Electric", "Ice", "Psychic", "Dark", "Dragon"];
 var Move2 = class _Move {
   gen;
@@ -25161,8 +25240,8 @@ var MAXMOVES_TYPING = {
   Water: "Geyser"
 };
 
-// ../../out/tmp/damage-calc/calc/src/index.ts
-var Acalculate = undefined;
+// out/tmp/damage-calc/calc/src/index.ts
+var Acalculate = typeof exports !== "undefined" ? exports.calculate : void 0;
 function calculate2(gen4, attacker, defender, move, field) {
   return (Acalculate || calculate)(
     typeof gen4 === "number" ? Generations.get(gen4) : gen4,
@@ -25201,8 +25280,23 @@ function calcStat(gen4, stat, base, iv, ev, level, nature) {
     nature
   );
 }
-// Annotate the CommonJS export names for ESM import in node:
-
-
-export default __calc_exports;
-
+export {
+  ABILITIES,
+  Field,
+  Generations,
+  ITEMS,
+  MEGA_STONES,
+  MOVES,
+  Move3 as Move,
+  NATURES,
+  Pokemon2 as Pokemon,
+  Result,
+  SPECIES,
+  STATS,
+  Side,
+  Stats,
+  TYPE_CHART,
+  calcStat,
+  calculate2 as calculate,
+  toID
+};

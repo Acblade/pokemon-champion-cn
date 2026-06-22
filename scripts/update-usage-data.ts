@@ -2,13 +2,22 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const BASE_URL = 'https://champs.pokedb.tokyo'
-const SEASON = process.env.CHAMPS_SEASON ?? '1'
-const RULE = process.env.CHAMPS_RULE ?? '1'
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3')
+  .split(',')
+  .map(value => value.trim())
+  .filter(Boolean)
+const TARGET_RULES = (process.env.CHAMPS_RULES ?? process.env.CHAMPS_RULE ?? '1')
+  .split(',')
+  .map(value => value.trim())
+  .filter(Boolean)
+let SEASON = TARGET_SEASONS[0] ?? '3'
+let RULE = TARGET_RULES[0] ?? '1'
 const CONCURRENCY = Number(process.env.CHAMPS_CONCURRENCY ?? '6')
 const DETAIL_LIMIT = Number(process.env.CHAMPS_DETAIL_LIMIT ?? '0')
 
 const PATHS = {
-  output: path.resolve('src/generated/pikalytics-usage.json'),
+  output: path.resolve('src/generated/usage-datasets.json'),
+  legacyOutput: path.resolve('src/generated/pikalytics-usage.json'),
   details: path.resolve('src/generated/pokemon-details.json'),
   items: path.resolve('src/generated/items.json'),
   cache: path.resolve('src/generated/pokeapi-ja-lookup.json'),
@@ -68,6 +77,35 @@ export type UsageEntry = {
   teammates: UsageTeammate[]
 }
 
+type TrainerRankingEntry = { rank: number; rating: number | null; name: string }
+
+type UsageDataset = {
+  source: string
+  sourceUrl: string
+  trainerSourceUrl: string
+  format: string
+  regulation: 'M-A' | 'M-B'
+  battle: 'Doubles' | 'Singles'
+  season: string
+  rule: string
+  date: string
+  updatedAt: string
+  count: number
+  missingPokemon: { key: string; rank: number; jpName: string }[]
+  trainerRankingsAvailable: boolean
+  trainerRankingsNote?: string
+  trainerRankings: TrainerRankingEntry[]
+  entries: Record<string, UsageEntry>
+}
+
+type UsageCollection = {
+  source: string
+  sourceUrl: string
+  defaultKey: string
+  updatedAt: string
+  datasets: Record<string, UsageDataset>
+}
+
 type PokemonDetail = {
   id: string
   num: number
@@ -121,12 +159,45 @@ function titleCase(slug: string) {
   return slug.split('-').map(p => p ? `${p[0].toUpperCase()}${p.slice(1)}` : p).join(' ')
 }
 
+function regulationForSeason(season: string): 'M-A' | 'M-B' {
+  return Number(season) >= 3 ? 'M-B' : 'M-A'
+}
+
+function battleForRule(rule: string): 'Doubles' | 'Singles' {
+  return rule === '2' ? 'Singles' : 'Doubles'
+}
+
+function datasetKey(season: string, rule: string) {
+  return `champs-season-${season}-rule-${rule}`
+}
+
+function loadExistingCollection(): UsageCollection | null {
+  if (!fs.existsSync(PATHS.output)) return null
+  const raw = JSON.parse(fs.readFileSync(PATHS.output, 'utf8')) as Partial<UsageCollection>
+  if (!raw.datasets || typeof raw.datasets !== 'object') return null
+  return raw as UsageCollection
+}
+
 // ---------- HTTP ----------
 
 async function getText(url: string) {
   const res = await fetch(url, { headers: { 'user-agent': 'pokemon-champion-cn/1.0' } })
   if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`)
   return res.text()
+}
+
+async function getPage(url: string) {
+  const res = await fetch(url, { headers: { 'user-agent': 'pokemon-champion-cn/1.0' } })
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`)
+  return { text: await res.text(), finalUrl: res.url }
+}
+
+function isRequestedListPage(finalUrl: string, kind: 'pokemon' | 'trainer') {
+  const parsed = new URL(finalUrl)
+  return parsed.pathname === `/${kind}/list` &&
+    parsed.searchParams.get('season') === SEASON &&
+    parsed.searchParams.get('rule') === RULE &&
+    !parsed.searchParams.has('fallback')
 }
 
 async function getJson<T>(url: string): Promise<T> {
@@ -350,14 +421,28 @@ async function fetchAllPokemon() {
 }
 
 async function fetchAllTrainers() {
-  const firstHtml = await getText(`${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}&page=1`)
-  const pages = maxPage(firstHtml, 'trainer')
-  const all = parseTrainers(firstHtml)
+  const requestedUrl = `${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}`
+  const firstPage = await getPage(`${requestedUrl}&page=1`)
+  if (!isRequestedListPage(firstPage.finalUrl, 'trainer')) {
+    console.warn(`Trainer rankings unavailable for season=${SEASON} rule=${RULE}; source returned ${firstPage.finalUrl}`)
+    return {
+      sourceUrl: requestedUrl,
+      available: false,
+      note: `当前赛季玩家排名尚未开放，来源页面回退到 ${firstPage.finalUrl}`,
+      rankings: [] as TrainerRankingEntry[],
+    }
+  }
+  const pages = maxPage(firstPage.text, 'trainer')
+  const all = parseTrainers(firstPage.text)
   for (let p = 2; p <= pages; p++) {
     const html = await getText(`${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}&page=${p}`)
     all.push(...parseTrainers(html))
   }
-  return all.sort((a, b) => a.rank - b.rank)
+  return {
+    sourceUrl: requestedUrl,
+    available: true,
+    rankings: all.sort((a, b) => a.rank - b.rank),
+  }
 }
 
 async function fetchPokemonDetail(
@@ -418,10 +503,10 @@ async function fetchPokemonDetail(
 
 // ---------- main ----------
 
-async function main() {
-  const { raw, byKey } = loadDetails()
-  const cache = await loadTranslationCache(raw)
-
+async function fetchUsageDataset(
+  byKey: Map<string, PokemonDetail>,
+  cache: TranslationCache,
+): Promise<UsageDataset> {
   const pokemonList = await fetchAllPokemon()
   console.log(`Found ${pokemonList.length} Pokémon in rankings`)
 
@@ -431,10 +516,14 @@ async function main() {
   )
 
   const entries: Record<string, UsageEntry> = {}
+  const missingPokemon: UsageDataset['missingPokemon'] = []
   for (let i = 0; i < pokemonList.length; i++) {
     const listEntry = pokemonList[i]
     const detail = byKey.get(listEntry.key)
-    if (!detail) continue
+    if (!detail) {
+      missingPokemon.push({ key: listEntry.key, rank: listEntry.rank, jpName: listEntry.jpName })
+      continue
+    }
     const id = toId(detail.id)
     // Use fetched detail if available, otherwise stub with rank only
     entries[id] = detailResults[i] ?? {
@@ -445,24 +534,74 @@ async function main() {
 
   const trainers = await fetchAllTrainers()
 
-  const output = {
+  return {
     source: 'Battle Database Champions',
     sourceUrl: `${BASE_URL}/pokemon/list?season=${SEASON}&rule=${RULE}`,
-    format: `champs-season-${SEASON}-rule-${RULE}`,
+    trainerSourceUrl: trainers.sourceUrl,
+    format: datasetKey(SEASON, RULE),
+    regulation: regulationForSeason(SEASON),
+    battle: battleForRule(RULE),
     season: SEASON,
     rule: RULE,
     date: new Date().toISOString().slice(0, 10),
     updatedAt: new Date().toISOString(),
     count: Object.keys(entries).length,
-    trainerRankings: trainers,
+    missingPokemon,
+    trainerRankingsAvailable: trainers.available,
+    trainerRankingsNote: trainers.note,
+    trainerRankings: trainers.rankings,
     entries,
   }
 
+  /*
   fs.mkdirSync(path.dirname(PATHS.output), { recursive: true })
   fs.writeFileSync(PATHS.output, `${JSON.stringify(output, null, 2)}\n`, 'utf8')
   console.log(
     `Wrote ${output.count} Pokémon and ${trainers.length} trainers → ${path.relative(process.cwd(), PATHS.output)}`,
   )
+  */
+}
+
+async function main() {
+  const { raw, byKey } = loadDetails()
+  const cache = await loadTranslationCache(raw)
+  const existing = loadExistingCollection()
+  const datasets: Record<string, UsageDataset> = { ...(existing?.datasets ?? {}) }
+
+  for (const season of TARGET_SEASONS) {
+    for (const rule of TARGET_RULES) {
+      SEASON = season
+      RULE = rule
+      const output = await fetchUsageDataset(byKey, cache)
+      datasets[output.format] = output
+      if (output.missingPokemon.length) {
+        console.warn(
+          `Missing ${output.missingPokemon.length} Pokemon for ${output.format}: ` +
+          output.missingPokemon.map(p => `${p.key} ${p.jpName}`).join(', '),
+        )
+      }
+      console.log(`Fetched ${output.count} Pokemon and ${output.trainerRankings.length} trainers for ${output.format}`)
+    }
+  }
+
+  const defaultSeason = process.env.CHAMPS_DEFAULT_SEASON ?? TARGET_SEASONS[TARGET_SEASONS.length - 1] ?? '3'
+  const defaultRule = process.env.CHAMPS_DEFAULT_RULE ?? TARGET_RULES[0] ?? '1'
+  const defaultKey = datasetKey(defaultSeason, defaultRule)
+  const fallbackKey = Object.keys(datasets).sort().at(-1) ?? defaultKey
+  const collection: UsageCollection = {
+    source: 'Battle Database Champions',
+    sourceUrl: BASE_URL,
+    defaultKey: datasets[defaultKey] ? defaultKey : fallbackKey,
+    updatedAt: new Date().toISOString(),
+    datasets,
+  }
+
+  fs.mkdirSync(path.dirname(PATHS.output), { recursive: true })
+  fs.writeFileSync(PATHS.output, `${JSON.stringify(collection, null, 2)}\n`, 'utf8')
+  if (collection.defaultKey && collection.datasets[collection.defaultKey]) {
+    fs.writeFileSync(PATHS.legacyOutput, `${JSON.stringify(collection.datasets[collection.defaultKey], null, 2)}\n`, 'utf8')
+  }
+  console.log(`Wrote ${Object.keys(collection.datasets).length} usage datasets -> ${path.relative(process.cwd(), PATHS.output)}`)
 }
 
 main().catch(err => { console.error(err); process.exit(1) })

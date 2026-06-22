@@ -2040,12 +2040,90 @@ table.damage-stats-table {
   color: #111827;
 }
 
+.ability-chip.static {
+  cursor: default;
+}
+
+.panel-title-with-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-switch-icon {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #dbe4ef;
+  border-radius: 999px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+}
+
+.panel-switch-icon:hover,
+.panel-switch-icon:focus-visible {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.panel-switch-icon span {
+  display: block;
+  height: 8px;
+  font-size: 10px;
+  line-height: 8px;
+}
+
+.data-source-line {
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.trainer-empty-state {
+  padding: 32px;
+  text-align: center;
+}
+
+.trainer-empty-state h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.trainer-empty-state p {
+  margin: 0;
+  color: #64748b;
+}
+
 :root[data-theme='dark'] .ability-chip {
   color: #94a3b8;
 }
 
 :root[data-theme='dark'] .ability-chip.active {
   color: #fff;
+}
+
+:root[data-theme='dark'] .panel-switch-icon {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(30, 41, 59, 0.92);
+  color: #cbd5e1;
+}
+
+:root[data-theme='dark'] .panel-switch-icon:hover,
+:root[data-theme='dark'] .panel-switch-icon:focus-visible {
+  border-color: #60a5fa;
+  color: #93c5fd;
+}
+
+:root[data-theme='dark'] .data-source-line,
+:root[data-theme='dark'] .trainer-empty-state p {
+  color: #9ca3af;
 }
 
 .form-chip.active {

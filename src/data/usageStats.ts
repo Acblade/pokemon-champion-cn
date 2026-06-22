@@ -1,4 +1,4 @@
-import usageData from '../generated/pikalytics-usage.json'
+import usageData from '../generated/usage-datasets.json'
 
 export type UsageItem = { zh: string; en: string; percent: number }
 export type UsageSpread = { nature: string; spread: string; percent: number }
@@ -26,25 +26,48 @@ export type TrainerRankingEntry = {
 export type UsageDataset = {
   source: string
   sourceUrl: string
+  trainerSourceUrl?: string
   format: string
+  regulation: string
+  battle: string
   season: string
   rule: string
   date: string
   updatedAt: string
   count: number
+  missingPokemon?: { key: string; rank: number; jpName: string }[]
+  trainerRankingsAvailable?: boolean
+  trainerRankingsNote?: string
   trainerRankings: TrainerRankingEntry[]
   entries: Record<string, UsageEntry>
 }
 
-export const usageDataset = usageData as unknown as UsageDataset
+export type UsageCollection = {
+  source: string
+  sourceUrl: string
+  defaultKey: string
+  updatedAt: string
+  datasets: Record<string, UsageDataset>
+}
+
+export const usageCollection = usageData as unknown as UsageCollection
+export const usageDataset = usageCollection.datasets[usageCollection.defaultKey] ?? Object.values(usageCollection.datasets)[0]
 
 function normalizeId(name: string) {
   return name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '')
 }
 
 export function getPokemonUsage(...names: string[]): UsageEntry | null {
+  return getPokemonUsageFromDataset(usageDataset, ...names)
+}
+
+export function getUsageDataset(season: string, battleRule = '1'): UsageDataset {
+  return usageCollection.datasets[`champs-season-${season}-rule-${battleRule}`] ?? usageDataset
+}
+
+export function getPokemonUsageFromDataset(dataset: UsageDataset, ...names: string[]): UsageEntry | null {
   for (const name of names) {
-    const hit = usageDataset.entries[normalizeId(name)]
+    const hit = dataset.entries[normalizeId(name)]
     if (hit) return hit
   }
   return null

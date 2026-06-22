@@ -17,7 +17,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -65,7 +65,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -108,7 +108,7 @@
       "Fire",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -156,7 +156,7 @@
       "Fire",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -199,7 +199,7 @@
       "Fire",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -241,7 +241,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -331,7 +331,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -379,7 +379,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -422,7 +422,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -475,7 +475,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -517,7 +517,7 @@
     "types": [
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -616,7 +616,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -664,7 +664,7 @@
       "Electric",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -685,6 +685,90 @@
     "searchKeys": [
       "雷丘",
       "raichualola",
+      "leiqiu",
+      "lq"
+    ]
+  },
+  {
+    "id": "raichumegax",
+    "num": 26,
+    "zh": "雷丘",
+    "name": "Raichu-Mega-X",
+    "pinyin": "leiqiu",
+    "initials": "lq",
+    "slugVariants": [
+      "雷丘",
+      "raichumegax",
+      "leiqiu"
+    ],
+    "baseSpeciesName": "Raichu",
+    "baseSpeciesId": "raichu",
+    "types": [
+      "Electric"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "electricsurge",
+        "en": "Electric Surge",
+        "zh": "电气制造者"
+      }
+    ],
+    "baseStats": {
+      "hp": 60,
+      "atk": 135,
+      "def": 95,
+      "spa": 90,
+      "spd": 95,
+      "spe": 110
+    },
+    "bst": 585,
+    "searchKeys": [
+      "雷丘",
+      "raichumegax",
+      "leiqiu",
+      "lq"
+    ]
+  },
+  {
+    "id": "raichumegay",
+    "num": 26,
+    "zh": "雷丘",
+    "name": "Raichu-Mega-Y",
+    "pinyin": "leiqiu",
+    "initials": "lq",
+    "slugVariants": [
+      "雷丘",
+      "raichumegay",
+      "leiqiu"
+    ],
+    "baseSpeciesName": "Raichu",
+    "baseSpeciesId": "raichu",
+    "types": [
+      "Electric"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "noguard",
+        "en": "No Guard",
+        "zh": "无防守"
+      }
+    ],
+    "baseStats": {
+      "hp": 60,
+      "atk": 100,
+      "def": 55,
+      "spa": 160,
+      "spd": 80,
+      "spe": 130
+    },
+    "bst": 585,
+    "searchKeys": [
+      "雷丘",
+      "raichumegay",
       "leiqiu",
       "lq"
     ]
@@ -759,7 +843,7 @@
       "Fairy",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -801,7 +885,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -849,7 +933,7 @@
       "Ice",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -880,6 +964,54 @@
     ]
   },
   {
+    "id": "vileplume",
+    "num": 45,
+    "zh": "霸王花",
+    "name": "Vileplume",
+    "pinyin": "bawanghua",
+    "initials": "bwh",
+    "slugVariants": [
+      "霸王花",
+      "vileplume",
+      "bawanghua"
+    ],
+    "baseSpeciesName": "Vileplume",
+    "baseSpeciesId": "vileplume",
+    "types": [
+      "Grass",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "chlorophyll",
+        "en": "Chlorophyll",
+        "zh": "叶绿素"
+      },
+      {
+        "id": "effectspore",
+        "en": "Effect Spore",
+        "zh": "孢子"
+      }
+    ],
+    "baseStats": {
+      "hp": 75,
+      "atk": 80,
+      "def": 85,
+      "spa": 110,
+      "spd": 90,
+      "spe": 50
+    },
+    "bst": 490,
+    "searchKeys": [
+      "霸王花",
+      "vileplume",
+      "bawanghua",
+      "bwh"
+    ]
+  },
+  {
     "id": "arcanine",
     "num": 59,
     "zh": "风速狗",
@@ -896,7 +1028,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -949,7 +1081,7 @@
       "Fire",
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1001,7 +1133,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1053,7 +1185,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -1095,7 +1227,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1148,7 +1280,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1196,7 +1328,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1239,7 +1371,7 @@
       "Water",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1292,7 +1424,7 @@
       "Poison",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1345,7 +1477,7 @@
       "Water",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1388,7 +1520,7 @@
       "Ghost",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1473,7 +1605,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1525,7 +1657,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1568,7 +1700,7 @@
       "Water",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1663,7 +1795,7 @@
     "types": [
       "Bug"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -1716,7 +1848,7 @@
       "Bug",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1758,7 +1890,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1811,7 +1943,7 @@
       "Fighting",
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1827,7 +1959,7 @@
       {
         "id": "cudchew",
         "en": "Cud Chew",
-        "zh": "Cud Chew"
+        "zh": "反刍"
       }
     ],
     "baseStats": {
@@ -1864,7 +1996,7 @@
       "Fighting",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1880,7 +2012,7 @@
       {
         "id": "cudchew",
         "en": "Cud Chew",
-        "zh": "Cud Chew"
+        "zh": "反刍"
       }
     ],
     "baseStats": {
@@ -1916,7 +2048,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -1932,7 +2064,7 @@
       {
         "id": "cudchew",
         "en": "Cud Chew",
-        "zh": "Cud Chew"
+        "zh": "反刍"
       }
     ],
     "baseStats": {
@@ -1969,7 +2101,7 @@
       "Water",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -2017,7 +2149,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2106,7 +2238,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2153,7 +2285,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2200,7 +2332,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2248,7 +2380,7 @@
       "Rock",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -2301,7 +2433,7 @@
       "Rock",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2343,7 +2475,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2444,7 +2576,7 @@
       "Dragon",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -2486,7 +2618,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -2576,7 +2708,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2624,7 +2756,7 @@
       "Fire",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2671,7 +2803,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -2719,7 +2851,7 @@
       "Water",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2762,7 +2894,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2814,7 +2946,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -2862,7 +2994,7 @@
       "Electric",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2905,7 +3037,7 @@
       "Water",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -2957,7 +3089,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3009,7 +3141,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3056,7 +3188,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3104,7 +3236,7 @@
       "Water",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3210,7 +3342,7 @@
       "Bug",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3258,7 +3390,7 @@
       "Steel",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3311,7 +3443,7 @@
       "Steel",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3334,6 +3466,59 @@
       "steelixmega",
       "dagangshe",
       "dgs"
+    ]
+  },
+  {
+    "id": "qwilfish",
+    "num": 211,
+    "zh": "千针鱼",
+    "name": "Qwilfish",
+    "pinyin": "qianzhenyu",
+    "initials": "qzy",
+    "slugVariants": [
+      "千针鱼",
+      "qwilfish",
+      "qianzhenyu"
+    ],
+    "baseSpeciesName": "Qwilfish",
+    "baseSpeciesId": "qwilfish",
+    "types": [
+      "Water",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "poisonpoint",
+        "en": "Poison Point",
+        "zh": "毒刺"
+      },
+      {
+        "id": "swiftswim",
+        "en": "Swift Swim",
+        "zh": "悠游自如"
+      },
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 95,
+      "def": 85,
+      "spa": 55,
+      "spd": 55,
+      "spe": 85
+    },
+    "bst": 440,
+    "searchKeys": [
+      "千针鱼",
+      "qwilfish",
+      "qianzhenyu",
+      "qzy"
     ]
   },
   {
@@ -3450,7 +3635,7 @@
       "Bug",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3503,7 +3688,7 @@
       "Bug",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3546,7 +3731,7 @@
       "Steel",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3599,7 +3784,7 @@
       "Steel",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3642,7 +3827,7 @@
       "Dark",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3695,7 +3880,7 @@
       "Dark",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3738,7 +3923,7 @@
       "Rock",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3786,7 +3971,7 @@
       "Rock",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3809,6 +3994,278 @@
       "tyranitarmega",
       "banjilasi",
       "bjls"
+    ]
+  },
+  {
+    "id": "sceptile",
+    "num": 254,
+    "zh": "蜥蜴王",
+    "name": "Sceptile",
+    "pinyin": "xiyiwang",
+    "initials": "xyw",
+    "slugVariants": [
+      "蜥蜴王",
+      "sceptile",
+      "xiyiwang"
+    ],
+    "baseSpeciesName": "Sceptile",
+    "baseSpeciesId": "sceptile",
+    "types": [
+      "Grass"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "overgrow",
+        "en": "Overgrow",
+        "zh": "茂盛"
+      },
+      {
+        "id": "unburden",
+        "en": "Unburden",
+        "zh": "轻装"
+      }
+    ],
+    "baseStats": {
+      "hp": 70,
+      "atk": 85,
+      "def": 65,
+      "spa": 105,
+      "spd": 85,
+      "spe": 120
+    },
+    "bst": 530,
+    "searchKeys": [
+      "蜥蜴王",
+      "sceptile",
+      "xiyiwang",
+      "xyw"
+    ]
+  },
+  {
+    "id": "sceptilemega",
+    "num": 254,
+    "zh": "蜥蜴王",
+    "name": "Sceptile-Mega",
+    "pinyin": "xiyiwang",
+    "initials": "xyw",
+    "slugVariants": [
+      "蜥蜴王",
+      "sceptilemega",
+      "xiyiwang"
+    ],
+    "baseSpeciesName": "Sceptile",
+    "baseSpeciesId": "sceptile",
+    "types": [
+      "Grass",
+      "Dragon"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "lightningrod",
+        "en": "Lightning Rod",
+        "zh": "避雷针"
+      }
+    ],
+    "baseStats": {
+      "hp": 70,
+      "atk": 110,
+      "def": 75,
+      "spa": 145,
+      "spd": 85,
+      "spe": 145
+    },
+    "bst": 630,
+    "searchKeys": [
+      "蜥蜴王",
+      "sceptilemega",
+      "xiyiwang",
+      "xyw"
+    ]
+  },
+  {
+    "id": "blaziken",
+    "num": 257,
+    "zh": "火焰鸡",
+    "name": "Blaziken",
+    "pinyin": "huoyanji",
+    "initials": "hyj",
+    "slugVariants": [
+      "火焰鸡",
+      "blaziken",
+      "huoyanji"
+    ],
+    "baseSpeciesName": "Blaziken",
+    "baseSpeciesId": "blaziken",
+    "types": [
+      "Fire",
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "blaze",
+        "en": "Blaze",
+        "zh": "猛火"
+      },
+      {
+        "id": "speedboost",
+        "en": "Speed Boost",
+        "zh": "加速"
+      }
+    ],
+    "baseStats": {
+      "hp": 80,
+      "atk": 120,
+      "def": 70,
+      "spa": 110,
+      "spd": 70,
+      "spe": 80
+    },
+    "bst": 530,
+    "searchKeys": [
+      "火焰鸡",
+      "blaziken",
+      "huoyanji",
+      "hyj"
+    ]
+  },
+  {
+    "id": "blazikenmega",
+    "num": 257,
+    "zh": "火焰鸡",
+    "name": "Blaziken-Mega",
+    "pinyin": "huoyanji",
+    "initials": "hyj",
+    "slugVariants": [
+      "火焰鸡",
+      "blazikenmega",
+      "huoyanji"
+    ],
+    "baseSpeciesName": "Blaziken",
+    "baseSpeciesId": "blaziken",
+    "types": [
+      "Fire",
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "speedboost",
+        "en": "Speed Boost",
+        "zh": "加速"
+      }
+    ],
+    "baseStats": {
+      "hp": 80,
+      "atk": 160,
+      "def": 80,
+      "spa": 130,
+      "spd": 80,
+      "spe": 100
+    },
+    "bst": 630,
+    "searchKeys": [
+      "火焰鸡",
+      "blazikenmega",
+      "huoyanji",
+      "hyj"
+    ]
+  },
+  {
+    "id": "swampert",
+    "num": 260,
+    "zh": "巨沼怪",
+    "name": "Swampert",
+    "pinyin": "juzhaoguai",
+    "initials": "jzg",
+    "slugVariants": [
+      "巨沼怪",
+      "swampert",
+      "juzhaoguai"
+    ],
+    "baseSpeciesName": "Swampert",
+    "baseSpeciesId": "swampert",
+    "types": [
+      "Water",
+      "Ground"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "torrent",
+        "en": "Torrent",
+        "zh": "激流"
+      },
+      {
+        "id": "damp",
+        "en": "Damp",
+        "zh": "湿气"
+      }
+    ],
+    "baseStats": {
+      "hp": 100,
+      "atk": 110,
+      "def": 90,
+      "spa": 85,
+      "spd": 90,
+      "spe": 60
+    },
+    "bst": 535,
+    "searchKeys": [
+      "巨沼怪",
+      "swampert",
+      "juzhaoguai",
+      "jzg"
+    ]
+  },
+  {
+    "id": "swampertmega",
+    "num": 260,
+    "zh": "巨沼怪",
+    "name": "Swampert-Mega",
+    "pinyin": "juzhaoguai",
+    "initials": "jzg",
+    "slugVariants": [
+      "巨沼怪",
+      "swampertmega",
+      "juzhaoguai"
+    ],
+    "baseSpeciesName": "Swampert",
+    "baseSpeciesId": "swampert",
+    "types": [
+      "Water",
+      "Ground"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "swiftswim",
+        "en": "Swift Swim",
+        "zh": "悠游自如"
+      }
+    ],
+    "baseStats": {
+      "hp": 100,
+      "atk": 150,
+      "def": 110,
+      "spa": 95,
+      "spd": 110,
+      "spe": 70
+    },
+    "bst": 635,
+    "searchKeys": [
+      "巨沼怪",
+      "swampertmega",
+      "juzhaoguai",
+      "jzg"
     ]
   },
   {
@@ -3882,7 +4339,7 @@
       "Psychic",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -3935,7 +4392,7 @@
       "Psychic",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3978,7 +4435,7 @@
       "Dark",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4031,7 +4488,7 @@
       "Dark",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4057,6 +4514,102 @@
     ]
   },
   {
+    "id": "mawile",
+    "num": 303,
+    "zh": "大嘴娃",
+    "name": "Mawile",
+    "pinyin": "dazuiwa",
+    "initials": "dzw",
+    "slugVariants": [
+      "大嘴娃",
+      "mawile",
+      "dazuiwa"
+    ],
+    "baseSpeciesName": "Mawile",
+    "baseSpeciesId": "mawile",
+    "types": [
+      "Steel",
+      "Fairy"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "hypercutter",
+        "en": "Hyper Cutter",
+        "zh": "怪力钳"
+      },
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      },
+      {
+        "id": "sheerforce",
+        "en": "Sheer Force",
+        "zh": "强行"
+      }
+    ],
+    "baseStats": {
+      "hp": 50,
+      "atk": 85,
+      "def": 85,
+      "spa": 55,
+      "spd": 55,
+      "spe": 50
+    },
+    "bst": 380,
+    "searchKeys": [
+      "大嘴娃",
+      "mawile",
+      "dazuiwa",
+      "dzw"
+    ]
+  },
+  {
+    "id": "mawilemega",
+    "num": 303,
+    "zh": "大嘴娃",
+    "name": "Mawile-Mega",
+    "pinyin": "dazuiwa",
+    "initials": "dzw",
+    "slugVariants": [
+      "大嘴娃",
+      "mawilemega",
+      "dazuiwa"
+    ],
+    "baseSpeciesName": "Mawile",
+    "baseSpeciesId": "mawile",
+    "types": [
+      "Steel",
+      "Fairy"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "hugepower",
+        "en": "Huge Power",
+        "zh": "大力士"
+      }
+    ],
+    "baseStats": {
+      "hp": 50,
+      "atk": 105,
+      "def": 125,
+      "spa": 55,
+      "spd": 95,
+      "spe": 50
+    },
+    "bst": 480,
+    "searchKeys": [
+      "大嘴娃",
+      "mawilemega",
+      "dazuiwa",
+      "dzw"
+    ]
+  },
+  {
     "id": "aggron",
     "num": 306,
     "zh": "波士可多拉",
@@ -4074,7 +4627,7 @@
       "Steel",
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4126,7 +4679,7 @@
     "types": [
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4169,7 +4722,7 @@
       "Fighting",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4217,7 +4770,7 @@
       "Fighting",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4259,7 +4812,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4311,7 +4864,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4354,7 +4907,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4402,7 +4955,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4445,7 +4998,7 @@
       "Fire",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4498,7 +5051,7 @@
       "Fire",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4540,7 +5093,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4593,7 +5146,7 @@
       "Dragon",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4641,7 +5194,7 @@
       "Dragon",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4683,7 +5236,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4735,7 +5288,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4777,7 +5330,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4829,7 +5382,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4871,7 +5424,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4914,7 +5467,7 @@
       "Psychic",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4956,7 +5509,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5008,7 +5561,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5050,7 +5603,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5102,7 +5655,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5128,6 +5681,97 @@
     ]
   },
   {
+    "id": "metagross",
+    "num": 376,
+    "zh": "巨金怪",
+    "name": "Metagross",
+    "pinyin": "jujinguai",
+    "initials": "jjg",
+    "slugVariants": [
+      "巨金怪",
+      "metagross",
+      "jujinguai"
+    ],
+    "baseSpeciesName": "Metagross",
+    "baseSpeciesId": "metagross",
+    "types": [
+      "Steel",
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "clearbody",
+        "en": "Clear Body",
+        "zh": "恒净之躯"
+      },
+      {
+        "id": "lightmetal",
+        "en": "Light Metal",
+        "zh": "轻金属"
+      }
+    ],
+    "baseStats": {
+      "hp": 80,
+      "atk": 135,
+      "def": 130,
+      "spa": 95,
+      "spd": 90,
+      "spe": 70
+    },
+    "bst": 600,
+    "searchKeys": [
+      "巨金怪",
+      "metagross",
+      "jujinguai",
+      "jjg"
+    ]
+  },
+  {
+    "id": "metagrossmega",
+    "num": 376,
+    "zh": "巨金怪",
+    "name": "Metagross-Mega",
+    "pinyin": "jujinguai",
+    "initials": "jjg",
+    "slugVariants": [
+      "巨金怪",
+      "metagrossmega",
+      "jujinguai"
+    ],
+    "baseSpeciesName": "Metagross",
+    "baseSpeciesId": "metagross",
+    "types": [
+      "Steel",
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "toughclaws",
+        "en": "Tough Claws",
+        "zh": "硬爪"
+      }
+    ],
+    "baseStats": {
+      "hp": 80,
+      "atk": 145,
+      "def": 150,
+      "spa": 105,
+      "spd": 110,
+      "spe": 110
+    },
+    "bst": 700,
+    "searchKeys": [
+      "巨金怪",
+      "metagrossmega",
+      "jujinguai",
+      "jjg"
+    ]
+  },
+  {
     "id": "torterra",
     "num": 389,
     "zh": "土台龟",
@@ -5145,7 +5789,7 @@
       "Grass",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5193,7 +5837,7 @@
       "Fire",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5241,7 +5885,7 @@
       "Water",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5272,6 +5916,97 @@
     ]
   },
   {
+    "id": "staraptor",
+    "num": 398,
+    "zh": "姆克鹰",
+    "name": "Staraptor",
+    "pinyin": "mukeying",
+    "initials": "mky",
+    "slugVariants": [
+      "姆克鹰",
+      "staraptor",
+      "mukeying"
+    ],
+    "baseSpeciesName": "Staraptor",
+    "baseSpeciesId": "staraptor",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      },
+      {
+        "id": "reckless",
+        "en": "Reckless",
+        "zh": "舍身"
+      }
+    ],
+    "baseStats": {
+      "hp": 85,
+      "atk": 120,
+      "def": 70,
+      "spa": 50,
+      "spd": 60,
+      "spe": 100
+    },
+    "bst": 485,
+    "searchKeys": [
+      "姆克鹰",
+      "staraptor",
+      "mukeying",
+      "mky"
+    ]
+  },
+  {
+    "id": "staraptormega",
+    "num": 398,
+    "zh": "姆克鹰",
+    "name": "Staraptor-Mega",
+    "pinyin": "mukeying",
+    "initials": "mky",
+    "slugVariants": [
+      "姆克鹰",
+      "staraptormega",
+      "mukeying"
+    ],
+    "baseSpeciesName": "Staraptor",
+    "baseSpeciesId": "staraptor",
+    "types": [
+      "Fighting",
+      "Flying"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "contrary",
+        "en": "Contrary",
+        "zh": "唱反调"
+      }
+    ],
+    "baseStats": {
+      "hp": 85,
+      "atk": 140,
+      "def": 100,
+      "spa": 60,
+      "spd": 90,
+      "spe": 110
+    },
+    "bst": 585,
+    "searchKeys": [
+      "姆克鹰",
+      "staraptormega",
+      "mukeying",
+      "mky"
+    ]
+  },
+  {
     "id": "luxray",
     "num": 405,
     "zh": "伦琴猫",
@@ -5288,7 +6023,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5341,7 +6076,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5393,7 +6128,7 @@
     "types": [
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5441,7 +6176,7 @@
       "Rock",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5488,7 +6223,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5584,7 +6319,7 @@
       "Ghost",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5680,7 +6415,7 @@
       "Dragon",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -5723,7 +6458,7 @@
       "Fighting",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5818,7 +6553,7 @@
     "types": [
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5866,7 +6601,7 @@
       "Poison",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -5919,7 +6654,7 @@
       "Grass",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5967,7 +6702,7 @@
       "Grass",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6010,7 +6745,7 @@
       "Dark",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6058,7 +6793,7 @@
       "Ground",
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6110,7 +6845,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6157,7 +6892,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6205,7 +6940,7 @@
       "Ground",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6258,7 +6993,7 @@
       "Ice",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6311,7 +7046,7 @@
       "Psychic",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -6322,7 +7057,7 @@
       {
         "id": "sharpness",
         "en": "Sharpness",
-        "zh": "Sharpness"
+        "zh": "锋锐"
       },
       {
         "id": "justified",
@@ -6364,7 +7099,7 @@
       "Psychic",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6407,7 +7142,7 @@
       "Ice",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -6455,7 +7190,7 @@
       "Ice",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6498,7 +7233,7 @@
       "Electric",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6541,7 +7276,7 @@
       "Electric",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6584,7 +7319,7 @@
       "Electric",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6627,7 +7362,7 @@
       "Electric",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6670,7 +7405,7 @@
       "Electric",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6755,7 +7490,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6803,7 +7538,7 @@
       "Fire",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -6851,7 +7586,7 @@
       "Fire",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6893,7 +7628,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -6952,7 +7687,7 @@
       {
         "id": "sharpness",
         "en": "Sharpness",
-        "zh": "Sharpness"
+        "zh": "锋锐"
       }
     ],
     "baseStats": {
@@ -6988,7 +7723,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7040,7 +7775,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7092,7 +7827,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7139,7 +7874,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7186,7 +7921,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7214,6 +7949,58 @@
       "simipour",
       "lengshuiyuan",
       "lsy"
+    ]
+  },
+  {
+    "id": "musharna",
+    "num": 518,
+    "zh": "梦梦蚀",
+    "name": "Musharna",
+    "pinyin": "mengmengshi",
+    "initials": "mms",
+    "slugVariants": [
+      "梦梦蚀",
+      "musharna",
+      "mengmengshi"
+    ],
+    "baseSpeciesName": "Musharna",
+    "baseSpeciesId": "musharna",
+    "types": [
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "forewarn",
+        "en": "Forewarn",
+        "zh": "预知梦"
+      },
+      {
+        "id": "synchronize",
+        "en": "Synchronize",
+        "zh": "同步"
+      },
+      {
+        "id": "telepathy",
+        "en": "Telepathy",
+        "zh": "心灵感应"
+      }
+    ],
+    "baseStats": {
+      "hp": 116,
+      "atk": 55,
+      "def": 85,
+      "spa": 107,
+      "spd": 95,
+      "spe": 29
+    },
+    "bst": 487,
+    "searchKeys": [
+      "梦梦蚀",
+      "musharna",
+      "mengmengshi",
+      "mms"
     ]
   },
   {
@@ -7287,13 +8074,13 @@
       "Ground",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
         "id": "piercingdrill",
         "en": "Piercing Drill",
-        "zh": "Piercing Drill"
+        "zh": "辣椒喷发"
       }
     ],
     "baseStats": {
@@ -7329,7 +8116,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -7382,7 +8169,7 @@
       "Normal",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7424,7 +8211,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7460,6 +8247,102 @@
     ]
   },
   {
+    "id": "scolipede",
+    "num": 545,
+    "zh": "蜈蚣王",
+    "name": "Scolipede",
+    "pinyin": "wugongwang",
+    "initials": "wgw",
+    "slugVariants": [
+      "蜈蚣王",
+      "scolipede",
+      "wugongwang"
+    ],
+    "baseSpeciesName": "Scolipede",
+    "baseSpeciesId": "scolipede",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "poisonpoint",
+        "en": "Poison Point",
+        "zh": "毒刺"
+      },
+      {
+        "id": "swarm",
+        "en": "Swarm",
+        "zh": "虫之预感"
+      },
+      {
+        "id": "speedboost",
+        "en": "Speed Boost",
+        "zh": "加速"
+      }
+    ],
+    "baseStats": {
+      "hp": 60,
+      "atk": 100,
+      "def": 89,
+      "spa": 55,
+      "spd": 69,
+      "spe": 112
+    },
+    "bst": 485,
+    "searchKeys": [
+      "蜈蚣王",
+      "scolipede",
+      "wugongwang",
+      "wgw"
+    ]
+  },
+  {
+    "id": "scolipedemega",
+    "num": 545,
+    "zh": "蜈蚣王",
+    "name": "Scolipede-Mega",
+    "pinyin": "wugongwang",
+    "initials": "wgw",
+    "slugVariants": [
+      "蜈蚣王",
+      "scolipedemega",
+      "wugongwang"
+    ],
+    "baseSpeciesName": "Scolipede",
+    "baseSpeciesId": "scolipede",
+    "types": [
+      "Bug",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "shellarmor",
+        "en": "Shell Armor",
+        "zh": "硬壳盔甲"
+      }
+    ],
+    "baseStats": {
+      "hp": 60,
+      "atk": 140,
+      "def": 149,
+      "spa": 75,
+      "spd": 99,
+      "spe": 62
+    },
+    "bst": 585,
+    "searchKeys": [
+      "蜈蚣王",
+      "scolipedemega",
+      "wugongwang",
+      "wgw"
+    ]
+  },
+  {
     "id": "whimsicott",
     "num": 547,
     "zh": "风妖精",
@@ -7477,7 +8360,7 @@
       "Grass",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7530,7 +8413,7 @@
       "Ground",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7566,6 +8449,102 @@
     ]
   },
   {
+    "id": "scrafty",
+    "num": 560,
+    "zh": "头巾混混",
+    "name": "Scrafty",
+    "pinyin": "toujinhunhun",
+    "initials": "tjhh",
+    "slugVariants": [
+      "头巾混混",
+      "scrafty",
+      "toujinhunhun"
+    ],
+    "baseSpeciesName": "Scrafty",
+    "baseSpeciesId": "scrafty",
+    "types": [
+      "Dark",
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "shedskin",
+        "en": "Shed Skin",
+        "zh": "蜕皮"
+      },
+      {
+        "id": "moxie",
+        "en": "Moxie",
+        "zh": "自信过度"
+      },
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 90,
+      "def": 115,
+      "spa": 45,
+      "spd": 115,
+      "spe": 58
+    },
+    "bst": 488,
+    "searchKeys": [
+      "头巾混混",
+      "scrafty",
+      "toujinhunhun",
+      "tjhh"
+    ]
+  },
+  {
+    "id": "scraftymega",
+    "num": 560,
+    "zh": "头巾混混",
+    "name": "Scrafty-Mega",
+    "pinyin": "toujinhunhun",
+    "initials": "tjhh",
+    "slugVariants": [
+      "头巾混混",
+      "scraftymega",
+      "toujinhunhun"
+    ],
+    "baseSpeciesName": "Scrafty",
+    "baseSpeciesId": "scrafty",
+    "types": [
+      "Dark",
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 130,
+      "def": 135,
+      "spa": 55,
+      "spd": 135,
+      "spe": 68
+    },
+    "bst": 588,
+    "searchKeys": [
+      "头巾混混",
+      "scraftymega",
+      "toujinhunhun",
+      "tjhh"
+    ]
+  },
+  {
     "id": "cofagrigus",
     "num": 563,
     "zh": "迭失棺",
@@ -7582,7 +8561,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7624,7 +8603,7 @@
     "types": [
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7676,7 +8655,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7719,7 +8698,7 @@
       "Normal",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7761,7 +8740,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7813,7 +8792,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7866,7 +8845,7 @@
       "Electric",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -7897,6 +8876,90 @@
     ]
   },
   {
+    "id": "eelektross",
+    "num": 604,
+    "zh": "麻麻鳗鱼王",
+    "name": "Eelektross",
+    "pinyin": "mamamanyuwang",
+    "initials": "mmmyw",
+    "slugVariants": [
+      "麻麻鳗鱼王",
+      "eelektross",
+      "mamamanyuwang"
+    ],
+    "baseSpeciesName": "Eelektross",
+    "baseSpeciesId": "eelektross",
+    "types": [
+      "Electric"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "levitate",
+        "en": "Levitate",
+        "zh": "飘浮"
+      }
+    ],
+    "baseStats": {
+      "hp": 85,
+      "atk": 115,
+      "def": 80,
+      "spa": 105,
+      "spd": 80,
+      "spe": 50
+    },
+    "bst": 515,
+    "searchKeys": [
+      "麻麻鳗鱼王",
+      "eelektross",
+      "mamamanyuwang",
+      "mmmyw"
+    ]
+  },
+  {
+    "id": "eelektrossmega",
+    "num": 604,
+    "zh": "麻麻鳗鱼王",
+    "name": "Eelektross-Mega",
+    "pinyin": "mamamanyuwang",
+    "initials": "mmmyw",
+    "slugVariants": [
+      "麻麻鳗鱼王",
+      "eelektrossmega",
+      "mamamanyuwang"
+    ],
+    "baseSpeciesName": "Eelektross",
+    "baseSpeciesId": "eelektross",
+    "types": [
+      "Electric"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "eelevate",
+        "en": "Eelevate",
+        "zh": "Eelevate"
+      }
+    ],
+    "baseStats": {
+      "hp": 85,
+      "atk": 145,
+      "def": 80,
+      "spa": 135,
+      "spd": 90,
+      "spe": 80
+    },
+    "bst": 615,
+    "searchKeys": [
+      "麻麻鳗鱼王",
+      "eelektrossmega",
+      "mamamanyuwang",
+      "mmmyw"
+    ]
+  },
+  {
     "id": "chandelure",
     "num": 609,
     "zh": "水晶灯火灵",
@@ -7914,7 +8977,7 @@
       "Ghost",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -7967,7 +9030,7 @@
       "Ghost",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8009,7 +9072,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8062,7 +9125,7 @@
       "Ground",
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8115,7 +9178,7 @@
       "Ground",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8158,7 +9221,7 @@
       "Ground",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8211,7 +9274,7 @@
       "Ground",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8345,7 +9408,7 @@
       "Grass",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8393,7 +9456,7 @@
       "Grass",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8436,7 +9499,7 @@
       "Fire",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8527,7 +9590,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8580,7 +9643,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8623,7 +9686,7 @@
       "Normal",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8676,7 +9739,7 @@
       "Fire",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8724,7 +9787,7 @@
       "Bug",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8760,6 +9823,102 @@
     ]
   },
   {
+    "id": "pyroar",
+    "num": 668,
+    "zh": "火炎狮",
+    "name": "Pyroar",
+    "pinyin": "huoyanshi",
+    "initials": "hys",
+    "slugVariants": [
+      "火炎狮",
+      "pyroar",
+      "huoyanshi"
+    ],
+    "baseSpeciesName": "Pyroar",
+    "baseSpeciesId": "pyroar",
+    "types": [
+      "Fire",
+      "Normal"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "rivalry",
+        "en": "Rivalry",
+        "zh": "斗争心"
+      },
+      {
+        "id": "unnerve",
+        "en": "Unnerve",
+        "zh": "紧张感"
+      },
+      {
+        "id": "moxie",
+        "en": "Moxie",
+        "zh": "自信过度"
+      }
+    ],
+    "baseStats": {
+      "hp": 86,
+      "atk": 68,
+      "def": 72,
+      "spa": 109,
+      "spd": 66,
+      "spe": 106
+    },
+    "bst": 507,
+    "searchKeys": [
+      "火炎狮",
+      "pyroar",
+      "huoyanshi",
+      "hys"
+    ]
+  },
+  {
+    "id": "pyroarmega",
+    "num": 668,
+    "zh": "火炎狮",
+    "name": "Pyroar-Mega",
+    "pinyin": "huoyanshi",
+    "initials": "hys",
+    "slugVariants": [
+      "火炎狮",
+      "pyroarmega",
+      "huoyanshi"
+    ],
+    "baseSpeciesName": "Pyroar",
+    "baseSpeciesId": "pyroar",
+    "types": [
+      "Fire",
+      "Normal"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "firemane",
+        "en": "Fire Mane",
+        "zh": "Fire Mane"
+      }
+    ],
+    "baseStats": {
+      "hp": 86,
+      "atk": 88,
+      "def": 92,
+      "spa": 129,
+      "spd": 86,
+      "spe": 126
+    },
+    "bst": 607,
+    "searchKeys": [
+      "火炎狮",
+      "pyroarmega",
+      "huoyanshi",
+      "hys"
+    ]
+  },
+  {
     "id": "floetteeternal",
     "num": 670,
     "zh": "花叶蒂",
@@ -8776,8 +9935,8 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
-    "hasMega": true,
+    "tier": "UU",
+    "hasMega": false,
     "abilities": [
       {
         "id": "flowerveil",
@@ -8865,7 +10024,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8913,7 +10072,7 @@
       "Fighting",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8965,7 +10124,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9007,7 +10166,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -9061,7 +10220,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -9113,7 +10272,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9198,7 +10357,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9245,7 +10404,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9276,6 +10435,294 @@
     ]
   },
   {
+    "id": "malamar",
+    "num": 687,
+    "zh": "乌贼王",
+    "name": "Malamar",
+    "pinyin": "wuzeiwang",
+    "initials": "wzw",
+    "slugVariants": [
+      "乌贼王",
+      "malamar",
+      "wuzeiwang"
+    ],
+    "baseSpeciesName": "Malamar",
+    "baseSpeciesId": "malamar",
+    "types": [
+      "Dark",
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "contrary",
+        "en": "Contrary",
+        "zh": "唱反调"
+      },
+      {
+        "id": "suctioncups",
+        "en": "Suction Cups",
+        "zh": "吸盘"
+      },
+      {
+        "id": "infiltrator",
+        "en": "Infiltrator",
+        "zh": "穿透"
+      }
+    ],
+    "baseStats": {
+      "hp": 86,
+      "atk": 92,
+      "def": 88,
+      "spa": 68,
+      "spd": 75,
+      "spe": 73
+    },
+    "bst": 482,
+    "searchKeys": [
+      "乌贼王",
+      "malamar",
+      "wuzeiwang",
+      "wzw"
+    ]
+  },
+  {
+    "id": "malamarmega",
+    "num": 687,
+    "zh": "乌贼王",
+    "name": "Malamar-Mega",
+    "pinyin": "wuzeiwang",
+    "initials": "wzw",
+    "slugVariants": [
+      "乌贼王",
+      "malamarmega",
+      "wuzeiwang"
+    ],
+    "baseSpeciesName": "Malamar",
+    "baseSpeciesId": "malamar",
+    "types": [
+      "Dark",
+      "Psychic"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "contrary",
+        "en": "Contrary",
+        "zh": "唱反调"
+      }
+    ],
+    "baseStats": {
+      "hp": 86,
+      "atk": 102,
+      "def": 88,
+      "spa": 98,
+      "spd": 120,
+      "spe": 88
+    },
+    "bst": 582,
+    "searchKeys": [
+      "乌贼王",
+      "malamarmega",
+      "wuzeiwang",
+      "wzw"
+    ]
+  },
+  {
+    "id": "barbaracle",
+    "num": 689,
+    "zh": "龟足巨铠",
+    "name": "Barbaracle",
+    "pinyin": "guizujukai",
+    "initials": "gzjk",
+    "slugVariants": [
+      "龟足巨铠",
+      "barbaracle",
+      "guizujukai"
+    ],
+    "baseSpeciesName": "Barbaracle",
+    "baseSpeciesId": "barbaracle",
+    "types": [
+      "Rock",
+      "Water"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "toughclaws",
+        "en": "Tough Claws",
+        "zh": "硬爪"
+      },
+      {
+        "id": "sniper",
+        "en": "Sniper",
+        "zh": "狙击手"
+      },
+      {
+        "id": "pickpocket",
+        "en": "Pickpocket",
+        "zh": "顺手牵羊"
+      }
+    ],
+    "baseStats": {
+      "hp": 72,
+      "atk": 105,
+      "def": 115,
+      "spa": 54,
+      "spd": 86,
+      "spe": 68
+    },
+    "bst": 500,
+    "searchKeys": [
+      "龟足巨铠",
+      "barbaracle",
+      "guizujukai",
+      "gzjk"
+    ]
+  },
+  {
+    "id": "barbaraclemega",
+    "num": 689,
+    "zh": "龟足巨铠",
+    "name": "Barbaracle-Mega",
+    "pinyin": "guizujukai",
+    "initials": "gzjk",
+    "slugVariants": [
+      "龟足巨铠",
+      "barbaraclemega",
+      "guizujukai"
+    ],
+    "baseSpeciesName": "Barbaracle",
+    "baseSpeciesId": "barbaracle",
+    "types": [
+      "Rock",
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "toughclaws",
+        "en": "Tough Claws",
+        "zh": "硬爪"
+      }
+    ],
+    "baseStats": {
+      "hp": 72,
+      "atk": 140,
+      "def": 130,
+      "spa": 64,
+      "spd": 106,
+      "spe": 88
+    },
+    "bst": 600,
+    "searchKeys": [
+      "龟足巨铠",
+      "barbaraclemega",
+      "guizujukai",
+      "gzjk"
+    ]
+  },
+  {
+    "id": "dragalge",
+    "num": 691,
+    "zh": "毒藻龙",
+    "name": "Dragalge",
+    "pinyin": "duzaolong",
+    "initials": "dzl",
+    "slugVariants": [
+      "毒藻龙",
+      "dragalge",
+      "duzaolong"
+    ],
+    "baseSpeciesName": "Dragalge",
+    "baseSpeciesId": "dragalge",
+    "types": [
+      "Poison",
+      "Dragon"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "poisonpoint",
+        "en": "Poison Point",
+        "zh": "毒刺"
+      },
+      {
+        "id": "poisontouch",
+        "en": "Poison Touch",
+        "zh": "毒手"
+      },
+      {
+        "id": "adaptability",
+        "en": "Adaptability",
+        "zh": "适应力"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 75,
+      "def": 90,
+      "spa": 97,
+      "spd": 123,
+      "spe": 44
+    },
+    "bst": 494,
+    "searchKeys": [
+      "毒藻龙",
+      "dragalge",
+      "duzaolong",
+      "dzl"
+    ]
+  },
+  {
+    "id": "dragalgemega",
+    "num": 691,
+    "zh": "毒藻龙",
+    "name": "Dragalge-Mega",
+    "pinyin": "duzaolong",
+    "initials": "dzl",
+    "slugVariants": [
+      "毒藻龙",
+      "dragalgemega",
+      "duzaolong"
+    ],
+    "baseSpeciesName": "Dragalge",
+    "baseSpeciesId": "dragalge",
+    "types": [
+      "Poison",
+      "Dragon"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "regenerator",
+        "en": "Regenerator",
+        "zh": "再生力"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 85,
+      "def": 105,
+      "spa": 132,
+      "spd": 163,
+      "spe": 44
+    },
+    "bst": 594,
+    "searchKeys": [
+      "毒藻龙",
+      "dragalgemega",
+      "duzaolong",
+      "dzl"
+    ]
+  },
+  {
     "id": "clawitzer",
     "num": 693,
     "zh": "钢炮臂虾",
@@ -9292,7 +10739,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9335,7 +10782,7 @@
       "Electric",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9388,7 +10835,7 @@
       "Rock",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9436,7 +10883,7 @@
       "Rock",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9483,7 +10930,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9531,7 +10978,7 @@
       "Fighting",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -9584,7 +11031,7 @@
       "Fighting",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9627,7 +11074,7 @@
       "Electric",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9679,7 +11126,7 @@
     "types": [
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9732,7 +11179,7 @@
       "Steel",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9785,7 +11232,7 @@
       "Steel",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9833,7 +11280,7 @@
       "Ghost",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9886,7 +11333,7 @@
       "Ghost",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9939,7 +11386,7 @@
       "Ghost",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9992,7 +11439,7 @@
       "Ghost",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10045,7 +11492,7 @@
       "Ghost",
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10097,7 +11544,7 @@
     "types": [
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10150,7 +11597,7 @@
       "Ice",
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10203,7 +11650,7 @@
       "Flying",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10256,7 +11703,7 @@
       "Grass",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10304,7 +11751,7 @@
       "Grass",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10352,7 +11799,7 @@
       "Fire",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10448,7 +11895,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10501,7 +11948,7 @@
       "Fighting",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -10554,7 +12001,7 @@
       "Fighting",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10596,7 +12043,7 @@
     "types": [
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10648,7 +12095,7 @@
     "types": [
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10690,7 +12137,7 @@
     "types": [
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10795,7 +12242,7 @@
     "types": [
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10896,7 +12343,7 @@
       "Poison",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10943,7 +12390,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10996,7 +12443,7 @@
       "Normal",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11048,7 +12495,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11096,7 +12543,7 @@
       "Ghost",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11139,7 +12586,7 @@
       "Normal",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -11192,7 +12639,7 @@
       "Normal",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11235,7 +12682,7 @@
       "Dragon",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11341,7 +12788,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11394,7 +12841,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11446,7 +12893,7 @@
     "types": [
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11498,7 +12945,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11582,6 +13029,59 @@
     ]
   },
   {
+    "id": "grimmsnarl",
+    "num": 861,
+    "zh": "长毛巨魔",
+    "name": "Grimmsnarl",
+    "pinyin": "changmaojumo",
+    "initials": "cmjm",
+    "slugVariants": [
+      "长毛巨魔",
+      "grimmsnarl",
+      "changmaojumo"
+    ],
+    "baseSpeciesName": "Grimmsnarl",
+    "baseSpeciesId": "grimmsnarl",
+    "types": [
+      "Dark",
+      "Fairy"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "prankster",
+        "en": "Prankster",
+        "zh": "恶作剧之心"
+      },
+      {
+        "id": "frisk",
+        "en": "Frisk",
+        "zh": "察觉"
+      },
+      {
+        "id": "pickpocket",
+        "en": "Pickpocket",
+        "zh": "顺手牵羊"
+      }
+    ],
+    "baseStats": {
+      "hp": 95,
+      "atk": 120,
+      "def": 65,
+      "spa": 95,
+      "spd": 75,
+      "spe": 60
+    },
+    "bst": 510,
+    "searchKeys": [
+      "长毛巨魔",
+      "grimmsnarl",
+      "changmaojumo",
+      "cmjm"
+    ]
+  },
+  {
     "id": "mrrime",
     "num": 866,
     "zh": "踏冰人偶",
@@ -11599,7 +13099,7 @@
       "Ice",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11652,7 +13152,7 @@
       "Ground",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11694,7 +13194,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11725,6 +13225,95 @@
     ]
   },
   {
+    "id": "falinks",
+    "num": 870,
+    "zh": "列阵兵",
+    "name": "Falinks",
+    "pinyin": "liezhenbing",
+    "initials": "lzb",
+    "slugVariants": [
+      "列阵兵",
+      "falinks",
+      "liezhenbing"
+    ],
+    "baseSpeciesName": "Falinks",
+    "baseSpeciesId": "falinks",
+    "types": [
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": true,
+    "abilities": [
+      {
+        "id": "battlearmor",
+        "en": "Battle Armor",
+        "zh": "战斗盔甲"
+      },
+      {
+        "id": "defiant",
+        "en": "Defiant",
+        "zh": "不服输"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 100,
+      "def": 100,
+      "spa": 70,
+      "spd": 60,
+      "spe": 75
+    },
+    "bst": 470,
+    "searchKeys": [
+      "列阵兵",
+      "falinks",
+      "liezhenbing",
+      "lzb"
+    ]
+  },
+  {
+    "id": "falinksmega",
+    "num": 870,
+    "zh": "列阵兵",
+    "name": "Falinks-Mega",
+    "pinyin": "liezhenbing",
+    "initials": "lzb",
+    "slugVariants": [
+      "列阵兵",
+      "falinksmega",
+      "liezhenbing"
+    ],
+    "baseSpeciesName": "Falinks",
+    "baseSpeciesId": "falinks",
+    "types": [
+      "Fighting"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "defiant",
+        "en": "Defiant",
+        "zh": "不服输"
+      }
+    ],
+    "baseStats": {
+      "hp": 65,
+      "atk": 135,
+      "def": 135,
+      "spa": 70,
+      "spd": 65,
+      "spe": 100
+    },
+    "bst": 570,
+    "searchKeys": [
+      "列阵兵",
+      "falinksmega",
+      "liezhenbing",
+      "lzb"
+    ]
+  },
+  {
     "id": "morpeko",
     "num": 877,
     "zh": "莫鲁贝可",
@@ -11742,7 +13331,7 @@
       "Electric",
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11838,7 +13427,7 @@
       "Normal",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11891,7 +13480,7 @@
       "Bug",
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -11907,7 +13496,7 @@
       {
         "id": "sharpness",
         "en": "Sharpness",
-        "zh": "Sharpness"
+        "zh": "锋锐"
       }
     ],
     "baseStats": {
@@ -11997,7 +13586,7 @@
       "Water",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12086,6 +13675,59 @@
     ]
   },
   {
+    "id": "overqwil",
+    "num": 904,
+    "zh": "万针鱼",
+    "name": "Overqwil",
+    "pinyin": "wanzhenyu",
+    "initials": "wzy",
+    "slugVariants": [
+      "万针鱼",
+      "overqwil",
+      "wanzhenyu"
+    ],
+    "baseSpeciesName": "Overqwil",
+    "baseSpeciesId": "overqwil",
+    "types": [
+      "Dark",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "poisonpoint",
+        "en": "Poison Point",
+        "zh": "毒刺"
+      },
+      {
+        "id": "swiftswim",
+        "en": "Swift Swim",
+        "zh": "悠游自如"
+      },
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      }
+    ],
+    "baseStats": {
+      "hp": 85,
+      "atk": 115,
+      "def": 95,
+      "spa": 65,
+      "spd": 65,
+      "spe": 85
+    },
+    "bst": 510,
+    "searchKeys": [
+      "万针鱼",
+      "overqwil",
+      "wanzhenyu",
+      "wzy"
+    ]
+  },
+  {
     "id": "meowscarada",
     "num": 908,
     "zh": "魔幻假面喵",
@@ -12151,7 +13793,7 @@
       "Fire",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12246,7 +13888,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12298,13 +13940,13 @@
     "types": [
       "Rock"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
         "id": "purifyingsalt",
         "en": "Purifying Salt",
-        "zh": "Purifying Salt"
+        "zh": "洁净之盐"
       },
       {
         "id": "sturdy",
@@ -12351,7 +13993,7 @@
       "Fire",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12446,13 +14088,13 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
         "id": "electromorphosis",
         "en": "Electromorphosis",
-        "zh": "Electromorphosis"
+        "zh": "电力转换"
       },
       {
         "id": "static",
@@ -12499,7 +14141,7 @@
       "Grass",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -12552,7 +14194,7 @@
       "Grass",
       "Fire"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12594,13 +14236,13 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
         "id": "opportunist",
         "en": "Opportunist",
-        "zh": "Opportunist"
+        "zh": "跟风"
       },
       {
         "id": "frisk",
@@ -12647,7 +14289,7 @@
       "Fairy",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -12705,7 +14347,7 @@
       {
         "id": "zerotohero",
         "en": "Zero to Hero",
-        "zh": "Zero to Hero"
+        "zh": "全能变身"
       }
     ],
     "baseStats": {
@@ -12741,13 +14383,13 @@
     "types": [
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
         "id": "eartheater",
         "en": "Earth Eater",
-        "zh": "Earth Eater"
+        "zh": "食土"
       },
       {
         "id": "sandveil",
@@ -12795,7 +14437,7 @@
       {
         "id": "toxicdebris",
         "en": "Toxic Debris",
-        "zh": "Toxic Debris"
+        "zh": "毒满地"
       },
       {
         "id": "corrosion",
@@ -12863,6 +14505,106 @@
     ]
   },
   {
+    "id": "houndstone",
+    "num": 972,
+    "zh": "墓扬犬",
+    "name": "Houndstone",
+    "pinyin": "muyangquan",
+    "initials": "myq",
+    "slugVariants": [
+      "墓扬犬",
+      "houndstone",
+      "muyangquan"
+    ],
+    "baseSpeciesName": "Houndstone",
+    "baseSpeciesId": "houndstone",
+    "types": [
+      "Ghost"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "sandrush",
+        "en": "Sand Rush",
+        "zh": "拨沙"
+      },
+      {
+        "id": "fluffy",
+        "en": "Fluffy",
+        "zh": "毛茸茸"
+      }
+    ],
+    "baseStats": {
+      "hp": 72,
+      "atk": 101,
+      "def": 100,
+      "spa": 50,
+      "spd": 97,
+      "spe": 68
+    },
+    "bst": 488,
+    "searchKeys": [
+      "墓扬犬",
+      "houndstone",
+      "muyangquan",
+      "myq"
+    ]
+  },
+  {
+    "id": "annihilape",
+    "num": 979,
+    "zh": "弃世猴",
+    "name": "Annihilape",
+    "pinyin": "qishihou",
+    "initials": "qsh",
+    "slugVariants": [
+      "弃世猴",
+      "annihilape",
+      "qishihou"
+    ],
+    "baseSpeciesName": "Annihilape",
+    "baseSpeciesId": "annihilape",
+    "types": [
+      "Fighting",
+      "Ghost"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "vitalspirit",
+        "en": "Vital Spirit",
+        "zh": "干劲"
+      },
+      {
+        "id": "innerfocus",
+        "en": "Inner Focus",
+        "zh": "精神力"
+      },
+      {
+        "id": "defiant",
+        "en": "Defiant",
+        "zh": "不服输"
+      }
+    ],
+    "baseStats": {
+      "hp": 110,
+      "atk": 115,
+      "def": 80,
+      "spa": 50,
+      "spd": 90,
+      "spe": 90
+    },
+    "bst": 535,
+    "searchKeys": [
+      "弃世猴",
+      "annihilape",
+      "qishihou",
+      "qsh"
+    ]
+  },
+  {
     "id": "farigiraf",
     "num": 981,
     "zh": "奇麒麟",
@@ -12880,18 +14622,18 @@
       "Normal",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
         "id": "cudchew",
         "en": "Cud Chew",
-        "zh": "Cud Chew"
+        "zh": "反刍"
       },
       {
         "id": "armortail",
         "en": "Armor Tail",
-        "zh": "Armor Tail"
+        "zh": "尾甲"
       },
       {
         "id": "sapsipper",
@@ -12944,7 +14686,7 @@
       {
         "id": "supremeoverlord",
         "en": "Supreme Overlord",
-        "zh": "Supreme Overlord"
+        "zh": "大将"
       },
       {
         "id": "pressure",
@@ -12969,6 +14711,49 @@
     ]
   },
   {
+    "id": "gholdengo",
+    "num": 1000,
+    "zh": "赛富豪",
+    "name": "Gholdengo",
+    "pinyin": "saifuhao",
+    "initials": "sfh",
+    "slugVariants": [
+      "赛富豪",
+      "gholdengo",
+      "saifuhao"
+    ],
+    "baseSpeciesName": "Gholdengo",
+    "baseSpeciesId": "gholdengo",
+    "types": [
+      "Steel",
+      "Ghost"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "goodasgold",
+        "en": "Good as Gold",
+        "zh": "黄金之躯"
+      }
+    ],
+    "baseStats": {
+      "hp": 87,
+      "atk": 60,
+      "def": 95,
+      "spa": 133,
+      "spd": 91,
+      "spe": 84
+    },
+    "bst": 550,
+    "searchKeys": [
+      "赛富豪",
+      "gholdengo",
+      "saifuhao",
+      "sfh"
+    ]
+  },
+  {
     "id": "sinistcha",
     "num": 1013,
     "zh": "来悲粗茶",
@@ -12986,7 +14771,7 @@
       "Grass",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -13087,7 +14872,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {

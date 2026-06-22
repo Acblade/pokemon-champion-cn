@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { championsDetails, type PokemonDetail, type PokemonMove } from '../data/championsDetails'
 import type { PokemonRow } from '../data/champions'
-import { calculateChampionsDamage, type StatusMode } from '../lib/championsCalc'
+import { calculateChampionsDamage, getChampionsDefaultMoveHits, getChampionsMoveHitOptions, type StatusMode } from '../lib/championsCalc'
 import type { SavedPokemonEntry } from '../lib/savedPokemon'
 import { ruleItems } from '../data/items'
-import { getPokemonUsage, usageDataset, type UsageItem, type UsageSpread, type UsageTeammate } from '../data/usageStats'
+import { getPokemonUsageFromDataset, type UsageDataset, type UsageItem, type UsageSpread, type UsageTeammate } from '../data/usageStats'
 import { pokemonDisplayName, pokemonSearchText } from '../lib/pokemonDisplay'
 
 type DraftConfig = {
@@ -34,6 +34,7 @@ type Props = {
   savedPokemon: SavedPokemonEntry[]
   onAfterSave: () => void
   onUpdateSaved: (id: string, payload: Omit<SavedPokemonEntry, 'id' | 'baseId' | 'label' | 'pokemonId'>) => void
+  usageDataset: UsageDataset
   standaloneCalc?: boolean
 }
 
@@ -84,6 +85,7 @@ const TYPE_LABELS: Record<string, string> = {
 }
 
 const BOOST_OPTIONS = [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]
+const FAINTED_ALLIES_OPTIONS = [0, 1, 2, 3, 4, 5]
 const DEFAULT_SPS: Record<StatKey, number> = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
 const DEFAULT_BOOTS: Record<BoostKey, number> = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
 const DEFAULT_DAMAGE_MOVE_CONFIG: DamageMoveConfig = { isCrit: false, hits: 1, timesUsed: 1, metronomeTimes: 1, powerOverride: '', typeOverride: '', categoryOverride: '' }
@@ -293,7 +295,7 @@ const LONGEST_STATUS_LABEL = STATUS_OPTIONS.reduce((a, b) => a.label.length >= b
 const LONGEST_WEATHER_LABEL = WEATHER_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_TERRAIN_LABEL = TERRAIN_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_ITEM_LABEL = ITEM_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
-export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent, savedPokemon, onAfterSave, onUpdateSaved, standaloneCalc }: Props) {
+export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent, savedPokemon, onAfterSave, onUpdateSaved, usageDataset, standaloneCalc }: Props) {
   const [nature, setNature] = useState<string>('Hardy')
   const [mainNatureQuery, setMainNatureQuery] = useState('')
   const [mainNatureOpen, setMainNatureOpen] = useState(false)
@@ -365,6 +367,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [defenderToxicCounter, setDefenderToxicCounter] = useState(1)
   const [attackerHpPercent, setAttackerHpPercent] = useState(100)
   const [defenderHpPercent, setDefenderHpPercent] = useState(100)
+  const [attackerAlliesFainted, setAttackerAlliesFainted] = useState(0)
+  const [defenderAlliesFainted, setDefenderAlliesFainted] = useState(0)
   const [isMagicRoom, setIsMagicRoom] = useState(false)
   const [isWonderRoom, setIsWonderRoom] = useState(false)
   const [isGravity, setIsGravity] = useState(false)
@@ -416,10 +420,11 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const currentFormId = pokemon?.id ?? ''
   const isCurrentMega = pokemon?.name.toLowerCase().includes('mega') || false
   const displayPokemon = pokemon
-  const usage = useMemo(() => pokemon ? getPokemonUsage(pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId) : null, [pokemon])
+  const usage = useMemo(() => pokemon ? getPokemonUsageFromDataset(usageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId) : null, [pokemon, usageDataset])
 
   const [infoOpen, setInfoOpen] = useState(true)
   const [statsOpen, setStatsOpen] = useState(true)
+  const [detailConfigMode, setDetailConfigMode] = useState<'stats' | 'damage'>(() => standaloneCalc ? 'damage' : 'stats')
   const [usageOpen, setUsageOpen] = useState(false)
   const [damageOpen, setDamageOpen] = useState(() => standaloneCalc === true)
   const [movesOpen, setMovesOpen] = useState(true)
@@ -481,6 +486,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setDefenderToxicCounter(1)
     setAttackerHpPercent(100)
     setDefenderHpPercent(100)
+    setAttackerAlliesFainted(0)
+    setDefenderAlliesFainted(0)
     setIsMagicRoom(false)
     setIsWonderRoom(false)
     setIsGravity(false)
@@ -672,6 +679,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       status: source ? attackerStatus : defenderStatus,
       toxicCounter: source ? attackerToxicCounter : defenderToxicCounter,
       hpPercent: source ? attackerHpPercent : defenderHpPercent,
+      alliesFainted: source ? attackerAlliesFainted : defenderAlliesFainted,
       side: source
         ? { spikes: attackerSpikes, isSR: attackerStealthRock, isReflect: attackerReflect, isLightScreen: attackerLightScreen, isAuroraVeil: attackerAuroraVeil, isTailwind: attackerTailwind, isHelpingHand: attackerHelpingHand, isProtected: attackerProtected, isSeeded: attackerSeeded, isSaltCured: attackerSaltCured, isForesight: attackerForesight, isFlowerGift: attackerFlowerGift, isPowerTrick: attackerPowerTrick, isSteelySpirit: attackerSteelySpirit, isFriendGuard: attackerFriendGuard, isBattery: attackerBattery, isPowerSpot: attackerPowerSpot, isSwitching: attackerSwitchingOut ? ('out' as const) : undefined }
         : { spikes: defenderSpikes, isSR: defenderStealthRock, isReflect: defenderReflect, isLightScreen: defenderLightScreen, isAuroraVeil: defenderAuroraVeil, isTailwind: defenderTailwind, isHelpingHand: defenderHelpingHand, isProtected: defenderProtected, isSeeded: defenderSeeded, isSaltCured: defenderSaltCured, isForesight: defenderForesight, isFlowerGift: defenderFlowerGift, isPowerTrick: defenderPowerTrick, isSteelySpirit: defenderSteelySpirit, isFriendGuard: defenderFriendGuard, isBattery: defenderBattery, isPowerSpot: defenderPowerSpot, isSwitching: defenderSwitchingOut ? ('out' as const) : undefined },
@@ -690,6 +698,16 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const target = sideState(sourceSide === 'attacker' ? 'defender' : 'attacker')
     const sourceMaxHp = calculateStat(sourcePokemon.baseStats.hp, source.sps.hp, 1, true)
     const targetMaxHp = calculateStat(targetPokemon.baseStats.hp, target.sps.hp, 1, true)
+    const sourceAbility = sourcePokemon.abilities.find((entry) => entry.id === source.abilityId)?.en || sourcePokemon.abilities[0]?.en
+    const targetAbility = targetPokemon.abilities.find((entry) => entry.id === target.abilityId)?.en || targetPokemon.abilities[0]?.en
+    const hitOptions = customMove ? [] : getChampionsMoveHitOptions(effectiveMove.en)
+    const defaultHits = customMove ? 1 : getChampionsDefaultMoveHits(effectiveMove.en, sourceAbility)
+    const configuredHits = Math.max(1, Math.floor(config.hits || defaultHits))
+    const resolvedHits = customMove
+      ? configuredHits
+      : hitOptions.length > 0
+        ? (hitOptions.includes(configuredHits) ? configuredHits : defaultHits)
+        : defaultHits
     try {
       return calculateChampionsDamage({
         attacker: sourcePokemon,
@@ -698,7 +716,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         moveState: {
           move: effectiveMove,
           isCrit: config.isCrit,
-          hits: config.hits,
+          hits: resolvedHits,
           timesUsed: config.timesUsed,
           timesUsedWithMetronome: config.metronomeTimes,
           basePower: customMove ? effectiveMove.basePower : undefined,
@@ -709,14 +727,14 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         defenderSps: target.sps,
         attackerNature: source.nature,
         defenderNature: target.nature,
-        attackerAbility: sourcePokemon.abilities.find((entry) => entry.id === source.abilityId)?.en || sourcePokemon.abilities[0]?.en,
+        attackerAbility: sourceAbility,
         attackerItem: source.item,
         attackerBoosts: source.boosts,
-        attackerState: { abilityOn: source.abilityOn, status: source.status, toxicCounter: source.toxicCounter, currentHp: Math.max(1, Math.round(sourceMaxHp * source.hpPercent / 100)) },
-        defenderAbility: targetPokemon.abilities.find((entry) => entry.id === target.abilityId)?.en || targetPokemon.abilities[0]?.en,
+        attackerState: { abilityOn: source.abilityOn, status: source.status, toxicCounter: source.toxicCounter, currentHp: Math.max(1, Math.round(sourceMaxHp * source.hpPercent / 100)), alliesFainted: source.alliesFainted },
+        defenderAbility: targetAbility,
         defenderItem: target.item,
         defenderBoosts: target.boosts,
-        defenderState: { abilityOn: target.abilityOn, status: target.status, toxicCounter: target.toxicCounter, currentHp: Math.max(1, Math.round(targetMaxHp * target.hpPercent / 100)) },
+        defenderState: { abilityOn: target.abilityOn, status: target.status, toxicCounter: target.toxicCounter, currentHp: Math.max(1, Math.round(targetMaxHp * target.hpPercent / 100)), alliesFainted: target.alliesFainted },
         field: {
           gameType: damageGameType,
           weather: damageWeather as 'none' | 'sun' | 'rain' | 'sand' | 'snow',
@@ -741,6 +759,13 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     return <section className="detail-card empty-detail"><h2>宝可梦详情</h2><p>正在加载详情。</p></section>
   }
 
+  const hasMegaFamily = pokemon.hasMega || isCurrentMega || megaForms.length > 0
+  const normalAbilityDetail = hasMegaFamily && normalForm ? (championsDetails[normalForm.id] ?? displayPokemon) : displayPokemon
+  const infoAbilities = normalAbilityDetail.abilities
+  const infoAbilityLabel = hasMegaFamily ? '普通特性' : '特性'
+  const canEditInfoAbility = normalAbilityDetail.id === displayPokemon.id
+  const megaAbilityLabel = megaForms.find((form) => form.id === currentFormId)?.abilities[0]?.zh || megaForms[0]?.abilities[0]?.zh || (isCurrentMega ? displayPokemon.abilities[0]?.zh : undefined) || '—'
+
   const statRows: { key: StatKey; label: string; boostKey?: BoostKey }[] = [
     { key: 'hp', label: 'HP' },
     { key: 'atk', label: '攻击', boostKey: 'atk' },
@@ -764,17 +789,30 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     return `${side}-${index}`
   }
 
-  function damageMoveConfig(key: string, move?: PokemonMove | null) {
-    return damageMoveConfigs[key] || (move?.id === CUSTOM_DAMAGE_MOVE_ID ? DEFAULT_CUSTOM_MOVE_CONFIG : DEFAULT_DAMAGE_MOVE_CONFIG)
+  function abilityNameForSide(side: 'attacker' | 'defender') {
+    const detail = side === 'attacker' ? attackerDetail : defenderDetail
+    if (!detail) return undefined
+    const abilityId = side === 'attacker' ? effectiveAttackerAbilityId : effectiveDefenderAbilityId
+    return detail.abilities.find((entry) => entry.id === abilityId)?.en || detail.abilities[0]?.en
   }
 
-  function updateDamageMoveConfig(key: string, patch: Partial<DamageMoveConfig>) {
-    setDamageMoveConfigs((current) => ({ ...current, [key]: { ...DEFAULT_DAMAGE_MOVE_CONFIG, ...(current[key] || {}), ...patch } }))
+  function defaultDamageMoveConfig(move?: PokemonMove | null, side?: 'attacker' | 'defender'): DamageMoveConfig {
+    const base = move?.id === CUSTOM_DAMAGE_MOVE_ID ? DEFAULT_CUSTOM_MOVE_CONFIG : DEFAULT_DAMAGE_MOVE_CONFIG
+    if (!move || move.id === CUSTOM_DAMAGE_MOVE_ID) return { ...base }
+    return { ...base, hits: getChampionsDefaultMoveHits(move.en, side ? abilityNameForSide(side) : undefined) }
+  }
+
+  function damageMoveConfig(key: string, move?: PokemonMove | null, side?: 'attacker' | 'defender') {
+    return damageMoveConfigs[key] || defaultDamageMoveConfig(move, side)
+  }
+
+  function updateDamageMoveConfig(key: string, patch: Partial<DamageMoveConfig>, move?: PokemonMove | null, side?: 'attacker' | 'defender') {
+    setDamageMoveConfigs((current) => ({ ...current, [key]: { ...defaultDamageMoveConfig(move, side), ...(current[key] || {}), ...patch } }))
   }
 
   function shouldShowMoveAdvanced(move: PokemonMove | null, config: DamageMoveConfig) {
     if (!move) return false
-    return move.id === CUSTOM_DAMAGE_MOVE_ID || move.en === 'Triple Kick' || move.en === 'Population Bomb' || move.en === 'Last Respects' || move.en === 'Metronome' || move.category !== 'Status' || config.isCrit || config.powerOverride || config.typeOverride || config.categoryOverride
+    return move.id === CUSTOM_DAMAGE_MOVE_ID || getChampionsMoveHitOptions(move.en).length > 1 || move.en === 'Metronome' || move.category !== 'Status' || config.isCrit || config.powerOverride || config.typeOverride || config.categoryOverride
   }
 
   function moveSuggestionsFor(detail: PokemonDetail | null, query: string, selectedIds: string[]) {
@@ -875,14 +913,18 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const pickerId = damageMoveKey(side, index)
     const ruleMoves = ruleMovesFor(detail)
     const selectedMove = moveIds[index] === CUSTOM_DAMAGE_MOVE_ID ? CUSTOM_DAMAGE_MOVE : (ruleMoves.find((move) => move.id === moveIds[index]) || null)
-    const config = damageMoveConfig(pickerId, selectedMove)
+    const hitOptions = selectedMove && selectedMove.id !== CUSTOM_DAMAGE_MOVE_ID ? getChampionsMoveHitOptions(selectedMove.en) : []
+    const config = damageMoveConfig(pickerId, selectedMove, side)
     const damage = calculateMoveDamage(selectedMove, side, config)
     const suggestions = moveSuggestionsFor(detail, queries[index], moveIds)
     const expanded = !!expandedDamageResults[pickerId]
     const isDamagingMove = !!selectedMove && selectedMove.category !== 'Status'
     const isCustomMove = selectedMove?.id === CUSTOM_DAMAGE_MOVE_ID
-    const showHits = !!selectedMove && (isCustomMove || ['Triple Kick', 'Population Bomb'].includes(selectedMove.en))
-    const showTimesUsed = isCustomMove || selectedMove?.en === 'Last Respects'
+    const showHits = !!selectedMove && (isCustomMove || hitOptions.length > 1)
+    const showTimesUsed = isCustomMove
+    const showAlliesFainted = selectedMove?.en === 'Last Respects'
+    const sideAlliesFainted = side === 'attacker' ? attackerAlliesFainted : defenderAlliesFainted
+    const setSideAlliesFainted = side === 'attacker' ? setAttackerAlliesFainted : setDefenderAlliesFainted
     const showMetronome = isCustomMove || (side === 'attacker' ? item : defenderItem) === 'Metronome'
     const showAdvanced = shouldShowMoveAdvanced(selectedMove, config)
     const canExpand = !!damage || showAdvanced
@@ -912,8 +954,15 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                     setMoveIds((current) => current.map((entry, i) => i === index ? move.id : entry))
                     setQueries((current) => current.map((entry, i) => i === index ? move.zh : entry))
                     if (move.id === CUSTOM_DAMAGE_MOVE_ID) {
-                      updateDamageMoveConfig(pickerId, DEFAULT_CUSTOM_MOVE_CONFIG)
+                      updateDamageMoveConfig(pickerId, DEFAULT_CUSTOM_MOVE_CONFIG, move, side)
                       setExpandedDamageResults((current) => ({ ...current, [pickerId]: true }))
+                    } else {
+                      setDamageMoveConfigs((current) => {
+                        const next = { ...current }
+                        delete next[pickerId]
+                        return next
+                      })
+                      if (move.en === 'Last Respects') setExpandedDamageResults((current) => ({ ...current, [pickerId]: true }))
                     }
                     setOpenMovePicker(null)
                   }}>
@@ -933,13 +982,14 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         </div>
         {expanded && showAdvanced && (
           <div className="damage-move-advanced-grid">
-            {showHits && <label className="popover-field compact-number-field"><span>命中次数</span><input type="number" min={1} step={1} value={config.hits} onChange={(event) => updateDamageMoveConfig(pickerId, { hits: Math.max(1, Math.floor(Number(event.target.value) || 1)) })} /></label>}
-            {showTimesUsed && <label className="popover-field"><span>已倒下队友</span><select value={config.timesUsed} onChange={(event) => updateDamageMoveConfig(pickerId, { timesUsed: Number(event.target.value) })}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
-            {showMetronome && <label className="popover-field"><span>节拍器叠加</span><select value={config.metronomeTimes} onChange={(event) => updateDamageMoveConfig(pickerId, { metronomeTimes: Number(event.target.value) })}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
-            {isDamagingMove && <label className="toggle-chip"><input type="checkbox" checked={config.isCrit} onChange={(event) => updateDamageMoveConfig(pickerId, { isCrit: event.target.checked })} />暴击</label>}
-            {isCustomMove && <label className="popover-field compact-power-field"><span>威力</span><input type="number" min={0} value={config.powerOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { powerOverride: event.target.value })} placeholder="80" /></label>}
-            {isCustomMove && <label className="popover-field"><span>属性</span><select value={config.typeOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { typeOverride: event.target.value })}>{Object.keys(TYPE_LABELS).map((type) => <option key={type} value={type}>{typeLabel(type)}</option>)}</select></label>}
-            {isCustomMove && <label className="popover-field"><span>分类</span><select value={config.categoryOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { categoryOverride: event.target.value })}><option value="Physical">物理</option><option value="Special">特殊</option><option value="Status">变化</option></select></label>}
+            {showHits && <label className="popover-field compact-number-field"><span>命中次数</span>{isCustomMove ? <input type="number" min={1} step={1} value={config.hits} onChange={(event) => updateDamageMoveConfig(pickerId, { hits: Math.max(1, Math.floor(Number(event.target.value) || 1)) }, selectedMove, side)} /> : <select value={config.hits} onChange={(event) => updateDamageMoveConfig(pickerId, { hits: Number(event.target.value) }, selectedMove, side)}>{hitOptions.map((value) => <option key={value} value={value}>{value}</option>)}</select>}</label>}
+            {showAlliesFainted && <label className="popover-field"><span>倒下队友</span><select value={sideAlliesFainted} onChange={(event) => setSideAlliesFainted(Number(event.target.value))}>{FAINTED_ALLIES_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
+            {showTimesUsed && <label className="popover-field"><span>计算回合</span><select value={config.timesUsed} onChange={(event) => updateDamageMoveConfig(pickerId, { timesUsed: Number(event.target.value) }, selectedMove, side)}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
+            {showMetronome && <label className="popover-field"><span>节拍器叠加</span><select value={config.metronomeTimes} onChange={(event) => updateDamageMoveConfig(pickerId, { metronomeTimes: Number(event.target.value) }, selectedMove, side)}>{[1, 2, 3, 4, 5].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
+            {isDamagingMove && <label className="toggle-chip"><input type="checkbox" checked={config.isCrit} onChange={(event) => updateDamageMoveConfig(pickerId, { isCrit: event.target.checked }, selectedMove, side)} />暴击</label>}
+            {isCustomMove && <label className="popover-field compact-power-field"><span>威力</span><input type="number" min={0} value={config.powerOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { powerOverride: event.target.value }, selectedMove, side)} placeholder="80" /></label>}
+            {isCustomMove && <label className="popover-field"><span>属性</span><select value={config.typeOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { typeOverride: event.target.value }, selectedMove, side)}>{Object.keys(TYPE_LABELS).map((type) => <option key={type} value={type}>{typeLabel(type)}</option>)}</select></label>}
+            {isCustomMove && <label className="popover-field"><span>分类</span><select value={config.categoryOverride} onChange={(event) => updateDamageMoveConfig(pickerId, { categoryOverride: event.target.value }, selectedMove, side)}><option value="Physical">物理</option><option value="Special">特殊</option><option value="Status">变化</option></select></label>}
           </div>
         )}
       </div>
@@ -1015,6 +1065,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const setSideStatus = isAttacker ? setAttackerStatus : setDefenderStatus
     const sideHpPercent = isAttacker ? attackerHpPercent : defenderHpPercent
     const setSideHpPercent = isAttacker ? setAttackerHpPercent : setDefenderHpPercent
+    const sideAlliesFainted = isAttacker ? attackerAlliesFainted : defenderAlliesFainted
+    const setSideAlliesFainted = isAttacker ? setAttackerAlliesFainted : setDefenderAlliesFainted
     const sideToxicCounter = isAttacker ? attackerToxicCounter : defenderToxicCounter
     const setSideToxicCounter = isAttacker ? setAttackerToxicCounter : setDefenderToxicCounter
     const sideSpikes = isAttacker ? attackerSpikes : defenderSpikes
@@ -1071,6 +1123,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           <summary>展开</summary>
           <div className="damage-config-grid">
             {sideStatus === 'badlyPoisoned' && <label className="popover-field"><span>剧毒回合</span><select value={sideToxicCounter} onChange={(event) => setSideToxicCounter(Number(event.target.value))}>{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((value) => <option key={value} value={value}>{value}/16</option>)}</select></label>}
+            <label className="popover-field"><span>倒下队友</span><select value={sideAlliesFainted} onChange={(event) => setSideAlliesFainted(Number(event.target.value))}>{FAINTED_ALLIES_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
             <label className="popover-field"><span>撒菱</span><select value={sideSpikes} onChange={(event) => setSideSpikes(Number(event.target.value) as 0 | 1 | 2 | 3)}><option value={0}>0</option><option value={1}>1</option><option value={2}>2</option><option value={3}>3</option></select></label>
             <label className="toggle-chip"><input type="checkbox" checked={sideStealthRock} onChange={(event) => setSideStealthRock(event.target.checked)} />隐形岩</label>
           </div>
@@ -1095,6 +1148,53 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           </div>
         </details>
       </section>
+    )
+  }
+
+  function renderDamageCalculatorBody() {
+    if (!attackerDetail || !defenderDetail) return null
+    return (
+      <div className="damage-subpanel-grid damage-three-column-grid">
+        {renderBattleSide('attacker')}
+
+        <div className="damage-center-stack">
+          <section className="damage-subpanel moves-damage-subpanel">
+            <div className="damage-subpanel-title"><h3>技能</h3><button type="button" className="add-move-group-button" disabled={visibleMoveCounts.attacker >= 4 && visibleMoveCounts.defender >= 4} onClick={addMoveGroup}>添加技能组</button></div>
+            <div className="damage-move-columns">
+              <div className="damage-move-column">
+                <div className="damage-move-column-head"><h4>我方技能</h4></div>
+                {Array.from({ length: visibleMoveCounts.attacker }, (_, index) => renderMovePicker('attacker', index))}
+              </div>
+              <div className="damage-move-column">
+                <div className="damage-move-column-head"><h4>对方技能</h4></div>
+                {Array.from({ length: visibleMoveCounts.defender }, (_, index) => renderMovePicker('defender', index))}
+              </div>
+            </div>
+          </section>
+
+          <section className="damage-subpanel field-subpanel">
+            <div className="damage-subpanel-title"><h3>场地信息</h3><button type="button" className="battle-mode-toggle" onClick={() => setDamageGameType((current) => current === 'Doubles' ? 'Singles' : 'Doubles')}><span>⇄</span>{damageGameType === 'Doubles' ? '双打' : '单打'}</button></div>
+            <div className="damage-config-grid">
+              <label className="popover-field" data-popover-root><span>天气</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_WEATHER_LABEL}</span><input value={weatherOpen ? weatherQuery : (WEATHER_OPTIONS.find(o => o.value === damageWeather)?.label ?? '')} onFocus={() => { setWeatherOpen(true); setWeatherQuery('') }} onBlur={() => setTimeout(() => setWeatherOpen(false), 120)} onChange={(e) => setWeatherQuery(e.target.value)} placeholder="天气" />{weatherOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(WEATHER_OPTIONS, weatherQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setDamageWeather(opt.value); setWeatherOpen(false); setWeatherQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
+              <label className="popover-field" data-popover-root><span>场地</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_TERRAIN_LABEL}</span><input value={terrainOpen ? terrainQuery : (TERRAIN_OPTIONS.find(o => o.value === damageTerrain)?.label ?? '')} onFocus={() => { setTerrainOpen(true); setTerrainQuery('') }} onBlur={() => setTimeout(() => setTerrainOpen(false), 120)} onChange={(e) => setTerrainQuery(e.target.value)} placeholder="场地" />{terrainOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(TERRAIN_OPTIONS, terrainQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setDamageTerrain(opt.value); setTerrainOpen(false); setTerrainQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
+            </div>
+            <details className="damage-advanced">
+              <summary>展开</summary>
+              <div className="damage-side-grid">
+                <label className="toggle-chip"><input type="checkbox" checked={isMagicRoom} onChange={(event) => setIsMagicRoom(event.target.checked)} />魔法空间</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isWonderRoom} onChange={(event) => setIsWonderRoom(event.target.checked)} />奇妙空间</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isGravity} onChange={(event) => setIsGravity(event.target.checked)} />重力</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isBeadsOfRuin} onChange={(event) => setIsBeadsOfRuin(event.target.checked)} />灾祸之玉</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isTabletsOfRuin} onChange={(event) => setIsTabletsOfRuin(event.target.checked)} />灾祸之简</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isSwordOfRuin} onChange={(event) => setIsSwordOfRuin(event.target.checked)} />灾祸之剑</label>
+                <label className="toggle-chip"><input type="checkbox" checked={isVesselOfRuin} onChange={(event) => setIsVesselOfRuin(event.target.checked)} />灾祸之鼎</label>
+              </div>
+            </details>
+          </section>
+        </div>
+
+        {renderBattleSide('defender')}
+      </div>
     )
   }
 
@@ -1123,7 +1223,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         <div className="plain-info-list">
           <div className="info-row"><span>图鉴编号</span><strong>#{String(displayPokemon.num).padStart(4, '0')}</strong></div>
           <div className="info-row"><span>属性</span><strong>{displayPokemon.types.map(typeLabel).join(' / ')}</strong></div>
-          <div className="info-row"><span>特性</span><div className="ability-list">{displayPokemon.abilities.map((ability, index) => <button key={ability.id} className={abilityId === ability.id ? 'ability-chip active' : 'ability-chip'} onClick={() => setAbilityId(ability.id)}>{ability.zh}{index < displayPokemon.abilities.length - 1 ? ' /' : ''}</button>)}</div></div>
+          <div className="info-row"><span>{infoAbilityLabel}</span><div className="ability-list">{infoAbilities.map((ability, index) => canEditInfoAbility ? <button key={ability.id} className={abilityId === ability.id ? 'ability-chip active' : 'ability-chip'} onClick={() => setAbilityId(ability.id)}>{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</button> : <span key={ability.id} className="ability-chip static">{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</span>)}</div></div>
           {(pokemon.hasMega || isCurrentMega) && <div className="info-row"><span>形态</span><div className="form-switcher" data-popover-root>{normalForm && <button type="button" className={currentFormId === normalForm.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
             setIsMega(false)
             if (normalForm.id !== currentFormId) onNavigateToPokemon(normalForm)
@@ -1140,7 +1240,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
               setItemQuery(itemLabel(megaStone))
             }
           }}>{form.name.toLowerCase().includes('mega-x') ? 'Mega X' : form.name.toLowerCase().includes('mega-y') ? 'Mega Y' : 'Mega'}</button>)}</div></div>}
-          {(pokemon.hasMega || isCurrentMega) && <div className="info-row"><span>Mega特性</span><strong>{megaForms.find((form) => form.id === currentFormId)?.abilities[0]?.zh || megaForms[0]?.abilities[0]?.zh || displayPokemon.abilities[0]?.zh || '—'}</strong></div>}
+          {hasMegaFamily && <div className="info-row"><span>Mega特性</span><strong>{megaAbilityLabel}</strong></div>}
         </div>
         )}
       </section>}
@@ -1149,11 +1249,23 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         <button type="button" className={`section-toggle-btn${statsOpen ? ' open' : ''}`} onClick={() => setStatsOpen((v) => !v)} aria-label={statsOpen ? '收起' : '展开'} />
         <div className="section-head">
           <div className="title-with-actions">
-            <h2>能力设定</h2>
+            <h2 className="panel-title-with-switch">
+              {detailConfigMode === 'stats' ? '能力设定' : '伤害计算'}
+              <button
+                type="button"
+                className="panel-switch-icon"
+                onClick={() => setDetailConfigMode((mode) => mode === 'stats' ? 'damage' : 'stats')}
+                aria-label={detailConfigMode === 'stats' ? '切换到伤害计算' : '切换到能力设定'}
+                title={detailConfigMode === 'stats' ? '切换到伤害计算' : '切换到能力设定'}
+              >
+                <span>↑</span>
+                <span>↓</span>
+              </button>
+            </h2>
             {renderConfigActions('stats')}
           </div>
         </div>
-        {statsOpen && (<>
+        {statsOpen && (detailConfigMode === 'stats' ? <>
         <div className="setting-row compact-setting-row"><label>性格</label><div className="nature-picker auto-size-picker" data-popover-root><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={mainNatureOpen ? mainNatureQuery : (ALL_NATURES.find(n => n.value === nature)?.label ?? nature)} onFocus={() => { setMainNatureOpen(true); setMainNatureQuery('') }} onBlur={() => setTimeout(() => setMainNatureOpen(false), 120)} onChange={(event) => setMainNatureQuery(event.target.value)} placeholder="性格" />{mainNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(mainNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setNature(option.value as typeof nature); setMainNatureOpen(false); setMainNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></div>
         <div className="setting-row compact-setting-row"><label>道具</label><div className="item-picker auto-size-picker" data-popover-root><span className="sizer" aria-hidden="true">{LONGEST_ITEM_LABEL}</span><input value={itemOpen ? itemQuery : (item === '无' ? '' : itemLabel(item))} onFocus={() => { setItemOpen(true); setItemQuery('') }} onChange={(event) => { setItemQuery(event.target.value); setItemOpen(true) }} placeholder="输入部分中文、拼音或英文筛选道具" />{itemOpen && <div className="search-dropdown item-dropdown compact-dropdown">{filteredItemOptions.map((option) => <button key={option.value} className="item-option-row" onMouseDown={() => { setItem(option.value); setItemQuery(option.value === '无' ? '' : option.label); setAttackerDamageItemQuery(option.value === '无' ? '' : option.label); setItemOpen(false) }}><span>{option.label}</span></button>)}</div>}</div></div>
 
@@ -1192,7 +1304,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           </table>
         </div>
         <div className="sp-summary">已分配努力值: <strong>{totalSps}</strong> / 66</div>
-        </>)}
+        </> : renderDamageCalculatorBody())}
       </section>}
 
       {!standaloneCalc && usage && (
@@ -1221,7 +1333,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         </section>
       )}
 
-      {attackerDetail && defenderDetail && (
+      {standaloneCalc && attackerDetail && defenderDetail && (
         <section className="plain-section damage-panel-section">
           <button type="button" className={`section-toggle-btn${damageOpen ? ' open' : ''}`} onClick={() => setDamageOpen((v) => !v)} aria-label={damageOpen ? '收起' : '展开'} />
           <div className="damage-panel-head">

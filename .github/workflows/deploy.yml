@@ -29,8 +29,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Update Showdown data
+        run: npm run build-data
       - name: Update usage data
         run: npm run update-usage
+        env:
+          CHAMPS_SEASONS: '3'
+          CHAMPS_RULES: '1'
+          CHAMPS_DEFAULT_SEASON: '3'
       - name: Build
         run: npm run build
         env:
