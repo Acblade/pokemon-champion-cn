@@ -807,7 +807,12 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
 
   function formatDamageResult(result: ReturnType<typeof calculateChampionsDamage> | null, expanded = false) {
     if (!result) return '—'
-    if (expanded) return result.desc.replace(/Possible damage amounts:/g, '可能伤害值：').replace(/--/g, '—')
+    if (expanded) {
+      return result.desc
+        .replace(/Possible damage amounts:/g, '可能伤害值：')
+        .replace(/--/g, '—')
+        .replace(/^[^:\n]+:\s*/, '')
+    }
     const percentMatch = result.desc.match(/\(([^)]+%)\)/)
     const percentText = percentMatch ? ` (${percentMatch[1]})` : ''
     return `${result.range[0]}-${result.range[1]}${percentText}`
