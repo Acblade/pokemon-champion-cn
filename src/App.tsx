@@ -103,7 +103,16 @@ function formatDatasetDate(date: string) {
 }
 
 function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: string }) {
-  return dataset.trainerSourceUrl || dataset.sourceUrl.replace('/pokemon/list', '/trainer/list')
+  return dataset.trainerSourceUrl || dataset.sourceUrl
+}
+
+function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
+  if (dataset.source) return dataset.source
+  try {
+    return new URL(dataset.sourceUrl).hostname.replace(/^www\./, '')
+  } catch {
+    return dataset.sourceUrl
+  }
 }
 
 function slugify(value: string) {
@@ -674,7 +683,7 @@ function App() {
 
           {homeTab === 'trainers' && (
             <section className="trainer-rankings-section">
-              <div className="data-source-line"><a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">champs.pokedb.tokyo</a> · {formatDatasetDate(selectedUsageDataset.date)}</div>
+              <div className="data-source-line"><a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">{sourceLabel(selectedUsageDataset)}</a> · {formatDatasetDate(selectedUsageDataset.date)}</div>
               {selectedUsageDataset.trainerRankingsAvailable === false || selectedUsageDataset.trainerRankings.length === 0 ? (
                 <div className="empty-detail trainer-empty-state">
                   <h2>M-{selectedUsageDataset.season} 玩家排名尚未开放</h2>

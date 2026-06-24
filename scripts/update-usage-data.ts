@@ -1,7 +1,14 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import vm from 'node:vm'
 
 const BASE_URL = 'https://champs.pokedb.tokyo'
+const GAMEWITH_SOURCE = 'GameWith JP'
+const GAMEWITH_URL_BY_RULE: Record<string, string> = {
+  // Local rule=1 is Champions doubles; GameWith uses a separate doubles article.
+  '1': 'https://gamewith.jp/pokemon-champions/558230',
+  '2': 'https://gamewith.jp/pokemon-champions/555373',
+}
 const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3')
   .split(',')
   .map(value => value.trim())
@@ -14,6 +21,7 @@ let SEASON = TARGET_SEASONS[0] ?? '3'
 let RULE = TARGET_RULES[0] ?? '1'
 const CONCURRENCY = Number(process.env.CHAMPS_CONCURRENCY ?? '6')
 const DETAIL_LIMIT = Number(process.env.CHAMPS_DETAIL_LIMIT ?? '0')
+const USAGE_SOURCE = (process.env.CHAMPS_USAGE_SOURCE ?? 'auto').toLowerCase()
 
 const PATHS = {
   output: path.resolve('src/generated/usage-datasets.json'),
@@ -54,6 +62,47 @@ const FORM_OVERRIDES: Record<string, string> = {
   '0745-01': 'lycanrocmidnight',
   '0745-02': 'lycanrocdusk',
   '0902-01': 'basculegionf',
+}
+
+const GAMEWITH_FORM_KEY_OVERRIDES: Record<string, string> = {
+  '670_2': '0670-05',
+}
+
+const GAMEWITH_ITEM_ID_OVERRIDES: Record<string, string> = {
+  ウツボットナイト: 'victreebelite',
+  エアームドナイト: 'skarmorite',
+  エンブオナイト: 'emboarite',
+  オーダイルナイト: 'feraligite',
+  カイリュナイト: 'dragoninite',
+  カエンジシナイト: 'pyroarite',
+  カラマネナイト: 'malamarite',
+  ガメノデスナイト: 'barbaracite',
+  キラフロルナイト: 'glimmoranite',
+  ケケンカニナイト: 'crabominite',
+  ゲッコウガナイト: 'greninjite',
+  ゴルーグナイト: 'golurkite',
+  シビルドナイト: 'eelektrossite',
+  シャンデラナイト: 'chandelurite',
+  ジジーロナイト: 'drampanite',
+  スコヴィラナイト: 'scovillainite',
+  スターミナイト: 'starminite',
+  ズルズキナイト: 'scraftinite',
+  タイレーツナイト: 'falinksite',
+  チリーンナイト: 'chimechite',
+  ドラミドナイト: 'dragalgite',
+  ドリュウズナイト: 'excadrite',
+  ニャオニクスナイト: 'meowsticite',
+  ピクシナイト: 'clefablite',
+  フラエッテナイト: 'floettite',
+  ブリガロナイト: 'chesnaughtite',
+  ペンドラナイト: 'scolipite',
+  マフォクシナイト: 'delphoxite',
+  ムクホークナイト: 'staraptite',
+  メガニウムナイト: 'meganiumite',
+  ユキメノコナイト: 'froslassite',
+  ライチュウナイトX: 'raichunitex',
+  ライチュウナイトY: 'raichunitey',
+  ルチャブルナイト: 'hawluchanite',
 }
 
 // ---------- types ----------
@@ -106,6 +155,12 @@ type UsageCollection = {
   datasets: Record<string, UsageDataset>
 }
 
+type GeneratedItem = {
+  id: string
+  en: string
+  zh: string
+}
+
 type PokemonDetail = {
   id: string
   num: number
@@ -124,6 +179,16 @@ type TranslationCache = {
   items: Record<string, TermEntry>
   abilities: Record<string, TermEntry>
   natures: Record<string, TermEntry>
+}
+
+type GameWithPokemonData = {
+  name: string
+  abilities?: [string, string][]
+  moves?: [string, string, string][]
+  items?: [string, string][]
+  evDistributions?: [[number, number, number, number, number, number], string][]
+  natures?: [string, string][]
+  teammates?: [number, string][]
 }
 
 // ---------- utilities ----------
@@ -157,6 +222,11 @@ function decodeHtml(html: string) {
 
 function titleCase(slug: string) {
   return slug.split('-').map(p => p ? `${p[0].toUpperCase()}${p.slice(1)}` : p).join(' ')
+}
+
+function loadGeneratedItems() {
+  const items = JSON.parse(fs.readFileSync(PATHS.items, 'utf8')) as GeneratedItem[]
+  return new Map(items.map(item => [item.id, item]))
 }
 
 function regulationForSeason(season: string): 'M-A' | 'M-B' {
@@ -269,9 +339,30 @@ async function buildResourceLookup(
   return lookup
 }
 
+function applyLocalTranslations(cache: TranslationCache, details: Record<string, PokemonDetail>) {
+  const local = buildLocalMaps(details)
+  const localMovesById = new Map([...local.moves].map(([en, zh]) => [toId(en), zh]))
+  const localItemsById = new Map([...local.items].map(([en, zh]) => [toId(en), zh]))
+  const localAbilitiesById = new Map([...local.abilities].map(([en, zh]) => [toId(en), zh]))
+  for (const entry of Object.values(cache.moves)) {
+    const zh = local.moves.get(entry.en.toLowerCase()) ?? localMovesById.get(toId(entry.en))
+    if (zh) entry.zh = zh
+  }
+  for (const entry of Object.values(cache.items)) {
+    const zh = local.items.get(entry.en.toLowerCase()) ?? localItemsById.get(toId(entry.en))
+    if (zh) entry.zh = zh
+  }
+  for (const entry of Object.values(cache.abilities)) {
+    const zh = local.abilities.get(entry.en.toLowerCase()) ?? localAbilitiesById.get(toId(entry.en))
+    if (zh) entry.zh = zh
+  }
+}
+
 async function loadTranslationCache(details: Record<string, PokemonDetail>): Promise<TranslationCache> {
   if (fs.existsSync(PATHS.cache) && !process.env.REFRESH_CACHE) {
-    return JSON.parse(fs.readFileSync(PATHS.cache, 'utf8')) as TranslationCache
+    const cache = JSON.parse(fs.readFileSync(PATHS.cache, 'utf8')) as TranslationCache
+    applyLocalTranslations(cache, details)
+    return cache
   }
   console.log('Building translation cache from PokeAPI (this takes a few minutes)...')
   const local = buildLocalMaps(details)
@@ -282,6 +373,7 @@ async function loadTranslationCache(details: Record<string, PokemonDetail>): Pro
     abilities: await buildResourceLookup('ability', local.abilities),
     natures: await buildResourceLookup('nature', local.natures),
   }
+  applyLocalTranslations(cache, details)
   fs.writeFileSync(PATHS.cache, `${JSON.stringify(cache, null, 2)}\n`, 'utf8')
   return cache
 }
@@ -387,6 +479,117 @@ function parseTrainers(html: string): { rank: number; rating: number | null; nam
     if (rank && name) results.push({ rank, rating, name })
   }
   return results
+}
+
+function gameWithUrlForRule(rule: string) {
+  const url = GAMEWITH_URL_BY_RULE[rule]
+  if (!url) throw new Error(`No GameWith JP fallback URL configured for rule=${rule}`)
+  return url
+}
+
+function gameWithKeyToDetailKey(key: string) {
+  const override = GAMEWITH_FORM_KEY_OVERRIDES[key]
+  if (override) return override
+  const [num, form = '0'] = key.split('_')
+  return `${num.padStart(4, '0')}-${String(Number(form)).padStart(2, '0')}`
+}
+
+function parseGameWithRanking(html: string) {
+  const start = html.indexOf('<div class="wd-pkch-battleranking"')
+  if (start < 0) throw new Error('GameWith JP ranking block not found')
+  const end = html.indexOf('<p class="gw-info"', start)
+  const section = html.slice(start, end > start ? end : start + 250000)
+  const results: { rank: number; key: string; jpName: string }[] = []
+  const re = /<div class="_pkm[^"]*" data-rank="(\d+)">[\s\S]*?gacha\/(\d{3,4}(?:_\d+)?)\.png[\s\S]*?<span class="_name">([\s\S]*?)<\/span>/g
+  for (const m of section.matchAll(re)) {
+    const rank = toNumber(m[1])
+    if (!rank) continue
+    results.push({ rank, key: m[2], jpName: stripTags(m[3]) })
+  }
+  if (!results.length) throw new Error('GameWith JP ranking entries not found')
+  return results.sort((a, b) => a.rank - b.rank)
+}
+
+function extractJsObjectLiteral<T>(html: string, marker: string): T {
+  const markerIndex = html.indexOf(marker)
+  if (markerIndex < 0) throw new Error(`GameWith JP marker not found: ${marker}`)
+  const start = markerIndex + marker.length
+  let depth = 0
+  let end = -1
+  let inString: string | null = null
+  let escaping = false
+  for (let i = start; i < html.length; i++) {
+    const char = html[i]
+    if (inString) {
+      if (escaping) escaping = false
+      else if (char === '\\') escaping = true
+      else if (char === inString) inString = null
+      continue
+    }
+    if (char === '"' || char === "'" || char === '`') {
+      inString = char
+      continue
+    }
+    if (char === '{') depth++
+    else if (char === '}') {
+      depth--
+      if (depth === 0) {
+        end = i + 1
+        break
+      }
+    }
+  }
+  if (end < 0) throw new Error(`GameWith JP object literal is unterminated: ${marker}`)
+  return vm.runInNewContext(`(${html.slice(start, end)})`, {}, { timeout: 1000 }) as T
+}
+
+function parseGameWithPokemonData(html: string) {
+  return extractJsObjectLiteral<Record<string, GameWithPokemonData>>(html, 'const pkchPokemonData = ')
+}
+
+function parseGameWithDate(html: string) {
+  const metaDate = html.match(/<meta name="date" content="(\d{4}-\d{2}-\d{2})T/)?.[1]
+  if (metaDate) return metaDate
+  const info = stripTags(html.match(/<p class="gw-info">([\s\S]*?)<\/p>/)?.[1] ?? '')
+  const md = info.match(/(\d{1,2})\/(\d{1,2})/)
+  if (!md) return new Date().toISOString().slice(0, 10)
+  const year = new Date().getFullYear()
+  return `${year}-${md[1].padStart(2, '0')}-${md[2].padStart(2, '0')}`
+}
+
+function parseGameWithSeason(html: string) {
+  const info = stripTags(html.match(/<p class="gw-info">([\s\S]*?)<\/p>/)?.[1] ?? '')
+  return info.match(/M-(\d+)/)?.[1] ?? null
+}
+
+function gameWithItemOverrideId(jpName: string) {
+  const key = normJp(jpName)
+  for (const [jp, id] of Object.entries(GAMEWITH_ITEM_ID_OVERRIDES)) {
+    if (normJp(jp) === key) return id
+  }
+  return null
+}
+
+function translateGameWithItem(
+  jpName: string,
+  cache: TranslationCache,
+  itemById: Map<string, GeneratedItem>,
+): UsageItem {
+  const overrideId = gameWithItemOverrideId(jpName)
+  if (overrideId) {
+    const item = itemById.get(overrideId)
+    if (item) return { zh: item.zh, en: item.en, percent: 0 }
+  }
+  return { ...translate(jpName, cache.items), percent: 0 }
+}
+
+const GAMEWITH_SPREAD_LABELS = ['HP', '攻击', '防御', '特攻', '特防', '速度']
+
+function gameWithSpread(values: number[]) {
+  return values
+    .map((value, index) => value > 0 ? `${GAMEWITH_SPREAD_LABELS[index] ?? index} ${value}` : '')
+    .filter(Boolean)
+    .join(' / ')
 }
 
 // ---------- detail loading ----------
@@ -562,6 +765,139 @@ async function fetchUsageDataset(
   */
 }
 
+function buildGameWithUsageEntry(
+  rankEntry: { rank: number; key: string; jpName: string },
+  gameWithEntry: GameWithPokemonData | undefined,
+  detail: PokemonDetail,
+  byKey: Map<string, PokemonDetail>,
+  cache: TranslationCache,
+  itemById: Map<string, GeneratedItem>,
+): UsageEntry {
+  const items: UsageItem[] = (gameWithEntry?.items ?? []).slice(0, 10).map(([jpName, rate]) => {
+    const translated = translateGameWithItem(jpName, cache, itemById)
+    return { ...translated, percent: toNumber(rate) ?? 0 }
+  })
+
+  const moves: UsageItem[] = (gameWithEntry?.moves ?? []).slice(0, 12).map(([, jpName, rate]) => {
+    const { zh, en } = translate(jpName, cache.moves)
+    return { zh, en, percent: toNumber(rate) ?? 0 }
+  })
+
+  const abilities: UsageItem[] = (gameWithEntry?.abilities ?? []).slice(0, 8).map(([jpName, rate]) => {
+    const { zh, en } = translate(jpName, cache.abilities)
+    return { zh, en, percent: toNumber(rate) ?? 0 }
+  })
+
+  const natures: UsageItem[] = (gameWithEntry?.natures ?? []).slice(0, 10).map(([jpName, rate]) => {
+    const { zh, en } = translate(jpName, cache.natures)
+    return { zh, en, percent: toNumber(rate) ?? 0 }
+  })
+
+  const spreads: UsageSpread[] = (gameWithEntry?.evDistributions ?? []).slice(0, 10).map(([values, rate]) => ({
+    nature: '',
+    spread: gameWithSpread(values),
+    percent: toNumber(rate) ?? 0,
+  }))
+
+  const teammates: UsageTeammate[] = (gameWithEntry?.teammates ?? []).slice(0, 10).map(([, gameWithKey]) => {
+    const detailKey = gameWithKeyToDetailKey(gameWithKey)
+    const teammate = byKey.get(detailKey)
+    return {
+      zh: teammate?.zh || gameWithKey,
+      en: teammate?.name || gameWithKey,
+      key: detailKey,
+    }
+  })
+
+  return {
+    id: toId(detail.id),
+    name: detail.name,
+    zh: detail.zh || detail.name || rankEntry.jpName,
+    rank: rankEntry.rank,
+    items,
+    moves,
+    abilities,
+    natures,
+    spreads,
+    teammates,
+  }
+}
+
+async function fetchGameWithUsageDataset(
+  byKey: Map<string, PokemonDetail>,
+  cache: TranslationCache,
+  primaryFailure: string,
+): Promise<UsageDataset> {
+  const sourceUrl = gameWithUrlForRule(RULE)
+  const html = await getText(sourceUrl)
+  const pageSeason = parseGameWithSeason(html)
+  if (pageSeason && pageSeason !== SEASON) {
+    throw new Error(`GameWith JP page is season M-${pageSeason}, requested M-${SEASON}`)
+  }
+
+  const ranking = parseGameWithRanking(html)
+  const gameWithData = parseGameWithPokemonData(html)
+  const itemById = loadGeneratedItems()
+  const targetRanking = DETAIL_LIMIT > 0 ? ranking.slice(0, DETAIL_LIMIT) : ranking
+
+  const entries: Record<string, UsageEntry> = {}
+  const missingPokemon: UsageDataset['missingPokemon'] = []
+  for (const rankEntry of ranking) {
+    const detailKey = gameWithKeyToDetailKey(rankEntry.key)
+    const detail = byKey.get(detailKey)
+    if (!detail) {
+      missingPokemon.push({ key: detailKey, rank: rankEntry.rank, jpName: rankEntry.jpName })
+      continue
+    }
+    if (DETAIL_LIMIT > 0 && !targetRanking.some(entry => entry.key === rankEntry.key)) {
+      entries[toId(detail.id)] = {
+        id: toId(detail.id),
+        name: detail.name,
+        zh: detail.zh || detail.name,
+        rank: rankEntry.rank,
+        items: [],
+        moves: [],
+        abilities: [],
+        natures: [],
+        spreads: [],
+        teammates: [],
+      }
+      continue
+    }
+    entries[toId(detail.id)] = buildGameWithUsageEntry(
+      rankEntry,
+      gameWithData[rankEntry.key],
+      detail,
+      byKey,
+      cache,
+      itemById,
+    )
+  }
+
+  const date = parseGameWithDate(html)
+  const trainerRankingsNote = primaryFailure.startsWith('primary source skipped')
+    ? '当前使用 GameWith JP 使用率数据；GameWith JP 不提供玩家排名。'
+    : `champs.pokedb.tokyo 同步失败（${primaryFailure}），已改用 GameWith JP 使用率数据；GameWith JP 不提供玩家排名。`
+  return {
+    source: GAMEWITH_SOURCE,
+    sourceUrl,
+    trainerSourceUrl: sourceUrl,
+    format: datasetKey(SEASON, RULE),
+    regulation: regulationForSeason(SEASON),
+    battle: battleForRule(RULE),
+    season: SEASON,
+    rule: RULE,
+    date,
+    updatedAt: new Date().toISOString(),
+    count: Object.keys(entries).length,
+    missingPokemon,
+    trainerRankingsAvailable: false,
+    trainerRankingsNote,
+    trainerRankings: [],
+    entries,
+  }
+}
+
 async function main() {
   const { raw, byKey } = loadDetails()
   const cache = await loadTranslationCache(raw)
@@ -574,7 +910,23 @@ async function main() {
       RULE = rule
       const key = datasetKey(season, rule)
       try {
-        const output = await fetchUsageDataset(byKey, cache)
+        let output: UsageDataset
+        if (USAGE_SOURCE === 'gamewith') {
+          output = await fetchGameWithUsageDataset(
+            byKey,
+            cache,
+            'primary source skipped by CHAMPS_USAGE_SOURCE=gamewith',
+          )
+        } else {
+          try {
+            output = await fetchUsageDataset(byKey, cache)
+          } catch (error) {
+            if (USAGE_SOURCE === 'champs') throw error
+            const message = error instanceof Error ? error.message : String(error)
+            console.warn(`Primary usage source failed for ${key}; trying GameWith JP fallback: ${message}`)
+            output = await fetchGameWithUsageDataset(byKey, cache, message)
+          }
+        }
         datasets[output.format] = output
         if (output.missingPokemon.length) {
           console.warn(
@@ -595,10 +947,12 @@ async function main() {
   const defaultRule = process.env.CHAMPS_DEFAULT_RULE ?? TARGET_RULES[0] ?? '1'
   const defaultKey = datasetKey(defaultSeason, defaultRule)
   const fallbackKey = Object.keys(datasets).sort().at(-1) ?? defaultKey
+  const selectedDefaultKey = datasets[defaultKey] ? defaultKey : fallbackKey
+  const selectedDefaultDataset = datasets[selectedDefaultKey]
   const collection: UsageCollection = {
-    source: 'Battle Database Champions',
-    sourceUrl: BASE_URL,
-    defaultKey: datasets[defaultKey] ? defaultKey : fallbackKey,
+    source: selectedDefaultDataset?.source ?? 'Battle Database Champions',
+    sourceUrl: selectedDefaultDataset?.sourceUrl ?? BASE_URL,
+    defaultKey: selectedDefaultKey,
     updatedAt: new Date().toISOString(),
     datasets,
   }

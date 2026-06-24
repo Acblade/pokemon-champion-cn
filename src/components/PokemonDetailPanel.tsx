@@ -229,6 +229,15 @@ function fmtPercent(p: number) {
   return `${p.toFixed(p >= 10 ? 1 : 2)}%`
 }
 
+function usageSourceLabel(dataset: { source?: string; sourceUrl: string }) {
+  if (dataset.source) return dataset.source
+  try {
+    return new URL(dataset.sourceUrl).hostname.replace(/^www\./, '')
+  } catch {
+    return dataset.sourceUrl
+  }
+}
+
 function renderUsageChips(items: UsageItem[], title: string, limit = 6) {
   const visible = items.slice(0, limit)
   if (!visible.length) return null
@@ -1313,7 +1322,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           <div className="usage-section-head">
             <div>
               <h2>当前使用率</h2>
-              <p><a href="https://champs.pokedb.tokyo/" target="_blank" rel="noopener noreferrer">champs.pokedb.tokyo</a> · {usageDataset.date.slice(5).replace('-', ' 月 ')} 日</p>
+              <p><a href={usageDataset.sourceUrl} target="_blank" rel="noopener noreferrer">{usageSourceLabel(usageDataset)}</a> · {usageDataset.date.slice(5).replace('-', ' 月 ')} 日</p>
             </div>
             <div className="usage-rank-badge">
               <span>排名</span>
