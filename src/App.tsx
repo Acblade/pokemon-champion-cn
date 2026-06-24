@@ -111,8 +111,16 @@ type FilterState = {
 type TeamFilterState = {
   namedOnly: boolean
   completeOnly: boolean
+  sources: string[]
   pokemonQuery: string
   megaPokemonQuery: string
+}
+
+type TeamPokemonOption = {
+  id: string
+  label: string
+  subLabel: string
+  search: string
 }
 
 const DEFAULT_FILTERS: FilterState = {
@@ -130,7 +138,8 @@ const DEFAULT_FILTERS: FilterState = {
 
 const DEFAULT_TEAM_FILTERS: TeamFilterState = {
   namedOnly: false,
-  completeOnly: false,
+  completeOnly: true,
+  sources: [],
   pokemonQuery: '',
   megaPokemonQuery: '',
 }
@@ -208,6 +217,29 @@ function teamMatchesPokemonQuery(team: TeamShare, query: string, megaOnly = fals
     const megaLabel = pokemon && isMegaTeamMember(member) ? normalize(`${pokemonDisplayName(pokemon)} ${memberMegaSuffix(member, pokemon)}`) : ''
     return teamMemberDisplaySearchText(member).includes(normalizedQuery) || megaLabel.includes(normalizedQuery)
   })
+}
+
+function teamSourceGroupName(team: TeamShare) {
+  const sourceText = normalize(`${team.source} ${team.sourceUrl} ${team.platformUrl}`)
+  if (sourceText.includes('gamewith')) return 'GameWith JP Party Posts'
+  if (sourceText.includes('pokebase')) return 'PokéBase Community Teams'
+  if (sourceText.includes('victoryroad')) return 'Victory Road Replica Teams'
+  return team.source
+}
+
+function buildTeamPokemonOption(pokemon: PokemonRow): TeamPokemonOption {
+  return {
+    id: pokemon.id,
+    label: pokemonDisplayName(pokemon),
+    subLabel: pokemon.name,
+    search: [pokemonSearchText(pokemon), pokemon.pinyin, pokemon.initials, pokemon.id, pokemon.name].join(' '),
+  }
+}
+
+function filterTeamPokemonOptions(options: TeamPokemonOption[], query: string) {
+  const normalizedQuery = normalize(query)
+  const matched = normalizedQuery ? options.filter((option) => normalize(option.search).includes(normalizedQuery)) : options
+  return matched.slice(0, 24)
 }
 
 function displayTeamTag(team: TeamShare, tag: string) {
@@ -333,6 +365,7 @@ function App() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS)
   const [movePickerOpen, setMovePickerOpen] = useState<'move1' | 'move2' | null>(null)
+  const [teamPokemonPickerOpen, setTeamPokemonPickerOpen] = useState<'pokemon' | 'mega' | null>(null)
   const [selectedPokemonId, setSelectedPokemonId] = useState<string | null>(initialPokemon?.id ?? championsPokemon[0]?.id ?? null)
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonDetail | null>(null)
   const [compareTarget, setCompareTarget] = useState<PokemonDetail | null>(null)
@@ -406,17 +439,21 @@ function App() {
     return teamShares.filter((team) => {
       if (teamFilters.namedOnly && isAnonymousTeamAuthor(team.author)) return false
       if (teamFilters.completeOnly && !teamHasSpecificInfo(team)) return false
+      if (teamFilters.sources.length > 0 && !teamFilters.sources.includes(teamSourceGroupName(team))) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.pokemonQuery)) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.megaPokemonQuery, true)) return false
       return true
     })
   }, [teamFilters])
 
-  const teamPokemonOptions = useMemo(() => Array.from(new Set(championsPokemon.map((pokemon) => pokemonDisplayName(pokemon)))), [])
-  const teamMegaPokemonOptions = useMemo(() => Array.from(new Set(championsPokemon.filter((pokemon) => pokemon.hasMega || isMegaPokemon(pokemon)).map((pokemon) => pokemonDisplayName(pokemon)))), [])
+  const teamPokemonOptions = useMemo(() => championsPokemon.map(buildTeamPokemonOption), [])
+  const teamMegaPokemonOptions = useMemo(() => championsPokemon.filter((pokemon) => pokemon.hasMega || isMegaPokemon(pokemon)).map(buildTeamPokemonOption), [])
+  const teamPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamPokemonOptions, teamFilters.pokemonQuery), [teamPokemonOptions, teamFilters.pokemonQuery])
+  const teamMegaPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamMegaPokemonOptions, teamFilters.megaPokemonQuery), [teamMegaPokemonOptions, teamFilters.megaPokemonQuery])
   const activeTeamFilterCount =
     (teamFilters.namedOnly ? 1 : 0) +
     (teamFilters.completeOnly ? 1 : 0) +
+    teamFilters.sources.length +
     (teamFilters.pokemonQuery.trim() ? 1 : 0) +
     (teamFilters.megaPokemonQuery.trim() ? 1 : 0)
 
@@ -518,8 +555,24 @@ function App() {
     const handlePointerDown = (event: PointerEvent) => {
       const target = event.target as HTMLElement | null
       if (!target) return
-      if (target.closest('[data-popover-root]')) return
+      if (target.closest('[data-popover-root]')) {
+        if (!target.closest('.list-filter-control')) {
+          setFiltersOpen(false)
+          setMovePickerOpen(null)
+        }
+        if (!target.closest('.team-title-filter-control')) {
+          setTeamFiltersOpen(false)
+          setTeamPokemonPickerOpen(null)
+        }
+        if (!target.closest('.search-box-wrap')) setSearchOpen(false)
+        if (!target.closest('.saved-actions-inline')) setGroupPickerEntryId(null)
+        if (!target.closest('.action-box [data-popover-root]')) setSavedOpen(false)
+        return
+      }
       setFiltersOpen(false)
+      setMovePickerOpen(null)
+      setTeamFiltersOpen(false)
+      setTeamPokemonPickerOpen(null)
       setSavedOpen(false)
       setSearchOpen(false)
       setGroupPickerEntryId(null)
@@ -690,13 +743,17 @@ function App() {
                     </div>
                   </div>
                   {!collapsedGroups[groupName] && <div className="saved-roster-list">
-                    {entries.map((entry, index) => {
+                    {entries.map((entry) => {
                       const pokemon = championsPokemon.find((item) => item.id === entry.pokemonId)
+                      const detail = championsDetails[entry.pokemonId]
                       const ability = pokemon?.abilities.find((item) => item.id === entry.abilityId)
-                      const spSummary = Object.entries(entry.sps).filter(([, value]) => value > 0).map(([key, value]) => `${SP_LABELS[key] ?? key.toUpperCase()} ${value}`).join(' / ') || '—'
+                      const natureLabel = teamFieldLabel(teamNatureLabel(entry.nature), '性格未保存')
+                      const itemLabel = teamFieldLabel(appItemLabel(entry.item), '道具未保存')
+                      const abilityLabel = teamFieldLabel(ability?.zh || entry.abilityId, '特性未保存')
+                      const spSummary = Object.entries(entry.sps).filter(([, value]) => value > 0).map(([key, value]) => `${SP_LABELS[key] ?? key.toUpperCase()} ${value}`).join(' / ') || '努力值未保存'
+                      const moveSummary = (entry.blueFavorites || []).map((moveId) => detail?.moves.find((move) => move.id === moveId)?.zh || moveId).filter(Boolean).join(' / ') || '技能未保存'
                       return (
                         <article className="saved-roster-item" key={`${groupName}-${entry.id}`}>
-                          <span className="team-slot-number">{index + 1}</span>
                           <div className="saved-table-name">
                             <div className="saved-name-row">
                               {editingSavedNameId === entry.id ? (
@@ -716,9 +773,11 @@ function App() {
                               <button type="button" className="saved-edit-button" onClick={() => setEditingSavedNameId(entry.id)} title="改名">✐</button>
                             </div>
                           </div>
-                          <span className="saved-roster-field">{ability?.zh || entry.abilityId || '—'}</span>
-                          <span className="saved-roster-field">{appItemLabel(entry.item)}</span>
+                          <span className="saved-roster-field">{natureLabel}</span>
+                          <span className="saved-roster-field">{itemLabel}</span>
+                          <span className="saved-roster-field">{abilityLabel}</span>
                           <span className="saved-roster-field saved-roster-spread">{spSummary}</span>
+                          <span className="saved-roster-field saved-roster-moves">{moveSummary}</span>
                           <div className="saved-actions-inline" data-popover-root>
                             <button className="ghost-button saved-group-trigger" type="button" onClick={() => setGroupPickerEntryId((current) => current === entry.id ? null : entry.id)}>分组</button>
                             <button className="danger-text-button" onClick={() => setSavedPokemon((current) => current.filter((item) => item.id !== entry.id))}>取消</button>
@@ -790,6 +849,122 @@ function App() {
                       )
                     })()}
                     <button onClick={() => { setFilters(DEFAULT_FILTERS); setMovePickerOpen(null); setFiltersOpen(false) }}>清空筛选</button>
+                  </div>
+                )}
+              </div>
+            )}
+            {homeTab === 'teams' && (
+              <div className="floating-control list-filter-control team-title-filter-control" data-popover-root>
+                <button className="ghost-button" onClick={() => setTeamFiltersOpen((value) => !value)}>筛选{activeTeamFilterCount ? `（${activeTeamFilterCount}）` : ''}</button>
+                {teamFiltersOpen && (
+                  <div className="popover filter-list-popover filter-grid team-filter-popover">
+                    <div className="popover-field">
+                      <span>队伍来源</span>
+                      <div className="filter-chip-group">
+                        {teamShareSources.map((source) => (
+                          <button
+                            key={source.name}
+                            type="button"
+                            className={teamFilters.sources.includes(source.name) ? 'filter-chip active' : 'filter-chip'}
+                            onClick={() => setTeamFilters((current) => ({
+                              ...current,
+                              sources: current.sources.includes(source.name)
+                                ? current.sources.filter((item) => item !== source.name)
+                                : [...current.sources, source.name],
+                            }))}
+                          >
+                            {source.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <label className="team-filter-check">
+                      <input
+                        type="checkbox"
+                        checked={teamFilters.namedOnly}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, namedOnly: event.target.checked }))}
+                      />
+                      <span>仅显示有名字的作者</span>
+                    </label>
+                    <label className="team-filter-check">
+                      <input
+                        type="checkbox"
+                        checked={teamFilters.completeOnly}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, completeOnly: event.target.checked }))}
+                      />
+                      <span>不显示无具体配置的队伍</span>
+                    </label>
+                    <div className="filter-move-pair team-filter-pokemon-pair">
+                      <div className="filter-move-item" data-popover-root>
+                        <span>包含宝可梦</span>
+                        <div className="filter-input-wrap team-filter-picker">
+                          <input
+                            value={teamFilters.pokemonQuery}
+                            onFocus={() => setTeamPokemonPickerOpen('pokemon')}
+                            onBlur={() => setTimeout(() => setTeamPokemonPickerOpen((current) => current === 'pokemon' ? null : current), 120)}
+                            onChange={(event) => {
+                              setTeamPokemonPickerOpen('pokemon')
+                              setTeamFilters((current) => ({ ...current, pokemonQuery: event.target.value }))
+                            }}
+                            placeholder="输入中/英/拼音"
+                          />
+                          {teamPokemonPickerOpen === 'pokemon' && (
+                            <div className="search-dropdown compact-dropdown filter-suggestion-dropdown team-filter-suggestion-dropdown">
+                              {teamPokemonSuggestions.map((option) => (
+                                <button
+                                  key={option.id}
+                                  className="item-option-row"
+                                  type="button"
+                                  onMouseDown={() => {
+                                    setTeamFilters((current) => ({ ...current, pokemonQuery: option.label }))
+                                    setTeamPokemonPickerOpen(null)
+                                  }}
+                                >
+                                  <span>{option.label}</span>
+                                  <small>{option.subLabel}</small>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="filter-move-item" data-popover-root>
+                        <span>包含 Mega 宝可梦</span>
+                        <div className="filter-input-wrap team-filter-picker">
+                          <input
+                            value={teamFilters.megaPokemonQuery}
+                            onFocus={() => setTeamPokemonPickerOpen('mega')}
+                            onBlur={() => setTimeout(() => setTeamPokemonPickerOpen((current) => current === 'mega' ? null : current), 120)}
+                            onChange={(event) => {
+                              setTeamPokemonPickerOpen('mega')
+                              setTeamFilters((current) => ({ ...current, megaPokemonQuery: event.target.value }))
+                            }}
+                            placeholder="输入中/英/拼音"
+                          />
+                          {teamPokemonPickerOpen === 'mega' && (
+                            <div className="search-dropdown compact-dropdown filter-suggestion-dropdown team-filter-suggestion-dropdown">
+                              {teamMegaPokemonSuggestions.map((option) => (
+                                <button
+                                  key={option.id}
+                                  className="item-option-row"
+                                  type="button"
+                                  onMouseDown={() => {
+                                    setTeamFilters((current) => ({ ...current, megaPokemonQuery: option.label }))
+                                    setTeamPokemonPickerOpen(null)
+                                  }}
+                                >
+                                  <span>{option.label}</span>
+                                  <small>{option.subLabel}</small>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="team-filter-actions">
+                      <button type="button" className="ghost-button" onClick={() => { setTeamFilters(DEFAULT_TEAM_FILTERS); setTeamPokemonPickerOpen(null); setTeamFiltersOpen(false) }}>清空</button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -896,56 +1071,6 @@ function App() {
               </div>
               <div className="team-filter-row">
                 <div className="data-source-line">{filteredTeamShares.length}/{teamShares.length} 队 · {formatTeamSourceDates(teamShareSources)}</div>
-                <div className="team-filter-control" data-popover-root>
-                  <button type="button" className="ghost-button" onClick={() => setTeamFiltersOpen((value) => !value)}>筛选{activeTeamFilterCount ? `（${activeTeamFilterCount}）` : ''}</button>
-                  {teamFiltersOpen && (
-                    <div className="popover team-filter-popover">
-                      <label className="team-filter-check">
-                        <input
-                          type="checkbox"
-                          checked={teamFilters.namedOnly}
-                          onChange={(event) => setTeamFilters((current) => ({ ...current, namedOnly: event.target.checked }))}
-                        />
-                        <span>仅显示有名字的作者</span>
-                      </label>
-                      <label className="team-filter-check">
-                        <input
-                          type="checkbox"
-                          checked={teamFilters.completeOnly}
-                          onChange={(event) => setTeamFilters((current) => ({ ...current, completeOnly: event.target.checked }))}
-                        />
-                        <span>不显示无具体配置的队伍</span>
-                      </label>
-                      <label className="popover-field">
-                        <span>包含宝可梦</span>
-                        <input
-                          list="team-pokemon-options"
-                          value={teamFilters.pokemonQuery}
-                          onChange={(event) => setTeamFilters((current) => ({ ...current, pokemonQuery: event.target.value }))}
-                          placeholder="中文、英文或形态"
-                        />
-                      </label>
-                      <label className="popover-field">
-                        <span>包含 Mega 宝可梦</span>
-                        <input
-                          list="team-mega-pokemon-options"
-                          value={teamFilters.megaPokemonQuery}
-                          onChange={(event) => setTeamFilters((current) => ({ ...current, megaPokemonQuery: event.target.value }))}
-                          placeholder="例如 雷丘 / Mega X"
-                        />
-                      </label>
-                      <div className="team-filter-actions">
-                        <button type="button" className="ghost-button" onClick={() => setTeamFilters(DEFAULT_TEAM_FILTERS)}>清空</button>
-                      </div>
-                      <datalist id="team-pokemon-options">
-                        {teamPokemonOptions.map((name) => <option key={name} value={name} />)}
-                      </datalist>
-                      <datalist id="team-mega-pokemon-options">
-                        {teamMegaPokemonOptions.map((name) => <option key={name} value={name} />)}
-                      </datalist>
-                    </div>
-                  )}
-                </div>
               </div>
               <div className="team-share-list">
                 {filteredTeamShares.length === 0 && (
