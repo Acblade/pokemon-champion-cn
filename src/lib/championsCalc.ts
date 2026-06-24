@@ -94,7 +94,7 @@ type FieldState = Partial<{
 }>
 
 function normalizeNature(mode?: NatureMode) {
-  return mode || 'Hardy'
+  return mode || 'Serious'
 }
 
 function convertSpsToEvs(sps?: Record<StatKey, number>) {

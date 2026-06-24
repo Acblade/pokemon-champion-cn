@@ -52,32 +52,31 @@ type DamageMoveConfig = {
   categoryOverride: string
 }
 
+const DEFAULT_NATURE = 'Serious'
+const HIDDEN_NATURE_VALUES = new Set(['Hardy', 'Docile', 'Bashful', 'Quirky'])
+
 const ALL_NATURES = [
-  { value: 'Hardy', label: '勤奋' },
+  { value: 'Serious', label: '认真' },
   { value: 'Lonely', label: '怕寂寞 攻击+ 防御-' },
   { value: 'Brave', label: '勇敢 攻击+ 速度-' },
   { value: 'Adamant', label: '固执 攻击+ 特攻-' },
   { value: 'Naughty', label: '顽皮 攻击+ 特防-' },
   { value: 'Bold', label: '大胆 防御+ 攻击-' },
-  { value: 'Docile', label: '坦率' },
   { value: 'Relaxed', label: '悠闲 防御+ 速度-' },
   { value: 'Impish', label: '淘气 防御+ 特攻-' },
   { value: 'Lax', label: '乐天 防御+ 特防-' },
   { value: 'Timid', label: '胆小 速度+ 攻击-' },
   { value: 'Hasty', label: '急躁 速度+ 防御-' },
-  { value: 'Serious', label: '认真' },
   { value: 'Jolly', label: '爽朗 速度+ 特攻-' },
   { value: 'Naive', label: '天真 速度+ 特防-' },
   { value: 'Modest', label: '内敛 特攻+ 攻击-' },
   { value: 'Mild', label: '马虎 特攻+ 防御-' },
   { value: 'Quiet', label: '冷静 特攻+ 速度-' },
-  { value: 'Bashful', label: '害羞' },
   { value: 'Rash', label: '马大哈 特攻+ 特防-' },
   { value: 'Calm', label: '沉着 特防+ 攻击-' },
   { value: 'Gentle', label: '温顺 特防+ 防御-' },
   { value: 'Sassy', label: '自大 特防+ 速度-' },
   { value: 'Careful', label: '慎重 特防+ 特攻-' },
-  { value: 'Quirky', label: '浮躁' },
 ] as const
 
 const TYPE_LABELS: Record<string, string> = {
@@ -122,6 +121,7 @@ const MEGA_STONE_MAP: Record<string, string> = {
   latias: 'Latiasite',
   latios: 'Latiosite',
   lopunny: 'Lopunnite',
+  floette: 'Floettite',
 }
 
 function megaStoneForForm(form: Pick<PokemonRow | PokemonDetail, 'name' | 'baseSpeciesId'>) {
@@ -133,6 +133,25 @@ function megaStoneForForm(form: Pick<PokemonRow | PokemonDetail, 'name' | 'baseS
 
 function itemLabel(itemValue: string) {
   return ITEM_OPTIONS.find((option) => option.value === itemValue)?.label || (itemValue === '无' ? '' : itemValue)
+}
+
+function normalizeNatureValue(nature?: string | null) {
+  return nature && !HIDDEN_NATURE_VALUES.has(nature) ? nature : DEFAULT_NATURE
+}
+
+function natureLabel(nature: string) {
+  const value = normalizeNatureValue(nature)
+  return ALL_NATURES.find((option) => option.value === value)?.label ?? value
+}
+
+function formSwitchLabel(form: Pick<PokemonRow | PokemonDetail, 'name'>) {
+  const name = form.name.toLowerCase()
+  if (name === 'floette-mega') return 'Eternal Mega'
+  if (name.includes('mega-x')) return 'Mega X'
+  if (name.includes('mega-y')) return 'Mega Y'
+  if (name.includes('mega')) return 'Mega'
+  if (name === 'floette-eternal') return 'Eternal'
+  return '普通'
 }
 
 
@@ -305,7 +324,7 @@ const LONGEST_WEATHER_LABEL = WEATHER_OPTIONS.reduce((a, b) => a.label.length >=
 const LONGEST_TERRAIN_LABEL = TERRAIN_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_ITEM_LABEL = ITEM_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent, savedPokemon, onAfterSave, onUpdateSaved, usageDataset, standaloneCalc }: Props) {
-  const [nature, setNature] = useState<string>('Hardy')
+  const [nature, setNature] = useState<string>(DEFAULT_NATURE)
   const [mainNatureQuery, setMainNatureQuery] = useState('')
   const [mainNatureOpen, setMainNatureOpen] = useState(false)
   const [attackerNatureQuery, setAttackerNatureQuery] = useState('')
@@ -369,7 +388,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [damageMoveConfigs, setDamageMoveConfigs] = useState<Record<string, DamageMoveConfig>>({})
   const [attackerAbilityOn, setAttackerAbilityOn] = useState(true)
   const [defenderAbilityOn, setDefenderAbilityOn] = useState(true)
-  const [defenderNature, setDefenderNature] = useState<string>('Hardy')
+  const [defenderNature, setDefenderNature] = useState<string>(DEFAULT_NATURE)
   const [attackerStatus, setAttackerStatus] = useState<StatusMode>('healthy')
   const [defenderStatus, setDefenderStatus] = useState<StatusMode>('healthy')
   const [attackerToxicCounter, setAttackerToxicCounter] = useState(1)
@@ -455,7 +474,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setMoveSortDirection('asc')
     const defaultMegaStone = pokemon.name.toLowerCase().includes('mega') ? megaStoneForForm(pokemon) : undefined
     const nextItem = draftConfig?.item && draftConfig.item !== '无' ? draftConfig.item : (defaultMegaStone || '无')
-    setNature((draftConfig?.nature as typeof nature) || 'Hardy')
+    setNature(normalizeNatureValue(draftConfig?.nature))
     setItem(nextItem)
     setItemQuery(nextItem === '无' ? '' : itemLabel(nextItem))
     setSps(draftConfig?.sps || DEFAULT_SPS)
@@ -488,7 +507,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setDamageMoveConfigs({})
     setAttackerAbilityOn(true)
     setDefenderAbilityOn(true)
-    setDefenderNature('Hardy')
+    setDefenderNature(DEFAULT_NATURE)
     setAttackerStatus('healthy')
     setDefenderStatus('healthy')
     setAttackerToxicCounter(1)
@@ -619,7 +638,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   }
 
   function loadConfig(entry: SavedPokemonEntry) {
-    setNature((entry.nature as string) || 'Hardy')
+    setNature(normalizeNatureValue(entry.nature))
     setAbilityId(entry.abilityId)
     setItem(entry.item)
     setItemQuery(entry.item === '无' ? '' : itemLabel(entry.item))
@@ -1120,8 +1139,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       <section className="damage-subpanel">
         <div className="damage-subpanel-title"><div className="title-with-actions"><h3>{isAttacker ? '我方' : '对方'}</h3>{isAttacker && renderConfigActions('attacker')}</div><span>{pokemonDisplayName(detail)}</span></div>
         <div className="damage-config-grid">
-          <label className="popover-field" data-popover-root><span>宝可梦</span><div className="damage-search-picker auto-size-picker"><span className="sizer" aria-hidden="true">{longestPokemonName}</span><input value={pokemonPickerOpen ? sidePokemonQuery : pokemonDisplayName(detail)} onFocus={() => { setOpenPokemonPicker(side); setSidePokemonQuery('') }} onBlur={() => setTimeout(() => setOpenPokemonPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSidePokemonQuery(event.target.value); setOpenPokemonPicker(side) }} placeholder="输入中文、拼音或英文" />{pokemonPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{pokemonSuggestions.map((target) => <button key={target.id} className="item-option-row" type="button" onMouseDown={() => selectDamagePokemon(side, target)}><span>{pokemonDisplayName(target)}</span></button>)}{pokemonSuggestions.length === 0 && <div className="popover-note">没有匹配的宝可梦。</div>}{(() => { const q = normalizeSearch(sidePokemonQuery); const cfgs = savedPokemon.filter((e) => { const name = e.customName || e.label; return !q || normalizeSearch(name).includes(q) }); return cfgs.length > 0 ? <><div className="picker-group-label">盒子</div>{cfgs.map((e) => { const pkmRow = damageTargetOptions.find((p) => p.id === e.pokemonId); return <button key={e.id} className="item-option-row" type="button" onMouseDown={() => { if (pkmRow) selectDamagePokemon(side, pkmRow); if (side === 'attacker') { setNature((e.nature as string) || 'Hardy'); setAbilityId(e.abilityId); setItem(e.item); setItemQuery(e.item === '无' ? '' : itemLabel(e.item)); setSps(e.sps); setBoosts(e.boosts) } else { setDefenderNature((e.nature as string) || 'Hardy'); setDefenderAbilityId(e.abilityId); setDefenderItem(e.item); setDefenderSps(e.sps); setDefenderBoosts(e.boosts) }; setOpenPokemonPicker(null) }}><span>{e.customName || e.label}</span><small>配置</small></button> })}</> : null })()}</div>}</div><input type="hidden" value={pokemonId} readOnly /></label>
-          <label className="popover-field" data-popover-root><span>性格</span><div className="nature-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={sideNatureOpen ? sideNatureQuery : (ALL_NATURES.find(n => n.value === sideNature)?.label ?? sideNature)} onFocus={() => { setSideNatureOpen(true); setSideNatureQuery('') }} onBlur={() => setTimeout(() => setSideNatureOpen(false), 120)} onChange={(event) => setSideNatureQuery(event.target.value)} placeholder="性格" />{sideNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(sideNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setSideNature(option.value); setSideNatureOpen(false); setSideNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></label>
+          <label className="popover-field" data-popover-root><span>宝可梦</span><div className="damage-search-picker auto-size-picker"><span className="sizer" aria-hidden="true">{longestPokemonName}</span><input value={pokemonPickerOpen ? sidePokemonQuery : pokemonDisplayName(detail)} onFocus={() => { setOpenPokemonPicker(side); setSidePokemonQuery('') }} onBlur={() => setTimeout(() => setOpenPokemonPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSidePokemonQuery(event.target.value); setOpenPokemonPicker(side) }} placeholder="输入中文、拼音或英文" />{pokemonPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{pokemonSuggestions.map((target) => <button key={target.id} className="item-option-row" type="button" onMouseDown={() => selectDamagePokemon(side, target)}><span>{pokemonDisplayName(target)}</span></button>)}{pokemonSuggestions.length === 0 && <div className="popover-note">没有匹配的宝可梦。</div>}{(() => { const q = normalizeSearch(sidePokemonQuery); const cfgs = savedPokemon.filter((e) => { const name = e.customName || e.label; return !q || normalizeSearch(name).includes(q) }); return cfgs.length > 0 ? <><div className="picker-group-label">盒子</div>{cfgs.map((e) => { const pkmRow = damageTargetOptions.find((p) => p.id === e.pokemonId); return <button key={e.id} className="item-option-row" type="button" onMouseDown={() => { if (pkmRow) selectDamagePokemon(side, pkmRow); if (side === 'attacker') { setNature(normalizeNatureValue(e.nature)); setAbilityId(e.abilityId); setItem(e.item); setItemQuery(e.item === '无' ? '' : itemLabel(e.item)); setSps(e.sps); setBoosts(e.boosts) } else { setDefenderNature(normalizeNatureValue(e.nature)); setDefenderAbilityId(e.abilityId); setDefenderItem(e.item); setDefenderSps(e.sps); setDefenderBoosts(e.boosts) }; setOpenPokemonPicker(null) }}><span>{e.customName || e.label}</span><small>配置</small></button> })}</> : null })()}</div>}</div><input type="hidden" value={pokemonId} readOnly /></label>
+          <label className="popover-field" data-popover-root><span>性格</span><div className="nature-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={sideNatureOpen ? sideNatureQuery : natureLabel(sideNature)} onFocus={() => { setSideNatureOpen(true); setSideNatureQuery('') }} onBlur={() => setTimeout(() => setSideNatureOpen(false), 120)} onChange={(event) => setSideNatureQuery(event.target.value)} placeholder="性格" />{sideNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(sideNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setSideNature(option.value); setSideNatureOpen(false); setSideNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></label>
           <label className="popover-field" data-popover-root><span>特性</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{longestAbilityLabel}</span><input value={sideAbilityOpen ? sideAbilityQuery : (detail.abilities.find(a => a.id === sideAbilityId)?.zh ?? '')} onFocus={() => { setSideAbilityOpen(true); setSideAbilityQuery('') }} onBlur={() => setTimeout(() => setSideAbilityOpen(false), 120)} onChange={(e) => setSideAbilityQuery(e.target.value)} placeholder="特性" />{sideAbilityOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(detail.abilities.map(a => ({ value: a.id, label: a.zh })), sideAbilityQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setSideAbilityId(opt.value); setSideAbilityOpen(false); setSideAbilityQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
           <label className="popover-field" data-popover-root><span>道具</span><div className="damage-search-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_ITEM_LABEL}</span><input value={damageItemPickerOpen ? sideItemQuery : (sideItem !== '无' ? itemLabel(sideItem) : '')} onFocus={() => { setOpenDamageItemPicker(side); setSideItemQuery('') }} onBlur={() => setTimeout(() => setOpenDamageItemPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSideItemQuery(event.target.value); setOpenDamageItemPicker(side) }} placeholder="输入中文、拼音或英文" />{damageItemPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{itemSuggestions.map((option) => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => selectDamageItem(side, option)}><span>{option.label}</span></button>)}{itemSuggestions.length === 0 && <div className="popover-note">没有匹配的道具。</div>}</div>}</div><input type="hidden" value={sideItem} readOnly /></label>
           <label className="popover-field" data-popover-root><span>状态</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_STATUS_LABEL}</span><input value={sideStatusOpen ? sideStatusQuery : (STATUS_OPTIONS.find(o => o.value === sideStatus)?.label ?? '')} onFocus={() => { setSideStatusOpen(true); setSideStatusQuery('') }} onBlur={() => setTimeout(() => setSideStatusOpen(false), 120)} onChange={(e) => setSideStatusQuery(e.target.value)} placeholder="状态" />{sideStatusOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(STATUS_OPTIONS, sideStatusQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setSideStatus(opt.value as StatusMode); setSideStatusOpen(false); setSideStatusQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
@@ -1233,14 +1252,14 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           <div className="info-row"><span>图鉴编号</span><strong>#{String(displayPokemon.num).padStart(4, '0')}</strong></div>
           <div className="info-row"><span>属性</span><strong>{displayPokemon.types.map(typeLabel).join(' / ')}</strong></div>
           <div className="info-row"><span>{infoAbilityLabel}</span><div className="ability-list">{infoAbilities.map((ability, index) => canEditInfoAbility ? <button key={ability.id} className={abilityId === ability.id ? 'ability-chip active' : 'ability-chip'} onClick={() => setAbilityId(ability.id)}>{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</button> : <span key={ability.id} className="ability-chip static">{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</span>)}</div></div>
-          {(pokemon.hasMega || isCurrentMega) && <div className="info-row"><span>形态</span><div className="form-switcher" data-popover-root>{normalForm && <button type="button" className={currentFormId === normalForm.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
+          {hasMegaFamily && <div className="info-row"><span>形态</span><div className="form-switcher" data-popover-root>{normalForm && <button type="button" className={currentFormId === normalForm.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
             setIsMega(false)
             if (normalForm.id !== currentFormId) onNavigateToPokemon(normalForm)
             if (megaForms.some((form) => item === megaStoneForForm(form))) {
               setItem('无')
               setItemQuery('')
             }
-          }}>普通</button>}{megaForms.map((form) => <button type="button" key={form.id} className={currentFormId === form.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
+          }}>{formSwitchLabel(normalForm)}</button>}{megaForms.map((form) => <button type="button" key={form.id} className={currentFormId === form.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
             setIsMega(true)
             if (form.id !== currentFormId) onNavigateToPokemon(form)
             const megaStone = megaStoneForForm(form)
@@ -1248,7 +1267,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
               setItem(megaStone)
               setItemQuery(itemLabel(megaStone))
             }
-          }}>{form.name.toLowerCase().includes('mega-x') ? 'Mega X' : form.name.toLowerCase().includes('mega-y') ? 'Mega Y' : 'Mega'}</button>)}</div></div>}
+          }}>{formSwitchLabel(form)}</button>)}</div></div>}
           {hasMegaFamily && <div className="info-row"><span>Mega特性</span><strong>{megaAbilityLabel}</strong></div>}
         </div>
         )}
@@ -1259,7 +1278,6 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         <div className="section-head">
           <div className="title-with-actions">
             <h2 className="panel-title-with-switch">
-              {detailConfigMode === 'stats' ? '能力设定' : '伤害计算'}
               <button
                 type="button"
                 className="panel-switch-icon"
@@ -1267,15 +1285,16 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                 aria-label={detailConfigMode === 'stats' ? '切换到伤害计算' : '切换到能力设定'}
                 title={detailConfigMode === 'stats' ? '切换到伤害计算' : '切换到能力设定'}
               >
-                <span>↑</span>
-                <span>↓</span>
+                <span className="panel-switch-arrow panel-switch-arrow-top" aria-hidden="true" />
+                <span className="panel-switch-arrow panel-switch-arrow-bottom" aria-hidden="true" />
               </button>
+              <span>{detailConfigMode === 'stats' ? '能力设定' : '伤害计算'}</span>
             </h2>
-            {renderConfigActions('stats')}
+            {detailConfigMode === 'stats' && renderConfigActions('stats')}
           </div>
         </div>
         {statsOpen && (detailConfigMode === 'stats' ? <>
-        <div className="setting-row compact-setting-row"><label>性格</label><div className="nature-picker auto-size-picker" data-popover-root><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={mainNatureOpen ? mainNatureQuery : (ALL_NATURES.find(n => n.value === nature)?.label ?? nature)} onFocus={() => { setMainNatureOpen(true); setMainNatureQuery('') }} onBlur={() => setTimeout(() => setMainNatureOpen(false), 120)} onChange={(event) => setMainNatureQuery(event.target.value)} placeholder="性格" />{mainNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(mainNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setNature(option.value as typeof nature); setMainNatureOpen(false); setMainNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></div>
+        <div className="setting-row compact-setting-row"><label>性格</label><div className="nature-picker auto-size-picker" data-popover-root><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={mainNatureOpen ? mainNatureQuery : natureLabel(nature)} onFocus={() => { setMainNatureOpen(true); setMainNatureQuery('') }} onBlur={() => setTimeout(() => setMainNatureOpen(false), 120)} onChange={(event) => setMainNatureQuery(event.target.value)} placeholder="性格" />{mainNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(mainNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setNature(option.value as typeof nature); setMainNatureOpen(false); setMainNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></div>
         <div className="setting-row compact-setting-row"><label>道具</label><div className="item-picker auto-size-picker" data-popover-root><span className="sizer" aria-hidden="true">{LONGEST_ITEM_LABEL}</span><input value={itemOpen ? itemQuery : (item === '无' ? '' : itemLabel(item))} onFocus={() => { setItemOpen(true); setItemQuery('') }} onChange={(event) => { setItemQuery(event.target.value); setItemOpen(true) }} placeholder="输入部分中文、拼音或英文筛选道具" />{itemOpen && <div className="search-dropdown item-dropdown compact-dropdown">{filteredItemOptions.map((option) => <button key={option.value} className="item-option-row" onMouseDown={() => { setItem(option.value); setItemQuery(option.value === '无' ? '' : option.label); setAttackerDamageItemQuery(option.value === '无' ? '' : option.label); setItemOpen(false) }}><span>{option.label}</span></button>)}</div>}</div></div>
 
         <div className="stats-setting-table-wrap">

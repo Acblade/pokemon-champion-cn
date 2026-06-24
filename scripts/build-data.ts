@@ -10,6 +10,7 @@ type Species = {
   num: number
   name: string
   baseSpecies?: string
+  battleOnly?: string | string[]
   types?: string[]
   baseStats?: Record<string, number>
   abilities?: Record<string, string>
@@ -731,6 +732,11 @@ function buildSlugVariants(zh: string, name: string, pinyinValue: string) {
 
 function resolveLearnsetId(id: string, species: Species, learnsets: Dict<{ learnset?: Record<string, string[]> }>, pokedex: Dict<Species>) {
   if (learnsets[id]?.learnset) return id
+  const battleOnlyNames = Array.isArray(species.battleOnly) ? species.battleOnly : species.battleOnly ? [species.battleOnly] : []
+  for (const battleOnlyName of battleOnlyNames) {
+    const battleOnlyEntry = Object.entries(pokedex).find(([, data]) => data.name === battleOnlyName)
+    if (battleOnlyEntry && learnsets[battleOnlyEntry[0]]?.learnset) return battleOnlyEntry[0]
+  }
   const baseSpeciesName = species.baseSpecies
   if (baseSpeciesName) {
     const baseEntry = Object.entries(pokedex).find(([, data]) => data.name === baseSpeciesName)

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { championsPokemon, type PokemonRow } from './data/champions'
 import { championsDetails, type PokemonDetail } from './data/championsDetails'
@@ -40,6 +40,25 @@ const RULE_META: Record<string, { label: string; seasons: { id: string; label: s
 }
 
 type HomeTab = 'list' | 'trainers' | 'damage'
+
+type DraftConfig = {
+  nature: string
+  abilityId: string
+  item: string
+  sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
+  boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
+}
+
+const DRAFT_STAT_KEYS = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'] as const
+const DRAFT_BOOST_KEYS = ['atk', 'def', 'spa', 'spd', 'spe'] as const
+
+function draftConfigEquals(a: DraftConfig | undefined, b: DraftConfig) {
+  if (!a) return false
+  if (a.nature !== b.nature || a.abilityId !== b.abilityId || a.item !== b.item) return false
+  if (DRAFT_STAT_KEYS.some((key) => a.sps[key] !== b.sps[key])) return false
+  if (DRAFT_BOOST_KEYS.some((key) => a.boosts[key] !== b.boosts[key])) return false
+  return true
+}
 
 type SortKey = 'zh' | 'name' | 'types' | 'usageRank' | 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe' | 'bst'
 type SortDirection = 'asc' | 'desc'
@@ -200,7 +219,7 @@ function App() {
   const [favoriteMoveIds, setFavoriteMoveIds] = useState<string[]>(() => loadFavoriteMoves())
   const [savedPokemon, setSavedPokemon] = useState<SavedPokemonEntry[]>(() => loadSavedPokemon())
   const [damageTargetId, setDamageTargetId] = useState<string>('')
-  const [draftConfigs, setDraftConfigs] = useState<Record<string, { nature: string; abilityId: string; item: string; sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>; boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number> }>>({})
+  const [draftConfigs, setDraftConfigs] = useState<Record<string, DraftConfig>>({})
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>('list')
   const [currentRule, setCurrentRule] = useState('M-B')
@@ -295,6 +314,16 @@ function App() {
   const formFamilyOptions = useMemo(() => selectedPokemon ? championsPokemon.filter((entry) => entry.baseSpeciesId === selectedPokemon.baseSpeciesId) : [], [selectedPokemon])
   const damageTargetOptions = useMemo(() => championsPokemon, [])
   const effectiveDamageTargetId = damageTargetOptions.some((pokemon) => pokemon.id === damageTargetId) ? damageTargetId : (selectedPokemonId ?? damageTargetOptions[0]?.id ?? '')
+  const selectedDraftKey = selectedPokemon ? normalize(selectedPokemon.baseSpeciesName) : ''
+  const selectedDraftConfig = selectedDraftKey ? draftConfigs[selectedDraftKey] : undefined
+  const handleDraftChange = useCallback((payload: DraftConfig) => {
+    if (!selectedDraftKey) return
+    setDraftConfigs((current) => (
+      draftConfigEquals(current[selectedDraftKey], payload)
+        ? current
+        : { ...current, [selectedDraftKey]: payload }
+    ))
+  }, [selectedDraftKey])
   const savedGroupNames = useMemo(() => {
     const names = new Set<string>(savedGroups.map(cleanGroupName).filter(Boolean))
     savedPokemon.forEach((entry) => {
@@ -729,8 +758,8 @@ function App() {
               onToggleFavoriteMove={(moveId) => setFavoriteMoveIds((current) => current.includes(moveId) ? current.filter((id) => id !== moveId) : [...current, moveId])}
               onBack={() => setHomeTab('list')}
               onNavigateToPokemon={navigateToPokemon}
-              draftConfig={draftConfigs[normalize(selectedPokemon.baseSpeciesName)]}
-              onDraftChange={(payload) => setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: payload }))}
+              draftConfig={selectedDraftConfig}
+              onDraftChange={handleDraftChange}
               savedPokemon={savedPokemon}
               onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
               onUpdateSaved={handleUpdateSaved}
@@ -758,11 +787,8 @@ function App() {
             onToggleFavoriteMove={(moveId) => setFavoriteMoveIds((current) => current.includes(moveId) ? current.filter((id) => id !== moveId) : [...current, moveId])}
             onBack={navigateToHome}
             onNavigateToPokemon={(pokemon) => { navigateToPokemon(pokemon) }}
-            draftConfig={selectedPokemon ? draftConfigs[normalize(selectedPokemon.baseSpeciesName)] : undefined}
-            onDraftChange={(payload) => {
-              if (!selectedPokemon) return
-              setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: payload }))
-            }}
+            draftConfig={selectedDraftConfig}
+            onDraftChange={handleDraftChange}
             savedPokemon={savedPokemon}
             onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
             onUpdateSaved={handleUpdateSaved}
