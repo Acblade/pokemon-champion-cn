@@ -37,6 +37,8 @@ jobs:
           CHAMPS_SEASONS: '3'
           CHAMPS_RULES: '1'
           CHAMPS_DEFAULT_SEASON: '3'
+      - name: Update team share data
+        run: npm run update-team-shares
       - name: Build
         run: npm run build
         env:

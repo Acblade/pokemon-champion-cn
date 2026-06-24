@@ -6,6 +6,7 @@ import type { SavedPokemonEntry } from '../lib/savedPokemon'
 import { ruleItems } from '../data/items'
 import { getPokemonUsageFromDataset, type UsageDataset, type UsageItem, type UsageSpread, type UsageTeammate } from '../data/usageStats'
 import { pokemonDisplayName, pokemonSearchText } from '../lib/pokemonDisplay'
+import { TYPE_LABELS, TYPE_ORDER, attackingMultiplier, formatTypeMultiplier, multiplierClass, typeBadgeClass, typeColorClass, typeLabel } from '../lib/pokemonTypes'
 
 type DraftConfig = {
   nature: string
@@ -79,11 +80,6 @@ const ALL_NATURES = [
   { value: 'Careful', label: '慎重 特防+ 特攻-' },
 ] as const
 
-const TYPE_LABELS: Record<string, string> = {
-  Normal: '一般', Fire: '火', Water: '水', Electric: '电', Grass: '草', Ice: '冰', Fighting: '格斗', Poison: '毒', Ground: '地面', Flying: '飞行', Psychic: '超能', Bug: '虫', Rock: '岩石', Ghost: '幽灵', Dragon: '龙', Dark: '恶', Steel: '钢', Fairy: '妖精'
-}
-
-const BOOST_OPTIONS = [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]
 const FAINTED_ALLIES_OPTIONS = [0, 1, 2, 3, 4, 5]
 const DEFAULT_SPS: Record<StatKey, number> = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
 const DEFAULT_BOOTS: Record<BoostKey, number> = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
@@ -189,10 +185,6 @@ function categoryLabel(category: PokemonMove['category']) {
   return '特殊'
 }
 
-function typeLabel(type: string) {
-  return TYPE_LABELS[type] || type
-}
-
 function normalizeSearch(value: string) {
   return value
     .toLowerCase()
@@ -237,6 +229,19 @@ function calculateStat(base: number, sp: number, nature: number, isHp: boolean, 
   if (isHp || boost === 0) return raw
   if (boost > 0) return Math.floor(raw * ((2 + boost) / 2))
   return Math.floor(raw * (2 / (2 - boost)))
+}
+
+function clampInt(value: number, min: number, max: number) {
+  const normalized = Number.isFinite(value) ? Math.trunc(value) : 0
+  return Math.min(max, Math.max(min, normalized))
+}
+
+function clampBoost(value: number) {
+  return clampInt(value, -6, 6)
+}
+
+function formatBoost(value: number) {
+  return value > 0 ? `+${value}` : `${value}`
 }
 
 function ruleMovesFor(detail: PokemonDetail | null) {
@@ -451,7 +456,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const usage = useMemo(() => pokemon ? getPokemonUsageFromDataset(usageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId) : null, [pokemon, usageDataset])
 
   const [infoOpen, setInfoOpen] = useState(true)
-  const [statsOpen, setStatsOpen] = useState(true)
+  const [resistanceOpen, setResistanceOpen] = useState(false)
+  const [statsOpen, setStatsOpen] = useState(false)
   const [detailConfigMode, setDetailConfigMode] = useState<'stats' | 'damage'>(() => standaloneCalc ? 'damage' : 'stats')
   const [usageOpen, setUsageOpen] = useState(false)
   const [damageOpen, setDamageOpen] = useState(() => standaloneCalc === true)
@@ -461,6 +467,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     if (!pokemon) return
     if (lastPokemonIdRef.current === pokemon.id) return
     lastPokemonIdRef.current = pokemon.id
+    setResistanceOpen(false)
     setCategoryFilter({ status: true, physical: true, special: true })
     setMoveOnlyYellowFav(false)
     setMoveOnlyBlueFav(false)
@@ -659,6 +666,44 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     onUpdateSaved(loadedConfigId, { isMega, abilityId, item, nature, sps, boosts, blueFavorites: blueFavoriteMoveIds })
   }
 
+  function updatePrimarySp(key: StatKey, value: number) {
+    const nextValue = clampInt(value, 0, 32)
+    setSps((current) => {
+      const next = { ...current, [key]: nextValue }
+      return Object.values(next).reduce((sum, entry) => sum + entry, 0) > 66 ? current : next
+    })
+  }
+
+  function renderSpValueStepper(value: number, onChange: (next: number) => void) {
+    return (
+      <div className="sp-value-stepper">
+        <span className="sp-value-text">{value}</span>
+        <div className="ev-adj-col">
+          <button type="button" className="ev-adj-btn" onClick={() => onChange(value + 1)}>＋</button>
+          <button type="button" className="ev-adj-btn" onClick={() => onChange(value - 1)}>−</button>
+        </div>
+      </div>
+    )
+  }
+
+  function renderBoostControl(value: number, onChange: (next: number) => void) {
+    return (
+      <div className="boost-input-cell">
+        <input
+          className="boost-number-input"
+          inputMode="numeric"
+          value={formatBoost(value)}
+          onChange={(event) => onChange(clampBoost(Number(event.target.value.replace(/^\+/, ''))))}
+          aria-label="修正"
+        />
+        <div className="ev-adj-col">
+          <button type="button" className="ev-adj-btn" onClick={() => onChange(clampBoost(value + 1))}>＋</button>
+          <button type="button" className="ev-adj-btn" onClick={() => onChange(clampBoost(value - 1))}>−</button>
+        </div>
+      </div>
+    )
+  }
+
   function renderConfigActions(anchor: 'title' | 'stats' | 'attacker' | 'moves') {
     return (
       <div className="config-actions" data-popover-root>
@@ -803,7 +848,40 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     { key: 'spe', label: '速度', boostKey: 'spe' },
   ]
 
+  function renderTypeBadges(types: string[], className = 'type-list') {
+    return <div className={className}>{types.map((type) => <span key={type} className={typeBadgeClass(type)}>{typeLabel(type)}</span>)}</div>
+  }
 
+  function renderTypeResistanceSummary(detail: PokemonDetail) {
+    const entries = TYPE_ORDER
+      .map((attackType) => ({ attackType, multiplier: attackingMultiplier(attackType, detail.types) }))
+      .filter((entry) => entry.multiplier !== 1)
+    const groups = [
+      { key: 'weak', label: '弱点', entries: entries.filter((entry) => entry.multiplier > 1) },
+      { key: 'resist', label: '抗性', entries: entries.filter((entry) => entry.multiplier > 0 && entry.multiplier < 1) },
+      { key: 'immune', label: '无效', entries: entries.filter((entry) => entry.multiplier === 0) },
+    ].filter((group) => group.entries.length > 0)
+
+    if (groups.length === 0) return <strong>—</strong>
+
+    return (
+      <div className="type-resistance-summary">
+        {groups.map((group) => (
+          <div className={`resistance-chip-group ${group.key}`} key={group.key}>
+            <span className="resistance-group-label">{group.label}</span>
+            <span className="resistance-chip-list">
+              {group.entries.map((entry) => (
+                <span className="resistance-chip" key={entry.attackType}>
+                  <span className={typeBadgeClass(entry.attackType, 'type-inline-badge')}>{typeLabel(entry.attackType)}</span>
+                  <span className={`resistance-chip-multiplier ${multiplierClass(entry.multiplier)}`}>×{formatTypeMultiplier(entry.multiplier)}</span>
+                </span>
+              ))}
+            </span>
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   function formatDamageResult(result: ReturnType<typeof calculateChampionsDamage> | null, expanded = false) {
     if (!result) return '—'
@@ -1000,7 +1078,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                     setOpenMovePicker(null)
                   }}>
                     <span>{move.zh}</span>
-                    {move.id !== CUSTOM_DAMAGE_MOVE_ID && <small>{typeLabel(move.type)} · {categoryLabel(move.category)} · {move.basePower || '—'}</small>}
+                    {move.id !== CUSTOM_DAMAGE_MOVE_ID && <small><span className={typeBadgeClass(move.type, 'type-inline-badge')}>{typeLabel(move.type)}</span> · {categoryLabel(move.category)} · {move.basePower || '—'}</small>}
                   </button>
                 ))}
                 {suggestions.length === 0 && <div className="popover-note">没有匹配的技能。</div>}
@@ -1036,6 +1114,13 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const statBoosts = side === 'attacker' ? boosts : defenderBoosts
     const setStatBoosts = side === 'attacker' ? setBoosts : setDefenderBoosts
     const statNature = side === 'attacker' ? nature : defenderNature
+    const updateStatSp = (key: StatKey, value: number) => {
+      const nextValue = clampInt(value, 0, 32)
+      setStatSps((current) => {
+        const next = { ...current, [key]: nextValue }
+        return Object.values(next).reduce((sum, entry) => sum + entry, 0) > 66 ? current : next
+      })
+    }
     if (!detail) return null
     return (
       <div className="damage-stats-table-wrap">
@@ -1049,8 +1134,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                 <tr key={`${side}-stat-${row.key}`}>
                   <td>{row.label}</td>
                   <td>{detail.baseStats[row.key]}</td>
-                  <td><div className="ev-input-cell"><input type="number" min={0} max={32} value={statSps[row.key]} onChange={(event) => { const v = Math.min(32, Math.max(0, Number(event.target.value) || 0)); setStatSps((c) => { const next = { ...c, [row.key]: v }; return Object.values(next).reduce((a, b) => a + b, 0) > 66 ? c : next }) }} /><div className="ev-adj-col"><button type="button" className="ev-adj-btn" onClick={() => setStatSps((c) => { const next = { ...c, [row.key]: Math.min(32, c[row.key] + 1) }; return Object.values(next).reduce((a, b) => a + b, 0) > 66 ? c : next })}>＋</button><button type="button" className="ev-adj-btn" onClick={() => setStatSps((c) => { const next = { ...c, [row.key]: Math.max(0, c[row.key] - 1) }; return Object.values(next).reduce((a, b) => a + b, 0) > 66 ? c : next })}>−</button></div></div></td>
-                  <td>{row.boostKey ? <select className="boost-select" value={boost} onChange={(event) => setStatBoosts((current) => ({ ...current, [row.boostKey!]: Number(event.target.value) }))}>{BOOST_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select> : '—'}</td>
+                  <td><div className="ev-input-cell"><input type="number" min={0} max={32} value={statSps[row.key]} onChange={(event) => updateStatSp(row.key, Number(event.target.value))} /><div className="ev-adj-col"><button type="button" className="ev-adj-btn" onClick={() => updateStatSp(row.key, statSps[row.key] + 1)}>＋</button><button type="button" className="ev-adj-btn" onClick={() => updateStatSp(row.key, statSps[row.key] - 1)}>−</button></div></div></td>
+                  <td>{row.boostKey ? renderBoostControl(boost, (next) => setStatBoosts((current) => ({ ...current, [row.boostKey!]: next }))) : '—'}</td>
                   <td>{total}</td>
                 </tr>
               )
@@ -1255,7 +1340,19 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         {infoOpen && (
         <div className="plain-info-list">
           <div className="info-row"><span>图鉴编号</span><strong>#{String(displayPokemon.num).padStart(4, '0')}</strong></div>
-          <div className="info-row"><span>属性</span><strong>{displayPokemon.types.map(typeLabel).join(' / ')}</strong></div>
+          <div className="info-row"><span>属性</span>{renderTypeBadges(displayPokemon.types)}</div>
+          <div className={`info-row resistance-info-row${resistanceOpen ? ' open' : ''}`}>
+            <span className="resistance-label-control">
+              <span>属性抗性</span>
+              <button
+                type="button"
+                className={`mini-toggle-btn${resistanceOpen ? ' open' : ''}`}
+                onClick={() => setResistanceOpen((value) => !value)}
+                aria-label={resistanceOpen ? '收起属性抗性' : '展开属性抗性'}
+              />
+            </span>
+            {resistanceOpen ? renderTypeResistanceSummary(displayPokemon) : <span className="resistance-collapsed-note">已折叠</span>}
+          </div>
           <div className="info-row"><span>{infoAbilityLabel}</span><div className="ability-list">{infoAbilities.map((ability, index) => canEditInfoAbility ? <button key={ability.id} className={abilityId === ability.id ? 'ability-chip active' : 'ability-chip'} onClick={() => setAbilityId(ability.id)}>{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</button> : <span key={ability.id} className="ability-chip static">{ability.zh}{index < infoAbilities.length - 1 ? ' /' : ''}</span>)}</div></div>
           {hasMegaFamily && <div className="info-row"><span>形态</span><div className="form-switcher" data-popover-root>{normalForm && <button type="button" className={currentFormId === normalForm.id ? 'form-chip active' : 'form-chip'} onMouseDown={(event) => event.preventDefault()} onClick={() => {
             setIsMega(false)
@@ -1317,11 +1414,11 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                     <td>{displayPokemon.baseStats[row.key]}</td>
                     <td>
                       <div className="inline-slider-cell">
-                        <input type="range" min={0} max={32} value={sps[row.key]} onChange={(event) => { const v = Number(event.target.value); setSps((c) => { const next = { ...c, [row.key]: v }; return Object.values(next).reduce((a, b) => a + b, 0) > 66 ? c : next }) }} />
-                        <span>{sps[row.key]}</span>
+                        <input type="range" min={0} max={32} value={sps[row.key]} onChange={(event) => updatePrimarySp(row.key, Number(event.target.value))} />
+                        {renderSpValueStepper(sps[row.key], (next) => updatePrimarySp(row.key, next))}
                       </div>
                     </td>
-                    <td>{row.boostKey ? <select className="boost-select" value={boost} onChange={(event) => setBoosts((current) => ({ ...current, [row.boostKey!]: Number(event.target.value) }))}>{BOOST_OPTIONS.map((value) => <option key={value} value={value}>{value}</option>)}</select> : '—'}</td>
+                    <td>{row.boostKey ? renderBoostControl(boost, (next) => setBoosts((current) => ({ ...current, [row.boostKey!]: next }))) : '—'}</td>
                     <td>{total}</td>
                   </tr>
                 )
@@ -1451,8 +1548,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                   <div className="filter-section">
                     <div className="filter-section-label">属性</div>
                     <div className="filter-chip-group">
-                      {Object.entries(TYPE_LABELS).map(([en, zh]) => (
-                        <button key={en} type="button" className={moveTypeFilters.includes(en) ? 'filter-chip active' : 'filter-chip'} onClick={() => setMoveTypeFilters((f) => f.includes(en) ? f.filter((t) => t !== en) : [...f, en])}>{zh}</button>
+                      {TYPE_ORDER.map((en) => (
+                        <button key={en} type="button" className={`${moveTypeFilters.includes(en) ? 'filter-chip active' : 'filter-chip'} type-filter-chip ${typeColorClass(en)}`} onClick={() => setMoveTypeFilters((f) => f.includes(en) ? f.filter((t) => t !== en) : [...f, en])}>{typeLabel(en)}</button>
                       ))}
                     </div>
                   </div>
@@ -1484,7 +1581,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
               {filteredMoves.map((move) => (
                 <tr key={move.id}>
                   <td><div className="move-name-cell"><span>{move.zh}</span><div className="move-stars"><button className="star-button star-blue" title="配置收藏" onClick={() => toggleBlueFavorite(move.id)}>{blueFavoriteMoveIds.includes(move.id) ? '★' : '☆'}</button><button className="star-button star-yellow" title="全局收藏" onClick={() => onToggleFavoriteMove(move.id)}>{favoriteMoveIds.includes(move.id) ? '★' : '☆'}</button></div></div></td>
-                  <td>{typeLabel(move.type)}</td>
+                  <td><span className={typeBadgeClass(move.type, 'type-inline-badge')}>{typeLabel(move.type)}</span></td>
                   <td>{categoryLabel(move.category)}</td>
                   <td>{move.basePower || '—'}</td>
                   <td>{move.accuracy === true ? '必中' : move.accuracy}</td>

@@ -1,0 +1,52 @@
+import teamShareData from '../generated/team-shares.json'
+
+export type TeamShareMember = {
+  pokemonId: string
+  pokemonName: string
+  item: string
+  ability: string
+  nature: string
+  spread: string
+  moves: string[]
+  note?: string
+}
+
+export type TeamShareSource = {
+  name: string
+  url: string
+  note: string
+  updatedAt: string
+}
+
+export type TeamShare = {
+  id: string
+  title: string
+  author: string
+  teamId: string
+  source: string
+  sourceUrl: string
+  platformUrl: string
+  season: string
+  format: string
+  updatedAt: string
+  tags: string[]
+  summary: string
+  members: TeamShareMember[]
+  metrics?: {
+    likes?: number
+    comments?: number
+    finalRanking?: string
+  }
+}
+
+type TeamShareData = {
+  updatedAt: string
+  sources: TeamShareSource[]
+  teams: TeamShare[]
+}
+
+const data = teamShareData as TeamShareData
+
+export const teamSharesUpdatedAt = data.updatedAt
+export const teamShareSources = data.sources
+export const teamShares = data.teams

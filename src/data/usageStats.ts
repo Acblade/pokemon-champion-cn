@@ -65,6 +65,28 @@ export function getUsageDataset(season: string, battleRule = '1'): UsageDataset 
   return usageCollection.datasets[`champs-season-${season}-rule-${battleRule}`] ?? usageDataset
 }
 
+export function getLatestTrainerRankingDataset(battleRule = '1'): UsageDataset | null {
+  return Object.values(usageCollection.datasets)
+    .filter((dataset) =>
+      dataset.rule === battleRule &&
+      dataset.source === 'Battle Database Champions' &&
+      dataset.trainerRankings.length > 0,
+    )
+    .sort((a, b) => {
+      const updatedDiff = Date.parse(b.updatedAt) - Date.parse(a.updatedAt)
+      if (updatedDiff !== 0) return updatedDiff
+      return Number(b.season) - Number(a.season)
+    })[0] ?? null
+}
+
+export function isTrainerRankingOutdated(currentDataset: UsageDataset, trainerDataset: UsageDataset | null) {
+  if (!trainerDataset) return true
+  if (currentDataset.format !== trainerDataset.format) return true
+  if (currentDataset.source !== 'Battle Database Champions') return true
+  if (currentDataset.trainerRankingsAvailable === false) return true
+  return currentDataset.trainerRankings.length === 0
+}
+
 export function getPokemonUsageFromDataset(dataset: UsageDataset, ...names: string[]): UsageEntry | null {
   for (const name of names) {
     const hit = dataset.entries[normalizeId(name)]
