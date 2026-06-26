@@ -556,15 +556,15 @@ function formatDatasetDate(date: string) {
   return month && day ? `${month} 月 ${day} 日` : date
 }
 
-function formatJapanDateTime(iso: string | undefined, fallbackDate: string) {
+function formatBrowserDateTime(iso: string | undefined, fallbackDate: string) {
   if (!iso) return formatDatasetDate(fallbackDate)
   const syncDate = new Date(iso)
   if (Number.isNaN(syncDate.getTime())) return formatDatasetDate(fallbackDate)
-  const parts = new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' }).formatToParts(syncDate)
+  const parts = new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit' }).formatToParts(syncDate)
   const month = parts.find((part) => part.type === 'month')?.value
   const day = parts.find((part) => part.type === 'day')?.value
   const dateText = month && day ? `${month} 月 ${day} 日` : formatDatasetDate(fallbackDate)
-  return `${dateText} ${syncDate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Tokyo' })}`
+  return `${dateText} ${syncDate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false })}`
 }
 
 function teamSourceLineSource(sources: TeamShareSource[], rule: string) {
@@ -734,12 +734,26 @@ function moveSearchRank(move: { zh: string; en: string; id: string; pinyin: stri
   return best
 }
 
-function parseManualRankingTimeJst(value: string) {
-  const match = value.trim().match(/(?:日本时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
+function parseManualRankingTimeLocal(value: string) {
+  const match = value.trim().match(/(?:(?:日本)?时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
   if (!match) throw new Error('时间格式应类似 2026/6/25 23:46')
   const [, year, month, day, hour, minute] = match
-  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0)
-  return new Date(utcMs).toISOString()
+  const parsed = new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), 0, 0)
+  if (
+    Number.isNaN(parsed.getTime())
+    || parsed.getFullYear() !== Number(year)
+    || parsed.getMonth() !== Number(month) - 1
+    || parsed.getDate() !== Number(day)
+    || parsed.getHours() !== Number(hour)
+    || parsed.getMinutes() !== Number(minute)
+  ) {
+    throw new Error('时间格式应类似 2026/6/25 23:46')
+  }
+  return {
+    iso: parsed.toISOString(),
+    offsetMinutes: parsed.getTimezoneOffset(),
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+  }
 }
 
 function parseManualRankingName(rawValue: string) {
@@ -1109,9 +1123,9 @@ function App() {
     setManualRankingError('')
     setManualRankingStatus('')
     try {
-      const importedAt = parseManualRankingTimeJst(manualRankingTime)
+      const importedTime = parseManualRankingTimeLocal(manualRankingTime)
       const rankings = parseManualRankingText(manualRankingText)
-      const override = { format: selectedUsageDataset.format, updatedAt: importedAt, rankings }
+      const override = { format: selectedUsageDataset.format, updatedAt: importedTime.iso, rankings }
       saveManualTrainerRankingOverride(override)
       setManualRankingOverride(override)
       if (!MANUAL_RANKING_API_URL) {
@@ -1126,7 +1140,10 @@ function App() {
         },
         body: JSON.stringify({
           datasetKey: selectedUsageDataset.format,
-          rankingTimeJst: manualRankingTime,
+          rankingTimeLocal: manualRankingTime,
+          rankingTimeIso: importedTime.iso,
+          rankingTimeZone: importedTime.timeZone,
+          rankingTimeOffsetMinutes: importedTime.offsetMinutes,
           rankingsText: manualRankingText,
         }),
       })
@@ -1739,7 +1756,7 @@ function App() {
               {trainerRankingDataset && (
                 <>
                   <div className="data-source-line">
-                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatJapanDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
+                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
                     {showManualTrainerImportButton && (
                       <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
                     )}
@@ -1753,7 +1770,7 @@ function App() {
                         手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
-                        <span>日本时间</span>
+                        <span>时间</span>
                         <small>请从网站上复制时间信息。</small>
                         <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
                       </label>

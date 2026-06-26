@@ -20,7 +20,7 @@
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
-      "trainerRankingsNote": "玩家排名由手动导入数据更新，原始时间按日本时间解析。",
+      "trainerRankingsNote": "玩家排名由手动导入数据更新，原始时间按提交者浏览器时区解析。",
       "trainerRankings": [
         {
           "rank": 1,

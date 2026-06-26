@@ -20,12 +20,48 @@ function corsOrigin(request, env) {
   return origin === allowedOrigin ? origin : allowedOrigin
 }
 
-function parseJstTimestamp(value) {
-  const match = String(value || '').trim().match(/(?:日本时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
+function parseTimestampParts(value) {
+  const match = String(value || '').trim().match(/(?:(?:日本)?时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
   if (!match) throw new Error('时间格式应类似 2026/6/25 23:46')
-  const [, year, month, day, hour, minute] = match
-  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0)
-  return new Date(utcMs).toISOString()
+  const [, year, month, day, hour, minute] = match.map(Number)
+  const utcCheck = new Date(Date.UTC(year, month - 1, day, hour, minute, 0))
+  if (
+    utcCheck.getUTCFullYear() !== year
+    || utcCheck.getUTCMonth() !== month - 1
+    || utcCheck.getUTCDate() !== day
+    || utcCheck.getUTCHours() !== hour
+    || utcCheck.getUTCMinutes() !== minute
+  ) {
+    throw new Error('时间格式应类似 2026/6/25 23:46')
+  }
+  return { year, month, day, hour, minute }
+}
+
+function parseImportedTimestamp(payload) {
+  const submittedIso = String(payload.rankingTimeIso || '').trim()
+  if (submittedIso) {
+    const date = new Date(submittedIso)
+    if (Number.isNaN(date.getTime())) throw new Error('提交的时间不是有效时间')
+    return date.toISOString()
+  }
+
+  const localTime = payload.rankingTimeLocal
+  if (localTime) {
+    const { year, month, day, hour, minute } = parseTimestampParts(localTime)
+    const offsetMinutes = Number(payload.rankingTimeOffsetMinutes)
+    if (!Number.isFinite(offsetMinutes)) throw new Error('缺少浏览器时区信息，请刷新页面后重试')
+    const utcMs = Date.UTC(year, month - 1, day, hour, minute, 0) + offsetMinutes * 60 * 1000
+    return new Date(utcMs).toISOString()
+  }
+
+  const legacyJstTime = payload.rankingTimeJst
+  if (legacyJstTime) {
+    const { year, month, day, hour, minute } = parseTimestampParts(legacyJstTime)
+    const utcMs = Date.UTC(year, month - 1, day, hour - 9, minute, 0)
+    return new Date(utcMs).toISOString()
+  }
+
+  throw new Error('缺少时间')
 }
 
 function parseRankingName(rawValue) {
@@ -138,8 +174,12 @@ async function githubFetch(env, path, init = {}) {
 
 async function getFile(owner, repo, branch, path, env) {
   const file = await githubFetch(env, `/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${encodeURIComponent(branch)}`)
-  if (!file?.content) throw new Error(`GitHub 文件响应缺少内容: ${path}`)
-  return decodeBase64Text(file.content)
+  if (file?.content) return decodeBase64Text(file.content)
+  if (file?.sha) {
+    const blob = await githubFetch(env, `/repos/${owner}/${repo}/git/blobs/${encodeURIComponent(file.sha)}`)
+    if (blob?.content) return decodeBase64Text(blob.content)
+  }
+  throw new Error(`GitHub 文件响应缺少内容: ${path}`)
 }
 
 async function createBlob(owner, repo, content, env) {
@@ -186,7 +226,7 @@ async function importRankings(payload, env) {
   const datasetKey = String(payload.datasetKey || '').trim()
   if (!datasetKey) throw new Error('缺少 datasetKey')
 
-  const importedAt = parseJstTimestamp(payload.rankingTimeJst)
+  const importedAt = parseImportedTimestamp(payload)
   const rankings = parseRankings(payload.rankingsText)
   const usageText = await getFile(owner, repo, branch, 'src/generated/usage-datasets.json', env)
   const collection = JSON.parse(usageText)
@@ -197,7 +237,7 @@ async function importRankings(payload, env) {
   dataset.trainerSourceUrl = `https://champs.pokedb.tokyo/trainer/list?season=${dataset.season}&rule=${dataset.rule}`
   dataset.trainerRankingsUpdatedAt = importedAt
   dataset.trainerRankingsAvailable = true
-  dataset.trainerRankingsNote = '玩家排名由后端手动导入数据更新，原始时间按日本时间解析。'
+  dataset.trainerRankingsNote = '玩家排名由后端手动导入数据更新，原始时间按提交者浏览器时区解析。'
   dataset.trainerRankings = rankings
   collection.updatedAt = new Date().toISOString()
 
@@ -210,6 +250,9 @@ async function importRankings(payload, env) {
       path: 'src/generated/pikalytics-usage.json',
       content: `${JSON.stringify(collection.datasets[collection.defaultKey], null, 2)}\n`,
     })
+  }
+  if (payload.dryRun) {
+    return { importedAt, count: rankings.length, dryRun: true, datasetKey }
   }
   const commit = await commitFiles(owner, repo, branch, files, `chore: import manual trainer rankings ${dataset.season}/${dataset.rule}`, env)
   return { importedAt, count: rankings.length, commitSha: commit.sha, commitUrl: commit.html_url }
