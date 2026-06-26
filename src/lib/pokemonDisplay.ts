@@ -31,7 +31,8 @@ const FORM_LABELS: Record<string, string> = {
 }
 
 function collectFormParts(name: string) {
-  if (name === 'Floette-Mega') return ['Eternal', 'Mega']
+  if (name === 'Floette-Eternal') return []
+  if (name === 'Floette-Mega') return ['Mega']
 
   const parts: string[] = []
   const tokens = name.split('-').slice(1)

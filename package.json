@@ -9,6 +9,8 @@
     "build-data": "tsx scripts/build-data.ts",
     "update-usage": "tsx scripts/update-usage-data.ts",
     "update-team-shares": "tsx scripts/update-team-shares.ts",
+    "import-manual-trainers": "tsx scripts/import-manual-trainer-rankings.ts",
+    "mobile-sync-trainers": "node scripts/mobile-sync-trainer-rankings.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

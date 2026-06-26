@@ -396,7 +396,7 @@ select {
 
 .team-filter-date-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 8px;
   grid-column: 1 / -1;
 }
@@ -463,10 +463,13 @@ select {
 }
 
 .team-filter-picker .team-filter-suggestion-dropdown {
-  width: min(360px, calc(100vw - 64px));
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   max-height: min(420px, 70vh);
   overflow: auto;
   z-index: 80;
+  font-size: 12px;
 }
 
 .team-filter-suggestion-dropdown .item-option-row span,
@@ -475,6 +478,11 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.team-filter-pokemon-pair {
+  grid-template-columns: repeat(2, minmax(150px, 210px));
+  justify-content: start;
 }
 
 .team-empty-state {
@@ -1052,29 +1060,53 @@ select {
 .saved-name-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   min-width: 0;
 }
 
-.saved-name-row .link-button,
+.saved-name-row .link-button {
+  min-width: 0;
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .saved-name-input {
   min-width: 0;
   flex: 1;
 }
 
 .saved-edit-button {
-  width: 14px;
-  height: 14px;
-  min-width: 14px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
   border: none;
   background: transparent;
   color: #94a3b8;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1;
   padding: 0;
   flex-shrink: 0;
   cursor: pointer;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+}
+
+.saved-group-title-block {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.saved-group-name-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.saved-group-edit-button {
+  margin-top: 1px;
 }
 
 :root[data-theme='dark'] .saved-edit-button {
@@ -1501,14 +1533,14 @@ tr:hover td {
 
 .pokemon-sprite-head,
 .pokemon-sprite-cell {
-  width: 64px;
+  width: 76px;
   text-align: center;
 }
 
 .pokemon-sprite-cell img {
   display: block;
-  width: 44px;
-  height: 44px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   margin: 0 auto;
   image-rendering: auto;
@@ -1961,12 +1993,20 @@ tr:hover td {
   position: relative;
   width: 18px;
   height: 18px;
+  min-width: 18px;
   padding: 0;
   border-radius: 5px;
   border: 1px solid #e2e8f0;
   background: transparent;
   cursor: pointer;
   flex: 0 0 auto;
+}
+
+.popover button.mini-toggle-btn {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  padding: 0;
 }
 
 .mini-toggle-btn::after {
@@ -2671,6 +2711,21 @@ table.damage-stats-table {
   position: relative;
 }
 
+.damage-search-picker.auto-size-picker {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.damage-search-picker.auto-size-picker > .sizer {
+  display: none;
+}
+
+.damage-search-picker.auto-size-picker > input {
+  position: static;
+  height: auto;
+}
+
 .remove-move-button {
   color: #b91c1c;
 }
@@ -2910,6 +2965,10 @@ table.damage-stats-table {
   right: 0;
   max-height: 300px;
   overflow: auto;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  font-size: 12px;
 }
 
 .damage-move-result {
@@ -3015,12 +3074,12 @@ table.damage-stats-table {
 .form-chip {
   border: 1px solid #d0d8e3;
   background: #ffffff;
-  padding: 3px 8px;
+  padding: 4px 9px;
   border-radius: 999px;
   cursor: pointer;
   color: #475569;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.2;
 }
 

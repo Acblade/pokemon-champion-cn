@@ -21,7 +21,7 @@ let SEASON = TARGET_SEASONS[0] ?? '3'
 let RULE = TARGET_RULES[0] ?? '1'
 const CONCURRENCY = Number(process.env.CHAMPS_CONCURRENCY ?? '6')
 const DETAIL_LIMIT = Number(process.env.CHAMPS_DETAIL_LIMIT ?? '0')
-const USAGE_SOURCE = (process.env.CHAMPS_USAGE_SOURCE ?? 'auto').toLowerCase()
+const USAGE_SOURCE = (process.env.CHAMPS_USAGE_SOURCE ?? 'gamewith').toLowerCase()
 
 const PATHS = {
   output: path.resolve('src/generated/usage-datasets.json'),
@@ -131,7 +131,9 @@ type TrainerRankingEntry = { rank: number; rating: number | null; name: string }
 type UsageDataset = {
   source: string
   sourceUrl: string
+  trainerSource?: string
   trainerSourceUrl: string
+  trainerRankingsUpdatedAt?: string
   format: string
   regulation: 'M-A' | 'M-B'
   battle: 'Doubles' | 'Singles'
@@ -481,6 +483,19 @@ function parseTrainers(html: string): { rank: number; rating: number | null; nam
   return results
 }
 
+function mergeExistingTrainerRankings(output: UsageDataset, existing: UsageDataset | undefined): UsageDataset {
+  if (output.trainerRankings.length > 0 || !existing?.trainerRankings?.length) return output
+  return {
+    ...output,
+    trainerSource: existing.trainerSource,
+    trainerSourceUrl: existing.trainerSourceUrl || output.trainerSourceUrl,
+    trainerRankingsUpdatedAt: existing.trainerRankingsUpdatedAt || existing.updatedAt,
+    trainerRankingsAvailable: true,
+    trainerRankingsNote: existing.trainerRankingsNote || output.trainerRankingsNote,
+    trainerRankings: existing.trainerRankings,
+  }
+}
+
 function gameWithUrlForRule(rule: string) {
   const url = GAMEWITH_URL_BY_RULE[rule]
   if (!url) throw new Error(`No GameWith JP fallback URL configured for rule=${rule}`)
@@ -648,6 +663,20 @@ async function fetchAllTrainers() {
   }
 }
 
+async function fetchTrainerRankingsSafely() {
+  try {
+    return await fetchAllTrainers()
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    return {
+      sourceUrl: `${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}`,
+      available: false,
+      note: `玩家排名同步失败：${message}`,
+      rankings: [] as TrainerRankingEntry[],
+    }
+  }
+}
+
 async function fetchPokemonDetail(
   listEntry: { key: string; rank: number; href: string },
   byKey: Map<string, PokemonDetail>,
@@ -740,7 +769,9 @@ async function fetchUsageDataset(
   return {
     source: 'Battle Database Champions',
     sourceUrl: `${BASE_URL}/pokemon/list?season=${SEASON}&rule=${RULE}`,
+    trainerSource: 'Battle Database Champions',
     trainerSourceUrl: trainers.sourceUrl,
+    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? new Date().toISOString() : undefined,
     format: datasetKey(SEASON, RULE),
     regulation: regulationForSeason(SEASON),
     battle: battleForRule(RULE),
@@ -826,7 +857,6 @@ function buildGameWithUsageEntry(
 async function fetchGameWithUsageDataset(
   byKey: Map<string, PokemonDetail>,
   cache: TranslationCache,
-  primaryFailure: string,
 ): Promise<UsageDataset> {
   const sourceUrl = gameWithUrlForRule(RULE)
   const html = await getText(sourceUrl)
@@ -875,13 +905,16 @@ async function fetchGameWithUsageDataset(
   }
 
   const date = parseGameWithDate(html)
-  const trainerRankingsNote = primaryFailure.startsWith('primary source skipped')
-    ? '当前使用 GameWith JP 使用率数据；GameWith JP 不提供玩家排名。'
-    : `champs.pokedb.tokyo 同步失败（${primaryFailure}），已改用 GameWith JP 使用率数据；GameWith JP 不提供玩家排名。`
+  const trainers = await fetchTrainerRankingsSafely()
+  const trainerRankingsNote = trainers.available
+    ? undefined
+    : `当前使用 GameWith JP 使用率数据；${trainers.note ?? '玩家排名暂不可用。'}`
   return {
     source: GAMEWITH_SOURCE,
     sourceUrl,
-    trainerSourceUrl: sourceUrl,
+    trainerSource: trainers.available ? 'Battle Database Champions' : undefined,
+    trainerSourceUrl: trainers.sourceUrl,
+    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? new Date().toISOString() : undefined,
     format: datasetKey(SEASON, RULE),
     regulation: regulationForSeason(SEASON),
     battle: battleForRule(RULE),
@@ -891,9 +924,9 @@ async function fetchGameWithUsageDataset(
     updatedAt: new Date().toISOString(),
     count: Object.keys(entries).length,
     missingPokemon,
-    trainerRankingsAvailable: false,
+    trainerRankingsAvailable: trainers.available,
     trainerRankingsNote,
-    trainerRankings: [],
+    trainerRankings: trainers.rankings,
     entries,
   }
 }
@@ -911,22 +944,19 @@ async function main() {
       const key = datasetKey(season, rule)
       try {
         let output: UsageDataset
-        if (USAGE_SOURCE === 'gamewith') {
-          output = await fetchGameWithUsageDataset(
-            byKey,
-            cache,
-            'primary source skipped by CHAMPS_USAGE_SOURCE=gamewith',
-          )
+        if (USAGE_SOURCE === 'champs') {
+          output = await fetchUsageDataset(byKey, cache)
         } else {
           try {
-            output = await fetchUsageDataset(byKey, cache)
+            output = await fetchGameWithUsageDataset(byKey, cache)
           } catch (error) {
-            if (USAGE_SOURCE === 'champs') throw error
             const message = error instanceof Error ? error.message : String(error)
-            console.warn(`Primary usage source failed for ${key}; trying GameWith JP fallback: ${message}`)
-            output = await fetchGameWithUsageDataset(byKey, cache, message)
+            if (USAGE_SOURCE === 'gamewith') throw error
+            console.warn(`GameWith JP usage source failed for ${key}; trying champs.pokedb.tokyo fallback: ${message}`)
+            output = await fetchUsageDataset(byKey, cache)
           }
         }
+        output = mergeExistingTrainerRankings(output, datasets[key])
         datasets[output.format] = output
         if (output.missingPokemon.length) {
           console.warn(
