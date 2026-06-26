@@ -8,14 +8,13 @@ Recommended deployment: Cloudflare Workers.
 
 Create a fine-grained GitHub token with access only to `Acblade/pokemon-champion-cn` and `Contents: Read and write`.
 
-Configure these Worker secrets:
+Configure this Worker secret:
 
 ```bash
 wrangler secret put GITHUB_TOKEN
-wrangler secret put IMPORT_SECRET
 ```
 
-`IMPORT_SECRET` is the import password you type in the site. It prevents random visitors from writing fake rankings to the repository.
+The public endpoint accepts valid 300-player ranking imports from the site and commits them with the Worker-held GitHub token. The token is never exposed to browser users.
 
 ## Deploy
 
@@ -43,12 +42,6 @@ The site sends:
   "rankingTimeJst": "2026/6/25 23:46",
   "rankingsText": "1 2273.111 べくと べくと ..."
 }
-```
-
-The request must include:
-
-```text
-X-Import-Secret: your-import-secret
 ```
 
 On success, the Worker commits updated `src/generated/usage-datasets.json` and, for the default dataset, `src/generated/pikalytics-usage.json` to `main`. GitHub Pages then redeploys normally.

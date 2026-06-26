@@ -8,7 +8,7 @@ function jsonResponse(body, status = 200, origin = '*') {
     headers: {
       'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, X-Import-Secret',
+      'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json; charset=utf-8',
     },
   })
@@ -117,7 +117,18 @@ async function githubFetch(env, path, init = {}) {
     },
   })
   const text = await response.text()
-  const body = text ? JSON.parse(text) : null
+  let body = null
+  if (text) {
+    try {
+      body = JSON.parse(text)
+    } catch {
+      const preview = text.slice(0, 200)
+      if (!response.ok) {
+        throw new Error(`GitHub API 失败: ${response.status} ${response.statusText}: ${preview}`)
+      }
+      throw new Error(`GitHub API 返回了无法解析的响应: ${preview}`)
+    }
+  }
   if (!response.ok) {
     const message = body?.message || `${response.status} ${response.statusText}`
     throw new Error(`GitHub API 失败: ${message}`)
@@ -127,6 +138,7 @@ async function githubFetch(env, path, init = {}) {
 
 async function getFile(owner, repo, branch, path, env) {
   const file = await githubFetch(env, `/repos/${owner}/${repo}/contents/${encodeURIComponent(path).replace(/%2F/g, '/')}?ref=${encodeURIComponent(branch)}`)
+  if (!file?.content) throw new Error(`GitHub 文件响应缺少内容: ${path}`)
   return decodeBase64Text(file.content)
 }
 
@@ -167,7 +179,6 @@ async function commitFiles(owner, repo, branch, files, message, env) {
 
 async function importRankings(payload, env) {
   if (!env.GITHUB_TOKEN) throw new Error('后端缺少 GITHUB_TOKEN')
-  if (env.IMPORT_SECRET && payload.secret !== env.IMPORT_SECRET) throw new Error('导入密钥不正确')
 
   const owner = env.GITHUB_OWNER || DEFAULT_OWNER
   const repo = env.GITHUB_REPO || DEFAULT_REPO
@@ -211,8 +222,12 @@ export default {
     if (request.method !== 'POST') return jsonResponse({ ok: false, error: 'Only POST is supported' }, 405, origin)
 
     try {
-      const payload = await request.json()
-      payload.secret = request.headers.get('X-Import-Secret') || payload.secret || ''
+      let payload
+      try {
+        payload = await request.json()
+      } catch {
+        return jsonResponse({ ok: false, error: '请求内容不是有效 JSON' }, 400, origin)
+      }
       const result = await importRankings(payload, env)
       return jsonResponse({ ok: true, ...result }, 200, origin)
     } catch (error) {

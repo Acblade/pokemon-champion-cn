@@ -357,17 +357,6 @@ select {
   line-height: 1.5;
 }
 
-.manual-ranking-example {
-  margin: 0;
-  padding: 8px 10px;
-  border: 1px solid #dbe1ea;
-  border-radius: 10px;
-  background: #ffffff;
-  color: #334155;
-  overflow-x: auto;
-  font: 12px/1.45 Consolas, Monaco, monospace;
-}
-
 .manual-ranking-backend-note {
   border-radius: 10px;
   background: #fff7ed;
@@ -439,12 +428,6 @@ select {
 
 :root[data-theme='dark'] .manual-ranking-field small {
   color: #94a3b8;
-}
-
-:root[data-theme='dark'] .manual-ranking-example {
-  border-color: rgba(148, 163, 184, 0.2);
-  background: rgba(15, 23, 42, 0.5);
-  color: #e2e8f0;
 }
 
 :root[data-theme='dark'] .manual-ranking-backend-note {

@@ -556,15 +556,15 @@ function formatDatasetDate(date: string) {
   return month && day ? `${month} 月 ${day} 日` : date
 }
 
-function formatLocalDateTime(iso: string | undefined, fallbackDate: string) {
+function formatJapanDateTime(iso: string | undefined, fallbackDate: string) {
   if (!iso) return formatDatasetDate(fallbackDate)
   const syncDate = new Date(iso)
   if (Number.isNaN(syncDate.getTime())) return formatDatasetDate(fallbackDate)
-  const parts = new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit' }).formatToParts(syncDate)
+  const parts = new Intl.DateTimeFormat('zh-CN', { month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' }).formatToParts(syncDate)
   const month = parts.find((part) => part.type === 'month')?.value
   const day = parts.find((part) => part.type === 'day')?.value
   const dateText = month && day ? `${month} 月 ${day} 日` : formatDatasetDate(fallbackDate)
-  return `${dateText} ${syncDate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false })}`
+  return `${dateText} ${syncDate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Tokyo' })}`
 }
 
 function teamSourceLineSource(sources: TeamShareSource[], rule: string) {
@@ -864,7 +864,6 @@ function App() {
   const [manualTrainerImportOpen, setManualTrainerImportOpen] = useState(false)
   const [manualRankingTime, setManualRankingTime] = useState('')
   const [manualRankingText, setManualRankingText] = useState('')
-  const [manualRankingSecret, setManualRankingSecret] = useState('')
   const [manualRankingStatus, setManualRankingStatus] = useState('')
   const [manualRankingError, setManualRankingError] = useState('')
   const [manualRankingOverride, setManualRankingOverride] = useState<ManualTrainerRankingOverride | null>(() => loadManualTrainerRankingOverride())
@@ -1119,17 +1118,11 @@ function App() {
         setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；后端服务尚未配置，暂时不会写回 GitHub 仓库。`)
         return
       }
-      if (!manualRankingSecret.trim()) {
-        setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人。`)
-        setManualRankingError('要写回 GitHub 仓库，请输入导入密钥。')
-        return
-      }
       setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；正在提交后端写回 GitHub。`)
       const response = await fetch(MANUAL_RANKING_API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Import-Secret': manualRankingSecret.trim(),
         },
         body: JSON.stringify({
           datasetKey: selectedUsageDataset.format,
@@ -1137,7 +1130,15 @@ function App() {
           rankingsText: manualRankingText,
         }),
       })
-      const result = await response.json().catch(() => null)
+      const responseText = await response.text()
+      let result: { ok?: boolean; error?: string } | null = null
+      if (responseText.trim()) {
+        try {
+          result = JSON.parse(responseText)
+        } catch {
+          throw new Error(response.ok ? '后端返回了无法解析的内容。' : `后端返回 ${response.status}：${responseText.slice(0, 200)}`)
+        }
+      }
       if (!response.ok || !result?.ok) {
         throw new Error(result?.error || `后端返回 ${response.status}`)
       }
@@ -1738,7 +1739,7 @@ function App() {
               {trainerRankingDataset && (
                 <>
                   <div className="data-source-line">
-                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatLocalDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
+                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatJapanDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
                     {showManualTrainerImportButton && (
                       <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
                     )}
@@ -1749,26 +1750,19 @@ function App() {
                       <p className="manual-ranking-intro">
                         最新的排名数据需要从
                         <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
-                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。当前页面会先保存到你的浏览器缓存，并立即用于本页显示；后端配置完成后，会同时写回 GitHub 仓库。
+                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
                         <span>日本时间</span>
-                        <small>请从网站上复制时间信息，格式类似于 2026/6/25 23:46。</small>
+                        <small>请从网站上复制时间信息。</small>
                         <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
                       </label>
                       <label className="manual-ranking-field">
                         <span>玩家排名</span>
-                        <small>请从网站复制共三页的排名信息，格式如下，网站会将其自动整理成易读的形式。</small>
-                        <pre className="manual-ranking-example">{'1 2273.111 べくと べくと\n2 2271.784 MeLuCa MeLuCa\n3 2264.900 キヌガワ キヌガワ'}</pre>
+                        <small>请从网站复制共三页的排名信息，网站会将其自动整理成易读的形式。</small>
                         <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
                       </label>
-                      {MANUAL_RANKING_API_URL ? (
-                        <label className="manual-ranking-field">
-                          <span>导入密钥</span>
-                          <small>用于确认你有权写回仓库；密钥只发送给后端服务，不会写入网页代码。</small>
-                          <input type="password" value={manualRankingSecret} onChange={(event) => setManualRankingSecret(event.target.value)} placeholder="输入后端导入密钥" />
-                        </label>
-                      ) : (
+                      {!MANUAL_RANKING_API_URL && (
                         <div className="manual-ranking-backend-note">后端服务尚未配置：现在只能保存到本浏览器，不能自动写回 GitHub 仓库。</div>
                       )}
                       <div className="manual-ranking-actions">
