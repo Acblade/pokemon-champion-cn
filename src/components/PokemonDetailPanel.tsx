@@ -412,6 +412,14 @@ function emptyMoveLoadout() {
   return { ids: ['', '', '', ''], labels: ['', '', '', ''] }
 }
 
+function uniqueMoveIds(moveIds: string[]) {
+  return moveIds.filter((moveId, index) => moveId && moveId !== CUSTOM_DAMAGE_MOVE_ID && moveIds.indexOf(moveId) === index)
+}
+
+function sameStringArray(left: string[], right: string[]) {
+  return left.length === right.length && left.every((value, index) => value === right[index])
+}
+
 const LONGEST_NATURE_LABEL = ALL_NATURES.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_STATUS_LABEL = STATUS_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_WEATHER_LABEL = WEATHER_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
@@ -472,6 +480,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [defenderMoveQueries, setDefenderMoveQueries] = useState<string[]>(['', '', '', ''])
   const [openMovePicker, setOpenMovePicker] = useState<string | null>(null)
   const [saveDamageMovesToConfig, setSaveDamageMovesToConfig] = useState(false)
+  const damageSyncedBlueMoveIdsRef = useRef<string[]>([])
   const [damageWeather, setDamageWeather] = useState('none')
   const [damageTerrain, setDamageTerrain] = useState('none')
   const [defenderAbilityId, setDefenderAbilityId] = useState('')
@@ -567,6 +576,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setMovePowerMin(0)
     setMovePowerMax(250)
     setBlueFavoriteMoveIds(draftConfig?.blueFavoriteMoveIds || [])
+    setSaveDamageMovesToConfig(false)
+    damageSyncedBlueMoveIdsRef.current = []
     setLoadedConfigId(draftConfig?.loadedConfigId ?? null)
     setLoadPopoverOpenAt(null)
     setMoveSortKey('category')
@@ -667,6 +678,21 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
 
   const totalSps = Object.values(sps).reduce((sum, value) => sum + value, 0)
   const favoriteMoves = useMemo(() => pokemon?.moves.filter((move) => favoriteMoveIds.includes(move.id)) ?? [], [pokemon, favoriteMoveIds])
+  const activeAttackerDamageMoveIds = useMemo(() => uniqueMoveIds(attackerMoveIds.slice(0, visibleMoveCounts.attacker)), [attackerMoveIds, visibleMoveCounts.attacker])
+
+  useEffect(() => {
+    if (!saveDamageMovesToConfig) return
+    const previousMoveIds = damageSyncedBlueMoveIdsRef.current
+    const nextMoveIds = activeAttackerDamageMoveIds
+    setBlueFavoriteMoveIds((current) => {
+      const next = current.filter((moveId) => !previousMoveIds.includes(moveId) || nextMoveIds.includes(moveId))
+      for (const moveId of nextMoveIds) {
+        if (!next.includes(moveId)) next.push(moveId)
+      }
+      return sameStringArray(current, next) ? current : next
+    })
+    damageSyncedBlueMoveIdsRef.current = nextMoveIds
+  }, [activeAttackerDamageMoveIds, saveDamageMovesToConfig])
 
   useEffect(() => {
     const close = () => {
@@ -749,19 +775,41 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setLoadPopoverOpenAt(null)
   }
 
-  function configMoveIdsForSave() {
-    if (!saveDamageMovesToConfig) return blueFavoriteMoveIds
-    return attackerMoveIds.slice(0, visibleMoveCounts.attacker).filter((moveId) => moveId && moveId !== CUSTOM_DAMAGE_MOVE_ID)
+  function loadBlueFavoritesIntoDamageMoves() {
+    const legalMoveIds = new Set(ruleMovesFor(attackerDetail).map((move) => move.id))
+    const loadedMoveIds = uniqueMoveIds(blueFavoriteMoveIds).filter((moveId) => legalMoveIds.has(moveId)).slice(0, 4)
+    if (loadedMoveIds.length === 0) return
+    const labels = loadedMoveIds.map((moveId) => attackerDetail?.moves.find((move) => move.id === moveId)?.zh ?? '')
+    setAttackerMoveIds(loadedMoveIds.concat(['', '', '', '']).slice(0, 4))
+    setAttackerMoveQueries(labels.concat(['', '', '', '']).slice(0, 4))
+    setVisibleMoveCounts((current) => ({ ...current, attacker: Math.max(1, loadedMoveIds.length) }))
+    setExpandedDamageResults({})
+    setDamageMoveConfigs((current) => {
+      const next = { ...current }
+      for (let index = 0; index < 4; index += 1) delete next[damageMoveKey('attacker', index)]
+      return next
+    })
+  }
+
+  function toggleDamageMoveSync() {
+    if (saveDamageMovesToConfig) {
+      setSaveDamageMovesToConfig(false)
+      damageSyncedBlueMoveIdsRef.current = []
+      return
+    }
+    damageSyncedBlueMoveIdsRef.current = []
+    loadBlueFavoritesIntoDamageMoves()
+    setSaveDamageMovesToConfig(true)
   }
 
   function handleSave() {
-    onSaveCurrent({ isMega, abilityId, item, nature, sps, boosts, blueFavorites: configMoveIdsForSave() })
+    onSaveCurrent({ isMega, abilityId, item, nature, sps, boosts, blueFavorites: blueFavoriteMoveIds })
     onAfterSave()
   }
 
   function handleSaveBack() {
     if (!loadedConfigId) return
-    onUpdateSaved(loadedConfigId, { isMega, abilityId, item, nature, sps, boosts, blueFavorites: configMoveIdsForSave() })
+    onUpdateSaved(loadedConfigId, { isMega, abilityId, item, nature, sps, boosts, blueFavorites: blueFavoriteMoveIds })
   }
 
   function updatePrimarySp(key: StatKey, value: number) {
@@ -1441,7 +1489,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                     className="star-button star-blue damage-save-moves-button"
                     title="保存配置时记录我方技能"
                     aria-pressed={saveDamageMovesToConfig}
-                    onClick={() => setSaveDamageMovesToConfig((value) => !value)}
+                    onClick={toggleDamageMoveSync}
                   >
                     {saveDamageMovesToConfig ? '★' : '☆'}
                   </button>

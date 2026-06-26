@@ -330,12 +330,42 @@ select {
   background: #f8fafc;
 }
 
+.manual-ranking-intro {
+  margin: 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.manual-ranking-intro a {
+  color: #2563eb;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .manual-ranking-field {
   display: grid;
   gap: 5px;
   color: #475569;
   font-size: 13px;
   font-weight: 700;
+}
+
+.manual-ranking-field small {
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.manual-ranking-example {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #dbe1ea;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  overflow-x: auto;
+  font: 12px/1.45 Consolas, Monaco, monospace;
 }
 
 .manual-ranking-field input,
@@ -391,10 +421,21 @@ select {
   background: rgba(15, 23, 42, 0.72);
 }
 
+:root[data-theme='dark'] .manual-ranking-intro,
 :root[data-theme='dark'] .manual-ranking-field,
 :root[data-theme='dark'] .manual-ranking-field input,
 :root[data-theme='dark'] .manual-ranking-field textarea {
   color: #e5e7eb;
+}
+
+:root[data-theme='dark'] .manual-ranking-field small {
+  color: #94a3b8;
+}
+
+:root[data-theme='dark'] .manual-ranking-example {
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.5);
+  color: #e2e8f0;
 }
 
 :root[data-theme='dark'] .manual-ranking-field input,
@@ -583,7 +624,7 @@ select {
 }
 
 .team-filter-pokemon-pair .filter-move-item {
-  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
 }
@@ -3958,7 +3999,7 @@ table.damage-stats-table {
 }
 
 .filter-move-pair.team-filter-pokemon-pair .filter-move-item {
-  grid-template-columns: 104px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
 }

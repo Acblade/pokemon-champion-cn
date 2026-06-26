@@ -83,15 +83,19 @@ const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; l
 void LEGACY_RULE_META
 
 const BATTLE_USAGE_RULE = '1'
-const GITHUB_OWNER = 'Acblade'
-const GITHUB_REPO = 'pokemon-champion-cn'
-const MANUAL_TRAINER_IMPORT_MARKER = '<!-- pokemon-champion-cn-manual-trainer-rankings -->'
+const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-ranking'
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
 }
 
 type HomeTab = 'list' | 'trainers' | 'teams' | 'damage'
+
+type ManualTrainerRankingOverride = {
+  format: string
+  updatedAt: string
+  rankings: TrainerRankingEntry[]
+}
 
 type DraftConfig = {
   nature: string
@@ -737,7 +741,45 @@ function parseManualRankingTimeJst(value: string) {
   return new Date(utcMs).toISOString()
 }
 
+function parseManualRankingName(rawValue: string) {
+  const lines = rawValue
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+  const firstLine = lines[0] || rawValue.trim()
+  const tokens = firstLine.split(/\s+/).filter(Boolean)
+  if (tokens.length >= 2 && tokens.length % 2 === 0) {
+    const middle = tokens.length / 2
+    const left = tokens.slice(0, middle).join(' ')
+    const right = tokens.slice(middle).join(' ')
+    if (left === right) return left
+  }
+  return tokens[0] || firstLine
+}
+
+function parseManualRankingTextByRecordPattern(text: string) {
+  const normalizedText = text
+    .replace(/\r\n/g, '\n')
+    .replace(/^日本時間.*$/gm, '\n')
+    .replace(/^日本时间.*$/gm, '\n')
+    .replace(/--+/g, '\n')
+  const rankings: TrainerRankingEntry[] = []
+  const recordPattern = /(?:^|\s)(\d{1,3})\s+(\d+(?:\.\d+)?)\s+([\s\S]*?)(?=\s+\d{1,3}\s+\d+(?:\.\d+)?\s+|$)/g
+  for (const match of normalizedText.matchAll(recordPattern)) {
+    const rank = Number(match[1])
+    const rating = Number(match[2])
+    const name = parseManualRankingName(match[3])
+    if (rank >= 1 && rank <= 300 && Number.isFinite(rating) && name) {
+      rankings.push({ rank, rating, name })
+    }
+  }
+  return rankings
+}
+
 function parseManualRankingText(text: string) {
+  const patternRankings = parseManualRankingTextByRecordPattern(text)
+  if (patternRankings.length >= 300) return patternRankings.slice(0, 300).sort((a, b) => a.rank - b.rank)
+
   const lines = text
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -762,15 +804,21 @@ function parseManualRankingText(text: string) {
   return rankings.sort((a, b) => a.rank - b.rank)
 }
 
-function buildManualTrainerRankingIssueBody(datasetKey: string, timeText: string, rankingText: string) {
-  return `${MANUAL_TRAINER_IMPORT_MARKER}
-dataset_key: ${datasetKey}
-ranking_time_jst: ${timeText.trim()}
+function loadManualTrainerRankingOverride(): ManualTrainerRankingOverride | null {
+  if (typeof window === 'undefined') return null
+  try {
+    const raw = window.localStorage.getItem(MANUAL_TRAINER_RANKING_STORAGE_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as ManualTrainerRankingOverride
+    if (!parsed || typeof parsed.format !== 'string' || typeof parsed.updatedAt !== 'string' || !Array.isArray(parsed.rankings)) return null
+    return parsed
+  } catch {
+    return null
+  }
+}
 
-\`\`\`rankings
-${rankingText.trim()}
-\`\`\`
-`
+function saveManualTrainerRankingOverride(override: ManualTrainerRankingOverride) {
+  window.localStorage.setItem(MANUAL_TRAINER_RANKING_STORAGE_KEY, JSON.stringify(override))
 }
 
 function App() {
@@ -817,7 +865,7 @@ function App() {
   const [manualRankingText, setManualRankingText] = useState('')
   const [manualRankingStatus, setManualRankingStatus] = useState('')
   const [manualRankingError, setManualRankingError] = useState('')
-  const [manualRankingOverride, setManualRankingOverride] = useState<{ format: string; updatedAt: string; rankings: TrainerRankingEntry[] } | null>(null)
+  const [manualRankingOverride, setManualRankingOverride] = useState<ManualTrainerRankingOverride | null>(() => loadManualTrainerRankingOverride())
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -832,7 +880,7 @@ function App() {
       trainerSource: 'Battle Database Champions',
       trainerRankingsUpdatedAt: manualRankingOverride.updatedAt,
       trainerRankingsAvailable: true,
-      trainerRankingsNote: '玩家排名已在本页解析，并已提交 GitHub 写回任务。',
+      trainerRankingsNote: '玩家排名来自本浏览器手动导入。',
       trainerRankings: manualRankingOverride.rankings,
     }
   }, [manualRankingOverride, selectedUsageDataset])
@@ -1055,19 +1103,17 @@ function App() {
     setSavedPokemon((current) => current.map((entry) => entry.id === id ? { ...entry, ...payload } : entry))
   }
 
-  async function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
+  function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setManualRankingError('')
     setManualRankingStatus('')
     try {
       const importedAt = parseManualRankingTimeJst(manualRankingTime)
       const rankings = parseManualRankingText(manualRankingText)
-      const issueBody = buildManualTrainerRankingIssueBody(selectedUsageDataset.format, manualRankingTime, manualRankingText)
-      await navigator.clipboard.writeText(issueBody)
-      const title = encodeURIComponent(`导入玩家排名 ${manualRankingTime.trim()}`)
-      window.open(`https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?title=${title}`, '_blank', 'noopener,noreferrer')
-      setManualRankingOverride({ format: selectedUsageDataset.format, updatedAt: importedAt, rankings })
-      setManualRankingStatus('已复制导入内容，并打开 GitHub Issue 页面；粘贴后提交，Action 会写回仓库并部署。')
+      const override = { format: selectedUsageDataset.format, updatedAt: importedAt, rankings }
+      saveManualTrainerRankingOverride(override)
+      setManualRankingOverride(override)
+      setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；浏览器缓存不会自动写回 GitHub 仓库。`)
     } catch (error) {
       setManualRankingError(error instanceof Error ? error.message : String(error))
     }
@@ -1528,7 +1574,7 @@ function App() {
                     </label>
                     <div className="filter-move-pair team-filter-pokemon-pair">
                       <div className="filter-move-item" data-popover-root>
-                        <span>包含宝可梦</span>
+                        <span>宝可梦</span>
                         <div className="filter-input-wrap team-filter-picker">
                           <input
                             value={teamFilters.pokemonQuery}
@@ -1560,7 +1606,7 @@ function App() {
                         </div>
                       </div>
                       <div className="filter-move-item" data-popover-root>
-                        <span>包含 Mega 宝可梦</span>
+                        <span>Mega 宝可梦</span>
                         <div className="filter-input-wrap team-filter-picker">
                           <input
                             value={teamFilters.megaPokemonQuery}
@@ -1672,16 +1718,24 @@ function App() {
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
                   {manualTrainerImportOpen && (
                     <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
+                      <p className="manual-ranking-intro">
+                        最新的排名数据需要从
+                        <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
+                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。当前页面会先保存到你的浏览器缓存，并立即用于本页显示。
+                      </p>
                       <label className="manual-ranking-field">
                         <span>日本时间</span>
+                        <small>请从网站上复制时间信息，格式类似于 2026/6/25 23:46。</small>
                         <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
                       </label>
                       <label className="manual-ranking-field">
                         <span>玩家排名</span>
+                        <small>请从网站复制共三页的排名信息，格式如下，网站会将其自动整理成易读的形式。</small>
+                        <pre className="manual-ranking-example">{'1 2273.111 べくと べくと\n2 2271.784 MeLuCa MeLuCa\n3 2264.900 キヌガワ キヌガワ'}</pre>
                         <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
                       </label>
                       <div className="manual-ranking-actions">
-                        <button type="submit" className="ghost-button">复制并打开提交页</button>
+                        <button type="submit" className="ghost-button">保存到本浏览器</button>
                         <button type="button" className="danger-text-button" onClick={() => setManualTrainerImportOpen(false)}>取消</button>
                       </div>
                       {manualRankingStatus && <div className="manual-ranking-status">{manualRankingStatus}</div>}
