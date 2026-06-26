@@ -4,6 +4,7 @@ export type PokemonMove = {
   id: string
   en: string
   zh: string
+  description?: string
   pinyin: string
   type: string
   category: 'Status' | 'Physical' | 'Special'

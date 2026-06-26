@@ -71,10 +71,10 @@ const ALL_NATURES = [
   { value: 'Jolly', label: '爽朗 速度+ 特攻-' },
   { value: 'Naive', label: '天真 速度+ 特防-' },
   { value: 'Modest', label: '内敛 特攻+ 攻击-' },
-  { value: 'Mild', label: '马虎 特攻+ 防御-' },
+  { value: 'Mild', label: '慢吞吞 特攻+ 防御-' },
   { value: 'Quiet', label: '冷静 特攻+ 速度-' },
-  { value: 'Rash', label: '马大哈 特攻+ 特防-' },
-  { value: 'Calm', label: '沉着 特防+ 攻击-' },
+  { value: 'Rash', label: '马虎 特攻+ 特防-' },
+  { value: 'Calm', label: '温和 特防+ 攻击-' },
   { value: 'Gentle', label: '温顺 特防+ 防御-' },
   { value: 'Sassy', label: '自大 特防+ 速度-' },
   { value: 'Careful', label: '慎重 特防+ 特攻-' },
@@ -355,6 +355,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [isMega, setIsMega] = useState(false)
   const [moveFiltersOpen, setMoveFiltersOpen] = useState(false)
   const [favoritePanelOpen, setFavoritePanelOpen] = useState(false)
+  const [openMoveDescriptionId, setOpenMoveDescriptionId] = useState<string | null>(null)
   const [categoryFilter, setCategoryFilter] = useState({ status: true, physical: true, special: true })
   const [moveOnlyYellowFav, setMoveOnlyYellowFav] = useState(false)
   const [moveOnlyBlueFav, setMoveOnlyBlueFav] = useState(false)
@@ -581,6 +582,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       setItemOpen(false)
       setMoveFiltersOpen(false)
       setFavoritePanelOpen(false)
+      setOpenMoveDescriptionId(null)
       setOpenPokemonPicker(null)
       setOpenDamageItemPicker(null)
       setLoadPopoverOpenAt(null)
@@ -1580,7 +1582,33 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
             <tbody>
               {filteredMoves.map((move) => (
                 <tr key={move.id}>
-                  <td><div className="move-name-cell"><span>{move.zh}</span><div className="move-stars"><button className="star-button star-blue" title="配置收藏" onClick={() => toggleBlueFavorite(move.id)}>{blueFavoriteMoveIds.includes(move.id) ? '★' : '☆'}</button><button className="star-button star-yellow" title="全局收藏" onClick={() => onToggleFavoriteMove(move.id)}>{favoriteMoveIds.includes(move.id) ? '★' : '☆'}</button></div></div></td>
+                  <td>
+                    <div className="move-name-cell">
+                      <span className="move-name-main">
+                        <span>{move.zh}</span>
+                        <span className="move-description-control" data-popover-root>
+                          <button
+                            type="button"
+                            className="move-description-button"
+                            aria-label={`${move.zh}描述`}
+                            title="查看招式描述"
+                            onClick={(event) => {
+                              event.stopPropagation()
+                              setOpenMoveDescriptionId((current) => current === move.id ? null : move.id)
+                            }}
+                          >
+                            ?
+                          </button>
+                          {openMoveDescriptionId === move.id && (
+                            <div className="popover move-description-popover">
+                              {move.description || '暂无招式描述'}
+                            </div>
+                          )}
+                        </span>
+                      </span>
+                      <div className="move-stars"><button className="star-button star-blue" title="配置收藏" onClick={() => toggleBlueFavorite(move.id)}>{blueFavoriteMoveIds.includes(move.id) ? '★' : '☆'}</button><button className="star-button star-yellow" title="全局收藏" onClick={() => onToggleFavoriteMove(move.id)}>{favoriteMoveIds.includes(move.id) ? '★' : '☆'}</button></div>
+                    </div>
+                  </td>
                   <td><span className={typeBadgeClass(move.type, 'type-inline-badge')}>{typeLabel(move.type)}</span></td>
                   <td>{categoryLabel(move.category)}</td>
                   <td>{move.basePower || '—'}</td>

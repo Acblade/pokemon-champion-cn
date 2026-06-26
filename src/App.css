@@ -377,8 +377,10 @@ select {
 .team-filter-popover {
   right: 0;
   left: auto;
-  width: min(420px, calc(100vw - 48px));
-  max-width: min(420px, calc(100vw - 48px));
+  width: min(620px, calc(100vw - 48px));
+  max-width: min(620px, calc(100vw - 48px));
+  max-height: min(76vh, 720px);
+  overflow: auto;
   display: grid;
   gap: 12px;
 }
@@ -401,6 +403,31 @@ select {
 .team-filter-actions {
   display: flex;
   justify-content: flex-end;
+}
+
+.team-filter-text-grid,
+.team-filter-select-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.team-filter-select-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.team-filter-popover .popover-field input,
+.team-filter-popover .popover-field select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #d0d8e3;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2937;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 13px;
 }
 
 .team-filter-picker .team-filter-suggestion-dropdown {
@@ -520,6 +547,10 @@ select {
   text-decoration: none;
 }
 
+.team-roster-item.no-spread {
+  grid-template-columns: 28px minmax(120px, 0.95fr) minmax(96px, 0.72fr) minmax(84px, 0.62fr) minmax(260px, 1.8fr);
+}
+
 .team-roster-item:hover {
   border-color: #93c5fd;
   background: #eff6ff;
@@ -590,6 +621,8 @@ select {
 
 :root[data-theme='dark'] .team-share-head p,
 :root[data-theme='dark'] .team-filter-check,
+:root[data-theme='dark'] .team-filter-popover .popover-field input,
+:root[data-theme='dark'] .team-filter-popover .popover-field select,
 :root[data-theme='dark'] .team-empty-state p,
 :root[data-theme='dark'] .team-card-head p,
 :root[data-theme='dark'] .team-member-main small,
@@ -598,6 +631,13 @@ select {
 :root[data-theme='dark'] .team-member-spread,
 :root[data-theme='dark'] .team-member-moves {
   color: #9ca3af;
+}
+
+:root[data-theme='dark'] .team-filter-popover .popover-field input,
+:root[data-theme='dark'] .team-filter-popover .popover-field select {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(15, 23, 42, 0.95);
+  color: #eef2ff;
 }
 
 :root[data-theme='dark'] .team-share-card {
@@ -1649,6 +1689,68 @@ tr:hover td {
   align-items: center;
   justify-content: space-between;
   gap: 4px;
+}
+
+.move-name-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.move-description-control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.move-description-button {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0;
+}
+
+.move-description-button:hover {
+  border-color: #93c5fd;
+  color: #2563eb;
+}
+
+.move-description-popover {
+  left: 0;
+  right: auto;
+  width: min(320px, calc(100vw - 48px));
+  max-width: min(320px, calc(100vw - 48px));
+  color: #334155;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  white-space: normal;
+  z-index: 40;
+}
+
+:root[data-theme='dark'] .move-description-button {
+  border-color: rgba(148, 163, 184, 0.32);
+  color: #9ca3af;
+}
+
+:root[data-theme='dark'] .move-description-button:hover {
+  border-color: rgba(147, 197, 253, 0.56);
+  color: #bfdbfe;
+}
+
+:root[data-theme='dark'] .move-description-popover {
+  color: #d1d5db;
 }
 
 .detail-page-topline,
@@ -3090,6 +3192,11 @@ table.damage-stats-table {
   .team-filter-popover {
     left: 0;
     right: auto;
+  }
+
+  .team-filter-text-grid,
+  .team-filter-select-grid {
+    grid-template-columns: 1fr;
   }
 
   .team-filter-pokemon-pair {

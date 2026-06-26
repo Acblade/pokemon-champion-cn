@@ -308,8 +308,8 @@ function buildLocalMaps(details: Record<string, PokemonDetail>) {
     ['docile', '坦率'], ['relaxed', '悠闲 防御+ 速度-'], ['impish', '淘气 防御+ 特攻-'],
     ['lax', '乐天 防御+ 特防-'], ['timid', '胆小 速度+ 攻击-'], ['hasty', '急躁 速度+ 防御-'],
     ['serious', '认真'], ['jolly', '爽朗 速度+ 特攻-'], ['naive', '天真 速度+ 特防-'],
-    ['modest', '内敛 特攻+ 攻击-'], ['mild', '马虎 特攻+ 防御-'], ['quiet', '冷静 特攻+ 速度-'],
-    ['bashful', '害羞'], ['rash', '马大哈 特攻+ 特防-'], ['calm', '沉着 特防+ 攻击-'],
+    ['modest', '内敛 特攻+ 攻击-'], ['mild', '慢吞吞 特攻+ 防御-'], ['quiet', '冷静 特攻+ 速度-'],
+    ['bashful', '害羞'], ['rash', '马虎 特攻+ 特防-'], ['calm', '温和 特防+ 攻击-'],
     ['gentle', '温顺 特防+ 防御-'], ['sassy', '自大 特防+ 速度-'], ['careful', '慎重 特防+ 特攻-'],
     ['quirky', '浮躁'],
   ])

@@ -24,6 +24,27 @@ type Move = {
   category: 'Status' | 'Physical' | 'Special'
   basePower?: number
   accuracy?: number | true
+  desc?: string
+  shortDesc?: string
+  pp?: number
+  priority?: number
+  boosts?: Record<string, number>
+  self?: { boosts?: Record<string, number> }
+  secondary?: MoveSecondary | null
+  secondaries?: MoveSecondary[]
+  status?: string
+  volatileStatus?: string
+  drain?: [number, number]
+  recoil?: [number, number]
+  heal?: [number, number]
+}
+
+type MoveSecondary = {
+  chance?: number
+  boosts?: Record<string, number>
+  self?: { boosts?: Record<string, number> }
+  status?: string
+  volatileStatus?: string
 }
 
 type FormatData = {
@@ -107,6 +128,10 @@ async function ensureExternalSources() {
       'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/move_names.csv',
     ),
     ensureTextFile(
+      path.join(pokeApiRoot, 'move_flavor_text_full.csv'),
+      'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/move_flavor_text.csv',
+    ),
+    ensureTextFile(
       path.join(pokeApiRoot, 'ability_names_full.csv'),
       'https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/ability_names.csv',
     ),
@@ -165,6 +190,133 @@ function readCsvMap(filePath: string, idColumn: string, nameColumn: string, lang
     map.set(row[idIndex], row[nameIndex])
   }
   return map
+}
+
+function cleanFlavorText(value: string) {
+  return value
+    .replace(/\u00ad/g, '')
+    .replace(/\f/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function readMoveDescriptionMap(filePath: string, languageId = '12') {
+  const rows = parseCsv(fs.readFileSync(filePath, 'utf8'))
+  const header = rows.shift() || []
+  const moveIndex = header.indexOf('move_id')
+  const versionGroupIndex = header.indexOf('version_group_id')
+  const langIndex = header.indexOf('language_id')
+  const textIndex = header.indexOf('flavor_text')
+  const latest = new Map<string, { versionGroup: number; text: string }>()
+  for (const row of rows) {
+    if (row[langIndex] !== languageId) continue
+    const moveId = row[moveIndex]
+    const versionGroup = Number(row[versionGroupIndex])
+    const text = cleanFlavorText(row[textIndex] ?? '')
+    if (!moveId || !text) continue
+    const current = latest.get(moveId)
+    if (!current || versionGroup >= current.versionGroup) {
+      latest.set(moveId, { versionGroup, text })
+    }
+  }
+  return new Map([...latest].map(([moveId, entry]) => [moveId, entry.text]))
+}
+
+const MOVE_TYPE_LABELS: Record<string, string> = {
+  Bug: '虫',
+  Dark: '恶',
+  Dragon: '龙',
+  Electric: '电',
+  Fairy: '妖精',
+  Fighting: '格斗',
+  Fire: '火',
+  Flying: '飞行',
+  Ghost: '幽灵',
+  Grass: '草',
+  Ground: '地面',
+  Ice: '冰',
+  Normal: '一般',
+  Poison: '毒',
+  Psychic: '超能力',
+  Rock: '岩石',
+  Steel: '钢',
+  Water: '水',
+}
+
+const MOVE_CATEGORY_LABELS: Record<Move['category'], string> = {
+  Physical: '物理',
+  Special: '特殊',
+  Status: '变化',
+}
+
+const MOVE_STAT_LABELS: Record<string, string> = {
+  atk: '攻击',
+  def: '防御',
+  spa: '特攻',
+  spd: '特防',
+  spe: '速度',
+  accuracy: '命中率',
+  evasion: '闪避率',
+}
+
+const MOVE_STATUS_LABELS: Record<string, string> = {
+  brn: '灼伤',
+  frz: '冰冻',
+  par: '麻痹',
+  psn: '中毒',
+  slp: '睡眠',
+  tox: '剧毒',
+}
+
+const MOVE_VOLATILE_LABELS: Record<string, string> = {
+  confusion: '混乱',
+  flinch: '畏缩',
+  leechseed: '寄生种子',
+  taunt: '挑衅',
+  trapped: '无法替换',
+}
+
+function formatBoosts(boosts: Record<string, number>, target: '使用者' | '目标') {
+  const parts = Object.entries(boosts)
+    .filter(([, value]) => value !== 0)
+    .map(([stat, value]) => `${MOVE_STAT_LABELS[stat] ?? stat}${value > 0 ? `提升 ${value} 级` : `降低 ${Math.abs(value)} 级`}`)
+  return parts.length ? `令${target}${parts.join('、')}。` : ''
+}
+
+function formatSecondary(secondary: MoveSecondary) {
+  const chance = secondary.chance && secondary.chance < 100 ? `${secondary.chance}%几率` : ''
+  const parts = [
+    secondary.boosts ? formatBoosts(secondary.boosts, '目标') : '',
+    secondary.self?.boosts ? formatBoosts(secondary.self.boosts, '使用者') : '',
+    secondary.status ? `令目标陷入${MOVE_STATUS_LABELS[secondary.status] ?? secondary.status}状态。` : '',
+    secondary.volatileStatus ? `令目标陷入${MOVE_VOLATILE_LABELS[secondary.volatileStatus] ?? secondary.volatileStatus}状态。` : '',
+  ].filter(Boolean)
+  if (!parts.length) return ''
+  return chance ? parts.map((part) => `${chance}${part}`).join('') : parts.join('')
+}
+
+function buildMoveDescription(move: Move) {
+  const typeLabel = MOVE_TYPE_LABELS[move.type] ?? move.type
+  const categoryLabel = MOVE_CATEGORY_LABELS[move.category] ?? move.category
+  const basics = [`${typeLabel}属性${categoryLabel}招式`]
+  if (move.category !== 'Status' && (move.basePower ?? 0) > 0) basics.push(`威力 ${move.basePower}`)
+  basics.push(move.accuracy === true ? '必中' : `命中 ${move.accuracy ?? '-'}`)
+  if (move.pp) basics.push(`PP ${move.pp}`)
+
+  const effects = [
+    move.priority ? `优先度 ${move.priority > 0 ? `+${move.priority}` : move.priority}。` : '',
+    move.boosts ? formatBoosts(move.boosts, '目标') : '',
+    move.self?.boosts ? formatBoosts(move.self.boosts, '使用者') : '',
+    move.status ? `令目标陷入${MOVE_STATUS_LABELS[move.status] ?? move.status}状态。` : '',
+    move.volatileStatus ? `令目标陷入${MOVE_VOLATILE_LABELS[move.volatileStatus] ?? move.volatileStatus}状态。` : '',
+    move.secondary ? formatSecondary(move.secondary) : '',
+    ...(move.secondaries ?? []).map(formatSecondary),
+    move.drain ? '吸取造成伤害的一部分回复自身 HP。' : '',
+    move.recoil ? '使用者会受到反作用力伤害。' : '',
+    move.heal ? '回复自身 HP。' : '',
+  ].filter(Boolean)
+
+  return `${basics.join('，')}。${effects.join('')}`
 }
 
 function normalizeSearch(value: string) {
@@ -671,6 +823,13 @@ const MOVE_ZH_BY_ID: Record<string, string> = {
   zenheadbutt: '意念头锤',
 }
 
+const MOVE_DESC_ZH_BY_ID: Record<string, string> = {
+  direclaw: '有 30% 几率令目标陷入睡眠、中毒或麻痹状态。',
+  makeitrain: '攻击对方全体，使用后自己的特攻降低 2 级。',
+  ragefist: '每当使用者受到攻击，威力提升 50，最高提升 6 次；替换下场后重新计算。',
+  saltcure: '令目标每回合损失最大 HP 的 1/16；目标为钢属性或水属性时改为 1/8。',
+}
+
 function extractChampionsItemIds(championsItems: Dict<ItemData>, items: Dict<ItemData>) {
   const ids = new Set<string>()
   for (const [id, item] of Object.entries(items)) {
@@ -765,6 +924,7 @@ async function main() {
 
   const pokemonNames = readCsvMap(path.join(pokeApiRoot, 'pokemon_species_names_full.csv'), 'pokemon_species_id', 'name')
   const moveNames = readCsvMap(path.join(pokeApiRoot, 'move_names_full.csv'), 'move_id', 'name')
+  const moveDescriptions = readMoveDescriptionMap(path.join(pokeApiRoot, 'move_flavor_text_full.csv'))
   const abilityNames = readCsvMap(path.join(pokeApiRoot, 'ability_names_full.csv'), 'ability_id', 'name')
 
   const abilityNameToMeta = new Map(Object.entries(abilities).map(([id, value]) => [value.name, { id, num: value.num }]))
@@ -883,10 +1043,15 @@ async function main() {
           const move = mergedMoves.get(moveId)
           if (!move) return null
           const zh = MOVE_ZH_BY_ID[moveId] || moveNames.get(String(move.num || '')) || move.name
+          const showdownDescription = move.shortDesc || move.desc || ''
+          const description = MOVE_DESC_ZH_BY_ID[moveId] ||
+            moveDescriptions.get(String(move.num || '')) ||
+            (/[\u4e00-\u9fff]/.test(showdownDescription) ? showdownDescription : buildMoveDescription(move))
           return {
             id: moveId,
             en: move.name,
             zh,
+            description,
             pinyin: buildPinyinVariants(zh).full,
             type: move.type,
             category: move.category,

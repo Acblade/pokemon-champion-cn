@@ -11,7 +11,7 @@ import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
 import { getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
-import { teamShareSources, teamShares, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
+import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
 import { TYPE_LABELS, TYPE_ORDER, typeBadgeClass, typeColorClass, typeLabel } from './lib/pokemonTypes'
 
 function appItemLabel(itemValue: string) {
@@ -24,7 +24,7 @@ const TEAM_NATURE_LABELS: Record<string, string> = {
   Adamant: '固执',
   Bashful: '害羞',
   Bold: '大胆',
-  Calm: '沉着',
+  Calm: '温和',
   Careful: '慎重',
   Docile: '坦率',
   Gentle: '温顺',
@@ -109,9 +109,15 @@ type FilterState = {
 }
 
 type TeamFilterState = {
-  namedOnly: boolean
-  completeOnly: boolean
+  teamQuery: string
+  fullSpreadOnly: boolean
+  rankedOnly: boolean
   sources: string[]
+  seasons: string[]
+  eventTypes: string[]
+  archetypes: string[]
+  placementMax: string
+  dateRange: string
   pokemonQuery: string
   megaPokemonQuery: string
 }
@@ -137,9 +143,15 @@ const DEFAULT_FILTERS: FilterState = {
 }
 
 const DEFAULT_TEAM_FILTERS: TeamFilterState = {
-  namedOnly: false,
-  completeOnly: true,
+  teamQuery: '',
+  fullSpreadOnly: false,
+  rankedOnly: false,
   sources: [],
+  seasons: [],
+  eventTypes: [],
+  archetypes: [],
+  placementMax: '',
+  dateRange: '',
   pokemonQuery: '',
   megaPokemonQuery: '',
 }
@@ -165,10 +177,6 @@ function typeSortValue(types: string[]) {
 
 function isMegaPokemon(pokemon: PokemonRow) {
   return pokemon.name.toLowerCase().includes('-mega')
-}
-
-function isAnonymousTeamAuthor(author: string) {
-  return /^GameWith user \d+$/i.test(author.trim())
 }
 
 function teamMemberPokemon(member: TeamShareMember) {
@@ -202,10 +210,40 @@ function teamMemberDisplaySearchText(member: TeamShareMember) {
   ].join(' '))
 }
 
-function teamHasSpecificInfo(team: TeamShare) {
-  return team.members.some((member) => {
-    return member.moves.length > 0 || [member.item, member.ability, member.nature, member.spread].some((value) => Boolean(value && value !== '-'))
-  })
+function teamHasFullSpreads(team: TeamShare) {
+  return team.members.length > 0 && team.members.every((member) => Boolean(member.spread && member.spread !== '-'))
+}
+
+function teamHasPlacement(team: TeamShare) {
+  return teamPlacementValue(team) !== undefined
+}
+
+function teamMatchesGeneralQuery(team: TeamShare, query: string) {
+  const normalizedQuery = normalize(query)
+  if (!normalizedQuery) return true
+  const memberText = team.members.map((member) => {
+    const pokemon = teamMemberPokemon(member)
+    return [
+      member.pokemonName,
+      member.pokemonId,
+      member.item,
+      member.ability,
+      member.nature,
+      member.moves.join(' '),
+      pokemon ? pokemonSearchText(pokemon) : '',
+      pokemon ? pokemonDisplayName(pokemon) : '',
+    ].join(' ')
+  }).join(' ')
+  return normalize([
+    team.teamId,
+    team.author,
+    team.title,
+    team.eventName,
+    team.summary,
+    team.sourceUrl,
+    team.platformUrl,
+    memberText,
+  ].join(' ')).includes(normalizedQuery)
 }
 
 function teamMatchesPokemonQuery(team: TeamShare, query: string, megaOnly = false) {
@@ -220,11 +258,61 @@ function teamMatchesPokemonQuery(team: TeamShare, query: string, megaOnly = fals
 }
 
 function teamSourceGroupName(team: TeamShare) {
+  if (team.sourceGroup) return team.sourceGroup
   const sourceText = normalize(`${team.source} ${team.sourceUrl} ${team.platformUrl}`)
+  if (sourceText.includes('pikalytics')) return 'Pikalytics Top Teams'
+  if (sourceText.includes('limitlessvgc')) return 'Limitless VGC'
   if (sourceText.includes('gamewith')) return 'GameWith JP Party Posts'
   if (sourceText.includes('pokebase')) return 'PokéBase Community Teams'
   if (sourceText.includes('victoryroad')) return 'Victory Road Replica Teams'
   return team.source
+}
+
+function uniqueSorted(values: (string | undefined)[]) {
+  return Array.from(new Set(values.filter((value): value is string => Boolean(value)))).sort((left, right) => left.localeCompare(right, 'zh-Hans-CN'))
+}
+
+function sortTeamSeason(left: string, right: string) {
+  const order = new Map([['M-A', 1], ['M-B', 2], ['未标注', 99]])
+  return (order.get(left) ?? 50) - (order.get(right) ?? 50) || left.localeCompare(right, 'zh-Hans-CN')
+}
+
+function toggleFilterValue(values: string[], value: string) {
+  return values.includes(value) ? values.filter((item) => item !== value) : [...values, value]
+}
+
+function archetypeLabel(value: string) {
+  const labels: Record<string, string> = {
+    sun: '晴天',
+    rain: '雨天',
+    sand: '沙暴',
+    snow: '雪天',
+    'trick-room': '戏法空间',
+    tailwind: '顺风',
+    'perish-trap': '灭歌捕获',
+  }
+  return labels[value] ?? value
+}
+
+function teamPlacementValue(team: TeamShare) {
+  const raw = team.placement ?? Number(team.metrics?.finalRanking)
+  return Number.isFinite(raw) && raw > 0 ? raw : undefined
+}
+
+function teamMatchesPlacement(team: TeamShare, placementMax: string) {
+  if (!placementMax) return true
+  const placement = teamPlacementValue(team)
+  return placement !== undefined && placement <= Number(placementMax)
+}
+
+function teamMatchesDateRange(team: TeamShare, dateRange: string) {
+  if (!dateRange) return true
+  const dateValue = team.eventDate || team.updatedAt
+  const time = Date.parse(dateValue)
+  if (Number.isNaN(time)) return false
+  const days = Number(dateRange)
+  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000
+  return time >= cutoff
 }
 
 function buildTeamPokemonOption(pokemon: PokemonRow): TeamPokemonOption {
@@ -268,8 +356,9 @@ function formatDatasetDateTime(date: string, iso: string) {
   return `${formatDatasetDate(date)} ${syncDate.toLocaleTimeString('zh-CN', { hour12: false })}`
 }
 
-function formatTeamSourceDates(sources: TeamShareSource[]) {
-  return sources.map((source) => `${source.name} ${formatDatasetDate(source.updatedAt)}`).join(' / ')
+function formatTeamSourceDates(sources: TeamShareSource[], syncedAt: string) {
+  const sourceText = sources.map((source) => `${source.name}${source.count ? ` ${source.count} 队` : ''} · 最新队伍 ${formatDatasetDate(source.updatedAt)}`).join(' / ')
+  return syncedAt ? `${sourceText} · 同步 ${formatDatasetDate(syncedAt)}` : sourceText
 }
 
 function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: string }) {
@@ -437,23 +526,35 @@ function App() {
 
   const filteredTeamShares = useMemo(() => {
     return teamShares.filter((team) => {
-      if (teamFilters.namedOnly && isAnonymousTeamAuthor(team.author)) return false
-      if (teamFilters.completeOnly && !teamHasSpecificInfo(team)) return false
+      if (!teamMatchesGeneralQuery(team, teamFilters.teamQuery)) return false
+      if (teamFilters.fullSpreadOnly && !teamHasFullSpreads(team)) return false
+      if (teamFilters.rankedOnly && !teamHasPlacement(team)) return false
       if (teamFilters.sources.length > 0 && !teamFilters.sources.includes(teamSourceGroupName(team))) return false
+      if (teamFilters.seasons.length > 0 && !teamFilters.seasons.includes(team.season)) return false
+      if (teamFilters.eventTypes.length > 0 && !teamFilters.eventTypes.includes(team.eventType || '其它')) return false
+      if (teamFilters.archetypes.length > 0 && !teamFilters.archetypes.every((archetype) => (team.archetypes || []).includes(archetype))) return false
+      if (!teamMatchesPlacement(team, teamFilters.placementMax)) return false
+      if (!teamMatchesDateRange(team, teamFilters.dateRange)) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.pokemonQuery)) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.megaPokemonQuery, true)) return false
       return true
     })
   }, [teamFilters])
 
+  const teamSourceOptions = useMemo(() => teamShareSources.map((source) => source.name), [])
+  const teamSeasonOptions = useMemo(() => uniqueSorted(teamShares.map((team) => team.season)).sort(sortTeamSeason), [])
+  const teamEventTypeOptions = useMemo(() => uniqueSorted(teamShares.map((team) => team.eventType || '其它')), [])
+  const teamArchetypeOptions = useMemo(() => uniqueSorted(teamShares.flatMap((team) => team.archetypes || [])), [])
   const teamPokemonOptions = useMemo(() => championsPokemon.map(buildTeamPokemonOption), [])
   const teamMegaPokemonOptions = useMemo(() => championsPokemon.filter((pokemon) => pokemon.hasMega || isMegaPokemon(pokemon)).map(buildTeamPokemonOption), [])
   const teamPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamPokemonOptions, teamFilters.pokemonQuery), [teamPokemonOptions, teamFilters.pokemonQuery])
   const teamMegaPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamMegaPokemonOptions, teamFilters.megaPokemonQuery), [teamMegaPokemonOptions, teamFilters.megaPokemonQuery])
   const activeTeamFilterCount =
-    (teamFilters.namedOnly ? 1 : 0) +
-    (teamFilters.completeOnly ? 1 : 0) +
-    teamFilters.sources.length +
+    (teamFilters.teamQuery.trim() ? 1 : 0) +
+    (teamFilters.fullSpreadOnly ? 1 : 0) +
+    (teamFilters.rankedOnly ? 1 : 0) +
+    (teamFilters.placementMax ? 1 : 0) +
+    (teamFilters.dateRange ? 1 : 0) +
     (teamFilters.pokemonQuery.trim() ? 1 : 0) +
     (teamFilters.megaPokemonQuery.trim() ? 1 : 0)
 
@@ -858,41 +959,124 @@ function App() {
                 <button className="ghost-button" onClick={() => setTeamFiltersOpen((value) => !value)}>筛选{activeTeamFilterCount ? `（${activeTeamFilterCount}）` : ''}</button>
                 {teamFiltersOpen && (
                   <div className="popover filter-list-popover filter-grid team-filter-popover">
-                    <div className="popover-field">
-                      <span>队伍来源</span>
-                      <div className="filter-chip-group">
-                        {teamShareSources.map((source) => (
-                          <button
-                            key={source.name}
-                            type="button"
-                            className={teamFilters.sources.includes(source.name) ? 'filter-chip active' : 'filter-chip'}
-                            onClick={() => setTeamFilters((current) => ({
-                              ...current,
-                              sources: current.sources.includes(source.name)
-                                ? current.sources.filter((item) => item !== source.name)
-                                : [...current.sources, source.name],
-                            }))}
-                          >
-                            {source.name}
-                          </button>
-                        ))}
+                    <div className="team-filter-text-grid">
+                      <label className="popover-field">
+                        <span>{'\u961f\u4f0d\u68c0\u7d22'}</span>
+                        <input
+                          value={teamFilters.teamQuery}
+                          onChange={(event) => setTeamFilters((current) => ({ ...current, teamQuery: event.target.value }))}
+                          placeholder={'\u961f\u4f0d ID\u3001\u4f5c\u8005\u3001\u8d5b\u4e8b\u3001\u5b9d\u53ef\u68a6\u3001\u9053\u5177\u6216\u62db\u5f0f'}
+                        />
+                      </label>
+                    </div>
+                    {teamSourceOptions.length > 1 && (
+                      <div className="popover-field">
+                        <span>{'\u6765\u6e90'}</span>
+                        <div className="filter-chip-group">
+                          {teamSourceOptions.map((sourceName) => (
+                            <button
+                              key={sourceName}
+                              type="button"
+                              className={teamFilters.sources.includes(sourceName) ? 'filter-chip active' : 'filter-chip'}
+                              onClick={() => setTeamFilters((current) => ({
+                                ...current,
+                                sources: toggleFilterValue(current.sources, sourceName),
+                              }))}
+                            >
+                              {sourceName}
+                            </button>
+                          ))}
+                        </div>
                       </div>
+                    )}
+                    {teamSeasonOptions.length > 1 && (
+                      <div className="popover-field">
+                        <span>{'\u89c4\u5219'}</span>
+                        <div className="filter-chip-group">
+                          {teamSeasonOptions.map((season) => (
+                            <button
+                              key={season}
+                              type="button"
+                              className={teamFilters.seasons.includes(season) ? 'filter-chip active' : 'filter-chip'}
+                              onClick={() => setTeamFilters((current) => ({ ...current, seasons: toggleFilterValue(current.seasons, season) }))}
+                            >
+                              {season}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {teamEventTypeOptions.length > 1 && (
+                      <div className="popover-field">
+                        <span>{'\u8d5b\u4e8b\u7c7b\u578b'}</span>
+                        <div className="filter-chip-group">
+                          {teamEventTypeOptions.map((eventType) => (
+                            <button
+                              key={eventType}
+                              type="button"
+                              className={teamFilters.eventTypes.includes(eventType) ? 'filter-chip active' : 'filter-chip'}
+                              onClick={() => setTeamFilters((current) => ({ ...current, eventTypes: toggleFilterValue(current.eventTypes, eventType) }))}
+                            >
+                              {eventType}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {teamArchetypeOptions.length > 0 && (
+                      <div className="popover-field">
+                        <span>{'\u6784\u7b51\u6807\u7b7e'}</span>
+                        <div className="filter-chip-group">
+                          {teamArchetypeOptions.map((archetype) => (
+                            <button
+                              key={archetype}
+                              type="button"
+                              className={teamFilters.archetypes.includes(archetype) ? 'filter-chip active' : 'filter-chip'}
+                              onClick={() => setTeamFilters((current) => ({ ...current, archetypes: toggleFilterValue(current.archetypes, archetype) }))}
+                            >
+                              {archetypeLabel(archetype)}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    <div className="team-filter-select-grid">
+                      <label className="popover-field">
+                        <span>{'\u540d\u6b21'}</span>
+                        <select value={teamFilters.placementMax} onChange={(event) => setTeamFilters((current) => ({ ...current, placementMax: event.target.value }))}>
+                          <option value="">{'\u5168\u90e8\u540d\u6b21'}</option>
+                          <option value="1">{'\u51a0\u519b'}</option>
+                          <option value="4">{'\u524d 4'}</option>
+                          <option value="8">{'\u524d 8'}</option>
+                          <option value="16">{'\u524d 16'}</option>
+                          <option value="32">{'\u524d 32'}</option>
+                        </select>
+                      </label>
+                      <label className="popover-field">
+                        <span>{'\u65e5\u671f'}</span>
+                        <select value={teamFilters.dateRange} onChange={(event) => setTeamFilters((current) => ({ ...current, dateRange: event.target.value }))}>
+                          <option value="">{'\u5168\u90e8\u65e5\u671f'}</option>
+                          <option value="7">{'\u6700\u8fd1 7 \u5929'}</option>
+                          <option value="30">{'\u6700\u8fd1 30 \u5929'}</option>
+                          <option value="90">{'\u6700\u8fd1 90 \u5929'}</option>
+                        </select>
+                      </label>
                     </div>
                     <label className="team-filter-check">
                       <input
                         type="checkbox"
-                        checked={teamFilters.namedOnly}
-                        onChange={(event) => setTeamFilters((current) => ({ ...current, namedOnly: event.target.checked }))}
+                        checked={teamFilters.fullSpreadOnly}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, fullSpreadOnly: event.target.checked }))}
                       />
-                      <span>仅显示有名字的作者</span>
+                      <span>{'\u53ea\u770b\u5b8c\u6574\u52aa\u529b\u503c'}</span>
                     </label>
                     <label className="team-filter-check">
                       <input
                         type="checkbox"
-                        checked={teamFilters.completeOnly}
-                        onChange={(event) => setTeamFilters((current) => ({ ...current, completeOnly: event.target.checked }))}
+                        checked={teamFilters.rankedOnly}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, rankedOnly: event.target.checked }))}
                       />
-                      <span>不显示无具体配置的队伍</span>
+                      <span>{'\u53ea\u770b\u6709\u540d\u6b21'}</span>
                     </label>
                     <div className="filter-move-pair team-filter-pokemon-pair">
                       <div className="filter-move-item" data-popover-root>
@@ -1063,14 +1247,14 @@ function App() {
               <div className="team-share-head">
                 <div>
                   <h2>外部构筑</h2>
-                  <p>每日同步公开队伍库和热门投稿，展示队伍成员、道具、特性、性格、努力值与招式。</p>
+                  <p>每日同步 VGCPastes 表格，并通过每行 Pokepaste 链接补全队伍成员、道具、特性、性格、努力值与招式。</p>
                 </div>
                 <div className="team-source-actions">
                   {teamShareSources.map((source) => <a key={source.url} className="ghost-button" href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a>)}
                 </div>
               </div>
               <div className="team-filter-row">
-                <div className="data-source-line">{filteredTeamShares.length}/{teamShares.length} 队 · {formatTeamSourceDates(teamShareSources)}</div>
+                <div className="data-source-line">{filteredTeamShares.length}/{teamShares.length} 队 · {formatTeamSourceDates(teamShareSources, teamSharesUpdatedAt)}</div>
               </div>
               <div className="team-share-list">
                 {filteredTeamShares.length === 0 && (
@@ -1079,7 +1263,9 @@ function App() {
                     <p>放宽宝可梦或完整配置条件后再查看。</p>
                   </div>
                 )}
-                {filteredTeamShares.map((team) => (
+                {filteredTeamShares.map((team) => {
+                  const showTeamSpread = team.members.some((member) => Boolean(member.spread && member.spread !== '-'))
+                  return (
                   <article className="team-share-card" key={team.id}>
                     <div className="team-card-head">
                       <div>
@@ -1091,12 +1277,17 @@ function App() {
                     <div className="team-meta-row">
                       <span>作者 {team.author}</span>
                       <span>队伍 ID {team.teamId}</span>
-                      <span>{team.format}</span>
-                      <span>{team.source}</span>
-                      <span>{formatDatasetDate(team.updatedAt)}</span>
+                      <span>{team.sourceGroup || team.source}</span>
+                      {team.category && <span>{team.category}</span>}
+                      {team.eventType && <span>{team.eventType}</span>}
+                      {team.region && <span>{team.region}</span>}
+                      {team.eventName && <span>{team.eventName}</span>}
+                      {team.ranking && <span>Pikalytics #{team.ranking}</span>}
+                      {team.placement && <span>赛事 #{team.placement}</span>}
+                      {team.record && <span>战绩 {team.record}</span>}
+                      <span>{formatDatasetDate(team.eventDate || team.updatedAt)}</span>
                       {team.metrics?.likes !== undefined && <span>喜欢 {team.metrics.likes}</span>}
                       {team.metrics?.comments !== undefined && <span>评论 {team.metrics.comments}</span>}
-                      {team.metrics?.finalRanking && <span>最终排名 #{team.metrics.finalRanking}</span>}
                     </div>
                     <div className="team-tag-row">
                       {team.tags.map((tag) => <span key={`${team.id}-${tag}`}>{displayTeamTag(team, tag)}</span>)}
@@ -1113,7 +1304,7 @@ function App() {
                         return (
                           <a
                             key={`${team.id}-${member.pokemonId}`}
-                            className="team-roster-item"
+                            className={showTeamSpread ? 'team-roster-item' : 'team-roster-item no-spread'}
                             href={pokemon ? getPokemonHref(pokemon) : '#'}
                             onClick={(event) => { event.preventDefault(); if (pokemon) navigateToPokemon(pokemon) }}
                           >
@@ -1124,7 +1315,7 @@ function App() {
                             </span>
                             <span className="team-member-item">{itemLabel}</span>
                             <span className="team-member-ability">{visibleAbilityLabel}</span>
-                            <span className="team-member-spread">{spreadLabel}</span>
+                            {showTeamSpread && <span className="team-member-spread">{spreadLabel}</span>}
                             <span className="team-member-moves">{member.moves.length > 0 ? member.moves.join(' / ') : '招式未公开'}</span>
                           </a>
                         )
@@ -1132,10 +1323,11 @@ function App() {
                     </div>
                     <div className="team-card-foot">
                       <a href={team.sourceUrl} target="_blank" rel="noopener noreferrer">玩家来源</a>
-                      <a href={team.platformUrl} target="_blank" rel="noopener noreferrer">队伍库</a>
+                      <a href={team.platformUrl} target="_blank" rel="noopener noreferrer">队伍详情</a>
                     </div>
                   </article>
-                ))}
+                  )
+                })}
               </div>
             </section>
           )}

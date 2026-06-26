@@ -4,8 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    - cron: '20 3 * * *'
+  workflow_run:
+    workflows: ["Sync team shares"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -18,10 +19,13 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -29,16 +33,6 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Update Showdown data
-        run: npm run build-data
-      - name: Update usage data
-        run: npm run update-usage
-        env:
-          CHAMPS_SEASONS: '3'
-          CHAMPS_RULES: '1'
-          CHAMPS_DEFAULT_SEASON: '3'
-      - name: Update team share data
-        run: npm run update-team-shares
       - name: Build
         run: npm run build
         env:

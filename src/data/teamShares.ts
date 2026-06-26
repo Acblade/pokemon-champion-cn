@@ -16,6 +16,7 @@ export type TeamShareSource = {
   url: string
   note: string
   updatedAt: string
+  count?: number
 }
 
 export type TeamShare = {
@@ -24,11 +25,24 @@ export type TeamShare = {
   author: string
   teamId: string
   source: string
+  sourceGroup?: string
   sourceUrl: string
   platformUrl: string
   season: string
   format: string
   updatedAt: string
+  eventDate?: string
+  eventName?: string
+  eventType?: string
+  region?: string
+  category?: string
+  placement?: number
+  ranking?: number
+  record?: string
+  wins?: number
+  losses?: number
+  archetypes?: string[]
+  detailLevel?: 'full' | 'sets' | 'members'
   tags: string[]
   summary: string
   members: TeamShareMember[]
