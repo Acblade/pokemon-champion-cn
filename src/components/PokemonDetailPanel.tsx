@@ -805,7 +805,13 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   function renderConfigActions(anchor: 'title' | 'stats' | 'attacker' | 'moves') {
     return (
       <div className="config-actions" data-popover-root>
-        {loadedConfigId && <button type="button" className="config-btn" title="保存回原配置" onClick={handleSaveBack}>存</button>}
+        {loadedConfigId && (
+          <button type="button" className="config-btn" title="保存回原配置" onClick={handleSaveBack}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5 3h12l2 2v16H5V3Zm2 2v14h10V6.25L15.75 5H15v5H8V5H7Zm3 0v3h3V5h-3Zm-1 9h6v5H9v-5Z" fill="currentColor" />
+            </svg>
+          </button>
+        )}
         <button type="button" className="config-btn" title="保存当前配置到盒子" onClick={handleSave}>↓</button>
         <button type="button" className={`config-btn${loadPopoverOpenAt === anchor ? ' config-btn-active' : ''}`} title="从盒子加载配置" onClick={() => setLoadPopoverOpenAt((a) => a === anchor ? null : anchor)}>＋</button>
         {loadPopoverOpenAt === anchor && renderLoadPopup()}

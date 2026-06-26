@@ -3684,6 +3684,11 @@ table.damage-stats-table {
   color: #334155;
 }
 
+.config-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
 .config-btn.config-btn-active {
   background: #f1f5f9;
   border-color: #94a3b8;
