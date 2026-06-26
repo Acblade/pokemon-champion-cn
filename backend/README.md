@@ -39,14 +39,12 @@ The site sends:
 ```json
 {
   "datasetKey": "champs-season-3-rule-1",
-  "rankingTimeLocal": "2026/6/25 23:46",
-  "rankingTimeIso": "2026-06-25T15:46:00.000Z",
-  "rankingTimeZone": "Asia/Shanghai",
-  "rankingTimeOffsetMinutes": -480,
+  "rankingTimeJst": "2026/6/25 23:46",
+  "rankingTimeIso": "2026-06-25T14:46:00.000Z",
   "rankingsText": "1 2273.111 べくと べくと ..."
 }
 ```
 
-`rankingTimeLocal` is parsed in the submitter's browser time zone. The browser sends the converted ISO timestamp so users in different regions can import the same visible local time correctly.
+`rankingTimeJst` is copied from Battle Database Champions and parsed as Japan time. The browser also sends the converted ISO timestamp so viewers in different regions can see the time in their local time zone.
 
 On success, the Worker commits updated `src/generated/usage-datasets.json` and, for the default dataset, `src/generated/pikalytics-usage.json` to `main`. GitHub Pages then redeploys normally.

@@ -740,26 +740,33 @@ function moveSearchRank(move: { zh: string; en: string; id: string; pinyin: stri
   return best
 }
 
-function parseManualRankingTimeLocal(value: string) {
+function parseManualRankingTimeJst(value: string) {
   const match = value.trim().match(/(?:(?:日本)?时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
   if (!match) throw new Error('时间格式应类似 2026/6/25 23:46')
   const [, year, month, day, hour, minute] = match
-  const parsed = new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), 0, 0)
+  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0, 0)
+  const parsed = new Date(utcMs)
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(parsed)
+  const part = (type: string) => parts.find((item) => item.type === type)?.value ?? ''
   if (
     Number.isNaN(parsed.getTime())
-    || parsed.getFullYear() !== Number(year)
-    || parsed.getMonth() !== Number(month) - 1
-    || parsed.getDate() !== Number(day)
-    || parsed.getHours() !== Number(hour)
-    || parsed.getMinutes() !== Number(minute)
+    || part('year') !== year
+    || part('month') !== month.padStart(2, '0')
+    || part('day') !== day.padStart(2, '0')
+    || part('hour') !== hour.padStart(2, '0')
+    || part('minute') !== minute.padStart(2, '0')
   ) {
     throw new Error('时间格式应类似 2026/6/25 23:46')
   }
-  return {
-    iso: parsed.toISOString(),
-    offsetMinutes: parsed.getTimezoneOffset(),
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
-  }
+  return parsed.toISOString()
 }
 
 function parseManualRankingName(rawValue: string) {
@@ -826,12 +833,16 @@ function parseManualRankingText(text: string) {
 }
 
 function isManualTrainerImportDue(dataset: UsageDataset | null) {
+  return isTrainerRankingOlderThan(dataset, 20)
+}
+
+function isTrainerRankingOlderThan(dataset: UsageDataset | null, hours: number) {
   if (!dataset) return false
   const updatedAt = dataset.trainerRankingsUpdatedAt
   if (!updatedAt) return true
   const updatedTime = Date.parse(updatedAt)
   if (!Number.isFinite(updatedTime)) return true
-  return Date.now() - updatedTime >= 24 * 60 * 60 * 1000
+  return Date.now() - updatedTime >= hours * 60 * 60 * 1000
 }
 
 function App() {
@@ -895,6 +906,7 @@ function App() {
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
   const trainerRankingUnupdated = isTrainerRankingOutdated(selectedUsageDataset, currentTrainerRankingDataset)
   const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingDataset)
+  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerRankingDataset, 24)
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1114,7 +1126,7 @@ function App() {
     setManualRankingError('')
     setManualRankingStatus('')
     try {
-      const importedTime = parseManualRankingTimeLocal(manualRankingTime)
+      const importedAt = parseManualRankingTimeJst(manualRankingTime)
       const rankings = parseManualRankingText(manualRankingText)
       if (!MANUAL_RANKING_API_URL) {
         setManualRankingError(`已解析 ${rankings.length} 人，但后端服务尚未配置，无法写回 GitHub 仓库。`)
@@ -1128,10 +1140,8 @@ function App() {
         },
         body: JSON.stringify({
           datasetKey: selectedUsageDataset.format,
-          rankingTimeLocal: manualRankingTime,
-          rankingTimeIso: importedTime.iso,
-          rankingTimeZone: importedTime.timeZone,
-          rankingTimeOffsetMinutes: importedTime.offsetMinutes,
+          rankingTimeJst: manualRankingTime,
+          rankingTimeIso: importedAt,
           rankingsText: manualRankingText,
         }),
       })
@@ -1442,7 +1452,7 @@ function App() {
               <div className="home-title-line">
                 <h1>Pokemon Champions 中文数据站</h1>
                 <div className="home-title-nav">
-                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('trainers')}>玩家排名{trainerRankingUnupdated ? '（未更新）' : ''}</button>
+                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('trainers')}>玩家排名{trainerRankingNeedsUpdate ? '（待更新）' : trainerRankingUnupdated ? '（未更新）' : ''}</button>
                   <button type="button" className={homeTab === 'teams' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('teams')}>队伍分享</button>
                 </div>
               </div>
@@ -1773,7 +1783,7 @@ function App() {
                         手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
-                        <span>时间</span>
+                        <span>日本时间</span>
                         <small>请从网站上复制时间信息。</small>
                         <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
                       </label>

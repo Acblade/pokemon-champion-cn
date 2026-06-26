@@ -45,19 +45,19 @@ function parseImportedTimestamp(payload) {
     return date.toISOString()
   }
 
+  const jstTime = payload.rankingTimeJst
+  if (jstTime) {
+    const { year, month, day, hour, minute } = parseTimestampParts(jstTime)
+    const utcMs = Date.UTC(year, month - 1, day, hour - 9, minute, 0)
+    return new Date(utcMs).toISOString()
+  }
+
   const localTime = payload.rankingTimeLocal
   if (localTime) {
     const { year, month, day, hour, minute } = parseTimestampParts(localTime)
     const offsetMinutes = Number(payload.rankingTimeOffsetMinutes)
     if (!Number.isFinite(offsetMinutes)) throw new Error('缺少浏览器时区信息，请刷新页面后重试')
     const utcMs = Date.UTC(year, month - 1, day, hour, minute, 0) + offsetMinutes * 60 * 1000
-    return new Date(utcMs).toISOString()
-  }
-
-  const legacyJstTime = payload.rankingTimeJst
-  if (legacyJstTime) {
-    const { year, month, day, hour, minute } = parseTimestampParts(legacyJstTime)
-    const utcMs = Date.UTC(year, month - 1, day, hour - 9, minute, 0)
     return new Date(utcMs).toISOString()
   }
 
@@ -237,7 +237,7 @@ async function importRankings(payload, env) {
   dataset.trainerSourceUrl = `https://champs.pokedb.tokyo/trainer/list?season=${dataset.season}&rule=${dataset.rule}`
   dataset.trainerRankingsUpdatedAt = importedAt
   dataset.trainerRankingsAvailable = true
-  dataset.trainerRankingsNote = '玩家排名由后端手动导入数据更新，原始时间按提交者浏览器时区解析。'
+  dataset.trainerRankingsNote = '玩家排名由后端手动导入数据更新，原始时间按日本时间解析。'
   dataset.trainerRankings = rankings
   collection.updatedAt = new Date().toISOString()
 
