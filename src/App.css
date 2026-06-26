@@ -583,7 +583,7 @@ select {
 }
 
 .team-filter-pokemon-pair .filter-move-item {
-  grid-template-columns: 104px minmax(180px, 260px);
+  grid-template-columns: 104px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
 }
@@ -2711,8 +2711,10 @@ table.damage-stats-table {
   grid-template-columns: minmax(72px, 1fr) 24px;
   gap: 6px;
   align-items: center;
+  justify-content: center;
   min-width: 0;
   max-width: 118px;
+  margin: 0 auto;
 }
 
 .damage-stats-table .inline-slider-cell input {
@@ -2939,7 +2941,9 @@ table.damage-stats-table {
 .ev-input-cell {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 3px;
+  margin: 0 auto;
 }
 
 .boost-input-cell {
@@ -3361,7 +3365,8 @@ table.damage-stats-table {
   grid-template-columns: minmax(104px, 148px) 52px;
   gap: 8px;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .inline-slider-cell input {

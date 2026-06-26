@@ -85,8 +85,7 @@ void LEGACY_RULE_META
 const BATTLE_USAGE_RULE = '1'
 const GITHUB_OWNER = 'Acblade'
 const GITHUB_REPO = 'pokemon-champion-cn'
-const MANUAL_TRAINER_WORKFLOW = 'import-manual-trainer-rankings.yml'
-const GITHUB_TOKEN_STORAGE_KEY = 'pokemon-champion-cn.github-actions-token'
+const MANUAL_TRAINER_IMPORT_MARKER = '<!-- pokemon-champion-cn-manual-trainer-rankings -->'
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
@@ -770,28 +769,15 @@ function rankingTimestampIsOlderThan(iso: string | undefined, hours: number) {
   return Date.now() - time > hours * 60 * 60 * 1000
 }
 
-async function dispatchManualTrainerRankingImport(token: string, datasetKey: string, timeText: string, rankingText: string) {
-  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${MANUAL_TRAINER_WORKFLOW}/dispatches`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-    body: JSON.stringify({
-      ref: 'main',
-      inputs: {
-        dataset_key: datasetKey,
-        ranking_time_jst: timeText.trim(),
-        rankings_text: rankingText,
-      },
-    }),
-  })
-  if (!response.ok) {
-    const message = await response.text().catch(() => '')
-    throw new Error(`GitHub 写回请求失败：${response.status}${message ? ` ${message}` : ''}`)
-  }
+function buildManualTrainerRankingIssueBody(datasetKey: string, timeText: string, rankingText: string) {
+  return `${MANUAL_TRAINER_IMPORT_MARKER}
+dataset_key: ${datasetKey}
+ranking_time_jst: ${timeText.trim()}
+
+\`\`\`rankings
+${rankingText.trim()}
+\`\`\`
+`
 }
 
 function App() {
@@ -836,10 +822,6 @@ function App() {
   const [manualTrainerImportOpen, setManualTrainerImportOpen] = useState(false)
   const [manualRankingTime, setManualRankingTime] = useState('')
   const [manualRankingText, setManualRankingText] = useState('')
-  const [manualRankingGithubToken, setManualRankingGithubToken] = useState(() => {
-    if (typeof window === 'undefined') return ''
-    return window.localStorage.getItem(GITHUB_TOKEN_STORAGE_KEY) || ''
-  })
   const [manualRankingStatus, setManualRankingStatus] = useState('')
   const [manualRankingError, setManualRankingError] = useState('')
   const [manualRankingOverride, setManualRankingOverride] = useState<{ format: string; updatedAt: string; rankings: TrainerRankingEntry[] } | null>(null)
@@ -1088,13 +1070,12 @@ function App() {
     try {
       const importedAt = parseManualRankingTimeJst(manualRankingTime)
       const rankings = parseManualRankingText(manualRankingText)
-      const token = manualRankingGithubToken.trim()
-      if (!token) throw new Error('需要填写 GitHub token，页面才能把排名写回仓库。')
-      if (typeof window !== 'undefined') window.localStorage.setItem(GITHUB_TOKEN_STORAGE_KEY, token)
-      setManualRankingStatus('正在提交 GitHub 写回任务...')
-      await dispatchManualTrainerRankingImport(token, selectedUsageDataset.format, manualRankingTime, manualRankingText)
+      const issueBody = buildManualTrainerRankingIssueBody(selectedUsageDataset.format, manualRankingTime, manualRankingText)
+      await navigator.clipboard.writeText(issueBody)
+      const title = encodeURIComponent(`导入玩家排名 ${manualRankingTime.trim()}`)
+      window.open(`https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/issues/new?title=${title}`, '_blank', 'noopener,noreferrer')
       setManualRankingOverride({ format: selectedUsageDataset.format, updatedAt: importedAt, rankings })
-      setManualRankingStatus('已提交 GitHub 写回任务；稍后会自动生成提交并部署。')
+      setManualRankingStatus('已复制导入内容，并打开 GitHub Issue 页面；粘贴后提交，Action 会写回仓库并部署。')
     } catch (error) {
       setManualRankingError(error instanceof Error ? error.message : String(error))
     }
@@ -1707,12 +1688,8 @@ function App() {
                         <span>玩家排名</span>
                         <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
                       </label>
-                      <label className="manual-ranking-field">
-                        <span>GitHub 写入凭证</span>
-                        <input type="password" value={manualRankingGithubToken} onChange={(event) => setManualRankingGithubToken(event.target.value)} placeholder="Fine-grained token，需允许 Actions: write" />
-                      </label>
                       <div className="manual-ranking-actions">
-                        <button type="submit" className="ghost-button">写回仓库</button>
+                        <button type="submit" className="ghost-button">复制并打开提交页</button>
                         <button type="button" className="danger-text-button" onClick={() => setManualTrainerImportOpen(false)}>取消</button>
                       </div>
                       {manualRankingStatus && <div className="manual-ranking-status">{manualRankingStatus}</div>}

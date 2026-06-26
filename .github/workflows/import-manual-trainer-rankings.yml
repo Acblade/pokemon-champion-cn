@@ -13,9 +13,12 @@ on:
       rankings_text:
         description: Pasted trainer rankings text
         required: true
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: manual-trainer-ranking-import
@@ -23,6 +26,13 @@ concurrency:
 
 jobs:
   import:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'issues' &&
+        contains(github.event.issue.body, '<!-- pokemon-champion-cn-manual-trainer-rankings -->') &&
+        contains('OWNER,MEMBER,COLLABORATOR', github.event.issue.author_association)
+      )
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,20 +46,34 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Write pasted rankings
+      - name: Prepare pasted rankings
         env:
           RANKINGS_TEXT: ${{ inputs.rankings_text }}
+          DATASET_KEY: ${{ inputs.dataset_key }}
+          RANKING_TIME_JST: ${{ inputs.ranking_time_jst }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           node - <<'NODE'
           const fs = require('node:fs')
           fs.mkdirSync('out/tmp', { recursive: true })
-          fs.writeFileSync('out/tmp/manual-trainer-rankings.txt', process.env.RANKINGS_TEXT || '', 'utf8')
+          let datasetKey = process.env.DATASET_KEY || 'champs-season-3-rule-1'
+          let rankingTimeJst = process.env.RANKING_TIME_JST || ''
+          let rankingsText = process.env.RANKINGS_TEXT || ''
+          if (process.env.EVENT_NAME === 'issues') {
+            const body = process.env.ISSUE_BODY || ''
+            datasetKey = body.match(/^dataset_key:\s*(.+)$/m)?.[1]?.trim() || datasetKey
+            rankingTimeJst = body.match(/^ranking_time_jst:\s*(.+)$/m)?.[1]?.trim() || rankingTimeJst
+            rankingsText = body.match(/```rankings\s*\n([\s\S]*?)```/)?.[1] || ''
+          }
+          if (!rankingTimeJst) throw new Error('Missing ranking_time_jst')
+          if (!rankingsText.trim()) throw new Error('Missing rankings_text')
+          fs.writeFileSync('out/tmp/manual-trainer-rankings.txt', rankingsText, 'utf8')
+          fs.appendFileSync(process.env.GITHUB_ENV, `CHAMPS_MANUAL_RANKING_DATASET=${datasetKey}\n`)
+          fs.appendFileSync(process.env.GITHUB_ENV, `CHAMPS_MANUAL_RANKING_TIME_JST=${rankingTimeJst}\n`)
           NODE
       - name: Import rankings
         run: npm run import-manual-trainers -- out/tmp/manual-trainer-rankings.txt
-        env:
-          CHAMPS_MANUAL_RANKING_DATASET: ${{ inputs.dataset_key }}
-          CHAMPS_MANUAL_RANKING_TIME_JST: ${{ inputs.ranking_time_jst }}
       - name: Build
         run: npm run build
         env:
@@ -74,3 +98,11 @@ jobs:
           git add src/generated/usage-datasets.json src/generated/pikalytics-usage.json
           git commit -m "chore: import manual trainer rankings"
           git push
+      - name: Close import issue
+        if: github.event_name == 'issues' && success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "已导入玩家排名并提交到 main，GitHub Pages 会自动重新部署。"
+          gh issue close "$ISSUE_NUMBER" --reason completed
