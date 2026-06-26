@@ -471,6 +471,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [attackerMoveQueries, setAttackerMoveQueries] = useState<string[]>(['', '', '', ''])
   const [defenderMoveQueries, setDefenderMoveQueries] = useState<string[]>(['', '', '', ''])
   const [openMovePicker, setOpenMovePicker] = useState<string | null>(null)
+  const [saveDamageMovesToConfig, setSaveDamageMovesToConfig] = useState(false)
   const [damageWeather, setDamageWeather] = useState('none')
   const [damageTerrain, setDamageTerrain] = useState('none')
   const [defenderAbilityId, setDefenderAbilityId] = useState('')
@@ -748,14 +749,19 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setLoadPopoverOpenAt(null)
   }
 
+  function configMoveIdsForSave() {
+    if (!saveDamageMovesToConfig) return blueFavoriteMoveIds
+    return attackerMoveIds.slice(0, visibleMoveCounts.attacker).filter((moveId) => moveId && moveId !== CUSTOM_DAMAGE_MOVE_ID)
+  }
+
   function handleSave() {
-    onSaveCurrent({ isMega, abilityId, item, nature, sps, boosts, blueFavorites: blueFavoriteMoveIds })
+    onSaveCurrent({ isMega, abilityId, item, nature, sps, boosts, blueFavorites: configMoveIdsForSave() })
     onAfterSave()
   }
 
   function handleSaveBack() {
     if (!loadedConfigId) return
-    onUpdateSaved(loadedConfigId, { isMega, abilityId, item, nature, sps, boosts, blueFavorites: blueFavoriteMoveIds })
+    onUpdateSaved(loadedConfigId, { isMega, abilityId, item, nature, sps, boosts, blueFavorites: configMoveIdsForSave() })
   }
 
   function updatePrimarySp(key: StatKey, value: number) {
@@ -799,8 +805,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   function renderConfigActions(anchor: 'title' | 'stats' | 'attacker' | 'moves') {
     return (
       <div className="config-actions" data-popover-root>
+        {loadedConfigId && <button type="button" className="config-btn" title="保存回原配置" onClick={handleSaveBack}>存</button>}
         <button type="button" className="config-btn" title="保存当前配置到盒子" onClick={handleSave}>↓</button>
-        {loadedConfigId && <button type="button" className="config-btn" title="保存回原配置" onClick={handleSaveBack}>💾</button>}
         <button type="button" className={`config-btn${loadPopoverOpenAt === anchor ? ' config-btn-active' : ''}`} title="从盒子加载配置" onClick={() => setLoadPopoverOpenAt((a) => a === anchor ? null : anchor)}>＋</button>
         {loadPopoverOpenAt === anchor && renderLoadPopup()}
       </div>
@@ -1422,7 +1428,18 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
             <div className="damage-subpanel-title"><h3>技能</h3><button type="button" className="add-move-group-button" disabled={visibleMoveCounts.attacker >= 4 && visibleMoveCounts.defender >= 4} onClick={addMoveGroup}>添加技能组</button></div>
             <div className="damage-move-columns">
               <div className="damage-move-column">
-                <div className="damage-move-column-head"><h4>我方技能</h4></div>
+                <div className="damage-move-column-head">
+                  <h4>我方技能</h4>
+                  <button
+                    type="button"
+                    className="star-button star-blue damage-save-moves-button"
+                    title="保存配置时记录我方技能"
+                    aria-pressed={saveDamageMovesToConfig}
+                    onClick={() => setSaveDamageMovesToConfig((value) => !value)}
+                  >
+                    {saveDamageMovesToConfig ? '★' : '☆'}
+                  </button>
+                </div>
                 {Array.from({ length: visibleMoveCounts.attacker }, (_, index) => renderMovePicker('attacker', index))}
               </div>
               <div className="damage-move-column">

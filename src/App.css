@@ -1445,9 +1445,10 @@ th {
 }
 
 .pokemon-list-table {
-  width: max-content;
-  min-width: 0;
-  margin: 0 auto;
+  width: 100%;
+  min-width: 900px;
+  table-layout: fixed;
+  margin: 0;
 }
 
 .pokemon-list-table th,
@@ -1456,8 +1457,13 @@ th {
 }
 
 .pokemon-list-table .pokemon-name-column {
-  min-width: 128px;
-  max-width: 180px;
+  width: 132px;
+  min-width: 120px;
+  max-width: 152px;
+}
+
+.pokemon-list-table .pokemon-type-column {
+  width: 126px;
 }
 
 .pokemon-list-table .type-list {
@@ -2770,6 +2776,11 @@ table.damage-stats-table {
   gap: 8px;
 }
 
+.damage-save-moves-button {
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
 .damage-move-column h4 {
   margin: 0;
   color: #475569;
@@ -2965,7 +2976,7 @@ table.damage-stats-table {
 .sp-value-stepper {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 3px;
   min-width: 48px;
 }
@@ -2973,7 +2984,7 @@ table.damage-stats-table {
 .sp-value-text {
   display: inline-block;
   width: 2ch;
-  text-align: right;
+  text-align: center;
   color: #111827;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -3549,10 +3560,12 @@ table.damage-stats-table {
     grid-template-columns: 1fr;
   }
 
+  .filter-move-pair.team-filter-pokemon-pair,
   .team-filter-pokemon-pair {
     grid-template-columns: 1fr;
   }
 
+  .filter-move-pair.team-filter-pokemon-pair .filter-move-item,
   .team-filter-pokemon-pair .filter-move-item {
     grid-template-columns: 1fr;
   }
@@ -3931,6 +3944,18 @@ table.damage-stats-table {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
+}
+
+.filter-move-pair.team-filter-pokemon-pair {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.filter-move-pair.team-filter-pokemon-pair .filter-move-item {
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
 }
 
 .filter-move-item {

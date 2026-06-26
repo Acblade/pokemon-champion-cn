@@ -762,13 +762,6 @@ function parseManualRankingText(text: string) {
   return rankings.sort((a, b) => a.rank - b.rank)
 }
 
-function rankingTimestampIsOlderThan(iso: string | undefined, hours: number) {
-  if (!iso) return true
-  const time = Date.parse(iso)
-  if (Number.isNaN(time)) return true
-  return Date.now() - time > hours * 60 * 60 * 1000
-}
-
 function buildManualTrainerRankingIssueBody(datasetKey: string, timeText: string, rankingText: string) {
   return `${MANUAL_TRAINER_IMPORT_MARKER}
 dataset_key: ${datasetKey}
@@ -847,8 +840,7 @@ function App() {
   const currentTrainerRankingDataset = selectedTrainerRankingDataset.trainerRankings.length > 0 ? selectedTrainerRankingDataset : null
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
   const trainerRankingUnupdated = isTrainerRankingOutdated(selectedTrainerRankingDataset, currentTrainerRankingDataset)
-  const trainerRankingTimestamp = trainerRankingDataset?.trainerRankingsUpdatedAt || trainerRankingDataset?.updatedAt
-  const showManualTrainerImportButton = Boolean(trainerRankingDataset && rankingTimestampIsOlderThan(trainerRankingTimestamp, 24))
+  const showManualTrainerImportButton = Boolean(trainerRankingDataset)
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1623,7 +1615,7 @@ function App() {
                     {showListColumn('sprite') && <th className="pokemon-sprite-head" aria-label="图像"></th>}
                     {showListColumn('zh') && <th className="pokemon-name-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>}
                     {showListColumn('name') && <th className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'name') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('name'); setSortDirection('asc') } }}>英文名称{sortIndicator(sortKey, 'name', sortDirection)}</button></th>}
-                    {showListColumn('types') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>}
+                    {showListColumn('types') && <th className="pokemon-type-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>}
                     {showListColumn('hp') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
                     {showListColumn('atk') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
                     {showListColumn('def') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
@@ -1651,7 +1643,7 @@ function App() {
                       }} /></td>}
                       {showListColumn('zh') && <td className="pokemon-name-column"><a className="link-button" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemonDisplayName(pokemon)}</a></td>}
                       {showListColumn('name') && <td className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><a className="link-button muted-link" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemon.name}</a></td>}
-                      {showListColumn('types') && <td><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>}
+                      {showListColumn('types') && <td className="pokemon-type-column"><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>}
                       {showListColumn('hp') && <td>{pokemon.baseStats.hp}</td>}
                       {showListColumn('atk') && <td>{pokemon.baseStats.atk}</td>}
                       {showListColumn('def') && <td>{pokemon.baseStats.def}</td>}
