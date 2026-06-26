@@ -2,14 +2,14 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-3-rule-1",
-  "updatedAt": "2026-06-26T10:34:25.317Z",
+  "updatedAt": "2026-06-26T18:18:25.942Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
       "trainerSource": "Battle Database Champions",
       "trainerSourceUrl": "https://champs.pokedb.tokyo/trainer/list?season=3&rule=1",
-      "trainerRankingsUpdatedAt": "2026-06-25T14:46:00.000Z",
+      "trainerRankingsUpdatedAt": "2026-06-25T21:57:00.000Z",
       "format": "champs-season-3-rule-1",
       "regulation": "M-B",
       "battle": "Doubles",
@@ -20,11 +20,11 @@
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
-      "trainerRankingsNote": "玩家排名由手动导入数据更新，原始时间按提交者浏览器时区解析。",
+      "trainerRankingsNote": "玩家排名由后端手动导入数据更新，原始时间按提交者浏览器时区解析。",
       "trainerRankings": [
         {
           "rank": 1,
-          "rating": 2273.111,
+          "rating": 2999.111,
           "name": "べくと"
         },
         {
@@ -45,7 +45,7 @@
         {
           "rank": 5,
           "rating": 2249.02,
-          "name": "Lil Darkrai\""
+          "name": "Lil"
         },
         {
           "rank": 6,
@@ -56,6 +56,11 @@
           "rank": 7,
           "rating": 2225.639,
           "name": "ウルキオラ"
+        },
+        {
+          "rank": 7,
+          "rating": 276,
+          "name": "2096.263"
         },
         {
           "rank": 8,
@@ -113,6 +118,11 @@
           "name": "Difelix"
         },
         {
+          "rank": 18,
+          "rating": 207,
+          "name": "2105.938"
+        },
+        {
           "rank": 19,
           "rating": 2206.687,
           "name": "ぐっうみせみ"
@@ -145,7 +155,7 @@
         {
           "rank": 25,
           "rating": 2196.772,
-          "name": "Mev Lad"
+          "name": "Mev"
         },
         {
           "rank": 26,
@@ -315,7 +325,7 @@
         {
           "rank": 59,
           "rating": 2149.152,
-          "name": "Pipe TR - TG"
+          "name": "Pipe"
         },
         {
           "rank": 60,
@@ -575,7 +585,7 @@
         {
           "rank": 111,
           "rating": 2122.29,
-          "name": "［AGC］ Difu"
+          "name": "［AGC］"
         },
         {
           "rank": 112,
@@ -915,7 +925,7 @@
         {
           "rank": 179,
           "rating": 2109.844,
-          "name": "Pedro Miguel"
+          "name": "Pedro"
         },
         {
           "rank": 180,
@@ -1050,12 +1060,7 @@
         {
           "rank": 206,
           "rating": 2106.081,
-          "name": "Fridea_ 18"
-        },
-        {
-          "rank": 207,
-          "rating": 2105.938,
-          "name": "UncleG"
+          "name": "Fridea_"
         },
         {
           "rank": 208,
@@ -1250,7 +1255,7 @@
         {
           "rank": 246,
           "rating": 2100.062,
-          "name": "syc KatawaN"
+          "name": "syc"
         },
         {
           "rank": 247,
@@ -1375,7 +1380,7 @@
         {
           "rank": 271,
           "rating": 2096.797,
-          "name": "Golden Foo"
+          "name": "Golden"
         },
         {
           "rank": 272,
@@ -1395,12 +1400,7 @@
         {
           "rank": 275,
           "rating": 2096.453,
-          "name": "Hawk 7"
-        },
-        {
-          "rank": 276,
-          "rating": 2096.263,
-          "name": "Cony"
+          "name": "Hawk"
         },
         {
           "rank": 277,
