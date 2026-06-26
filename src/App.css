@@ -368,6 +368,15 @@ select {
   font: 12px/1.45 Consolas, Monaco, monospace;
 }
 
+.manual-ranking-backend-note {
+  border-radius: 10px;
+  background: #fff7ed;
+  color: #9a3412;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .manual-ranking-field input,
 .manual-ranking-field textarea {
   width: 100%;
@@ -436,6 +445,11 @@ select {
   border-color: rgba(148, 163, 184, 0.2);
   background: rgba(15, 23, 42, 0.5);
   color: #e2e8f0;
+}
+
+:root[data-theme='dark'] .manual-ranking-backend-note {
+  background: rgba(154, 52, 18, 0.22);
+  color: #fdba74;
 }
 
 :root[data-theme='dark'] .manual-ranking-field input,

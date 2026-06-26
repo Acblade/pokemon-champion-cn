@@ -84,6 +84,7 @@ void LEGACY_RULE_META
 
 const BATTLE_USAGE_RULE = '1'
 const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-ranking'
+const MANUAL_RANKING_API_URL = (import.meta.env.VITE_MANUAL_RANKING_API_URL || '').trim()
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
@@ -863,6 +864,7 @@ function App() {
   const [manualTrainerImportOpen, setManualTrainerImportOpen] = useState(false)
   const [manualRankingTime, setManualRankingTime] = useState('')
   const [manualRankingText, setManualRankingText] = useState('')
+  const [manualRankingSecret, setManualRankingSecret] = useState('')
   const [manualRankingStatus, setManualRankingStatus] = useState('')
   const [manualRankingError, setManualRankingError] = useState('')
   const [manualRankingOverride, setManualRankingOverride] = useState<ManualTrainerRankingOverride | null>(() => loadManualTrainerRankingOverride())
@@ -1103,7 +1105,7 @@ function App() {
     setSavedPokemon((current) => current.map((entry) => entry.id === id ? { ...entry, ...payload } : entry))
   }
 
-  function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
+  async function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setManualRankingError('')
     setManualRankingStatus('')
@@ -1113,7 +1115,33 @@ function App() {
       const override = { format: selectedUsageDataset.format, updatedAt: importedAt, rankings }
       saveManualTrainerRankingOverride(override)
       setManualRankingOverride(override)
-      setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；浏览器缓存不会自动写回 GitHub 仓库。`)
+      if (!MANUAL_RANKING_API_URL) {
+        setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；后端服务尚未配置，暂时不会写回 GitHub 仓库。`)
+        return
+      }
+      if (!manualRankingSecret.trim()) {
+        setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人。`)
+        setManualRankingError('要写回 GitHub 仓库，请输入导入密钥。')
+        return
+      }
+      setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；正在提交后端写回 GitHub。`)
+      const response = await fetch(MANUAL_RANKING_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Import-Secret': manualRankingSecret.trim(),
+        },
+        body: JSON.stringify({
+          datasetKey: selectedUsageDataset.format,
+          rankingTimeJst: manualRankingTime,
+          rankingsText: manualRankingText,
+        }),
+      })
+      const result = await response.json().catch(() => null)
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || `后端返回 ${response.status}`)
+      }
+      setManualRankingStatus(`已保存到本浏览器，并已提交后端写回 GitHub。已解析 ${rankings.length} 人；Pages 会在仓库更新后自动部署。`)
     } catch (error) {
       setManualRankingError(error instanceof Error ? error.message : String(error))
     }
@@ -1721,7 +1749,7 @@ function App() {
                       <p className="manual-ranking-intro">
                         最新的排名数据需要从
                         <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
-                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。当前页面会先保存到你的浏览器缓存，并立即用于本页显示。
+                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。当前页面会先保存到你的浏览器缓存，并立即用于本页显示；后端配置完成后，会同时写回 GitHub 仓库。
                       </p>
                       <label className="manual-ranking-field">
                         <span>日本时间</span>
@@ -1734,8 +1762,17 @@ function App() {
                         <pre className="manual-ranking-example">{'1 2273.111 べくと べくと\n2 2271.784 MeLuCa MeLuCa\n3 2264.900 キヌガワ キヌガワ'}</pre>
                         <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
                       </label>
+                      {MANUAL_RANKING_API_URL ? (
+                        <label className="manual-ranking-field">
+                          <span>导入密钥</span>
+                          <small>用于确认你有权写回仓库；密钥只发送给后端服务，不会写入网页代码。</small>
+                          <input type="password" value={manualRankingSecret} onChange={(event) => setManualRankingSecret(event.target.value)} placeholder="输入后端导入密钥" />
+                        </label>
+                      ) : (
+                        <div className="manual-ranking-backend-note">后端服务尚未配置：现在只能保存到本浏览器，不能自动写回 GitHub 仓库。</div>
+                      )}
                       <div className="manual-ranking-actions">
-                        <button type="submit" className="ghost-button">保存到本浏览器</button>
+                        <button type="submit" className="ghost-button">{MANUAL_RANKING_API_URL ? '保存并写回仓库' : '保存到本浏览器'}</button>
                         <button type="button" className="danger-text-button" onClick={() => setManualTrainerImportOpen(false)}>取消</button>
                       </div>
                       {manualRankingStatus && <div className="manual-ranking-status">{manualRankingStatus}</div>}

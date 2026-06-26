@@ -1,0 +1,13 @@
+name = "pokemon-champion-cn-manual-ranking"
+main = "manual-ranking-worker.js"
+compatibility_date = "2026-06-26"
+
+[vars]
+ALLOWED_ORIGIN = "https://acblade.github.io"
+GITHUB_OWNER = "Acblade"
+GITHUB_REPO = "pokemon-champion-cn"
+GITHUB_BRANCH = "main"
+
+# Set these as secrets, not plain vars:
+# wrangler secret put GITHUB_TOKEN
+# wrangler secret put IMPORT_SECRET

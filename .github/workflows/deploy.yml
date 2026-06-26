@@ -37,6 +37,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: 'true'
+          VITE_MANUAL_RANKING_API_URL: ${{ vars.MANUAL_RANKING_API_URL }}
       - name: Add SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
       - name: Setup Pages

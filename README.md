@@ -43,3 +43,5 @@ npm run update-team-shares
 ## 部署
 
 推送到 `main` 后，GitHub Actions 会构建并发布到 GitHub Pages。构建产物在 `dist/`，SPA 刷新回退由 `404.html` 复制流程处理。
+
+手动导入玩家排名如需直接写回仓库，可部署 `backend/` 下的可选后端服务，详见 `backend/README.md`。
