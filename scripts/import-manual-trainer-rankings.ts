@@ -32,7 +32,7 @@ const legacyOutputPath = path.resolve('src/generated/pikalytics-usage.json')
 function parseJstTimestamp(text: string) {
   const explicit = process.env.CHAMPS_MANUAL_RANKING_TIME_JST
   const source = explicit || text
-  const match = source.match(/日本时间\s*(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
+  const match = source.match(/(?:日本时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
   if (!match) return new Date().toISOString()
   const [, year, month, day, hour, minute] = match
   const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0)
@@ -50,10 +50,12 @@ function parseRankings(text: string) {
     const rank = Number(lines[index])
     const rating = Number(lines[index + 1])
     const name = lines[index + 2]
-    const duplicateName = lines[index + 3]
     if (Number.isInteger(rank) && Number.isFinite(rating) && name) {
       rankings.push({ rank, rating, name })
-      index += duplicateName === name ? 4 : 3
+      const nextLine = lines[index + 3]
+      const nextNextLine = lines[index + 4]
+      const nextStartsRecord = Number.isInteger(Number(nextLine)) && Number.isFinite(Number(nextNextLine))
+      index += nextStartsRecord ? 3 : 4
       continue
     }
     index += 1
@@ -71,11 +73,11 @@ const datasetKey = process.env.CHAMPS_MANUAL_RANKING_DATASET || collection.defau
 const dataset = collection.datasets[datasetKey]
 if (!dataset) throw new Error(`Dataset not found: ${datasetKey}`)
 
-dataset.trainerSource = '手动导入玩家排名'
+dataset.trainerSource = 'Battle Database Champions'
 dataset.trainerSourceUrl = `https://champs.pokedb.tokyo/trainer/list?season=${dataset.season}&rule=${dataset.rule}`
 dataset.trainerRankingsUpdatedAt = importedAt
 dataset.trainerRankingsAvailable = true
-dataset.trainerRankingsNote = `玩家排名由手动导入数据更新，日本时间 ${importedAt}。`
+dataset.trainerRankingsNote = `玩家排名由手动导入数据更新，原始时间按日本时间解析。`
 dataset.trainerRankings = rankings
 collection.updatedAt = new Date().toISOString()
 

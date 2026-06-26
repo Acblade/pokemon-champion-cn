@@ -1,0 +1,76 @@
+name: Import manual trainer rankings
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataset_key:
+        description: Target usage dataset key
+        required: true
+        default: champs-season-3-rule-1
+      ranking_time_jst:
+        description: Ranking capture time in Japan time, for example 2026/6/25 23:46
+        required: true
+      rankings_text:
+        description: Pasted trainer rankings text
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: manual-trainer-ranking-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Write pasted rankings
+        env:
+          RANKINGS_TEXT: ${{ inputs.rankings_text }}
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          fs.mkdirSync('out/tmp', { recursive: true })
+          fs.writeFileSync('out/tmp/manual-trainer-rankings.txt', process.env.RANKINGS_TEXT || '', 'utf8')
+          NODE
+      - name: Import rankings
+        run: npm run import-manual-trainers -- out/tmp/manual-trainer-rankings.txt
+        env:
+          CHAMPS_MANUAL_RANKING_DATASET: ${{ inputs.dataset_key }}
+          CHAMPS_MANUAL_RANKING_TIME_JST: ${{ inputs.ranking_time_jst }}
+      - name: Build
+        run: npm run build
+        env:
+          GITHUB_PAGES: 'true'
+      - name: Lint
+        run: npm run lint
+      - name: Test damage calculator
+        run: npx tsx scripts/test-champions-calc.ts
+      - name: Check generated changes
+        id: diff
+        run: |
+          if git diff --quiet -- src/generated/usage-datasets.json src/generated/pikalytics-usage.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit imported trainer rankings
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/generated/usage-datasets.json src/generated/pikalytics-usage.json
+          git commit -m "chore: import manual trainer rankings"
+          git push

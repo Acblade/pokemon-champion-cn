@@ -65,6 +65,7 @@ function collectFormParts(name: string) {
 export function pokemonDisplayName(pokemon: DisplayPokemon | null | undefined) {
   if (!pokemon) return ''
   const parts = collectFormParts(pokemon.name)
+  if (parts.length && pokemon.zh.includes(`（${parts.join('·')}）`)) return pokemon.zh
   return parts.length ? `${pokemon.zh}（${parts.join('·')}）` : pokemon.zh
 }
 

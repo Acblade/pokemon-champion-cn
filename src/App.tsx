@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
 import './App.css'
 import { championsPokemon, type PokemonRow } from './data/champions'
 import { championsDetails, type PokemonDetail } from './data/championsDetails'
@@ -8,7 +8,7 @@ import { loadSavedPokemon, saveSavedPokemon, type SavedPokemonEntry } from './li
 import { loadSavedGroups, saveSavedGroups } from './lib/savedGroups'
 import { loadTheme, saveTheme, type ThemeMode } from './lib/viewState'
 import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
-import { getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated } from './data/usageStats'
+import { getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated, type TrainerRankingEntry, type UsageDataset } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
@@ -83,6 +83,10 @@ const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; l
 void LEGACY_RULE_META
 
 const BATTLE_USAGE_RULE = '1'
+const GITHUB_OWNER = 'Acblade'
+const GITHUB_REPO = 'pokemon-champion-cn'
+const MANUAL_TRAINER_WORKFLOW = 'import-manual-trainer-rankings.yml'
+const GITHUB_TOKEN_STORAGE_KEY = 'pokemon-champion-cn.github-actions-token'
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
@@ -600,6 +604,7 @@ function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
 }
 
 function trainerRankingSourceLabel(dataset: { trainerSource?: string; source?: string; sourceUrl: string }) {
+  if (dataset.trainerSource === '手动导入玩家排名') return 'Battle Database Champions'
   return dataset.trainerSource || sourceLabel(dataset)
 }
 
@@ -725,6 +730,70 @@ function moveSearchRank(move: { zh: string; en: string; id: string; pinyin: stri
   return best
 }
 
+function parseManualRankingTimeJst(value: string) {
+  const match = value.trim().match(/(?:日本时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
+  if (!match) throw new Error('时间格式应类似 2026/6/25 23:46')
+  const [, year, month, day, hour, minute] = match
+  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0)
+  return new Date(utcMs).toISOString()
+}
+
+function parseManualRankingText(text: string) {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && line !== '--' && !line.startsWith('日本时间'))
+
+  const rankings: TrainerRankingEntry[] = []
+  for (let index = 0; index < lines.length;) {
+    const rank = Number(lines[index])
+    const rating = Number(lines[index + 1])
+    const name = lines[index + 2]
+    if (Number.isInteger(rank) && Number.isFinite(rating) && name) {
+      rankings.push({ rank, rating, name })
+      const nextLine = lines[index + 3]
+      const nextNextLine = lines[index + 4]
+      const nextStartsRecord = Number.isInteger(Number(nextLine)) && Number.isFinite(Number(nextNextLine))
+      index += nextStartsRecord ? 3 : 4
+      continue
+    }
+    index += 1
+  }
+  if (rankings.length !== 300) throw new Error(`需要解析到 300 人，目前解析到 ${rankings.length} 人`)
+  return rankings.sort((a, b) => a.rank - b.rank)
+}
+
+function rankingTimestampIsOlderThan(iso: string | undefined, hours: number) {
+  if (!iso) return true
+  const time = Date.parse(iso)
+  if (Number.isNaN(time)) return true
+  return Date.now() - time > hours * 60 * 60 * 1000
+}
+
+async function dispatchManualTrainerRankingImport(token: string, datasetKey: string, timeText: string, rankingText: string) {
+  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${MANUAL_TRAINER_WORKFLOW}/dispatches`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+    body: JSON.stringify({
+      ref: 'main',
+      inputs: {
+        dataset_key: datasetKey,
+        ranking_time_jst: timeText.trim(),
+        rankings_text: rankingText,
+      },
+    }),
+  })
+  if (!response.ok) {
+    const message = await response.text().catch(() => '')
+    throw new Error(`GitHub 写回请求失败：${response.status}${message ? ` ${message}` : ''}`)
+  }
+}
+
 function App() {
   const initialPath = getCurrentPath()
   const initialPokemon = resolvePokemonFromPath(initialPath)
@@ -764,6 +833,16 @@ function App() {
   const [teamFilters, setTeamFilters] = useState<TeamFilterState>(DEFAULT_TEAM_FILTERS)
   const [addedTeamGroups, setAddedTeamGroups] = useState<Record<string, string>>({})
   const [draftLoadVersion, setDraftLoadVersion] = useState(0)
+  const [manualTrainerImportOpen, setManualTrainerImportOpen] = useState(false)
+  const [manualRankingTime, setManualRankingTime] = useState('')
+  const [manualRankingText, setManualRankingText] = useState('')
+  const [manualRankingGithubToken, setManualRankingGithubToken] = useState(() => {
+    if (typeof window === 'undefined') return ''
+    return window.localStorage.getItem(GITHUB_TOKEN_STORAGE_KEY) || ''
+  })
+  const [manualRankingStatus, setManualRankingStatus] = useState('')
+  const [manualRankingError, setManualRankingError] = useState('')
+  const [manualRankingOverride, setManualRankingOverride] = useState<{ format: string; updatedAt: string; rankings: TrainerRankingEntry[] } | null>(null)
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -771,10 +850,23 @@ function App() {
   }, [theme])
 
   const selectedUsageDataset = useMemo(() => getUsageDataset(currentSeason, BATTLE_USAGE_RULE), [currentSeason])
+  const selectedTrainerRankingDataset = useMemo<UsageDataset>(() => {
+    if (!manualRankingOverride || manualRankingOverride.format !== selectedUsageDataset.format) return selectedUsageDataset
+    return {
+      ...selectedUsageDataset,
+      trainerSource: 'Battle Database Champions',
+      trainerRankingsUpdatedAt: manualRankingOverride.updatedAt,
+      trainerRankingsAvailable: true,
+      trainerRankingsNote: '玩家排名已在本页解析，并已提交 GitHub 写回任务。',
+      trainerRankings: manualRankingOverride.rankings,
+    }
+  }, [manualRankingOverride, selectedUsageDataset])
   const latestTrainerRankingDataset = useMemo(() => getLatestTrainerRankingDataset(BATTLE_USAGE_RULE), [])
-  const currentTrainerRankingDataset = selectedUsageDataset.trainerRankings.length > 0 ? selectedUsageDataset : null
+  const currentTrainerRankingDataset = selectedTrainerRankingDataset.trainerRankings.length > 0 ? selectedTrainerRankingDataset : null
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
-  const trainerRankingUnupdated = isTrainerRankingOutdated(selectedUsageDataset, currentTrainerRankingDataset)
+  const trainerRankingUnupdated = isTrainerRankingOutdated(selectedTrainerRankingDataset, currentTrainerRankingDataset)
+  const trainerRankingTimestamp = trainerRankingDataset?.trainerRankingsUpdatedAt || trainerRankingDataset?.updatedAt
+  const showManualTrainerImportButton = Boolean(trainerRankingDataset && rankingTimestampIsOlderThan(trainerRankingTimestamp, 24))
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -987,6 +1079,25 @@ function App() {
 
   function handleUpdateSaved(id: string, payload: Omit<SavedPokemonEntry, 'id' | 'baseId' | 'label' | 'pokemonId'>) {
     setSavedPokemon((current) => current.map((entry) => entry.id === id ? { ...entry, ...payload } : entry))
+  }
+
+  async function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setManualRankingError('')
+    setManualRankingStatus('')
+    try {
+      const importedAt = parseManualRankingTimeJst(manualRankingTime)
+      const rankings = parseManualRankingText(manualRankingText)
+      const token = manualRankingGithubToken.trim()
+      if (!token) throw new Error('需要填写 GitHub token，页面才能把排名写回仓库。')
+      if (typeof window !== 'undefined') window.localStorage.setItem(GITHUB_TOKEN_STORAGE_KEY, token)
+      setManualRankingStatus('正在提交 GitHub 写回任务...')
+      await dispatchManualTrainerRankingImport(token, selectedUsageDataset.format, manualRankingTime, manualRankingText)
+      setManualRankingOverride({ format: selectedUsageDataset.format, updatedAt: importedAt, rankings })
+      setManualRankingStatus('已提交 GitHub 写回任务；稍后会自动生成提交并部署。')
+    } catch (error) {
+      setManualRankingError(error instanceof Error ? error.message : String(error))
+    }
   }
 
   function loadSavedEntry(entry: SavedPokemonEntry) {
@@ -1419,11 +1530,11 @@ function App() {
                     <div className="team-filter-date-grid">
                       <label className="popover-field">
                         <span>开始日期</span>
-                        <input type="text" inputMode="numeric" value={teamFilters.dateFrom} onChange={(event) => setTeamFilters((current) => ({ ...current, dateFrom: event.target.value }))} placeholder="2026-06-20" />
+                        <input type="date" lang="zh-CN" value={teamFilters.dateFrom} onChange={(event) => setTeamFilters((current) => ({ ...current, dateFrom: event.target.value }))} />
                       </label>
                       <label className="popover-field">
                         <span>结束日期</span>
-                        <input type="text" inputMode="numeric" value={teamFilters.dateTo} onChange={(event) => setTeamFilters((current) => ({ ...current, dateTo: event.target.value }))} placeholder="2026-06-25" />
+                        <input type="date" lang="zh-CN" value={teamFilters.dateTo} onChange={(event) => setTeamFilters((current) => ({ ...current, dateTo: event.target.value }))} />
                       </label>
                     </div>
                     <label className="team-filter-check">
@@ -1581,8 +1692,33 @@ function App() {
                 <>
                   <div className="data-source-line">
                     <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatLocalDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
+                    {showManualTrainerImportButton && (
+                      <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
+                    )}
                   </div>
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
+                  {manualTrainerImportOpen && (
+                    <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
+                      <label className="manual-ranking-field">
+                        <span>日本时间</span>
+                        <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
+                      </label>
+                      <label className="manual-ranking-field">
+                        <span>玩家排名</span>
+                        <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
+                      </label>
+                      <label className="manual-ranking-field">
+                        <span>GitHub 写入凭证</span>
+                        <input type="password" value={manualRankingGithubToken} onChange={(event) => setManualRankingGithubToken(event.target.value)} placeholder="Fine-grained token，需允许 Actions: write" />
+                      </label>
+                      <div className="manual-ranking-actions">
+                        <button type="submit" className="ghost-button">写回仓库</button>
+                        <button type="button" className="danger-text-button" onClick={() => setManualTrainerImportOpen(false)}>取消</button>
+                      </div>
+                      {manualRankingStatus && <div className="manual-ranking-status">{manualRankingStatus}</div>}
+                      {manualRankingError && <div className="manual-ranking-error">{manualRankingError}</div>}
+                    </form>
+                  )}
                 </>
               )}
               {!trainerRankingDataset ? (

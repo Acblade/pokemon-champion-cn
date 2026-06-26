@@ -307,6 +307,102 @@ select {
   background: rgba(148, 163, 184, 0.06);
 }
 
+.inline-text-button {
+  margin-left: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #2563eb;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.manual-ranking-import-panel {
+  display: grid;
+  gap: 10px;
+  max-width: 720px;
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid #dbe1ea;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.manual-ranking-field {
+  display: grid;
+  gap: 5px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.manual-ranking-field input,
+.manual-ranking-field textarea {
+  width: 100%;
+  border: 1px solid #d0d8e3;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2937;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.manual-ranking-field textarea {
+  min-height: 220px;
+  resize: vertical;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+}
+
+.manual-ranking-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.manual-ranking-status,
+.manual-ranking-error {
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.manual-ranking-status {
+  background: #ecfdf5;
+  color: #166534;
+}
+
+.manual-ranking-error {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+:root[data-theme='dark'] .inline-text-button {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(30, 41, 59, 0.92);
+  color: #93c5fd;
+}
+
+:root[data-theme='dark'] .manual-ranking-import-panel {
+  border-color: rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+:root[data-theme='dark'] .manual-ranking-field,
+:root[data-theme='dark'] .manual-ranking-field input,
+:root[data-theme='dark'] .manual-ranking-field textarea {
+  color: #e5e7eb;
+}
+
+:root[data-theme='dark'] .manual-ranking-field input,
+:root[data-theme='dark'] .manual-ranking-field textarea {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(15, 23, 42, 0.95);
+}
+
 .data-fallback-note {
   margin-bottom: 14px;
   padding: 10px 12px;
@@ -382,8 +478,8 @@ select {
 .team-filter-popover {
   right: 0;
   left: auto;
-  width: min(760px, calc(100vw - 48px));
-  max-width: min(760px, calc(100vw - 48px));
+  width: min(900px, calc(100vw - 48px));
+  max-width: min(900px, calc(100vw - 48px));
   max-height: none;
   overflow: visible;
   display: grid;
@@ -396,7 +492,7 @@ select {
 
 .team-filter-date-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   grid-column: 1 / -1;
 }
@@ -481,7 +577,7 @@ select {
 }
 
 .team-filter-pokemon-pair {
-  grid-template-columns: repeat(2, minmax(150px, 210px));
+  grid-template-columns: minmax(0, 260px);
   justify-content: start;
 }
 
@@ -1313,7 +1409,7 @@ table {
 th,
 td {
   padding: 14px 12px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #edf2f7;
 }
 
@@ -1332,7 +1428,28 @@ th {
 }
 
 .pokemon-list-table-wrapper {
+  overflow-x: auto;
   overflow-y: visible;
+}
+
+.pokemon-list-table {
+  width: max-content;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.pokemon-list-table th,
+.pokemon-list-table td {
+  padding: 12px 9px;
+}
+
+.pokemon-list-table .pokemon-name-column {
+  min-width: 128px;
+  max-width: 180px;
+}
+
+.pokemon-list-table .type-list {
+  justify-content: center;
 }
 
 .table-sort-button {
@@ -3410,7 +3527,8 @@ table.damage-stats-table {
   }
 
   .team-filter-text-grid,
-  .team-filter-select-grid {
+  .team-filter-select-grid,
+  .team-filter-date-grid {
     grid-template-columns: 1fr;
   }
 

@@ -2,12 +2,12 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-3-rule-1",
-  "updatedAt": "2026-06-26T09:48:57.062Z",
+  "updatedAt": "2026-06-26T10:34:25.317Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
-      "trainerSource": "手动导入玩家排名",
+      "trainerSource": "Battle Database Champions",
       "trainerSourceUrl": "https://champs.pokedb.tokyo/trainer/list?season=3&rule=1",
       "trainerRankingsUpdatedAt": "2026-06-25T14:46:00.000Z",
       "format": "champs-season-3-rule-1",
@@ -20,7 +20,7 @@
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
-      "trainerRankingsNote": "玩家排名由手动导入数据更新，日本时间 2026-06-25T14:46:00.000Z。",
+      "trainerRankingsNote": "玩家排名由手动导入数据更新，原始时间按日本时间解析。",
       "trainerRankings": [
         {
           "rank": 1,
