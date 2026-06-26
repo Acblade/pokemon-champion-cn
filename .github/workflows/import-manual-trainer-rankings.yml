@@ -64,7 +64,7 @@ jobs:
             const body = process.env.ISSUE_BODY || ''
             datasetKey = body.match(/^dataset_key:\s*(.+)$/m)?.[1]?.trim() || datasetKey
             rankingTimeJst = body.match(/^ranking_time_jst:\s*(.+)$/m)?.[1]?.trim() || rankingTimeJst
-            rankingsText = body.match(/```rankings\s*\n([\s\S]*?)```/)?.[1] || ''
+            rankingsText = body.match(/```rankings\s*\n([\s\S]*?)(?:```|$)/)?.[1] || ''
           }
           if (!rankingTimeJst) throw new Error('Missing ranking_time_jst')
           if (!rankingsText.trim()) throw new Error('Missing rankings_text')

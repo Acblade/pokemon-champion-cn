@@ -39,7 +39,45 @@ function parseJstTimestamp(text: string) {
   return new Date(utcMs).toISOString()
 }
 
+function parseRankingName(rawValue: string) {
+  const lines = rawValue
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+  const firstLine = lines[0] || rawValue.trim()
+  const tokens = firstLine.split(/\s+/).filter(Boolean)
+  if (tokens.length >= 2 && tokens.length % 2 === 0) {
+    const middle = tokens.length / 2
+    const left = tokens.slice(0, middle).join(' ')
+    const right = tokens.slice(middle).join(' ')
+    if (left === right) return left
+  }
+  return tokens[0] || firstLine
+}
+
+function parseRankingsByRecordPattern(text: string) {
+  const normalizedText = text
+    .replace(/\r\n/g, '\n')
+    .replace(/^日本時間.*$/gm, '\n')
+    .replace(/^日本时间.*$/gm, '\n')
+    .replace(/--+/g, '\n')
+  const rankings: TrainerRankingEntry[] = []
+  const recordPattern = /(?:^|\s)(\d{1,3})\s+(\d+(?:\.\d+)?)\s+([\s\S]*?)(?=\s+\d{1,3}\s+\d+(?:\.\d+)?\s+|$)/g
+  for (const match of normalizedText.matchAll(recordPattern)) {
+    const rank = Number(match[1])
+    const rating = Number(match[2])
+    const name = parseRankingName(match[3])
+    if (rank >= 1 && rank <= 300 && Number.isFinite(rating) && name) {
+      rankings.push({ rank, rating, name })
+    }
+  }
+  return rankings
+}
+
 function parseRankings(text: string) {
+  const patternRankings = parseRankingsByRecordPattern(text)
+  if (patternRankings.length > 0) return patternRankings.sort((a, b) => a.rank - b.rank)
+
   const lines = text
     .split(/\r?\n/)
     .map((line) => line.trim())
