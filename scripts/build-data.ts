@@ -327,6 +327,13 @@ function normalizeSearch(value: string) {
     .replace(/[^\p{Script=Han}a-z0-9]/gu, '')
 }
 
+function pokemonZhOverride(id: string, name: string, fallback: string) {
+  const key = normalizeSearch(id || name)
+  if (key === 'floetteeternal') return '永恒花叶蒂'
+  if (key === 'floettemega' || key === 'floetteeternalmega') return '永恒花叶蒂（Mega）'
+  return fallback
+}
+
 const MOVE_ZH_BY_ID: Record<string, string> = {
   barbbarrage: '毒千针',
   makeitrain: '淘金潮',
@@ -948,7 +955,7 @@ async function main() {
     .map(([id, format]) => {
       const species = pokedex[id]
       if (!species) return null
-      const zh = pokemonNames.get(String(species.num)) || species.name
+      const zh = pokemonZhOverride(id, species.name, pokemonNames.get(String(species.num)) || species.name)
       const { full, initials } = buildPinyinVariants(zh)
       const baseStats = {
         hp: species.baseStats?.hp || 0,

@@ -35,6 +35,7 @@ type TeamShare = {
   id: string
   title: string
   author: string
+  owner?: string
   teamId: string
   source: string
   sourceGroup: string
@@ -70,10 +71,16 @@ const GENERATED_DIR = path.join(PROJECT_ROOT, 'src', 'generated')
 const OUTPUT_FILE = path.join(GENERATED_DIR, 'team-shares.json')
 
 const TEAM_SHEET_ID = '1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw'
-const TEAM_SHEET_GID = '1458357160'
-const TEAM_SHEET_URL = `https://docs.google.com/spreadsheets/d/${TEAM_SHEET_ID}/view?gid=${TEAM_SHEET_GID}#gid=${TEAM_SHEET_GID}`
-const TEAM_SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${TEAM_SHEET_ID}/export?format=csv&gid=${TEAM_SHEET_GID}`
 const TEAM_SOURCE_NAME = 'VGCPastes Repository'
+const TEAM_SOURCE_HOME_URL = 'https://tinyurl.com/vgcpastes2026'
+const TEAM_SHEETS = [
+  { season: 'M-B', gid: '1458357160' },
+  { season: 'M-A', gid: '791705272' },
+].map((sheet) => ({
+  ...sheet,
+  url: `https://docs.google.com/spreadsheets/d/${TEAM_SHEET_ID}/view?gid=${sheet.gid}#gid=${sheet.gid}`,
+  csvUrl: `https://docs.google.com/spreadsheets/d/${TEAM_SHEET_ID}/export?format=csv&gid=${sheet.gid}`,
+}))
 const DETAIL_CONCURRENCY = 10
 const MEMBER_NAME_START_INDEX = 37
 const MEMBER_ITEM_INDEXES = [7, 10, 13, 16, 19, 22]
@@ -180,12 +187,20 @@ function pokemonFromEnglishName(localPokemonByKey: Map<string, LocalPokemon>, na
   const cleaned = name
     .replace(/^Eternal Flower Floette$/i, 'Floette-Eternal')
     .replace(/\s+/g, '-')
-  const baseName = cleaned.replace(/-Mega(?:-[XY])?$/i, '').replace(/-Eternal$/i, '')
+  const baseName = cleaned
+    .replace(/-Mega(?:-[XY])?$/i, '')
+    .replace(/-Eternal$/i, '')
+    .replace(/-(?:Three|Four)$/i, '')
+    .replace(/-Masterpiece$/i, '')
+    .replace(/-Fancy$/i, '')
   const itemKey = normalizeKey(item)
   const baseKey = normalizeKey(baseName)
   const candidates = [
     name,
     cleaned,
+    cleaned.replace(/-(?:Three|Four)$/i, ''),
+    cleaned.replace(/-Masterpiece$/i, ''),
+    cleaned.replace(/-Fancy$/i, ''),
     cleaned.replace(/-+/g, ''),
     cleaned.replace(/-Mega-([XY])$/i, 'Mega$1'),
     cleaned.replace(/-Mega$/i, 'Mega'),
@@ -313,11 +328,11 @@ function parseSheetRows(csvText: string) {
   const rows = parseCsv(csvText)
   const headerIndex = rows.findIndex((row) => cleanCell(row, 0) === 'Team ID')
   if (headerIndex < 0) throw new Error('VGCPastes sheet header row not found')
-  const dataRows = rows.slice(headerIndex + 1).filter((row) => /^M[A-Z]\d+$/i.test(cleanCell(row, 0)))
+  const dataRows = rows.slice(headerIndex + 1).filter((row) => /^[A-Z]{2}\d+$/i.test(cleanCell(row, 0)))
   return { rows, dataRows }
 }
 
-function inferSheetSeason(rows: string[][], teamId: string) {
+function inferSheetSeason(rows: string[][], teamId: string, fallbackSeason: string) {
   const titleMatch = rows
     .slice(0, 3)
     .flat()
@@ -325,7 +340,7 @@ function inferSheetSeason(rows: string[][], teamId: string) {
     .match(/\bM[-\s]?([A-Z])\b/i)
   if (titleMatch) return `M-${titleMatch[1].toUpperCase()}`
   const idMatch = teamId.match(/^M([A-Z])/i)
-  return idMatch ? `M-${idMatch[1].toUpperCase()}` : '未标注'
+  return idMatch ? `M-${idMatch[1].toUpperCase()}` : fallbackSeason
 }
 
 function sheetMemberFromName(
@@ -478,21 +493,23 @@ async function mapWithConcurrency<T, R>(items: T[], limit: number, mapper: (item
 function rowToTeam(
   row: string[],
   allRows: string[][],
+  sheet: typeof TEAM_SHEETS[number],
   localPokemonByKey: Map<string, LocalPokemon>,
   localItems: LocalItem[],
 ) {
   const teamId = cleanCell(row, 0)
   if (!teamId) return null
   const title = firstMeaningful(cleanCell(row, 1), `${teamId} 队伍分享`)
-  const author = firstMeaningful(cleanCell(row, 3), cleanCell(row, 35), 'Unknown Trainer')
+  const owner = meaningful(cleanCell(row, 35))
+  const author = firstMeaningful(cleanCell(row, 3), owner, 'Unknown Trainer')
   const pasteUrl = meaningful(cleanCell(row, 24))
   const eventDate = dateOnly(cleanCell(row, 29))
   const eventName = meaningful(cleanCell(row, 30))
   const placement = placementNumber(cleanCell(row, 31))
-  const sourceLink = firstMeaningful(cleanCell(row, 32), cleanCell(row, 33), cleanCell(row, 34), pasteUrl, TEAM_SHEET_URL)
+  const sourceLink = firstMeaningful(cleanCell(row, 32), cleanCell(row, 33), cleanCell(row, 34), pasteUrl, sheet.url)
   const eventType = inferEventType(eventName, TEAM_SOURCE_NAME)
   const region = inferRegion(eventName, TEAM_SOURCE_NAME)
-  const season = inferSheetSeason(allRows, teamId)
+  const season = inferSheetSeason(allRows, teamId, sheet.season)
   const replicaCode = meaningful(cleanCell(row, 28))
   const members = Array.from({ length: 6 }, (_, index) => {
     return sheetMemberFromName(
@@ -508,11 +525,12 @@ function rowToTeam(
     id: `vgcpastes-${teamId.toLowerCase()}`,
     title,
     author,
+    owner,
     teamId,
     source: TEAM_SOURCE_NAME,
     sourceGroup: TEAM_SOURCE_NAME,
     sourceUrl: sourceLink,
-    platformUrl: pasteUrl || TEAM_SHEET_URL,
+    platformUrl: pasteUrl || sheet.url,
     season,
     format: eventName ? `${eventType} / ${eventName}` : '队伍分享',
     updatedAt: eventDate,
@@ -550,17 +568,18 @@ function pokepasteRawUrl(url: string) {
 }
 
 async function loadSheetTeams(
+  sheet: typeof TEAM_SHEETS[number],
   localPokemonByKey: Map<string, LocalPokemon>,
   localPokemonById: Map<string, LocalPokemon>,
   localItems: LocalItem[],
   moveLabelByEn: Map<string, string>,
 ) {
-  const csv = await fetchText(TEAM_SHEET_CSV_URL)
+  const csv = await fetchText(sheet.csvUrl)
   const { rows, dataRows } = parseSheetRows(csv)
   const mapped = dataRows
-    .map((row) => rowToTeam(row, rows, localPokemonByKey, localItems))
+    .map((row) => rowToTeam(row, rows, sheet, localPokemonByKey, localItems))
     .filter((team): team is TeamShare => Boolean(team))
-  console.log(`VGCPastes sheet: ${mapped.length} teams`)
+  console.log(`VGCPastes ${sheet.season} sheet: ${mapped.length} teams`)
 
   const teams = await mapWithConcurrency(mapped, DETAIL_CONCURRENCY, async (team, index) => {
     const rawUrl = pokepasteRawUrl(team.platformUrl)
@@ -583,11 +602,24 @@ async function loadSheetTeams(
       const withTags = { ...team, detailLevel: teamDetailLevel(team) }
       return { ...withTags, tags: makeTeamTags(withTags, localPokemonById, localItems) }
     } finally {
-      if ((index + 1) % 50 === 0) console.log(`Pokepaste details: ${index + 1}/${mapped.length}`)
+      if ((index + 1) % 50 === 0) console.log(`Pokepaste details ${sheet.season}: ${index + 1}/${mapped.length}`)
     }
   })
 
   return teams
+}
+
+async function loadAllSheetTeams(
+  localPokemonByKey: Map<string, LocalPokemon>,
+  localPokemonById: Map<string, LocalPokemon>,
+  localItems: LocalItem[],
+  moveLabelByEn: Map<string, string>,
+) {
+  const teamsBySheet = []
+  for (const sheet of TEAM_SHEETS) {
+    teamsBySheet.push(await loadSheetTeams(sheet, localPokemonByKey, localPokemonById, localItems, moveLabelByEn))
+  }
+  return teamsBySheet.flat()
 }
 
 function sortTeams(teams: TeamShare[]) {
@@ -613,18 +645,21 @@ async function main() {
   const localPokemonByKey = buildLocalPokemonIndex(localPokemon)
   const localPokemonById = buildLocalPokemonIdIndex(localPokemon)
   const moveLabelByEn = buildMoveLabelMap(details)
-  const teams = sortTeams(await loadSheetTeams(localPokemonByKey, localPokemonById, localItems, moveLabelByEn))
+  const teams = sortTeams(await loadAllSheetTeams(localPokemonByKey, localPokemonById, localItems, moveLabelByEn))
   const output = {
     updatedAt: new Date().toISOString(),
-    sources: [
-      {
+    sources: TEAM_SHEETS.map((sheet) => {
+      const sheetTeams = teams.filter((team) => team.season === sheet.season)
+      return {
         name: TEAM_SOURCE_NAME,
-        url: TEAM_SHEET_URL,
+        season: sheet.season,
+        url: sheet.url,
+        homeUrl: TEAM_SOURCE_HOME_URL,
         note: 'Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。',
-        updatedAt: latestTeamDate(teams, (team) => team.sourceGroup === TEAM_SOURCE_NAME),
-        count: teams.length,
-      },
-    ],
+        updatedAt: latestTeamDate(sheetTeams, () => true),
+        count: sheetTeams.length,
+      }
+    }),
     teams,
   }
   await fs.writeFile(OUTPUT_FILE, `${JSON.stringify(output, null, 2)}\n`, 'utf8')

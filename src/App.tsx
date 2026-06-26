@@ -15,8 +15,9 @@ import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type
 import { TYPE_LABELS, TYPE_ORDER, typeBadgeClass, typeColorClass, typeLabel } from './lib/pokemonTypes'
 
 function appItemLabel(itemValue: string) {
-  if (!itemValue || itemValue === '无') return '无'
-  return ruleItems.find((i) => i.en === itemValue)?.zh || itemValue
+  const item = normalizeTeamItem(itemValue)
+  if (item === '无') return '无'
+  return ruleItems.find((i) => i.en === item)?.zh || item
 }
 
 const SP_LABELS: Record<string, string> = { hp: 'HP', atk: '攻击', def: '防御', spa: '特攻', spd: '特防', spe: '速度' }
@@ -24,6 +25,7 @@ const TEAM_NATURE_LABELS: Record<string, string> = {
   Adamant: '固执',
   Bashful: '害羞',
   Bold: '大胆',
+  Brave: '勇敢',
   Calm: '温和',
   Careful: '慎重',
   Docile: '坦率',
@@ -56,6 +58,21 @@ function teamFieldLabel(value: string | undefined, fallback: string) {
 }
 
 const FILTER_TYPE_OPTIONS = TYPE_ORDER.map(typeLabel)
+const LIST_COLUMN_LABELS: Record<ListColumnKey, string> = {
+  usage: '使用率',
+  sprite: '图像',
+  zh: '中文名称',
+  name: '英文名称',
+  types: '属性',
+  hp: 'HP',
+  atk: '攻击',
+  def: '防御',
+  spa: '特攻',
+  spd: '特防',
+  spe: '速度',
+  bst: '总种族值',
+}
+const LIST_COLUMN_OPTIONS: ListColumnKey[] = ['usage', 'sprite', 'zh', 'name', 'types', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst']
 
 const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   '1': { label: 'M-A', seasons: [{ id: '1', label: 'M-1：4/8 ~ 5/13' }] },
@@ -79,16 +96,35 @@ type DraftConfig = {
   item: string
   sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
   boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
+  blueFavoriteMoveIds?: string[]
+  loadedConfigId?: string
 }
 
 const DRAFT_STAT_KEYS = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'] as const
 const DRAFT_BOOST_KEYS = ['atk', 'def', 'spa', 'spd', 'spe'] as const
+const DEFAULT_TEAM_NATURE = 'Serious'
+
+function emptyDraftSps(): DraftConfig['sps'] {
+  return { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
+}
+
+function emptyDraftBoosts(): DraftConfig['boosts'] {
+  return { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 }
+}
+
+function stringArraysEqual(left: string[] | undefined, right: string[] | undefined) {
+  const a = left || []
+  const b = right || []
+  return a.length === b.length && a.every((value, index) => value === b[index])
+}
 
 function draftConfigEquals(a: DraftConfig | undefined, b: DraftConfig) {
   if (!a) return false
   if (a.nature !== b.nature || a.abilityId !== b.abilityId || a.item !== b.item) return false
+  if (a.loadedConfigId !== b.loadedConfigId) return false
   if (DRAFT_STAT_KEYS.some((key) => a.sps[key] !== b.sps[key])) return false
   if (DRAFT_BOOST_KEYS.some((key) => a.boosts[key] !== b.boosts[key])) return false
+  if (!stringArraysEqual(a.blueFavoriteMoveIds, b.blueFavoriteMoveIds)) return false
   return true
 }
 
@@ -98,6 +134,7 @@ type SortDirection = 'asc' | 'desc'
 type FilterState = {
   types: string[]
   forms: ('normal' | 'mega')[]
+  visibleColumns: ListColumnKey[]
   moveQuery: string
   moveQuery2: string
   selectedMoves: string[]
@@ -114,13 +151,17 @@ type TeamFilterState = {
   rankedOnly: boolean
   sources: string[]
   seasons: string[]
+  eventNames: string[]
   eventTypes: string[]
   archetypes: string[]
   placementMax: string
-  dateRange: string
+  dateFrom: string
+  dateTo: string
   pokemonQuery: string
   megaPokemonQuery: string
 }
+
+type ListColumnKey = 'usage' | 'sprite' | 'zh' | 'name' | 'types' | 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe' | 'bst'
 
 type TeamPokemonOption = {
   id: string
@@ -132,6 +173,7 @@ type TeamPokemonOption = {
 const DEFAULT_FILTERS: FilterState = {
   types: [],
   forms: ['normal'],
+  visibleColumns: ['usage', 'sprite', 'zh', 'types', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst'],
   moveQuery: '',
   moveQuery2: '',
   selectedMoves: [],
@@ -148,10 +190,12 @@ const DEFAULT_TEAM_FILTERS: TeamFilterState = {
   rankedOnly: false,
   sources: [],
   seasons: [],
+  eventNames: [],
   eventTypes: [],
   archetypes: [],
   placementMax: '',
-  dateRange: '',
+  dateFrom: '',
+  dateTo: '',
   pokemonQuery: '',
   megaPokemonQuery: '',
 }
@@ -179,8 +223,162 @@ function isMegaPokemon(pokemon: PokemonRow) {
   return pokemon.name.toLowerCase().includes('-mega')
 }
 
+function normalizeTeamItem(itemValue: string | undefined) {
+  const item = itemValue?.trim()
+  if (!item || item === '-' || item === '无' || /^none$/i.test(item)) return '无'
+  const normalized = normalize(item)
+  return ruleItems.find((entry) =>
+    normalize(entry.en) === normalized ||
+    normalize(entry.id) === normalized ||
+    normalize(entry.zh) === normalized
+  )?.en || item
+}
+
 function teamMemberPokemon(member: TeamShareMember) {
   return championsPokemon.find((pokemon) => pokemon.id === member.pokemonId)
+}
+
+function normalTeamDetailFor(pokemon?: PokemonRow) {
+  if (!pokemon) return undefined
+  const normalForm = championsPokemon.find((entry) => entry.baseSpeciesId === pokemon.baseSpeciesId && !isMegaPokemon(entry))
+  return championsDetails[normalForm?.id || pokemon.id] ?? championsDetails[pokemon.id]
+}
+
+function findAbilityForMember(member: TeamShareMember, pokemon?: PokemonRow) {
+  const normalizedAbility = normalize(member.ability)
+  if (!normalizedAbility) return undefined
+  const details = [normalTeamDetailFor(pokemon), championsDetails[member.pokemonId]].filter((detail): detail is PokemonDetail => Boolean(detail))
+  for (const detail of details) {
+    const matched = detail.abilities.find((ability) =>
+      normalize(ability.en) === normalizedAbility ||
+      normalize(ability.id) === normalizedAbility ||
+      normalize(ability.zh) === normalizedAbility
+    )
+    if (matched) return matched
+  }
+  for (const detail of Object.values(championsDetails)) {
+    const matched = detail.abilities.find((ability) =>
+      normalize(ability.en) === normalizedAbility ||
+      normalize(ability.id) === normalizedAbility ||
+      normalize(ability.zh) === normalizedAbility
+    )
+    if (matched) return matched
+  }
+  return undefined
+}
+
+function teamAbilityLabel(member: TeamShareMember, pokemon?: PokemonRow) {
+  return findAbilityForMember(member, pokemon)?.zh || member.ability
+}
+
+function teamAbilityId(member: TeamShareMember, pokemon?: PokemonRow) {
+  return findAbilityForMember(member, pokemon)?.id || ''
+}
+
+function savedAbilityLabel(entry: SavedPokemonEntry, pokemon?: PokemonRow) {
+  const normalizedAbility = normalize(entry.abilityId)
+  if (!normalizedAbility) return ''
+  const details = [normalTeamDetailFor(pokemon), championsDetails[entry.pokemonId]].filter((detail): detail is PokemonDetail => Boolean(detail))
+  for (const detail of details) {
+    const matched = detail.abilities.find((ability) => normalize(ability.id) === normalizedAbility)
+    if (matched) return matched.zh
+  }
+  for (const detail of Object.values(championsDetails)) {
+    const matched = detail.abilities.find((ability) => normalize(ability.id) === normalizedAbility)
+    if (matched) return matched.zh
+  }
+  return entry.abilityId
+}
+
+function savedMegaAbilityLabel(entry: SavedPokemonEntry, pokemon?: PokemonRow) {
+  if (!entry.isMega && !(pokemon && isMegaPokemon(pokemon))) return ''
+  const detail = championsDetails[pokemon?.id || entry.pokemonId]
+  return detail?.abilities[0]?.zh || ''
+}
+
+function savedAbilityDisplayLabel(entry: SavedPokemonEntry, pokemon?: PokemonRow) {
+  const normalLabel = savedAbilityLabel(entry, pokemon)
+  const megaLabel = savedMegaAbilityLabel(entry, pokemon)
+  if (!megaLabel) return normalLabel
+  if (!normalLabel || normalize(normalLabel) === normalize(megaLabel)) return megaLabel
+  return `${normalLabel} / Mega：${megaLabel}`
+}
+
+const TEAM_STAT_TOKEN_TO_KEY: Record<string, keyof DraftConfig['sps']> = {
+  hp: 'hp',
+  atk: 'atk',
+  attack: 'atk',
+  攻击: 'atk',
+  def: 'def',
+  defense: 'def',
+  防御: 'def',
+  spa: 'spa',
+  spatk: 'spa',
+  specialattack: 'spa',
+  特攻: 'spa',
+  spd: 'spd',
+  spdef: 'spd',
+  specialdefense: 'spd',
+  特防: 'spd',
+  spe: 'spe',
+  speed: 'spe',
+  速度: 'spe',
+}
+
+function statKeyFromTeamToken(token: string) {
+  return TEAM_STAT_TOKEN_TO_KEY[token.toLowerCase().replace(/[^a-z\u4e00-\u9fa5]/g, '')]
+}
+
+function parseTeamSpread(spread: string | undefined) {
+  const sps = emptyDraftSps()
+  if (!spread || spread === '-') return sps
+  spread.split('/').forEach((rawPart) => {
+    const part = rawPart.trim()
+    if (!part || /余|remainder/i.test(part)) return
+    const valueFirst = part.match(/^(\d+)\s+(.+)$/)
+    const statFirst = part.match(/^(.+?)\s+(\d+)$/)
+    const value = Number(valueFirst?.[1] ?? statFirst?.[2])
+    const statToken = valueFirst?.[2] ?? statFirst?.[1] ?? ''
+    const statKey = statKeyFromTeamToken(statToken)
+    if (!statKey || !Number.isFinite(value)) return
+    sps[statKey] = Math.min(32, Math.max(0, Math.trunc(value)))
+  })
+  return sps
+}
+
+function teamSpreadLabel(spread: string | undefined, fallback: string) {
+  const sps = parseTeamSpread(spread)
+  const label = DRAFT_STAT_KEYS
+    .filter((key) => sps[key] > 0)
+    .map((key) => `${SP_LABELS[key]} ${sps[key]}`)
+    .join(' / ')
+  return label || teamFieldLabel(spread, fallback)
+}
+
+function teamMoveIds(member: TeamShareMember, pokemon?: PokemonRow) {
+  const detail = championsDetails[pokemon?.id || member.pokemonId]
+  if (!detail) return []
+  return member.moves
+    .map((moveName) => {
+      const normalizedMove = normalize(moveName)
+      return detail.moves.find((move) =>
+        normalize(move.zh) === normalizedMove ||
+        normalize(move.en) === normalizedMove ||
+        normalize(move.id) === normalizedMove
+      )?.id
+    })
+    .filter((moveId): moveId is string => Boolean(moveId))
+}
+
+function teamMemberDraftConfig(member: TeamShareMember, pokemon?: PokemonRow): DraftConfig {
+  return {
+    nature: teamFieldLabel(member.nature, DEFAULT_TEAM_NATURE),
+    abilityId: teamAbilityId(member, pokemon),
+    item: normalizeTeamItem(member.item),
+    sps: parseTeamSpread(member.spread),
+    boosts: emptyDraftBoosts(),
+    blueFavoriteMoveIds: teamMoveIds(member, pokemon),
+  }
 }
 
 function isMegaStoneItem(item: string) {
@@ -237,6 +435,7 @@ function teamMatchesGeneralQuery(team: TeamShare, query: string) {
   return normalize([
     team.teamId,
     team.author,
+    team.owner,
     team.title,
     team.eventName,
     team.summary,
@@ -281,19 +480,6 @@ function toggleFilterValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value]
 }
 
-function archetypeLabel(value: string) {
-  const labels: Record<string, string> = {
-    sun: '晴天',
-    rain: '雨天',
-    sand: '沙暴',
-    snow: '雪天',
-    'trick-room': '戏法空间',
-    tailwind: '顺风',
-    'perish-trap': '灭歌捕获',
-  }
-  return labels[value] ?? value
-}
-
 function teamPlacementValue(team: TeamShare) {
   const raw = team.placement ?? Number(team.metrics?.finalRanking)
   return Number.isFinite(raw) && raw > 0 ? raw : undefined
@@ -305,14 +491,19 @@ function teamMatchesPlacement(team: TeamShare, placementMax: string) {
   return placement !== undefined && placement <= Number(placementMax)
 }
 
-function teamMatchesDateRange(team: TeamShare, dateRange: string) {
-  if (!dateRange) return true
+function teamMatchesDateRange(team: TeamShare, dateFrom: string, dateTo: string) {
   const dateValue = team.eventDate || team.updatedAt
   const time = Date.parse(dateValue)
   if (Number.isNaN(time)) return false
-  const days = Number(dateRange)
-  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000
-  return time >= cutoff
+  if (dateFrom) {
+    const from = Date.parse(dateFrom)
+    if (!Number.isNaN(from) && time < from) return false
+  }
+  if (dateTo) {
+    const to = Date.parse(`${dateTo}T23:59:59`)
+    if (!Number.isNaN(to) && time > to) return false
+  }
+  return true
 }
 
 function buildTeamPokemonOption(pokemon: PokemonRow): TeamPokemonOption {
@@ -344,6 +535,13 @@ function displayTeamTag(team: TeamShare, tag: string) {
   return `${pokemon.zh}（${memberMegaSuffix(matchedMember, pokemon)}）`
 }
 
+function visibleTeamTags(team: TeamShare) {
+  return team.members
+    .filter(isMegaTeamMember)
+    .map((member) => displayTeamTag(team, member.pokemonName))
+    .filter((label, index, values) => label && values.indexOf(label) === index)
+}
+
 function formatDatasetDate(date: string) {
   const datePart = date.includes('T') ? date.slice(0, 10) : date
   const [, month, day] = datePart.split('-')
@@ -356,9 +554,13 @@ function formatDatasetDateTime(date: string, iso: string) {
   return `${formatDatasetDate(date)} ${syncDate.toLocaleTimeString('zh-CN', { hour12: false })}`
 }
 
-function formatTeamSourceDates(sources: TeamShareSource[], syncedAt: string) {
-  const sourceText = sources.map((source) => `${source.name}${source.count ? ` ${source.count} 队` : ''} · 最新队伍 ${formatDatasetDate(source.updatedAt)}`).join(' / ')
-  return syncedAt ? `${sourceText} · 同步 ${formatDatasetDate(syncedAt)}` : sourceText
+function teamSourceLineSource(sources: TeamShareSource[], rule: string) {
+  return sources.find((source) => source.season === rule) ?? sources[0]
+}
+
+function pokemonSpriteUrl(pokemon: PokemonRow) {
+  const spriteId = pokemon.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  return `https://play.pokemonshowdown.com/sprites/dex/${spriteId}.png`
 }
 
 function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: string }) {
@@ -419,6 +621,62 @@ function buildSavedLabel(baseName: string, baseId: string, entries: SavedPokemon
   return `${baseName} ${sameBase.length + 1}`
 }
 
+function teamSavedGroupBaseName(team: TeamShare) {
+  return [team.season, team.teamId, team.author].filter(Boolean).join(' · ') || team.title
+}
+
+function savedEntryDraftConfig(entry: SavedPokemonEntry): DraftConfig {
+  return {
+    nature: entry.nature,
+    abilityId: entry.abilityId,
+    item: entry.item,
+    sps: entry.sps,
+    boosts: entry.boosts,
+    blueFavoriteMoveIds: entry.blueFavorites || [],
+    loadedConfigId: entry.id,
+  }
+}
+
+function uniqueSavedGroupName(baseName: string, existingNames: string[]) {
+  const cleanedBase = cleanGroupName(baseName) || '队伍分享'
+  const existing = new Set(existingNames.map(cleanGroupName))
+  if (!existing.has(cleanedBase)) return cleanedBase
+  for (let index = 2; index < 1000; index += 1) {
+    const candidate = `${cleanedBase} (${index})`
+    if (!existing.has(candidate)) return candidate
+  }
+  return `${cleanedBase} (${Date.now()})`
+}
+
+function savedEntryFromTeamMember(team: TeamShare, member: TeamShareMember, index: number, groupName: string): SavedPokemonEntry | null {
+  const pokemon = teamMemberPokemon(member)
+  if (!pokemon) return null
+  const config = teamMemberDraftConfig(member, pokemon)
+  return {
+    id: `${team.id}-${index}-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    baseId: normalize(pokemon.baseSpeciesName),
+    label: `${pokemonDisplayName(pokemon)} · ${team.teamId}`,
+    groupNames: [groupName],
+    pokemonId: pokemon.id,
+    isMega: isMegaTeamMember(member),
+    abilityId: config.abilityId,
+    item: config.item,
+    nature: config.nature,
+    sps: config.sps,
+    boosts: config.boosts,
+    blueFavorites: config.blueFavoriteMoveIds,
+  }
+}
+
+function teamTagItems(team: TeamShare) {
+  return [
+    { label: `队伍 ID ${team.teamId}`, tone: 'meta' },
+    team.owner ? { label: `Owner ${team.owner}`, tone: 'meta' } : null,
+    { label: formatDatasetDate(team.eventDate || team.updatedAt), tone: 'meta' },
+    ...visibleTeamTags(team).map((label) => ({ label, tone: 'mega' })),
+  ].filter((item): item is { label: string; tone: string } => Boolean(item))
+}
+
 function sortIndicator(activeKey: SortKey, currentKey: SortKey, direction: SortDirection) {
   if (activeKey !== currentKey) return ''
   return direction === 'asc' ? ' ↑' : ' ↓'
@@ -450,6 +708,9 @@ function App() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [teamFiltersOpen, setTeamFiltersOpen] = useState(false)
+  const [listTypesOpen, setListTypesOpen] = useState(false)
+  const [listColumnsOpen, setListColumnsOpen] = useState(false)
+  const [teamEventsOpen, setTeamEventsOpen] = useState(false)
   const [savedOpen, setSavedOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS)
@@ -470,8 +731,12 @@ function App() {
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())
   const [editingSavedNameId, setEditingSavedNameId] = useState<string | null>(null)
+  const [editingGroupName, setEditingGroupName] = useState<string | null>(null)
+  const [editingGroupValue, setEditingGroupValue] = useState('')
   const [groupPickerEntryId, setGroupPickerEntryId] = useState<string | null>(null)
   const [teamFilters, setTeamFilters] = useState<TeamFilterState>(DEFAULT_TEAM_FILTERS)
+  const [addedTeamGroups, setAddedTeamGroups] = useState<Record<string, string>>({})
+  const [draftLoadVersion, setDraftLoadVersion] = useState(0)
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -525,38 +790,35 @@ function App() {
   }, [sortKey, sortDirection, filters, selectedUsageDataset])
 
   const filteredTeamShares = useMemo(() => {
+    const effectiveRules = teamFilters.seasons.length > 0 ? teamFilters.seasons : [currentRule]
     return teamShares.filter((team) => {
       if (!teamMatchesGeneralQuery(team, teamFilters.teamQuery)) return false
       if (teamFilters.fullSpreadOnly && !teamHasFullSpreads(team)) return false
       if (teamFilters.rankedOnly && !teamHasPlacement(team)) return false
       if (teamFilters.sources.length > 0 && !teamFilters.sources.includes(teamSourceGroupName(team))) return false
-      if (teamFilters.seasons.length > 0 && !teamFilters.seasons.includes(team.season)) return false
+      if (!effectiveRules.includes(team.season)) return false
+      if (teamFilters.eventNames.length > 0 && !teamFilters.eventNames.includes(team.eventName || '其它')) return false
       if (teamFilters.eventTypes.length > 0 && !teamFilters.eventTypes.includes(team.eventType || '其它')) return false
       if (teamFilters.archetypes.length > 0 && !teamFilters.archetypes.every((archetype) => (team.archetypes || []).includes(archetype))) return false
       if (!teamMatchesPlacement(team, teamFilters.placementMax)) return false
-      if (!teamMatchesDateRange(team, teamFilters.dateRange)) return false
+      if (!teamMatchesDateRange(team, teamFilters.dateFrom, teamFilters.dateTo)) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.pokemonQuery)) return false
       if (!teamMatchesPokemonQuery(team, teamFilters.megaPokemonQuery, true)) return false
       return true
     })
-  }, [teamFilters])
+  }, [currentRule, teamFilters])
 
-  const teamSourceOptions = useMemo(() => teamShareSources.map((source) => source.name), [])
   const teamSeasonOptions = useMemo(() => uniqueSorted(teamShares.map((team) => team.season)).sort(sortTeamSeason), [])
-  const teamEventTypeOptions = useMemo(() => uniqueSorted(teamShares.map((team) => team.eventType || '其它')), [])
-  const teamArchetypeOptions = useMemo(() => uniqueSorted(teamShares.flatMap((team) => team.archetypes || [])), [])
+  const teamEventNameOptions = useMemo(() => uniqueSorted(teamShares.filter((team) => (teamFilters.seasons.length ? teamFilters.seasons : [currentRule]).includes(team.season)).map((team) => team.eventName || '其它')), [currentRule, teamFilters.seasons])
   const teamPokemonOptions = useMemo(() => championsPokemon.map(buildTeamPokemonOption), [])
   const teamMegaPokemonOptions = useMemo(() => championsPokemon.filter((pokemon) => pokemon.hasMega || isMegaPokemon(pokemon)).map(buildTeamPokemonOption), [])
   const teamPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamPokemonOptions, teamFilters.pokemonQuery), [teamPokemonOptions, teamFilters.pokemonQuery])
   const teamMegaPokemonSuggestions = useMemo(() => filterTeamPokemonOptions(teamMegaPokemonOptions, teamFilters.megaPokemonQuery), [teamMegaPokemonOptions, teamFilters.megaPokemonQuery])
-  const activeTeamFilterCount =
-    (teamFilters.teamQuery.trim() ? 1 : 0) +
-    (teamFilters.fullSpreadOnly ? 1 : 0) +
-    (teamFilters.rankedOnly ? 1 : 0) +
-    (teamFilters.placementMax ? 1 : 0) +
-    (teamFilters.dateRange ? 1 : 0) +
-    (teamFilters.pokemonQuery.trim() ? 1 : 0) +
-    (teamFilters.megaPokemonQuery.trim() ? 1 : 0)
+  const teamFilterBaseCount = teamShares.filter((team) => (teamFilters.seasons.length ? teamFilters.seasons : [currentRule]).includes(team.season)).length
+  const teamFilterResultLabel = `${filteredTeamShares.length}/${teamFilterBaseCount} 队`
+  const teamFilterButtonLabel = '筛选'
+  const currentTeamSource = teamSourceLineSource(teamShareSources, currentRule)
+  const showListColumn = (column: ListColumnKey) => filters.visibleColumns.includes(column)
 
   const searchSuggestions = useMemo(() => {
     const q = normalize(query)
@@ -700,6 +962,57 @@ function App() {
     setSavedPokemon((current) => current.map((entry) => entry.id === id ? { ...entry, ...payload } : entry))
   }
 
+  function loadSavedEntry(entry: SavedPokemonEntry) {
+    const target = championsPokemon.find((pokemon) => pokemon.id === entry.pokemonId)
+    if (!target) return
+    setDraftConfigs((current) => ({ ...current, [normalize(target.baseSpeciesName)]: savedEntryDraftConfig(entry) }))
+    setDraftLoadVersion((value) => value + 1)
+    setSelectedPokemon(championsDetails[target.id] ?? null)
+    navigateToPokemon(target)
+  }
+
+  function openTeamMemberConfig(member: TeamShareMember, pokemon: PokemonRow) {
+    const config = teamMemberDraftConfig(member, pokemon)
+    setDraftConfigs((current) => ({ ...current, [normalize(pokemon.baseSpeciesName)]: config }))
+    setDraftLoadVersion((value) => value + 1)
+    setSelectedPokemon(championsDetails[pokemon.id] ?? null)
+    navigateToPokemon(pokemon)
+  }
+
+  function renameSavedGroup(oldName: string, rawNextName: string) {
+    const nextName = cleanGroupName(rawNextName)
+    const fromName = cleanGroupName(oldName)
+    if (!nextName || nextName === fromName) {
+      setEditingGroupName(null)
+      return
+    }
+    setSavedGroups((current) => Array.from(new Set(current.map((name) => cleanGroupName(name) === fromName ? nextName : name))))
+    setSavedPokemon((current) => current.map((entry) => ({
+      ...entry,
+      groupNames: (entry.groupNames || []).map((name) => cleanGroupName(name) === fromName ? nextName : name),
+    })))
+    setCollapsedGroups((current) => {
+      const next = { ...current, [nextName]: current[fromName] ?? false }
+      delete next[fromName]
+      return next
+    })
+    setEditingGroupName(null)
+  }
+
+  function addTeamToSavedGroup(team: TeamShare) {
+    const groupName = uniqueSavedGroupName(teamSavedGroupBaseName(team), savedGroupNames)
+    const entries = team.members
+      .map((member, index) => savedEntryFromTeamMember(team, member, index, groupName))
+      .filter((entry): entry is SavedPokemonEntry => Boolean(entry))
+    if (!entries.length) return
+    setSavedGroups((current) => current.includes(groupName) ? current : [...current, groupName])
+    setSavedPokemon((current) => [...entries, ...current])
+    setCollapsedGroups((current) => ({ ...current, [groupName]: false }))
+    setAddedTeamGroups((current) => ({ ...current, [team.id]: groupName }))
+    setTopbarVisible(true)
+    setSavedOpen(true)
+  }
+
   function navigateToPokemon(pokemon: PokemonRow) {
     setSelectedPokemonId(pokemon.id)
     const href = getPokemonHref(pokemon)
@@ -784,7 +1097,7 @@ function App() {
                   <div key={entry.id} className="saved-pokemon-item">
                     <button className="favorite-list-item" onClick={() => {
                       const target = championsPokemon.find((pokemon) => pokemon.id === entry.pokemonId)
-                      if (target) navigateToPokemon(target)
+                      if (target) loadSavedEntry(entry)
                     }}>
                       <span>{entry.label}</span>
                       <strong>{entry.isMega ? 'Mega' : '普通'}</strong>
@@ -832,10 +1145,25 @@ function App() {
                 <section key={groupName} className="saved-group-card">
                   <div className="saved-group-header">
                     <div>
-                      <h2>{groupName}</h2>
+                      {editingGroupName === groupName ? (
+                        <input
+                          autoFocus
+                          className="saved-inline-input saved-group-name-input"
+                          value={editingGroupValue}
+                          onChange={(event) => setEditingGroupValue(event.target.value)}
+                          onBlur={() => renameSavedGroup(groupName, editingGroupValue)}
+                          onKeyDown={(event) => {
+                            if (event.key === 'Enter') renameSavedGroup(groupName, editingGroupValue)
+                            if (event.key === 'Escape') setEditingGroupName(null)
+                          }}
+                        />
+                      ) : (
+                        <h2>{groupName}</h2>
+                      )}
                       <p>{entries.length} 只宝可梦</p>
                     </div>
                     <div className="saved-group-actions">
+                      {groupName !== '未分组' && <button className="ghost-button" onClick={() => { setEditingGroupName(groupName); setEditingGroupValue(groupName) }}>改名</button>}
                       <button className="ghost-button" onClick={() => setCollapsedGroups((current) => ({ ...current, [groupName]: !current[groupName] }))}>{collapsedGroups[groupName] ? '展开' : '折叠'}</button>
                       {groupName !== '未分组' && <button className="danger-text-button" onClick={() => {
                         setSavedPokemon((current) => current.map((item) => ({ ...item, groupNames: (item.groupNames || []).filter((name) => cleanGroupName(name) !== groupName) })))
@@ -847,10 +1175,9 @@ function App() {
                     {entries.map((entry) => {
                       const pokemon = championsPokemon.find((item) => item.id === entry.pokemonId)
                       const detail = championsDetails[entry.pokemonId]
-                      const ability = pokemon?.abilities.find((item) => item.id === entry.abilityId)
                       const natureLabel = teamFieldLabel(teamNatureLabel(entry.nature), '性格未保存')
                       const itemLabel = teamFieldLabel(appItemLabel(entry.item), '道具未保存')
-                      const abilityLabel = teamFieldLabel(ability?.zh || entry.abilityId, '特性未保存')
+                      const abilityLabel = teamFieldLabel(savedAbilityDisplayLabel(entry, pokemon), '特性未保存')
                       const spSummary = Object.entries(entry.sps).filter(([, value]) => value > 0).map(([key, value]) => `${SP_LABELS[key] ?? key.toUpperCase()} ${value}`).join(' / ') || '努力值未保存'
                       const moveSummary = (entry.blueFavorites || []).map((moveId) => detail?.moves.find((move) => move.id === moveId)?.zh || moveId).filter(Boolean).join(' / ') || '技能未保存'
                       return (
@@ -869,7 +1196,7 @@ function App() {
                                   }}
                                 />
                               ) : (
-                                <a className="link-button" href={pokemon ? getPokemonHref(pokemon) : '#'} onClick={(event) => { event.preventDefault(); if (pokemon) navigateToPokemon(pokemon) }}>{entry.customName || entry.label}</a>
+                                <a className="link-button" href={pokemon ? getPokemonHref(pokemon) : '#'} onClick={(event) => { event.preventDefault(); loadSavedEntry(entry) }}>{entry.customName || entry.label}</a>
                               )}
                               <button type="button" className="saved-edit-button" onClick={() => setEditingSavedNameId(entry.id)} title="改名">✐</button>
                             </div>
@@ -899,7 +1226,7 @@ function App() {
           </section>
         </main>
       ) : !detailMode ? (
-        <main className={homeTab === 'damage' ? 'content-card detail-page-layout' : 'content-card main-layout'}>
+        <main className="content-card main-layout">
           <div className="section-title">
             <div className="home-title-block">
               <div className="home-title-line">
@@ -915,8 +1242,35 @@ function App() {
                 <button className="ghost-button" onClick={() => setFiltersOpen((value) => !value)}>筛选</button>
                 {filtersOpen && (
                   <div className="popover filter-list-popover filter-grid">
-                    <div className="popover-field"><span>属性（可多选）</span><div className="filter-chip-group">{FILTER_TYPE_OPTIONS.map((type) => <button key={type} type="button" className={`${filters.types.includes(type) ? 'filter-chip active' : 'filter-chip'} type-filter-chip ${typeColorClass(typeKeyFromLabel(type))}`} onClick={() => setFilters((current) => ({ ...current, types: current.types.includes(type) ? current.types.filter((item) => item !== type) : [...current.types, type] }))}>{type}</button>)}</div></div>
+                    <div className="popover-field">
+                      <span className="collapsible-filter-label">
+                        <span>属性（可多选）</span>
+                        <button type="button" className={`mini-toggle-btn borderless-toggle${listTypesOpen ? ' open' : ''}`} onClick={() => setListTypesOpen((value) => !value)} aria-label={listTypesOpen ? '收起属性筛选' : '展开属性筛选'} />
+                      </span>
+                      {listTypesOpen && <div className="filter-chip-group">{FILTER_TYPE_OPTIONS.map((type) => <button key={type} type="button" className={`${filters.types.includes(type) ? 'filter-chip active' : 'filter-chip'} type-filter-chip ${typeColorClass(typeKeyFromLabel(type))}`} onClick={() => setFilters((current) => ({ ...current, types: current.types.includes(type) ? current.types.filter((item) => item !== type) : [...current.types, type] }))}>{type}</button>)}</div>}
+                    </div>
                     <div className="popover-field"><span>形态</span><div className="filter-chip-group"><button type="button" className={filters.forms.includes('normal') ? 'filter-chip active' : 'filter-chip'} onClick={() => setFilters((current) => ({ ...current, forms: current.forms.includes('normal') ? current.forms.filter((item) => item !== 'normal') : [...current.forms, 'normal'] }))}>普通形态</button><button type="button" className={filters.forms.includes('mega') ? 'filter-chip active' : 'filter-chip'} onClick={() => setFilters((current) => ({ ...current, forms: current.forms.includes('mega') ? current.forms.filter((item) => item !== 'mega') : [...current.forms, 'mega'] }))}>Mega形态</button></div></div>
+                    <div className="popover-field">
+                      <span className="collapsible-filter-label">
+                        <span>显示项目</span>
+                        <button type="button" className={`mini-toggle-btn borderless-toggle${listColumnsOpen ? ' open' : ''}`} onClick={() => setListColumnsOpen((value) => !value)} aria-label={listColumnsOpen ? '收起显示项目' : '展开显示项目'} />
+                      </span>
+                      {listColumnsOpen && <div className="filter-chip-group">
+                        {LIST_COLUMN_OPTIONS.map((column) => (
+                          <button
+                            key={column}
+                            type="button"
+                            className={filters.visibleColumns.includes(column) ? 'filter-chip active' : 'filter-chip'}
+                            onClick={() => setFilters((current) => {
+                              const visibleColumns = toggleFilterValue(current.visibleColumns, column)
+                              return { ...current, visibleColumns: visibleColumns.length ? visibleColumns as ListColumnKey[] : current.visibleColumns }
+                            })}
+                          >
+                            {LIST_COLUMN_LABELS[column]}
+                          </button>
+                        ))}
+                      </div>}
+                    </div>
                     <div className="filter-move-pair">
                       <div className="filter-move-item" data-popover-root><span>技能 1</span><div className="filter-input-wrap"><input value={movePickerOpen === 'move1' ? filters.moveQuery : (moveOptions.find((m) => m.id === filters.selectedMoves[0])?.zh ?? '')} onFocus={() => { setMovePickerOpen('move1'); setFilters((c) => ({ ...c, moveQuery: '' })) }} onBlur={() => setTimeout(() => setMovePickerOpen((current) => current === 'move1' ? null : current), 120)} onChange={(event) => setFilters((current) => ({ ...current, moveQuery: event.target.value }))} placeholder="输入中/英/拼音" />{movePickerOpen === 'move1' && <div className="search-dropdown compact-dropdown filter-suggestion-dropdown">{moveSuggestions1.map((move) => <button key={move.id} className="item-option-row" type="button" onMouseDown={() => { setFilters((current) => ({ ...current, moveQuery: '', selectedMoves: [move.id, current.selectedMoves[1] || ''].filter(Boolean) })); setMovePickerOpen(null) }}><span>{move.zh}</span><small>{move.en}</small></button>)}</div>}</div></div>
                       <div className="filter-move-item" data-popover-root><span>技能 2</span><div className="filter-input-wrap"><input value={movePickerOpen === 'move2' ? filters.moveQuery2 : (moveOptions.find((m) => m.id === filters.selectedMoves[1])?.zh ?? '')} onFocus={() => { setMovePickerOpen('move2'); setFilters((c) => ({ ...c, moveQuery2: '' })) }} onBlur={() => setTimeout(() => setMovePickerOpen((current) => current === 'move2' ? null : current), 120)} onChange={(event) => setFilters((current) => ({ ...current, moveQuery2: event.target.value }))} placeholder="可选" />{movePickerOpen === 'move2' && <div className="search-dropdown compact-dropdown filter-suggestion-dropdown">{moveSuggestions2.map((move) => <button key={move.id} className="item-option-row" type="button" onMouseDown={() => { setFilters((current) => ({ ...current, moveQuery2: '', selectedMoves: [current.selectedMoves[0] || '', move.id].filter(Boolean) })); setMovePickerOpen(null) }}><span>{move.zh}</span><small>{move.en}</small></button>)}</div>}</div></div>
@@ -956,39 +1310,18 @@ function App() {
             )}
             {homeTab === 'teams' && (
               <div className="floating-control list-filter-control team-title-filter-control" data-popover-root>
-                <button className="ghost-button" onClick={() => setTeamFiltersOpen((value) => !value)}>筛选{activeTeamFilterCount ? `（${activeTeamFilterCount}）` : ''}</button>
+                <button className="ghost-button" onClick={() => setTeamFiltersOpen((value) => !value)}>{teamFilterButtonLabel}</button>
                 {teamFiltersOpen && (
                   <div className="popover filter-list-popover filter-grid team-filter-popover">
-                    <div className="team-filter-text-grid">
-                      <label className="popover-field">
-                        <span>{'\u961f\u4f0d\u68c0\u7d22'}</span>
-                        <input
-                          value={teamFilters.teamQuery}
-                          onChange={(event) => setTeamFilters((current) => ({ ...current, teamQuery: event.target.value }))}
-                          placeholder={'\u961f\u4f0d ID\u3001\u4f5c\u8005\u3001\u8d5b\u4e8b\u3001\u5b9d\u53ef\u68a6\u3001\u9053\u5177\u6216\u62db\u5f0f'}
-                        />
-                      </label>
-                    </div>
-                    {teamSourceOptions.length > 1 && (
-                      <div className="popover-field">
-                        <span>{'\u6765\u6e90'}</span>
-                        <div className="filter-chip-group">
-                          {teamSourceOptions.map((sourceName) => (
-                            <button
-                              key={sourceName}
-                              type="button"
-                              className={teamFilters.sources.includes(sourceName) ? 'filter-chip active' : 'filter-chip'}
-                              onClick={() => setTeamFilters((current) => ({
-                                ...current,
-                                sources: toggleFilterValue(current.sources, sourceName),
-                              }))}
-                            >
-                              {sourceName}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    <div className="popover-note strong-note">当前显示 {teamFilterResultLabel}</div>
+                    <label className="popover-field team-filter-wide-field">
+                      <span>{'\u961f\u4f0d\u68c0\u7d22'}</span>
+                      <input
+                        value={teamFilters.teamQuery}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, teamQuery: event.target.value }))}
+                        placeholder={'\u961f\u4f0d ID\u3001Owner\u3001\u4f5c\u8005\u3001\u8d5b\u4e8b\u3001\u5b9d\u53ef\u68a6\u3001\u9053\u5177\u6216\u62db\u5f0f'}
+                      />
+                    </label>
                     {teamSeasonOptions.length > 1 && (
                       <div className="popover-field">
                         <span>{'\u89c4\u5219'}</span>
@@ -997,8 +1330,12 @@ function App() {
                             <button
                               key={season}
                               type="button"
-                              className={teamFilters.seasons.includes(season) ? 'filter-chip active' : 'filter-chip'}
-                              onClick={() => setTeamFilters((current) => ({ ...current, seasons: toggleFilterValue(current.seasons, season) }))}
+                              className={(teamFilters.seasons.length ? teamFilters.seasons.includes(season) : season === currentRule) ? 'filter-chip active' : 'filter-chip'}
+                              onClick={() => setTeamFilters((current) => {
+                                const base = current.seasons.length ? current.seasons : [currentRule]
+                                const next = toggleFilterValue(base, season)
+                                return { ...current, seasons: next.length ? next : [season] }
+                              })}
                             >
                               {season}
                             </button>
@@ -1006,60 +1343,56 @@ function App() {
                         </div>
                       </div>
                     )}
-                    {teamEventTypeOptions.length > 1 && (
+                    {teamEventNameOptions.length > 0 && (
                       <div className="popover-field">
-                        <span>{'\u8d5b\u4e8b\u7c7b\u578b'}</span>
-                        <div className="filter-chip-group">
-                          {teamEventTypeOptions.map((eventType) => (
-                            <button
-                              key={eventType}
-                              type="button"
-                              className={teamFilters.eventTypes.includes(eventType) ? 'filter-chip active' : 'filter-chip'}
-                              onClick={() => setTeamFilters((current) => ({ ...current, eventTypes: toggleFilterValue(current.eventTypes, eventType) }))}
-                            >
-                              {eventType}
-                            </button>
-                          ))}
-                        </div>
+                        <span className="collapsible-filter-label">
+                          <span>赛事</span>
+                          <button
+                            type="button"
+                            className={`mini-toggle-btn borderless-toggle${teamEventsOpen ? ' open' : ''}`}
+                            onClick={() => setTeamEventsOpen((value) => !value)}
+                            aria-label={teamEventsOpen ? '收起赛事' : '展开赛事'}
+                          />
+                        </span>
+                        {teamEventsOpen && <div className="filter-chip-group team-event-chip-group">
+                          {teamEventNameOptions.map((eventName) => {
+                            const active = teamFilters.eventNames.length === 0 || teamFilters.eventNames.includes(eventName)
+                            return (
+                              <button
+                                key={eventName}
+                                type="button"
+                                className={active ? 'filter-chip active' : 'filter-chip'}
+                                onClick={() => setTeamFilters((current) => {
+                                  const base = current.eventNames.length ? current.eventNames : teamEventNameOptions
+                                  const next = toggleFilterValue(base, eventName)
+                                  return { ...current, eventNames: next.length === teamEventNameOptions.length ? [] : next }
+                                })}
+                              >
+                                {eventName}
+                              </button>
+                            )
+                          })}
+                        </div>}
                       </div>
                     )}
-                    {teamArchetypeOptions.length > 0 && (
-                      <div className="popover-field">
-                        <span>{'\u6784\u7b51\u6807\u7b7e'}</span>
-                        <div className="filter-chip-group">
-                          {teamArchetypeOptions.map((archetype) => (
-                            <button
-                              key={archetype}
-                              type="button"
-                              className={teamFilters.archetypes.includes(archetype) ? 'filter-chip active' : 'filter-chip'}
-                              onClick={() => setTeamFilters((current) => ({ ...current, archetypes: toggleFilterValue(current.archetypes, archetype) }))}
-                            >
-                              {archetypeLabel(archetype)}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    <div className="team-filter-select-grid">
+                    <label className="popover-field team-filter-wide-field">
+                      <span>名次</span>
+                      <input
+                        type="number"
+                        min={1}
+                        value={teamFilters.placementMax}
+                        onChange={(event) => setTeamFilters((current) => ({ ...current, placementMax: event.target.value }))}
+                        placeholder="前多少名"
+                      />
+                    </label>
+                    <div className="team-filter-date-grid">
                       <label className="popover-field">
-                        <span>{'\u540d\u6b21'}</span>
-                        <select value={teamFilters.placementMax} onChange={(event) => setTeamFilters((current) => ({ ...current, placementMax: event.target.value }))}>
-                          <option value="">{'\u5168\u90e8\u540d\u6b21'}</option>
-                          <option value="1">{'\u51a0\u519b'}</option>
-                          <option value="4">{'\u524d 4'}</option>
-                          <option value="8">{'\u524d 8'}</option>
-                          <option value="16">{'\u524d 16'}</option>
-                          <option value="32">{'\u524d 32'}</option>
-                        </select>
+                        <span>开始日期</span>
+                        <input type="date" value={teamFilters.dateFrom} onChange={(event) => setTeamFilters((current) => ({ ...current, dateFrom: event.target.value }))} />
                       </label>
                       <label className="popover-field">
-                        <span>{'\u65e5\u671f'}</span>
-                        <select value={teamFilters.dateRange} onChange={(event) => setTeamFilters((current) => ({ ...current, dateRange: event.target.value }))}>
-                          <option value="">{'\u5168\u90e8\u65e5\u671f'}</option>
-                          <option value="7">{'\u6700\u8fd1 7 \u5929'}</option>
-                          <option value="30">{'\u6700\u8fd1 30 \u5929'}</option>
-                          <option value="90">{'\u6700\u8fd1 90 \u5929'}</option>
-                        </select>
+                        <span>结束日期</span>
+                        <input type="date" value={teamFilters.dateTo} onChange={(event) => setTeamFilters((current) => ({ ...current, dateTo: event.target.value }))} />
                       </label>
                     </div>
                     <label className="team-filter-check">
@@ -1165,16 +1498,18 @@ function App() {
               <table className="pokemon-list-table">
                 <thead>
                   <tr>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'usageRank') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('usageRank'); setSortDirection('asc') } }}>使用率{sortIndicator(sortKey, 'usageRank', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>中文名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('asc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('asc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('asc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>
-                    <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('asc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>
+                    {showListColumn('usage') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'usageRank') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('usageRank'); setSortDirection('asc') } }}>使用率{sortIndicator(sortKey, 'usageRank', sortDirection)}</button></th>}
+                    {showListColumn('sprite') && <th className="pokemon-sprite-head">图像</th>}
+                    {showListColumn('zh') && <th className="pokemon-name-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>}
+                    {showListColumn('name') && <th className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'name') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('name'); setSortDirection('asc') } }}>英文名称{sortIndicator(sortKey, 'name', sortDirection)}</button></th>}
+                    {showListColumn('types') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>}
+                    {showListColumn('hp') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
+                    {showListColumn('atk') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
+                    {showListColumn('def') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
+                    {showListColumn('spa') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('asc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>}
+                    {showListColumn('spd') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('asc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>}
+                    {showListColumn('spe') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('asc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>}
+                    {showListColumn('bst') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('asc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -1182,16 +1517,18 @@ function App() {
                     const usage = getPokemonUsageFromDataset(selectedUsageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId)
                     return (
                     <tr key={pokemon.id}>
-                      <td>{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>
-                      <td><a className="link-button" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemonDisplayName(pokemon)}</a></td>
-                      <td><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>
-                      <td>{pokemon.baseStats.hp}</td>
-                      <td>{pokemon.baseStats.atk}</td>
-                      <td>{pokemon.baseStats.def}</td>
-                      <td>{pokemon.baseStats.spa}</td>
-                      <td>{pokemon.baseStats.spd}</td>
-                      <td>{pokemon.baseStats.spe}</td>
-                      <td>{pokemon.bst}</td>
+                      {showListColumn('usage') && <td>{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>}
+                      {showListColumn('sprite') && <td className="pokemon-sprite-cell"><img src={pokemonSpriteUrl(pokemon)} alt="" loading="lazy" onError={(event) => { event.currentTarget.style.visibility = 'hidden' }} /></td>}
+                      {showListColumn('zh') && <td className="pokemon-name-column"><a className="link-button" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemonDisplayName(pokemon)}</a></td>}
+                      {showListColumn('name') && <td className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><a className="link-button muted-link" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemon.name}</a></td>}
+                      {showListColumn('types') && <td><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>}
+                      {showListColumn('hp') && <td>{pokemon.baseStats.hp}</td>}
+                      {showListColumn('atk') && <td>{pokemon.baseStats.atk}</td>}
+                      {showListColumn('def') && <td>{pokemon.baseStats.def}</td>}
+                      {showListColumn('spa') && <td>{pokemon.baseStats.spa}</td>}
+                      {showListColumn('spd') && <td>{pokemon.baseStats.spd}</td>}
+                      {showListColumn('spe') && <td>{pokemon.baseStats.spe}</td>}
+                      {showListColumn('bst') && <td>{pokemon.bst}</td>}
                     </tr>
                     )
                   })}
@@ -1244,17 +1581,10 @@ function App() {
 
           {homeTab === 'teams' && (
             <section className="team-share-section">
-              <div className="team-share-head">
-                <div>
-                  <h2>外部构筑</h2>
-                  <p>每日同步 VGCPastes 表格，并通过每行 Pokepaste 链接补全队伍成员、道具、特性、性格、努力值与招式。</p>
-                </div>
-                <div className="team-source-actions">
-                  {teamShareSources.map((source) => <a key={source.url} className="ghost-button" href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a>)}
-                </div>
-              </div>
-              <div className="team-filter-row">
-                <div className="data-source-line">{filteredTeamShares.length}/{teamShares.length} 队 · {formatTeamSourceDates(teamShareSources, teamSharesUpdatedAt)}</div>
+              <div className="data-source-line team-source-line">
+                {currentTeamSource
+                  ? <><a href={currentTeamSource.homeUrl || currentTeamSource.url} target="_blank" rel="noopener noreferrer">{currentTeamSource.name}</a> · {formatDatasetDate(currentTeamSource.updatedAt)} 更新 · {formatDatasetDate(teamSharesUpdatedAt)} 同步</>
+                  : <>VGCPastes Repository · {formatDatasetDate(teamSharesUpdatedAt)} 同步</>}
               </div>
               <div className="team-share-list">
                 {filteredTeamShares.length === 0 && (
@@ -1265,6 +1595,7 @@ function App() {
                 )}
                 {filteredTeamShares.map((team) => {
                   const showTeamSpread = team.members.some((member) => Boolean(member.spread && member.spread !== '-'))
+                  const tags = teamTagItems(team)
                   return (
                   <article className="team-share-card" key={team.id}>
                     <div className="team-card-head">
@@ -1274,39 +1605,22 @@ function App() {
                       </div>
                       <span>{team.season}</span>
                     </div>
-                    <div className="team-meta-row">
-                      <span>作者 {team.author}</span>
-                      <span>队伍 ID {team.teamId}</span>
-                      <span>{team.sourceGroup || team.source}</span>
-                      {team.category && <span>{team.category}</span>}
-                      {team.eventType && <span>{team.eventType}</span>}
-                      {team.region && <span>{team.region}</span>}
-                      {team.eventName && <span>{team.eventName}</span>}
-                      {team.ranking && <span>Pikalytics #{team.ranking}</span>}
-                      {team.placement && <span>赛事 #{team.placement}</span>}
-                      {team.record && <span>战绩 {team.record}</span>}
-                      <span>{formatDatasetDate(team.eventDate || team.updatedAt)}</span>
-                      {team.metrics?.likes !== undefined && <span>喜欢 {team.metrics.likes}</span>}
-                      {team.metrics?.comments !== undefined && <span>评论 {team.metrics.comments}</span>}
-                    </div>
-                    <div className="team-tag-row">
-                      {team.tags.map((tag) => <span key={`${team.id}-${tag}`}>{displayTeamTag(team, tag)}</span>)}
-                    </div>
+                    {tags.length > 0 && <div className="team-tag-row">
+                      {tags.map((tag) => <span key={`${team.id}-${tag.label}`} className={tag.tone === 'mega' ? 'team-tag-mega' : ''}>{tag.label}</span>)}
+                    </div>}
                     <div className="team-roster-list">
                       {team.members.map((member, index) => {
                         const pokemon = championsPokemon.find((entry) => entry.id === member.pokemonId)
-                        const detail = championsDetails[member.pokemonId]
-                        const abilityLabel = detail?.abilities.find((ability) => ability.en === member.ability)?.zh || member.ability
                         const natureLabel = teamFieldLabel(teamNatureLabel(member.nature), '性格未公开')
                         const itemLabel = teamFieldLabel(appItemLabel(member.item), '道具未公开')
-                        const visibleAbilityLabel = teamFieldLabel(abilityLabel, '特性未公开')
-                        const spreadLabel = teamFieldLabel(member.spread, '努力值未公开')
+                        const visibleAbilityLabel = teamFieldLabel(teamAbilityLabel(member, pokemon), '特性未公开')
+                        const spreadLabel = teamSpreadLabel(member.spread, '努力值未公开')
                         return (
                           <a
-                            key={`${team.id}-${member.pokemonId}`}
+                            key={`${team.id}-${member.pokemonId}-${index}`}
                             className={showTeamSpread ? 'team-roster-item' : 'team-roster-item no-spread'}
                             href={pokemon ? getPokemonHref(pokemon) : '#'}
-                            onClick={(event) => { event.preventDefault(); if (pokemon) navigateToPokemon(pokemon) }}
+                            onClick={(event) => { event.preventDefault(); if (pokemon) openTeamMemberConfig(member, pokemon) }}
                           >
                             <span className="team-slot-number">{index + 1}</span>
                             <span className="team-member-main">
@@ -1322,6 +1636,9 @@ function App() {
                       })}
                     </div>
                     <div className="team-card-foot">
+                      <button type="button" className="ghost-button team-save-button" onClick={() => addTeamToSavedGroup(team)}>
+                        {addedTeamGroups[team.id] ? '已加入盒子' : '加入盒子'}
+                      </button>
                       <a href={team.sourceUrl} target="_blank" rel="noopener noreferrer">玩家来源</a>
                       <a href={team.platformUrl} target="_blank" rel="noopener noreferrer">队伍详情</a>
                     </div>
@@ -1346,13 +1663,14 @@ function App() {
               onBack={() => setHomeTab('list')}
               onNavigateToPokemon={navigateToPokemon}
               draftConfig={selectedDraftConfig}
+              draftConfigVersion={draftLoadVersion}
               onDraftChange={handleDraftChange}
               savedPokemon={savedPokemon}
               onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
               onUpdateSaved={handleUpdateSaved}
               usageDataset={selectedUsageDataset}
               onSaveCurrent={(payload) => {
-                setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts } }))
+                setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts, blueFavoriteMoveIds: payload.blueFavorites || [] } }))
                 setSavedPokemon((current) => [{ ...payload, id: `${Date.now()}-${Math.random()}`, baseId: normalize(selectedPokemon.baseSpeciesName), label: buildSavedLabel(selectedPokemon.zh, normalize(selectedPokemon.baseSpeciesName), current), pokemonId: selectedPokemon.id }, ...current])
               }}
             />
@@ -1375,6 +1693,7 @@ function App() {
             onBack={navigateToHome}
             onNavigateToPokemon={(pokemon) => { navigateToPokemon(pokemon) }}
             draftConfig={selectedDraftConfig}
+            draftConfigVersion={draftLoadVersion}
             onDraftChange={handleDraftChange}
             savedPokemon={savedPokemon}
             onAfterSave={() => { setTopbarVisible(true); setSavedOpen(true) }}
@@ -1382,7 +1701,7 @@ function App() {
             usageDataset={selectedUsageDataset}
             onSaveCurrent={(payload) => {
               if (!selectedPokemon) return
-              setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts } }))
+              setDraftConfigs((current) => ({ ...current, [normalize(selectedPokemon.baseSpeciesName)]: { nature: payload.nature, abilityId: payload.abilityId, item: payload.item, sps: payload.sps, boosts: payload.boosts, blueFavoriteMoveIds: payload.blueFavorites || [] } }))
               setSavedPokemon((current) => [{ ...payload, id: `${Date.now()}-${Math.random()}`, baseId: normalize(selectedPokemon.baseSpeciesName), label: buildSavedLabel(selectedPokemon.zh, normalize(selectedPokemon.baseSpeciesName), current), pokemonId: selectedPokemon.id }, ...current])
             }}
           />

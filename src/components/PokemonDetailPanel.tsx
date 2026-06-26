@@ -14,6 +14,8 @@ type DraftConfig = {
   item: string
   sps: Record<'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
   boosts: Record<'atk' | 'def' | 'spa' | 'spd' | 'spe', number>
+  blueFavoriteMoveIds?: string[]
+  loadedConfigId?: string
 }
 
 const SP_LABELS: Record<string, string> = { hp: 'HP', atk: '攻击', def: '防御', spa: '特攻', spd: '特防', spe: '速度' }
@@ -36,6 +38,7 @@ type Props = {
   onAfterSave: () => void
   onUpdateSaved: (id: string, payload: Omit<SavedPokemonEntry, 'id' | 'baseId' | 'label' | 'pokemonId'>) => void
   usageDataset: UsageDataset
+  draftConfigVersion?: number
   standaloneCalc?: boolean
 }
 
@@ -248,6 +251,93 @@ function ruleMovesFor(detail: PokemonDetail | null) {
   return detail?.moves ?? []
 }
 
+function moveWikiUrl(move: PokemonMove) {
+  return `https://wiki.52poke.com/wiki/${encodeURIComponent(`${move.zh}（招式）`)}`
+}
+
+const USAGE_SPREAD_STAT_TO_KEY: Record<string, StatKey> = {
+  hp: 'hp',
+  atk: 'atk',
+  attack: 'atk',
+  攻击: 'atk',
+  def: 'def',
+  defense: 'def',
+  防御: 'def',
+  spa: 'spa',
+  spatk: 'spa',
+  specialattack: 'spa',
+  特攻: 'spa',
+  spd: 'spd',
+  spdef: 'spd',
+  specialdefense: 'spd',
+  特防: 'spd',
+  spe: 'spe',
+  speed: 'spe',
+  速度: 'spe',
+}
+
+function statKeyFromUsageToken(token: string) {
+  return USAGE_SPREAD_STAT_TO_KEY[normalizeSearch(token)]
+}
+
+function parseUsageSpread(spread?: string) {
+  const next: Record<StatKey, number> = { ...DEFAULT_SPS }
+  if (!spread) return next
+  spread.split('/').forEach((rawPart) => {
+    const part = rawPart.trim()
+    if (!part || /remainder|余/.test(part)) return
+    const valueFirst = part.match(/^(\d+)\s+(.+)$/)
+    const statFirst = part.match(/^(.+?)\s+(\d+)$/)
+    const value = Number(valueFirst?.[1] ?? statFirst?.[2])
+    const statToken = valueFirst?.[2] ?? statFirst?.[1] ?? ''
+    const key = statKeyFromUsageToken(statToken)
+    if (!key || !Number.isFinite(value)) return
+    next[key] = clampInt(value, 0, 32)
+  })
+  return next
+}
+
+function itemOptionFromUsage(item?: UsageItem) {
+  if (!item) return undefined
+  const itemKeys = [item.en, item.zh].map(normalizeSearch)
+  return ITEM_OPTIONS.find((option) =>
+    itemKeys.includes(normalizeSearch(option.value)) ||
+    itemKeys.includes(normalizeSearch(option.label)) ||
+    itemKeys.some((key) => key && normalizeSearch(option.search).includes(key))
+  )
+}
+
+function natureValueFromUsage(nature?: UsageItem | UsageSpread) {
+  const raw = nature && 'en' in nature ? nature.en : nature?.nature
+  return raw && ALL_NATURES.some((entry) => entry.value === raw) ? raw : undefined
+}
+
+function abilityIdFromUsage(detail: PokemonDetail, ability?: UsageItem) {
+  if (!ability || detail.name.toLowerCase().includes('mega')) return undefined
+  const keys = [ability.en, ability.zh].map(normalizeSearch)
+  return detail.abilities.find((entry) =>
+    keys.includes(normalizeSearch(entry.en)) ||
+    keys.includes(normalizeSearch(entry.zh)) ||
+    keys.includes(normalizeSearch(entry.id))
+  )?.id
+}
+
+function moveIdsFromUsage(detail: PokemonDetail, moves: UsageItem[]) {
+  const picked: string[] = []
+  for (const usageMove of moves) {
+    const key = normalizeSearch(`${usageMove.en} ${usageMove.zh}`)
+    if (key.includes('protect') || key.includes('守住')) continue
+    const matched = detail.moves.find((move) =>
+      normalizeSearch(move.en) === normalizeSearch(usageMove.en) ||
+      normalizeSearch(move.zh) === normalizeSearch(usageMove.zh) ||
+      normalizeSearch(move.id) === normalizeSearch(usageMove.en)
+    )
+    if (matched && !picked.includes(matched.id)) picked.push(matched.id)
+    if (picked.length >= 4) break
+  }
+  return picked
+}
+
 
 function fmtPercent(p: number) {
   return `${p.toFixed(p >= 10 ? 1 : 2)}%`
@@ -328,7 +418,7 @@ const LONGEST_STATUS_LABEL = STATUS_OPTIONS.reduce((a, b) => a.label.length >= b
 const LONGEST_WEATHER_LABEL = WEATHER_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_TERRAIN_LABEL = TERRAIN_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
 const LONGEST_ITEM_LABEL = ITEM_OPTIONS.reduce((a, b) => a.label.length >= b.label.length ? a : b).label
-export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent, savedPokemon, onAfterSave, onUpdateSaved, usageDataset, standaloneCalc }: Props) {
+export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damageTargetOptions, onChangeCompareId, favoriteMoveIds, onToggleFavoriteMove, onBack, onNavigateToPokemon, draftConfig, onDraftChange, onSaveCurrent, savedPokemon, onAfterSave, onUpdateSaved, usageDataset, draftConfigVersion = 0, standaloneCalc }: Props) {
   const [nature, setNature] = useState<string>(DEFAULT_NATURE)
   const [mainNatureQuery, setMainNatureQuery] = useState('')
   const [mainNatureOpen, setMainNatureOpen] = useState(false)
@@ -447,6 +537,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const [defenderSwitchingOut, setDefenderSwitchingOut] = useState(false)
   const [defenderTailwind, setDefenderTailwind] = useState(false)
   const lastPokemonIdRef = useRef<string | null>(null)
+  const lastDraftConfigVersionRef = useRef<number | null>(null)
 
   const familyForms = useMemo(() => formOptions, [formOptions])
   const normalForm = useMemo(() => familyForms.find((entry) => !entry.name.toLowerCase().includes('mega')) ?? null, [familyForms])
@@ -458,16 +549,16 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
 
   const [infoOpen, setInfoOpen] = useState(true)
   const [resistanceOpen, setResistanceOpen] = useState(false)
-  const [statsOpen, setStatsOpen] = useState(false)
+  const [statsOpen, setStatsOpen] = useState(() => !standaloneCalc)
   const [detailConfigMode, setDetailConfigMode] = useState<'stats' | 'damage'>(() => standaloneCalc ? 'damage' : 'stats')
-  const [usageOpen, setUsageOpen] = useState(false)
-  const [damageOpen, setDamageOpen] = useState(() => standaloneCalc === true)
+  const [usageOpen, setUsageOpen] = useState(true)
   const [movesOpen, setMovesOpen] = useState(true)
 
   useEffect(() => {
     if (!pokemon) return
-    if (lastPokemonIdRef.current === pokemon.id) return
+    if (lastPokemonIdRef.current === pokemon.id && lastDraftConfigVersionRef.current === draftConfigVersion) return
     lastPokemonIdRef.current = pokemon.id
+    lastDraftConfigVersionRef.current = draftConfigVersion
     setResistanceOpen(false)
     setCategoryFilter({ status: true, physical: true, special: true })
     setMoveOnlyYellowFav(false)
@@ -475,8 +566,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setMoveTypeFilters([])
     setMovePowerMin(0)
     setMovePowerMax(250)
-    setBlueFavoriteMoveIds([])
-    setLoadedConfigId(null)
+    setBlueFavoriteMoveIds(draftConfig?.blueFavoriteMoveIds || [])
+    setLoadedConfigId(draftConfig?.loadedConfigId ?? null)
     setLoadPopoverOpenAt(null)
     setMoveSortKey('category')
     setMoveSortDirection('asc')
@@ -567,7 +658,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     setDefenderPowerSpot(false)
     setDefenderSwitchingOut(false)
     setDefenderTailwind(false)
-  }, [draftConfig?.abilityId, draftConfig?.boosts, draftConfig?.item, draftConfig?.nature, draftConfig?.sps, pokemon])
+  }, [draftConfig, draftConfigVersion, pokemon, standaloneCalc])
 
   const attackerDetail = useMemo(() => championsDetails[attackerPokemonId] ?? pokemon, [attackerPokemonId, pokemon])
   const defenderDetail = useMemo(() => championsDetails[defenderPokemonId] ?? compareTarget ?? pokemon, [compareTarget, defenderPokemonId, pokemon])
@@ -633,8 +724,8 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   }, [pokemon, categoryFilter, favoriteMoveIds, blueFavoriteMoveIds, moveOnlyYellowFav, moveOnlyBlueFav, moveTypeFilters, movePowerMin, movePowerMax, moveSortKey, moveSortDirection])
 
   useEffect(() => {
-    onDraftChange({ nature, abilityId, item, sps, boosts })
-  }, [nature, abilityId, item, sps, boosts, onDraftChange])
+    onDraftChange({ nature, abilityId, item, sps, boosts, blueFavoriteMoveIds, loadedConfigId: loadedConfigId ?? undefined })
+  }, [nature, abilityId, item, sps, boosts, blueFavoriteMoveIds, loadedConfigId, onDraftChange])
 
   function toggleBlueFavorite(moveId: string) {
     const isBlue = blueFavoriteMoveIds.includes(moveId)
@@ -710,7 +801,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     return (
       <div className="config-actions" data-popover-root>
         <button type="button" className="config-btn" title="保存当前配置到盒子" onClick={handleSave}>↓</button>
-        {loadedConfigId && <button type="button" className="config-btn" title="覆盖保存回原配置" onClick={handleSaveBack}>↑</button>}
+        {loadedConfigId && <button type="button" className="config-btn" title="保存回原配置" onClick={handleSaveBack}>💾</button>}
         <button type="button" className={`config-btn${loadPopoverOpenAt === anchor ? ' config-btn-active' : ''}`} title="从盒子加载配置" onClick={() => setLoadPopoverOpenAt((a) => a === anchor ? null : anchor)}>＋</button>
         {loadPopoverOpenAt === anchor && renderLoadPopup()}
       </div>
@@ -838,7 +929,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const normalAbilityDetail = hasMegaFamily && normalForm ? (championsDetails[normalForm.id] ?? displayPokemon) : displayPokemon
   const infoAbilities = normalAbilityDetail.abilities
   const infoAbilityLabel = hasMegaFamily ? '普通特性' : '特性'
-  const canEditInfoAbility = normalAbilityDetail.id === displayPokemon.id
+  const canEditInfoAbility = true
   const megaAbilityLabel = megaForms.find((form) => form.id === currentFormId)?.abilities[0]?.zh || megaForms[0]?.abilities[0]?.zh || (isCurrentMega ? displayPokemon.abilities[0]?.zh : undefined) || '—'
 
   const statRows: { key: StatKey; label: string; boostKey?: BoostKey }[] = [
@@ -992,6 +1083,49 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
       setDefenderDamageItemQuery(option.value === '无' ? '' : option.label)
     }
     setOpenDamageItemPicker(null)
+  }
+
+  function loadTopUsageForSide(side: 'attacker' | 'defender', detail: PokemonDetail) {
+    const topUsage = getPokemonUsageFromDataset(usageDataset, detail.name, detail.baseSpeciesName, detail.id, detail.baseSpeciesId)
+    if (!topUsage) return
+
+    const nextItem = itemOptionFromUsage(topUsage.items[0])
+    const nextNature = natureValueFromUsage(topUsage.natures[0]) ?? natureValueFromUsage(topUsage.spreads[0])
+    const nextAbilityId = abilityIdFromUsage(detail, topUsage.abilities[0])
+    const nextSps = parseUsageSpread(topUsage.spreads[0]?.spread)
+    const nextMoveIds = moveIdsFromUsage(detail, topUsage.moves)
+    const normalizedMoveIds = nextMoveIds.concat(['', '', '', '']).slice(0, 4)
+    const nextMoveQueries = nextMoveIds
+      .map((moveId) => detail.moves.find((move) => move.id === moveId)?.zh ?? '')
+      .concat(['', '', '', ''])
+      .slice(0, 4)
+
+    if (side === 'attacker') {
+      if (nextNature) setNature(nextNature)
+      if (nextItem) {
+        setItem(nextItem.value)
+        setItemQuery(nextItem.value === '无' ? '' : nextItem.label)
+        setAttackerDamageItemQuery(nextItem.value === '无' ? '' : nextItem.label)
+      }
+      if (nextAbilityId) setAbilityId(nextAbilityId)
+      setSps(nextSps)
+      setAttackerMoveIds(normalizedMoveIds)
+      setAttackerMoveQueries(nextMoveQueries)
+    } else {
+      if (nextNature) setDefenderNature(nextNature)
+      if (nextItem) {
+        setDefenderItem(nextItem.value)
+        setDefenderDamageItemQuery(nextItem.value === '无' ? '' : nextItem.label)
+      }
+      if (nextAbilityId) setDefenderAbilityId(nextAbilityId)
+      setDefenderSps(nextSps)
+      setDefenderMoveIds(normalizedMoveIds)
+      setDefenderMoveQueries(nextMoveQueries)
+    }
+
+    setVisibleMoveCounts((current) => ({ ...current, [side]: Math.max(1, nextMoveIds.length) }))
+    setExpandedDamageResults({})
+    setDamageMoveConfigs({})
   }
 
   function addMoveGroup() {
@@ -1162,6 +1296,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const damageItemPickerOpen = openDamageItemPicker === side
     const pokemonSuggestions = pokemonSuggestionsFor(sidePokemonQuery)
     const itemSuggestions = itemSuggestionsFor(sideItemQuery)
+    const sideUsage = getPokemonUsageFromDataset(usageDataset, detail.name, detail.baseSpeciesName, detail.id, detail.baseSpeciesId)
     const sideNature = isAttacker ? nature : defenderNature
     const setSideNature = isAttacker ? setNature : setDefenderNature
     const sideNatureQuery = isAttacker ? attackerNatureQuery : defenderNatureQuery
@@ -1229,7 +1364,13 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
     const setSwitchingOut = isAttacker ? setAttackerSwitchingOut : setDefenderSwitchingOut
     return (
       <section className="damage-subpanel">
-        <div className="damage-subpanel-title"><div className="title-with-actions"><h3>{isAttacker ? '我方' : '对方'}</h3>{isAttacker && renderConfigActions('attacker')}</div><span>{pokemonDisplayName(detail)}</span></div>
+        <div className="damage-subpanel-title">
+          <div className="title-with-actions"><h3>{isAttacker ? '我方' : '对方'}</h3>{isAttacker && renderConfigActions('attacker')}</div>
+          <div className="damage-side-title-tools">
+            <span>{pokemonDisplayName(detail)}</span>
+            <button type="button" className="usage-load-button" disabled={!sideUsage} onClick={() => loadTopUsageForSide(side, detail)} title="加载最高使用率配置">常用</button>
+          </div>
+        </div>
         <div className="damage-config-grid">
           <label className="popover-field" data-popover-root><span>宝可梦</span><div className="damage-search-picker auto-size-picker"><span className="sizer" aria-hidden="true">{longestPokemonName}</span><input value={pokemonPickerOpen ? sidePokemonQuery : pokemonDisplayName(detail)} onFocus={() => { setOpenPokemonPicker(side); setSidePokemonQuery('') }} onBlur={() => setTimeout(() => setOpenPokemonPicker((current) => current === side ? null : current), 120)} onChange={(event) => { setSidePokemonQuery(event.target.value); setOpenPokemonPicker(side) }} placeholder="输入中文、拼音或英文" />{pokemonPickerOpen && <div className="search-dropdown move-damage-dropdown compact-dropdown">{pokemonSuggestions.map((target) => <button key={target.id} className="item-option-row" type="button" onMouseDown={() => selectDamagePokemon(side, target)}><span>{pokemonDisplayName(target)}</span></button>)}{pokemonSuggestions.length === 0 && <div className="popover-note">没有匹配的宝可梦。</div>}{(() => { const q = normalizeSearch(sidePokemonQuery); const cfgs = savedPokemon.filter((e) => { const name = e.customName || e.label; return !q || normalizeSearch(name).includes(q) }); return cfgs.length > 0 ? <><div className="picker-group-label">盒子</div>{cfgs.map((e) => { const pkmRow = damageTargetOptions.find((p) => p.id === e.pokemonId); return <button key={e.id} className="item-option-row" type="button" onMouseDown={() => { if (pkmRow) selectDamagePokemon(side, pkmRow); if (side === 'attacker') { setNature(normalizeNatureValue(e.nature)); setAbilityId(e.abilityId); setItem(e.item); setItemQuery(e.item === '无' ? '' : itemLabel(e.item)); setSps(e.sps); setBoosts(e.boosts) } else { setDefenderNature(normalizeNatureValue(e.nature)); setDefenderAbilityId(e.abilityId); setDefenderItem(e.item); setDefenderSps(e.sps); setDefenderBoosts(e.boosts) }; setOpenPokemonPicker(null) }}><span>{e.customName || e.label}</span><small>配置</small></button> })}</> : null })()}</div>}</div><input type="hidden" value={pokemonId} readOnly /></label>
           <label className="popover-field" data-popover-root><span>性格</span><div className="nature-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_NATURE_LABEL}</span><input value={sideNatureOpen ? sideNatureQuery : natureLabel(sideNature)} onFocus={() => { setSideNatureOpen(true); setSideNatureQuery('') }} onBlur={() => setTimeout(() => setSideNatureOpen(false), 120)} onChange={(event) => setSideNatureQuery(event.target.value)} placeholder="性格" />{sideNatureOpen && <div className="search-dropdown nature-dropdown compact-dropdown">{filterNatures(sideNatureQuery).map(option => <button key={option.value} className="item-option-row" type="button" onMouseDown={() => { setSideNature(option.value); setSideNatureOpen(false); setSideNatureQuery('') }}><span>{option.label}</span></button>)}</div>}</div></label>
@@ -1348,7 +1489,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
               <span>属性抗性</span>
               <button
                 type="button"
-                className={`mini-toggle-btn${resistanceOpen ? ' open' : ''}`}
+                className={`mini-toggle-btn borderless-toggle${resistanceOpen ? ' open' : ''}`}
                 onClick={() => setResistanceOpen((value) => !value)}
                 aria-label={resistanceOpen ? '收起属性抗性' : '展开属性抗性'}
               />
@@ -1465,67 +1606,17 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
         </section>
       )}
 
-      {standaloneCalc && attackerDetail && defenderDetail && (
-        <section className="plain-section damage-panel-section">
-          <button type="button" className={`section-toggle-btn${damageOpen ? ' open' : ''}`} onClick={() => setDamageOpen((v) => !v)} aria-label={damageOpen ? '收起' : '展开'} />
-          <div className="damage-panel-head">
-            <div>
-              <h2>伤害计算</h2>
-              <p>技能与结果集中在中间面板；两侧只保留双方配置。</p>
-            </div>
-          </div>
-          {damageOpen && (
-          <div className="damage-subpanel-grid damage-three-column-grid">
-            {renderBattleSide('attacker')}
-
-            <div className="damage-center-stack">
-              <section className="damage-subpanel moves-damage-subpanel">
-                <div className="damage-subpanel-title"><h3>技能</h3><button type="button" className="add-move-group-button" disabled={visibleMoveCounts.attacker >= 4 && visibleMoveCounts.defender >= 4} onClick={addMoveGroup}>添加技能组</button></div>
-                <div className="damage-move-columns">
-                  <div className="damage-move-column">
-                    <div className="damage-move-column-head"><h4>我方技能</h4></div>
-                    {Array.from({ length: visibleMoveCounts.attacker }, (_, index) => renderMovePicker('attacker', index))}
-                  </div>
-                  <div className="damage-move-column">
-                    <div className="damage-move-column-head"><h4>对方技能</h4></div>
-                    {Array.from({ length: visibleMoveCounts.defender }, (_, index) => renderMovePicker('defender', index))}
-                  </div>
-                </div>
-              </section>
-
-              <section className="damage-subpanel field-subpanel">
-                <div className="damage-subpanel-title"><h3>场地信息</h3><button type="button" className="battle-mode-toggle" onClick={() => setDamageGameType((current) => current === 'Doubles' ? 'Singles' : 'Doubles')}><span>⇄</span>{damageGameType === 'Doubles' ? '双打' : '单打'}</button></div>
-                <div className="damage-config-grid">
-                  <label className="popover-field" data-popover-root><span>天气</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_WEATHER_LABEL}</span><input value={weatherOpen ? weatherQuery : (WEATHER_OPTIONS.find(o => o.value === damageWeather)?.label ?? '')} onFocus={() => { setWeatherOpen(true); setWeatherQuery('') }} onBlur={() => setTimeout(() => setWeatherOpen(false), 120)} onChange={(e) => setWeatherQuery(e.target.value)} placeholder="天气" />{weatherOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(WEATHER_OPTIONS, weatherQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setDamageWeather(opt.value); setWeatherOpen(false); setWeatherQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
-                  <label className="popover-field" data-popover-root><span>场地</span><div className="inline-picker auto-size-picker"><span className="sizer" aria-hidden="true">{LONGEST_TERRAIN_LABEL}</span><input value={terrainOpen ? terrainQuery : (TERRAIN_OPTIONS.find(o => o.value === damageTerrain)?.label ?? '')} onFocus={() => { setTerrainOpen(true); setTerrainQuery('') }} onBlur={() => setTimeout(() => setTerrainOpen(false), 120)} onChange={(e) => setTerrainQuery(e.target.value)} placeholder="场地" />{terrainOpen && <div className="search-dropdown inline-picker-dropdown compact-dropdown">{filterOptions(TERRAIN_OPTIONS, terrainQuery).map(opt => <button key={opt.value} className="item-option-row" type="button" onMouseDown={() => { setDamageTerrain(opt.value); setTerrainOpen(false); setTerrainQuery('') }}><span>{opt.label}</span></button>)}</div>}</div></label>
-                </div>
-                <details className="damage-advanced">
-                  <summary>展开</summary>
-                  <div className="damage-side-grid">
-                    <label className="toggle-chip"><input type="checkbox" checked={isMagicRoom} onChange={(event) => setIsMagicRoom(event.target.checked)} />魔法空间</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isWonderRoom} onChange={(event) => setIsWonderRoom(event.target.checked)} />奇妙空间</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isGravity} onChange={(event) => setIsGravity(event.target.checked)} />重力</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isBeadsOfRuin} onChange={(event) => setIsBeadsOfRuin(event.target.checked)} />灾祸之玉</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isTabletsOfRuin} onChange={(event) => setIsTabletsOfRuin(event.target.checked)} />灾祸之简</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isSwordOfRuin} onChange={(event) => setIsSwordOfRuin(event.target.checked)} />灾祸之剑</label>
-                    <label className="toggle-chip"><input type="checkbox" checked={isVesselOfRuin} onChange={(event) => setIsVesselOfRuin(event.target.checked)} />灾祸之鼎</label>
-                  </div>
-                </details>
-              </section>
-            </div>
-
-            {renderBattleSide('defender')}
-          </div>
-          )}
-        </section>
-      )}
+      {standaloneCalc && attackerDetail && defenderDetail && renderDamageCalculatorBody()}
 
       {!standaloneCalc && <section className="plain-section">
         <button type="button" className={`section-toggle-btn${movesOpen ? ' open' : ''}`} onClick={() => setMovesOpen((v) => !v)} aria-label={movesOpen ? '收起' : '展开'} />
         <div className="moves-headline">
-          <div className="title-with-actions">
-            <h2>招式列表</h2>
-            {renderConfigActions('moves')}
+          <div>
+            <div className="title-with-actions">
+              <h2>招式列表</h2>
+              {renderConfigActions('moves')}
+            </div>
+            <p className="moves-note">招式说明仅供参考</p>
           </div>
           <div className="moves-head-actions">
             <div className="floating-control" data-popover-root>
@@ -1585,7 +1676,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
                   <td>
                     <div className="move-name-cell">
                       <span className="move-name-main">
-                        <span>{move.zh}</span>
+                        <a href={moveWikiUrl(move)} target="_blank" rel="noopener noreferrer" onClick={(event) => event.stopPropagation()}>{move.zh}</a>
                         <span className="move-description-control" data-popover-root>
                           <button
                             type="button"

@@ -9921,13 +9921,16 @@
   {
     "id": "floetteeternal",
     "num": 670,
-    "zh": "花叶蒂",
+    "zh": "永恒花叶蒂",
     "name": "Floette-Eternal",
-    "pinyin": "huayedi",
-    "initials": "hyd",
+    "pinyin": "yonghenghuayedi",
+    "initials": "yhhyd",
     "slugVariants": [
-      "花叶蒂",
+      "永恒花叶蒂",
       "floetteeternal",
+      "yonghenghuayedi",
+      "yhhyd",
+      "花叶蒂",
       "huayedi"
     ],
     "baseSpeciesName": "Floette",
@@ -9959,8 +9962,11 @@
     },
     "bst": 551,
     "searchKeys": [
-      "花叶蒂",
+      "永恒花叶蒂",
       "floetteeternal",
+      "yonghenghuayedi",
+      "yhhyd",
+      "花叶蒂",
       "huayedi",
       "hyd"
     ]
@@ -9968,13 +9974,16 @@
   {
     "id": "floettemega",
     "num": 670,
-    "zh": "花叶蒂",
+    "zh": "永恒花叶蒂（Mega）",
     "name": "Floette-Mega",
-    "pinyin": "huayedi",
-    "initials": "hyd",
+    "pinyin": "yonghenghuayedi（mega）",
+    "initials": "yhhyd（mega）",
     "slugVariants": [
-      "花叶蒂",
+      "永恒花叶蒂（Mega）",
       "floettemega",
+      "yonghenghuayedi（mega）",
+      "yhhyd（mega）",
+      "花叶蒂",
       "huayedi"
     ],
     "baseSpeciesName": "Floette",
@@ -10001,8 +10010,12 @@
     },
     "bst": 651,
     "searchKeys": [
-      "花叶蒂",
+      "永恒花叶蒂mega",
       "floettemega",
+      "yonghenghuayedimega",
+      "yhhydmega",
+      "mega",
+      "花叶蒂",
       "huayedi",
       "hyd"
     ]

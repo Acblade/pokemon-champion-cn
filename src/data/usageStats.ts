@@ -57,6 +57,11 @@ function normalizeId(name: string) {
   return name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '')
 }
 
+const USAGE_ALIAS_KEYS: Record<string, string[]> = {
+  floettemega: ['floetteeternal'],
+  floetteeternalmega: ['floetteeternal'],
+}
+
 export function getPokemonUsage(...names: string[]): UsageEntry | null {
   return getPokemonUsageFromDataset(usageDataset, ...names)
 }
@@ -89,8 +94,13 @@ export function isTrainerRankingOutdated(currentDataset: UsageDataset, trainerDa
 
 export function getPokemonUsageFromDataset(dataset: UsageDataset, ...names: string[]): UsageEntry | null {
   for (const name of names) {
-    const hit = dataset.entries[normalizeId(name)]
+    const key = normalizeId(name)
+    const hit = dataset.entries[key]
     if (hit) return hit
+    for (const alias of USAGE_ALIAS_KEYS[key] || []) {
+      const aliasHit = dataset.entries[alias]
+      if (aliasHit) return aliasHit
+    }
   }
   return null
 }

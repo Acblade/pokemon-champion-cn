@@ -13,7 +13,9 @@ export type TeamShareMember = {
 
 export type TeamShareSource = {
   name: string
+  season?: string
   url: string
+  homeUrl?: string
   note: string
   updatedAt: string
   count?: number
@@ -23,6 +25,7 @@ export type TeamShare = {
   id: string
   title: string
   author: string
+  owner?: string
   teamId: string
   source: string
   sourceGroup?: string
