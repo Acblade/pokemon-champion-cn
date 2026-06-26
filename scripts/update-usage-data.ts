@@ -131,6 +131,7 @@ type TrainerRankingEntry = { rank: number; rating: number | null; name: string }
 type UsageDataset = {
   source: string
   sourceUrl: string
+  sourceUpdatedAt?: string
   trainerSource?: string
   trainerSourceUrl: string
   trainerRankingsUpdatedAt?: string
@@ -562,9 +563,31 @@ function parseGameWithPokemonData(html: string) {
   return extractJsObjectLiteral<Record<string, GameWithPokemonData>>(html, 'const pkchPokemonData = ')
 }
 
-function parseGameWithDate(html: string) {
+function parseGameWithUpdatedAt(html: string) {
+  const metaValue = html.match(/<meta name="date" content="([^"]+)"/)?.[1]
+  if (metaValue) {
+    const parsed = new Date(metaValue)
+    if (!Number.isNaN(parsed.getTime())) return parsed.toISOString()
+  }
+
+  const normalized = stripTags(html).replace(/\s+/g, '')
+  const match = normalized.match(/最終更新[:：]?(\d{4})年(\d{1,2})月(\d{1,2})日(\d{1,2}):(\d{2})/)
+  if (match) {
+    const [, year, month, day, hour, minute] = match.map(Number)
+    const utcMs = Date.UTC(year, month - 1, day, hour - 9, minute, 0)
+    return new Date(utcMs).toISOString()
+  }
+
+  return new Date().toISOString()
+}
+
+function parseGameWithDate(html: string, sourceUpdatedAt?: string) {
   const metaDate = html.match(/<meta name="date" content="(\d{4}-\d{2}-\d{2})T/)?.[1]
   if (metaDate) return metaDate
+  if (sourceUpdatedAt) {
+    const localDate = sourceUpdatedAt.match(/^(\d{4}-\d{2}-\d{2})T/)?.[1]
+    if (localDate) return localDate
+  }
   const info = stripTags(html.match(/<p class="gw-info">([\s\S]*?)<\/p>/)?.[1] ?? '')
   const md = info.match(/(\d{1,2})\/(\d{1,2})/)
   if (!md) return new Date().toISOString().slice(0, 10)
@@ -904,7 +927,8 @@ async function fetchGameWithUsageDataset(
     )
   }
 
-  const date = parseGameWithDate(html)
+  const sourceUpdatedAt = parseGameWithUpdatedAt(html)
+  const date = parseGameWithDate(html, sourceUpdatedAt)
   const trainers = await fetchTrainerRankingsSafely()
   const trainerRankingsNote = trainers.available
     ? undefined
@@ -912,6 +936,7 @@ async function fetchGameWithUsageDataset(
   return {
     source: GAMEWITH_SOURCE,
     sourceUrl,
+    sourceUpdatedAt,
     trainerSource: trainers.available ? 'Battle Database Champions' : undefined,
     trainerSourceUrl: trainers.sourceUrl,
     trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? new Date().toISOString() : undefined,

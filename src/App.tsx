@@ -92,11 +92,8 @@ const RULE_META: Record<string, { label: string; seasons: { id: string; label: s
 
 type HomeTab = 'list' | 'trainers' | 'teams' | 'damage'
 
-type ManualTrainerRankingOverride = {
-  format: string
-  updatedAt: string
-  rankings: TrainerRankingEntry[]
-}
+const HOME_TAB_PATHS: Record<HomeTab, string> = { list: '', trainers: 'trainers', teams: 'teams', damage: 'damage' }
+const HOME_PATH_TABS: Record<string, HomeTab> = { '': 'list', list: 'list', trainers: 'trainers', teams: 'teams', damage: 'damage' }
 
 type DraftConfig = {
   nature: string
@@ -622,6 +619,15 @@ function withBasePath(path: string) {
   return `${normalizedBase}${path}` || '/'
 }
 
+function homeTabFromPath(pathname: string): HomeTab | null {
+  return HOME_PATH_TABS[pathname] ?? null
+}
+
+function getHomeTabHref(tab: HomeTab) {
+  const path = HOME_TAB_PATHS[tab]
+  return withBasePath(path ? `/${path}` : '/')
+}
+
 function getPokemonHref(pokemon: PokemonRow) {
   return withBasePath(`/${slugify(pokemon.id)}`)
 }
@@ -638,7 +644,7 @@ function getCurrentPath() {
 
 function resolvePokemonFromPath(pathname = getCurrentPath()) {
   const slug = pathname
-  if (!slug || slug === 'saved') return null
+  if (!slug || slug === 'saved' || homeTabFromPath(slug)) return null
   const normalized = normalize(slug)
 
   const exactIdMatch = championsPokemon.find((pokemon) => normalize(pokemon.id) === normalized)
@@ -819,26 +825,19 @@ function parseManualRankingText(text: string) {
   return rankings.sort((a, b) => a.rank - b.rank)
 }
 
-function loadManualTrainerRankingOverride(): ManualTrainerRankingOverride | null {
-  if (typeof window === 'undefined') return null
-  try {
-    const raw = window.localStorage.getItem(MANUAL_TRAINER_RANKING_STORAGE_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw) as ManualTrainerRankingOverride
-    if (!parsed || typeof parsed.format !== 'string' || typeof parsed.updatedAt !== 'string' || !Array.isArray(parsed.rankings)) return null
-    return parsed
-  } catch {
-    return null
-  }
-}
-
-function saveManualTrainerRankingOverride(override: ManualTrainerRankingOverride) {
-  window.localStorage.setItem(MANUAL_TRAINER_RANKING_STORAGE_KEY, JSON.stringify(override))
+function isManualTrainerImportDue(dataset: UsageDataset | null) {
+  if (!dataset) return false
+  const updatedAt = dataset.trainerRankingsUpdatedAt
+  if (!updatedAt) return true
+  const updatedTime = Date.parse(updatedAt)
+  if (!Number.isFinite(updatedTime)) return true
+  return Date.now() - updatedTime >= 24 * 60 * 60 * 1000
 }
 
 function App() {
   const initialPath = getCurrentPath()
   const initialPokemon = resolvePokemonFromPath(initialPath)
+  const initialHomeTab = homeTabFromPath(initialPath) ?? 'list'
   const [theme, setTheme] = useState<ThemeMode>(() => loadTheme())
   const [currentPath, setCurrentPath] = useState(initialPath)
   const [query, setQuery] = useState('')
@@ -862,7 +861,7 @@ function App() {
   const [damageTargetId, setDamageTargetId] = useState<string>('')
   const [draftConfigs, setDraftConfigs] = useState<Record<string, DraftConfig>>({})
   const [topbarVisible, setTopbarVisible] = useState(true)
-  const [homeTab, setHomeTab] = useState<HomeTab>('list')
+  const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
   const [currentRule, setCurrentRule] = useState('M-B')
   const [currentSeason, setCurrentSeason] = useState('3')
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
@@ -880,30 +879,22 @@ function App() {
   const [manualRankingText, setManualRankingText] = useState('')
   const [manualRankingStatus, setManualRankingStatus] = useState('')
   const [manualRankingError, setManualRankingError] = useState('')
-  const [manualRankingOverride, setManualRankingOverride] = useState<ManualTrainerRankingOverride | null>(() => loadManualTrainerRankingOverride())
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     saveTheme(theme)
   }, [theme])
 
+  useEffect(() => {
+    window.localStorage.removeItem(MANUAL_TRAINER_RANKING_STORAGE_KEY)
+  }, [])
+
   const selectedUsageDataset = useMemo(() => getUsageDataset(currentSeason, BATTLE_USAGE_RULE), [currentSeason])
-  const selectedTrainerRankingDataset = useMemo<UsageDataset>(() => {
-    if (!manualRankingOverride || manualRankingOverride.format !== selectedUsageDataset.format) return selectedUsageDataset
-    return {
-      ...selectedUsageDataset,
-      trainerSource: 'Battle Database Champions',
-      trainerRankingsUpdatedAt: manualRankingOverride.updatedAt,
-      trainerRankingsAvailable: true,
-      trainerRankingsNote: '玩家排名来自本浏览器手动导入。',
-      trainerRankings: manualRankingOverride.rankings,
-    }
-  }, [manualRankingOverride, selectedUsageDataset])
   const latestTrainerRankingDataset = useMemo(() => getLatestTrainerRankingDataset(BATTLE_USAGE_RULE), [])
-  const currentTrainerRankingDataset = selectedTrainerRankingDataset.trainerRankings.length > 0 ? selectedTrainerRankingDataset : null
+  const currentTrainerRankingDataset = selectedUsageDataset.trainerRankings.length > 0 ? selectedUsageDataset : null
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
-  const trainerRankingUnupdated = isTrainerRankingOutdated(selectedTrainerRankingDataset, currentTrainerRankingDataset)
-  const showManualTrainerImportButton = Boolean(trainerRankingDataset)
+  const trainerRankingUnupdated = isTrainerRankingOutdated(selectedUsageDataset, currentTrainerRankingDataset)
+  const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingDataset)
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1008,7 +999,7 @@ function App() {
       .sort((a, b) => moveSearchRank(a, q) - moveSearchRank(b, q) || a.zh.localeCompare(b.zh, 'zh-Hans-CN'))
   }, [filters.moveQuery2, filters.selectedMoves, moveOptions])
 
-  const detailMode = !!currentPath && currentPath !== 'saved'
+  const detailMode = !!currentPath && currentPath !== 'saved' && !homeTabFromPath(currentPath)
   const savedPageMode = currentPath === 'saved'
   const formFamilyOptions = useMemo(() => selectedPokemon ? championsPokemon.filter((entry) => entry.baseSpeciesId === selectedPokemon.baseSpeciesId) : [], [selectedPokemon])
   const damageTargetOptions = useMemo(() => championsPokemon, [])
@@ -1125,14 +1116,11 @@ function App() {
     try {
       const importedTime = parseManualRankingTimeLocal(manualRankingTime)
       const rankings = parseManualRankingText(manualRankingText)
-      const override = { format: selectedUsageDataset.format, updatedAt: importedTime.iso, rankings }
-      saveManualTrainerRankingOverride(override)
-      setManualRankingOverride(override)
       if (!MANUAL_RANKING_API_URL) {
-        setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；后端服务尚未配置，暂时不会写回 GitHub 仓库。`)
+        setManualRankingError(`已解析 ${rankings.length} 人，但后端服务尚未配置，无法写回 GitHub 仓库。`)
         return
       }
-      setManualRankingStatus(`已保存到本浏览器，并在本页显示。已解析 ${rankings.length} 人；正在提交后端写回 GitHub。`)
+      setManualRankingStatus(`已解析 ${rankings.length} 人；正在提交后端写回 GitHub。`)
       const response = await fetch(MANUAL_RANKING_API_URL, {
         method: 'POST',
         headers: {
@@ -1159,7 +1147,7 @@ function App() {
       if (!response.ok || !result?.ok) {
         throw new Error(result?.error || `后端返回 ${response.status}`)
       }
-      setManualRankingStatus(`已保存到本浏览器，并已提交后端写回 GitHub。已解析 ${rankings.length} 人；Pages 会在仓库更新后自动部署。`)
+      setManualRankingStatus(`已提交后端写回 GitHub。已解析 ${rankings.length} 人；Pages 会在仓库更新后自动部署。`)
     } catch (error) {
       setManualRankingError(error instanceof Error ? error.message : String(error))
     }
@@ -1224,10 +1212,19 @@ function App() {
     window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
+  function navigateToHomeTab(tab: HomeTab) {
+    setHomeTab(tab)
+    const href = getHomeTabHref(tab)
+    window.history.pushState({}, '', href)
+    setCurrentPath(getCurrentPath())
+    if (!selectedPokemonId) setSelectedPokemonId(championsPokemon[0]?.id ?? null)
+  }
+
   function navigateToHome() {
     setSelectedPokemonId(championsPokemon[0]?.id ?? null)
-    window.history.pushState({}, '', withBasePath('/'))
+    window.history.pushState({}, '', getHomeTabHref('list'))
     setCurrentPath('')
+    setHomeTab('list')
     window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
@@ -1241,6 +1238,12 @@ function App() {
     const onPopState = () => {
       const nextPath = getCurrentPath()
       setCurrentPath(nextPath)
+      const nextHomeTab = homeTabFromPath(nextPath)
+      if (nextHomeTab) {
+        setHomeTab(nextHomeTab)
+        setSelectedPokemonId((current) => current ?? championsPokemon[0]?.id ?? null)
+        return
+      }
       const next = resolvePokemonFromPath(nextPath)
       setSelectedPokemonId(next?.id ?? championsPokemon[0]?.id ?? null)
     }
@@ -1439,8 +1442,8 @@ function App() {
               <div className="home-title-line">
                 <h1>Pokemon Champions 中文数据站</h1>
                 <div className="home-title-nav">
-                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => setHomeTab('trainers')}>玩家排名{trainerRankingUnupdated ? '（未更新）' : ''}</button>
-                  <button type="button" className={homeTab === 'teams' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => setHomeTab('teams')}>队伍分享</button>
+                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('trainers')}>玩家排名{trainerRankingUnupdated ? '（未更新）' : ''}</button>
+                  <button type="button" className={homeTab === 'teams' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('teams')}>队伍分享</button>
                 </div>
               </div>
             </div>
@@ -1694,8 +1697,8 @@ function App() {
           </div>
 
           <div className="home-tabs">
-            <button type="button" className={homeTab === 'list' ? 'home-tab active' : 'home-tab'} onClick={() => setHomeTab('list')}>宝可梦列表</button>
-            <button type="button" className={homeTab === 'damage' ? 'home-tab active' : 'home-tab'} onClick={() => setHomeTab('damage')}>伤害计算器</button>
+            <button type="button" className={homeTab === 'list' ? 'home-tab active' : 'home-tab'} onClick={() => navigateToHomeTab('list')}>宝可梦列表</button>
+            <button type="button" className={homeTab === 'damage' ? 'home-tab active' : 'home-tab'} onClick={() => navigateToHomeTab('damage')}>伤害计算器</button>
           </div>
 
           {homeTab === 'list' && (
@@ -1905,7 +1908,7 @@ function App() {
               onChangeCompareId={setDamageTargetId}
               favoriteMoveIds={favoriteMoveIds}
               onToggleFavoriteMove={(moveId) => setFavoriteMoveIds((current) => current.includes(moveId) ? current.filter((id) => id !== moveId) : [...current, moveId])}
-              onBack={() => setHomeTab('list')}
+              onBack={() => navigateToHomeTab('list')}
               onNavigateToPokemon={navigateToPokemon}
               draftConfig={selectedDraftConfig}
               draftConfigVersion={draftLoadVersion}

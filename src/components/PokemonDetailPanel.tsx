@@ -351,6 +351,28 @@ function usageSourceLabel(dataset: { source?: string; sourceUrl: string }) {
   }
 }
 
+function usageSourceTimeLabel(dataset: UsageDataset) {
+  const sourceDate = dataset.sourceUpdatedAt ? new Date(dataset.sourceUpdatedAt) : null
+  if (sourceDate && !Number.isNaN(sourceDate.getTime())) {
+    const parts = new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Tokyo',
+    }).formatToParts(sourceDate)
+    const part = (type: string) => parts.find((item) => item.type === type)?.value ?? ''
+    return `${part('year')} 年 ${part('month')} 月 ${part('day')} 日 ${part('hour')}:${part('minute')}`
+  }
+  return usageDatasetDateLabel(dataset.date)
+}
+
+function usageDatasetDateLabel(date: string) {
+  return `${date.slice(5).replace('-', ' 月 ')} 日`
+}
+
 function renderUsageChips(items: UsageItem[], title: string, limit = 6) {
   const visible = items.slice(0, limit)
   if (!visible.length) return null
@@ -1656,7 +1678,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           <div className="usage-section-head">
             <div>
               <h2>当前使用率</h2>
-              <p><a href={usageDataset.sourceUrl} target="_blank" rel="noopener noreferrer">{usageSourceLabel(usageDataset)}</a> · {usageDataset.date.slice(5).replace('-', ' 月 ')} 日</p>
+              <p><a href={usageDataset.sourceUrl} target="_blank" rel="noopener noreferrer">{usageSourceLabel(usageDataset)}</a> · {usageSourceTimeLabel(usageDataset)}</p>
             </div>
             <div className="usage-rank-badge">
               <span>排名</span>

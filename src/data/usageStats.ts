@@ -26,6 +26,7 @@ export type TrainerRankingEntry = {
 export type UsageDataset = {
   source: string
   sourceUrl: string
+  sourceUpdatedAt?: string
   trainerSource?: string
   trainerSourceUrl?: string
   trainerRankingsUpdatedAt?: string
