@@ -2,14 +2,14 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-3-rule-1",
-  "updatedAt": "2026-06-26T18:18:25.942Z",
+  "updatedAt": "2026-06-26T18:27:41.078Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
       "trainerSource": "Battle Database Champions",
       "trainerSourceUrl": "https://champs.pokedb.tokyo/trainer/list?season=3&rule=1",
-      "trainerRankingsUpdatedAt": "2026-06-25T21:57:00.000Z",
+      "trainerRankingsUpdatedAt": "2026-06-25T21:58:00.000Z",
       "format": "champs-season-3-rule-1",
       "regulation": "M-B",
       "battle": "Doubles",
@@ -24,7 +24,7 @@
       "trainerRankings": [
         {
           "rank": 1,
-          "rating": 2999.111,
+          "rating": 2283.111,
           "name": "べくと"
         },
         {
