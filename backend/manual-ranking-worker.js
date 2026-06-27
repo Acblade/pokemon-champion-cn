@@ -65,19 +65,56 @@ function parseImportedTimestamp(payload) {
 }
 
 function parseRankingName(rawValue) {
-  const lines = String(rawValue || '')
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-  const firstLine = lines[0] || String(rawValue || '').trim()
-  const tokens = firstLine.split(/\s+/).filter(Boolean)
+  const normalizedValue = String(rawValue || '').trim().replace(/\s+/g, ' ')
+  const tokens = normalizedValue.split(/\s+/).filter(Boolean)
   if (tokens.length >= 2 && tokens.length % 2 === 0) {
     const middle = tokens.length / 2
     const left = tokens.slice(0, middle).join(' ')
     const right = tokens.slice(middle).join(' ')
     if (left === right) return left
   }
-  return tokens[0] || firstLine
+  return normalizedValue
+}
+
+function isRankingToken(value, expectedRank) {
+  return /^\d{1,3}$/.test(value) && Number(value) === expectedRank
+}
+
+function isRatingToken(value) {
+  const rating = Number(value)
+  return /^\d+(?:\.\d+)?$/.test(value) && Number.isFinite(rating) && rating >= 0
+}
+
+function findRankingStart(tokens, fromIndex, expectedRank) {
+  for (let index = fromIndex; index < tokens.length - 1; index += 1) {
+    if (isRankingToken(tokens[index], expectedRank) && isRatingToken(tokens[index + 1])) return index
+  }
+  return -1
+}
+
+function parseRankingsSequential(text) {
+  const tokens = String(text || '')
+    .replace(/\r\n/g, '\n')
+    .replace(/^日本時間.*$/gm, '\n')
+    .replace(/^日本时间.*$/gm, '\n')
+    .replace(/--+/g, '\n')
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean)
+  const rankings = []
+  let cursor = 0
+  for (let expectedRank = 1; expectedRank <= 300; expectedRank += 1) {
+    const start = findRankingStart(tokens, cursor, expectedRank)
+    if (start < 0) break
+    const nextStart = expectedRank < 300 ? findRankingStart(tokens, start + 2, expectedRank + 1) : tokens.length
+    const end = nextStart < 0 ? tokens.length : nextStart
+    const name = parseRankingName(tokens.slice(start + 2, end).join(' '))
+    const rating = Number(tokens[start + 1])
+    if (!name || !Number.isFinite(rating)) break
+    rankings.push({ rank: expectedRank, rating, name })
+    cursor = end
+  }
+  return rankings
 }
 
 function parseRankingsByRecordPattern(text) {
@@ -100,6 +137,9 @@ function parseRankingsByRecordPattern(text) {
 }
 
 function parseRankings(text) {
+  const sequentialRankings = parseRankingsSequential(text)
+  if (sequentialRankings.length >= 300) return sequentialRankings.slice(0, 300)
+
   const patternRankings = parseRankingsByRecordPattern(text)
   if (patternRankings.length >= 300) return patternRankings.slice(0, 300).sort((a, b) => a.rank - b.rank)
 

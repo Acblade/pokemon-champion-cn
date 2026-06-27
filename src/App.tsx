@@ -770,19 +770,56 @@ function parseManualRankingTimeJst(value: string) {
 }
 
 function parseManualRankingName(rawValue: string) {
-  const lines = rawValue
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-  const firstLine = lines[0] || rawValue.trim()
-  const tokens = firstLine.split(/\s+/).filter(Boolean)
+  const normalizedValue = rawValue.trim().replace(/\s+/g, ' ')
+  const tokens = normalizedValue.split(/\s+/).filter(Boolean)
   if (tokens.length >= 2 && tokens.length % 2 === 0) {
     const middle = tokens.length / 2
     const left = tokens.slice(0, middle).join(' ')
     const right = tokens.slice(middle).join(' ')
     if (left === right) return left
   }
-  return tokens[0] || firstLine
+  return normalizedValue
+}
+
+function isRankingToken(value: string, expectedRank: number) {
+  return /^\d{1,3}$/.test(value) && Number(value) === expectedRank
+}
+
+function isRatingToken(value: string) {
+  const rating = Number(value)
+  return /^\d+(?:\.\d+)?$/.test(value) && Number.isFinite(rating) && rating >= 0
+}
+
+function findRankingStart(tokens: string[], fromIndex: number, expectedRank: number) {
+  for (let index = fromIndex; index < tokens.length - 1; index += 1) {
+    if (isRankingToken(tokens[index], expectedRank) && isRatingToken(tokens[index + 1])) return index
+  }
+  return -1
+}
+
+function parseManualRankingTextSequential(text: string) {
+  const tokens = text
+    .replace(/\r\n/g, '\n')
+    .replace(/^日本時間.*$/gm, '\n')
+    .replace(/^日本时间.*$/gm, '\n')
+    .replace(/--+/g, '\n')
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean)
+  const rankings: TrainerRankingEntry[] = []
+  let cursor = 0
+  for (let expectedRank = 1; expectedRank <= 300; expectedRank += 1) {
+    const start = findRankingStart(tokens, cursor, expectedRank)
+    if (start < 0) break
+    const nextStart = expectedRank < 300 ? findRankingStart(tokens, start + 2, expectedRank + 1) : tokens.length
+    const end = nextStart < 0 ? tokens.length : nextStart
+    const name = parseManualRankingName(tokens.slice(start + 2, end).join(' '))
+    const rating = Number(tokens[start + 1])
+    if (!name || !Number.isFinite(rating)) break
+    rankings.push({ rank: expectedRank, rating, name })
+    cursor = end
+  }
+  return rankings
 }
 
 function parseManualRankingTextByRecordPattern(text: string) {
@@ -805,6 +842,9 @@ function parseManualRankingTextByRecordPattern(text: string) {
 }
 
 function parseManualRankingText(text: string) {
+  const sequentialRankings = parseManualRankingTextSequential(text)
+  if (sequentialRankings.length >= 300) return sequentialRankings.slice(0, 300)
+
   const patternRankings = parseManualRankingTextByRecordPattern(text)
   if (patternRankings.length >= 300) return patternRankings.slice(0, 300).sort((a, b) => a.rank - b.rank)
 
@@ -1721,13 +1761,13 @@ function App() {
                     {showListColumn('zh') && <th className="pokemon-name-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>}
                     {showListColumn('name') && <th className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'name') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('name'); setSortDirection('asc') } }}>英文名称{sortIndicator(sortKey, 'name', sortDirection)}</button></th>}
                     {showListColumn('types') && <th className="pokemon-type-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>}
-                    {showListColumn('hp') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
-                    {showListColumn('atk') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
-                    {showListColumn('def') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
-                    {showListColumn('spa') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('asc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>}
-                    {showListColumn('spd') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('asc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>}
-                    {showListColumn('spe') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('asc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>}
-                    {showListColumn('bst') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('asc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>}
+                    {showListColumn('hp') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
+                    {showListColumn('atk') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
+                    {showListColumn('def') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
+                    {showListColumn('spa') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('asc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>}
+                    {showListColumn('spd') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('asc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>}
+                    {showListColumn('spe') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('asc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>}
+                    {showListColumn('bst') && <th className="pokemon-stat-column pokemon-bst-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('asc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -1749,13 +1789,13 @@ function App() {
                       {showListColumn('zh') && <td className="pokemon-name-column"><a className="link-button" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemonDisplayName(pokemon)}</a></td>}
                       {showListColumn('name') && <td className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><a className="link-button muted-link" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemon.name}</a></td>}
                       {showListColumn('types') && <td className="pokemon-type-column"><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>}
-                      {showListColumn('hp') && <td>{pokemon.baseStats.hp}</td>}
-                      {showListColumn('atk') && <td>{pokemon.baseStats.atk}</td>}
-                      {showListColumn('def') && <td>{pokemon.baseStats.def}</td>}
-                      {showListColumn('spa') && <td>{pokemon.baseStats.spa}</td>}
-                      {showListColumn('spd') && <td>{pokemon.baseStats.spd}</td>}
-                      {showListColumn('spe') && <td>{pokemon.baseStats.spe}</td>}
-                      {showListColumn('bst') && <td>{pokemon.bst}</td>}
+                      {showListColumn('hp') && <td className="pokemon-stat-column">{pokemon.baseStats.hp}</td>}
+                      {showListColumn('atk') && <td className="pokemon-stat-column">{pokemon.baseStats.atk}</td>}
+                      {showListColumn('def') && <td className="pokemon-stat-column">{pokemon.baseStats.def}</td>}
+                      {showListColumn('spa') && <td className="pokemon-stat-column">{pokemon.baseStats.spa}</td>}
+                      {showListColumn('spd') && <td className="pokemon-stat-column">{pokemon.baseStats.spd}</td>}
+                      {showListColumn('spe') && <td className="pokemon-stat-column">{pokemon.baseStats.spe}</td>}
+                      {showListColumn('bst') && <td className="pokemon-stat-column pokemon-bst-column">{pokemon.bst}</td>}
                     </tr>
                     )
                   })}
@@ -1789,7 +1829,7 @@ function App() {
                       </label>
                       <label className="manual-ranking-field">
                         <span>玩家排名</span>
-                        <small>请从网站复制共三页的排名信息，网站会将其自动整理成易读的形式。</small>
+                        <small>将网站上共三页的数据，粘贴到下面文本框，网站会自动分析数据</small>
                         <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
                       </label>
                       {!MANUAL_RANKING_API_URL && (

@@ -254,6 +254,43 @@ function moveWikiUrl(move: PokemonMove) {
   return `https://wiki.52poke.com/wiki/${encodeURIComponent(`${move.zh}（招式）`)}`
 }
 
+function showdownSpriteSlug(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
+  return pokemon.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+function pokemonDbSpriteSlug(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
+  const name = pokemon.name
+    .replace(/-Alola$/, '-Alolan')
+    .replace(/-Galar$/, '-Galarian')
+    .replace(/-Hisui$/, '-Hisuian')
+    .replace(/-Paldea-/, '-Paldean-')
+    .replace(/-F$/, '-Female')
+    .replace(/-M$/, '-Male')
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+function pokemonSpriteUrl(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
+  return `https://img.pokemondb.net/sprites/home/normal/${pokemonDbSpriteSlug(pokemon)}.png`
+}
+
+function pokemonSpriteFallbackUrl(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
+  return `https://play.pokemonshowdown.com/sprites/dex/${showdownSpriteSlug(pokemon)}.png`
+}
+
+function pokemonWikiName(pokemon: PokemonDetail, formOptions: PokemonRow[]) {
+  if (pokemon.baseSpeciesId === 'floette' && pokemonDisplayName(pokemon).includes('永恒花叶蒂')) return '花叶蒂'
+  if (pokemon.name.toLowerCase().includes('mega')) {
+    const normalForm = formOptions.find((form) => form.baseSpeciesId === pokemon.baseSpeciesId && !form.name.toLowerCase().includes('mega'))
+    if (normalForm) return pokemonDisplayName(normalForm).replace(/（[^）]*Mega[^）]*）/g, '')
+    return pokemonDisplayName(pokemon).replace(/（[^）]*Mega[^）]*）/g, '')
+  }
+  return pokemonDisplayName(pokemon)
+}
+
+function pokemonWikiUrl(pokemon: PokemonDetail, formOptions: PokemonRow[]) {
+  return `https://wiki.52poke.com/wiki/${encodeURIComponent(pokemonWikiName(pokemon, formOptions))}`
+}
+
 const USAGE_SPREAD_STAT_TO_KEY: Record<string, StatKey> = {
   hp: 'hp',
   atk: 'atk',
@@ -355,22 +392,21 @@ function usageSourceTimeLabel(dataset: UsageDataset) {
   const sourceDate = dataset.sourceUpdatedAt ? new Date(dataset.sourceUpdatedAt) : null
   if (sourceDate && !Number.isNaN(sourceDate.getTime())) {
     const parts = new Intl.DateTimeFormat('zh-CN', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
+      month: 'numeric',
+      day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-      timeZone: 'Asia/Tokyo',
     }).formatToParts(sourceDate)
     const part = (type: string) => parts.find((item) => item.type === type)?.value ?? ''
-    return `${part('year')} 年 ${part('month')} 月 ${part('day')} 日 ${part('hour')}:${part('minute')}`
+    return `${part('month')}月${part('day')}日 ${part('hour')}:${part('minute')}`
   }
   return usageDatasetDateLabel(dataset.date)
 }
 
 function usageDatasetDateLabel(date: string) {
-  return `${date.slice(5).replace('-', ' 月 ')} 日`
+  const [, month, day] = date.split('-')
+  return month && day ? `${Number(month)}月${Number(day)}日` : date
 }
 
 function renderUsageChips(items: UsageItem[], title: string, limit = 6) {
@@ -1559,8 +1595,28 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
 
       {!standaloneCalc && <div className="detail-title-row">
         <div className="detail-title-main">
-          <div className="title-with-actions">
-            <h1>{pokemonDisplayName(displayPokemon)}</h1>
+          <div className="title-with-actions detail-title-actions">
+            <img
+              className="detail-title-sprite"
+              src={pokemonSpriteUrl(displayPokemon)}
+              data-fallback-src={pokemonSpriteFallbackUrl(displayPokemon)}
+              alt=""
+              onError={(event) => {
+                const image = event.currentTarget
+                const fallbackSrc = image.dataset.fallbackSrc
+                if (fallbackSrc && image.src !== fallbackSrc) {
+                  image.dataset.fallbackSrc = ''
+                  image.src = fallbackSrc
+                  return
+                }
+                image.style.visibility = 'hidden'
+              }}
+            />
+            <h1>
+              <a className="detail-title-link" href={pokemonWikiUrl(displayPokemon, formOptions)} target="_blank" rel="noopener noreferrer">
+                {pokemonDisplayName(displayPokemon)}
+              </a>
+            </h1>
             {renderConfigActions('title')}
           </div>
         </div>

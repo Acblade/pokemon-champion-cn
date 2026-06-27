@@ -1480,11 +1480,14 @@ th {
 .pokemon-list-table-wrapper {
   overflow-x: auto;
   overflow-y: visible;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .pokemon-list-table {
-  width: 100%;
-  min-width: 900px;
+  width: max-content;
+  min-width: min(100%, 840px);
+  max-width: 100%;
   table-layout: fixed;
   margin: 0;
 }
@@ -1495,13 +1498,28 @@ th {
 }
 
 .pokemon-list-table .pokemon-name-column {
-  width: 132px;
-  min-width: 120px;
-  max-width: 152px;
+  width: 122px;
+  min-width: 112px;
+  max-width: 136px;
 }
 
 .pokemon-list-table .pokemon-type-column {
-  width: 126px;
+  width: 118px;
+}
+
+.pokemon-list-table .pokemon-stat-column {
+  width: 58px;
+  min-width: 52px;
+  max-width: 62px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pokemon-list-table .pokemon-bst-column {
+  width: 72px;
+  min-width: 66px;
+  max-width: 78px;
 }
 
 .pokemon-list-table .type-list {
@@ -1807,10 +1825,17 @@ tr:hover td {
 .detail-card {
   display: grid;
   gap: 16px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 18px;
   border-radius: 16px;
   background: #ffffff;
   border: 1px solid #dbe1ea;
+}
+
+.detail-page-full {
+  overflow: hidden;
 }
 
 :root[data-theme='dark'] .detail-card {
@@ -2018,6 +2043,7 @@ tr:hover td {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.55;
+  text-align: left;
   white-space: normal;
   z-index: 40;
 }
@@ -2107,6 +2133,15 @@ tr:hover td {
 .damage-advanced {
   display: grid;
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.damage-subpanel,
+.field-subpanel {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .detail-title-row p {
@@ -2121,10 +2156,62 @@ tr:hover td {
 
 .plain-section {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 18px;
   border-radius: 14px;
   border: 1px solid #e2e8f0;
   background: #fff;
+}
+
+.moves-full-list,
+.stats-setting-table-wrap {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.moves-full-list table {
+  min-width: 680px;
+}
+
+.moves-full-list th:first-child,
+.moves-full-list td:first-child,
+.stats-setting-table th:first-child,
+.stats-setting-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  background: #ffffff;
+  box-shadow: 2px 0 6px rgba(15, 23, 42, 0.08);
+}
+
+.moves-full-list th:first-child,
+.stats-setting-table th:first-child {
+  z-index: 7;
+  background: #f8fafc;
+}
+
+.moves-full-list tr:hover td:first-child,
+.stats-setting-table tr:hover td:first-child {
+  background: #eff6ff;
+}
+
+:root[data-theme='dark'] .moves-full-list th:first-child,
+:root[data-theme='dark'] .stats-setting-table th:first-child {
+  background: #111827;
+}
+
+:root[data-theme='dark'] .moves-full-list td:first-child,
+:root[data-theme='dark'] .stats-setting-table td:first-child {
+  background: rgba(17, 24, 39, 0.96);
+}
+
+:root[data-theme='dark'] .moves-full-list tr:hover td:first-child,
+:root[data-theme='dark'] .stats-setting-table tr:hover td:first-child {
+  background: #1e293b;
 }
 
 .damage-panel-section {
@@ -3502,24 +3589,28 @@ table.damage-stats-table {
   .pokemon-list-table .pokemon-name-column {
     position: sticky;
     left: 0;
-    z-index: 3;
+    z-index: 6;
+    background-clip: padding-box;
     box-shadow: 2px 0 6px rgba(15, 23, 42, 0.08);
   }
   .pokemon-list-table th.pokemon-name-column {
     background: #f8fafc;
-    z-index: 5;
+    z-index: 9;
   }
   .pokemon-list-table td.pokemon-name-column {
     background: #ffffff;
   }
   .pokemon-list-table tr:hover td.pokemon-name-column {
-    background: rgba(59, 130, 246, 0.05);
+    background: #eff6ff;
   }
   :root[data-theme='dark'] .pokemon-list-table th.pokemon-name-column {
     background: #111827;
   }
   :root[data-theme='dark'] .pokemon-list-table td.pokemon-name-column {
-    background: rgba(17, 24, 39, 0.92);
+    background: #111827;
+  }
+  :root[data-theme='dark'] .pokemon-list-table tr:hover td.pokemon-name-column {
+    background: #1e293b;
   }
 }
 
@@ -3608,9 +3699,30 @@ table.damage-stats-table {
     grid-template-columns: 1fr;
   }
 
+  .team-share-list,
+  .team-share-card,
+  .team-roster-list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .team-card-head {
+    grid-template-columns: 1fr;
+  }
+
   .team-roster-item {
     grid-template-columns: 24px minmax(0, 1fr);
     align-items: start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .team-roster-item.no-spread {
+    grid-template-columns: 24px minmax(0, 1fr);
   }
 
   .saved-roster-item {
@@ -3639,6 +3751,12 @@ table.damage-stats-table {
   .team-member-ability,
   .team-member-spread {
     grid-column: 2;
+    white-space: normal;
+  }
+
+  .team-member-spread,
+  .team-member-moves {
+    grid-column: 1 / -1;
     white-space: normal;
   }
 
@@ -3835,6 +3953,30 @@ table.damage-stats-table {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+}
+
+.detail-title-actions {
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+
+.detail-title-sprite {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.detail-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.detail-title-link:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 /* Dual star buttons in move list */
