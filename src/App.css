@@ -1480,14 +1480,14 @@ th {
 .pokemon-list-table-wrapper {
   overflow-x: auto;
   overflow-y: visible;
-  max-width: 1120px;
+  width: calc(100% - 4px);
+  max-width: calc(100% - 4px);
   margin: 0 auto;
 }
 
 .pokemon-list-table {
-  width: max-content;
-  min-width: min(100%, 840px);
-  max-width: 100%;
+  width: 100%;
+  min-width: 900px;
   table-layout: fixed;
   margin: 0;
 }
@@ -1497,29 +1497,37 @@ th {
   padding: 12px 9px;
 }
 
+.pokemon-list-table .pokemon-usage-column {
+  width: 86px;
+  min-width: 78px;
+  max-width: 92px;
+}
+
 .pokemon-list-table .pokemon-name-column {
-  width: 122px;
-  min-width: 112px;
-  max-width: 136px;
+  width: 178px;
+  min-width: 150px;
+  max-width: 210px;
 }
 
 .pokemon-list-table .pokemon-type-column {
-  width: 118px;
+  width: 142px;
+  min-width: 128px;
+  max-width: 168px;
 }
 
 .pokemon-list-table .pokemon-stat-column {
-  width: 58px;
-  min-width: 52px;
-  max-width: 62px;
+  width: 48px;
+  min-width: 44px;
+  max-width: 56px;
   padding-left: 6px;
   padding-right: 6px;
   font-variant-numeric: tabular-nums;
 }
 
 .pokemon-list-table .pokemon-bst-column {
-  width: 72px;
-  min-width: 66px;
-  max-width: 78px;
+  width: 62px;
+  min-width: 56px;
+  max-width: 70px;
 }
 
 .pokemon-list-table .type-list {
@@ -2010,6 +2018,7 @@ tr:hover td {
   position: relative;
   display: inline-flex;
   flex-shrink: 0;
+  z-index: 60;
 }
 
 .move-description-button {
@@ -2045,7 +2054,7 @@ tr:hover td {
   line-height: 1.55;
   text-align: left;
   white-space: normal;
-  z-index: 40;
+  z-index: 80;
 }
 
 :root[data-theme='dark'] .move-description-button {
@@ -2173,6 +2182,10 @@ tr:hover td {
   -webkit-overflow-scrolling: touch;
 }
 
+.moves-full-list {
+  overflow-y: visible;
+}
+
 .moves-full-list table {
   min-width: 680px;
 }
@@ -2186,6 +2199,16 @@ tr:hover td {
   z-index: 4;
   background: #ffffff;
   box-shadow: 2px 0 6px rgba(15, 23, 42, 0.08);
+}
+
+.moves-full-list td:first-child:has(.move-description-popover) {
+  z-index: 70;
+}
+
+@media (min-width: 981px) {
+  .moves-full-list {
+    overflow: visible;
+  }
 }
 
 .moves-full-list th:first-child,

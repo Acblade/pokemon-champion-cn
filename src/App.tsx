@@ -1756,7 +1756,7 @@ function App() {
               <table className="pokemon-list-table">
                 <thead>
                   <tr>
-                    {showListColumn('usage') && <th><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'usageRank') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('usageRank'); setSortDirection('asc') } }}>使用率{sortIndicator(sortKey, 'usageRank', sortDirection)}</button></th>}
+                    {showListColumn('usage') && <th className="pokemon-usage-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'usageRank') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('usageRank'); setSortDirection('asc') } }}>使用率{sortIndicator(sortKey, 'usageRank', sortDirection)}</button></th>}
                     {showListColumn('sprite') && <th className="pokemon-sprite-head" aria-label="图像"></th>}
                     {showListColumn('zh') && <th className="pokemon-name-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>}
                     {showListColumn('name') && <th className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'name') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('name'); setSortDirection('asc') } }}>英文名称{sortIndicator(sortKey, 'name', sortDirection)}</button></th>}
@@ -1775,7 +1775,7 @@ function App() {
                     const usage = getPokemonUsageFromDataset(selectedUsageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId)
                     return (
                     <tr key={pokemon.id}>
-                      {showListColumn('usage') && <td>{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>}
+                      {showListColumn('usage') && <td className="pokemon-usage-column">{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>}
                       {showListColumn('sprite') && <td className="pokemon-sprite-cell"><img src={pokemonSpriteUrl(pokemon)} data-fallback-src={pokemonSpriteFallbackUrl(pokemon)} alt="" loading="lazy" onError={(event) => {
                         const image = event.currentTarget
                         const fallbackSrc = image.dataset.fallbackSrc
@@ -1824,7 +1824,7 @@ function App() {
                       </p>
                       <label className="manual-ranking-field">
                         <span>日本时间</span>
-                        <small>请从网站上复制时间信息。</small>
+                        <small>请从网站上复制时间信息</small>
                         <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
                       </label>
                       <label className="manual-ranking-field">
