@@ -7,6 +7,7 @@ import { ruleItems } from '../data/items'
 import { getPokemonUsageFromDataset, type UsageDataset, type UsageItem, type UsageSpread, type UsageTeammate } from '../data/usageStats'
 import { pokemonDisplayName, pokemonSearchText } from '../lib/pokemonDisplay'
 import { TYPE_LABELS, TYPE_ORDER, attackingMultiplier, formatTypeMultiplier, multiplierClass, typeBadgeClass, typeColorClass, typeLabel } from '../lib/pokemonTypes'
+import { handlePokemonSpriteError, pokemonSpriteUrls } from '../lib/pokemonSprites'
 
 type DraftConfig = {
   nature: string
@@ -252,29 +253,6 @@ function ruleMovesFor(detail: PokemonDetail | null) {
 
 function moveWikiUrl(move: PokemonMove) {
   return `https://wiki.52poke.com/wiki/${encodeURIComponent(`${move.zh}（招式）`)}`
-}
-
-function showdownSpriteSlug(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
-  return pokemon.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
-
-function pokemonDbSpriteSlug(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
-  const name = pokemon.name
-    .replace(/-Alola$/, '-Alolan')
-    .replace(/-Galar$/, '-Galarian')
-    .replace(/-Hisui$/, '-Hisuian')
-    .replace(/-Paldea-/, '-Paldean-')
-    .replace(/-F$/, '-Female')
-    .replace(/-M$/, '-Male')
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
-
-function pokemonSpriteUrl(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
-  return `https://img.pokemondb.net/sprites/home/normal/${pokemonDbSpriteSlug(pokemon)}.png`
-}
-
-function pokemonSpriteFallbackUrl(pokemon: Pick<PokemonRow | PokemonDetail, 'name'>) {
-  return `https://play.pokemonshowdown.com/sprites/dex/${showdownSpriteSlug(pokemon)}.png`
 }
 
 function pokemonWikiName(pokemon: PokemonDetail, formOptions: PokemonRow[]) {
@@ -1048,6 +1026,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   const infoAbilityLabel = hasMegaFamily ? '普通特性' : '特性'
   const canEditInfoAbility = true
   const megaAbilityLabel = megaForms.find((form) => form.id === currentFormId)?.abilities[0]?.zh || megaForms[0]?.abilities[0]?.zh || (isCurrentMega ? displayPokemon.abilities[0]?.zh : undefined) || '—'
+  const titleSpriteUrls = pokemonSpriteUrls(displayPokemon)
 
   const statRows: { key: StatKey; label: string; boostKey?: BoostKey }[] = [
     { key: 'hp', label: 'HP' },
@@ -1588,7 +1567,7 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
   }
 
   return (
-    <section className="detail-card detail-page-full">
+    <section className={`detail-card detail-page-full${standaloneCalc ? ' standalone-calc-detail' : ''}`}>
       {!standaloneCalc && <div className="detail-page-topline">
         <button className="ghost-button" onClick={onBack}>← 返回列表</button>
       </div>}
@@ -1598,19 +1577,10 @@ export function PokemonDetailPanel({ pokemon, compareTarget, formOptions, damage
           <div className="title-with-actions detail-title-actions">
             <img
               className="detail-title-sprite"
-              src={pokemonSpriteUrl(displayPokemon)}
-              data-fallback-src={pokemonSpriteFallbackUrl(displayPokemon)}
+              src={titleSpriteUrls[0]}
+              data-fallback-srcs={titleSpriteUrls.slice(1).join('|')}
               alt=""
-              onError={(event) => {
-                const image = event.currentTarget
-                const fallbackSrc = image.dataset.fallbackSrc
-                if (fallbackSrc && image.src !== fallbackSrc) {
-                  image.dataset.fallbackSrc = ''
-                  image.src = fallbackSrc
-                  return
-                }
-                image.style.visibility = 'hidden'
-              }}
+              onError={handlePokemonSpriteError}
             />
             <h1>
               <a className="detail-title-link" href={pokemonWikiUrl(displayPokemon, formOptions)} target="_blank" rel="noopener noreferrer">

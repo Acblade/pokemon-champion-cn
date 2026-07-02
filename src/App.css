@@ -1843,7 +1843,7 @@ tr:hover td {
 }
 
 .detail-page-full {
-  overflow: hidden;
+  overflow: visible;
 }
 
 :root[data-theme='dark'] .detail-card {
@@ -2522,6 +2522,14 @@ tr:hover td {
 }
 
 @media (min-width: 981px) {
+  .damage-three-column-grid {
+    align-items: stretch;
+  }
+
+  .damage-center-stack {
+    min-height: 100%;
+  }
+
   .moves-damage-subpanel {
     position: sticky;
     top: 16px;
@@ -3702,6 +3710,11 @@ table.damage-stats-table {
   }
 
   .team-filter-popover {
+    left: 0;
+    right: auto;
+  }
+
+  .list-filter-control > .filter-list-popover {
     left: 0;
     right: auto;
   }

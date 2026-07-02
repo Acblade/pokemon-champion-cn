@@ -13,6 +13,7 @@ import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
 import { TYPE_LABELS, TYPE_ORDER, typeBadgeClass, typeColorClass, typeLabel } from './lib/pokemonTypes'
+import { handlePokemonSpriteError, pokemonSpriteUrls } from './lib/pokemonSprites'
 
 function appItemLabel(itemValue: string) {
   const item = normalizeTeamItem(itemValue)
@@ -566,29 +567,6 @@ function formatBrowserDateTime(iso: string | undefined, fallbackDate: string) {
 
 function teamSourceLineSource(sources: TeamShareSource[], rule: string) {
   return sources.find((source) => source.season === rule) ?? sources[0]
-}
-
-function showdownSpriteSlug(pokemon: PokemonRow) {
-  return pokemon.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
-
-function pokemonDbSpriteSlug(pokemon: PokemonRow) {
-  const name = pokemon.name
-    .replace(/-Alola$/, '-Alolan')
-    .replace(/-Galar$/, '-Galarian')
-    .replace(/-Hisui$/, '-Hisuian')
-    .replace(/-Paldea-/, '-Paldean-')
-    .replace(/-F$/, '-Female')
-    .replace(/-M$/, '-Male')
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
-
-function pokemonSpriteUrl(pokemon: PokemonRow) {
-  return `https://img.pokemondb.net/sprites/home/normal/${pokemonDbSpriteSlug(pokemon)}.png`
-}
-
-function pokemonSpriteFallbackUrl(pokemon: PokemonRow) {
-  return `https://play.pokemonshowdown.com/sprites/dex/${showdownSpriteSlug(pokemon)}.png`
 }
 
 function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: string }) {
@@ -1773,19 +1751,11 @@ function App() {
                 <tbody>
                   {filtered.map((pokemon) => {
                     const usage = getPokemonUsageFromDataset(selectedUsageDataset, pokemon.name, pokemon.baseSpeciesName, pokemon.id, pokemon.baseSpeciesId)
+                    const spriteUrls = pokemonSpriteUrls(pokemon)
                     return (
                     <tr key={pokemon.id}>
                       {showListColumn('usage') && <td className="pokemon-usage-column">{usage ? <span className="usage-list-cell">#{usage.rank}</span> : '—'}</td>}
-                      {showListColumn('sprite') && <td className="pokemon-sprite-cell"><img src={pokemonSpriteUrl(pokemon)} data-fallback-src={pokemonSpriteFallbackUrl(pokemon)} alt="" loading="lazy" onError={(event) => {
-                        const image = event.currentTarget
-                        const fallbackSrc = image.dataset.fallbackSrc
-                        if (fallbackSrc && image.src !== fallbackSrc) {
-                          image.dataset.fallbackSrc = ''
-                          image.src = fallbackSrc
-                          return
-                        }
-                        image.style.visibility = 'hidden'
-                      }} /></td>}
+                      {showListColumn('sprite') && <td className="pokemon-sprite-cell"><img src={spriteUrls[0]} data-fallback-srcs={spriteUrls.slice(1).join('|')} alt="" loading="lazy" onError={handlePokemonSpriteError} /></td>}
                       {showListColumn('zh') && <td className="pokemon-name-column"><a className="link-button" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemonDisplayName(pokemon)}</a></td>}
                       {showListColumn('name') && <td className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><a className="link-button muted-link" href={getPokemonHref(pokemon)} onClick={(event) => { event.preventDefault(); navigateToPokemon(pokemon) }}>{pokemon.name}</a></td>}
                       {showListColumn('types') && <td className="pokemon-type-column"><div className="type-list">{pokemon.types.map((type) => <span className={typeBadgeClass(type)} key={type}>{typeLabel(type)}</span>)}</div></td>}
