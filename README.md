@@ -18,6 +18,8 @@ npm run dev
 ```bash
 npm run build
 npm run lint
+npm run audit-data
+npm run verify-update
 npx tsx scripts/test-champions-calc.ts
 ```
 
@@ -29,6 +31,7 @@ npx tsx scripts/test-champions-calc.ts
 npm run build-data
 npm run update-usage
 npm run update-team-shares
+npm run audit-data
 ```
 
 规则或赛季更新时，按 `UPDATE_WORKFLOW.md` 执行完整同步和审计。

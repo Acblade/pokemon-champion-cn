@@ -66,6 +66,7 @@ const showdownRoot = path.resolve(process.env.POKEMON_SHOWDOWN_ROOT ?? path.join
 const damageCalcRoot = path.resolve(process.env.DAMAGE_CALC_ROOT ?? path.join(cacheRoot, 'damage-calc'))
 const pokeApiRoot = path.resolve(process.env.POKEAPI_CACHE_ROOT ?? path.join(cacheRoot, 'pokeapi-cache'))
 const outputDir = path.resolve(projectRoot, 'src', 'generated')
+const showdownMod = process.env.CHAMPIONS_SHOWDOWN_MOD ?? 'champions'
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true })
@@ -920,13 +921,13 @@ async function main() {
 
   const [pokedex, formatsData, learnsets, moves, championsMoves, abilities, items, championsItems] = await Promise.all([
     importData<Dict<Species>>('data/pokedex.ts', 'Pokedex'),
-    importData<Dict<FormatData>>('data/mods/champions/formats-data.ts', 'FormatsData'),
-    importData<Dict<{ learnset?: Record<string, string[]> }>>('data/mods/champions/learnsets.ts', 'Learnsets'),
+    importData<Dict<FormatData>>(`data/mods/${showdownMod}/formats-data.ts`, 'FormatsData'),
+    importData<Dict<{ learnset?: Record<string, string[]> }>>(`data/mods/${showdownMod}/learnsets.ts`, 'Learnsets'),
     importData<Dict<Move>>('data/moves.ts', 'Moves'),
-    importData<Dict<Partial<Move>>>('data/mods/champions/moves.ts', 'Moves'),
+    importData<Dict<Partial<Move>>>(`data/mods/${showdownMod}/moves.ts`, 'Moves'),
     importData<Dict<{ name: string; num: number }>>('data/abilities.ts', 'Abilities'),
     importData<Dict<ItemData>>('data/items.ts', 'Items'),
-    importData<Dict<ItemData>>('data/mods/champions/items.ts', 'Items'),
+    importData<Dict<ItemData>>(`data/mods/${showdownMod}/items.ts`, 'Items'),
   ])
 
   const pokemonNames = readCsvMap(path.join(pokeApiRoot, 'pokemon_species_names_full.csv'), 'pokemon_species_id', 'name')
@@ -1082,7 +1083,7 @@ async function main() {
   fs.writeFileSync(path.join(outputDir, 'pokemon-details.json'), JSON.stringify(pokemonDetails, null, 2))
   fs.writeFileSync(path.join(outputDir, 'items.json'), JSON.stringify(allowedItems, null, 2))
 
-  console.log(`Built ${pokemonIndex.length} pokemon records.`)
+  console.log(`Built ${pokemonIndex.length} pokemon records from Showdown mod "${showdownMod}".`)
 }
 
 main().catch((error) => {
