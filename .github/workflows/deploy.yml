@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Sync team shares"]
+    workflows: ["Sync team shares", "Sync usage and trainer rankings"]
     types: [completed]
 
 permissions:
