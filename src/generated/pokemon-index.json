@@ -3592,7 +3592,7 @@
       "Bug",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -7129,12 +7129,12 @@
     "num": 478,
     "zh": "雪妖女",
     "name": "Froslass",
-    "pinyin": "xueyaonü",
+    "pinyin": "xueyaonv",
     "initials": "xyn",
     "slugVariants": [
       "雪妖女",
       "froslass",
-      "xueyaon"
+      "xueyaonv"
     ],
     "baseSpeciesName": "Froslass",
     "baseSpeciesId": "froslass",
@@ -7168,7 +7168,7 @@
     "searchKeys": [
       "雪妖女",
       "froslass",
-      "xueyaon",
+      "xueyaonv",
       "xyn"
     ]
   },
@@ -7177,12 +7177,12 @@
     "num": 478,
     "zh": "雪妖女",
     "name": "Froslass-Mega",
-    "pinyin": "xueyaonü",
+    "pinyin": "xueyaonv",
     "initials": "xyn",
     "slugVariants": [
       "雪妖女",
       "froslassmega",
-      "xueyaon"
+      "xueyaonv"
     ],
     "baseSpeciesName": "Froslass",
     "baseSpeciesId": "froslass",
@@ -7211,7 +7211,7 @@
     "searchKeys": [
       "雪妖女",
       "froslassmega",
-      "xueyaon",
+      "xueyaonv",
       "xyn"
     ]
   },
@@ -9929,9 +9929,9 @@
       "永恒花叶蒂",
       "floetteeternal",
       "yonghenghuayedi",
-      "yhhyd",
       "花叶蒂",
-      "huayedi"
+      "huayedi",
+      "hyd"
     ],
     "baseSpeciesName": "Floette",
     "baseSpeciesId": "floette",
@@ -9976,15 +9976,15 @@
     "num": 670,
     "zh": "永恒花叶蒂（Mega）",
     "name": "Floette-Mega",
-    "pinyin": "yonghenghuayedi（mega）",
-    "initials": "yhhyd（mega）",
+    "pinyin": "yonghenghuayedimega",
+    "initials": "yhhydm",
     "slugVariants": [
-      "永恒花叶蒂（Mega）",
+      "永恒花叶蒂mega",
       "floettemega",
-      "yonghenghuayedi（mega）",
-      "yhhyd（mega）",
+      "yonghenghuayedimega",
       "花叶蒂",
-      "huayedi"
+      "huayedi",
+      "hyd"
     ],
     "baseSpeciesName": "Floette",
     "baseSpeciesId": "floette",
@@ -10013,8 +10013,7 @@
       "永恒花叶蒂mega",
       "floettemega",
       "yonghenghuayedimega",
-      "yhhydmega",
-      "mega",
+      "yhhydm",
       "花叶蒂",
       "huayedi",
       "hyd"
@@ -14492,7 +14491,7 @@
       "Rock",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -14741,7 +14740,7 @@
       "Steel",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -14819,12 +14818,12 @@
     "num": 1018,
     "zh": "铝钢桥龙",
     "name": "Archaludon",
-    "pinyin": "lügangqiaolong",
+    "pinyin": "lvgangqiaolong",
     "initials": "lgql",
     "slugVariants": [
       "铝钢桥龙",
       "archaludon",
-      "lgangqiaolong"
+      "lvgangqiaolong"
     ],
     "baseSpeciesName": "Archaludon",
     "baseSpeciesId": "archaludon",
@@ -14863,7 +14862,7 @@
     "searchKeys": [
       "铝钢桥龙",
       "archaludon",
-      "lgangqiaolong",
+      "lvgangqiaolong",
       "lgql"
     ]
   },

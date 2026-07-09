@@ -88,7 +88,7 @@ const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-r
 const MANUAL_RANKING_API_URL = (import.meta.env.VITE_MANUAL_RANKING_API_URL || '').trim()
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
-  'M-B': { label: 'M-B', seasons: [{ id: '3', label: 'M-3' }] },
+  'M-B': { label: 'M-B', seasons: [{ id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
 }
 
 type HomeTab = 'list' | 'trainers' | 'teams' | 'damage'
@@ -892,7 +892,7 @@ function App() {
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
   const [currentRule, setCurrentRule] = useState('M-B')
-  const [currentSeason, setCurrentSeason] = useState('3')
+  const [currentSeason, setCurrentSeason] = useState('4')
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())

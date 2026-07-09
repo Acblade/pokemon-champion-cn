@@ -9,7 +9,7 @@ const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   '1': 'https://gamewith.jp/pokemon-champions/558230',
   '2': 'https://gamewith.jp/pokemon-champions/555373',
 }
-const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3')
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4')
   .split(',')
   .map(value => value.trim())
   .filter(Boolean)

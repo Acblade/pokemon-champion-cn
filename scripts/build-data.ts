@@ -853,8 +853,18 @@ function extractChampionsItemIds(championsItems: Dict<ItemData>, items: Dict<Ite
 
 const ITEM_ZH_BY_ID = JSON.parse(fs.readFileSync(path.join(projectRoot, 'scripts', 'item-zh.json'), 'utf8')) as Record<string, string>
 
+function normalizePinyinPart(part: string) {
+  return part
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/ü/g, 'v')
+    .replace(/[^a-z0-9]+/g, '')
+}
+
 function buildPinyinVariants(zh: string) {
-  const syllables = pinyin(zh, { toneType: 'none', type: 'array', nonZh: 'consecutive' })
+  const syllables = pinyin(zh.normalize('NFKC'), { toneType: 'none', type: 'array', nonZh: 'consecutive' })
+    .map(normalizePinyinPart)
+    .filter(Boolean)
   return {
     full: syllables.join('').toLowerCase(),
     initials: syllables.map((part) => part[0] || '').join('').toLowerCase(),
@@ -893,8 +903,16 @@ async function importData<T>(relativePath: string, exportName: string): Promise<
   return mod[exportName] as T
 }
 
-function buildSlugVariants(zh: string, name: string, pinyinValue: string) {
-  return Array.from(new Set([zh, name, pinyinValue].map((value) => normalizeSearch(value)).filter(Boolean)))
+function pokemonSlugAliases(id: string) {
+  const key = normalizeSearch(id)
+  if (key === 'floetteeternal' || key === 'floettemega' || key === 'floetteeternalmega') {
+    return ['\u82b1\u53f6\u8482', 'huayedi', 'hyd']
+  }
+  return []
+}
+
+function buildSlugVariants(zh: string, name: string, pinyinValue: string, id = name) {
+  return Array.from(new Set([zh, name, pinyinValue, ...pokemonSlugAliases(id)].map((value) => normalizeSearch(value)).filter(Boolean)))
 }
 
 function resolveLearnsetId(id: string, species: Species, learnsets: Dict<{ learnset?: Record<string, string[]> }>, pokedex: Dict<Species>) {
@@ -966,7 +984,7 @@ async function main() {
         spd: species.baseStats?.spd || 0,
         spe: species.baseStats?.spe || 0,
       }
-      const slugVariants = buildSlugVariants(zh, species.name, full)
+      const slugVariants = buildSlugVariants(zh, species.name, full, id)
       return {
         id,
         num: species.num,
@@ -992,7 +1010,7 @@ async function main() {
           }),
         baseStats,
         bst: Object.values(baseStats).reduce((sum, stat) => sum + stat, 0),
-        searchKeys: [zh, species.name, full, initials].map(normalizeSearch).filter(Boolean),
+        searchKeys: [zh, species.name, full, initials, ...pokemonSlugAliases(id)].map(normalizeSearch).filter(Boolean),
       }
     })
     .filter(Boolean)
@@ -1079,9 +1097,9 @@ async function main() {
     })
   )
 
-  fs.writeFileSync(path.join(outputDir, 'pokemon-index.json'), JSON.stringify(pokemonIndex, null, 2))
-  fs.writeFileSync(path.join(outputDir, 'pokemon-details.json'), JSON.stringify(pokemonDetails, null, 2))
-  fs.writeFileSync(path.join(outputDir, 'items.json'), JSON.stringify(allowedItems, null, 2))
+  fs.writeFileSync(path.join(outputDir, 'pokemon-index.json'), `${JSON.stringify(pokemonIndex, null, 2)}\n`, 'utf8')
+  fs.writeFileSync(path.join(outputDir, 'pokemon-details.json'), `${JSON.stringify(pokemonDetails, null, 2)}\n`, 'utf8')
+  fs.writeFileSync(path.join(outputDir, 'items.json'), `${JSON.stringify(allowedItems, null, 2)}\n`, 'utf8')
 
   console.log(`Built ${pokemonIndex.length} pokemon records from Showdown mod "${showdownMod}".`)
 }

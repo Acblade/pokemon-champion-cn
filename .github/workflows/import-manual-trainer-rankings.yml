@@ -6,7 +6,7 @@ on:
       dataset_key:
         description: Target usage dataset key
         required: true
-        default: champs-season-3-rule-1
+        default: champs-season-4-rule-1
       ranking_time_jst:
         description: Ranking capture time in Japan time, for example 2026/6/25 23:46
         required: true
@@ -57,7 +57,7 @@ jobs:
           node - <<'NODE'
           const fs = require('node:fs')
           fs.mkdirSync('out/tmp', { recursive: true })
-          let datasetKey = process.env.DATASET_KEY || 'champs-season-3-rule-1'
+          let datasetKey = process.env.DATASET_KEY || 'champs-season-4-rule-1'
           let rankingTimeJst = process.env.RANKING_TIME_JST || ''
           let rankingsText = process.env.RANKINGS_TEXT || ''
           if (process.env.EVENT_NAME === 'issues') {

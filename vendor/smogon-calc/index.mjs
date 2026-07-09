@@ -19241,6 +19241,12 @@ var Stats = new class {
   DVToIV(dv) {
     return dv * 2;
   }
+  EVToStatEXP(ev) {
+    return (ev - 1) * (ev - 1) + 1;
+  }
+  StatEXPToEv(statexp) {
+    return Math.floor((Math.sqrt(statexp - 1) + 1) / 4) * 4;
+  }
   DVsToIVs(dvs) {
     const ivs = {};
     let dv;
@@ -19252,7 +19258,7 @@ var Stats = new class {
   calcStat(gen4, stat, base, iv, ev, level, nature) {
     if (gen4.num < 0 || gen4.num > 9) throw new Error(`Invalid generation ${gen4.num}`);
     if (gen4.num === 0) return this.calcStatChampions(gen4.natures, stat, base, ev, nature);
-    if (gen4.num < 3) return this.calcStatRBY(stat, base, iv, level);
+    if (gen4.num < 3) return this.calcStatRBY(stat, base, iv, ev, level);
     return this.calcStatADV(gen4.natures, stat, base, iv, ev, level, nature);
   }
   calcStatChampions(natures, stat, base, sp, nature) {
@@ -19280,14 +19286,14 @@ var Stats = new class {
       return Math.floor((Math.floor((base * 2 + iv + Math.floor(ev / 4)) * level / 100) + 5) * n);
     }
   }
-  calcStatRBY(stat, base, iv, level) {
-    return this.calcStatRBYFromDV(stat, base, this.IVToDV(iv), level);
+  calcStatRBY(stat, base, iv, ev, level) {
+    return this.calcStatRBYFromDV(stat, base, this.IVToDV(iv), this.EVToStatEXP(ev), level);
   }
-  calcStatRBYFromDV(stat, base, dv, level) {
+  calcStatRBYFromDV(stat, base, dv, statexp, level) {
     if (stat === "hp") {
-      return Math.floor(((base + dv) * 2 + 63) * level / 100) + level + 10;
+      return Math.floor(((base + dv) * 2 + Math.floor((Math.sqrt(statexp - 1) + 1) / 4)) * level / 100) + level + 10;
     } else {
-      return Math.floor(((base + dv) * 2 + 63) * level / 100) + 5;
+      return Math.floor(((base + dv) * 2 + Math.floor((Math.sqrt(statexp - 1) + 1) / 4)) * level / 100) + 5;
     }
   }
   getHiddenPowerIVs(gen4, hpType) {
@@ -19344,7 +19350,7 @@ function isGrounded(pokemon, field) {
   return field.isGravity || pokemon.hasItem("Iron Ball") || !pokemon.hasType("Flying") && !pokemon.hasAbility("Levitate", "Eelevate") && !pokemon.hasItem("Air Balloon");
 }
 function getModifiedStat(stat, mod, gen4) {
-  if (gen4 && gen4.num < 3) {
+  if (gen4 && (gen4.num === 1 || gen4.num === 2)) {
     if (mod >= 0) {
       const pastGenBoostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
       stat = Math.floor(stat * pastGenBoostTable[mod]);
@@ -19513,12 +19519,12 @@ function checkDownload(source, target, wonderRoomActive) {
   }
 }
 function checkIntrepidSword(source, gen4) {
-  if (source.hasAbility("Intrepid Sword") && gen4.num > 7) {
+  if (source.hasAbility("Intrepid Sword") && (gen4.num === 8 || source.abilityOn)) {
     source.boosts.atk = Math.min(6, source.boosts.atk + 1);
   }
 }
 function checkDauntlessShield(source, gen4) {
-  if (source.hasAbility("Dauntless Shield") && gen4.num > 7) {
+  if (source.hasAbility("Dauntless Shield") && (gen4.num === 8 || source.abilityOn)) {
     source.boosts.def = Math.min(6, source.boosts.def + 1);
   }
 }
@@ -21241,7 +21247,7 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
     if (isAttackerAura) desc.attackerAbility = attacker.ability;
     if (isDefenderAura) desc.defenderAbility = defender.ability;
   }
-  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot")) || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out") || attacker.hasAbility("Tough Claws") && move.flags.contact) {
+  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot")) || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out" || attacker.abilityOn) || attacker.hasAbility("Tough Claws") && move.flags.contact) {
     bpMods.push(5325);
     desc.attackerAbility = attacker.ability;
   }
@@ -21659,7 +21665,7 @@ function calculateRBYGSC(gen4, attacker, defender, move, field) {
     desc.isSwitching = "out";
   }
   const itemBoostType = attacker.hasItem("Dragon Fang") ? void 0 : getItemBoostType(attacker.hasItem("Dragon Scale") ? "Dragon Fang" : attacker.item);
-  if (move.hasType(itemBoostType)) {
+  if (move.hasType(itemBoostType) || move.named("Struggle") && itemBoostType === "Normal") {
     baseDamage = Math.floor(baseDamage * 1.1);
     desc.attackerItem = attacker.item;
   }
@@ -21930,7 +21936,7 @@ function calculateAttackADV(gen4, attacker, defender, move, desc, isCritical = f
     at *= 2;
     desc.attackerAbility = attacker.ability;
   }
-  if (!attacker.hasItem("Sea Incense") && move.hasType(getItemBoostType(attacker.item))) {
+  if (!attacker.hasItem("Sea Incense") && move.hasType(getItemBoostType(attacker.item)) || move.named("Struggle") && getItemBoostType(attacker.item) === "Normal") {
     at = Math.floor(at * 1.1);
     desc.attackerItem = attacker.item;
   } else if (attacker.hasItem("Sea Incense") && move.hasType("Water")) {
@@ -22230,6 +22236,16 @@ function calculateDPP(gen4, attacker, defender, move, field) {
     filterMod = 0.75;
     desc.defenderAbility = defender.ability;
   }
+  let metronomeMod = 1;
+  if (attacker.hasItem("Metronome") && move.timesUsedWithMetronome >= 1) {
+    const timesUsedWithMetronome = Math.floor(move.timesUsedWithMetronome);
+    if (timesUsedWithMetronome <= 9) {
+      metronomeMod = 1 + 0.1 * timesUsedWithMetronome;
+    } else {
+      metronomeMod = 2;
+    }
+    desc.attackerItem = attacker.item;
+  }
   let ebeltMod = 1;
   if (attacker.hasItem("Expert Belt") && typeEffectiveness > 1) {
     ebeltMod = 1.2;
@@ -22253,6 +22269,7 @@ function calculateDPP(gen4, attacker, defender, move, field) {
     damage[i] = Math.floor(damage[i] * type2Effectiveness);
     damage[i] = Math.floor(damage[i] * filterMod);
     damage[i] = Math.floor(damage[i] * ebeltMod);
+    damage[i] = Math.floor(damage[i] * metronomeMod);
     damage[i] = Math.floor(damage[i] * tintedMod);
     damage[i] = Math.floor(damage[i] * berryMod);
     damage[i] = Math.max(1, damage[i]);
@@ -22303,6 +22320,7 @@ function calculateDPP(gen4, attacker, defender, move, field) {
         newFinalDamage = Math.floor(newFinalDamage * type2Effectiveness);
         newFinalDamage = Math.floor(newFinalDamage * filterMod);
         newFinalDamage = Math.floor(newFinalDamage * ebeltMod);
+        newFinalDamage = Math.floor(newFinalDamage * metronomeMod);
         newFinalDamage = Math.floor(newFinalDamage * tintedMod);
         newFinalDamage = Math.max(1, newFinalDamage);
         damageArray[i] = newFinalDamage;
@@ -22416,7 +22434,7 @@ function calculateBPModsDPP(attacker, defender, move, field, desc, basePower) {
   if (attacker.hasItem("Muscle Band") && isPhysical || attacker.hasItem("Wise Glasses") && !isPhysical) {
     basePower = Math.floor(basePower * 1.1);
     desc.attackerItem = attacker.item;
-  } else if (move.hasType(getItemBoostType(attacker.item)) || attacker.hasItem("Adamant Orb") && attacker.named("Dialga") && move.hasType("Steel", "Dragon") || attacker.hasItem("Lustrous Orb") && attacker.named("Palkia") && move.hasType("Water", "Dragon") || attacker.hasItem("Griseous Orb") && attacker.named("Giratina-Origin") && move.hasType("Ghost", "Dragon")) {
+  } else if (move.hasType(getItemBoostType(attacker.item)) || attacker.hasItem("Adamant Orb") && attacker.named("Dialga") && move.hasType("Steel", "Dragon") || attacker.hasItem("Lustrous Orb") && attacker.named("Palkia") && move.hasType("Water", "Dragon") || attacker.hasItem("Griseous Orb") && attacker.named("Giratina-Origin") && move.hasType("Ghost", "Dragon") || move.named("Struggle") && getItemBoostType(attacker.item) === "Normal") {
     basePower = Math.floor(basePower * 1.2);
     desc.attackerItem = attacker.item;
   }
@@ -23113,7 +23131,7 @@ function calculateBPModsBWXY(gen4, attacker, defender, move, field, desc, basePo
   if (attacker.hasAbility("Technician") && basePower <= 60 || attacker.hasAbility("Flare Boost") && attacker.hasStatus("brn") && move.category === "Special" || attacker.hasAbility("Toxic Boost") && attacker.hasStatus("psn", "tox") && move.category === "Physical") {
     bpMods.push(6144);
     desc.attackerAbility = attacker.ability;
-  } else if (attacker.hasAbility("Analytic") && turnOrder !== "first") {
+  } else if (attacker.hasAbility("Analytic") && (turnOrder !== "first" || attacker.abilityOn)) {
     bpMods.push(5325);
     desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel")) {
@@ -24380,7 +24398,7 @@ function calculateBPModsSMSSSV(gen4, attacker, defender, move, field, desc, base
       if (isDefenderAura) desc.defenderAbility = defender.ability;
     }
   }
-  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot", "Order Up")) && !move.isMax || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out") || attacker.hasAbility("Tough Claws") && move.flags.contact || attacker.hasAbility("Punk Rock") && move.flags.sound) {
+  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot", "Order Up")) && !move.isMax || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out" || attacker.abilityOn) || attacker.hasAbility("Tough Claws") && move.flags.contact || attacker.hasAbility("Punk Rock") && move.flags.sound) {
     bpMods.push(5325);
     desc.attackerAbility = attacker.ability;
   }
@@ -24941,7 +24959,7 @@ var Pokemon = class _Pokemon {
     const cur = {};
     if (current) {
       assignWithout(cur, current, SPC);
-      if (current.spc) {
+      if (current.spc !== void 0) {
         cur.spa = current.spc;
         cur.spd = current.spc;
       }

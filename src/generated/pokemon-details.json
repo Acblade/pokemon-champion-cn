@@ -19832,7 +19832,7 @@
         "en": "Darkest Lariat",
         "zh": "ＤＤ金勾臂",
         "description": "旋转双臂打向对手。 无视对手的能力变化， 直接给予伤害。",
-        "pinyin": "ｄｄjingoubi",
+        "pinyin": "ddjingoubi",
         "type": "Dark",
         "category": "Physical",
         "basePower": 85,
@@ -57257,7 +57257,7 @@
       "Bug",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -117616,12 +117616,12 @@
     "num": 478,
     "zh": "雪妖女",
     "name": "Froslass",
-    "pinyin": "xueyaonü",
+    "pinyin": "xueyaonv",
     "initials": "xyn",
     "slugVariants": [
       "雪妖女",
       "froslass",
-      "xueyaon"
+      "xueyaonv"
     ],
     "baseSpeciesName": "Froslass",
     "baseSpeciesId": "froslass",
@@ -117655,7 +117655,7 @@
     "searchKeys": [
       "雪妖女",
       "froslass",
-      "xueyaon",
+      "xueyaonv",
       "xyn"
     ],
     "moves": [
@@ -118414,12 +118414,12 @@
     "num": 478,
     "zh": "雪妖女",
     "name": "Froslass-Mega",
-    "pinyin": "xueyaonü",
+    "pinyin": "xueyaonv",
     "initials": "xyn",
     "slugVariants": [
       "雪妖女",
       "froslassmega",
-      "xueyaon"
+      "xueyaonv"
     ],
     "baseSpeciesName": "Froslass",
     "baseSpeciesId": "froslass",
@@ -118448,7 +118448,7 @@
     "searchKeys": [
       "雪妖女",
       "froslassmega",
-      "xueyaon",
+      "xueyaonv",
       "xyn"
     ],
     "moves": [
@@ -125966,7 +125966,7 @@
         "en": "Ceaseless Edge",
         "zh": "秘剑·千重涛",
         "description": "恶属性物理招式，威力 65，命中 90，PP 15。",
-        "pinyin": "mijian·qianchongtao",
+        "pinyin": "mijianqianchongtao",
         "type": "Dark",
         "category": "Physical",
         "basePower": 65,
@@ -159925,9 +159925,9 @@
       "永恒花叶蒂",
       "floetteeternal",
       "yonghenghuayedi",
-      "yhhyd",
       "花叶蒂",
-      "huayedi"
+      "huayedi",
+      "hyd"
     ],
     "baseSpeciesName": "Floette",
     "baseSpeciesId": "floette",
@@ -160425,15 +160425,15 @@
     "num": 670,
     "zh": "永恒花叶蒂（Mega）",
     "name": "Floette-Mega",
-    "pinyin": "yonghenghuayedi（mega）",
-    "initials": "yhhyd（mega）",
+    "pinyin": "yonghenghuayedimega",
+    "initials": "yhhydm",
     "slugVariants": [
-      "永恒花叶蒂（Mega）",
+      "永恒花叶蒂mega",
       "floettemega",
-      "yonghenghuayedi（mega）",
-      "yhhyd（mega）",
+      "yonghenghuayedimega",
       "花叶蒂",
-      "huayedi"
+      "huayedi",
+      "hyd"
     ],
     "baseSpeciesName": "Floette",
     "baseSpeciesId": "floette",
@@ -160462,8 +160462,7 @@
       "永恒花叶蒂mega",
       "floettemega",
       "yonghenghuayedimega",
-      "yhhydmega",
-      "mega",
+      "yhhydm",
       "花叶蒂",
       "huayedi",
       "hyd"
@@ -161876,7 +161875,7 @@
         "en": "Darkest Lariat",
         "zh": "ＤＤ金勾臂",
         "description": "旋转双臂打向对手。 无视对手的能力变化， 直接给予伤害。",
-        "pinyin": "ｄｄjingoubi",
+        "pinyin": "ddjingoubi",
         "type": "Dark",
         "category": "Physical",
         "basePower": 85,
@@ -186504,7 +186503,7 @@
         "en": "Darkest Lariat",
         "zh": "ＤＤ金勾臂",
         "description": "旋转双臂打向对手。 无视对手的能力变化， 直接给予伤害。",
-        "pinyin": "ｄｄjingoubi",
+        "pinyin": "ddjingoubi",
         "type": "Dark",
         "category": "Physical",
         "basePower": 85,
@@ -223016,7 +223015,7 @@
       "Rock",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "(OU)",
     "hasMega": false,
     "abilities": [
       {
@@ -226520,7 +226519,7 @@
       "Steel",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -227449,12 +227448,12 @@
     "num": 1018,
     "zh": "铝钢桥龙",
     "name": "Archaludon",
-    "pinyin": "lügangqiaolong",
+    "pinyin": "lvgangqiaolong",
     "initials": "lgql",
     "slugVariants": [
       "铝钢桥龙",
       "archaludon",
-      "lgangqiaolong"
+      "lvgangqiaolong"
     ],
     "baseSpeciesName": "Archaludon",
     "baseSpeciesId": "archaludon",
@@ -227493,7 +227492,7 @@
     "searchKeys": [
       "铝钢桥龙",
       "archaludon",
-      "lgangqiaolong",
+      "lvgangqiaolong",
       "lgql"
     ],
     "moves": [
