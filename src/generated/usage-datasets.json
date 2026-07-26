@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-4-rule-1",
-  "updatedAt": "2026-07-25T08:04:57.095Z",
+  "updatedAt": "2026-07-26T08:24:58.946Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
@@ -167936,15 +167936,15 @@
     "champs-season-4-rule-1": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
-      "sourceUpdatedAt": "2026-07-24T19:13:08.000Z",
+      "sourceUpdatedAt": "2026-07-25T18:38:07.000Z",
       "trainerSourceUrl": "https://champs.pokedb.tokyo/trainer/list?season=4&rule=1",
       "format": "champs-season-4-rule-1",
       "regulation": "M-B",
       "battle": "Doubles",
       "season": "4",
       "rule": "1",
-      "date": "2026-07-25",
-      "updatedAt": "2026-07-25T08:04:57.095Z",
+      "date": "2026-07-26",
+      "updatedAt": "2026-07-26T08:24:58.946Z",
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
