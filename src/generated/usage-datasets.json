@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-4-rule-1",
-  "updatedAt": "2026-07-27T09:50:27.715Z",
+  "updatedAt": "2026-07-28T08:32:31.744Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
@@ -167944,7 +167944,7 @@
       "season": "4",
       "rule": "1",
       "date": "2026-07-27",
-      "updatedAt": "2026-07-27T09:50:27.715Z",
+      "updatedAt": "2026-07-28T08:32:31.744Z",
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
