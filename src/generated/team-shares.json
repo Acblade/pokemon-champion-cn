@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T06:15:18.036Z",
+  "updatedAt": "2026-08-03T06:40:53.323Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -17,7 +17,7 @@
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
       "updatedAt": "2026-06-12",
-      "count": 1103
+      "count": 1104
     }
   ],
   "teams": [
@@ -24815,6 +24815,120 @@
             "近身战",
             "击掌奇袭",
             "克命爪"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "vgcpastes-pc892",
+      "title": "LuixenS' Aerodactyl Charizard-Y Team",
+      "author": "LuixenS",
+      "owner": "LuixenS",
+      "teamId": "PC892",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/LuixenS/status/2057096022078247120?s=20",
+      "platformUrl": "https://pokepast.es/7367f5a868f8757f",
+      "season": "M-A",
+      "format": "队伍分享",
+      "updatedAt": "2026-05-20",
+      "eventDate": "2026-05-20",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-A",
+        "线上赛事",
+        "其它",
+        "化石翼龙（Mega）",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 LuixenS，队伍码 U4WWLDUT0J",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "28 HP / 2 Atk / 1 Def / 3 SpD / 32 Spe",
+          "moves": [
+            "岩崩",
+            "顺风",
+            "双翼",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "28 HP / 14 Def / 1 SpA / 23 Spe",
+          "moves": [
+            "热风",
+            "气象球",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Focus Sash",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "水流裂破",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 25 Atk / 9 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "踢倒",
+            "铁头"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "27 HP / 22 Def / 11 SpA / 6 Spe",
+          "moves": [
+            "巨声",
+            "电光一闪",
+            "哈欠",
+            "看穿"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "4 HP / 20 Atk / 10 SpD / 32 Spe",
+          "moves": [
+            "地震",
+            "龙爪",
+            "岩崩",
+            "跺脚"
           ]
         }
       ],
