@@ -9,6 +9,10 @@ type UsageDataset = {
   trainerRankingsUpdatedAt?: string
   trainerRankingsAvailable?: boolean
   trainerRankingsNote?: string
+  trainerRankingsFinal?: boolean
+  trainerRankingSourceSeason?: string
+  trainerRankingSourceRule?: string
+  updatesFrozen?: boolean
   trainerRankings: TrainerRankingEntry[]
   updatedAt: string
   season: string
@@ -143,6 +147,12 @@ function parseRankings(text: string) {
   return rankings.sort((a, b) => a.rank - b.rank)
 }
 
+function trainerRankingSourceUrl(dataset: UsageDataset) {
+  const season = dataset.trainerRankingSourceSeason || dataset.season
+  const rule = dataset.trainerRankingSourceRule || dataset.rule
+  return `https://champs.pokedb.tokyo/trainer/list?season=${season}&rule=${rule}`
+}
+
 const text = fs.readFileSync(path.resolve(inputPath), 'utf8')
 const importedAt = parseJstTimestamp(text)
 const rankings = parseRankings(text)
@@ -150,9 +160,12 @@ const collection = JSON.parse(fs.readFileSync(outputPath, 'utf8')) as UsageColle
 const datasetKey = process.env.CHAMPS_MANUAL_RANKING_DATASET || collection.defaultKey
 const dataset = collection.datasets[datasetKey]
 if (!dataset) throw new Error(`Dataset not found: ${datasetKey}`)
+if (dataset.updatesFrozen && process.env.CHAMPS_ALLOW_FROZEN_IMPORT !== '1') {
+  throw new Error(`Dataset is frozen and cannot be updated without CHAMPS_ALLOW_FROZEN_IMPORT=1: ${datasetKey}`)
+}
 
 dataset.trainerSource = 'Battle Database Champions'
-dataset.trainerSourceUrl = `https://champs.pokedb.tokyo/trainer/list?season=${dataset.season}&rule=${dataset.rule}`
+dataset.trainerSourceUrl = trainerRankingSourceUrl(dataset)
 dataset.trainerRankingsUpdatedAt = importedAt
 dataset.trainerRankingsAvailable = true
 dataset.trainerRankingsNote = `玩家排名由手动导入数据更新，原始时间按日本时间解析。`

@@ -72,6 +72,21 @@ function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true })
 }
 
+function writeUtf8File(filePath: string, contents: string) {
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, contents, 'utf8')
+    return
+  }
+
+  const file = fs.openSync(filePath, 'r+')
+  try {
+    fs.ftruncateSync(file, 0)
+    fs.writeFileSync(file, contents, 'utf8')
+  } finally {
+    fs.closeSync(file)
+  }
+}
+
 function ensureGitRepo(dir: string, url: string) {
   ensureDir(path.dirname(dir))
   if (fs.existsSync(path.join(dir, '.git'))) {
@@ -1097,9 +1112,9 @@ async function main() {
     })
   )
 
-  fs.writeFileSync(path.join(outputDir, 'pokemon-index.json'), `${JSON.stringify(pokemonIndex, null, 2)}\n`, 'utf8')
-  fs.writeFileSync(path.join(outputDir, 'pokemon-details.json'), `${JSON.stringify(pokemonDetails, null, 2)}\n`, 'utf8')
-  fs.writeFileSync(path.join(outputDir, 'items.json'), `${JSON.stringify(allowedItems, null, 2)}\n`, 'utf8')
+  writeUtf8File(path.join(outputDir, 'pokemon-index.json'), `${JSON.stringify(pokemonIndex, null, 2)}\n`)
+  writeUtf8File(path.join(outputDir, 'pokemon-details.json'), `${JSON.stringify(pokemonDetails, null, 2)}\n`)
+  writeUtf8File(path.join(outputDir, 'items.json'), `${JSON.stringify(allowedItems, null, 2)}\n`)
 
   console.log(`Built ${pokemonIndex.length} pokemon records from Showdown mod "${showdownMod}".`)
 }

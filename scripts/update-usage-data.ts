@@ -9,7 +9,7 @@ const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   '1': 'https://gamewith.jp/pokemon-champions/558230',
   '2': 'https://gamewith.jp/pokemon-champions/555373',
 }
-const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4')
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5')
   .split(',')
   .map(value => value.trim())
   .filter(Boolean)
@@ -146,6 +146,12 @@ type UsageDataset = {
   missingPokemon: { key: string; rank: number; jpName: string }[]
   trainerRankingsAvailable: boolean
   trainerRankingsNote?: string
+  trainerRankingsFinal?: boolean
+  trainerRankingSourceSeason?: string
+  trainerRankingSourceRule?: string
+  updatesFrozen?: boolean
+  updatesFrozenAt?: string
+  updatesFrozenReason?: string
   trainerRankings: TrainerRankingEntry[]
   entries: Record<string, UsageEntry>
 }
@@ -187,11 +193,16 @@ type TranslationCache = {
 type GameWithPokemonData = {
   name: string
   abilities?: [string, string][]
-  moves?: [string, string, string][]
-  items?: [string, string][]
+  moves?: ([string, string, string] | [number, number])[]
+  items?: ([string, string] | [number, number])[]
   evDistributions?: [[number, number, number, number, number, number], string][]
   natures?: [string, string][]
   teammates?: [number, string][]
+}
+
+type GameWithTooltipNames = {
+  items: Map<string, string>
+  moves: Map<string, string>
 }
 
 // ---------- utilities ----------
@@ -265,11 +276,11 @@ async function getPage(url: string) {
   return { text: await res.text(), finalUrl: res.url }
 }
 
-function isRequestedListPage(finalUrl: string, kind: 'pokemon' | 'trainer') {
+function isRequestedListPage(finalUrl: string, kind: 'pokemon' | 'trainer', season = SEASON, rule = RULE) {
   const parsed = new URL(finalUrl)
   return parsed.pathname === `/${kind}/list` &&
-    parsed.searchParams.get('season') === SEASON &&
-    parsed.searchParams.get('rule') === RULE &&
+    parsed.searchParams.get('season') === season &&
+    parsed.searchParams.get('rule') === rule &&
     !parsed.searchParams.has('fallback')
 }
 
@@ -399,8 +410,8 @@ function parsePokemonList(html: string): { key: string; rank: number; jpName: st
   return entries
 }
 
-function maxPage(html: string, kind: 'pokemon' | 'trainer'): number {
-  const re = new RegExp(`/${kind}/list\\?season=${SEASON}(?:&amp;|&)rule=${RULE}(?:&amp;|&)page=(\\d+)`, 'g')
+function maxPage(html: string, kind: 'pokemon' | 'trainer', season = SEASON, rule = RULE): number {
+  const re = new RegExp(`/${kind}/list\\?season=${season}(?:&amp;|&)rule=${rule}(?:&amp;|&)page=(\\d+)`, 'g')
   let max = 1
   for (const m of html.matchAll(re)) max = Math.max(max, Number(m[1]) || 1)
   return max
@@ -497,6 +508,25 @@ function mergeExistingTrainerRankings(output: UsageDataset, existing: UsageDatas
   }
 }
 
+function preserveDatasetUpdateSettings(output: UsageDataset, existing: UsageDataset | undefined): UsageDataset {
+  return {
+    ...output,
+    trainerRankingsFinal: existing?.trainerRankingsFinal,
+    trainerRankingSourceSeason: existing?.trainerRankingSourceSeason ?? output.season,
+    trainerRankingSourceRule: existing?.trainerRankingSourceRule ?? output.rule,
+    updatesFrozen: existing?.updatesFrozen,
+    updatesFrozenAt: existing?.updatesFrozenAt,
+    updatesFrozenReason: existing?.updatesFrozenReason,
+  }
+}
+
+function trainerRankingSource(existing: UsageDataset | undefined) {
+  return {
+    season: existing?.trainerRankingSourceSeason || SEASON,
+    rule: existing?.trainerRankingSourceRule || RULE,
+  }
+}
+
 function gameWithUrlForRule(rule: string) {
   const url = GAMEWITH_URL_BY_RULE[rule]
   if (!url) throw new Error(`No GameWith JP fallback URL configured for rule=${rule}`)
@@ -561,6 +591,18 @@ function extractJsObjectLiteral<T>(html: string, marker: string): T {
 
 function parseGameWithPokemonData(html: string) {
   return extractJsObjectLiteral<Record<string, GameWithPokemonData>>(html, 'const pkchPokemonData = ')
+}
+
+function parseGameWithTooltipNames(html: string): GameWithTooltipNames {
+  const items = new Map<string, string>()
+  const moves = new Map<string, string>()
+  const re = /\{name:(["'])([^"']+)\1,id:\s*(["'])([im])(\d+)\3,/g
+  for (const match of html.matchAll(re)) {
+    const name = decodeHtml(match[2])
+    const target = match[4] === 'i' ? items : moves
+    target.set(match[5], name)
+  }
+  return { items, moves }
 }
 
 function parseGameWithUpdatedAt(html: string) {
@@ -661,10 +703,11 @@ async function fetchAllPokemon() {
   return all.sort((a, b) => a.rank - b.rank)
 }
 
-async function fetchAllTrainers() {
-  const requestedUrl = `${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}`
+async function fetchAllTrainers(existing?: UsageDataset) {
+  const source = trainerRankingSource(existing)
+  const requestedUrl = `${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}`
   const firstPage = await getPage(`${requestedUrl}&page=1`)
-  if (!isRequestedListPage(firstPage.finalUrl, 'trainer')) {
+  if (!isRequestedListPage(firstPage.finalUrl, 'trainer', source.season, source.rule)) {
     console.warn(`Trainer rankings unavailable for season=${SEASON} rule=${RULE}; source returned ${firstPage.finalUrl}`)
     return {
       sourceUrl: requestedUrl,
@@ -673,10 +716,10 @@ async function fetchAllTrainers() {
       rankings: [] as TrainerRankingEntry[],
     }
   }
-  const pages = maxPage(firstPage.text, 'trainer')
+  const pages = maxPage(firstPage.text, 'trainer', source.season, source.rule)
   const all = parseTrainers(firstPage.text)
   for (let p = 2; p <= pages; p++) {
-    const html = await getText(`${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}&page=${p}`)
+    const html = await getText(`${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}&page=${p}`)
     all.push(...parseTrainers(html))
   }
   return {
@@ -686,13 +729,14 @@ async function fetchAllTrainers() {
   }
 }
 
-async function fetchTrainerRankingsSafely() {
+async function fetchTrainerRankingsSafely(existing?: UsageDataset) {
+  const source = trainerRankingSource(existing)
   try {
-    return await fetchAllTrainers()
+    return await fetchAllTrainers(existing)
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     return {
-      sourceUrl: `${BASE_URL}/trainer/list?season=${SEASON}&rule=${RULE}`,
+      sourceUrl: `${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}`,
       available: false,
       note: `玩家排名同步失败：${message}`,
       rankings: [] as TrainerRankingEntry[],
@@ -761,6 +805,7 @@ async function fetchPokemonDetail(
 async function fetchUsageDataset(
   byKey: Map<string, PokemonDetail>,
   cache: TranslationCache,
+  existing?: UsageDataset,
 ): Promise<UsageDataset> {
   const pokemonList = await fetchAllPokemon()
   console.log(`Found ${pokemonList.length} Pokémon in rankings`)
@@ -787,7 +832,7 @@ async function fetchUsageDataset(
     }
   }
 
-  const trainers = await fetchAllTrainers()
+  const trainers = await fetchAllTrainers(existing)
 
   return {
     source: 'Battle Database Champions',
@@ -822,19 +867,26 @@ async function fetchUsageDataset(
 function buildGameWithUsageEntry(
   rankEntry: { rank: number; key: string; jpName: string },
   gameWithEntry: GameWithPokemonData | undefined,
+  tooltipNames: GameWithTooltipNames,
   detail: PokemonDetail,
   byKey: Map<string, PokemonDetail>,
   cache: TranslationCache,
   itemById: Map<string, GeneratedItem>,
 ): UsageEntry {
-  const items: UsageItem[] = (gameWithEntry?.items ?? []).slice(0, 10).map(([jpName, rate]) => {
+  const items: UsageItem[] = (gameWithEntry?.items ?? []).slice(0, 10).flatMap(([itemRef, rate]) => {
+    const jpName = typeof itemRef === 'number' ? tooltipNames.items.get(String(itemRef)) : itemRef
+    if (!jpName) return []
     const translated = translateGameWithItem(jpName, cache, itemById)
-    return { ...translated, percent: toNumber(rate) ?? 0 }
+    return [{ ...translated, percent: toNumber(rate) ?? 0 }]
   })
 
-  const moves: UsageItem[] = (gameWithEntry?.moves ?? []).slice(0, 12).map(([, jpName, rate]) => {
+  const moves: UsageItem[] = (gameWithEntry?.moves ?? []).slice(0, 12).flatMap((moveRow) => {
+    const [moveRef, second, third] = moveRow
+    const jpName = moveRow.length >= 3 ? String(second) : tooltipNames.moves.get(String(moveRef))
+    const rate = moveRow.length >= 3 ? third : second
+    if (!jpName) return []
     const { zh, en } = translate(jpName, cache.moves)
-    return { zh, en, percent: toNumber(rate) ?? 0 }
+    return [{ zh, en, percent: toNumber(rate) ?? 0 }]
   })
 
   const abilities: UsageItem[] = (gameWithEntry?.abilities ?? []).slice(0, 8).map(([jpName, rate]) => {
@@ -880,6 +932,7 @@ function buildGameWithUsageEntry(
 async function fetchGameWithUsageDataset(
   byKey: Map<string, PokemonDetail>,
   cache: TranslationCache,
+  existing?: UsageDataset,
 ): Promise<UsageDataset> {
   const sourceUrl = gameWithUrlForRule(RULE)
   const html = await getText(sourceUrl)
@@ -890,6 +943,7 @@ async function fetchGameWithUsageDataset(
 
   const ranking = parseGameWithRanking(html)
   const gameWithData = parseGameWithPokemonData(html)
+  const tooltipNames = parseGameWithTooltipNames(html)
   const itemById = loadGeneratedItems()
   const targetRanking = DETAIL_LIMIT > 0 ? ranking.slice(0, DETAIL_LIMIT) : ranking
 
@@ -920,6 +974,7 @@ async function fetchGameWithUsageDataset(
     entries[toId(detail.id)] = buildGameWithUsageEntry(
       rankEntry,
       gameWithData[rankEntry.key],
+      tooltipNames,
       detail,
       byKey,
       cache,
@@ -929,7 +984,7 @@ async function fetchGameWithUsageDataset(
 
   const sourceUpdatedAt = parseGameWithUpdatedAt(html)
   const date = parseGameWithDate(html, sourceUpdatedAt)
-  const trainers = await fetchTrainerRankingsSafely()
+  const trainers = await fetchTrainerRankingsSafely(existing)
   const trainerRankingsNote = trainers.available
     ? undefined
     : `当前使用 GameWith JP 使用率数据；${trainers.note ?? '玩家排名暂不可用。'}`
@@ -961,28 +1016,36 @@ async function main() {
   const cache = await loadTranslationCache(raw)
   const existing = loadExistingCollection()
   const datasets: Record<string, UsageDataset> = { ...(existing?.datasets ?? {}) }
+  let updatedDatasetCount = 0
 
   for (const season of TARGET_SEASONS) {
     for (const rule of TARGET_RULES) {
       SEASON = season
       RULE = rule
       const key = datasetKey(season, rule)
+      const existingDataset = datasets[key]
+      if (existingDataset?.updatesFrozen) {
+        console.log(`Keeping frozen ${key}; ${existingDataset.updatesFrozenReason || 'updates are disabled for this dataset'}`)
+        continue
+      }
       try {
         let output: UsageDataset
         if (USAGE_SOURCE === 'champs') {
-          output = await fetchUsageDataset(byKey, cache)
+          output = await fetchUsageDataset(byKey, cache, existingDataset)
         } else {
           try {
-            output = await fetchGameWithUsageDataset(byKey, cache)
+            output = await fetchGameWithUsageDataset(byKey, cache, existingDataset)
           } catch (error) {
             const message = error instanceof Error ? error.message : String(error)
             if (USAGE_SOURCE === 'gamewith') throw error
             console.warn(`GameWith JP usage source failed for ${key}; trying champs.pokedb.tokyo fallback: ${message}`)
-            output = await fetchUsageDataset(byKey, cache)
+            output = await fetchUsageDataset(byKey, cache, existingDataset)
           }
         }
-        output = mergeExistingTrainerRankings(output, datasets[key])
+        output = mergeExistingTrainerRankings(output, existingDataset)
+        output = preserveDatasetUpdateSettings(output, existingDataset)
         datasets[output.format] = output
+        updatedDatasetCount += 1
         if (output.missingPokemon.length) {
           console.warn(
             `Missing ${output.missingPokemon.length} Pokemon for ${output.format}: ` +
@@ -996,6 +1059,11 @@ async function main() {
         console.warn(`Keeping existing ${key}; usage sync failed: ${message}`)
       }
     }
+  }
+
+  if (updatedDatasetCount === 0 && existing) {
+    console.log('No usage datasets updated; keeping existing collection unchanged.')
+    return
   }
 
   const defaultSeason = process.env.CHAMPS_DEFAULT_SEASON ?? TARGET_SEASONS[TARGET_SEASONS.length - 1] ?? '3'

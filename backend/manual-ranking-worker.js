@@ -167,6 +167,12 @@ function parseRankings(text) {
   return rankings.sort((a, b) => a.rank - b.rank)
 }
 
+function trainerRankingSourceUrl(dataset) {
+  const season = dataset.trainerRankingSourceSeason || dataset.season
+  const rule = dataset.trainerRankingSourceRule || dataset.rule
+  return `https://champs.pokedb.tokyo/trainer/list?season=${season}&rule=${rule}`
+}
+
 function decodeBase64Text(value) {
   const binary = atob(value.replace(/\n/g, ''))
   const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0))
@@ -272,9 +278,10 @@ async function importRankings(payload, env) {
   const collection = JSON.parse(usageText)
   const dataset = collection.datasets?.[datasetKey]
   if (!dataset) throw new Error(`找不到数据集: ${datasetKey}`)
+  if (dataset.updatesFrozen) throw new Error(`数据集已冻结，不能再更新: ${datasetKey}`)
 
   dataset.trainerSource = 'Battle Database Champions'
-  dataset.trainerSourceUrl = `https://champs.pokedb.tokyo/trainer/list?season=${dataset.season}&rule=${dataset.rule}`
+  dataset.trainerSourceUrl = trainerRankingSourceUrl(dataset)
   dataset.trainerRankingsUpdatedAt = importedAt
   dataset.trainerRankingsAvailable = true
   dataset.trainerRankingsNote = '玩家排名由后端手动导入数据更新，原始时间按日本时间解析。'

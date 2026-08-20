@@ -41,6 +41,12 @@ export type UsageDataset = {
   missingPokemon?: { key: string; rank: number; jpName: string }[]
   trainerRankingsAvailable?: boolean
   trainerRankingsNote?: string
+  trainerRankingsFinal?: boolean
+  trainerRankingSourceSeason?: string
+  trainerRankingSourceRule?: string
+  updatesFrozen?: boolean
+  updatesFrozenAt?: string
+  updatesFrozenReason?: string
   trainerRankings: TrainerRankingEntry[]
   entries: Record<string, UsageEntry>
 }

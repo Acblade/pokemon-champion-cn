@@ -31,6 +31,10 @@ jobs:
       - name: Update usage and trainer rankings
         run: npm run update-usage
         env:
+          CHAMPS_SEASONS: '5'
+          CHAMPS_RULES: '1'
+          CHAMPS_DEFAULT_SEASON: '5'
+          CHAMPS_DEFAULT_RULE: '1'
           CHAMPS_USAGE_SOURCE: gamewith
       - name: Build
         run: npm run build

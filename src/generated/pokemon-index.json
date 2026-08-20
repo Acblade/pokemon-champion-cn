@@ -706,7 +706,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -981,7 +981,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -3486,7 +3486,7 @@
       "Water",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4013,7 +4013,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4061,7 +4061,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -4531,7 +4531,7 @@
       "Steel",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -4770,7 +4770,7 @@
       "Fighting",
       "Psychic"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -5698,7 +5698,7 @@
       "Steel",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -5933,7 +5933,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -7190,7 +7190,7 @@
       "Ice",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -7968,7 +7968,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8264,7 +8264,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8317,7 +8317,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8466,7 +8466,7 @@
       "Dark",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8519,7 +8519,7 @@
       "Dark",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -8892,7 +8892,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -8934,7 +8934,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -9840,7 +9840,7 @@
       "Fire",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -9893,7 +9893,7 @@
       "Fire",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10464,7 +10464,7 @@
       "Dark",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -10517,7 +10517,7 @@
       "Dark",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -10560,7 +10560,7 @@
       "Rock",
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -10613,7 +10613,7 @@
       "Rock",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -10656,7 +10656,7 @@
       "Poison",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -12957,7 +12957,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -13253,7 +13253,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -13300,7 +13300,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {

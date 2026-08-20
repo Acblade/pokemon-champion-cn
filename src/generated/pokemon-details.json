@@ -10790,7 +10790,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -15972,7 +15972,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -55750,7 +55750,7 @@
       "Water",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -56177,6 +56177,17 @@
         "description": "如果此回合内对手 已经受到伤害的话， 招式威力会变成２倍。",
         "pinyin": "eyizhuiji",
         "type": "Dark",
+        "category": "Physical",
+        "basePower": 60,
+        "accuracy": 100
+      },
+      {
+        "id": "barbbarrage",
+        "en": "Barb Barrage",
+        "zh": "毒千针",
+        "description": "毒属性物理招式，威力 60，命中 100，PP 10。50%几率令目标陷入中毒状态。",
+        "pinyin": "duqianzhen",
+        "type": "Poison",
         "category": "Physical",
         "basePower": 60,
         "accuracy": 100
@@ -64472,7 +64483,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -65369,7 +65380,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -74395,7 +74406,7 @@
       "Steel",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -78879,7 +78890,7 @@
       "Fighting",
       "Psychic"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -93267,7 +93278,7 @@
       "Steel",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -97582,7 +97593,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -118427,7 +118438,7 @@
       "Ice",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -129502,7 +129513,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -133715,7 +133726,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -134353,7 +134364,7 @@
       "Bug",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -136554,7 +136565,7 @@
       "Dark",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -137511,7 +137522,7 @@
       "Dark",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -143235,7 +143246,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -144104,7 +144115,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -158754,7 +158765,7 @@
       "Fire",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -159348,7 +159359,7 @@
       "Fire",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -166609,7 +166620,7 @@
       "Dark",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -167412,7 +167423,7 @@
       "Dark",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -168205,7 +168216,7 @@
       "Rock",
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -169041,7 +169052,7 @@
       "Rock",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -169867,7 +169878,7 @@
       "Poison",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -202466,7 +202477,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -206954,7 +206965,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -207564,7 +207575,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {

@@ -88,7 +88,7 @@ const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-r
 const MANUAL_RANKING_API_URL = (import.meta.env.VITE_MANUAL_RANKING_API_URL || '').trim()
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
-  'M-B': { label: 'M-B', seasons: [{ id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
+  'M-B': { label: 'M-B', seasons: [{ id: '5', label: 'M-5' }, { id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
 }
 
 type HomeTab = 'list' | 'trainers' | 'teams' | 'damage'
@@ -582,8 +582,9 @@ function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
   }
 }
 
-function trainerRankingSourceLabel(dataset: { trainerSource?: string; source?: string; sourceUrl: string }) {
+function trainerRankingSourceLabel(dataset: { trainerSource?: string; trainerSourceUrl?: string; source?: string; sourceUrl: string }) {
   if (dataset.trainerSource === '手动导入玩家排名') return 'Battle Database Champions'
+  if (dataset.trainerSourceUrl) return 'Battle Database Champions'
   return dataset.trainerSource || sourceLabel(dataset)
 }
 
@@ -856,6 +857,7 @@ function isManualTrainerImportDue(dataset: UsageDataset | null) {
 
 function isTrainerRankingOlderThan(dataset: UsageDataset | null, hours: number) {
   if (!dataset) return false
+  if (dataset.trainerRankingsFinal || dataset.updatesFrozen) return false
   const updatedAt = dataset.trainerRankingsUpdatedAt
   if (!updatedAt) return true
   const updatedTime = Date.parse(updatedAt)
@@ -892,7 +894,7 @@ function App() {
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
   const [currentRule, setCurrentRule] = useState('M-B')
-  const [currentSeason, setCurrentSeason] = useState('4')
+  const [currentSeason, setCurrentSeason] = useState('5')
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())
@@ -923,8 +925,8 @@ function App() {
   const currentTrainerRankingDataset = selectedUsageDataset.trainerRankings.length > 0 ? selectedUsageDataset : null
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
   const trainerRankingUnupdated = isTrainerRankingOutdated(selectedUsageDataset, currentTrainerRankingDataset)
-  const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingDataset)
-  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerRankingDataset, 24)
+  const showManualTrainerImportButton = isManualTrainerImportDue(selectedUsageDataset)
+  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(selectedUsageDataset, 24)
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1779,7 +1781,7 @@ function App() {
               {trainerRankingDataset && (
                 <>
                   <div className="data-source-line">
-                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
+                    <a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(selectedUsageDataset)}</a> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
                     {showManualTrainerImportButton && (
                       <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
                     )}
@@ -1789,7 +1791,7 @@ function App() {
                     <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
                       <p className="manual-ranking-intro">
                         最新的排名数据需要从
-                        <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
+                        <a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
                         手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
