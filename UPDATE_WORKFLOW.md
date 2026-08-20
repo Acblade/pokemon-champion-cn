@@ -47,7 +47,10 @@ $env:CHAMPIONS_SHOWDOWN_MOD='championsregma'
 - 道具数据：`out/tmp/pokemon-showdown/data/items.ts` + `out/tmp/pokemon-showdown/data/mods/<mod>/items.ts`
 - 伤害计算器：`out/tmp/damage-calc/calc/src/mechanics/champions.ts`
 - 使用率：`https://champs.pokedb.tokyo/pokemon/list?season=<season>&rule=<rule>`
-- 玩家排名：`https://champs.pokedb.tokyo/trainer/list?season=<season>&rule=<rule>`
+- 玩家排名首选：`https://champs.pokedb.tokyo/trainer/list?season=<season>&rule=<rule>`
+- 玩家排名实时 fallback：`https://op.gg/pokemon-champions/leaderboards?format=<single|double>&season=m-<season>`
+
+当 Battle Database 返回 403、旧赛季重定向或空数据时，可以使用 OP.GG 的公开实时榜 fallback。必须明确标记来源为 OP.GG 和“实时榜（非最终排名）”，并严格校验目标 season、single/double、页码、总数和 top 300 的完整性。OP.GG 当前没有已验证的玩家榜 API，因此 HTML/RSC schema 任一断言失败时必须保留最近一次成功排名，不得写入部分数据。赛季结束后再抓取最终快照，并优先与恢复可用的 Battle Database 交叉核对后冻结。
 
 ## 推荐命令
 

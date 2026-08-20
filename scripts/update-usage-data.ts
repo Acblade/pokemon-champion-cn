@@ -4,6 +4,10 @@ import vm from 'node:vm'
 
 const BASE_URL = 'https://champs.pokedb.tokyo'
 const GAMEWITH_SOURCE = 'GameWith JP'
+const OPGG_SOURCE = 'OP.GG Pokémon Champions'
+const OPGG_TRAINER_URL = 'https://op.gg/pokemon-champions/leaderboards'
+const OPGG_TRAINER_PAGE_SIZE = 100
+const OPGG_TRAINER_PAGE_COUNT = 3
 const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   // Local rule=1 is Champions doubles; GameWith uses a separate doubles article.
   '1': 'https://gamewith.jp/pokemon-champions/558230',
@@ -128,6 +132,15 @@ export type UsageEntry = {
 
 type TrainerRankingEntry = { rank: number; rating: number | null; name: string }
 
+type TrainerRankingResult = {
+  source?: string
+  sourceUrl: string
+  updatedAt?: string
+  available: boolean
+  note?: string
+  rankings: TrainerRankingEntry[]
+}
+
 type UsageDataset = {
   source: string
   sourceUrl: string
@@ -244,7 +257,16 @@ function loadGeneratedItems() {
 }
 
 function regulationForSeason(season: string): 'M-A' | 'M-B' {
-  return Number(season) >= 3 ? 'M-B' : 'M-A'
+  const regulationBySeason: Record<string, 'M-A' | 'M-B'> = {
+    '1': 'M-A',
+    '2': 'M-A',
+    '3': 'M-B',
+    '4': 'M-B',
+    '5': 'M-B',
+  }
+  const regulation = regulationBySeason[season]
+  if (!regulation) throw new Error(`No regulation mapping configured for Champions season ${season}`)
+  return regulation
 }
 
 function battleForRule(rule: string): 'Doubles' | 'Singles' {
@@ -495,6 +517,197 @@ function parseTrainers(html: string): { rank: number; rating: number | null; nam
   return results
 }
 
+type OpggTrainerRanking = {
+  createdAt: string
+  currentPage: number
+  pageSize: number
+  totalCount: number
+  totalPages?: number
+  trainers: unknown[]
+}
+
+function opggFormatForRule(rule: string): 'double' | 'single' {
+  if (rule === '1') return 'double'
+  if (rule === '2') return 'single'
+  throw new Error(`No OP.GG trainer format configured for Champions rule ${rule}`)
+}
+
+function opggTrainerUrl(season: string, rule: string, page?: number) {
+  const params = new URLSearchParams({
+    format: opggFormatForRule(rule),
+    season: `m-${season}`,
+  })
+  if (page !== undefined) params.set('page', String(page))
+  return `${OPGG_TRAINER_URL}?${params.toString()}`
+}
+
+function extractNextFlightStrings(html: string) {
+  const chunks: string[] = []
+  for (const match of html.matchAll(/<script[^>]*>\s*self\.__next_f\.push\(([\s\S]*?)\)\s*<\/script>/g)) {
+    let payload: unknown
+    try {
+      payload = JSON.parse(match[1])
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      throw new Error(`OP.GG Next RSC payload is invalid JSON: ${message}`, { cause: error })
+    }
+    if (Array.isArray(payload) && typeof payload[1] === 'string') chunks.push(payload[1])
+  }
+  if (chunks.length === 0) throw new Error('OP.GG Next RSC payload was not found')
+  return chunks
+}
+
+function parseJsonValueAt(source: string, start: number) {
+  const opening = source[start]
+  const closing = opening === '{' ? '}' : opening === '[' ? ']' : undefined
+  if (!closing) throw new Error('OP.GG Next RSC property is not a JSON object or array')
+
+  let depth = 0
+  let inString = false
+  let escaped = false
+  for (let i = start; i < source.length; i++) {
+    const char = source[i]
+    if (inString) {
+      if (escaped) escaped = false
+      else if (char === '\\') escaped = true
+      else if (char === '"') inString = false
+      continue
+    }
+    if (char === '"') {
+      inString = true
+      continue
+    }
+    if (char === opening) depth += 1
+    else if (char === closing) {
+      depth -= 1
+      if (depth === 0) return JSON.parse(source.slice(start, i + 1)) as unknown
+    }
+  }
+  throw new Error('OP.GG Next RSC property is truncated')
+}
+
+function extractJsonPropertyValues(source: string, property: string) {
+  const marker = `${JSON.stringify(property)}:`
+  const values: unknown[] = []
+  let offset = 0
+  while (offset < source.length) {
+    const markerIndex = source.indexOf(marker, offset)
+    if (markerIndex < 0) break
+    let valueStart = markerIndex + marker.length
+    while (/\s/.test(source[valueStart] ?? '')) valueStart += 1
+    values.push(parseJsonValueAt(source, valueStart))
+    offset = valueStart + 1
+  }
+  return values
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
+}
+
+function parseOpggCreatedAtKst(value: string) {
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/)
+  if (!match) throw new Error(`OP.GG createdAt is not a KST date-time: ${value}`)
+  const [, yearText, monthText, dayText, hourText, minuteText, secondText = '00'] = match
+  const parts = [yearText, monthText, dayText, hourText, minuteText, secondText].map(Number)
+  const [year, month, day, hour, minute, second] = parts
+  const utcTime = Date.UTC(year, month - 1, day, hour - 9, minute, second)
+  const date = new Date(utcTime)
+  const kstCheck = new Date(utcTime + 9 * 60 * 60 * 1000)
+  const valid = kstCheck.getUTCFullYear() === year &&
+    kstCheck.getUTCMonth() === month - 1 &&
+    kstCheck.getUTCDate() === day &&
+    kstCheck.getUTCHours() === hour &&
+    kstCheck.getUTCMinutes() === minute &&
+    kstCheck.getUTCSeconds() === second
+  if (!valid) throw new Error(`OP.GG createdAt is invalid: ${value}`)
+  return date.toISOString()
+}
+
+function parseOpggTrainerPage(
+  html: string,
+  season: string,
+  rule: string,
+  expectedPage: number,
+) {
+  const expectedSeason = `m-${season}`
+  const expectedFormat = opggFormatForRule(rule)
+  const candidates: { chunk: string; seasonRankings: Record<string, unknown> }[] = []
+  for (const chunk of extractNextFlightStrings(html)) {
+    for (const value of extractJsonPropertyValues(chunk, 'seasonRankings')) {
+      if (isRecord(value)) candidates.push({ chunk, seasonRankings: value })
+    }
+  }
+  if (candidates.length !== 1) {
+    throw new Error(`OP.GG page ${expectedPage} contained ${candidates.length} seasonRankings payloads`)
+  }
+
+  const [{ chunk, seasonRankings }] = candidates
+  const seasons = [...chunk.matchAll(/"season":"(m-\d+)"/g)].map(match => match[1])
+  if (seasons.length === 0 || seasons.some(value => value !== expectedSeason)) {
+    throw new Error(`OP.GG page ${expectedPage} season mismatch: expected ${expectedSeason}`)
+  }
+  const formats = [...chunk.matchAll(/"format":"(single|double)"/g)].map(match => match[1])
+  if (formats.length === 0 || formats.some(value => value !== expectedFormat)) {
+    throw new Error(`OP.GG page ${expectedPage} format mismatch: expected ${expectedFormat}`)
+  }
+
+  const rawRanking = seasonRankings[expectedSeason]
+  if (!isRecord(rawRanking)) throw new Error(`OP.GG page ${expectedPage} has no ${expectedSeason} rankings`)
+  const ranking = rawRanking as OpggTrainerRanking
+  if (ranking.currentPage !== expectedPage) {
+    throw new Error(`OP.GG currentPage mismatch: expected ${expectedPage}, received ${String(ranking.currentPage)}`)
+  }
+  if (ranking.pageSize !== OPGG_TRAINER_PAGE_SIZE) {
+    throw new Error(`OP.GG pageSize mismatch: expected ${OPGG_TRAINER_PAGE_SIZE}, received ${String(ranking.pageSize)}`)
+  }
+  if (!Number.isInteger(ranking.totalCount) || ranking.totalCount < OPGG_TRAINER_PAGE_COUNT * OPGG_TRAINER_PAGE_SIZE) {
+    throw new Error(`OP.GG totalCount is below 300: ${String(ranking.totalCount)}`)
+  }
+  if (ranking.totalPages !== undefined &&
+    (!Number.isInteger(ranking.totalPages) || ranking.totalPages < OPGG_TRAINER_PAGE_COUNT)) {
+    throw new Error(`OP.GG totalPages is below 3: ${String(ranking.totalPages)}`)
+  }
+  if (!Array.isArray(ranking.trainers) || ranking.trainers.length !== OPGG_TRAINER_PAGE_SIZE) {
+    throw new Error(`OP.GG page ${expectedPage} did not contain exactly 100 trainers`)
+  }
+  if (typeof ranking.createdAt !== 'string') throw new Error(`OP.GG page ${expectedPage} has no createdAt`)
+
+  const rankings = ranking.trainers.map((rawTrainer, index): TrainerRankingEntry & { position: number } => {
+    if (!isRecord(rawTrainer)) throw new Error(`OP.GG page ${expectedPage} trainer ${index + 1} is invalid`)
+    const position = rawTrainer.position
+    const rank = rawTrainer.rank
+    const score = rawTrainer.score
+    const nickname = rawTrainer.nickname
+    const expectedPosition = (expectedPage - 1) * OPGG_TRAINER_PAGE_SIZE + index + 1
+    if (!Number.isInteger(position) || position !== expectedPosition) {
+      throw new Error(`OP.GG page ${expectedPage} position mismatch: expected ${expectedPosition}, received ${String(position)}`)
+    }
+    if (!Number.isInteger(rank) || Number(rank) < 1) {
+      throw new Error(`OP.GG position ${expectedPosition} has invalid rank ${String(rank)}`)
+    }
+    if (!Number.isInteger(score) || Number(score) <= 0) {
+      throw new Error(`OP.GG position ${expectedPosition} has invalid score ${String(score)}`)
+    }
+    if (typeof nickname !== 'string' || nickname.trim().length === 0) {
+      throw new Error(`OP.GG position ${expectedPosition} has an invalid nickname`)
+    }
+    return {
+      position: Number(position),
+      rank: Number(rank),
+      rating: Number(score) / 1000,
+      name: nickname.trim(),
+    }
+  })
+
+  return {
+    createdAt: ranking.createdAt,
+    updatedAt: parseOpggCreatedAtKst(ranking.createdAt),
+    totalCount: ranking.totalCount,
+    rankings,
+  }
+}
+
 function mergeExistingTrainerRankings(output: UsageDataset, existing: UsageDataset | undefined): UsageDataset {
   if (output.trainerRankings.length > 0 || !existing?.trainerRankings?.length) return output
   return {
@@ -703,7 +916,7 @@ async function fetchAllPokemon() {
   return all.sort((a, b) => a.rank - b.rank)
 }
 
-async function fetchAllTrainers(existing?: UsageDataset) {
+async function fetchAllTrainers(existing?: UsageDataset): Promise<TrainerRankingResult> {
   const source = trainerRankingSource(existing)
   const requestedUrl = `${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}`
   const firstPage = await getPage(`${requestedUrl}&page=1`)
@@ -722,23 +935,71 @@ async function fetchAllTrainers(existing?: UsageDataset) {
     const html = await getText(`${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}&page=${p}`)
     all.push(...parseTrainers(html))
   }
+  if (all.length === 0) throw new Error(`Battle Database trainer schema returned no rankings for season=${source.season} rule=${source.rule}`)
   return {
+    source: 'Battle Database Champions',
     sourceUrl: requestedUrl,
+    updatedAt: new Date().toISOString(),
     available: true,
     rankings: all.sort((a, b) => a.rank - b.rank),
   }
 }
 
-async function fetchTrainerRankingsSafely(existing?: UsageDataset) {
+async function fetchOpggTrainerRankings(season: string, rule: string): Promise<TrainerRankingResult> {
+  const pages = await Promise.all(
+    Array.from({ length: OPGG_TRAINER_PAGE_COUNT }, (_, index) => index + 1).map(async page => {
+      const html = await getText(opggTrainerUrl(season, rule, page))
+      return parseOpggTrainerPage(html, season, rule, page)
+    }),
+  )
+  const createdAtValues = new Set(pages.map(page => page.createdAt))
+  const totalCountValues = new Set(pages.map(page => page.totalCount))
+  if (createdAtValues.size !== 1) throw new Error('OP.GG pages came from different realtime snapshots')
+  if (totalCountValues.size !== 1) throw new Error('OP.GG totalCount changed between pages')
+
+  const all = pages.flatMap(page => page.rankings)
+  const expectedCount = OPGG_TRAINER_PAGE_COUNT * OPGG_TRAINER_PAGE_SIZE
+  if (all.length !== expectedCount) throw new Error(`OP.GG Top 300 contained ${all.length} trainers`)
+  for (let index = 0; index < all.length; index++) {
+    const expectedPosition = index + 1
+    if (all[index].position !== expectedPosition) {
+      throw new Error(`OP.GG combined position mismatch: expected ${expectedPosition}, received ${all[index].position}`)
+    }
+    if (index > 0 && all[index].rank < all[index - 1].rank) {
+      throw new Error(`OP.GG ranks are not monotonic at position ${expectedPosition}`)
+    }
+  }
+
+  return {
+    source: OPGG_SOURCE,
+    sourceUrl: opggTrainerUrl(season, rule),
+    updatedAt: pages[0].updatedAt,
+    available: true,
+    note: 'OP.GG 实时榜（非最终排名）；PokeDB 当前不可用',
+    rankings: all.map(({ rank, rating, name }) => ({ rank, rating, name })),
+  }
+}
+
+async function fetchTrainerRankingsSafely(existing?: UsageDataset): Promise<TrainerRankingResult> {
   const source = trainerRankingSource(existing)
+  let pokedbFailure: string
   try {
-    return await fetchAllTrainers(existing)
+    const result = await fetchAllTrainers(existing)
+    if (result.available) return result
+    pokedbFailure = result.note ?? 'rankings unavailable'
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error)
+    pokedbFailure = error instanceof Error ? error.message : String(error)
+  }
+  console.warn(`PokeDB trainer rankings unavailable; trying OP.GG fallback: ${pokedbFailure}`)
+
+  try {
+    return await fetchOpggTrainerRankings(source.season, source.rule)
+  } catch (error) {
+    const opggFailure = error instanceof Error ? error.message : String(error)
     return {
       sourceUrl: `${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}`,
       available: false,
-      note: `玩家排名同步失败：${message}`,
+      note: `玩家排名同步失败：PokeDB ${pokedbFailure}；OP.GG ${opggFailure}`,
       rankings: [] as TrainerRankingEntry[],
     }
   }
@@ -832,14 +1093,14 @@ async function fetchUsageDataset(
     }
   }
 
-  const trainers = await fetchAllTrainers(existing)
+  const trainers = await fetchTrainerRankingsSafely(existing)
 
   return {
     source: 'Battle Database Champions',
     sourceUrl: `${BASE_URL}/pokemon/list?season=${SEASON}&rule=${RULE}`,
-    trainerSource: 'Battle Database Champions',
+    trainerSource: trainers.available ? trainers.source : undefined,
     trainerSourceUrl: trainers.sourceUrl,
-    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? new Date().toISOString() : undefined,
+    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? trainers.updatedAt ?? new Date().toISOString() : undefined,
     format: datasetKey(SEASON, RULE),
     regulation: regulationForSeason(SEASON),
     battle: battleForRule(RULE),
@@ -986,15 +1247,15 @@ async function fetchGameWithUsageDataset(
   const date = parseGameWithDate(html, sourceUpdatedAt)
   const trainers = await fetchTrainerRankingsSafely(existing)
   const trainerRankingsNote = trainers.available
-    ? undefined
+    ? trainers.note
     : `当前使用 GameWith JP 使用率数据；${trainers.note ?? '玩家排名暂不可用。'}`
   return {
     source: GAMEWITH_SOURCE,
     sourceUrl,
     sourceUpdatedAt,
-    trainerSource: trainers.available ? 'Battle Database Champions' : undefined,
+    trainerSource: trainers.available ? trainers.source : undefined,
     trainerSourceUrl: trainers.sourceUrl,
-    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? new Date().toISOString() : undefined,
+    trainerRankingsUpdatedAt: trainers.rankings.length > 0 ? trainers.updatedAt ?? new Date().toISOString() : undefined,
     format: datasetKey(SEASON, RULE),
     regulation: regulationForSeason(SEASON),
     battle: battleForRule(RULE),

@@ -573,6 +573,17 @@ function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: strin
   return dataset.trainerSourceUrl || dataset.sourceUrl
 }
 
+function manualTrainerRankingSourceUrl(dataset: {
+  season: string
+  rule: string
+  trainerRankingSourceSeason?: string
+  trainerRankingSourceRule?: string
+}) {
+  const season = dataset.trainerRankingSourceSeason || dataset.season
+  const rule = dataset.trainerRankingSourceRule || dataset.rule
+  return `https://champs.pokedb.tokyo/trainer/list?season=${season}&rule=${rule}`
+}
+
 function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
   if (dataset.source) return dataset.source
   try {
@@ -584,8 +595,9 @@ function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
 
 function trainerRankingSourceLabel(dataset: { trainerSource?: string; trainerSourceUrl?: string; source?: string; sourceUrl: string }) {
   if (dataset.trainerSource === '手动导入玩家排名') return 'Battle Database Champions'
-  if (dataset.trainerSourceUrl) return 'Battle Database Champions'
-  return dataset.trainerSource || sourceLabel(dataset)
+  if (dataset.trainerSource) return dataset.trainerSource
+  if (dataset.trainerSourceUrl?.includes('champs.pokedb.tokyo')) return 'Battle Database Champions'
+  return sourceLabel(dataset)
 }
 
 function slugify(value: string) {
@@ -1787,11 +1799,12 @@ function App() {
                     )}
                   </div>
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
+                  {selectedUsageDataset.trainerRankingsNote && <div className="data-fallback-note">{selectedUsageDataset.trainerRankingsNote}</div>}
                   {manualTrainerImportOpen && (
                     <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
                       <p className="manual-ranking-intro">
                         最新的排名数据需要从
-                        <a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
+                        <a href={manualTrainerRankingSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
                         手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
@@ -1820,7 +1833,7 @@ function App() {
               {!trainerRankingDataset ? (
                 <div className="empty-detail trainer-empty-state">
                   <h2>暂无可展示的玩家排名</h2>
-                  <p>还没有成功从 champs.pokedb.tokyo 同步过玩家排名数据。</p>
+                  <p>还没有从可用数据源成功同步玩家排名。</p>
                 </div>
               ) : (
                 <div className="trainer-rankings-wrap table-wrapper responsive-table-card">
