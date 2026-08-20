@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T04:03:15.472Z",
+  "updatedAt": "2026-08-20T04:03:15.062Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=1458357160#gid=1458357160",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-08-17",
-      "count": 752
+      "updatedAt": "2026-08-19",
+      "count": 758
     },
     {
       "name": "VGCPastes Repository",
@@ -40533,6 +40533,120 @@
       }
     },
     {
+      "id": "vgcpastes-mb758",
+      "title": "Jhin's Charizard-Y Tyranitar TR Team",
+      "author": "Jhin",
+      "owner": "jhin0213",
+      "teamId": "MB758",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/jhin0213/status/2089945972461990374?s=46",
+      "platformUrl": "https://pokepast.es/aefa6c1985c14b43",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-19",
+      "eventDate": "2026-08-19",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "喷火龙（Mega Y）",
+        "班基拉斯（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Jhin，队伍码 4HGXV756EG",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Quiet",
+          "spread": "32 HP / 23 Def / 11 SpA",
+          "moves": [
+            "热风",
+            "气象球",
+            "原始之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Brave",
+          "spread": "32 HP / 32 Atk / 2 SpD",
+          "moves": [
+            "岩崩",
+            "拍落",
+            "冰冻拳",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Iron Ball",
+          "ability": "Sand Force",
+          "nature": "Brave",
+          "spread": "2 HP / 32 Atk / 32 Def",
+          "moves": [
+            "十万马力",
+            "铁头",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptor",
+          "pokemonName": "Staraptor",
+          "item": "Choice Scarf",
+          "ability": "Reckless",
+          "nature": "Adamant",
+          "spread": "32 HP / 5 Atk / 29 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "搏命",
+            "急速折返"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Infiltrator",
+          "nature": "Quiet",
+          "spread": "32 HP / 11 Def / 23 SpA",
+          "moves": [
+            "月亮之力",
+            "能量球",
+            "戏法空间",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Quiet",
+          "spread": "17 HP / 16 Def / 32 SpA / 1 SpD",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc758",
       "title": "24kun315's PJCS Qualifiers 32nd Place Team",
       "author": "24kun315",
@@ -40650,6 +40764,119 @@
       "metrics": {
         "finalRanking": "32"
       }
+    },
+    {
+      "id": "vgcpastes-mb757",
+      "title": "NatusPKMN's Gengar Tinkaton Team",
+      "author": "Nate Innocenti",
+      "owner": "natuspkmn",
+      "teamId": "MB757",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/natuspkmn/status/2089711549766127760?s=46",
+      "platformUrl": "https://pokepast.es/84b3075ea397a2cf",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-18",
+      "eventDate": "2026-08-18",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "耿鬼（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Nate Innocenti，队伍码 422RF49515",
+      "members": [
+        {
+          "pokemonId": "gengarmega",
+          "pokemonName": "Gengar-Mega",
+          "item": "Gengarite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "30 HP / 13 Def / 23 Spe",
+          "moves": [
+            "暗影球",
+            "定身法",
+            "灭亡之歌",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Passho Berry",
+          "ability": "Intimidate",
+          "nature": "Relaxed",
+          "spread": "30 HP / 24 Def / 12 SpD",
+          "moves": [
+            "闪焰冲锋",
+            "击掌奇袭",
+            "抛下狠话",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "swampert",
+          "pokemonName": "Swampert",
+          "item": "Sitrus Berry",
+          "ability": "Damp",
+          "nature": "Sassy",
+          "spread": "31 HP / 5 Def / 30 SpD",
+          "moves": [
+            "大地之力",
+            "快速折返",
+            "哈欠",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Chople Berry",
+          "ability": "Friend Guard",
+          "nature": "Jolly",
+          "spread": "32 HP / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "急速折返",
+            "再来一次",
+            "看我嘛",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tinkaton",
+          "pokemonName": "Tinkaton",
+          "item": "Shuca Berry",
+          "ability": "Mold Breaker",
+          "nature": "Jolly",
+          "spread": "23 HP / 15 Atk / 28 Spe",
+          "moves": [
+            "巨力锤",
+            "再来一次",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kommoo",
+          "pokemonName": "Kommo-o",
+          "item": "Life Orb",
+          "ability": "Overcoat",
+          "nature": "Modest",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "鳞片噪音",
+            "波导弹",
+            "真空波",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-pc757",
@@ -40771,6 +40998,121 @@
       }
     },
     {
+      "id": "vgcpastes-mb756",
+      "title": "hoshinocpa's Khun Champions Cup #3 Runner Up Team",
+      "author": "hoshinocpa",
+      "owner": "hoshinocpa",
+      "teamId": "MB756",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/hoshinocpa/status/2089597420829278720?s=46",
+      "platformUrl": "https://pokepast.es/94829c225748e1e8",
+      "season": "M-B",
+      "format": "线上赛事 / Khun Champions Cup #3",
+      "updatedAt": "2026-08-17",
+      "eventDate": "2026-08-17",
+      "eventName": "Khun Champions Cup #3",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "线上",
+        "喷火驼（Mega）",
+        "大嘴娃（Mega）"
+      ],
+      "summary": "Khun Champions Cup #3，作者 hoshinocpa，队伍码 SFHWJVEET2",
+      "members": [
+        {
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "32 HP / 32 SpA / 2 SpD",
+          "moves": [
+            "热风",
+            "大地之力",
+            "守住",
+            "原始之力"
+          ]
+        },
+        {
+          "pokemonId": "mawilemega",
+          "pokemonName": "Mawile-Mega",
+          "item": "Mawilite",
+          "ability": "Hyper Cutter",
+          "nature": "Brave",
+          "spread": "32 HP / 32 Atk / 2 Def",
+          "moves": [
+            "嬉闹",
+            "突袭",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "azumarill",
+          "pokemonName": "Azumarill",
+          "item": "Sitrus Berry",
+          "ability": "Huge Power",
+          "nature": "Brave",
+          "spread": "31 HP / 32 Atk / 3 SpD",
+          "moves": [
+            "水流喷射",
+            "嬉闹",
+            "守住",
+            "腹鼓"
+          ]
+        },
+        {
+          "pokemonId": "gallade",
+          "pokemonName": "Gallade",
+          "item": "Focus Sash",
+          "ability": "Sharpness",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "圣剑",
+            "精神利刃",
+            "叶刃",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Wide Lens",
+          "ability": "Technician",
+          "nature": "Jolly",
+          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "鼠数儿",
+            "看我嘛",
+            "您先请",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Colbur Berry",
+          "ability": "Armor Tail",
+          "nature": "Sassy",
+          "spread": "29 HP / 20 Def / 17 SpD",
+          "moves": [
+            "帮助",
+            "精神强念",
+            "守住",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc756",
       "title": "pamela_emuritto's PJCS Qualifiers 52nd Place Team",
       "author": "pamela_emuritto",
@@ -40887,6 +41229,119 @@
       "metrics": {
         "finalRanking": "52"
       }
+    },
+    {
+      "id": "vgcpastes-mb755",
+      "title": "abelpoke49r's Gardevoir Grimmsnarl Team",
+      "author": "abelpoke49r",
+      "owner": "abelpoke49r",
+      "teamId": "MB755",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/abelpoke49r/status/2089481838368903499?s=46",
+      "platformUrl": "https://pokepast.es/46fbacfe554296c9",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-17",
+      "eventDate": "2026-08-17",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "沙奈朵（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 abelpoke49r，队伍码 FVHP5XSM6H",
+      "members": [
+        {
+          "pokemonId": "gardevoirmega",
+          "pokemonName": "Gardevoir-Mega",
+          "item": "Gardevoirite",
+          "ability": "Trace",
+          "nature": "Modest",
+          "spread": "14 HP / 7 Def / 25 SpA / 20 Spe",
+          "moves": [
+            "巨声",
+            "精神冲击",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "talonflame",
+          "pokemonName": "Talonflame",
+          "item": "Charcoal",
+          "ability": "Gale Wings",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "空气斩",
+            "过热",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "4 HP / 32 Atk / 15 Def / 15 Spe",
+          "moves": [
+            "波动冲",
+            "水流喷射",
+            "扫墓",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Wide Lens",
+          "ability": "Technician",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "佯攻",
+            "鼠数儿",
+            "看我嘛",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "grimmsnarl",
+          "pokemonName": "Grimmsnarl",
+          "item": "Life Orb",
+          "ability": "Prankster",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 2 Def",
+          "moves": [
+            "灵魂冲击",
+            "突袭",
+            "抛下狠话",
+            "鬼面"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "32 Atk / 5 Def / 29 Spe",
+          "moves": [
+            "龙爪",
+            "地震",
+            "岩崩",
+            "跺脚"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-pc755",
@@ -41007,6 +41462,125 @@
       }
     },
     {
+      "id": "vgcpastes-mb754",
+      "title": "LenVGC's Delphox Samurott-Hisui Team",
+      "author": "Alex Soto",
+      "owner": "lenvgc",
+      "teamId": "MB754",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/lenvgc/status/2089457082659401730?s=46",
+      "platformUrl": "https://pokepast.es/1cf61748978ee64d",
+      "season": "M-B",
+      "format": "线上赛事 / Chadweezy95 Tour",
+      "updatedAt": "2026-08-17",
+      "eventDate": "2026-08-17",
+      "eventName": "Chadweezy95 Tour",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 8,
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "线上",
+        "#8",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Chadweezy95 Tour，第 8 名，作者 Alex Soto",
+      "members": [
+        {
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "15 HP / 17 Def / 14 SpA / 20 Spe",
+          "moves": [
+            "精神强念",
+            "热风",
+            "诡计",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "27 HP / 15 Def / 5 SpA / 19 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "samurotthisui",
+          "pokemonName": "Samurott-Hisui",
+          "item": "Choice Scarf",
+          "ability": "Sharpness",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "贝壳刃",
+            "暗袭要害",
+            "圣剑",
+            "快速折返"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "击掌奇袭",
+            "近身战",
+            "毒击",
+            "岩崩"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Occa Berry",
+          "ability": "Hospitality",
+          "nature": "Relaxed",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "生命水滴",
+            "愤怒粉",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "8"
+      }
+    },
+    {
       "id": "vgcpastes-pc754",
       "title": "tomachikonoyubi's PJCS Qualifiers 69th Place Team",
       "author": "tomachikonoyubi",
@@ -41123,6 +41697,119 @@
       "metrics": {
         "finalRanking": "69"
       }
+    },
+    {
+      "id": "vgcpastes-mb753",
+      "title": "trickrubyvgc's Abomasnow Simipour Team",
+      "author": "trickrubyvgc",
+      "owner": "trickrubyvgc",
+      "teamId": "MB753",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/trickrubyvgc/status/2089499555532345790?s=46",
+      "platformUrl": "https://pokepast.es/d3cac42614f79675",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-17",
+      "eventDate": "2026-08-17",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "暴雪王（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 trickrubyvgc，队伍码 0VS4203ESA",
+      "members": [
+        {
+          "pokemonId": "abomasnowmega",
+          "pokemonName": "Abomasnow-Mega",
+          "item": "Abomasite",
+          "ability": "Snow Warning",
+          "nature": "Quiet",
+          "spread": "32 HP / 1 Def / 32 SpA / 1 SpD",
+          "moves": [
+            "能量球",
+            "暴风雪",
+            "冰砾",
+            "大地之力"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Focus Sash",
+          "ability": "Flash Fire",
+          "nature": "Quiet",
+          "spread": "32 HP / 32 SpA / 2 SpD",
+          "moves": [
+            "铠农炮",
+            "广域战力",
+            "交换场地",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "simipour",
+          "pokemonName": "Simipour",
+          "item": "Mystic Water",
+          "ability": "Torrent",
+          "nature": "Hasty",
+          "spread": "32 Atk / 2 SpA / 32 Spe",
+          "moves": [
+            "热水",
+            "快速折返",
+            "挑衅",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "27 HP / 21 Def / 18 SpD",
+          "moves": [
+            "精神强念",
+            "十万伏特",
+            "戏法空间",
+            "精神场地"
+          ]
+        },
+        {
+          "pokemonId": "avalugghisui",
+          "pokemonName": "Avalugg-Hisui",
+          "item": "Wide Lens",
+          "ability": "Sturdy",
+          "nature": "Brave",
+          "spread": "2 HP / 32 Atk / 32 Def",
+          "moves": [
+            "冰山风",
+            "岩崩",
+            "扑击",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "hatterene",
+          "pokemonName": "Hatterene",
+          "item": "Life Orb",
+          "ability": "Magic Bounce",
+          "nature": "Quiet",
+          "spread": "32 HP / 2 Def / 32 SpA",
+          "moves": [
+            "广域战力",
+            "魔法闪耀",
+            "魔法火焰",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-pc753",
@@ -45941,12 +46628,12 @@
       "id": "vgcpastes-mb732",
       "title": "Betchman's VR to San Francisco Top 32 Team",
       "author": "Betchman",
-      "owner": "Betchman22",
+      "owner": "betchman22",
       "teamId": "MB732",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Betchman22/status/2089080498530472137",
-      "platformUrl": "https://pokepast.es/61eb1b7cf395d1d4",
+      "sourceUrl": "https://x.com/betchman22/status/2089775420107530536?s=46",
+      "platformUrl": "https://pokepast.es/0f7b23b539b70c71",
       "season": "M-B",
       "format": "线上赛事 / VR to San Francisco",
       "updatedAt": "2026-08-16",
@@ -45956,7 +46643,7 @@
       "region": "线上",
       "category": "表格收录队伍",
       "placement": 21,
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-B",
         "线上赛事",
@@ -45965,15 +46652,15 @@
         "雪妖女（Mega）",
         "晶光花（Mega）"
       ],
-      "summary": "VR to San Francisco，第 21 名，作者 Betchman",
+      "summary": "VR to San Francisco，第 21 名，作者 Betchman，队伍码 H59R1YGEDJ",
       "members": [
         {
           "pokemonId": "froslassmega",
           "pokemonName": "Froslass-Mega",
           "item": "Froslassite",
-          "ability": "Cursed Body",
+          "ability": "Snow Cloak",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "13 HP / 1 Def / 20 SpA / 1 SpD / 31 Spe",
           "moves": [
             "暴风雪",
             "暗影球",
@@ -45987,11 +46674,11 @@
           "item": "Glimmoranite",
           "ability": "Toxic Debris",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "4 HP / 30 SpA / 32 Spe",
           "moves": [
-            "污泥炸弹",
-            "力量宝石",
             "大地之力",
+            "力量宝石",
+            "污泥炸弹",
             "尖刺防守"
           ]
         },
@@ -46001,11 +46688,11 @@
           "item": "Life Orb",
           "ability": "Gale Wings",
           "nature": "Jolly",
-          "spread": "-",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
             "勇鸟猛攻",
-            "闪焰冲锋",
             "顺风",
+            "闪焰冲锋",
             "守住"
           ]
         },
@@ -46015,7 +46702,7 @@
           "item": "Bright Powder",
           "ability": "Snow Cloak",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "24 HP / 2 Def / 30 SpA / 10 Spe",
           "moves": [
             "暴风雪",
             "冷冻干燥",
@@ -46029,10 +46716,10 @@
           "item": "Focus Sash",
           "ability": "Unburden",
           "nature": "Naughty",
-          "spread": "-",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "克命爪",
             "近身战",
+            "克命爪",
             "击掌奇袭",
             "守住"
           ]
@@ -46043,7 +46730,7 @@
           "item": "Chople Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "20 HP / 25 Atk / 21 Spe",
           "moves": [
             "仆刀",
             "突袭",
