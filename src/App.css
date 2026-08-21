@@ -324,6 +324,34 @@ select {
 
 .trainer-ranking-toolbar {
   justify-content: space-between;
+  gap: 12px;
+}
+
+.trainer-filter-popover {
+  width: 340px;
+  max-width: min(340px, calc(100vw - 32px));
+}
+
+.trainer-filter-popover input {
+  width: 100%;
+  border: 1px solid #d0d8e3;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2937;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.trainer-option-scroll {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+:root[data-theme='dark'] .trainer-filter-popover input {
+  border-color: rgba(148, 163, 184, 0.24);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
 }
 
 .trainer-battle-toggle {
@@ -489,7 +517,20 @@ select {
   color: #ffffff;
 }
 
+.trainer-no-results td {
+  padding: 28px 14px;
+  color: #64748b;
+  text-align: center;
+}
+
 @media (max-width: 700px) {
+  .trainer-filter-control.list-filter-control > .trainer-filter-popover.filter-list-popover {
+    left: auto;
+    right: 0;
+    max-height: min(68vh, 620px);
+    overflow-y: auto;
+  }
+
   .trainer-rankings-wrap {
     overflow: visible;
     border: 0;
@@ -544,9 +585,21 @@ select {
     white-space: nowrap;
   }
 
-  .trainer-rankings-table td:nth-child(3),
-  .trainer-rankings-table td:nth-child(4) {
+  .trainer-rankings-table td.trainer-wide-cell {
     grid-column: 1 / -1;
+  }
+
+  .trainer-rankings-table .trainer-no-results {
+    grid-template-columns: 1fr;
+  }
+
+  .trainer-rankings-table .trainer-no-results td {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .trainer-rankings-table .trainer-no-results td::before {
+    content: none;
   }
 
   .trainer-country-cell,

@@ -74,6 +74,18 @@ const LIST_COLUMN_LABELS: Record<ListColumnKey, string> = {
   bst: '总种族值',
 }
 const LIST_COLUMN_OPTIONS: ListColumnKey[] = ['usage', 'sprite', 'zh', 'name', 'types', 'hp', 'atk', 'def', 'spa', 'spd', 'spe', 'bst']
+const TRAINER_COLUMN_LABELS: Record<TrainerColumnKey, string> = {
+  rank: '排名',
+  rating: '分数',
+  country: '国家/地区',
+  trainer: '训练家',
+  language: '语言',
+  wins: '胜场',
+  losses: '负场',
+  winRate: '胜率',
+  winStreak: '连胜',
+}
+const TRAINER_COLUMN_OPTIONS: TrainerColumnKey[] = ['rank', 'rating', 'country', 'trainer', 'language', 'wins', 'losses', 'winRate', 'winStreak']
 
 const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   '1': { label: 'M-A', seasons: [{ id: '1', label: 'M-1：4/8 ~ 5/13' }] },
@@ -137,6 +149,8 @@ function draftConfigEquals(a: DraftConfig | undefined, b: DraftConfig) {
 
 type SortKey = 'zh' | 'name' | 'types' | 'usageRank' | 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe' | 'bst'
 type SortDirection = 'asc' | 'desc'
+type TrainerColumnKey = 'rank' | 'rating' | 'country' | 'trainer' | 'language' | 'wins' | 'losses' | 'winRate' | 'winStreak'
+type TrainerSortKey = TrainerColumnKey
 
 type FilterState = {
   types: string[]
@@ -213,6 +227,10 @@ function normalize(input: string) {
     .normalize('NFKC')
     .replace(/[\s'’`‘＇\-_.·・/\\|:：()（）[\]【】]+/g, '')
     .replace(/[^\p{Script=Han}a-z0-9]/gu, '')
+}
+
+function normalizeTrainerSearch(input: string) {
+  return input.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu, '')
 }
 
 function typeKeyFromLabel(label: string) {
@@ -723,7 +741,7 @@ function teamTagItems(team: TeamShare) {
   ].filter((item): item is { label: string; tone: string } => Boolean(item))
 }
 
-function sortIndicator(activeKey: SortKey, currentKey: SortKey, direction: SortDirection) {
+function sortIndicator<T extends string>(activeKey: T, currentKey: T, direction: SortDirection) {
   if (activeKey !== currentKey) return ''
   return direction === 'asc' ? ' ↑' : ' ↓'
 }
@@ -900,6 +918,7 @@ function App() {
   const [sortKey, setSortKey] = useState<SortKey>('usageRank')
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [trainerFiltersOpen, setTrainerFiltersOpen] = useState(false)
   const [teamFiltersOpen, setTeamFiltersOpen] = useState(false)
   const [listTypesOpen, setListTypesOpen] = useState(false)
   const [listColumnsOpen, setListColumnsOpen] = useState(false)
@@ -922,6 +941,12 @@ function App() {
   const [currentSeason, setCurrentSeason] = useState('5')
   const [trainerBattleRule, setTrainerBattleRule] = useState<'1' | '2'>('1')
   const [trainerRankingPage, setTrainerRankingPage] = useState(1)
+  const [trainerQuery, setTrainerQuery] = useState('')
+  const [trainerCountries, setTrainerCountries] = useState<string[]>([])
+  const [trainerLanguages, setTrainerLanguages] = useState<string[]>([])
+  const [trainerVisibleColumns, setTrainerVisibleColumns] = useState<TrainerColumnKey[]>(TRAINER_COLUMN_OPTIONS)
+  const [trainerSortKey, setTrainerSortKey] = useState<TrainerSortKey>('rank')
+  const [trainerSortDirection, setTrainerSortDirection] = useState<SortDirection>('asc')
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())
@@ -958,11 +983,53 @@ function App() {
     : Boolean(trainerRankingDataset)
   const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingContextDataset)
   const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerRankingContextDataset, 24)
-  const trainerRankingPageCount = Math.max(1, Math.ceil((trainerRankingDataset?.trainerRankings.length ?? 0) / TRAINER_RANKING_PAGE_SIZE))
+  const trainerCountryOptions = useMemo(() => uniqueSorted((trainerRankingDataset?.trainerRankings ?? []).map((trainer) => trainer.country || '').filter(Boolean)), [trainerRankingDataset])
+  const trainerLanguageOptions = useMemo(() => uniqueSorted((trainerRankingDataset?.trainerRankings ?? []).map((trainer) => trainer.language || '').filter(Boolean)), [trainerRankingDataset])
+  const filteredTrainerRankings = useMemo(() => {
+    const query = normalizeTrainerSearch(trainerQuery)
+    const factor = trainerSortDirection === 'asc' ? 1 : -1
+    const compareOptionalNumbers = (left: number | null | undefined, right: number | null | undefined) => {
+      if (left === null || left === undefined) return right === null || right === undefined ? 0 : 1
+      if (right === null || right === undefined) return -1
+      return (left - right) * factor
+    }
+    return [...(trainerRankingDataset?.trainerRankings ?? [])]
+      .filter((trainer) => !query || normalizeTrainerSearch(trainer.name).includes(query))
+      .filter((trainer) => trainerCountries.length === 0 || trainerCountries.includes(trainer.country || ''))
+      .filter((trainer) => trainerLanguages.length === 0 || trainerLanguages.includes(trainer.language || ''))
+      .sort((left, right) => {
+        let result = 0
+        switch (trainerSortKey) {
+          case 'rank': result = (left.rank - right.rank) * factor; break
+          case 'rating': result = compareOptionalNumbers(left.rating, right.rating); break
+          case 'country': result = (left.country || '').localeCompare(right.country || '', 'zh-Hans-CN') * factor; break
+          case 'trainer': result = left.name.localeCompare(right.name, 'zh-Hans-CN') * factor; break
+          case 'language': result = (left.language || '').localeCompare(right.language || '') * factor; break
+          case 'wins': result = compareOptionalNumbers(left.wins, right.wins); break
+          case 'losses': result = compareOptionalNumbers(left.losses, right.losses); break
+          case 'winRate': result = compareOptionalNumbers(left.winRate, right.winRate); break
+          case 'winStreak': result = compareOptionalNumbers(left.winStreak, right.winStreak); break
+        }
+        return result || (left.position ?? left.rank) - (right.position ?? right.rank)
+      })
+  }, [trainerRankingDataset, trainerQuery, trainerCountries, trainerLanguages, trainerSortKey, trainerSortDirection])
+  const trainerRankingPageCount = Math.max(1, Math.ceil(filteredTrainerRankings.length / TRAINER_RANKING_PAGE_SIZE))
   const visibleTrainerRankings = useMemo(() => {
     const start = (trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE
-    return trainerRankingDataset?.trainerRankings.slice(start, start + TRAINER_RANKING_PAGE_SIZE) ?? []
-  }, [trainerRankingDataset, trainerRankingPage])
+    return filteredTrainerRankings.slice(start, start + TRAINER_RANKING_PAGE_SIZE)
+  }, [filteredTrainerRankings, trainerRankingPage])
+  const trainerFilterCount = trainerCountries.length + trainerLanguages.length + (trainerQuery.trim() ? 1 : 0) + (TRAINER_COLUMN_OPTIONS.length - trainerVisibleColumns.length)
+  const showTrainerColumn = (column: TrainerColumnKey) => trainerVisibleColumns.includes(column)
+
+  function handleTrainerSort(key: TrainerSortKey) {
+    setTrainerRankingPage(1)
+    if (trainerSortKey === key) {
+      setTrainerSortDirection((direction) => direction === 'asc' ? 'desc' : 'asc')
+      return
+    }
+    setTrainerSortKey(key)
+    setTrainerSortDirection(key === 'rank' || key === 'country' || key === 'trainer' || key === 'language' ? 'asc' : 'desc')
+  }
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1142,6 +1209,7 @@ function App() {
           setTeamFiltersOpen(false)
           setTeamPokemonPickerOpen(null)
         }
+        if (!target.closest('.trainer-filter-control')) setTrainerFiltersOpen(false)
         if (!target.closest('.search-box-wrap')) setSearchOpen(false)
         if (!target.closest('.saved-actions-inline')) setGroupPickerEntryId(null)
         if (!target.closest('.action-box [data-popover-root]')) setSavedOpen(false)
@@ -1151,6 +1219,7 @@ function App() {
       setMovePickerOpen(null)
       setTeamFiltersOpen(false)
       setTeamPokemonPickerOpen(null)
+      setTrainerFiltersOpen(false)
       setSavedOpen(false)
       setSearchOpen(false)
       setGroupPickerEntryId(null)
@@ -1777,13 +1846,13 @@ function App() {
                     {showListColumn('zh') && <th className="pokemon-name-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'zh') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('zh'); setSortDirection('asc') } }}>名称{sortIndicator(sortKey, 'zh', sortDirection)}</button></th>}
                     {showListColumn('name') && <th className={showListColumn('zh') ? undefined : 'pokemon-name-column'}><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'name') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('name'); setSortDirection('asc') } }}>英文名称{sortIndicator(sortKey, 'name', sortDirection)}</button></th>}
                     {showListColumn('types') && <th className="pokemon-type-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'types') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('types'); setSortDirection('asc') } }}>属性{sortIndicator(sortKey, 'types', sortDirection)}</button></th>}
-                    {showListColumn('hp') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('asc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
-                    {showListColumn('atk') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('asc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
-                    {showListColumn('def') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('asc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
-                    {showListColumn('spa') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('asc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>}
-                    {showListColumn('spd') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('asc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>}
-                    {showListColumn('spe') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('asc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>}
-                    {showListColumn('bst') && <th className="pokemon-stat-column pokemon-bst-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('asc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>}
+                    {showListColumn('hp') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'hp') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('hp'); setSortDirection('desc') } }}>HP{sortIndicator(sortKey, 'hp', sortDirection)}</button></th>}
+                    {showListColumn('atk') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'atk') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('atk'); setSortDirection('desc') } }}>攻击{sortIndicator(sortKey, 'atk', sortDirection)}</button></th>}
+                    {showListColumn('def') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'def') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('def'); setSortDirection('desc') } }}>防御{sortIndicator(sortKey, 'def', sortDirection)}</button></th>}
+                    {showListColumn('spa') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spa') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spa'); setSortDirection('desc') } }}>特攻{sortIndicator(sortKey, 'spa', sortDirection)}</button></th>}
+                    {showListColumn('spd') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spd') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spd'); setSortDirection('desc') } }}>特防{sortIndicator(sortKey, 'spd', sortDirection)}</button></th>}
+                    {showListColumn('spe') && <th className="pokemon-stat-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'spe') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('spe'); setSortDirection('desc') } }}>速度{sortIndicator(sortKey, 'spe', sortDirection)}</button></th>}
+                    {showListColumn('bst') && <th className="pokemon-stat-column pokemon-bst-column"><button type="button" className="table-sort-button" onClick={() => { if (sortKey === 'bst') setSortDirection((current) => current === 'asc' ? 'desc' : 'asc'); else { setSortKey('bst'); setSortDirection('desc') } }}>总种族值{sortIndicator(sortKey, 'bst', sortDirection)}</button></th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -1816,15 +1885,47 @@ function App() {
             <section className="trainer-rankings-section">
               <div className="trainer-ranking-toolbar">
                 <div className="trainer-battle-toggle" role="group" aria-label="对战模式">
-                  <button type="button" className={trainerBattleRule === '1' ? 'active' : ''} onClick={() => { setTrainerBattleRule('1'); setTrainerRankingPage(1) }}>Double</button>
-                  <button type="button" className={trainerBattleRule === '2' ? 'active' : ''} onClick={() => { setTrainerBattleRule('2'); setTrainerRankingPage(1) }}>Single</button>
+                  <button type="button" className={trainerBattleRule === '1' ? 'active' : ''} onClick={() => { setTrainerBattleRule('1'); setTrainerRankingPage(1); setTrainerCountries([]); setTrainerLanguages([]) }}>Double</button>
+                  <button type="button" className={trainerBattleRule === '2' ? 'active' : ''} onClick={() => { setTrainerBattleRule('2'); setTrainerRankingPage(1); setTrainerCountries([]); setTrainerLanguages([]) }}>Single</button>
+                </div>
+                <div className="floating-control list-filter-control trainer-filter-control" data-popover-root>
+                  <button type="button" className="ghost-button" onClick={() => setTrainerFiltersOpen((value) => !value)}>筛选{trainerFilterCount ? `（${trainerFilterCount}）` : ''}</button>
+                  {trainerFiltersOpen && (
+                    <div className="popover filter-list-popover filter-grid trainer-filter-popover">
+                      <label className="popover-field">
+                        <span>搜索玩家</span>
+                        <input value={trainerQuery} onChange={(event) => { setTrainerQuery(event.target.value); setTrainerRankingPage(1) }} placeholder="输入玩家名称" />
+                      </label>
+                      <div className="popover-field">
+                        <span>国家/地区</span>
+                        <div className="filter-chip-group trainer-option-scroll">
+                          <button type="button" className={trainerCountries.length === 0 ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerCountries([]); setTrainerRankingPage(1) }}>全部</button>
+                          {trainerCountryOptions.map((country) => <button key={country} type="button" className={trainerCountries.includes(country) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerCountries((current) => toggleFilterValue(current, country)); setTrainerRankingPage(1) }}>{country}</button>)}
+                        </div>
+                      </div>
+                      <div className="popover-field">
+                        <span>语言</span>
+                        <div className="filter-chip-group">
+                          <button type="button" className={trainerLanguages.length === 0 ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerLanguages([]); setTrainerRankingPage(1) }}>全部</button>
+                          {trainerLanguageOptions.map((language) => <button key={language} type="button" className={trainerLanguages.includes(language) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerLanguages((current) => toggleFilterValue(current, language)); setTrainerRankingPage(1) }}>{language}</button>)}
+                        </div>
+                      </div>
+                      <div className="popover-field">
+                        <span>显示项目</span>
+                        <div className="filter-chip-group">
+                          {TRAINER_COLUMN_OPTIONS.map((column) => <button key={column} type="button" className={trainerVisibleColumns.includes(column) ? 'filter-chip active' : 'filter-chip'} onClick={() => setTrainerVisibleColumns((current) => { const next = toggleFilterValue(current, column) as TrainerColumnKey[]; return next.length ? next : current })}>{TRAINER_COLUMN_LABELS[column]}</button>)}
+                        </div>
+                      </div>
+                      <button type="button" onClick={() => { setTrainerQuery(''); setTrainerCountries([]); setTrainerLanguages([]); setTrainerVisibleColumns(TRAINER_COLUMN_OPTIONS); setTrainerRankingPage(1); setTrainerFiltersOpen(false) }}>清空筛选</button>
+                    </div>
+                  )}
                 </div>
               </div>
               {trainerRankingDataset && (
                 <>
                   <div className="data-source-line">
-                    数据源：<a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a>
-                    <span> · 数据更新时间：{formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}</span>
+                    <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a>
+                    <span> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}</span>
                     {showManualTrainerImportButton && (
                       <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
                     )}
@@ -1832,12 +1933,12 @@ function App() {
                   {(trainerRankingDataset.trainerTop300Cutoff !== undefined || trainerRankingDataset.trainerTop1000Cutoff !== undefined) && (
                     <div className="trainer-ranking-summary" aria-label="排名分数线">
                       {trainerRankingDataset.trainerTop300Cutoff !== undefined && (
-                        <span className="trainer-cutoff-badge"><span>Top 300 Cutoff</span><strong>{trainerRankingDataset.trainerTop300Cutoff.toFixed(3)}</strong></span>
+                        <span className="trainer-cutoff-badge"><span>Top 300</span><strong>{trainerRankingDataset.trainerTop300Cutoff.toFixed(3)}</strong></span>
                       )}
                       {trainerRankingDataset.trainerTop1000Cutoff !== undefined && (
-                        <span className="trainer-cutoff-badge"><span>Top 1000 Cutoff</span><strong>{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</strong></span>
+                        <span className="trainer-cutoff-badge"><span>Top 1000</span><strong>{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</strong></span>
                       )}
-                      <span className="trainer-ranking-count">共 {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名</span>
+                      <span className="trainer-ranking-count">{filteredTrainerRankings.length === trainerRankingDataset.trainerRankings.length ? `共 ${trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名` : `显示 ${filteredTrainerRankings.length.toLocaleString('zh-CN')} / ${trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名`}</span>
                     </div>
                   )}
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
@@ -1884,42 +1985,45 @@ function App() {
                   <table className="trainer-rankings-table">
                     <thead>
                       <tr>
-                        <th>排名</th>
-                        <th>分数</th>
-                        <th>国家/地区</th>
-                        <th>训练家</th>
-                        <th>语言</th>
-                        <th>胜场</th>
-                        <th>负场</th>
-                        <th>胜率</th>
-                        <th>连胜</th>
+                        {showTrainerColumn('rank') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('rank')}>排名{sortIndicator(trainerSortKey, 'rank', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('rating') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('rating')}>分数{sortIndicator(trainerSortKey, 'rating', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('country') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('country')}>国家/地区{sortIndicator(trainerSortKey, 'country', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('trainer') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('trainer')}>训练家{sortIndicator(trainerSortKey, 'trainer', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('language') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('language')}>语言{sortIndicator(trainerSortKey, 'language', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('wins') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('wins')}>胜场{sortIndicator(trainerSortKey, 'wins', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('losses') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('losses')}>负场{sortIndicator(trainerSortKey, 'losses', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('winRate') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('winRate')}>胜率{sortIndicator(trainerSortKey, 'winRate', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('winStreak') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('winStreak')}>连胜{sortIndicator(trainerSortKey, 'winStreak', trainerSortDirection)}</button></th>}
                       </tr>
                     </thead>
                     <tbody>
+                      {visibleTrainerRankings.length === 0 && (
+                        <tr className="trainer-no-results"><td colSpan={trainerVisibleColumns.length}>没有符合筛选条件的玩家</td></tr>
+                      )}
                       {visibleTrainerRankings.map((trainer, index) => {
                         const avatarUrl = trainerAvatarUrl(trainer.trainerIconId)
                         const flagUrl = trainerCountryFlagUrl(trainer.countryFlag)
                         return (
                           <tr key={`${trainer.position ?? trainer.rank}-${trainer.name}-${index}`}>
-                            <td className="rank-cell" data-label="排名">#{trainer.rank}</td>
-                            <td className="rating-cell" data-label="分数">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>
-                            <td data-label="国家/地区">
+                            {showTrainerColumn('rank') && <td className="rank-cell" data-label="排名">#{trainer.rank}</td>}
+                            {showTrainerColumn('rating') && <td className="rating-cell" data-label="分数">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>}
+                            {showTrainerColumn('country') && <td className="trainer-wide-cell" data-label="国家/地区">
                               <span className="trainer-country-cell">
                                 {flagUrl && <img src={flagUrl} alt="" loading="lazy" />}
                                 <span>{trainer.country || '—'}</span>
                               </span>
-                            </td>
-                            <td data-label="训练家">
+                            </td>}
+                            {showTrainerColumn('trainer') && <td className="trainer-wide-cell" data-label="训练家">
                               <span className="trainer-name-cell">
                                 {avatarUrl && <img src={avatarUrl} alt="" loading="lazy" />}
                                 <span>{trainer.name}</span>
                               </span>
-                            </td>
-                            <td data-label="语言">{trainer.language || '—'}</td>
-                            <td data-label="胜场">{trainer.wins ?? '—'}</td>
-                            <td data-label="负场">{trainer.losses ?? '—'}</td>
-                            <td data-label="胜率">{trainer.winRate !== undefined ? `${trainer.winRate.toFixed(1)}%` : '—'}</td>
-                            <td data-label="连胜">{trainer.winStreak ?? '—'}</td>
+                            </td>}
+                            {showTrainerColumn('language') && <td data-label="语言">{trainer.language || '—'}</td>}
+                            {showTrainerColumn('wins') && <td data-label="胜场">{trainer.wins ?? '—'}</td>}
+                            {showTrainerColumn('losses') && <td data-label="负场">{trainer.losses ?? '—'}</td>}
+                            {showTrainerColumn('winRate') && <td data-label="胜率">{trainer.winRate !== undefined ? `${trainer.winRate.toFixed(1)}%` : '—'}</td>}
+                            {showTrainerColumn('winStreak') && <td data-label="连胜">{trainer.winStreak ?? '—'}</td>}
                           </tr>
                         )
                       })}
@@ -1929,7 +2033,7 @@ function App() {
               )}
               {trainerRankingDataset && trainerRankingPageCount > 1 && (
                 <nav className="trainer-ranking-pagination" aria-label="玩家排名分页">
-                  <span>{(trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE + 1}–{Math.min(trainerRankingPage * TRAINER_RANKING_PAGE_SIZE, trainerRankingDataset.trainerRankings.length)} / {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')}</span>
+                  <span>{(trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE + 1}–{Math.min(trainerRankingPage * TRAINER_RANKING_PAGE_SIZE, filteredTrainerRankings.length)} / {filteredTrainerRankings.length.toLocaleString('zh-CN')}</span>
                   <div>
                     <button type="button" onClick={() => setTrainerRankingPage((page) => Math.max(1, page - 1))} disabled={trainerRankingPage === 1} aria-label="上一页">‹</button>
                     {Array.from({ length: trainerRankingPageCount }, (_, index) => index + 1).map((page) => (
