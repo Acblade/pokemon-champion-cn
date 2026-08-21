@@ -18,9 +18,20 @@ export type UsageEntry = {
 }
 
 export type TrainerRankingEntry = {
+  position?: number
   rank: number
   rating: number | null
   name: string
+  trainerIconId?: number
+  countryCode?: number
+  countryAreaCode?: number
+  country?: string
+  countryFlag?: string
+  language?: string
+  wins?: number
+  losses?: number
+  winRate?: number
+  winStreak?: number
 }
 
 export type UsageDataset = {
@@ -30,6 +41,8 @@ export type UsageDataset = {
   trainerSource?: string
   trainerSourceUrl?: string
   trainerRankingsUpdatedAt?: string
+  trainerTop300Cutoff?: number
+  trainerTop1000Cutoff?: number
   format: string
   regulation: string
   battle: string
@@ -77,6 +90,10 @@ export function getPokemonUsage(...names: string[]): UsageEntry | null {
 
 export function getUsageDataset(season: string, battleRule = '1'): UsageDataset {
   return usageCollection.datasets[`champs-season-${season}-rule-${battleRule}`] ?? usageDataset
+}
+
+export function findUsageDataset(season: string, battleRule = '1'): UsageDataset | null {
+  return usageCollection.datasets[`champs-season-${season}-rule-${battleRule}`] ?? null
 }
 
 export function getLatestTrainerRankingDataset(battleRule = '1'): UsageDataset | null {

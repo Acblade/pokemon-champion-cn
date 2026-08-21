@@ -32,7 +32,7 @@ jobs:
         run: npm run update-usage
         env:
           CHAMPS_SEASONS: '5'
-          CHAMPS_RULES: '1'
+          CHAMPS_RULES: '1,2'
           CHAMPS_DEFAULT_SEASON: '5'
           CHAMPS_DEFAULT_RULE: '1'
           CHAMPS_USAGE_SOURCE: gamewith

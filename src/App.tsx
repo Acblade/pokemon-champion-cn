@@ -8,7 +8,7 @@ import { loadSavedPokemon, saveSavedPokemon, type SavedPokemonEntry } from './li
 import { loadSavedGroups, saveSavedGroups } from './lib/savedGroups'
 import { loadTheme, saveTheme, type ThemeMode } from './lib/viewState'
 import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
-import { getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated, type TrainerRankingEntry, type UsageDataset } from './data/usageStats'
+import { findUsageDataset, getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated, type TrainerRankingEntry, type UsageDataset } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
@@ -84,6 +84,7 @@ const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; l
 void LEGACY_RULE_META
 
 const BATTLE_USAGE_RULE = '1'
+const TRAINER_RANKING_PAGE_SIZE = 100
 const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-ranking'
 const MANUAL_RANKING_API_URL = (import.meta.env.VITE_MANUAL_RANKING_API_URL || '').trim()
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
@@ -600,6 +601,18 @@ function trainerRankingSourceLabel(dataset: { trainerSource?: string; trainerSou
   return sourceLabel(dataset)
 }
 
+function trainerAvatarUrl(trainerIconId: number | undefined) {
+  return trainerIconId
+    ? `https://s-stats-platform-cdn.op.gg/pokemon-champions/images/trainer/${trainerIconId}.png?image=q_auto:good,f_png,w_64`
+    : ''
+}
+
+function trainerCountryFlagUrl(countryFlag: string | undefined) {
+  return countryFlag
+    ? `https://s-stats-platform-cdn.op.gg/pokemon-champions/images/icon/${encodeURIComponent(countryFlag)}.svg`
+    : ''
+}
+
 function slugify(value: string) {
   return encodeURIComponent(value)
 }
@@ -907,6 +920,8 @@ function App() {
   const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
   const [currentRule, setCurrentRule] = useState('M-B')
   const [currentSeason, setCurrentSeason] = useState('5')
+  const [trainerBattleRule, setTrainerBattleRule] = useState<'1' | '2'>('1')
+  const [trainerRankingPage, setTrainerRankingPage] = useState(1)
   const [collapsedGroups, setCollapsedGroups] = useState<Record<string, boolean>>({})
   const [newGroupName, setNewGroupName] = useState('')
   const [savedGroups, setSavedGroups] = useState<string[]>(() => loadSavedGroups())
@@ -933,12 +948,21 @@ function App() {
   }, [])
 
   const selectedUsageDataset = useMemo(() => getUsageDataset(currentSeason, BATTLE_USAGE_RULE), [currentSeason])
-  const latestTrainerRankingDataset = useMemo(() => getLatestTrainerRankingDataset(BATTLE_USAGE_RULE), [])
-  const currentTrainerRankingDataset = selectedUsageDataset.trainerRankings.length > 0 ? selectedUsageDataset : null
+  const trainerUsageDataset = useMemo(() => findUsageDataset(currentSeason, trainerBattleRule), [currentSeason, trainerBattleRule])
+  const latestTrainerRankingDataset = useMemo(() => getLatestTrainerRankingDataset(trainerBattleRule), [trainerBattleRule])
+  const currentTrainerRankingDataset = trainerUsageDataset?.trainerRankings.length ? trainerUsageDataset : null
   const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
-  const trainerRankingUnupdated = isTrainerRankingOutdated(selectedUsageDataset, currentTrainerRankingDataset)
-  const showManualTrainerImportButton = isManualTrainerImportDue(selectedUsageDataset)
-  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(selectedUsageDataset, 24)
+  const trainerRankingContextDataset = trainerUsageDataset ?? trainerRankingDataset ?? selectedUsageDataset
+  const trainerRankingUnupdated = trainerUsageDataset
+    ? isTrainerRankingOutdated(trainerUsageDataset, currentTrainerRankingDataset)
+    : Boolean(trainerRankingDataset)
+  const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingContextDataset)
+  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerRankingContextDataset, 24)
+  const trainerRankingPageCount = Math.max(1, Math.ceil((trainerRankingDataset?.trainerRankings.length ?? 0) / TRAINER_RANKING_PAGE_SIZE))
+  const visibleTrainerRankings = useMemo(() => {
+    const start = (trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE
+    return trainerRankingDataset?.trainerRankings.slice(start, start + TRAINER_RANKING_PAGE_SIZE) ?? []
+  }, [trainerRankingDataset, trainerRankingPage])
 
   const filtered = useMemo(() => {
     const moveQ = normalize(filters.selectedMoves[0] || filters.moveQuery)
@@ -1171,7 +1195,7 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          datasetKey: selectedUsageDataset.format,
+          datasetKey: trainerRankingContextDataset.format,
           rankingTimeJst: manualRankingTime,
           rankingTimeIso: importedAt,
           rankingsText: manualRankingText,
@@ -1300,13 +1324,13 @@ function App() {
           <div className="rule-season-row">
             <div className="rule-season-item">
               <label>规则</label>
-              <select value={currentRule} onChange={(e) => { setCurrentRule(e.target.value); setCurrentSeason(RULE_META[e.target.value]?.seasons[0]?.id ?? '1') }}>
+              <select value={currentRule} onChange={(e) => { setCurrentRule(e.target.value); setCurrentSeason(RULE_META[e.target.value]?.seasons[0]?.id ?? '1'); setTrainerRankingPage(1) }}>
                 {Object.entries(RULE_META).map(([id, meta]) => <option key={id} value={id}>{meta.label}</option>)}
               </select>
             </div>
             <div className="rule-season-item">
               <label>赛季</label>
-              <select value={currentSeason} onChange={(e) => setCurrentSeason(e.target.value)}>
+              <select value={currentSeason} onChange={(e) => { setCurrentSeason(e.target.value); setTrainerRankingPage(1) }}>
                 {(RULE_META[currentRule]?.seasons ?? []).map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
               </select>
             </div>
@@ -1790,21 +1814,41 @@ function App() {
 
           {homeTab === 'trainers' && (
             <section className="trainer-rankings-section">
+              <div className="trainer-ranking-toolbar">
+                <div className="trainer-battle-toggle" role="group" aria-label="对战模式">
+                  <button type="button" className={trainerBattleRule === '1' ? 'active' : ''} onClick={() => { setTrainerBattleRule('1'); setTrainerRankingPage(1) }}>Double</button>
+                  <button type="button" className={trainerBattleRule === '2' ? 'active' : ''} onClick={() => { setTrainerBattleRule('2'); setTrainerRankingPage(1) }}>Single</button>
+                </div>
+              </div>
               {trainerRankingDataset && (
                 <>
                   <div className="data-source-line">
-                    <a href={trainerSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(selectedUsageDataset)}</a> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}
+                    数据源：<a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a>
+                    <span> · 数据更新时间：{formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}</span>
                     {showManualTrainerImportButton && (
                       <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
                     )}
                   </div>
+                  {(trainerRankingDataset.trainerTop300Cutoff !== undefined || trainerRankingDataset.trainerTop1000Cutoff !== undefined) && (
+                    <div className="trainer-ranking-summary" aria-label="排名分数线">
+                      {trainerRankingDataset.trainerTop300Cutoff !== undefined && (
+                        <span className="trainer-cutoff-badge"><span>Top 300 Cutoff</span><strong>{trainerRankingDataset.trainerTop300Cutoff.toFixed(3)}</strong></span>
+                      )}
+                      {trainerRankingDataset.trainerTop1000Cutoff !== undefined && (
+                        <span className="trainer-cutoff-badge"><span>Top 1000 Cutoff</span><strong>{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</strong></span>
+                      )}
+                      <span className="trainer-ranking-count">共 {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名</span>
+                    </div>
+                  )}
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
-                  {selectedUsageDataset.trainerRankingsNote && <div className="data-fallback-note">{selectedUsageDataset.trainerRankingsNote}</div>}
+                  {trainerRankingContextDataset.trainerRankingsNote && trainerRankingContextDataset.trainerSource !== 'OP.GG Pokémon Champions' && (
+                    <div className="data-fallback-note">{trainerRankingContextDataset.trainerRankingsNote}</div>
+                  )}
                   {manualTrainerImportOpen && (
                     <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
                       <p className="manual-ranking-intro">
                         最新的排名数据需要从
-                        <a href={manualTrainerRankingSourceUrl(selectedUsageDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
+                        <a href={manualTrainerRankingSourceUrl(trainerRankingContextDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
                         手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
                       </p>
                       <label className="manual-ranking-field">
@@ -1841,23 +1885,59 @@ function App() {
                     <thead>
                       <tr>
                         <th>排名</th>
-                        <th>名字</th>
                         <th>分数</th>
+                        <th>国家/地区</th>
+                        <th>训练家</th>
+                        <th>语言</th>
+                        <th>胜场</th>
+                        <th>负场</th>
+                        <th>胜率</th>
+                        <th>连胜</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {trainerRankingDataset.trainerRankings.map((trainer, index) => {
+                      {visibleTrainerRankings.map((trainer, index) => {
+                        const avatarUrl = trainerAvatarUrl(trainer.trainerIconId)
+                        const flagUrl = trainerCountryFlagUrl(trainer.countryFlag)
                         return (
-                          <tr key={`${trainer.rank}-${trainer.name}-${index}`}>
-                            <td className="rank-cell">#{trainer.rank}</td>
-                            <td>{trainer.name}</td>
-                            <td className="rating-cell">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>
+                          <tr key={`${trainer.position ?? trainer.rank}-${trainer.name}-${index}`}>
+                            <td className="rank-cell" data-label="排名">#{trainer.rank}</td>
+                            <td className="rating-cell" data-label="分数">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>
+                            <td data-label="国家/地区">
+                              <span className="trainer-country-cell">
+                                {flagUrl && <img src={flagUrl} alt="" loading="lazy" />}
+                                <span>{trainer.country || '—'}</span>
+                              </span>
+                            </td>
+                            <td data-label="训练家">
+                              <span className="trainer-name-cell">
+                                {avatarUrl && <img src={avatarUrl} alt="" loading="lazy" />}
+                                <span>{trainer.name}</span>
+                              </span>
+                            </td>
+                            <td data-label="语言">{trainer.language || '—'}</td>
+                            <td data-label="胜场">{trainer.wins ?? '—'}</td>
+                            <td data-label="负场">{trainer.losses ?? '—'}</td>
+                            <td data-label="胜率">{trainer.winRate !== undefined ? `${trainer.winRate.toFixed(1)}%` : '—'}</td>
+                            <td data-label="连胜">{trainer.winStreak ?? '—'}</td>
                           </tr>
                         )
                       })}
                     </tbody>
                   </table>
                 </div>
+              )}
+              {trainerRankingDataset && trainerRankingPageCount > 1 && (
+                <nav className="trainer-ranking-pagination" aria-label="玩家排名分页">
+                  <span>{(trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE + 1}–{Math.min(trainerRankingPage * TRAINER_RANKING_PAGE_SIZE, trainerRankingDataset.trainerRankings.length)} / {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')}</span>
+                  <div>
+                    <button type="button" onClick={() => setTrainerRankingPage((page) => Math.max(1, page - 1))} disabled={trainerRankingPage === 1} aria-label="上一页">‹</button>
+                    {Array.from({ length: trainerRankingPageCount }, (_, index) => index + 1).map((page) => (
+                      <button type="button" key={page} className={page === trainerRankingPage ? 'active' : ''} onClick={() => setTrainerRankingPage(page)} aria-current={page === trainerRankingPage ? 'page' : undefined}>{page}</button>
+                    ))}
+                    <button type="button" onClick={() => setTrainerRankingPage((page) => Math.min(trainerRankingPageCount, page + 1))} disabled={trainerRankingPage === trainerRankingPageCount} aria-label="下一页">›</button>
+                  </div>
+                </nav>
               )}
             </section>
           )}
