@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-5-rule-1",
-  "updatedAt": "2026-08-21T09:12:49.046Z",
+  "updatedAt": "2026-08-21T09:20:36.400Z",
   "datasets": {
     "champs-season-3-rule-1": {
       "source": "GameWith JP",
@@ -233754,7 +233754,7 @@
       "season": "5",
       "rule": "1",
       "date": "2026-08-20",
-      "updatedAt": "2026-08-21T09:12:47.375Z",
+      "updatedAt": "2026-08-21T09:20:35.476Z",
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
@@ -315549,7 +315549,7 @@
       "season": "5",
       "rule": "2",
       "date": "2026-08-20",
-      "updatedAt": "2026-08-21T09:12:49.046Z",
+      "updatedAt": "2026-08-21T09:20:36.400Z",
       "count": 235,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
