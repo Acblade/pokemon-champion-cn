@@ -272,7 +272,7 @@ select {
 }
 
 .trainer-rankings-wrap {
-  width: 100%;
+  width: fit-content;
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
@@ -324,7 +324,7 @@ select {
 }
 
 .trainer-ranking-toolbar {
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
 }
 
@@ -405,7 +405,7 @@ select {
 }
 
 .trainer-ranking-summary {
-  justify-content: flex-start;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 14px;
@@ -564,6 +564,7 @@ select {
   }
 
   .trainer-rankings-wrap {
+    width: 100%;
     overflow: visible;
     border: 0;
     background: transparent;
