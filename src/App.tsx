@@ -1932,6 +1932,7 @@ function App() {
                           {TRAINER_COLUMN_OPTIONS.map((column) => <button key={column} type="button" className={trainerVisibleColumns.includes(column) ? 'filter-chip active' : 'filter-chip'} onClick={() => setTrainerVisibleColumns((current) => { const next = toggleFilterValue(current, column) as TrainerColumnKey[]; return next.length ? next : current })}>{TRAINER_COLUMN_LABELS[column]}</button>)}
                         </div>}
                       </div>
+                      <small className="trainer-filter-result-count">{filteredTrainerRankings.length === (trainerRankingDataset?.trainerRankings.length ?? 0) ? `${filteredTrainerRankings.length.toLocaleString('zh-CN')} 名` : `${filteredTrainerRankings.length.toLocaleString('zh-CN')} / ${(trainerRankingDataset?.trainerRankings.length ?? 0).toLocaleString('zh-CN')} 名`}</small>
                       <button type="button" onClick={() => { setTrainerQuery(''); setTrainerCountries([]); setTrainerLanguages([]); setTrainerVisibleColumns(TRAINER_COLUMN_OPTIONS); setTrainerRankingPage(1); setTrainerFiltersOpen(false); setTrainerCountriesOpen(false); setTrainerLanguagesOpen(false); setTrainerColumnsOpen(false) }}>清空筛选</button>
                     </div>
                   )}
@@ -1954,7 +1955,6 @@ function App() {
                       {trainerRankingDataset.trainerTop1000Cutoff !== undefined && (
                         <span className="trainer-cutoff-badge"><span>Top 1000</span><span className="trainer-cutoff-score">{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</span></span>
                       )}
-                      {filteredTrainerRankings.length !== trainerRankingDataset.trainerRankings.length && <span className="trainer-ranking-count">显示 {filteredTrainerRankings.length.toLocaleString('zh-CN')} / {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名</span>}
                     </div>
                   )}
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
