@@ -919,6 +919,9 @@ function App() {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [trainerFiltersOpen, setTrainerFiltersOpen] = useState(false)
+  const [trainerCountriesOpen, setTrainerCountriesOpen] = useState(false)
+  const [trainerLanguagesOpen, setTrainerLanguagesOpen] = useState(false)
+  const [trainerColumnsOpen, setTrainerColumnsOpen] = useState(false)
   const [teamFiltersOpen, setTeamFiltersOpen] = useState(false)
   const [listTypesOpen, setListTypesOpen] = useState(false)
   const [listColumnsOpen, setListColumnsOpen] = useState(false)
@@ -1018,8 +1021,14 @@ function App() {
     const start = (trainerRankingPage - 1) * TRAINER_RANKING_PAGE_SIZE
     return filteredTrainerRankings.slice(start, start + TRAINER_RANKING_PAGE_SIZE)
   }, [filteredTrainerRankings, trainerRankingPage])
-  const trainerFilterCount = trainerCountries.length + trainerLanguages.length + (trainerQuery.trim() ? 1 : 0) + (TRAINER_COLUMN_OPTIONS.length - trainerVisibleColumns.length)
+  const trainerFilterCount = (trainerCountries.length ? 1 : 0) + (trainerLanguages.length ? 1 : 0) + (trainerQuery.trim() ? 1 : 0) + (TRAINER_COLUMN_OPTIONS.length - trainerVisibleColumns.length)
   const showTrainerColumn = (column: TrainerColumnKey) => trainerVisibleColumns.includes(column)
+
+  function toggleTrainerFacet(current: string[], value: string, options: string[]) {
+    if (current.length === 0) return [value]
+    const next = toggleFilterValue(current, value)
+    return next.length === 0 || next.length === options.length ? [] : next
+  }
 
   function handleTrainerSort(key: TrainerSortKey) {
     setTrainerRankingPage(1)
@@ -1897,26 +1906,33 @@ function App() {
                         <input value={trainerQuery} onChange={(event) => { setTrainerQuery(event.target.value); setTrainerRankingPage(1) }} placeholder="输入玩家名称" />
                       </label>
                       <div className="popover-field">
-                        <span>国家/地区</span>
-                        <div className="filter-chip-group trainer-option-scroll">
-                          <button type="button" className={trainerCountries.length === 0 ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerCountries([]); setTrainerRankingPage(1) }}>全部</button>
-                          {trainerCountryOptions.map((country) => <button key={country} type="button" className={trainerCountries.includes(country) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerCountries((current) => toggleFilterValue(current, country)); setTrainerRankingPage(1) }}>{country}</button>)}
-                        </div>
+                        <span className="collapsible-filter-label">
+                          <span>国家/地区 · {trainerCountries.length || trainerCountryOptions.length}/{trainerCountryOptions.length}</span>
+                          <button type="button" className={`mini-toggle-btn borderless-toggle${trainerCountriesOpen ? ' open' : ''}`} onClick={() => setTrainerCountriesOpen((value) => !value)} aria-label={trainerCountriesOpen ? '收起国家/地区筛选' : '展开国家/地区筛选'} />
+                        </span>
+                        {trainerCountriesOpen && <div className="filter-chip-group trainer-option-scroll">
+                          {trainerCountryOptions.map((country) => <button key={country} type="button" className={trainerCountries.length === 0 || trainerCountries.includes(country) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerCountries((current) => toggleTrainerFacet(current, country, trainerCountryOptions)); setTrainerRankingPage(1) }}>{country}</button>)}
+                        </div>}
                       </div>
                       <div className="popover-field">
-                        <span>语言</span>
-                        <div className="filter-chip-group">
-                          <button type="button" className={trainerLanguages.length === 0 ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerLanguages([]); setTrainerRankingPage(1) }}>全部</button>
-                          {trainerLanguageOptions.map((language) => <button key={language} type="button" className={trainerLanguages.includes(language) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerLanguages((current) => toggleFilterValue(current, language)); setTrainerRankingPage(1) }}>{language}</button>)}
-                        </div>
+                        <span className="collapsible-filter-label">
+                          <span>语言 · {trainerLanguages.length || trainerLanguageOptions.length}/{trainerLanguageOptions.length}</span>
+                          <button type="button" className={`mini-toggle-btn borderless-toggle${trainerLanguagesOpen ? ' open' : ''}`} onClick={() => setTrainerLanguagesOpen((value) => !value)} aria-label={trainerLanguagesOpen ? '收起语言筛选' : '展开语言筛选'} />
+                        </span>
+                        {trainerLanguagesOpen && <div className="filter-chip-group">
+                          {trainerLanguageOptions.map((language) => <button key={language} type="button" className={trainerLanguages.length === 0 || trainerLanguages.includes(language) ? 'filter-chip active' : 'filter-chip'} onClick={() => { setTrainerLanguages((current) => toggleTrainerFacet(current, language, trainerLanguageOptions)); setTrainerRankingPage(1) }}>{language}</button>)}
+                        </div>}
                       </div>
                       <div className="popover-field">
-                        <span>显示项目</span>
-                        <div className="filter-chip-group">
+                        <span className="collapsible-filter-label">
+                          <span>显示项目 · {trainerVisibleColumns.length}/{TRAINER_COLUMN_OPTIONS.length}</span>
+                          <button type="button" className={`mini-toggle-btn borderless-toggle${trainerColumnsOpen ? ' open' : ''}`} onClick={() => setTrainerColumnsOpen((value) => !value)} aria-label={trainerColumnsOpen ? '收起显示项目' : '展开显示项目'} />
+                        </span>
+                        {trainerColumnsOpen && <div className="filter-chip-group">
                           {TRAINER_COLUMN_OPTIONS.map((column) => <button key={column} type="button" className={trainerVisibleColumns.includes(column) ? 'filter-chip active' : 'filter-chip'} onClick={() => setTrainerVisibleColumns((current) => { const next = toggleFilterValue(current, column) as TrainerColumnKey[]; return next.length ? next : current })}>{TRAINER_COLUMN_LABELS[column]}</button>)}
-                        </div>
+                        </div>}
                       </div>
-                      <button type="button" onClick={() => { setTrainerQuery(''); setTrainerCountries([]); setTrainerLanguages([]); setTrainerVisibleColumns(TRAINER_COLUMN_OPTIONS); setTrainerRankingPage(1); setTrainerFiltersOpen(false) }}>清空筛选</button>
+                      <button type="button" onClick={() => { setTrainerQuery(''); setTrainerCountries([]); setTrainerLanguages([]); setTrainerVisibleColumns(TRAINER_COLUMN_OPTIONS); setTrainerRankingPage(1); setTrainerFiltersOpen(false); setTrainerCountriesOpen(false); setTrainerLanguagesOpen(false); setTrainerColumnsOpen(false) }}>清空筛选</button>
                     </div>
                   )}
                 </div>
@@ -1933,12 +1949,12 @@ function App() {
                   {(trainerRankingDataset.trainerTop300Cutoff !== undefined || trainerRankingDataset.trainerTop1000Cutoff !== undefined) && (
                     <div className="trainer-ranking-summary" aria-label="排名分数线">
                       {trainerRankingDataset.trainerTop300Cutoff !== undefined && (
-                        <span className="trainer-cutoff-badge"><span>Top 300</span><strong>{trainerRankingDataset.trainerTop300Cutoff.toFixed(3)}</strong></span>
+                        <span className="trainer-cutoff-badge"><span>Top 300</span><span className="trainer-cutoff-score">{trainerRankingDataset.trainerTop300Cutoff.toFixed(3)}</span></span>
                       )}
                       {trainerRankingDataset.trainerTop1000Cutoff !== undefined && (
-                        <span className="trainer-cutoff-badge"><span>Top 1000</span><strong>{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</strong></span>
+                        <span className="trainer-cutoff-badge"><span>Top 1000</span><span className="trainer-cutoff-score">{trainerRankingDataset.trainerTop1000Cutoff.toFixed(3)}</span></span>
                       )}
-                      <span className="trainer-ranking-count">{filteredTrainerRankings.length === trainerRankingDataset.trainerRankings.length ? `共 ${trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名` : `显示 ${filteredTrainerRankings.length.toLocaleString('zh-CN')} / ${trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名`}</span>
+                      {filteredTrainerRankings.length !== trainerRankingDataset.trainerRankings.length && <span className="trainer-ranking-count">显示 {filteredTrainerRankings.length.toLocaleString('zh-CN')} / {trainerRankingDataset.trainerRankings.length.toLocaleString('zh-CN')} 名</span>}
                     </div>
                   )}
                   {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
@@ -1987,8 +2003,8 @@ function App() {
                       <tr>
                         {showTrainerColumn('rank') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('rank')}>排名{sortIndicator(trainerSortKey, 'rank', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('rating') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('rating')}>分数{sortIndicator(trainerSortKey, 'rating', trainerSortDirection)}</button></th>}
-                        {showTrainerColumn('country') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('country')}>国家/地区{sortIndicator(trainerSortKey, 'country', trainerSortDirection)}</button></th>}
-                        {showTrainerColumn('trainer') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('trainer')}>训练家{sortIndicator(trainerSortKey, 'trainer', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('country') && <th className="trainer-country-column"><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('country')}>国家/地区{sortIndicator(trainerSortKey, 'country', trainerSortDirection)}</button></th>}
+                        {showTrainerColumn('trainer') && <th className="trainer-name-column"><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('trainer')}>训练家{sortIndicator(trainerSortKey, 'trainer', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('language') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('language')}>语言{sortIndicator(trainerSortKey, 'language', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('wins') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('wins')}>胜场{sortIndicator(trainerSortKey, 'wins', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('losses') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('losses')}>负场{sortIndicator(trainerSortKey, 'losses', trainerSortDirection)}</button></th>}
@@ -2007,13 +2023,13 @@ function App() {
                           <tr key={`${trainer.position ?? trainer.rank}-${trainer.name}-${index}`}>
                             {showTrainerColumn('rank') && <td className="rank-cell" data-label="排名">#{trainer.rank}</td>}
                             {showTrainerColumn('rating') && <td className="rating-cell" data-label="分数">{trainer.rating !== null ? trainer.rating.toFixed(3) : '—'}</td>}
-                            {showTrainerColumn('country') && <td className="trainer-wide-cell" data-label="国家/地区">
+                            {showTrainerColumn('country') && <td className="trainer-wide-cell trainer-country-column" data-label="国家/地区">
                               <span className="trainer-country-cell">
                                 {flagUrl && <img src={flagUrl} alt="" loading="lazy" />}
                                 <span>{trainer.country || '—'}</span>
                               </span>
                             </td>}
-                            {showTrainerColumn('trainer') && <td className="trainer-wide-cell" data-label="训练家">
+                            {showTrainerColumn('trainer') && <td className="trainer-wide-cell trainer-name-column" data-label="训练家">
                               <span className="trainer-name-cell">
                                 {avatarUrl && <img src={avatarUrl} alt="" loading="lazy" />}
                                 <span>{trainer.name}</span>

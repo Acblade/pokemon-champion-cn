@@ -289,6 +289,7 @@ select {
 .trainer-rankings-table td {
   padding: 10px 14px;
   text-align: center;
+  vertical-align: middle;
   border-bottom: 1px solid #e2e8f0;
 }
 
@@ -393,6 +394,7 @@ select {
 }
 
 .trainer-ranking-summary {
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 14px;
@@ -411,8 +413,9 @@ select {
   white-space: nowrap;
 }
 
-.trainer-cutoff-badge strong {
-  color: #1e293b;
+.trainer-cutoff-score {
+  color: inherit;
+  font-weight: inherit;
   font-variant-numeric: tabular-nums;
 }
 
@@ -427,15 +430,27 @@ select {
   color: #cbd5e1;
 }
 
-:root[data-theme='dark'] .trainer-cutoff-badge strong {
-  color: #f1f5f9;
-}
-
 .trainer-country-cell,
 .trainer-name-cell {
   min-width: 0;
+  justify-content: center;
   gap: 8px;
-  text-align: left;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 701px) {
+  .trainer-rankings-table {
+    table-layout: fixed;
+  }
+
+  .trainer-rankings-table .trainer-country-column {
+    width: 132px;
+  }
+
+  .trainer-rankings-table .trainer-name-column {
+    width: 150px;
+  }
 }
 
 .trainer-country-cell img {
@@ -3562,9 +3577,14 @@ table.damage-stats-table {
 
 /* Trainer rankings */
 .rating-cell {
-  color: #475569;
+  color: #111827;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
   width: 90px;
+}
+
+:root[data-theme='dark'] .rating-cell {
+  color: #f8fafc;
 }
 
 .move-damage-dropdown {
