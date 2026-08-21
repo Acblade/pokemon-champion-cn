@@ -453,14 +453,20 @@ select {
 @media (min-width: 701px) {
   .trainer-rankings-table {
     table-layout: fixed;
+    margin: 0 auto;
   }
 
-  .trainer-rankings-table .trainer-country-column {
-    width: 132px;
+  .trainer-rankings-table .trainer-country-column,
+  .trainer-rankings-table .trainer-name-column,
+  .trainer-rankings-table .trainer-country-column .table-sort-button,
+  .trainer-rankings-table .trainer-name-column .table-sort-button {
+    text-align: left;
   }
 
-  .trainer-rankings-table .trainer-name-column {
-    width: 150px;
+  .trainer-rankings-table .trainer-country-cell,
+  .trainer-rankings-table .trainer-name-cell {
+    justify-content: flex-start;
+    margin: 0;
   }
 }
 
@@ -566,7 +572,8 @@ select {
   .trainer-rankings-table,
   .trainer-rankings-table tbody {
     display: block;
-    min-width: 0;
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   .trainer-rankings-table thead {

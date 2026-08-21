@@ -83,9 +83,18 @@ const TRAINER_COLUMN_LABELS: Record<TrainerColumnKey, string> = {
   wins: '胜场',
   losses: '负场',
   winRate: '胜率',
-  winStreak: '连胜',
 }
-const TRAINER_COLUMN_OPTIONS: TrainerColumnKey[] = ['rank', 'rating', 'country', 'trainer', 'language', 'wins', 'losses', 'winRate', 'winStreak']
+const TRAINER_COLUMN_OPTIONS: TrainerColumnKey[] = ['rank', 'rating', 'country', 'trainer', 'language', 'wins', 'losses', 'winRate']
+const TRAINER_COLUMN_WIDTHS: Record<TrainerColumnKey, number> = {
+  rank: 78,
+  rating: 105,
+  country: 170,
+  trainer: 190,
+  language: 80,
+  wins: 78,
+  losses: 78,
+  winRate: 82,
+}
 
 const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
   '1': { label: 'M-A', seasons: [{ id: '1', label: 'M-1：4/8 ~ 5/13' }] },
@@ -149,7 +158,7 @@ function draftConfigEquals(a: DraftConfig | undefined, b: DraftConfig) {
 
 type SortKey = 'zh' | 'name' | 'types' | 'usageRank' | 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe' | 'bst'
 type SortDirection = 'asc' | 'desc'
-type TrainerColumnKey = 'rank' | 'rating' | 'country' | 'trainer' | 'language' | 'wins' | 'losses' | 'winRate' | 'winStreak'
+type TrainerColumnKey = 'rank' | 'rating' | 'country' | 'trainer' | 'language' | 'wins' | 'losses' | 'winRate'
 type TrainerSortKey = TrainerColumnKey
 
 type FilterState = {
@@ -1011,7 +1020,6 @@ function App() {
           case 'wins': result = compareOptionalNumbers(left.wins, right.wins); break
           case 'losses': result = compareOptionalNumbers(left.losses, right.losses); break
           case 'winRate': result = compareOptionalNumbers(left.winRate, right.winRate); break
-          case 'winStreak': result = compareOptionalNumbers(left.winStreak, right.winStreak); break
         }
         return result || (left.position ?? left.rank) - (right.position ?? right.rank)
       })
@@ -1023,6 +1031,8 @@ function App() {
   }, [filteredTrainerRankings, trainerRankingPage])
   const trainerFilterCount = (trainerCountries.length ? 1 : 0) + (trainerLanguages.length ? 1 : 0) + (trainerQuery.trim() ? 1 : 0) + (TRAINER_COLUMN_OPTIONS.length - trainerVisibleColumns.length)
   const showTrainerColumn = (column: TrainerColumnKey) => trainerVisibleColumns.includes(column)
+  const orderedTrainerVisibleColumns = TRAINER_COLUMN_OPTIONS.filter(showTrainerColumn)
+  const trainerTableWidth = orderedTrainerVisibleColumns.reduce((total, column) => total + TRAINER_COLUMN_WIDTHS[column], 0)
 
   function toggleTrainerFacet(current: string[], value: string, options: string[]) {
     if (current.length === 0) return [value]
@@ -1998,7 +2008,10 @@ function App() {
                 </div>
               ) : (
                 <div className="trainer-rankings-wrap table-wrapper responsive-table-card">
-                  <table className="trainer-rankings-table">
+                  <table className="trainer-rankings-table" style={{ width: trainerTableWidth, minWidth: trainerTableWidth }}>
+                    <colgroup>
+                      {orderedTrainerVisibleColumns.map((column) => <col key={column} style={{ width: TRAINER_COLUMN_WIDTHS[column] }} />)}
+                    </colgroup>
                     <thead>
                       <tr>
                         {showTrainerColumn('rank') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('rank')}>排名{sortIndicator(trainerSortKey, 'rank', trainerSortDirection)}</button></th>}
@@ -2009,7 +2022,6 @@ function App() {
                         {showTrainerColumn('wins') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('wins')}>胜场{sortIndicator(trainerSortKey, 'wins', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('losses') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('losses')}>负场{sortIndicator(trainerSortKey, 'losses', trainerSortDirection)}</button></th>}
                         {showTrainerColumn('winRate') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('winRate')}>胜率{sortIndicator(trainerSortKey, 'winRate', trainerSortDirection)}</button></th>}
-                        {showTrainerColumn('winStreak') && <th><button type="button" className="table-sort-button" onClick={() => handleTrainerSort('winStreak')}>连胜{sortIndicator(trainerSortKey, 'winStreak', trainerSortDirection)}</button></th>}
                       </tr>
                     </thead>
                     <tbody>
@@ -2039,7 +2051,6 @@ function App() {
                             {showTrainerColumn('wins') && <td data-label="胜场">{trainer.wins ?? '—'}</td>}
                             {showTrainerColumn('losses') && <td data-label="负场">{trainer.losses ?? '—'}</td>}
                             {showTrainerColumn('winRate') && <td data-label="胜率">{trainer.winRate !== undefined ? `${trainer.winRate.toFixed(1)}%` : '—'}</td>}
-                            {showTrainerColumn('winStreak') && <td data-label="连胜">{trainer.winStreak ?? '—'}</td>}
                           </tr>
                         )
                       })}
