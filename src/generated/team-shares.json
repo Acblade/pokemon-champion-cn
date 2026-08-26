@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T04:04:13.669Z",
+  "updatedAt": "2026-08-26T04:07:14.203Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=1458357160#gid=1458357160",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-08-23",
-      "count": 767
+      "updatedAt": "2026-08-24",
+      "count": 770
     },
     {
       "name": "VGCPastes Repository",
@@ -39106,6 +39106,119 @@
       }
     },
     {
+      "id": "vgcpastes-mb770",
+      "title": "NatusPKMN's Tinkaton Sand Team",
+      "author": "Nate Innocenti",
+      "owner": "natuspkmn",
+      "teamId": "MB770",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/natuspkmn/status/2091953157223895366?s=46",
+      "platformUrl": "https://pokepast.es/86b8bd71c016845e",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-24",
+      "eventDate": "2026-08-24",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "班基拉斯（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Nate Innocenti，队伍码 7527Q6A7FK",
+      "members": [
+        {
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Adamant",
+          "spread": "16 HP / 26 Atk / 24 Spe",
+          "moves": [
+            "岩崩",
+            "拍落",
+            "龙之舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "milotic",
+          "pokemonName": "Milotic",
+          "item": "Sitrus Berry",
+          "ability": "Competitive",
+          "nature": "Modest",
+          "spread": "30 HP / 14 Def / 20 SpA / 2 Spe",
+          "moves": [
+            "热水",
+            "冰冻光束",
+            "冰冻之风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "地震",
+            "岩崩",
+            "十万马力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Kasib Berry",
+          "ability": "Hospitality",
+          "nature": "Relaxed",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "生命水滴",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tinkaton",
+          "pokemonName": "Tinkaton",
+          "item": "Shuca Berry",
+          "ability": "Mold Breaker",
+          "nature": "Jolly",
+          "spread": "23 HP / 15 Atk / 28 Spe",
+          "moves": [
+            "巨力锤",
+            "再来一次",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "hydreigon",
+          "pokemonName": "Hydreigon",
+          "item": "Life Orb",
+          "ability": "Levitate",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "恶之波动",
+            "流星群",
+            "顺风",
+            "大地之力"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc770",
       "title": "Lim Boon Hong's Malaysia MBL 2026 Top 16 Team",
       "author": "Lim Boon Hong",
@@ -39225,6 +39338,119 @@
       }
     },
     {
+      "id": "vgcpastes-mb769",
+      "title": "Jaylun's Meganium Aerodactyl Team",
+      "author": "Yang Chieh-Lun",
+      "owner": "jaylun44",
+      "teamId": "MB769",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/jaylun44/status/2091837563611009357?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/5dfcc39533b0b713",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-24",
+      "eventDate": "2026-08-24",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "大竺葵（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Yang Chieh-Lun，队伍码 Y1PNKVEBEU",
+      "members": [
+        {
+          "pokemonId": "meganiummega",
+          "pokemonName": "Meganium-Mega",
+          "item": "Meganiumite",
+          "ability": "Mega Sol",
+          "nature": "Modest",
+          "spread": "31 HP / 27 SpA / 8 Spe",
+          "moves": [
+            "日光束",
+            "魔法闪耀",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "32 HP / 10 Atk / 10 Def / 10 SpD / 4 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "抛下狠话",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "aerodactyl",
+          "pokemonName": "Aerodactyl",
+          "item": "Focus Sash",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Colbur Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "32 HP / 20 Def / 14 SpD",
+          "moves": [
+            "精神强念",
+            "十万伏特",
+            "帮助",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "地震",
+            "岩崩",
+            "跺脚",
+            "龙爪"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc769",
       "title": "Hakim Aminullah's Malaysia MBL 2026 Top 16 Team",
       "author": "Hakim Aminullah",
@@ -39342,6 +39568,119 @@
       "metrics": {
         "finalRanking": "10"
       }
+    },
+    {
+      "id": "vgcpastes-mb768",
+      "title": "gahaku's Solo Staraptor Team",
+      "author": "Masahiro Ito",
+      "owner": "gahaku_poke",
+      "teamId": "MB768",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/michaelderbeste/status/2091537492801364352?s=46",
+      "platformUrl": "https://pokepast.es/9b1cd82e2b738cc7",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-23",
+      "eventDate": "2026-08-23",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Masahiro Ito，队伍码 M277RUKC6P",
+      "members": [
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "23 HP / 11 Atk / 32 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "羽栖",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "torkoal",
+          "pokemonName": "Torkoal",
+          "item": "Charcoal",
+          "ability": "Drought",
+          "nature": "Quiet",
+          "spread": "32 HP / 1 Def / 32 SpA / 1 SpD",
+          "moves": [
+            "喷火",
+            "热风",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Focus Sash",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Life Orb",
+          "ability": "Poison Touch",
+          "nature": "Adamant",
+          "spread": "4 HP / 30 Atk / 32 Spe",
+          "moves": [
+            "近身战",
+            "毒击",
+            "岩崩",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Occa Berry",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "32 HP / 10 Def / 4 SpD / 20 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "撒娇",
+            "假哭"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Sassy",
+          "spread": "29 HP / 16 Def / 21 SpD",
+          "moves": [
+            "精神强念",
+            "戏法空间",
+            "帮助",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-pc768",
