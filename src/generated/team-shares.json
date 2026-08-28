@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T14:20:12.895Z",
+  "updatedAt": "2026-08-28T15:29:48.278Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=1458357160#gid=1458357160",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-08-24",
-      "count": 770
+      "updatedAt": "2026-08-26",
+      "count": 773
     },
     {
       "name": "VGCPastes Repository",
@@ -38752,6 +38752,120 @@
       }
     },
     {
+      "id": "vgcpastes-mb773",
+      "title": "punihina1334's Charizard-Y Mawile Team",
+      "author": "punihina1334",
+      "owner": "punihina1334",
+      "teamId": "MB773",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/punihina1334/status/2092615206849384914?s=46",
+      "platformUrl": "https://pokepast.es/a492ad488f9f5395",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-26",
+      "eventDate": "2026-08-26",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "喷火龙（Mega Y）",
+        "大嘴娃（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 punihina1334，队伍码 BP25STHPSF",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "16 HP / 18 Def / 19 SpA / 13 Spe",
+          "moves": [
+            "守住",
+            "热风",
+            "气象球",
+            "日光束"
+          ]
+        },
+        {
+          "pokemonId": "mawilemega",
+          "pokemonName": "Mawile-Mega",
+          "item": "Mawilite",
+          "ability": "Hyper Cutter",
+          "nature": "Adamant",
+          "spread": "27 HP / 19 Atk / 20 Spe",
+          "moves": [
+            "守住",
+            "嬉闹",
+            "突袭",
+            "岩崩"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "1 HP / 10 Atk / 28 Def / 12 SpD / 15 Spe",
+          "moves": [
+            "守住",
+            "波动冲",
+            "扫墓",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "守住",
+            "月亮之力",
+            "顺风",
+            "再来一次"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Colbur Berry",
+          "ability": "Armor Tail",
+          "nature": "Modest",
+          "spread": "13 HP / 21 Def / 12 SpA / 17 SpD / 3 Spe",
+          "moves": [
+            "精神强念",
+            "帮助",
+            "十万伏特",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Sitrus Berry",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "12 HP / 31 Atk / 19 Def / 4 Spe",
+          "moves": [
+            "守住",
+            "地震",
+            "龙爪",
+            "岩崩"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc773",
       "title": "Zen Soo's Malaysia MBL 2026 Top 8 Team",
       "author": "Zen Soo",
@@ -38867,6 +38981,124 @@
       ],
       "metrics": {
         "finalRanking": "6"
+      }
+    },
+    {
+      "id": "vgcpastes-mb772",
+      "title": "sometimessidd's Showdown Ladder Peak 15th Place Team",
+      "author": "sometimessidd",
+      "owner": "sometimessidd",
+      "teamId": "MB772",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/sometimessidd/status/2090741131990688187?s=46",
+      "platformUrl": "https://pokepast.es/0c118222cc0132f0",
+      "season": "M-B",
+      "format": "线上赛事 / Showdown Ladder (Bo3)",
+      "updatedAt": "2026-08-21",
+      "eventDate": "2026-08-21",
+      "eventName": "Showdown Ladder (Bo3)",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 15,
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "线上",
+        "#15",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Showdown Ladder (Bo3)，第 15 名，作者 sometimessidd",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "32 HP / 2 Def / 4 SpA / 5 SpD / 23 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "岩崩",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "meowscarada",
+          "pokemonName": "Meowscarada",
+          "item": "Choice Scarf",
+          "ability": "Protean",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "千变万花",
+            "拍落",
+            "三旋击",
+            "燕返"
+          ]
+        },
+        {
+          "pokemonId": "mamoswine",
+          "pokemonName": "Mamoswine",
+          "item": "Life Orb",
+          "ability": "Oblivious",
+          "nature": "Adamant",
+          "spread": "10 HP / 32 Atk / 24 Spe",
+          "moves": [
+            "十万马力",
+            "冰柱坠击",
+            "冰砾",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Colbur Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "32 HP / 21 Def / 13 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "愤怒粉",
+            "戏法空间",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "19 HP / 32 SpA / 15 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "冥想",
+            "看穿"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "15"
       }
     },
     {
@@ -38986,6 +39218,120 @@
       "metrics": {
         "finalRanking": "7"
       }
+    },
+    {
+      "id": "vgcpastes-mb771",
+      "title": "AndyBakes' Scovillain Maushold Rain Team",
+      "author": "AndyBakes",
+      "owner": "andybakesyt",
+      "teamId": "MB771",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/andybakesyt/status/2092343507310821406?s=46",
+      "platformUrl": "https://pokepast.es/2bb1d948e67b1870",
+      "season": "M-B",
+      "format": "队伍分享",
+      "updatedAt": "2026-08-26",
+      "eventDate": "2026-08-26",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "其它",
+        "化石翼龙（Mega）",
+        "狠辣椒（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 AndyBakes，队伍码 44KL4FYB0Y",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "20 HP / 13 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "scovillainmega",
+          "pokemonName": "Scovillain-Mega",
+          "item": "Scovillainite",
+          "ability": "Moody",
+          "nature": "Calm",
+          "spread": "31 HP / 17 Def / 18 SpD",
+          "moves": [
+            "过热",
+            "终极吸取",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Wide Lens",
+          "ability": "Technician",
+          "nature": "Jolly",
+          "spread": "20 HP / 10 Atk / 4 SpD / 32 Spe",
+          "moves": [
+            "鼠数儿",
+            "求雨",
+            "看我嘛",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "19 HP / 16 Def / 21 SpA / 10 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Modest",
+          "spread": "32 HP / 6 SpA / 15 SpD / 13 Spe",
+          "moves": [
+            "加农光炮",
+            "龙之波动",
+            "电光束",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-pc771",
