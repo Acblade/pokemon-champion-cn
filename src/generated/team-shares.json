@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T08:07:28.516Z",
+  "updatedAt": "2026-09-05T07:45:19.471Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=1458357160#gid=1458357160",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-09-03",
-      "count": 860
+      "updatedAt": "2026-09-04",
+      "count": 861
     },
     {
       "name": "VGCPastes Repository",
@@ -28453,6 +28453,121 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mb861",
+      "title": "Takuma Yamazaki's Worlds 2026 Champion Team",
+      "author": "Takuma Yamazaki",
+      "owner": "natsumewato",
+      "teamId": "MB861",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/natsumewato/status/2094423904593023357?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/bcbcfdf55cb17952",
+      "season": "M-B",
+      "format": "世界赛 / Worlds 2026 San Francisco",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
+      "eventName": "Worlds 2026 San Francisco",
+      "eventType": "世界赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "世界赛",
+        "线上",
+        "快龙（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Worlds 2026 San Francisco，作者 Takuma Yamazaki，队伍码 A4RBRNN9YE",
+      "members": [
+        {
+          "pokemonId": "dragonitemega",
+          "pokemonName": "Dragonite-Mega",
+          "item": "Dragoninite",
+          "ability": "Multiscale",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "龙之波动",
+            "热风",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Timid",
+          "spread": "4 HP / 8 Def / 32 SpA / 22 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "4 HP / 18 Atk / 4 Def / 15 SpD / 25 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "击掌奇袭",
+            "佯攻"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 15 Atk / 19 SpD",
+          "moves": [
+            "突袭",
+            "仆刀",
+            "踢倒",
+            "铁头"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "10 HP / 20 Atk / 9 Def / 27 Spe",
+          "moves": [
+            "龙爪",
+            "跺脚",
+            "地震",
+            "岩崩"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-pc861",
       "title": "MegaCinderite's Chesnaught Primarina Team",
       "author": "MegaCinderite",
@@ -28567,14 +28682,14 @@
     },
     {
       "id": "vgcpastes-mb860",
-      "title": "Takuma Yamazaki's Worlds 2026 Champion Team",
-      "author": "Takuma Yamazaki",
-      "owner": "natsumewato",
+      "title": "cona's Worlds 2026 Runner Up Team",
+      "author": "Hiroshi Onishi",
+      "owner": "cona_5757",
       "teamId": "MB860",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/natsumewato/status/2094423904593023357?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/bcbcfdf55cb17952",
+      "sourceUrl": "https://x.com/cona_5757/status/2094733147602821629",
+      "platformUrl": "https://pokepast.es/8a893a62701569dd",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-31",
@@ -28588,22 +28703,22 @@
         "M-B",
         "世界赛",
         "线上",
-        "快龙（Mega）",
+        "喷火龙（Mega Y）",
         "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，作者 Takuma Yamazaki，队伍码 A4RBRNN9YE",
+      "summary": "Worlds 2026 San Francisco，作者 Hiroshi Onishi，队伍码 MFAK51W5U1",
       "members": [
         {
-          "pokemonId": "dragonitemega",
-          "pokemonName": "Dragonite-Mega",
-          "item": "Dragoninite",
-          "ability": "Multiscale",
-          "nature": "Modest",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "12 HP / 14 Def / 8 SpA / 32 Spe",
           "moves": [
-            "龙之波动",
             "热风",
-            "神速",
+            "气象球",
+            "原始之力",
             "守住"
           ]
         },
@@ -28612,8 +28727,8 @@
           "pokemonName": "Floette-Mega",
           "item": "Floettite",
           "ability": "Flower Veil",
-          "nature": "Timid",
-          "spread": "4 HP / 8 Def / 32 SpA / 22 Spe",
+          "nature": "Modest",
+          "spread": "14 HP / 14 Def / 19 SpA / 19 Spe",
           "moves": [
             "月亮之力",
             "魔法闪耀",
@@ -28627,7 +28742,7 @@
           "item": "Life Orb",
           "ability": "Adaptability",
           "nature": "Adamant",
-          "spread": "4 HP / 18 Atk / 4 Def / 15 SpD / 25 Spe",
+          "spread": "4 HP / 28 Atk / 8 Def / 5 SpD / 21 Spe",
           "moves": [
             "波动冲",
             "扫墓",
@@ -28636,45 +28751,45 @@
           ]
         },
         {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
           "item": "Focus Sash",
-          "ability": "Poison Touch",
-          "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
-            "近身战",
-            "克命爪",
-            "击掌奇袭",
-            "佯攻"
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Chople Berry",
+          "item": "Occa Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 15 Atk / 19 SpD",
+          "spread": "5 HP / 29 Atk / 4 SpD / 28 Spe",
           "moves": [
-            "突袭",
             "仆刀",
-            "踢倒",
-            "铁头"
+            "突袭",
+            "铁头",
+            "踢倒"
           ]
         },
         {
           "pokemonId": "garchomp",
           "pokemonName": "Garchomp",
-          "item": "Choice Scarf",
+          "item": "Sitrus Berry",
           "ability": "Rough Skin",
-          "nature": "Adamant",
-          "spread": "10 HP / 20 Atk / 9 Def / 27 Spe",
+          "nature": "Jolly",
+          "spread": "21 HP / 7 Atk / 6 Def / 32 Spe",
           "moves": [
             "龙爪",
-            "跺脚",
             "地震",
-            "岩崩"
+            "岩崩",
+            "守住"
           ]
         }
       ],
@@ -28796,14 +28911,14 @@
     },
     {
       "id": "vgcpastes-mb859",
-      "title": "cona's Worlds 2026 Runner Up Team",
-      "author": "Hiroshi Onishi",
-      "owner": "cona_5757",
+      "title": "WhimVGC's Worlds 2026 Top 4 Team",
+      "author": "Zachary Weed",
+      "owner": "WhimsicottVG",
       "teamId": "MB859",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/cona_5757/status/2094733147602821629",
-      "platformUrl": "https://pokepast.es/8a893a62701569dd",
+      "sourceUrl": "https://x.com/WhimsicottVG/status/2093524867023016307",
+      "platformUrl": "https://pokepast.es/b1b6a3465a890006",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-31",
@@ -28812,41 +28927,43 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "detailLevel": "full",
+      "placement": 3,
+      "detailLevel": "sets",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "喷火龙（Mega Y）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#3",
+        "雪妖女（Mega）",
+        "狠辣椒（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，作者 Hiroshi Onishi，队伍码 MFAK51W5U1",
+      "summary": "Worlds 2026 San Francisco，第 3 名，作者 Zachary Weed",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
           "nature": "Timid",
-          "spread": "12 HP / 14 Def / 8 SpA / 32 Spe",
+          "spread": "-",
           "moves": [
-            "热风",
-            "气象球",
-            "原始之力",
+            "暴风雪",
+            "暗影球",
+            "极光幕",
             "守住"
           ]
         },
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Modest",
-          "spread": "14 HP / 14 Def / 19 SpA / 19 Spe",
+          "pokemonId": "scovillainmega",
+          "pokemonName": "Scovillain-Mega",
+          "item": "Scovillainite",
+          "ability": "Moody",
+          "nature": "Bold",
+          "spread": "-",
           "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "破灭之光",
+            "过热",
+            "终极吸取",
+            "愤怒粉",
             "守住"
           ]
         },
@@ -28855,8 +28972,8 @@
           "pokemonName": "Basculegion",
           "item": "Life Orb",
           "ability": "Adaptability",
-          "nature": "Adamant",
-          "spread": "4 HP / 28 Atk / 8 Def / 5 SpD / 21 Spe",
+          "nature": "Jolly",
+          "spread": "-",
           "moves": [
             "波动冲",
             "扫墓",
@@ -28865,49 +28982,51 @@
           ]
         },
         {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
+          "pokemonId": "lycanrocdusk",
+          "pokemonName": "Lycanroc-Dusk",
           "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "ability": "Tough Claws",
+          "nature": "Adamant",
+          "spread": "-",
           "moves": [
-            "月亮之力",
-            "顺风",
-            "再来一次",
+            "岩崩",
+            "近身战",
+            "冲岩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "垃圾射击",
+            "击掌奇袭",
             "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Occa Berry",
+          "item": "Black Glasses",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "5 HP / 29 Atk / 4 SpD / 28 Spe",
+          "spread": "-",
           "moves": [
             "仆刀",
             "突袭",
-            "铁头",
-            "踢倒"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Sitrus Berry",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "21 HP / 7 Atk / 6 Def / 32 Spe",
-          "moves": [
-            "龙爪",
-            "地震",
-            "岩崩",
+            "剑舞",
             "守住"
           ]
         }
       ],
-      "metrics": {}
+      "metrics": {
+        "finalRanking": "3"
+      }
     },
     {
       "id": "vgcpastes-pc859",
@@ -29024,33 +29143,33 @@
     },
     {
       "id": "vgcpastes-mb858",
-      "title": "WhimVGC's Worlds 2026 Top 4 Team",
-      "author": "Zachary Weed",
-      "owner": "WhimsicottVG",
+      "title": "Thacrow's Worlds 2026 Top 4 Team",
+      "author": "João Felipe Leite",
+      "owner": "Thacrow",
       "teamId": "MB858",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/WhimsicottVG/status/2093524867023016307",
-      "platformUrl": "https://pokepast.es/b1b6a3465a890006",
+      "sourceUrl": "No Tweet",
+      "platformUrl": "https://pokepast.es/60727d4b5abeb091",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 3,
-      "detailLevel": "sets",
+      "placement": 4,
+      "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#3",
+        "#4",
         "雪妖女（Mega）",
         "狠辣椒（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 3 名，作者 Zachary Weed",
+      "summary": "Worlds 2026 San Francisco，第 4 名，作者 João Felipe Leite",
       "members": [
         {
           "pokemonId": "froslassmega",
@@ -29058,7 +29177,7 @@
           "item": "Froslassite",
           "ability": "Cursed Body",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "25 HP / 14 SpD / 27 Spe",
           "moves": [
             "暴风雪",
             "暗影球",
@@ -29072,10 +29191,10 @@
           "item": "Scovillainite",
           "ability": "Moody",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "31 HP / 15 Def / 15 SpD / 5 Spe",
           "moves": [
-            "过热",
             "终极吸取",
+            "过热",
             "愤怒粉",
             "守住"
           ]
@@ -29085,8 +29204,8 @@
           "pokemonName": "Basculegion",
           "item": "Life Orb",
           "ability": "Adaptability",
-          "nature": "Jolly",
-          "spread": "-",
+          "nature": "Adamant",
+          "spread": "4 HP / 28 Atk / 13 Def / 21 Spe",
           "moves": [
             "波动冲",
             "扫墓",
@@ -29100,11 +29219,11 @@
           "item": "Focus Sash",
           "ability": "Tough Claws",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "32 Atk / 2 Def / 32 Spe",
           "moves": [
-            "岩崩",
             "近身战",
             "冲岩",
+            "岩崩",
             "守住"
           ]
         },
@@ -29114,12 +29233,12 @@
           "item": "White Herb",
           "ability": "Unburden",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "18 HP / 12 Atk / 5 Def / 1 SpD / 30 Spe",
           "moves": [
             "近身战",
-            "垃圾射击",
-            "击掌奇袭",
-            "守住"
+            "克命爪",
+            "守住",
+            "击掌奇袭"
           ]
         },
         {
@@ -29128,7 +29247,7 @@
           "item": "Black Glasses",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
           "moves": [
             "仆刀",
             "突袭",
@@ -29138,7 +29257,7 @@
         }
       ],
       "metrics": {
-        "finalRanking": "3"
+        "finalRanking": "4"
       }
     },
     {
@@ -29256,121 +29375,120 @@
     },
     {
       "id": "vgcpastes-mb857",
-      "title": "Thacrow's Worlds 2026 Top 4 Team",
-      "author": "João Felipe Leite",
-      "owner": "Thacrow",
+      "title": "Rahxen's Worlds 2026 Top 8 Team",
+      "author": "Antonio Sánchez",
+      "owner": "ImRahxen",
       "teamId": "MB857",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "No Tweet",
-      "platformUrl": "https://pokepast.es/60727d4b5abeb091",
+      "sourceUrl": "https://x.com/ImRahxen/status/2093838912326455662",
+      "platformUrl": "https://pokepast.es/8d54c2379391e5e3",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 4,
-      "detailLevel": "full",
+      "placement": 5,
+      "detailLevel": "sets",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#4",
-        "雪妖女（Mega）",
-        "狠辣椒（Mega）"
+        "#5",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 4 名，作者 João Felipe Leite",
+      "summary": "Worlds 2026 San Francisco，第 5 名，作者 Antonio Sánchez",
       "members": [
         {
-          "pokemonId": "froslassmega",
-          "pokemonName": "Froslass-Mega",
-          "item": "Froslassite",
-          "ability": "Cursed Body",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
           "nature": "Timid",
-          "spread": "25 HP / 14 SpD / 27 Spe",
+          "spread": "-",
           "moves": [
-            "暴风雪",
-            "暗影球",
-            "极光幕",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "scovillainmega",
-          "pokemonName": "Scovillain-Mega",
-          "item": "Scovillainite",
-          "ability": "Moody",
-          "nature": "Bold",
-          "spread": "31 HP / 15 Def / 15 SpD / 5 Spe",
-          "moves": [
-            "终极吸取",
-            "过热",
-            "愤怒粉",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Life Orb",
-          "ability": "Adaptability",
-          "nature": "Adamant",
-          "spread": "4 HP / 28 Atk / 13 Def / 21 Spe",
-          "moves": [
-            "波动冲",
-            "扫墓",
-            "水流喷射",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "lycanrocdusk",
-          "pokemonName": "Lycanroc-Dusk",
-          "item": "Focus Sash",
-          "ability": "Tough Claws",
-          "nature": "Adamant",
-          "spread": "32 Atk / 2 Def / 32 Spe",
-          "moves": [
-            "近身战",
-            "冲岩",
-            "岩崩",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "White Herb",
-          "ability": "Unburden",
-          "nature": "Adamant",
-          "spread": "18 HP / 12 Atk / 5 Def / 1 SpD / 30 Spe",
-          "moves": [
-            "近身战",
-            "克命爪",
             "守住",
-            "击掌奇袭"
+            "热风",
+            "日光束",
+            "气象球"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Black Glasses",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "-",
           "moves": [
-            "仆刀",
-            "突袭",
-            "剑舞",
+            "击掌奇袭",
+            "抛下狠话",
+            "闪焰冲锋",
             "守住"
+          ]
+        },
+        {
+          "pokemonId": "toxapex",
+          "pokemonName": "Toxapex",
+          "item": "Leftovers",
+          "ability": "Regenerator",
+          "nature": "Relaxed",
+          "spread": "-",
+          "moves": [
+            "碉堡",
+            "死缠烂打",
+            "剧毒",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Focus Sash",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "污泥炸弹",
+            "大地之力",
+            "催眠粉"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Quiet",
+          "spread": "-",
+          "moves": [
+            "看穿",
+            "巨声",
+            "电光一闪",
+            "哈欠"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "跺脚",
+            "地震",
+            "龙爪",
+            "岩崩"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "4"
+        "finalRanking": "5"
       }
     },
     {
@@ -29489,120 +29607,121 @@
     },
     {
       "id": "vgcpastes-mb856",
-      "title": "Rahxen's Worlds 2026 Top 8 Team",
-      "author": "Antonio Sánchez",
-      "owner": "ImRahxen",
+      "title": "Yuu's Worlds 2026 Top 8 Team",
+      "author": "Yuya Wakasugi",
+      "owner": "yu_yan_poke",
       "teamId": "MB856",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ImRahxen/status/2093838912326455662",
-      "platformUrl": "https://pokepast.es/8d54c2379391e5e3",
+      "sourceUrl": "https://x.com/yu_yan_poke/status/2093915603673514484?s=46",
+      "platformUrl": "https://pokepast.es/e036b69f24be2220",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 5,
-      "detailLevel": "sets",
+      "placement": 6,
+      "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#5",
-        "喷火龙（Mega Y）"
+        "#6",
+        "快龙（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 5 名，作者 Antonio Sánchez",
+      "summary": "Worlds 2026 San Francisco，第 6 名，作者 Yuya Wakasugi，队伍码 PDH3DRQ3FW",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "-",
+          "pokemonId": "dragonitemega",
+          "pokemonName": "Dragonite-Mega",
+          "item": "Dragoninite",
+          "ability": "Inner Focus",
+          "nature": "Modest",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
           "moves": [
-            "守住",
+            "龙之波动",
             "热风",
-            "日光束",
-            "气象球"
-          ]
-        },
-        {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Impish",
-          "spread": "-",
-          "moves": [
-            "击掌奇袭",
-            "抛下狠话",
-            "闪焰冲锋",
+            "十万伏特",
             "守住"
           ]
         },
         {
-          "pokemonId": "toxapex",
-          "pokemonName": "Toxapex",
-          "item": "Leftovers",
-          "ability": "Regenerator",
-          "nature": "Relaxed",
-          "spread": "-",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
-            "碉堡",
-            "死缠烂打",
-            "剧毒",
-            "广域防守"
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
           ]
         },
         {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Focus Sash",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "守住",
-            "污泥炸弹",
-            "大地之力",
-            "催眠粉"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Quiet",
-          "spread": "-",
-          "moves": [
-            "看穿",
-            "巨声",
-            "电光一闪",
-            "哈欠"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Choice Scarf",
-          "ability": "Rough Skin",
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "23 Atk / 14 Def / 2 SpD / 27 Spe",
           "moves": [
-            "跺脚",
-            "地震",
-            "龙爪",
-            "岩崩"
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Jolly",
+          "spread": "12 HP / 32 Atk / 4 SpD / 18 Spe",
+          "moves": [
+            "克命爪",
+            "近身战",
+            "岩崩",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 15 Atk / 2 Def / 2 SpD / 15 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "踢倒",
+            "铁头"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "5"
+        "finalRanking": "6"
       }
     },
     {
@@ -29721,121 +29840,121 @@
     },
     {
       "id": "vgcpastes-mb855",
-      "title": "Yuu's Worlds 2026 Top 8 Team",
-      "author": "Yuya Wakasugi",
-      "owner": "yu_yan_poke",
+      "title": "Stefano Greppi's Worlds 2026 Top 8 Team",
+      "author": "Stefano Greppi",
+      "owner": "ssteccaa",
       "teamId": "MB855",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/yu_yan_poke/status/2093915603673514484?s=46",
-      "platformUrl": "https://pokepast.es/e036b69f24be2220",
+      "sourceUrl": "https://x.com/ssteccaa/status/2094210717159154051?s=46",
+      "platformUrl": "https://pokepast.es/c92fa94a73a0331e",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 6,
+      "placement": 7,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#6",
-        "快龙（Mega）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#7",
+        "化石翼龙（Mega）",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 6 名，作者 Yuya Wakasugi，队伍码 PDH3DRQ3FW",
+      "summary": "Worlds 2026 San Francisco，第 7 名，作者 Stefano Greppi，队伍码 F2MFXB90GY",
       "members": [
         {
-          "pokemonId": "dragonitemega",
-          "pokemonName": "Dragonite-Mega",
-          "item": "Dragoninite",
-          "ability": "Inner Focus",
-          "nature": "Modest",
-          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
-          "moves": [
-            "龙之波动",
-            "热风",
-            "十万伏特",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
-          "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "破灭之光",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Life Orb",
-          "ability": "Adaptability",
-          "nature": "Adamant",
-          "spread": "23 Atk / 14 Def / 2 SpD / 27 Spe",
-          "moves": [
-            "波动冲",
-            "扫墓",
-            "水流喷射",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "White Herb",
-          "ability": "Unburden",
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
           "nature": "Jolly",
-          "spread": "12 HP / 32 Atk / 4 SpD / 18 Spe",
+          "spread": "16 HP / 13 Atk / 5 SpD / 32 Spe",
           "moves": [
-            "克命爪",
-            "近身战",
+            "冰冻牙",
             "岩崩",
-            "击掌奇袭"
+            "顺风",
+            "双翼"
           ]
         },
         {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "2 Def / 32 SpA / 32 Spe",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "32 HP / 12 Def / 1 SpA / 21 Spe",
           "moves": [
-            "月亮之力",
-            "顺风",
-            "再来一次",
+            "热风",
+            "日光束",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "27 HP / 20 Def / 19 SpD",
+          "moves": [
+            "戏法空间",
+            "精神强念",
+            "十万伏特",
             "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Chople Berry",
+          "item": "Focus Sash",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 15 Atk / 2 Def / 2 SpD / 15 Spe",
+          "spread": "32 Atk / 2 SpD / 32 Spe",
           "moves": [
-            "仆刀",
             "突袭",
-            "踢倒",
-            "铁头"
+            "仆刀",
+            "铁头",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "7 HP / 23 Def / 26 SpA / 10 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "守住",
+            "电光一闪"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "龙爪",
+            "岩石封锁",
+            "地震",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "6"
+        "finalRanking": "7"
       }
     },
     {
@@ -29954,14 +30073,14 @@
     },
     {
       "id": "vgcpastes-mb854",
-      "title": "Stefano Greppi's Worlds 2026 Top 8 Team",
-      "author": "Stefano Greppi",
-      "owner": "ssteccaa",
+      "title": "Genius' Worlds 2026 Top 8 Team",
+      "author": "Giovanni Piscitelli",
+      "owner": "GeniusVGC",
       "teamId": "MB854",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ssteccaa/status/2094210717159154051?s=46",
-      "platformUrl": "https://pokepast.es/c92fa94a73a0331e",
+      "sourceUrl": "https://x.com/GeniusVGC/status/2093879424483823948",
+      "platformUrl": "https://pokepast.es/7bbccdabd2b3830f",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-31",
@@ -29970,86 +30089,86 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 7,
-      "detailLevel": "full",
+      "placement": 8,
+      "detailLevel": "sets",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#7",
-        "化石翼龙（Mega）",
-        "喷火龙（Mega Y）"
+        "#8",
+        "喷火龙（Mega Y）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 7 名，作者 Stefano Greppi，队伍码 F2MFXB90GY",
+      "summary": "Worlds 2026 San Francisco，第 8 名，作者 Giovanni Piscitelli",
       "members": [
-        {
-          "pokemonId": "aerodactylmega",
-          "pokemonName": "Aerodactyl-Mega",
-          "item": "Aerodactylite",
-          "ability": "Unnerve",
-          "nature": "Jolly",
-          "spread": "16 HP / 13 Atk / 5 SpD / 32 Spe",
-          "moves": [
-            "冰冻牙",
-            "岩崩",
-            "顺风",
-            "双翼"
-          ]
-        },
         {
           "pokemonId": "charizardmegay",
           "pokemonName": "Charizard-Mega-Y",
           "item": "Charizardite Y",
           "ability": "Blaze",
           "nature": "Modest",
-          "spread": "32 HP / 12 Def / 1 SpA / 21 Spe",
+          "spread": "-",
           "moves": [
             "热风",
-            "日光束",
             "气象球",
+            "原始之力",
             "守住"
           ]
         },
         {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Bold",
-          "spread": "27 HP / 20 Def / 19 SpD",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
           "moves": [
-            "戏法空间",
-            "精神强念",
-            "十万伏特",
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "再来一次",
+            "顺风",
             "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Focus Sash",
+          "item": "Chople Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 Atk / 2 SpD / 32 Spe",
+          "spread": "-",
           "moves": [
-            "突袭",
             "仆刀",
             "铁头",
+            "突袭",
             "踢倒"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "7 HP / 23 Def / 26 SpA / 10 Spe",
-          "moves": [
-            "巨声",
-            "破坏光线",
-            "守住",
-            "电光一闪"
           ]
         },
         {
@@ -30058,17 +30177,17 @@
           "item": "Life Orb",
           "ability": "Rough Skin",
           "nature": "Jolly",
-          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "spread": "-",
           "moves": [
-            "龙爪",
-            "岩石封锁",
             "地震",
+            "龙爪",
+            "岩崩",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "7"
+        "finalRanking": "8"
       }
     },
     {
@@ -30186,41 +30305,41 @@
     },
     {
       "id": "vgcpastes-mb853",
-      "title": "Genius' Worlds 2026 Top 8 Team",
-      "author": "Giovanni Piscitelli",
-      "owner": "GeniusVGC",
+      "title": "zeen's Worlds 2026 Top 16 Team",
+      "author": "Shohei Kimura",
+      "owner": "zeen172m",
       "teamId": "MB853",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/GeniusVGC/status/2093879424483823948",
-      "platformUrl": "https://pokepast.es/7bbccdabd2b3830f",
+      "sourceUrl": "https://x.com/zeen172m/status/2093816163243643312?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/52aa36ebc27b5827",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 8,
-      "detailLevel": "sets",
+      "placement": 9,
+      "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#8",
+        "#9",
         "喷火龙（Mega Y）",
         "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 8 名，作者 Giovanni Piscitelli",
+      "summary": "Worlds 2026 San Francisco，第 9 名，作者 Shohei Kimura，队伍码 TMTM7YB013",
       "members": [
         {
           "pokemonId": "charizardmegay",
           "pokemonName": "Charizard-Mega-Y",
           "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "-",
+          "ability": "Solar Power",
+          "nature": "Timid",
+          "spread": "4 HP / 23 Def / 11 SpA / 28 Spe",
           "moves": [
             "热风",
             "气象球",
@@ -30234,7 +30353,7 @@
           "item": "Floettite",
           "ability": "Flower Veil",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "22 HP / 4 Def / 20 SpA / 20 Spe",
           "moves": [
             "月亮之力",
             "魔法闪耀",
@@ -30245,10 +30364,10 @@
         {
           "pokemonId": "basculegion",
           "pokemonName": "Basculegion",
-          "item": "Mystic Water",
+          "item": "Colbur Berry",
           "ability": "Adaptability",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "4 HP / 31 Atk / 16 Def / 15 Spe",
           "moves": [
             "波动冲",
             "扫墓",
@@ -30262,26 +30381,26 @@
           "item": "Focus Sash",
           "ability": "Prankster",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
           "moves": [
             "月亮之力",
-            "再来一次",
             "顺风",
+            "再来一次",
             "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Chople Berry",
+          "item": "Black Glasses",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "13 HP / 28 Atk / 1 Def / 8 SpD / 16 Spe",
           "moves": [
             "仆刀",
             "铁头",
             "突袭",
-            "踢倒"
+            "守住"
           ]
         },
         {
@@ -30290,17 +30409,17 @@
           "item": "Life Orb",
           "ability": "Rough Skin",
           "nature": "Jolly",
-          "spread": "-",
+          "spread": "16 HP / 12 Atk / 6 Def / 32 Spe",
           "moves": [
-            "地震",
             "龙爪",
+            "地震",
             "岩崩",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "8"
+        "finalRanking": "9"
       }
     },
     {
@@ -30418,73 +30537,72 @@
     },
     {
       "id": "vgcpastes-mb852",
-      "title": "zeen's Worlds 2026 Top 16 Team",
-      "author": "Shohei Kimura",
-      "owner": "zeen172m",
+      "title": "Carson St. Denis' Worlds 2026 Top 16 Team",
+      "author": "Carson St. Denis",
+      "owner": "Carson St. Denis",
       "teamId": "MB852",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/zeen172m/status/2093816163243643312?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/52aa36ebc27b5827",
+      "sourceUrl": "No Tweet",
+      "platformUrl": "https://pokepast.es/42d53375663aa736",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 9,
+      "placement": 10,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#9",
-        "喷火龙（Mega Y）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#10",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 9 名，作者 Shohei Kimura，队伍码 TMTM7YB013",
+      "summary": "Worlds 2026 San Francisco，第 10 名，作者 Carson St. Denis，队伍码 FG47SL47SU",
       "members": [
         {
           "pokemonId": "charizardmegay",
           "pokemonName": "Charizard-Mega-Y",
           "item": "Charizardite Y",
-          "ability": "Solar Power",
-          "nature": "Timid",
-          "spread": "4 HP / 23 Def / 11 SpA / 28 Spe",
-          "moves": [
-            "热风",
-            "气象球",
-            "原始之力",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
+          "ability": "Drought",
           "nature": "Modest",
-          "spread": "22 HP / 4 Def / 20 SpA / 20 Spe",
+          "spread": "20 HP / 32 Def / 1 SpA / 13 Spe",
           "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "破灭之光",
-            "守住"
+            "气象球",
+            "守住",
+            "热风",
+            "日光束"
           ]
         },
         {
           "pokemonId": "basculegion",
           "pokemonName": "Basculegion",
-          "item": "Colbur Berry",
+          "item": "Mystic Water",
           "ability": "Adaptability",
           "nature": "Adamant",
-          "spread": "4 HP / 31 Atk / 16 Def / 15 Spe",
+          "spread": "28 Atk / 13 Def / 25 Spe",
           "moves": [
             "波动冲",
             "扫墓",
             "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "16 HP / 20 Atk / 30 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩石封锁",
             "守住"
           ]
         },
@@ -30494,26 +30612,26 @@
           "item": "Focus Sash",
           "ability": "Prankster",
           "nature": "Timid",
-          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "spread": "2 Def / 32 SpA / 32 Spe",
           "moves": [
-            "月亮之力",
-            "顺风",
+            "守住",
             "再来一次",
-            "守住"
+            "月亮之力",
+            "顺风"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Black Glasses",
+          "item": "Chople Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "13 HP / 28 Atk / 1 Def / 8 SpD / 16 Spe",
+          "spread": "32 HP / 25 Atk / 9 Def",
           "moves": [
-            "仆刀",
-            "铁头",
             "突袭",
-            "守住"
+            "铁头",
+            "仆刀",
+            "踢倒"
           ]
         },
         {
@@ -30522,17 +30640,17 @@
           "item": "Life Orb",
           "ability": "Rough Skin",
           "nature": "Jolly",
-          "spread": "16 HP / 12 Atk / 6 Def / 32 Spe",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "龙爪",
-            "地震",
             "岩崩",
+            "地震",
+            "龙爪",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "9"
+        "finalRanking": "10"
       }
     },
     {
@@ -30651,120 +30769,121 @@
     },
     {
       "id": "vgcpastes-mb851",
-      "title": "Carson St. Denis' Worlds 2026 Top 16 Team",
-      "author": "Carson St. Denis",
-      "owner": "Carson St. Denis",
+      "title": "mimikyufool's Worlds 2026 Top 16 Team",
+      "author": "Cary D’Ortona",
+      "owner": "mimikyufool",
       "teamId": "MB851",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "No Tweet",
-      "platformUrl": "https://pokepast.es/42d53375663aa736",
+      "sourceUrl": "https://x.com/mimikyufool/status/2093919714640802119?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/90236d8fc05b50d0",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 10,
+      "placement": 11,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#10",
-        "喷火龙（Mega Y）"
+        "#11",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 10 名，作者 Carson St. Denis，队伍码 FG47SL47SU",
+      "summary": "Worlds 2026 San Francisco，第 11 名，作者 Cary D’Ortona，队伍码 58N380SYT2",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Drought",
-          "nature": "Modest",
-          "spread": "20 HP / 32 Def / 1 SpA / 13 Spe",
-          "moves": [
-            "气象球",
-            "守住",
-            "热风",
-            "日光束"
-          ]
-        },
-        {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Mystic Water",
-          "ability": "Adaptability",
-          "nature": "Adamant",
-          "spread": "28 Atk / 13 Def / 25 Spe",
-          "moves": [
-            "波动冲",
-            "扫墓",
-            "水流喷射",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "White Herb",
-          "ability": "Unburden",
-          "nature": "Adamant",
-          "spread": "16 HP / 20 Atk / 30 Spe",
-          "moves": [
-            "近身战",
-            "克命爪",
-            "岩石封锁",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Focus Sash",
-          "ability": "Prankster",
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "2 Def / 32 SpA / 32 Spe",
+          "spread": "32 HP / 8 Def / 1 SpD / 25 Spe",
           "moves": [
-            "守住",
-            "再来一次",
-            "月亮之力",
-            "顺风"
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "22 HP / 12 Atk / 32 Spe",
+          "moves": [
+            "双翼",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Calm",
+          "spread": "29 HP / 14 Def / 23 SpD",
+          "moves": [
+            "精神强念",
+            "帮助",
+            "戏法空间",
+            "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Chople Berry",
+          "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 25 Atk / 9 Def",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
           "moves": [
-            "突袭",
-            "铁头",
             "仆刀",
-            "踢倒"
+            "突袭",
+            "剑舞",
+            "守住"
           ]
         },
         {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "21 HP / 6 Def / 24 SpA / 15 Spe",
           "moves": [
-            "岩崩",
-            "地震",
-            "龙爪",
-            "守住"
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "10"
+        "finalRanking": "11"
       }
     },
     {
@@ -30884,41 +31003,55 @@
     },
     {
       "id": "vgcpastes-mb850",
-      "title": "mimikyufool's Worlds 2026 Top 16 Team",
-      "author": "Cary D’Ortona",
-      "owner": "mimikyufool",
+      "title": "emforbes' Worlds 2026 Top 16 Team",
+      "author": "Emilio Forbes",
+      "owner": "gazemilyy",
       "teamId": "MB850",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/mimikyufool/status/2093919714640802119?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/90236d8fc05b50d0",
+      "sourceUrl": "https://x.com/gazemilyy/status/2094455985519964373?s=20",
+      "platformUrl": "https://pokepast.es/0b9319821685fedb",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 11,
+      "placement": 12,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#11",
-        "雷丘（Mega Y）",
-        "姆克鹰（Mega）"
+        "#12",
+        "化石翼龙（Mega）",
+        "雷丘（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 11 名，作者 Cary D’Ortona，队伍码 58N380SYT2",
+      "summary": "Worlds 2026 San Francisco，第 12 名，作者 Emilio Forbes，队伍码 EE6F94UC7P",
       "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "9 HP / 23 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "守住"
+          ]
+        },
         {
           "pokemonId": "raichumegay",
           "pokemonName": "Raichu-Mega-Y",
           "item": "Raichunite Y",
           "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "32 HP / 8 Def / 1 SpD / 25 Spe",
+          "spread": "21 HP / 16 Def / 5 SpA / 24 Spe",
           "moves": [
             "电磁炮",
             "真气弹",
@@ -30927,45 +31060,31 @@
           ]
         },
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "22 HP / 12 Atk / 32 Spe",
-          "moves": [
-            "双翼",
-            "近身战",
-            "顺风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "arcaninehisui",
-          "pokemonName": "Arcanine-Hisui",
+          "pokemonId": "tsareena",
+          "pokemonName": "Tsareena",
           "item": "Focus Sash",
-          "ability": "Rock Head",
+          "ability": "Queenly Majesty",
           "nature": "Jolly",
-          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "spread": "4 HP / 32 Atk / 1 Def / 29 Spe",
           "moves": [
-            "闪焰冲锋",
-            "双刃头锤",
-            "神速",
+            "强力鞭打",
+            "三旋击",
+            "踢倒",
             "守住"
           ]
         },
         {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Calm",
-          "spread": "29 HP / 14 Def / 23 SpD",
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Jolly",
+          "spread": "30 HP / 21 Atk / 15 Spe",
           "moves": [
-            "精神强念",
-            "帮助",
-            "戏法空间",
-            "守住"
+            "近身战",
+            "克命爪",
+            "佯攻",
+            "击掌奇袭"
           ]
         },
         {
@@ -30974,7 +31093,7 @@
           "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "spread": "32 HP / 32 Atk / 2 SpD",
           "moves": [
             "仆刀",
             "突袭",
@@ -30988,17 +31107,17 @@
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "21 HP / 6 Def / 24 SpA / 15 Spe",
+          "spread": "8 HP / 22 Def / 21 SpA / 15 Spe",
           "moves": [
             "巨声",
             "破坏光线",
-            "电光一闪",
-            "看穿"
+            "哈欠",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "11"
+        "finalRanking": "12"
       }
     },
     {
@@ -31121,88 +31240,88 @@
     },
     {
       "id": "vgcpastes-mb849",
-      "title": "emforbes' Worlds 2026 Top 16 Team",
-      "author": "Emilio Forbes",
-      "owner": "gazemilyy",
+      "title": "NJ11's Worlds 2026 Top 16 Team",
+      "author": "Navjit Joshi",
+      "owner": "isastarter",
       "teamId": "MB849",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/gazemilyy/status/2094455985519964373?s=20",
-      "platformUrl": "https://pokepast.es/0b9319821685fedb",
+      "sourceUrl": "https://x.com/isastarter/status/2093941144799625371?s=46",
+      "platformUrl": "https://pokepast.es/08e8066b6c8b231f",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 12,
+      "placement": 13,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#12",
-        "化石翼龙（Mega）",
-        "雷丘（Mega Y）"
+        "#13",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 12 名，作者 Emilio Forbes，队伍码 EE6F94UC7P",
+      "summary": "Worlds 2026 San Francisco，第 13 名，作者 Navjit Joshi，队伍码 HVN07JUTAQ",
       "members": [
-        {
-          "pokemonId": "aerodactylmega",
-          "pokemonName": "Aerodactyl-Mega",
-          "item": "Aerodactylite",
-          "ability": "Unnerve",
-          "nature": "Jolly",
-          "spread": "9 HP / 23 Atk / 2 Def / 32 Spe",
-          "moves": [
-            "岩崩",
-            "双翼",
-            "顺风",
-            "守住"
-          ]
-        },
         {
           "pokemonId": "raichumegay",
           "pokemonName": "Raichu-Mega-Y",
           "item": "Raichunite Y",
           "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "21 HP / 16 Def / 5 SpA / 24 Spe",
+          "spread": "26 HP / 5 Def / 2 SpA / 1 SpD / 32 Spe",
           "moves": [
-            "电磁炮",
             "真气弹",
-            "击掌奇袭",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "tsareena",
-          "pokemonName": "Tsareena",
-          "item": "Focus Sash",
-          "ability": "Queenly Majesty",
-          "nature": "Jolly",
-          "spread": "4 HP / 32 Atk / 1 Def / 29 Spe",
-          "moves": [
-            "强力鞭打",
-            "三旋击",
-            "踢倒",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "White Herb",
-          "ability": "Unburden",
-          "nature": "Jolly",
-          "spread": "30 HP / 21 Atk / 15 Spe",
-          "moves": [
-            "近身战",
-            "克命爪",
-            "佯攻",
+            "电磁炮",
+            "守住",
             "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "15 HP / 16 Atk / 1 Def / 2 SpD / 32 Spe",
+          "moves": [
+            "守住",
+            "近身战",
+            "羽栖",
+            "勇鸟猛攻"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 SpD / 32 Spe",
+          "moves": [
+            "双刃头锤",
+            "闪焰冲锋",
+            "守住",
+            "神速"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Occa Berry",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "30 HP / 25 Def / 1 SpA / 2 SpD / 8 Spe",
+          "moves": [
+            "顺风",
+            "打草结",
+            "月亮之力",
+            "撒娇"
           ]
         },
         {
@@ -31211,12 +31330,12 @@
           "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 2 SpD",
+          "spread": "14 HP / 32 Atk / 1 Def / 1 SpD / 18 Spe",
           "moves": [
-            "仆刀",
+            "守住",
+            "铁头",
             "突袭",
-            "剑舞",
-            "守住"
+            "仆刀"
           ]
         },
         {
@@ -31225,17 +31344,17 @@
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "8 HP / 22 Def / 21 SpA / 15 Spe",
+          "spread": "11 HP / 10 Def / 20 SpA / 1 SpD / 23 Spe",
           "moves": [
-            "巨声",
+            "看穿",
+            "冥想",
             "破坏光线",
-            "哈欠",
-            "守住"
+            "巨声"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "12"
+        "finalRanking": "13"
       }
     },
     {
@@ -31358,88 +31477,102 @@
     },
     {
       "id": "vgcpastes-mb848",
-      "title": "NJ11's Worlds 2026 Top 16 Team",
-      "author": "Navjit Joshi",
-      "owner": "isastarter",
+      "title": "Panda's Worlds 2026 Top 16 Team",
+      "author": "Justin Tang",
+      "owner": "unironicpanda",
       "teamId": "MB848",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/isastarter/status/2093941144799625371?s=46",
-      "platformUrl": "https://pokepast.es/08e8066b6c8b231f",
+      "sourceUrl": "https://x.com/unironicpanda/status/2094527520217677909?s=46",
+      "platformUrl": "https://pokepast.es/475096058f578d37",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 13,
+      "placement": 14,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#13",
-        "雷丘（Mega Y）",
-        "姆克鹰（Mega）"
+        "#14",
+        "水箭龟（Mega）",
+        "妖火红狐（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 13 名，作者 Navjit Joshi，队伍码 HVN07JUTAQ",
+      "summary": "Worlds 2026 San Francisco，第 14 名，作者 Justin Tang，队伍码 BFCQ81G5S3",
       "members": [
         {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
-          "nature": "Timid",
-          "spread": "26 HP / 5 Def / 2 SpA / 1 SpD / 32 Spe",
+          "pokemonId": "blastoisemega",
+          "pokemonName": "Blastoise-Mega",
+          "item": "Blastoisinite",
+          "ability": "Rain Dish",
+          "nature": "Modest",
+          "spread": "22 HP / 25 SpA / 19 Spe",
           "moves": [
-            "真气弹",
-            "电磁炮",
-            "守住",
-            "击掌奇袭"
+            "喷水",
+            "恶之波动",
+            "破壳",
+            "守住"
           ]
         },
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "9 HP / 14 Def / 11 SpA / 32 Spe",
+          "moves": [
+            "热风",
+            "精神强念",
+            "诡计",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
           "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "15 HP / 16 Atk / 1 Def / 2 SpD / 32 Spe",
+          "nature": "Careful",
+          "spread": "28 HP / 2 Def / 10 SpD / 26 Spe",
           "moves": [
-            "守住",
-            "近身战",
-            "羽栖",
-            "勇鸟猛攻"
-          ]
-        },
-        {
-          "pokemonId": "arcaninehisui",
-          "pokemonName": "Arcanine-Hisui",
-          "item": "Focus Sash",
-          "ability": "Rock Head",
-          "nature": "Jolly",
-          "spread": "1 HP / 32 Atk / 1 SpD / 32 Spe",
-          "moves": [
-            "双刃头锤",
+            "击掌奇袭",
             "闪焰冲锋",
-            "守住",
-            "神速"
+            "地狱突刺",
+            "抛下狠话"
           ]
         },
         {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Occa Berry",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "30 HP / 25 Def / 1 SpA / 2 SpD / 8 Spe",
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "顺风",
-            "打草结",
-            "月亮之力",
-            "撒娇"
+            "击掌奇袭",
+            "毒击",
+            "近身战",
+            "快速防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Colbur Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "32 HP / 14 Def / 19 SpD / 1 Spe",
+          "moves": [
+            "刷刷茶炮",
+            "愤怒粉",
+            "戏法空间",
+            "守住"
           ]
         },
         {
@@ -31448,31 +31581,17 @@
           "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "14 HP / 32 Atk / 1 Def / 1 SpD / 18 Spe",
+          "spread": "30 HP / 32 Atk / 1 SpD / 3 Spe",
           "moves": [
-            "守住",
-            "铁头",
+            "仆刀",
             "突袭",
-            "仆刀"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "11 HP / 10 Def / 20 SpA / 1 SpD / 23 Spe",
-          "moves": [
-            "看穿",
-            "冥想",
-            "破坏光线",
-            "巨声"
+            "剑舞",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "13"
+        "finalRanking": "14"
       }
     },
     {
@@ -31595,121 +31714,121 @@
     },
     {
       "id": "vgcpastes-mb847",
-      "title": "Panda's Worlds 2026 Top 16 Team",
-      "author": "Justin Tang",
-      "owner": "unironicpanda",
+      "title": "Chloe's Worlds 2026 Top 16 Team",
+      "author": "Chloe Bourke",
+      "owner": "chlotad",
       "teamId": "MB847",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/unironicpanda/status/2094527520217677909?s=46",
-      "platformUrl": "https://pokepast.es/475096058f578d37",
+      "sourceUrl": "https://x.com/chlotad/status/2093798600077885946?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/7ffe45f77067e940",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 14,
+      "placement": 16,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#14",
-        "水箭龟（Mega）",
-        "妖火红狐（Mega）"
+        "#16",
+        "巨金怪（Mega）",
+        "雷丘（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 14 名，作者 Justin Tang，队伍码 BFCQ81G5S3",
+      "summary": "Worlds 2026 San Francisco，第 16 名，作者 Chloe Bourke",
       "members": [
         {
-          "pokemonId": "blastoisemega",
-          "pokemonName": "Blastoise-Mega",
-          "item": "Blastoisinite",
-          "ability": "Rain Dish",
-          "nature": "Modest",
-          "spread": "22 HP / 25 SpA / 19 Spe",
-          "moves": [
-            "喷水",
-            "恶之波动",
-            "破壳",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "9 HP / 14 Def / 11 SpA / 32 Spe",
-          "moves": [
-            "热风",
-            "精神强念",
-            "诡计",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Careful",
-          "spread": "28 HP / 2 Def / 10 SpD / 26 Spe",
-          "moves": [
-            "击掌奇袭",
-            "闪焰冲锋",
-            "地狱突刺",
-            "抛下狠话"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "Focus Sash",
-          "ability": "Poison Touch",
+          "pokemonId": "metagrossmega",
+          "pokemonName": "Metagross-Mega",
+          "item": "Metagrossite",
+          "ability": "Clear Body",
           "nature": "Jolly",
           "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "击掌奇袭",
-            "毒击",
-            "近身战",
-            "快速防守"
+            "守住",
+            "铁头",
+            "精神之牙",
+            "冰冻拳"
           ]
         },
         {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Colbur Berry",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "32 HP / 14 Def / 19 SpD / 1 Spe",
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "11 HP / 30 Def / 2 SpA / 23 Spe",
           "moves": [
-            "刷刷茶炮",
-            "愤怒粉",
-            "戏法空间",
-            "守住"
+            "守住",
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "18 Atk / 30 Def / 18 Spe",
+          "moves": [
+            "守住",
+            "波动冲",
+            "扫墓",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "kleavor",
+          "pokemonName": "Kleavor",
+          "item": "Focus Sash",
+          "ability": "Sharpness",
+          "nature": "Adamant",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "守住",
+            "岩斧",
+            "十字剪",
+            "佯攻"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Fairy Feather",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "守住",
+            "月亮之力",
+            "顺风",
+            "再来一次"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Life Orb",
+          "item": "Chople Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "30 HP / 32 Atk / 1 SpD / 3 Spe",
+          "spread": "8 HP / 19 Atk / 3 Def / 4 SpD / 32 Spe",
           "moves": [
+            "守住",
             "仆刀",
             "突袭",
-            "剑舞",
-            "守住"
+            "踢倒"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "14"
+        "finalRanking": "16"
       }
     },
     {
@@ -31832,121 +31951,121 @@
     },
     {
       "id": "vgcpastes-mb846",
-      "title": "Chloe's Worlds 2026 Top 16 Team",
-      "author": "Chloe Bourke",
-      "owner": "chlotad",
+      "title": "MyStars' Worlds 2026 Top 32 Team",
+      "author": "Narawitch Naenna",
+      "owner": "mystarseiei",
       "teamId": "MB846",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/chlotad/status/2093798600077885946?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/7ffe45f77067e940",
+      "sourceUrl": "https://x.com/mystarseiei/status/2095035366319505727?s=46",
+      "platformUrl": "https://pokepast.es/2b23605cdcee8fb2",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-09-01",
+      "eventDate": "2026-09-01",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 16,
+      "placement": 17,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#16",
-        "巨金怪（Mega）",
-        "雷丘（Mega Y）"
+        "#17",
+        "喷火龙（Mega Y）",
+        "巨沼怪（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 16 名，作者 Chloe Bourke",
+      "summary": "Worlds 2026 San Francisco，第 17 名，作者 Narawitch Naenna，队伍码 0V59GGVAVK",
       "members": [
         {
-          "pokemonId": "metagrossmega",
-          "pokemonName": "Metagross-Mega",
-          "item": "Metagrossite",
-          "ability": "Clear Body",
-          "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "24 HP / 16 Def / 1 SpA / 25 Spe",
           "moves": [
-            "守住",
-            "铁头",
-            "精神之牙",
-            "冰冻拳"
+            "热风",
+            "气象球",
+            "暴风",
+            "守住"
           ]
         },
         {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
-          "nature": "Timid",
-          "spread": "11 HP / 30 Def / 2 SpA / 23 Spe",
-          "moves": [
-            "守住",
-            "电磁炮",
-            "真气弹",
-            "击掌奇袭"
-          ]
-        },
-        {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Life Orb",
-          "ability": "Adaptability",
+          "pokemonId": "swampertmega",
+          "pokemonName": "Swampert-Mega",
+          "item": "Swampertite",
+          "ability": "Torrent",
           "nature": "Adamant",
-          "spread": "18 Atk / 30 Def / 18 Spe",
+          "spread": "21 HP / 23 Atk / 4 Def / 18 Spe",
           "moves": [
-            "守住",
+            "冰冻拳",
             "波动冲",
-            "扫墓",
-            "水流喷射"
+            "地震",
+            "守住"
           ]
         },
         {
-          "pokemonId": "kleavor",
-          "pokemonName": "Kleavor",
-          "item": "Focus Sash",
-          "ability": "Sharpness",
-          "nature": "Adamant",
-          "spread": "32 Atk / 2 Def / 32 Spe",
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Modest",
+          "spread": "31 HP / 2 Def / 5 SpA / 16 SpD / 12 Spe",
           "moves": [
-            "守住",
-            "岩斧",
-            "十字剪",
-            "佯攻"
+            "暴风",
+            "气象球",
+            "广域防守",
+            "顺风"
           ]
         },
         {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Fairy Feather",
-          "ability": "Prankster",
-          "nature": "Timid",
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Focus Sash",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
           "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
             "守住",
-            "月亮之力",
-            "顺风",
-            "再来一次"
+            "污泥炸弹",
+            "催眠粉",
+            "飞叶风暴"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Chople Berry",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "8 HP / 19 Atk / 3 Def / 4 SpD / 32 Spe",
+          "pokemonId": "grimmsnarl",
+          "pokemonName": "Grimmsnarl",
+          "item": "Light Clay",
+          "ability": "Prankster",
+          "nature": "Sassy",
+          "spread": "32 HP / 16 Def / 18 SpD",
+          "moves": [
+            "光墙",
+            "灵魂冲击",
+            "反射壁",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Calm",
+          "spread": "32 HP / 1 Def / 5 SpA / 15 SpD / 13 Spe",
           "moves": [
             "守住",
-            "仆刀",
-            "突袭",
-            "踢倒"
+            "龙之波动",
+            "加农光炮",
+            "电光束"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "16"
+        "finalRanking": "17"
       }
     },
     {
@@ -32070,121 +32189,121 @@
     },
     {
       "id": "vgcpastes-mb845",
-      "title": "MyStars' Worlds 2026 Top 32 Team",
-      "author": "Narawitch Naenna",
-      "owner": "mystarseiei",
+      "title": "NikolajHoej's Worlds 2026 Top 32 Team",
+      "author": "Nikolaj Høj Nielsen",
+      "owner": "nikolajhoej",
       "teamId": "MB845",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/mystarseiei/status/2095035366319505727?s=46",
-      "platformUrl": "https://pokepast.es/2b23605cdcee8fb2",
+      "sourceUrl": "https://x.com/nikolajhoej/status/2093874627919405160?s=46",
+      "platformUrl": "https://pokepast.es/cb0e5b3fe29df43f",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-09-01",
-      "eventDate": "2026-09-01",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 17,
+      "placement": 18,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#17",
-        "喷火龙（Mega Y）",
-        "巨沼怪（Mega）"
+        "#18",
+        "化石翼龙（Mega）",
+        "喷火驼（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 17 名，作者 Narawitch Naenna，队伍码 0V59GGVAVK",
+      "summary": "Worlds 2026 San Francisco，第 18 名，作者 Nikolaj Høj Nielsen，队伍码 F6DNE8NT0P",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "24 HP / 16 Def / 1 SpA / 25 Spe",
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "32 HP / 2 Atk / 14 Def / 18 Spe",
           "moves": [
-            "热风",
-            "气象球",
-            "暴风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "swampertmega",
-          "pokemonName": "Swampert-Mega",
-          "item": "Swampertite",
-          "ability": "Torrent",
-          "nature": "Adamant",
-          "spread": "21 HP / 23 Atk / 4 Def / 18 Spe",
-          "moves": [
-            "冰冻拳",
-            "波动冲",
-            "地震",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "pelipper",
-          "pokemonName": "Pelipper",
-          "item": "Sitrus Berry",
-          "ability": "Drizzle",
-          "nature": "Modest",
-          "spread": "31 HP / 2 Def / 5 SpA / 16 SpD / 12 Spe",
-          "moves": [
-            "暴风",
-            "气象球",
-            "广域防守",
+            "岩崩",
+            "双翼",
+            "冰冻牙",
             "顺风"
           ]
         },
         {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Focus Sash",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "32 HP / 4 Def / 30 SpA",
           "moves": [
             "守住",
-            "污泥炸弹",
-            "催眠粉",
-            "飞叶风暴"
+            "大地之力",
+            "热风",
+            "原始之力"
           ]
         },
         {
-          "pokemonId": "grimmsnarl",
-          "pokemonName": "Grimmsnarl",
-          "item": "Light Clay",
-          "ability": "Prankster",
-          "nature": "Sassy",
-          "spread": "32 HP / 16 Def / 18 SpD",
+          "pokemonId": "kangaskhan",
+          "pokemonName": "Kangaskhan",
+          "item": "Life Orb",
+          "ability": "Scrappy",
+          "nature": "Brave",
+          "spread": "29 HP / 32 Atk / 5 SpD",
           "moves": [
-            "光墙",
-            "灵魂冲击",
-            "反射壁",
-            "抛下狠话"
+            "舍身冲撞",
+            "击掌奇袭",
+            "臂锤",
+            "冰冻拳"
           ]
         },
         {
-          "pokemonId": "archaludon",
-          "pokemonName": "Archaludon",
-          "item": "Leftovers",
-          "ability": "Stamina",
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
           "nature": "Calm",
-          "spread": "32 HP / 1 Def / 5 SpA / 15 SpD / 13 Spe",
+          "spread": "29 HP / 16 Def / 21 SpD",
           "moves": [
-            "守住",
-            "龙之波动",
-            "加农光炮",
-            "电光束"
+            "精神强念",
+            "十万伏特",
+            "戏法空间",
+            "帮助"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Expert Belt",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "9 HP / 25 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "9 HP / 4 Def / 32 SpA / 21 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "17"
+        "finalRanking": "18"
       }
     },
     {
@@ -32307,121 +32426,121 @@
     },
     {
       "id": "vgcpastes-mb844",
-      "title": "NikolajHoej's Worlds 2026 Top 32 Team",
-      "author": "Nikolaj Høj Nielsen",
-      "owner": "nikolajhoej",
+      "title": "sunoru's Worlds 2026 Top 32 Team",
+      "author": "Si Dawei",
+      "owner": "sunoru_sidw",
       "teamId": "MB844",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/nikolajhoej/status/2093874627919405160?s=46",
-      "platformUrl": "https://pokepast.es/cb0e5b3fe29df43f",
+      "sourceUrl": "https://x.com/sunoru_sidw/status/2095398088118538309?s=46",
+      "platformUrl": "https://pokepast.es/ff06554b6742a197",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-09-03",
+      "eventDate": "2026-09-03",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 18,
+      "placement": 24,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#18",
-        "化石翼龙（Mega）",
-        "喷火驼（Mega）"
+        "#24",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 18 名，作者 Nikolaj Høj Nielsen，队伍码 F6DNE8NT0P",
+      "summary": "Worlds 2026 San Francisco，第 24 名，作者 Si Dawei，队伍码 RTNVG9WHTL",
       "members": [
         {
-          "pokemonId": "aerodactylmega",
-          "pokemonName": "Aerodactyl-Mega",
-          "item": "Aerodactylite",
-          "ability": "Unnerve",
-          "nature": "Jolly",
-          "spread": "32 HP / 2 Atk / 14 Def / 18 Spe",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "25 HP / 2 Def / 7 SpA / 32 Spe",
           "moves": [
-            "岩崩",
-            "双翼",
-            "冰冻牙",
-            "顺风"
+            "热风",
+            "精神强念",
+            "诡计",
+            "守住"
           ]
         },
         {
-          "pokemonId": "cameruptmega",
-          "pokemonName": "Camerupt-Mega",
-          "item": "Cameruptite",
-          "ability": "Solid Rock",
-          "nature": "Quiet",
-          "spread": "32 HP / 4 Def / 30 SpA",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "20 HP / 9 Def / 5 SpA / 32 Spe",
           "moves": [
             "守住",
-            "大地之力",
-            "热风",
-            "原始之力"
+            "月亮之力",
+            "魔法闪耀",
+            "冥想"
           ]
         },
         {
-          "pokemonId": "kangaskhan",
-          "pokemonName": "Kangaskhan",
-          "item": "Life Orb",
-          "ability": "Scrappy",
-          "nature": "Brave",
-          "spread": "29 HP / 32 Atk / 5 SpD",
-          "moves": [
-            "舍身冲撞",
-            "击掌奇袭",
-            "臂锤",
-            "冰冻拳"
-          ]
-        },
-        {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
           "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Calm",
-          "spread": "29 HP / 16 Def / 21 SpD",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 10 Def / 18 SpD / 6 Spe",
           "moves": [
-            "精神强念",
-            "十万伏特",
-            "戏法空间",
-            "帮助"
+            "击掌奇袭",
+            "抛下狠话",
+            "闪焰冲锋",
+            "ＤＤ金勾臂"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Expert Belt",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "9 HP / 25 Atk / 32 Spe",
+          "pokemonId": "milotic",
+          "pokemonName": "Milotic",
+          "item": "Leftovers",
+          "ability": "Competitive",
+          "nature": "Bold",
+          "spread": "32 HP / 21 Def / 11 SpD / 2 Spe",
           "moves": [
-            "仆刀",
-            "铁头",
-            "突袭",
-            "踢倒"
+            "盘蜷",
+            "守住",
+            "浊流",
+            "催眠术"
           ]
         },
         {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "9 HP / 4 Def / 32 SpA / 21 Spe",
+          "pokemonId": "vanilluxe",
+          "pokemonName": "Vanilluxe",
+          "item": "Choice Scarf",
+          "ability": "Snow Warning",
+          "nature": "Timid",
+          "spread": "11 HP / 1 Def / 22 SpA / 32 Spe",
           "moves": [
-            "巨声",
-            "破坏光线",
-            "电光一闪",
+            "暴风雪",
+            "冷冻干燥",
+            "绝对零度",
+            "冰冻之风"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Kasib Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "31 HP / 4 Def / 30 SpD / 1 Spe",
+          "moves": [
+            "生命水滴",
+            "愤怒粉",
+            "刷刷茶炮",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "18"
+        "finalRanking": "24"
       }
     },
     {
@@ -32545,121 +32664,121 @@
     },
     {
       "id": "vgcpastes-mb843",
-      "title": "sunoru's Worlds 2026 Top 32 Team",
-      "author": "Si Dawei",
-      "owner": "sunoru_sidw",
+      "title": "Owe's Worlds 2026 Top 32 Team",
+      "author": "Oliver Eskolin",
+      "owner": "owevgc",
       "teamId": "MB843",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/sunoru_sidw/status/2095398088118538309?s=46",
-      "platformUrl": "https://pokepast.es/ff06554b6742a197",
+      "sourceUrl": "https://x.com/owevgc/status/2094815232577134710?s=46",
+      "platformUrl": "https://pokepast.es/1b37249d9ac7dbe4",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-09-03",
-      "eventDate": "2026-09-03",
+      "updatedAt": "2026-09-01",
+      "eventDate": "2026-09-01",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 24,
+      "placement": 25,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#24",
-        "妖火红狐（Mega）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#25",
+        "姆克鹰（Mega）",
+        "班基拉斯（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 24 名，作者 Si Dawei，队伍码 RTNVG9WHTL",
+      "summary": "Worlds 2026 San Francisco，第 25 名，作者 Oliver Eskolin，队伍码 QTDFDF4D2B",
       "members": [
         {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "25 HP / 2 Def / 7 SpA / 32 Spe",
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "2 HP / 27 Atk / 5 Def / 32 Spe",
           "moves": [
-            "热风",
-            "精神强念",
-            "诡计",
+            "近身战",
+            "勇鸟猛攻",
+            "顺风",
             "守住"
           ]
         },
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Modest",
-          "spread": "20 HP / 9 Def / 5 SpA / 32 Spe",
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Adamant",
+          "spread": "25 HP / 16 Atk / 25 Spe",
           "moves": [
-            "守住",
-            "月亮之力",
-            "魔法闪耀",
-            "冥想"
-          ]
-        },
-        {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Impish",
-          "spread": "32 HP / 10 Def / 18 SpD / 6 Spe",
-          "moves": [
-            "击掌奇袭",
-            "抛下狠话",
-            "闪焰冲锋",
-            "ＤＤ金勾臂"
+            "岩崩",
+            "拍落",
+            "龙之舞",
+            "守住"
           ]
         },
         {
           "pokemonId": "milotic",
           "pokemonName": "Milotic",
-          "item": "Leftovers",
+          "item": "Sitrus Berry",
           "ability": "Competitive",
-          "nature": "Bold",
-          "spread": "32 HP / 21 Def / 11 SpD / 2 Spe",
+          "nature": "Modest",
+          "spread": "32 HP / 21 Def / 11 SpA / 2 Spe",
           "moves": [
-            "盘蜷",
-            "守住",
-            "浊流",
-            "催眠术"
+            "热水",
+            "冰冻光束",
+            "黑雾",
+            "守住"
           ]
         },
         {
-          "pokemonId": "vanilluxe",
-          "pokemonName": "Vanilluxe",
-          "item": "Choice Scarf",
-          "ability": "Snow Warning",
-          "nature": "Timid",
-          "spread": "11 HP / 1 Def / 22 SpA / 32 Spe",
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
           "moves": [
-            "暴风雪",
-            "冷冻干燥",
-            "绝对零度",
-            "冰冻之风"
+            "铁头",
+            "十万马力",
+            "岩崩",
+            "守住"
           ]
         },
         {
           "pokemonId": "sinistcha",
           "pokemonName": "Sinistcha",
-          "item": "Kasib Berry",
+          "item": "Colbur Berry",
           "ability": "Hospitality",
           "nature": "Bold",
-          "spread": "31 HP / 4 Def / 30 SpD / 1 Spe",
+          "spread": "29 HP / 11 Def / 25 SpD / 1 Spe",
           "moves": [
-            "生命水滴",
-            "愤怒粉",
             "刷刷茶炮",
+            "戏法空间",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Timid",
+          "spread": "7 HP / 16 Def / 11 SpA / 32 Spe",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "24"
+        "finalRanking": "25"
       }
     },
     {
@@ -32782,121 +32901,120 @@
     },
     {
       "id": "vgcpastes-mb842",
-      "title": "Owe's Worlds 2026 Top 32 Team",
-      "author": "Oliver Eskolin",
-      "owner": "owevgc",
+      "title": "Justin's Worlds 2026 Top 32 Team",
+      "author": "Justin Cerioni",
+      "owner": "Byte_v24",
       "teamId": "MB842",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/owevgc/status/2094815232577134710?s=46",
-      "platformUrl": "https://pokepast.es/1b37249d9ac7dbe4",
+      "sourceUrl": "https://x.com/Byte_v24/status/2093799175741649147?s=20",
+      "platformUrl": "https://pokepast.es/65d3faffe8fdf6a3",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-09-01",
-      "eventDate": "2026-09-01",
+      "updatedAt": "2026-09-03",
+      "eventDate": "2026-09-03",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 25,
+      "placement": 26,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#25",
-        "姆克鹰（Mega）",
-        "班基拉斯（Mega）"
+        "#26",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 25 名，作者 Oliver Eskolin，队伍码 QTDFDF4D2B",
+      "summary": "Worlds 2026 San Francisco，第 26 名，作者 Justin Cerioni，队伍码 1DVWD9AVTM",
       "members": [
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "2 HP / 27 Atk / 5 Def / 32 Spe",
-          "moves": [
-            "近身战",
-            "勇鸟猛攻",
-            "顺风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "tyranitarmega",
-          "pokemonName": "Tyranitar-Mega",
-          "item": "Tyranitarite",
-          "ability": "Sand Stream",
-          "nature": "Adamant",
-          "spread": "25 HP / 16 Atk / 25 Spe",
-          "moves": [
-            "岩崩",
-            "拍落",
-            "龙之舞",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "milotic",
-          "pokemonName": "Milotic",
-          "item": "Sitrus Berry",
-          "ability": "Competitive",
-          "nature": "Modest",
-          "spread": "32 HP / 21 Def / 11 SpA / 2 Spe",
-          "moves": [
-            "热水",
-            "冰冻光束",
-            "黑雾",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "excadrill",
-          "pokemonName": "Excadrill",
-          "item": "Focus Sash",
-          "ability": "Sand Rush",
-          "nature": "Adamant",
-          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
-          "moves": [
-            "铁头",
-            "十万马力",
-            "岩崩",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Colbur Berry",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "29 HP / 11 Def / 25 SpD / 1 Spe",
-          "moves": [
-            "刷刷茶炮",
-            "戏法空间",
-            "愤怒粉",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "gholdengo",
-          "pokemonName": "Gholdengo",
-          "item": "Life Orb",
-          "ability": "Good as Gold",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
           "nature": "Timid",
-          "spread": "7 HP / 16 Def / 11 SpA / 32 Spe",
+          "spread": "12 HP / 15 Def / 15 SpA / 24 Spe",
           "moves": [
-            "淘金潮",
-            "暗影球",
-            "诡计",
+            "热风",
+            "气象球",
+            "原始之力",
             "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 21 Def / 12 SpD / 1 Spe",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Life Orb",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "飞叶风暴",
+            "污泥炸弹",
+            "大地之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "aegislash",
+          "pokemonName": "Aegislash",
+          "item": "Focus Sash",
+          "ability": "Stance Change",
+          "nature": "Adamant",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "灵骚",
+            "影子偷袭",
+            "近身战",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "19 HP / 30 Def / 15 SpA / 2 Spe",
+          "moves": [
+            "巨声",
+            "哈欠",
+            "电光一闪",
+            "看穿"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "地震",
+            "龙爪",
+            "跺脚",
+            "岩崩"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "25"
+        "finalRanking": "26"
       }
     },
     {
@@ -33020,32 +33138,32 @@
     },
     {
       "id": "vgcpastes-mb841",
-      "title": "Justin's Worlds 2026 Top 32 Team",
-      "author": "Justin Cerioni",
-      "owner": "Byte_v24",
+      "title": "Paul's Worlds 2026 Top 32 Team",
+      "author": "Paul Chua",
+      "owner": "Paul_Chua_",
       "teamId": "MB841",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Byte_v24/status/2093799175741649147?s=20",
-      "platformUrl": "https://pokepast.es/65d3faffe8fdf6a3",
+      "sourceUrl": "https://x.com/Paul_Chua_/status/2093890878201118742",
+      "platformUrl": "https://pokepast.es/0a8c6fbb56b2120c",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-09-03",
-      "eventDate": "2026-09-03",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 26,
+      "placement": 27,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#26",
+        "#27",
         "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 26 名，作者 Justin Cerioni，队伍码 1DVWD9AVTM",
+      "summary": "Worlds 2026 San Francisco，第 27 名，作者 Paul Chua，队伍码 YMS21RYBD6",
       "members": [
         {
           "pokemonId": "charizardmegay",
@@ -33053,7 +33171,7 @@
           "item": "Charizardite Y",
           "ability": "Blaze",
           "nature": "Timid",
-          "spread": "12 HP / 15 Def / 15 SpA / 24 Spe",
+          "spread": "22 HP / 19 Def / 2 SpA / 23 Spe",
           "moves": [
             "热风",
             "气象球",
@@ -33067,12 +33185,26 @@
           "item": "Sitrus Berry",
           "ability": "Intimidate",
           "nature": "Impish",
-          "spread": "32 HP / 21 Def / 12 SpD / 1 Spe",
+          "spread": "32 HP / 16 Def / 17 SpD / 1 Spe",
           "moves": [
             "击掌奇袭",
             "闪焰冲锋",
-            "ＤＤ金勾臂",
+            "地狱突刺",
             "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "toxapex",
+          "pokemonName": "Toxapex",
+          "item": "Leftovers",
+          "ability": "Regenerator",
+          "nature": "Relaxed",
+          "spread": "32 HP / 18 Def / 16 SpD",
+          "moves": [
+            "剧毒",
+            "死缠烂打",
+            "广域防守",
+            "碉堡"
           ]
         },
         {
@@ -33090,30 +33222,16 @@
           ]
         },
         {
-          "pokemonId": "aegislash",
-          "pokemonName": "Aegislash",
-          "item": "Focus Sash",
-          "ability": "Stance Change",
-          "nature": "Adamant",
-          "spread": "32 Atk / 2 Def / 32 Spe",
-          "moves": [
-            "灵骚",
-            "影子偷袭",
-            "近身战",
-            "广域防守"
-          ]
-        },
-        {
           "pokemonId": "sylveon",
           "pokemonName": "Sylveon",
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "19 HP / 30 Def / 15 SpA / 2 Spe",
+          "spread": "25 HP / 28 Def / 10 SpA / 3 Spe",
           "moves": [
             "巨声",
-            "哈欠",
             "电光一闪",
+            "哈欠",
             "看穿"
           ]
         },
@@ -33123,17 +33241,17 @@
           "item": "Choice Scarf",
           "ability": "Rough Skin",
           "nature": "Adamant",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "spread": "10 HP / 20 Atk / 4 Def / 32 Spe",
           "moves": [
-            "地震",
             "龙爪",
+            "地震",
             "跺脚",
             "岩崩"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "26"
+        "finalRanking": "27"
       }
     },
     {
@@ -33257,120 +33375,120 @@
     },
     {
       "id": "vgcpastes-mb840",
-      "title": "Paul's Worlds 2026 Top 32 Team",
-      "author": "Paul Chua",
-      "owner": "Paul_Chua_",
+      "title": "Jonotv's Worlds 2026 Top 32 Team",
+      "author": "Jonathan Marston",
+      "owner": "JonoTv2000",
       "teamId": "MB840",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Paul_Chua_/status/2093890878201118742",
-      "platformUrl": "https://pokepast.es/0a8c6fbb56b2120c",
+      "sourceUrl": "https://x.com/JonoTv2000/status/2094284949704581380?s=20",
+      "platformUrl": "https://pokepast.es/dc7b05506a44c661",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 27,
+      "placement": 31,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#27",
-        "喷火龙（Mega Y）"
+        "#31",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 27 名，作者 Paul Chua，队伍码 YMS21RYBD6",
+      "summary": "Worlds 2026 San Francisco，第 31 名，作者 Jonathan Marston，队伍码 ERKNUQ31CF",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "22 HP / 19 Def / 2 SpA / 23 Spe",
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Contrary",
+          "nature": "Jolly",
+          "spread": "14 HP / 18 Atk / 2 SpD / 32 Spe",
           "moves": [
-            "热风",
-            "气象球",
-            "原始之力",
+            "双翼",
+            "近身战",
+            "羽栖",
             "守住"
           ]
         },
         {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Impish",
-          "spread": "32 HP / 16 Def / 17 SpD / 1 Spe",
-          "moves": [
-            "击掌奇袭",
-            "闪焰冲锋",
-            "地狱突刺",
-            "抛下狠话"
-          ]
-        },
-        {
-          "pokemonId": "toxapex",
-          "pokemonName": "Toxapex",
-          "item": "Leftovers",
-          "ability": "Regenerator",
-          "nature": "Relaxed",
-          "spread": "32 HP / 18 Def / 16 SpD",
-          "moves": [
-            "剧毒",
-            "死缠烂打",
-            "广域防守",
-            "碉堡"
-          ]
-        },
-        {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Life Orb",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "2 HP / 32 SpA / 32 Spe",
-          "moves": [
-            "飞叶风暴",
-            "污泥炸弹",
-            "大地之力",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "25 HP / 28 Def / 10 SpA / 3 Spe",
-          "moves": [
-            "巨声",
-            "电光一闪",
-            "哈欠",
-            "看穿"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
           "item": "Choice Scarf",
-          "ability": "Rough Skin",
-          "nature": "Adamant",
-          "spread": "10 HP / 20 Atk / 4 Def / 32 Spe",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "23 Atk / 11 Def / 32 Spe",
           "moves": [
-            "龙爪",
-            "地震",
-            "跺脚",
-            "岩崩"
+            "波动冲",
+            "快速折返",
+            "浸水",
+            "扫墓"
+          ]
+        },
+        {
+          "pokemonId": "kleavor",
+          "pokemonName": "Kleavor",
+          "item": "Focus Sash",
+          "ability": "Sharpness",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "岩斧",
+            "十字剪",
+            "近身战",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Chople Berry",
+          "ability": "Friend Guard",
+          "nature": "Timid",
+          "spread": "32 HP / 2 Def / 32 Spe",
+          "moves": [
+            "愤怒门牙",
+            "撒娇",
+            "看我嘛",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Occa Berry",
+          "ability": "Prankster",
+          "nature": "Calm",
+          "spread": "32 HP / 7 Def / 25 SpD / 2 Spe",
+          "moves": [
+            "月亮之力",
+            "挠痒",
+            "顺风",
+            "再来一次"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "4 HP / 30 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "27"
+        "finalRanking": "31"
       }
     },
     {
@@ -33494,14 +33612,14 @@
     },
     {
       "id": "vgcpastes-mb839",
-      "title": "Jonotv's Worlds 2026 Top 32 Team",
-      "author": "Jonathan Marston",
-      "owner": "JonoTv2000",
+      "title": "Lexicon's Worlds 2026 Top 64 Team",
+      "author": "Alex Underhill",
+      "owner": "lexiconvgc",
       "teamId": "MB839",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/JonoTv2000/status/2094284949704581380?s=20",
-      "platformUrl": "https://pokepast.es/dc7b05506a44c661",
+      "sourceUrl": "https://x.com/lexiconvgc/status/2094125804636774869?s=46",
+      "platformUrl": "https://pokepast.es/69b4ad02228606b9",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-31",
@@ -33510,104 +33628,105 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 31,
+      "placement": 33,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#31",
-        "姆克鹰（Mega）"
+        "#33",
+        "喷火龙（Mega Y）",
+        "巨沼怪（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 31 名，作者 Jonathan Marston，队伍码 ERKNUQ31CF",
+      "summary": "Worlds 2026 San Francisco，第 33 名，作者 Alex Underhill，队伍码 34T1N61VVA",
       "members": [
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Contrary",
-          "nature": "Jolly",
-          "spread": "14 HP / 18 Atk / 2 SpD / 32 Spe",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "28 HP / 13 Def / 1 SpA / 24 Spe",
           "moves": [
-            "双翼",
-            "近身战",
-            "羽栖",
-            "守住"
+            "守住",
+            "热风",
+            "气象球",
+            "暴风"
           ]
         },
         {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Choice Scarf",
-          "ability": "Adaptability",
-          "nature": "Jolly",
-          "spread": "23 Atk / 11 Def / 32 Spe",
+          "pokemonId": "swampertmega",
+          "pokemonName": "Swampert-Mega",
+          "item": "Swampertite",
+          "ability": "Torrent",
+          "nature": "Adamant",
+          "spread": "32 HP / 16 Atk / 5 Def / 13 Spe",
           "moves": [
+            "守住",
             "波动冲",
-            "快速折返",
-            "浸水",
-            "扫墓"
+            "地震",
+            "冰冻拳"
           ]
         },
         {
-          "pokemonId": "kleavor",
-          "pokemonName": "Kleavor",
-          "item": "Focus Sash",
-          "ability": "Sharpness",
-          "nature": "Adamant",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "31 HP / 24 SpD / 11 Spe",
           "moves": [
-            "岩斧",
-            "十字剪",
-            "近身战",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "maushold",
-          "pokemonName": "Maushold",
-          "item": "Chople Berry",
-          "ability": "Friend Guard",
-          "nature": "Timid",
-          "spread": "32 HP / 2 Def / 32 Spe",
-          "moves": [
-            "愤怒门牙",
-            "撒娇",
-            "看我嘛",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Occa Berry",
-          "ability": "Prankster",
-          "nature": "Calm",
-          "spread": "32 HP / 7 Def / 25 SpD / 2 Spe",
-          "moves": [
-            "月亮之力",
-            "挠痒",
+            "暴风",
+            "气象球",
             "顺风",
-            "再来一次"
+            "广域防守"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Life Orb",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "4 HP / 30 Atk / 32 Spe",
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Focus Sash",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
           "moves": [
-            "仆刀",
-            "突袭",
-            "铁头",
-            "守住"
+            "守住",
+            "催眠粉",
+            "污泥炸弹",
+            "飞叶风暴"
+          ]
+        },
+        {
+          "pokemonId": "grimmsnarl",
+          "pokemonName": "Grimmsnarl",
+          "item": "Light Clay",
+          "ability": "Prankster",
+          "nature": "Sassy",
+          "spread": "29 HP / 22 Def / 15 SpD",
+          "moves": [
+            "灵魂冲击",
+            "反射壁",
+            "光墙",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Calm",
+          "spread": "32 HP / 1 Def / 1 SpA / 21 SpD / 11 Spe",
+          "moves": [
+            "守住",
+            "电光束",
+            "龙之波动",
+            "加农光炮"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "31"
+        "finalRanking": "33"
       }
     },
     {
@@ -33731,33 +33850,32 @@
     },
     {
       "id": "vgcpastes-mb838",
-      "title": "Lexicon's Worlds 2026 Top 64 Team",
-      "author": "Alex Underhill",
-      "owner": "lexiconvgc",
+      "title": "Ryoma's Worlds 2026 Top 64 Team",
+      "author": "Ryoma Okamoto",
+      "owner": "ryoma9901_poke",
       "teamId": "MB838",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/lexiconvgc/status/2094125804636774869?s=46",
-      "platformUrl": "https://pokepast.es/69b4ad02228606b9",
+      "sourceUrl": "https://x.com/ryoma9901_poke/status/2093901336626762123?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/4956e8a2e5cf2cd6",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 33,
+      "placement": 34,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#33",
-        "喷火龙（Mega Y）",
-        "巨沼怪（Mega）"
+        "#34",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 33 名，作者 Alex Underhill，队伍码 34T1N61VVA",
+      "summary": "Worlds 2026 San Francisco，第 34 名，作者 Ryoma Okamoto，队伍码 MGM9CLXSK5",
       "members": [
         {
           "pokemonId": "charizardmegay",
@@ -33765,87 +33883,87 @@
           "item": "Charizardite Y",
           "ability": "Blaze",
           "nature": "Modest",
-          "spread": "28 HP / 13 Def / 1 SpA / 24 Spe",
+          "spread": "18 HP / 26 Def / 1 SpA / 21 Spe",
           "moves": [
-            "守住",
             "热风",
             "气象球",
-            "暴风"
+            "原始之力",
+            "守住"
           ]
         },
         {
-          "pokemonId": "swampertmega",
-          "pokemonName": "Swampert-Mega",
-          "item": "Swampertite",
-          "ability": "Torrent",
-          "nature": "Adamant",
-          "spread": "32 HP / 16 Atk / 5 Def / 13 Spe",
-          "moves": [
-            "守住",
-            "波动冲",
-            "地震",
-            "冰冻拳"
-          ]
-        },
-        {
-          "pokemonId": "pelipper",
-          "pokemonName": "Pelipper",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
           "item": "Sitrus Berry",
-          "ability": "Drizzle",
-          "nature": "Bold",
-          "spread": "31 HP / 24 SpD / 11 Spe",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "32 HP / 12 Def / 21 SpD / 1 Spe",
           "moves": [
-            "暴风",
-            "气象球",
-            "顺风",
-            "广域防守"
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "击掌奇袭",
+            "抛下狠话"
           ]
         },
         {
           "pokemonId": "venusaur",
           "pokemonName": "Venusaur",
-          "item": "Focus Sash",
+          "item": "Wide Lens",
           "ability": "Chlorophyll",
           "nature": "Modest",
-          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
+          "spread": "4 HP / 30 SpA / 32 Spe",
           "moves": [
-            "守住",
-            "催眠粉",
+            "飞叶风暴",
             "污泥炸弹",
-            "飞叶风暴"
-          ]
-        },
-        {
-          "pokemonId": "grimmsnarl",
-          "pokemonName": "Grimmsnarl",
-          "item": "Light Clay",
-          "ability": "Prankster",
-          "nature": "Sassy",
-          "spread": "29 HP / 22 Def / 15 SpD",
-          "moves": [
-            "灵魂冲击",
-            "反射壁",
-            "光墙",
-            "抛下狠话"
-          ]
-        },
-        {
-          "pokemonId": "archaludon",
-          "pokemonName": "Archaludon",
-          "item": "Leftovers",
-          "ability": "Stamina",
-          "nature": "Calm",
-          "spread": "32 HP / 1 Def / 1 SpA / 21 SpD / 11 Spe",
-          "moves": [
             "守住",
-            "电光束",
-            "龙之波动",
-            "加农光炮"
+            "催眠粉"
+          ]
+        },
+        {
+          "pokemonId": "aerodactyl",
+          "pokemonName": "Aerodactyl",
+          "item": "Focus Sash",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "守住",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "1 HP / 18 Def / 21 SpA / 26 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "3 HP / 10 Atk / 31 Def / 22 Spe",
+          "moves": [
+            "龙爪",
+            "地震",
+            "跺脚",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "33"
+        "finalRanking": "34"
       }
     },
     {
@@ -33968,14 +34086,14 @@
     },
     {
       "id": "vgcpastes-mb837",
-      "title": "Ryoma's Worlds 2026 Top 64 Team",
-      "author": "Ryoma Okamoto",
-      "owner": "ryoma9901_poke",
+      "title": "fevermajin's Worlds 2026 Top 64 Team",
+      "author": "Sota Shimatani",
+      "owner": "fevermajin",
       "teamId": "MB837",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ryoma9901_poke/status/2093901336626762123?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/4956e8a2e5cf2cd6",
+      "sourceUrl": "https://x.com/fevermajin/status/2094003819885814055?s=46",
+      "platformUrl": "https://pokepast.es/5e71890de4573f5a",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-30",
@@ -33984,71 +34102,86 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 34,
+      "placement": 37,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#34",
-        "喷火龙（Mega Y）"
+        "#37",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 34 名，作者 Ryoma Okamoto，队伍码 MGM9CLXSK5",
+      "summary": "Worlds 2026 San Francisco，第 37 名，作者 Sota Shimatani，队伍码 0KR782A4BV",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "18 HP / 26 Def / 1 SpA / 21 Spe",
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "32 HP / 2 SpA / 32 Spe",
           "moves": [
-            "热风",
-            "气象球",
-            "原始之力",
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
             "守住"
           ]
         },
         {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
           "ability": "Intimidate",
-          "nature": "Careful",
-          "spread": "32 HP / 12 Def / 21 SpD / 1 Spe",
+          "nature": "Jolly",
+          "spread": "15 HP / 19 Atk / 32 Spe",
           "moves": [
-            "闪焰冲锋",
-            "ＤＤ金勾臂",
-            "击掌奇袭",
-            "抛下狠话"
+            "勇鸟猛攻",
+            "顺风",
+            "近身战",
+            "守住"
           ]
         },
         {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Wide Lens",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "4 HP / 30 SpA / 32 Spe",
-          "moves": [
-            "飞叶风暴",
-            "污泥炸弹",
-            "守住",
-            "催眠粉"
-          ]
-        },
-        {
-          "pokemonId": "aerodactyl",
-          "pokemonName": "Aerodactyl",
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
           "item": "Focus Sash",
-          "ability": "Unnerve",
+          "ability": "Rock Head",
           "nature": "Jolly",
           "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "岩崩",
-            "双翼",
-            "守住",
-            "顺风"
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "31 HP / 11 Def / 24 SpD",
+          "moves": [
+            "精神强念",
+            "戏法空间",
+            "帮助",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Occa Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "16 HP / 32 Atk / 10 SpD / 8 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "守住"
           ]
         },
         {
@@ -34057,31 +34190,17 @@
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "1 HP / 18 Def / 21 SpA / 26 Spe",
+          "spread": "13 HP / 18 Def / 20 SpA / 15 Spe",
           "moves": [
             "巨声",
-            "破坏光线",
             "电光一闪",
+            "哈欠",
             "看穿"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "3 HP / 10 Atk / 31 Def / 22 Spe",
-          "moves": [
-            "龙爪",
-            "地震",
-            "跺脚",
-            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "34"
+        "finalRanking": "37"
       }
     },
     {
@@ -34204,14 +34323,14 @@
     },
     {
       "id": "vgcpastes-mb836",
-      "title": "fevermajin's Worlds 2026 Top 64 Team",
-      "author": "Sota Shimatani",
-      "owner": "fevermajin",
+      "title": "ryankchua's Worlds 2026 Top 64 Team",
+      "author": "Ryan Chua",
+      "owner": "ryankchua",
       "teamId": "MB836",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/fevermajin/status/2094003819885814055?s=46",
-      "platformUrl": "https://pokepast.es/5e71890de4573f5a",
+      "sourceUrl": "https://x.com/ryankchua/status/2093960976781742087?s=46",
+      "platformUrl": "https://pokepast.es/8644c91e2c5a3fff",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-30",
@@ -34220,17 +34339,17 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 37,
+      "placement": 38,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#37",
+        "#38",
         "雷丘（Mega Y）",
         "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 37 名，作者 Sota Shimatani，队伍码 0KR782A4BV",
+      "summary": "Worlds 2026 San Francisco，第 38 名，作者 Ryan Chua",
       "members": [
         {
           "pokemonId": "raichumegay",
@@ -34238,12 +34357,12 @@
           "item": "Raichunite Y",
           "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "32 HP / 2 SpA / 32 Spe",
+          "spread": "32 HP / 11 Def / 23 Spe",
           "moves": [
-            "电磁炮",
-            "真气弹",
+            "守住",
             "击掌奇袭",
-            "守住"
+            "真气弹",
+            "电磁炮"
           ]
         },
         {
@@ -34252,12 +34371,12 @@
           "item": "Staraptite",
           "ability": "Intimidate",
           "nature": "Jolly",
-          "spread": "15 HP / 19 Atk / 32 Spe",
+          "spread": "21 HP / 13 Atk / 32 Spe",
           "moves": [
-            "勇鸟猛攻",
+            "守住",
             "顺风",
-            "近身战",
-            "守住"
+            "勇鸟猛攻",
+            "近身战"
           ]
         },
         {
@@ -34268,10 +34387,10 @@
           "nature": "Jolly",
           "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "闪焰冲锋",
-            "双刃头锤",
+            "守住",
             "神速",
-            "守住"
+            "岩崩",
+            "闪焰冲锋"
           ]
         },
         {
@@ -34279,27 +34398,27 @@
           "pokemonName": "Farigiraf",
           "item": "Sitrus Berry",
           "ability": "Armor Tail",
-          "nature": "Bold",
-          "spread": "31 HP / 11 Def / 24 SpD",
+          "nature": "Calm",
+          "spread": "29 HP / 14 Def / 23 SpD",
           "moves": [
-            "精神强念",
-            "戏法空间",
+            "守住",
             "帮助",
-            "守住"
+            "戏法空间",
+            "精神强念"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Occa Berry",
+          "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "16 HP / 32 Atk / 10 SpD / 8 Spe",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
           "moves": [
-            "仆刀",
+            "守住",
+            "剑舞",
             "突袭",
-            "铁头",
-            "守住"
+            "仆刀"
           ]
         },
         {
@@ -34308,17 +34427,17 @@
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "13 HP / 18 Def / 20 SpA / 15 Spe",
+          "spread": "19 HP / 17 Def / 20 SpA / 10 Spe",
           "moves": [
-            "巨声",
+            "看穿",
             "电光一闪",
             "哈欠",
-            "看穿"
+            "巨声"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "37"
+        "finalRanking": "38"
       }
     },
     {
@@ -34442,14 +34561,14 @@
     },
     {
       "id": "vgcpastes-mb835",
-      "title": "ryankchua's Worlds 2026 Top 64 Team",
-      "author": "Ryan Chua",
-      "owner": "ryankchua",
+      "title": "koota's Worlds 2026 Top 64 Team",
+      "author": "Kota Kawabe",
+      "owner": "koota488",
       "teamId": "MB835",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ryankchua/status/2093960976781742087?s=46",
-      "platformUrl": "https://pokepast.es/8644c91e2c5a3fff",
+      "sourceUrl": "https://x.com/koota488/status/2093948431387533419?s=46",
+      "platformUrl": "https://pokepast.es/16dfa42bf0ba2e6c",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-30",
@@ -34458,105 +34577,105 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 38,
+      "placement": 39,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#38",
-        "雷丘（Mega Y）",
-        "姆克鹰（Mega）"
+        "#39",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 38 名，作者 Ryan Chua",
+      "summary": "Worlds 2026 San Francisco，第 39 名，作者 Kota Kawabe，队伍码 NK704Y2TR4",
       "members": [
         {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
           "nature": "Timid",
-          "spread": "32 HP / 11 Def / 23 Spe",
+          "spread": "31 HP / 25 Def / 9 SpA / 1 Spe",
           "moves": [
-            "守住",
-            "击掌奇袭",
-            "真气弹",
-            "电磁炮"
+            "热风",
+            "精神强念",
+            "鬼火",
+            "守住"
           ]
         },
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "22 HP / 4 Def / 15 SpA / 25 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
           "nature": "Jolly",
-          "spread": "21 HP / 13 Atk / 32 Spe",
+          "spread": "20 Atk / 14 Def / 32 Spe",
           "moves": [
-            "守住",
-            "顺风",
-            "勇鸟猛攻",
-            "近身战"
+            "波动冲",
+            "水流喷射",
+            "快速折返",
+            "扫墓"
           ]
         },
         {
-          "pokemonId": "arcaninehisui",
-          "pokemonName": "Arcanine-Hisui",
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
           "item": "Focus Sash",
-          "ability": "Rock Head",
-          "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
-            "守住",
-            "神速",
-            "岩崩",
-            "闪焰冲锋"
-          ]
-        },
-        {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Calm",
-          "spread": "29 HP / 14 Def / 23 SpD",
-          "moves": [
-            "守住",
-            "帮助",
-            "戏法空间",
-            "精神强念"
+            "月亮之力",
+            "再来一次",
+            "顺风",
+            "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Life Orb",
+          "item": "Chople Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "spread": "32 HP / 16 Atk / 18 Spe",
           "moves": [
-            "守住",
-            "剑舞",
+            "仆刀",
             "突袭",
-            "仆刀"
+            "铁头",
+            "踢倒"
           ]
         },
         {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "19 HP / 17 Def / 20 SpA / 10 Spe",
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "看穿",
-            "电光一闪",
-            "哈欠",
-            "巨声"
+            "跺脚",
+            "龙爪",
+            "岩崩",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "38"
+        "finalRanking": "39"
       }
     },
     {
@@ -34679,14 +34798,14 @@
     },
     {
       "id": "vgcpastes-mb834",
-      "title": "koota's Worlds 2026 Top 64 Team",
-      "author": "Kota Kawabe",
-      "owner": "koota488",
+      "title": "Penguin's Worlds 2026 Top 64 Team",
+      "author": "Naoto Mizobuchi",
+      "owner": "penguin2142",
       "teamId": "MB834",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/koota488/status/2093948431387533419?s=46",
-      "platformUrl": "https://pokepast.es/16dfa42bf0ba2e6c",
+      "sourceUrl": "https://x.com/penguin2142/status/2093882115695780327?s=46",
+      "platformUrl": "https://pokepast.es/3318b818bcf3e240",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-30",
@@ -34695,86 +34814,85 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 39,
+      "placement": 41,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#39",
-        "妖火红狐（Mega）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#41",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 39 名，作者 Kota Kawabe，队伍码 NK704Y2TR4",
+      "summary": "Worlds 2026 San Francisco，第 41 名，作者 Naoto Mizobuchi，队伍码 CGFCYQP9MY",
       "members": [
         {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
           "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "31 HP / 25 Def / 9 SpA / 1 Spe",
+          "nature": "Modest",
+          "spread": "20 HP / 18 Def / 1 SpA / 27 Spe",
           "moves": [
             "热风",
-            "精神强念",
-            "鬼火",
+            "原始之力",
+            "气象球",
             "守住"
           ]
         },
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 10 Def / 19 SpD / 5 Spe",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Wide Lens",
+          "ability": "Chlorophyll",
           "nature": "Modest",
-          "spread": "22 HP / 4 Def / 15 SpA / 25 Spe",
+          "spread": "14 HP / 32 SpA / 20 Spe",
           "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "破灭之光",
+            "催眠粉",
+            "飞叶风暴",
+            "污泥炸弹",
             "守住"
           ]
         },
         {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Choice Scarf",
-          "ability": "Adaptability",
-          "nature": "Jolly",
-          "spread": "20 Atk / 14 Def / 32 Spe",
-          "moves": [
-            "波动冲",
-            "水流喷射",
-            "快速折返",
-            "扫墓"
-          ]
-        },
-        {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
+          "pokemonId": "aerodactyl",
+          "pokemonName": "Aerodactyl",
           "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
-            "月亮之力",
-            "再来一次",
+            "岩崩",
+            "双翼",
             "顺风",
             "守住"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Chople Berry",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "32 HP / 16 Atk / 18 Spe",
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "19 HP / 28 Def / 14 SpA / 5 Spe",
           "moves": [
-            "仆刀",
-            "突袭",
-            "铁头",
-            "踢倒"
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
           ]
         },
         {
@@ -34783,17 +34901,17 @@
           "item": "Life Orb",
           "ability": "Rough Skin",
           "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "spread": "6 HP / 28 Atk / 32 Spe",
           "moves": [
-            "跺脚",
             "龙爪",
             "岩崩",
+            "地震",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "39"
+        "finalRanking": "41"
       }
     },
     {
@@ -34917,44 +35035,59 @@
     },
     {
       "id": "vgcpastes-mb833",
-      "title": "Penguin's Worlds 2026 Top 64 Team",
-      "author": "Naoto Mizobuchi",
-      "owner": "penguin2142",
+      "title": "Caleb Wijesinha's Worlds 2026 Top 64 Team",
+      "author": "Caleb Wijesinha",
+      "owner": "wijivgc",
       "teamId": "MB833",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/penguin2142/status/2093882115695780327?s=46",
-      "platformUrl": "https://pokepast.es/3318b818bcf3e240",
+      "sourceUrl": "https://x.com/wijivgc/status/2094192276327330066?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/922a6e8f797e0022",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 41,
+      "placement": 43,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#41",
-        "喷火龙（Mega Y）"
+        "#43",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 41 名，作者 Naoto Mizobuchi，队伍码 CGFCYQP9MY",
+      "summary": "Worlds 2026 San Francisco，第 43 名，作者 Caleb Wijesinha，队伍码 7LCRJVT2M6",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
           "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "20 HP / 18 Def / 1 SpA / 27 Spe",
+          "nature": "Timid",
+          "spread": "15 HP / 25 Def / 6 SpA / 20 Spe",
           "moves": [
             "热风",
-            "原始之力",
-            "气象球",
+            "精神强念",
+            "诡计",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "26 HP / 6 Def / 15 SpA / 19 Spe",
+          "moves": [
+            "魔法闪耀",
+            "吸取之吻",
+            "冥想",
             "守住"
           ]
         },
@@ -34963,74 +35096,60 @@
           "pokemonName": "Incineroar",
           "item": "Sitrus Berry",
           "ability": "Intimidate",
-          "nature": "Impish",
-          "spread": "32 HP / 10 Def / 19 SpD / 5 Spe",
+          "nature": "Careful",
+          "spread": "32 HP / 5 Def / 2 SpD / 27 Spe",
           "moves": [
-            "击掌奇袭",
             "闪焰冲锋",
-            "地狱突刺",
-            "抛下狠话"
+            "帮助",
+            "抛下狠话",
+            "击掌奇袭"
           ]
         },
         {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Wide Lens",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "14 HP / 32 SpA / 20 Spe",
-          "moves": [
-            "催眠粉",
-            "飞叶风暴",
-            "污泥炸弹",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "aerodactyl",
-          "pokemonName": "Aerodactyl",
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
           "item": "Focus Sash",
-          "ability": "Unnerve",
+          "ability": "Poison Touch",
           "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
+          "spread": "32 Atk / 2 Def / 32 Spe",
           "moves": [
-            "岩崩",
-            "双翼",
-            "顺风",
+            "近身战",
+            "克命爪",
+            "击掌奇袭",
+            "快速防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Colbur Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "31 HP / 15 Def / 20 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "愤怒粉",
+            "戏法空间",
             "守住"
           ]
         },
         {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "19 HP / 28 Def / 14 SpA / 5 Spe",
-          "moves": [
-            "巨声",
-            "破坏光线",
-            "电光一闪",
-            "看穿"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
           "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "6 HP / 28 Atk / 32 Spe",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
           "moves": [
-            "龙爪",
-            "岩崩",
-            "地震",
+            "仆刀",
+            "突袭",
+            "剑舞",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "41"
+        "finalRanking": "43"
       }
     },
     {
@@ -35154,45 +35273,45 @@
     },
     {
       "id": "vgcpastes-mb832",
-      "title": "Caleb Wijesinha's Worlds 2026 Top 64 Team",
-      "author": "Caleb Wijesinha",
-      "owner": "wijivgc",
+      "title": "YT's Worlds 2026 Top 64 Team",
+      "author": "Yuya Tada",
+      "owner": "ytpublic",
       "teamId": "MB832",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/wijivgc/status/2094192276327330066?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
-      "platformUrl": "https://pokepast.es/922a6e8f797e0022",
+      "sourceUrl": "https://x.com/ytpublic/status/2093888284984492429?s=46",
+      "platformUrl": "https://pokepast.es/4ac5c4c526cfd750",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 43,
+      "placement": 45,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#43",
-        "妖火红狐（Mega）",
+        "#45",
+        "喷火龙（Mega Y）",
         "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 43 名，作者 Caleb Wijesinha，队伍码 7LCRJVT2M6",
+      "summary": "Worlds 2026 San Francisco，第 45 名，作者 Yuya Tada，队伍码 XG6T3UULGB",
       "members": [
         {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Solar Power",
           "nature": "Timid",
-          "spread": "15 HP / 25 Def / 6 SpA / 20 Spe",
+          "spread": "20 HP / 8 Def / 6 SpA / 32 Spe",
           "moves": [
             "热风",
-            "精神强念",
-            "诡计",
+            "气象球",
+            "原始之力",
             "守住"
           ]
         },
@@ -35201,74 +35320,74 @@
           "pokemonName": "Floette-Mega",
           "item": "Floettite",
           "ability": "Flower Veil",
-          "nature": "Modest",
-          "spread": "26 HP / 6 Def / 15 SpA / 19 Spe",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
+            "月亮之力",
             "魔法闪耀",
-            "吸取之吻",
-            "冥想",
+            "破灭之光",
             "守住"
           ]
         },
         {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Careful",
-          "spread": "32 HP / 5 Def / 2 SpD / 27 Spe",
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "4 HP / 20 Atk / 11 Def / 6 SpD / 25 Spe",
           "moves": [
-            "闪焰冲锋",
-            "帮助",
-            "抛下狠话",
-            "击掌奇袭"
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
           ]
         },
         {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
           "item": "Focus Sash",
-          "ability": "Poison Touch",
-          "nature": "Jolly",
-          "spread": "32 Atk / 2 Def / 32 Spe",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
-            "近身战",
-            "克命爪",
-            "击掌奇袭",
-            "快速防守"
-          ]
-        },
-        {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Colbur Berry",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "31 HP / 15 Def / 20 SpD",
-          "moves": [
-            "刷刷茶炮",
-            "愤怒粉",
-            "戏法空间",
+            "月亮之力",
+            "顺风",
+            "再来一次",
             "守住"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Life Orb",
+          "item": "Occa Berry",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "spread": "15 HP / 18 Atk / 1 Def / 6 SpD / 26 Spe",
           "moves": [
             "仆刀",
             "突袭",
-            "剑舞",
+            "踢倒",
+            "铁头"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "6 HP / 28 Atk / 32 Spe",
+          "moves": [
+            "龙爪",
+            "跺脚",
+            "岩崩",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "43"
+        "finalRanking": "45"
       }
     },
     {
@@ -35392,14 +35511,14 @@
     },
     {
       "id": "vgcpastes-mb831",
-      "title": "YT's Worlds 2026 Top 64 Team",
-      "author": "Yuya Tada",
-      "owner": "ytpublic",
+      "title": "Kae-ru's Worlds 2026 Top 64 Team",
+      "author": "Hirofumi Kimura",
+      "owner": "hirosipoke",
       "teamId": "MB831",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ytpublic/status/2093888284984492429?s=46",
-      "platformUrl": "https://pokepast.es/4ac5c4c526cfd750",
+      "sourceUrl": "https://x.com/hirosipoke/status/2093865112788771194?s=46",
+      "platformUrl": "https://pokepast.es/8b693a907565d645",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
       "updatedAt": "2026-08-30",
@@ -35408,105 +35527,105 @@
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 45,
+      "placement": 47,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#45",
-        "喷火龙（Mega Y）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#47",
+        "水箭龟（Mega）",
+        "妖火红狐（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 45 名，作者 Yuya Tada，队伍码 XG6T3UULGB",
+      "summary": "Worlds 2026 San Francisco，第 47 名，作者 Hirofumi Kimura，队伍码 FJKMK3U9H9",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Solar Power",
+          "pokemonId": "blastoisemega",
+          "pokemonName": "Blastoise-Mega",
+          "item": "Blastoisinite",
+          "ability": "Torrent",
           "nature": "Timid",
-          "spread": "20 HP / 8 Def / 6 SpA / 32 Spe",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "喷水",
+            "恶之波动",
+            "守住",
+            "破壳"
+          ]
+        },
+        {
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "18 HP / 5 Def / 13 SpA / 30 Spe",
           "moves": [
             "热风",
-            "气象球",
-            "原始之力",
+            "诡计",
+            "精神强念",
             "守住"
           ]
         },
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 10 Def / 24 Spe",
           "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "破灭之光",
-            "守住"
+            "击掌奇袭",
+            "闪焰冲锋",
+            "抛下狠话",
+            "帮助"
           ]
         },
         {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Mystic Water",
-          "ability": "Adaptability",
-          "nature": "Adamant",
-          "spread": "4 HP / 20 Atk / 11 Def / 6 SpD / 25 Spe",
-          "moves": [
-            "波动冲",
-            "扫墓",
-            "水流喷射",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
           "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
           "moves": [
-            "月亮之力",
-            "顺风",
-            "再来一次",
-            "守住"
+            "近身战",
+            "克命爪",
+            "快速防守",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Colbur Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "愤怒粉",
+            "守住",
+            "戏法空间"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Occa Berry",
+          "item": "Black Glasses",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "15 HP / 18 Atk / 1 Def / 6 SpD / 26 Spe",
+          "spread": "32 HP / 16 Atk / 18 SpD",
           "moves": [
-            "仆刀",
             "突袭",
-            "踢倒",
-            "铁头"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "6 HP / 28 Atk / 32 Spe",
-          "moves": [
-            "龙爪",
-            "跺脚",
-            "岩崩",
-            "守住"
+            "仆刀",
+            "守住",
+            "剑舞"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "45"
+        "finalRanking": "47"
       }
     },
     {
@@ -35629,74 +35748,87 @@
     },
     {
       "id": "vgcpastes-mb830",
-      "title": "Kae-ru's Worlds 2026 Top 64 Team",
-      "author": "Hirofumi Kimura",
-      "owner": "hirosipoke",
+      "title": "Behzad's Worlds 2026 Top 64 Team",
+      "author": "Behzad Muntazir",
+      "owner": "behzadvgc",
       "teamId": "MB830",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/hirosipoke/status/2093865112788771194?s=46",
-      "platformUrl": "https://pokepast.es/8b693a907565d645",
+      "sourceUrl": "https://x.com/behzadvgc/status/2094526673945534518?s=46",
+      "platformUrl": "https://pokepast.es/a9fdf048105d5960",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-08-31",
+      "eventDate": "2026-08-31",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 47,
+      "placement": 48,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#47",
-        "水箭龟（Mega）",
-        "妖火红狐（Mega）"
+        "#48",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 47 名，作者 Hirofumi Kimura，队伍码 FJKMK3U9H9",
+      "summary": "Worlds 2026 San Francisco，第 48 名，作者 Behzad Muntazir，队伍码 QDR9F6QYKS",
       "members": [
         {
-          "pokemonId": "blastoisemega",
-          "pokemonName": "Blastoise-Mega",
-          "item": "Blastoisinite",
-          "ability": "Torrent",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "23 HP / 9 Atk / 2 SpD / 32 Spe",
           "moves": [
-            "喷水",
-            "恶之波动",
-            "守住",
-            "破壳"
-          ]
-        },
-        {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
-          "nature": "Timid",
-          "spread": "18 HP / 5 Def / 13 SpA / 30 Spe",
-          "moves": [
-            "热风",
-            "诡计",
-            "精神强念",
+            "勇鸟猛攻",
+            "近身战",
+            "羽栖",
             "守住"
           ]
         },
         {
           "pokemonId": "incineroar",
           "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
+          "item": "Black Glasses",
           "ability": "Intimidate",
-          "nature": "Impish",
-          "spread": "32 HP / 10 Def / 24 Spe",
+          "nature": "Relaxed",
+          "spread": "31 HP / 12 Def / 21 SpD / 2 Spe",
           "moves": [
-            "击掌奇袭",
             "闪焰冲锋",
+            "击掌奇袭",
             "抛下狠话",
-            "帮助"
+            "ＤＤ金勾臂"
+          ]
+        },
+        {
+          "pokemonId": "torkoal",
+          "pokemonName": "Torkoal",
+          "item": "Charcoal",
+          "ability": "Drought",
+          "nature": "Quiet",
+          "spread": "30 HP / 32 SpA / 4 SpD",
+          "moves": [
+            "喷火",
+            "气象球",
+            "原始之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Life Orb",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "4 HP / 5 Def / 32 SpA / 25 Spe",
+          "moves": [
+            "飞叶风暴",
+            "污泥炸弹",
+            "大地之力",
+            "守住"
           ]
         },
         {
@@ -35704,46 +35836,32 @@
           "pokemonName": "Sneasler",
           "item": "Focus Sash",
           "ability": "Poison Touch",
-          "nature": "Jolly",
-          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
-          "moves": [
-            "近身战",
-            "克命爪",
-            "快速防守",
-            "击掌奇袭"
-          ]
-        },
-        {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Colbur Berry",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "32 HP / 14 Def / 20 SpD",
-          "moves": [
-            "刷刷茶炮",
-            "愤怒粉",
-            "守住",
-            "戏法空间"
-          ]
-        },
-        {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Black Glasses",
-          "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 16 Atk / 18 SpD",
+          "spread": "32 Atk / 2 SpD / 32 Spe",
           "moves": [
-            "突袭",
-            "仆刀",
-            "守住",
-            "剑舞"
+            "克命爪",
+            "近身战",
+            "击掌奇袭",
+            "岩崩"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Sassy",
+          "spread": "21 HP / 25 Def / 20 SpD",
+          "moves": [
+            "精神强念",
+            "帮助",
+            "戏法空间",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "47"
+        "finalRanking": "48"
       }
     },
     {
@@ -35867,101 +35985,88 @@
     },
     {
       "id": "vgcpastes-mb829",
-      "title": "Behzad's Worlds 2026 Top 64 Team",
-      "author": "Behzad Muntazir",
-      "owner": "behzadvgc",
+      "title": "bdogplatinum's Worlds 2026 Top 64 Team",
+      "author": "Brandon Davis",
+      "owner": "bdogplatinum",
       "teamId": "MB829",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/behzadvgc/status/2094526673945534518?s=46",
-      "platformUrl": "https://pokepast.es/a9fdf048105d5960",
+      "sourceUrl": "https://x.com/bdogplatinum/status/2093855162268024892?s=46",
+      "platformUrl": "https://pokepast.es/f16bc70ee77a292e",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-31",
-      "eventDate": "2026-08-31",
+      "updatedAt": "2026-08-30",
+      "eventDate": "2026-08-30",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 48,
+      "placement": 51,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#48",
-        "姆克鹰（Mega）"
+        "#51",
+        "暴雪王（Mega）",
+        "喷火驼（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 48 名，作者 Behzad Muntazir，队伍码 QDR9F6QYKS",
+      "summary": "Worlds 2026 San Francisco，第 51 名，作者 Brandon Davis，队伍码 TW7MB1736R",
       "members": [
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "23 HP / 9 Atk / 2 SpD / 32 Spe",
+          "pokemonId": "abomasnowmega",
+          "pokemonName": "Abomasnow-Mega",
+          "item": "Abomasite",
+          "ability": "Snow Warning",
+          "nature": "Quiet",
+          "spread": "32 HP / 2 Def / 32 SpA",
           "moves": [
-            "勇鸟猛攻",
-            "近身战",
-            "羽栖",
-            "守住"
+            "冰砾",
+            "暴风雪",
+            "能量球",
+            "大地之力"
+          ]
+        },
+        {
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "32 HP / 2 Def / 32 SpA",
+          "moves": [
+            "守住",
+            "大地之力",
+            "热风",
+            "原始之力"
           ]
         },
         {
           "pokemonId": "incineroar",
           "pokemonName": "Incineroar",
-          "item": "Black Glasses",
+          "item": "White Herb",
           "ability": "Intimidate",
-          "nature": "Relaxed",
-          "spread": "31 HP / 12 Def / 21 SpD / 2 Spe",
-          "moves": [
-            "闪焰冲锋",
-            "击掌奇袭",
-            "抛下狠话",
-            "ＤＤ金勾臂"
-          ]
-        },
-        {
-          "pokemonId": "torkoal",
-          "pokemonName": "Torkoal",
-          "item": "Charcoal",
-          "ability": "Drought",
-          "nature": "Quiet",
-          "spread": "30 HP / 32 SpA / 4 SpD",
-          "moves": [
-            "喷火",
-            "气象球",
-            "原始之力",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Life Orb",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "4 HP / 5 Def / 32 SpA / 25 Spe",
-          "moves": [
-            "飞叶风暴",
-            "污泥炸弹",
-            "大地之力",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "Focus Sash",
-          "ability": "Poison Touch",
           "nature": "Adamant",
-          "spread": "32 Atk / 2 SpD / 32 Spe",
+          "spread": "32 HP / 32 Atk / 2 Spe",
           "moves": [
-            "克命爪",
-            "近身战",
             "击掌奇袭",
-            "岩崩"
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "近身战"
+          ]
+        },
+        {
+          "pokemonId": "maushold",
+          "pokemonName": "Maushold",
+          "item": "Wide Lens",
+          "ability": "Technician",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "守住",
+            "看我嘛",
+            "您先请",
+            "鼠数儿"
           ]
         },
         {
@@ -35969,18 +36074,32 @@
           "pokemonName": "Farigiraf",
           "item": "Sitrus Berry",
           "ability": "Armor Tail",
-          "nature": "Sassy",
-          "spread": "21 HP / 25 Def / 20 SpD",
+          "nature": "Relaxed",
+          "spread": "25 HP / 26 Def / 15 SpD",
           "moves": [
-            "精神强念",
-            "帮助",
             "戏法空间",
-            "守住"
+            "帮助",
+            "双光束",
+            "十万伏特"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Life Orb",
+          "ability": "Pixilate",
+          "nature": "Quiet",
+          "spread": "28 HP / 4 Atk / 32 SpA / 2 Spe",
+          "moves": [
+            "看穿",
+            "电光一闪",
+            "巨声",
+            "破坏光线"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "48"
+        "finalRanking": "51"
       }
     },
     {
@@ -36103,121 +36222,121 @@
     },
     {
       "id": "vgcpastes-mb828",
-      "title": "bdogplatinum's Worlds 2026 Top 64 Team",
-      "author": "Brandon Davis",
-      "owner": "bdogplatinum",
+      "title": "YURIN's Worlds 2026 Team",
+      "author": "YURIN",
+      "owner": "yurin_625",
       "teamId": "MB828",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/bdogplatinum/status/2093855162268024892?s=46",
-      "platformUrl": "https://pokepast.es/f16bc70ee77a292e",
+      "sourceUrl": "https://x.com/yurin_625/status/2095859029486731439?s=46",
+      "platformUrl": "https://pokepast.es/7f318f2366652599",
       "season": "M-B",
       "format": "世界赛 / Worlds 2026 San Francisco",
-      "updatedAt": "2026-08-30",
-      "eventDate": "2026-08-30",
+      "updatedAt": "2026-09-04",
+      "eventDate": "2026-09-04",
       "eventName": "Worlds 2026 San Francisco",
       "eventType": "世界赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 51,
+      "placement": 66,
       "detailLevel": "full",
       "tags": [
         "M-B",
         "世界赛",
         "线上",
-        "#51",
-        "暴雪王（Mega）",
-        "喷火驼（Mega）"
+        "#66",
+        "喷火龙（Mega Y）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Worlds 2026 San Francisco，第 51 名，作者 Brandon Davis，队伍码 TW7MB1736R",
+      "summary": "Worlds 2026 San Francisco，第 66 名，作者 YURIN，队伍码 997BUMLC15",
       "members": [
         {
-          "pokemonId": "abomasnowmega",
-          "pokemonName": "Abomasnow-Mega",
-          "item": "Abomasite",
-          "ability": "Snow Warning",
-          "nature": "Quiet",
-          "spread": "32 HP / 2 Def / 32 SpA",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "16 HP / 17 Def / 6 SpA / 27 Spe",
           "moves": [
-            "冰砾",
-            "暴风雪",
-            "能量球",
-            "大地之力"
-          ]
-        },
-        {
-          "pokemonId": "cameruptmega",
-          "pokemonName": "Camerupt-Mega",
-          "item": "Cameruptite",
-          "ability": "Solid Rock",
-          "nature": "Quiet",
-          "spread": "32 HP / 2 Def / 32 SpA",
-          "moves": [
-            "守住",
-            "大地之力",
             "热风",
-            "原始之力"
+            "气象球",
+            "原始之力",
+            "守住"
           ]
         },
         {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "White Herb",
-          "ability": "Intimidate",
-          "nature": "Adamant",
-          "spread": "32 HP / 32 Atk / 2 Spe",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "28 HP / 4 Def / 15 SpA / 19 Spe",
           "moves": [
-            "击掌奇袭",
-            "闪焰冲锋",
-            "ＤＤ金勾臂",
-            "近身战"
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
           ]
         },
         {
-          "pokemonId": "maushold",
-          "pokemonName": "Maushold",
-          "item": "Wide Lens",
-          "ability": "Technician",
-          "nature": "Jolly",
-          "spread": "2 HP / 32 Atk / 32 Spe",
-          "moves": [
-            "守住",
-            "看我嘛",
-            "您先请",
-            "鼠数儿"
-          ]
-        },
-        {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Relaxed",
-          "spread": "25 HP / 26 Def / 15 SpD",
-          "moves": [
-            "戏法空间",
-            "帮助",
-            "双光束",
-            "十万伏特"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
           "item": "Life Orb",
-          "ability": "Pixilate",
-          "nature": "Quiet",
-          "spread": "28 HP / 4 Atk / 32 SpA / 2 Spe",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "28 Atk / 14 Def / 5 SpD / 19 Spe",
           "moves": [
-            "看穿",
-            "电光一闪",
-            "巨声",
-            "破坏光线"
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Occa Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "22 HP / 18 Atk / 26 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Sitrus Berry",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "25 HP / 2 Atk / 7 Def / 32 Spe",
+          "moves": [
+            "龙爪",
+            "地震",
+            "岩崩",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "51"
+        "finalRanking": "66"
       }
     },
     {
