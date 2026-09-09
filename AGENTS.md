@@ -2,7 +2,11 @@
 
 This project is a Chinese Pokemon Champions site. When the user asks to update to a new season or rule, follow `UPDATE_WORKFLOW.md`.
 
-Do not patch only the example the user mentions. Always perform full synchronization and audit:
+For a requested season/rule update or a defect caused by incomplete season synchronization, complete the full synchronization and audit below. For an unrelated UI, wording, or focused logic change, preserve current season data and validate the affected behavior; do not refresh external datasets solely because this file contains the update workflow.
+
+## Season and rule update workflow
+
+Do not patch only the example when performing that update:
 
 - Confirm the Pokemon Showdown format and mod from `out/tmp/pokemon-showdown/config/formats.ts`.
 - Set `CHAMPIONS_SHOWDOWN_MOD=<mod>` before `npm run build-data` when the requested rule is not the default `champions` mod. Current known mapping: M-A = `championsregma`, M-B = `champions`.
