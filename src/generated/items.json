@@ -446,6 +446,14 @@
     "isMegaStone": false
   },
   {
+    "id": "mistyseed",
+    "en": "Misty Seed",
+    "zh": "薄雾种子",
+    "search": "mistyseed 薄雾种子 薄雾种子 bowuzhongzi bwzz mistyseed",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "icyrock",
     "en": "Icy Rock",
     "zh": "冰冷岩石",
@@ -486,6 +494,22 @@
     "isMegaStone": false
   },
   {
+    "id": "leek",
+    "en": "Leek",
+    "zh": "大葱",
+    "search": "leek 大葱 大葱 dacong dc leek",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "terrainextender",
+    "en": "Terrain Extender",
+    "zh": "大地膜",
+    "search": "terrainextender 大地膜 大地膜 dadimo ddm terrainextender",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "bigroot",
     "en": "Big Root",
     "zh": "大根茎",
@@ -498,6 +522,14 @@
     "en": "Light Ball",
     "zh": "电气球",
     "search": "lightball 电气球 电气球 dianqiqiu dqq lightball",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "electricseed",
+    "en": "Electric Seed",
+    "zh": "电气种子",
+    "search": "electricseed 电气种子 电气种子 dianqizhongzi dqzz electricseed",
     "group": 9,
     "isMegaStone": false
   },
@@ -542,6 +574,14 @@
     "isMegaStone": false
   },
   {
+    "id": "redcard",
+    "en": "Red Card",
+    "zh": "红牌",
+    "search": "redcard 红牌 红牌 hongpai hp redcard",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "scopelens",
     "en": "Scope Lens",
     "zh": "焦点镜",
@@ -554,6 +594,22 @@
     "en": "Metronome",
     "zh": "节拍器",
     "search": "metronome 节拍器 节拍器 jiepaiqi jpq metronome",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "bindingband",
+    "en": "Binding Band",
+    "zh": "紧绑束带",
+    "search": "bindingband 紧绑束带 紧绑束带 jinbangshudai jbsd bindingband",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "psychicseed",
+    "en": "Psychic Seed",
+    "zh": "精神种子",
+    "search": "psychicseed 精神种子 精神种子 jingshenzhongzi jszz psychicseed",
     "group": 9,
     "isMegaStone": false
   },
@@ -574,6 +630,14 @@
     "isMegaStone": false
   },
   {
+    "id": "airballoon",
+    "en": "Air Balloon",
+    "zh": "气球",
+    "search": "airballoon 气球 气球 qiqiu qq airballoon",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "focussash",
     "en": "Focus Sash",
     "zh": "气势披带",
@@ -590,6 +654,14 @@
     "isMegaStone": false
   },
   {
+    "id": "grassyseed",
+    "en": "Grassy Seed",
+    "zh": "青草种子",
+    "search": "grassyseed 青草种子 青草种子 qingcaozhongzi qczz grassyseed",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "smoothrock",
     "en": "Smooth Rock",
     "zh": "沙沙岩石",
@@ -602,6 +674,22 @@
     "en": "Life Orb",
     "zh": "生命宝珠",
     "search": "lifeorb 生命宝珠 生命宝珠 shengmingbaozhu smbz lifeorb",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "ejectbutton",
+    "en": "Eject Button",
+    "zh": "逃脱按键",
+    "search": "ejectbutton 逃脱按键 逃脱按键 taotuoanjian ttaj ejectbutton",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
+    "id": "rockyhelmet",
+    "en": "Rocky Helmet",
+    "zh": "凸凸头盔",
+    "search": "rockyhelmet 凸凸头盔 凸凸头盔 tututoukui tttk rockyhelmet",
     "group": 9,
     "isMegaStone": false
   },
@@ -630,10 +718,26 @@
     "isMegaStone": false
   },
   {
+    "id": "normalgem",
+    "en": "Normal Gem",
+    "zh": "一般宝石",
+    "search": "normalgem 一般宝石 一般宝石 yibanbaoshi ybbs normalgem",
+    "group": 9,
+    "isMegaStone": false
+  },
+  {
     "id": "absolite",
     "en": "Absolite",
     "zh": "阿勃梭鲁进化石",
     "search": "absolite 阿勃梭鲁进化石 阿勃梭鲁进化石 abosuolujinhuashi absljhs absolite",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
+    "id": "absolitez",
+    "en": "Absolite Z",
+    "zh": "阿勃梭鲁进化石Z",
+    "search": "absolitez 阿勃梭鲁进化石z 阿勃梭鲁进化石z abosuolujinhuashiz absljhsz absolitez",
     "group": 99,
     "isMegaStone": true
   },
@@ -658,6 +762,14 @@
     "en": "Starminite",
     "zh": "宝石海星进化石",
     "search": "starminite 宝石海星进化石 宝石海星进化石 baoshihaixingjinhuashi bshxjhs starminite",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
+    "id": "salamencite",
+    "en": "Salamencite",
+    "zh": "暴飞龙进化石",
+    "search": "salamencite 暴飞龙进化石 暴飞龙进化石 baofeilongjinhuashi bfljhs salamencite",
     "group": 99,
     "isMegaStone": true
   },
@@ -910,6 +1022,14 @@
     "isMegaStone": true
   },
   {
+    "id": "baxcalibrite",
+    "en": "Baxcalibrite",
+    "zh": "戟脊龙进化石",
+    "search": "baxcalibrite 戟脊龙进化石 戟脊龙进化石 jijilongjinhuashi jjljhs baxcalibrite",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
     "id": "greninjite",
     "en": "Greninjite",
     "zh": "甲贺忍蛙进化石",
@@ -954,6 +1074,14 @@
     "en": "Swampertite",
     "zh": "巨沼怪进化石",
     "search": "swampertite 巨沼怪进化石 巨沼怪进化石 juzhaoguaijinhuashi jzgjhs swampertite",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
+    "id": "golisopite",
+    "en": "Golisopite",
+    "zh": "具甲武者进化石",
+    "search": "golisopite 具甲武者进化石 具甲武者进化石 jujiawuzhejinhuashi jjwzjhs golisopite",
     "group": 99,
     "isMegaStone": true
   },
@@ -1030,6 +1158,14 @@
     "isMegaStone": true
   },
   {
+    "id": "garchompitez",
+    "en": "Garchompite Z",
+    "zh": "烈咬陆鲨进化石Z",
+    "search": "garchompitez 烈咬陆鲨进化石z 烈咬陆鲨进化石z lieyaolushajinhuashiz lylsjhsz garchompitez",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
     "id": "excadrite",
     "en": "Excadrite",
     "zh": "龙头地鼠进化石",
@@ -1042,6 +1178,14 @@
     "en": "Lucarionite",
     "zh": "路卡利欧进化石",
     "search": "lucarionite 路卡利欧进化石 路卡利欧进化石 lukalioujinhuashi lklojhs lucarionite",
+    "group": 99,
+    "isMegaStone": true
+  },
+  {
+    "id": "lucarionitez",
+    "en": "Lucarionite Z",
+    "zh": "路卡利欧进化石Z",
+    "search": "lucarionitez 路卡利欧进化石z 路卡利欧进化石z lukalioujinhuashiz lklojhsz lucarionitez",
     "group": 99,
     "isMegaStone": true
   },

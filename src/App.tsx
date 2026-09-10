@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { championsPokemon, type PokemonRow } from './data/champions'
 import { championsDetails, type PokemonDetail } from './data/championsDetails'
@@ -8,7 +8,7 @@ import { loadSavedPokemon, saveSavedPokemon, type SavedPokemonEntry } from './li
 import { loadSavedGroups, saveSavedGroups } from './lib/savedGroups'
 import { loadTheme, saveTheme, type ThemeMode } from './lib/viewState'
 import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
-import { findUsageDataset, getLatestTrainerRankingDataset, getPokemonUsageFromDataset, getUsageDataset, isTrainerRankingOutdated, type TrainerRankingEntry, type UsageDataset } from './data/usageStats'
+import { findUsageDataset, getPokemonUsageFromDataset, getUsageDataset } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
@@ -106,9 +106,8 @@ void LEGACY_RULE_META
 
 const BATTLE_USAGE_RULE = '1'
 const TRAINER_RANKING_PAGE_SIZE = 100
-const MANUAL_TRAINER_RANKING_STORAGE_KEY = 'pokemon-champion-cn.manual-trainer-ranking'
-const MANUAL_RANKING_API_URL = (import.meta.env.VITE_MANUAL_RANKING_API_URL || '').trim()
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
+  'M-C': { label: 'M-C', seasons: [{ id: '6', label: 'M-6' }] },
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '5', label: 'M-5' }, { id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
 }
@@ -506,7 +505,7 @@ function uniqueSorted(values: (string | undefined)[]) {
 }
 
 function sortTeamSeason(left: string, right: string) {
-  const order = new Map([['M-A', 1], ['M-B', 2], ['未标注', 99]])
+  const order = new Map([['M-A', 1], ['M-B', 2], ['M-C', 3], ['未标注', 99]])
   return (order.get(left) ?? 50) - (order.get(right) ?? 50) || left.localeCompare(right, 'zh-Hans-CN')
 }
 
@@ -601,17 +600,6 @@ function trainerSourceUrl(dataset: { trainerSourceUrl?: string; sourceUrl: strin
   return dataset.trainerSourceUrl || dataset.sourceUrl
 }
 
-function manualTrainerRankingSourceUrl(dataset: {
-  season: string
-  rule: string
-  trainerRankingSourceSeason?: string
-  trainerRankingSourceRule?: string
-}) {
-  const season = dataset.trainerRankingSourceSeason || dataset.season
-  const rule = dataset.trainerRankingSourceRule || dataset.rule
-  return `https://champs.pokedb.tokyo/trainer/list?season=${season}&rule=${rule}`
-}
-
 function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
   if (dataset.source) return dataset.source
   try {
@@ -622,7 +610,6 @@ function sourceLabel(dataset: { source?: string; sourceUrl: string }) {
 }
 
 function trainerRankingSourceLabel(dataset: { trainerSource?: string; trainerSourceUrl?: string; source?: string; sourceUrl: string }) {
-  if (dataset.trainerSource === '手动导入玩家排名') return 'Battle Database Champions'
   if (dataset.trainerSource) return dataset.trainerSource
   if (dataset.trainerSourceUrl?.includes('champs.pokedb.tokyo')) return 'Battle Database Champions'
   return sourceLabel(dataset)
@@ -771,143 +758,7 @@ function moveSearchRank(move: { zh: string; en: string; id: string; pinyin: stri
   return best
 }
 
-function parseManualRankingTimeJst(value: string) {
-  const match = value.trim().match(/(?:(?:日本)?时间\s*)?(\d{4})[/-](\d{1,2})[/-](\d{1,2})\s+(\d{1,2}):(\d{2})/)
-  if (!match) throw new Error('时间格式应类似 2026/6/25 23:46')
-  const [, year, month, day, hour, minute] = match
-  const utcMs = Date.UTC(Number(year), Number(month) - 1, Number(day), Number(hour) - 9, Number(minute), 0, 0)
-  const parsed = new Date(utcMs)
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Asia/Tokyo',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(parsed)
-  const part = (type: string) => parts.find((item) => item.type === type)?.value ?? ''
-  if (
-    Number.isNaN(parsed.getTime())
-    || part('year') !== year
-    || part('month') !== month.padStart(2, '0')
-    || part('day') !== day.padStart(2, '0')
-    || part('hour') !== hour.padStart(2, '0')
-    || part('minute') !== minute.padStart(2, '0')
-  ) {
-    throw new Error('时间格式应类似 2026/6/25 23:46')
-  }
-  return parsed.toISOString()
-}
-
-function parseManualRankingName(rawValue: string) {
-  const normalizedValue = rawValue.trim().replace(/\s+/g, ' ')
-  const tokens = normalizedValue.split(/\s+/).filter(Boolean)
-  if (tokens.length >= 2 && tokens.length % 2 === 0) {
-    const middle = tokens.length / 2
-    const left = tokens.slice(0, middle).join(' ')
-    const right = tokens.slice(middle).join(' ')
-    if (left === right) return left
-  }
-  return normalizedValue
-}
-
-function isRankingToken(value: string, expectedRank: number) {
-  return /^\d{1,3}$/.test(value) && Number(value) === expectedRank
-}
-
-function isRatingToken(value: string) {
-  const rating = Number(value)
-  return /^\d+(?:\.\d+)?$/.test(value) && Number.isFinite(rating) && rating >= 0
-}
-
-function findRankingStart(tokens: string[], fromIndex: number, expectedRank: number) {
-  for (let index = fromIndex; index < tokens.length - 1; index += 1) {
-    if (isRankingToken(tokens[index], expectedRank) && isRatingToken(tokens[index + 1])) return index
-  }
-  return -1
-}
-
-function parseManualRankingTextSequential(text: string) {
-  const tokens = text
-    .replace(/\r\n/g, '\n')
-    .replace(/^日本時間.*$/gm, '\n')
-    .replace(/^日本时间.*$/gm, '\n')
-    .replace(/--+/g, '\n')
-    .split(/\s+/)
-    .map((token) => token.trim())
-    .filter(Boolean)
-  const rankings: TrainerRankingEntry[] = []
-  let cursor = 0
-  for (let expectedRank = 1; expectedRank <= 300; expectedRank += 1) {
-    const start = findRankingStart(tokens, cursor, expectedRank)
-    if (start < 0) break
-    const nextStart = expectedRank < 300 ? findRankingStart(tokens, start + 2, expectedRank + 1) : tokens.length
-    const end = nextStart < 0 ? tokens.length : nextStart
-    const name = parseManualRankingName(tokens.slice(start + 2, end).join(' '))
-    const rating = Number(tokens[start + 1])
-    if (!name || !Number.isFinite(rating)) break
-    rankings.push({ rank: expectedRank, rating, name })
-    cursor = end
-  }
-  return rankings
-}
-
-function parseManualRankingTextByRecordPattern(text: string) {
-  const normalizedText = text
-    .replace(/\r\n/g, '\n')
-    .replace(/^日本時間.*$/gm, '\n')
-    .replace(/^日本时间.*$/gm, '\n')
-    .replace(/--+/g, '\n')
-  const rankings: TrainerRankingEntry[] = []
-  const recordPattern = /(?:^|\s)(\d{1,3})\s+(\d+(?:\.\d+)?)\s+([\s\S]*?)(?=\s+\d{1,3}\s+\d+(?:\.\d+)?\s+|$)/g
-  for (const match of normalizedText.matchAll(recordPattern)) {
-    const rank = Number(match[1])
-    const rating = Number(match[2])
-    const name = parseManualRankingName(match[3])
-    if (rank >= 1 && rank <= 300 && Number.isFinite(rating) && name) {
-      rankings.push({ rank, rating, name })
-    }
-  }
-  return rankings
-}
-
-function parseManualRankingText(text: string) {
-  const sequentialRankings = parseManualRankingTextSequential(text)
-  if (sequentialRankings.length >= 300) return sequentialRankings.slice(0, 300)
-
-  const patternRankings = parseManualRankingTextByRecordPattern(text)
-  if (patternRankings.length >= 300) return patternRankings.slice(0, 300).sort((a, b) => a.rank - b.rank)
-
-  const lines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line && line !== '--' && !line.startsWith('日本时间'))
-
-  const rankings: TrainerRankingEntry[] = []
-  for (let index = 0; index < lines.length;) {
-    const rank = Number(lines[index])
-    const rating = Number(lines[index + 1])
-    const name = lines[index + 2]
-    if (Number.isInteger(rank) && Number.isFinite(rating) && name) {
-      rankings.push({ rank, rating, name })
-      const nextLine = lines[index + 3]
-      const nextNextLine = lines[index + 4]
-      const nextStartsRecord = Number.isInteger(Number(nextLine)) && Number.isFinite(Number(nextNextLine))
-      index += nextStartsRecord ? 3 : 4
-      continue
-    }
-    index += 1
-  }
-  if (rankings.length !== 300) throw new Error(`需要解析到 300 人，目前解析到 ${rankings.length} 人`)
-  return rankings.sort((a, b) => a.rank - b.rank)
-}
-
-function isManualTrainerImportDue(dataset: UsageDataset | null) {
-  return isTrainerRankingOlderThan(dataset, 20)
-}
-
-function isTrainerRankingOlderThan(dataset: UsageDataset | null, hours: number) {
+function isTrainerRankingOlderThan(dataset: ReturnType<typeof findUsageDataset>, hours: number) {
   if (!dataset) return false
   if (dataset.trainerRankingsFinal || dataset.updatesFrozen) return false
   const updatedAt = dataset.trainerRankingsUpdatedAt
@@ -949,8 +800,8 @@ function App() {
   const [draftConfigs, setDraftConfigs] = useState<Record<string, DraftConfig>>({})
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
-  const [currentRule, setCurrentRule] = useState('M-B')
-  const [currentSeason, setCurrentSeason] = useState('5')
+  const [currentRule, setCurrentRule] = useState('M-C')
+  const [currentSeason, setCurrentSeason] = useState('6')
   const [trainerBattleRule, setTrainerBattleRule] = useState<'1' | '2'>('1')
   const [trainerRankingPage, setTrainerRankingPage] = useState(1)
   const [trainerQuery, setTrainerQuery] = useState('')
@@ -969,32 +820,15 @@ function App() {
   const [teamFilters, setTeamFilters] = useState<TeamFilterState>(DEFAULT_TEAM_FILTERS)
   const [addedTeamGroups, setAddedTeamGroups] = useState<Record<string, string>>({})
   const [draftLoadVersion, setDraftLoadVersion] = useState(0)
-  const [manualTrainerImportOpen, setManualTrainerImportOpen] = useState(false)
-  const [manualRankingTime, setManualRankingTime] = useState('')
-  const [manualRankingText, setManualRankingText] = useState('')
-  const [manualRankingStatus, setManualRankingStatus] = useState('')
-  const [manualRankingError, setManualRankingError] = useState('')
-
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     saveTheme(theme)
   }, [theme])
 
-  useEffect(() => {
-    window.localStorage.removeItem(MANUAL_TRAINER_RANKING_STORAGE_KEY)
-  }, [])
-
   const selectedUsageDataset = useMemo(() => getUsageDataset(currentSeason, BATTLE_USAGE_RULE), [currentSeason])
   const trainerUsageDataset = useMemo(() => findUsageDataset(currentSeason, trainerBattleRule), [currentSeason, trainerBattleRule])
-  const latestTrainerRankingDataset = useMemo(() => getLatestTrainerRankingDataset(trainerBattleRule), [trainerBattleRule])
-  const currentTrainerRankingDataset = trainerUsageDataset?.trainerRankings.length ? trainerUsageDataset : null
-  const trainerRankingDataset = currentTrainerRankingDataset ?? latestTrainerRankingDataset
-  const trainerRankingContextDataset = trainerUsageDataset ?? trainerRankingDataset ?? selectedUsageDataset
-  const trainerRankingUnupdated = trainerUsageDataset
-    ? isTrainerRankingOutdated(trainerUsageDataset, currentTrainerRankingDataset)
-    : Boolean(trainerRankingDataset)
-  const showManualTrainerImportButton = isManualTrainerImportDue(trainerRankingContextDataset)
-  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerRankingContextDataset, 24)
+  const trainerRankingDataset = trainerUsageDataset?.trainerRankings.length ? trainerUsageDataset : null
+  const trainerRankingNeedsUpdate = isTrainerRankingOlderThan(trainerUsageDataset, 24)
   const trainerCountryOptions = useMemo(() => uniqueSorted((trainerRankingDataset?.trainerRankings ?? []).map((trainer) => trainer.country || '').filter(Boolean)), [trainerRankingDataset])
   const trainerLanguageOptions = useMemo(() => uniqueSorted((trainerRankingDataset?.trainerRankings ?? []).map((trainer) => trainer.language || '').filter(Boolean)), [trainerRankingDataset])
   const filteredTrainerRankings = useMemo(() => {
@@ -1263,48 +1097,6 @@ function App() {
 
   function handleUpdateSaved(id: string, payload: Omit<SavedPokemonEntry, 'id' | 'baseId' | 'label' | 'pokemonId'>) {
     setSavedPokemon((current) => current.map((entry) => entry.id === id ? { ...entry, ...payload } : entry))
-  }
-
-  async function handleManualTrainerRankingImport(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setManualRankingError('')
-    setManualRankingStatus('')
-    try {
-      const importedAt = parseManualRankingTimeJst(manualRankingTime)
-      const rankings = parseManualRankingText(manualRankingText)
-      if (!MANUAL_RANKING_API_URL) {
-        setManualRankingError(`已解析 ${rankings.length} 人，但后端服务尚未配置，无法写回 GitHub 仓库。`)
-        return
-      }
-      setManualRankingStatus(`已解析 ${rankings.length} 人；正在提交后端写回 GitHub。`)
-      const response = await fetch(MANUAL_RANKING_API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          datasetKey: trainerRankingContextDataset.format,
-          rankingTimeJst: manualRankingTime,
-          rankingTimeIso: importedAt,
-          rankingsText: manualRankingText,
-        }),
-      })
-      const responseText = await response.text()
-      let result: { ok?: boolean; error?: string } | null = null
-      if (responseText.trim()) {
-        try {
-          result = JSON.parse(responseText)
-        } catch {
-          throw new Error(response.ok ? '后端返回了无法解析的内容。' : `后端返回 ${response.status}：${responseText.slice(0, 200)}`)
-        }
-      }
-      if (!response.ok || !result?.ok) {
-        throw new Error(result?.error || `后端返回 ${response.status}`)
-      }
-      setManualRankingStatus(`已提交后端写回 GitHub。已解析 ${rankings.length} 人；Pages 会在仓库更新后自动部署。`)
-    } catch (error) {
-      setManualRankingError(error instanceof Error ? error.message : String(error))
-    }
   }
 
   function loadSavedEntry(entry: SavedPokemonEntry) {
@@ -1596,7 +1388,7 @@ function App() {
               <div className="home-title-line">
                 <h1>Pokemon Champions 中文数据站</h1>
                 <div className="home-title-nav">
-                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('trainers')}>玩家排名{trainerRankingNeedsUpdate ? '（待更新）' : trainerRankingUnupdated ? '（未更新）' : ''}</button>
+                  <button type="button" className={homeTab === 'trainers' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('trainers')}>玩家排名{trainerRankingNeedsUpdate ? '（待更新）' : ''}</button>
                   <button type="button" className={homeTab === 'teams' ? 'title-nav-button active' : 'title-nav-button'} onClick={() => navigateToHomeTab('teams')}>队伍分享</button>
                 </div>
               </div>
@@ -1953,9 +1745,6 @@ function App() {
                   <div className="data-source-line">
                     <a href={trainerSourceUrl(trainerRankingDataset)} target="_blank" rel="noopener noreferrer">{trainerRankingSourceLabel(trainerRankingDataset)}</a>
                     <span> · {formatBrowserDateTime(trainerRankingDataset.trainerRankingsUpdatedAt || trainerRankingDataset.updatedAt, trainerRankingDataset.date)}</span>
-                    {showManualTrainerImportButton && (
-                      <button type="button" className="inline-text-button" onClick={() => setManualTrainerImportOpen((value) => !value)}>手动导入</button>
-                    )}
                   </div>
                   {(trainerRankingDataset.trainerTop300Cutoff !== undefined || trainerRankingDataset.trainerTop1000Cutoff !== undefined) && (
                     <div className="trainer-ranking-summary" aria-label="排名分数线">
@@ -1967,44 +1756,15 @@ function App() {
                       )}
                     </div>
                   )}
-                  {trainerRankingUnupdated && <div className="data-fallback-note">玩家排名未更新，显示最近一次成功同步的数据。</div>}
-                  {trainerRankingContextDataset.trainerRankingsNote && trainerRankingContextDataset.trainerSource !== 'OP.GG Pokémon Champions' && (
-                    <div className="data-fallback-note">{trainerRankingContextDataset.trainerRankingsNote}</div>
-                  )}
-                  {manualTrainerImportOpen && (
-                    <form className="manual-ranking-import-panel" onSubmit={handleManualTrainerRankingImport}>
-                      <p className="manual-ranking-intro">
-                        最新的排名数据需要从
-                        <a href={manualTrainerRankingSourceUrl(trainerRankingContextDataset)} target="_blank" rel="noopener noreferrer">Battle Database Champions</a>
-                        手动导入，该地址的排名信息每日更新一次。如果你愿意手动导入一天的数据，将帮助其它用户更舒服地使用本网站。
-                      </p>
-                      <label className="manual-ranking-field">
-                        <span>日本时间</span>
-                        <small>请从网站上复制时间信息</small>
-                        <input value={manualRankingTime} onChange={(event) => setManualRankingTime(event.target.value)} placeholder="2026/6/25 23:46" />
-                      </label>
-                      <label className="manual-ranking-field">
-                        <span>玩家排名</span>
-                        <small>将网站上共三页的数据，粘贴到下面文本框，网站会自动分析数据</small>
-                        <textarea value={manualRankingText} onChange={(event) => setManualRankingText(event.target.value)} placeholder={'1\n2273.111\nべくと\nべくと\n\n2\n2271.784\nMeLuCa\nMeLuCa'} />
-                      </label>
-                      {!MANUAL_RANKING_API_URL && (
-                        <div className="manual-ranking-backend-note">后端服务尚未配置：现在只能保存到本浏览器，不能自动写回 GitHub 仓库。</div>
-                      )}
-                      <div className="manual-ranking-actions">
-                        <button type="submit" className="ghost-button">{MANUAL_RANKING_API_URL ? '保存并写回仓库' : '保存到本浏览器'}</button>
-                        <button type="button" className="danger-text-button" onClick={() => setManualTrainerImportOpen(false)}>取消</button>
-                      </div>
-                      {manualRankingStatus && <div className="manual-ranking-status">{manualRankingStatus}</div>}
-                      {manualRankingError && <div className="manual-ranking-error">{manualRankingError}</div>}
-                    </form>
+                  {trainerRankingDataset.trainerRankingsNote && trainerRankingDataset.trainerSource !== 'OP.GG Pokémon Champions' && (
+                    <div className="data-fallback-note">{trainerRankingDataset.trainerRankingsNote}</div>
                   )}
                 </>
               )}
               {!trainerRankingDataset ? (
                 <div className="empty-detail trainer-empty-state">
-                  <h2>暂无可展示的玩家排名</h2>
-                  <p>还没有从可用数据源成功同步玩家排名。</p>
+                  <h2>当前赛季暂无玩家排名</h2>
+                  <p>数据源可用后会自动更新。</p>
                 </div>
               ) : (
                 <div className="trainer-rankings-wrap table-wrapper responsive-table-card">

@@ -21,10 +21,10 @@
 
 必须先从 `out/tmp/pokemon-showdown/config/formats.ts` 确认目标规则对应的 Showdown mod，不要凭旧经验假设。
 
-当前已知：
+当前 Showdown 中可用的映射：
 
-- M-A: `championsregma`
-- M-B: `champions`
+- M-B: `championsregmb`
+- M-C: `champions`
 
 生成脚本默认使用 `champions`。如果目标规则不是默认 mod，先设置：
 
@@ -32,10 +32,10 @@
 $env:CHAMPIONS_SHOWDOWN_MOD='<mod>'
 ```
 
-例如 M-A：
+例如 M-B：
 
 ```powershell
-$env:CHAMPIONS_SHOWDOWN_MOD='championsregma'
+$env:CHAMPIONS_SHOWDOWN_MOD='championsregmb'
 ```
 
 ## 固定数据源
@@ -94,6 +94,15 @@ npm run verify-update
 - `npm run lint`
 - `npx tsx scripts/test-champions-calc.ts`
 
+## 数据源暂不可用时的分阶段发布
+
+只有用户明确授权“规则先上线、usage 稍后单独更新”时，才允许使用此例外：
+
+- 为目标赛季的每个 rule 建立明确的空数据集，`entries` 和 `trainerRankings` 均为空，禁止回退显示旧赛季数据。
+- 玩家排名仅由自动数据源同步，不提供手动导入界面、工作流、脚本或后端。
+- 设置 `$env:CHAMPS_ALLOW_PENDING_USAGE='1'` 后运行 `npm run verify-update`。该开关只豁免 usage 非空和排名人数门槛，其余审计、构建、lint 与计算器测试仍必须通过。
+- 发布后保留自动 usage 同步；真实数据可用时，不带该开关重新运行完整 `npm run verify-update`，再单独提交数据更新。
+
 ## 翻译补齐
 
 - 道具中文：`scripts/item-zh.json`
@@ -114,12 +123,12 @@ npm run verify-update
 - learnset mismatch
 - 使用率中的 missingPokemon
 
-必须存在：
+通常必须存在且非空：
 
 - 目标 `champs-season-<season>-rule-<rule>` 使用率数据集
 - 目标规则的玩家排名数据
 
-审计失败时先修数据或翻译，再重新运行 `npm run build-data` 和 `npm run audit-data`。
+审计失败时先修数据或翻译，再重新运行 `npm run build-data` 和 `npm run audit-data`。仅在上面的分阶段发布得到用户明确授权时，才可临时豁免 usage 和排名非空门槛。
 
 ## 验收口径
 

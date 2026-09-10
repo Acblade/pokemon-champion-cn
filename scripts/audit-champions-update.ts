@@ -162,6 +162,7 @@ function usageTargets(usage: UsageCollection) {
 }
 
 async function main() {
+  const allowPendingUsage = process.env.CHAMPS_ALLOW_PENDING_USAGE === '1'
   const [formats, formatsData, learnsets, pokedex, baseItems, modItems] = await Promise.all([
     importShowdownData<FormatEntry[]>('config/formats.ts', 'Formats'),
     importShowdownData<Dict<FormatData>>(`data/mods/${showdownMod}/formats-data.ts`, 'FormatsData'),
@@ -252,12 +253,14 @@ async function main() {
     ...usageAudits.flatMap((audit) => [
       !audit.exists ? `usage dataset missing: ${audit.key}` : '',
       audit.missingPokemon.length ? `usage missing pokemon in ${audit.key}: ${audit.missingPokemon.length}` : '',
-      !audit.trainerRankingsAvailable || audit.trainerRankingCount === 0 ? `trainer rankings missing: ${audit.key}` : '',
+      !allowPendingUsage && audit.exists && audit.count === 0 ? `usage dataset empty: ${audit.key}` : '',
+      !allowPendingUsage && (!audit.trainerRankingsAvailable || audit.trainerRankingCount === 0) ? `trainer rankings missing: ${audit.key}` : '',
     ]),
   ].filter(Boolean)
 
   const report = {
     showdownMod,
+    allowPendingUsage,
     matchingFormats,
     pokemonAuditAliases: POKEMON_AUDIT_ID_ALIASES,
     counts: {

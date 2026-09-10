@@ -11,7 +11,6 @@
     "update-team-shares": "tsx scripts/update-team-shares.ts",
     "audit-data": "tsx scripts/audit-champions-update.ts",
     "verify-update": "npm run audit-data && npm run build && npm run lint && npx tsx scripts/test-champions-calc.ts",
-    "import-manual-trainers": "tsx scripts/import-manual-trainer-rankings.ts",
     "mobile-sync-trainers": "node scripts/mobile-sync-trainer-rankings.mjs",
     "build": "tsc -b && vite build",
     "build:sites": "node scripts/clean-sites-build.mjs && tsc -b && vite build --mode sites",

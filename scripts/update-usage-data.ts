@@ -13,7 +13,7 @@ const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   '1': 'https://gamewith.jp/pokemon-champions/558230',
   '2': 'https://gamewith.jp/pokemon-champions/555373',
 }
-const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5')
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5,6')
   .split(',')
   .map(value => value.trim())
   .filter(Boolean)
@@ -73,10 +73,12 @@ const GAMEWITH_FORM_KEY_OVERRIDES: Record<string, string> = {
 }
 
 const GAMEWITH_ITEM_ID_OVERRIDES: Record<string, string> = {
+  アブソルナイトZ: 'absolitez',
   ウツボットナイト: 'victreebelite',
   エアームドナイト: 'skarmorite',
   エンブオナイト: 'emboarite',
   オーダイルナイト: 'feraligite',
+  ガブリアスナイトZ: 'garchompitez',
   カイリュナイト: 'dragoninite',
   カエンジシナイト: 'pyroarite',
   カラマネナイト: 'malamarite',
@@ -85,11 +87,13 @@ const GAMEWITH_ITEM_ID_OVERRIDES: Record<string, string> = {
   ケケンカニナイト: 'crabominite',
   ゲッコウガナイト: 'greninjite',
   ゴルーグナイト: 'golurkite',
+  グソクムシャナイト: 'golisopite',
   シビルドナイト: 'eelektrossite',
   シャンデラナイト: 'chandelurite',
   ジジーロナイト: 'drampanite',
   スコヴィラナイト: 'scovillainite',
   スターミナイト: 'starminite',
+  セグレイブナイト: 'baxcalibrite',
   ズルズキナイト: 'scraftinite',
   タイレーツナイト: 'falinksite',
   チリーンナイト: 'chimechite',
@@ -106,6 +110,7 @@ const GAMEWITH_ITEM_ID_OVERRIDES: Record<string, string> = {
   ユキメノコナイト: 'froslassite',
   ライチュウナイトX: 'raichunitex',
   ライチュウナイトY: 'raichunitey',
+  ルカリオナイトZ: 'lucarionitez',
   ルチャブルナイト: 'hawluchanite',
 }
 
@@ -168,7 +173,7 @@ type UsageDataset = {
   trainerTop300Cutoff?: number
   trainerTop1000Cutoff?: number
   format: string
-  regulation: 'M-A' | 'M-B'
+  regulation: 'M-A' | 'M-B' | 'M-C'
   battle: 'Doubles' | 'Singles'
   season: string
   rule: string
@@ -278,13 +283,14 @@ function loadGeneratedItems() {
   return new Map(items.map(item => [item.id, item]))
 }
 
-function regulationForSeason(season: string): 'M-A' | 'M-B' {
-  const regulationBySeason: Record<string, 'M-A' | 'M-B'> = {
+function regulationForSeason(season: string): 'M-A' | 'M-B' | 'M-C' {
+  const regulationBySeason: Record<string, 'M-A' | 'M-B' | 'M-C'> = {
     '1': 'M-A',
     '2': 'M-A',
     '3': 'M-B',
     '4': 'M-B',
     '5': 'M-B',
+    '6': 'M-C',
   }
   const regulation = regulationBySeason[season]
   if (!regulation) throw new Error(`No regulation mapping configured for Champions season ${season}`)

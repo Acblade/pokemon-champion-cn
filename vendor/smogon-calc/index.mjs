@@ -431,6 +431,7 @@ var SV = SS.concat([
   "Wind Rider",
   "Zero to Hero",
   // Champions exclusive
+  "Aura Guard",
   "Dragonize",
   "Eelevate",
   "Fire Mane",
@@ -447,6 +448,7 @@ var CHAMPIONS = [
   "Anticipation",
   "Armor Tail",
   "Aroma Veil",
+  "Aura Guard",
   "Battle Armor",
   "Berserk",
   "Big Pecks",
@@ -17077,7 +17079,7 @@ var ZA_PATCH2 = {
     types: ["Dark", "Ghost"],
     bs: { hp: 65, at: 154, df: 60, sa: 75, sd: 60, sp: 151 },
     weightkg: 49,
-    abilities: { 0: "Magic Bounce" },
+    abilities: { 0: "Sharpness" },
     baseSpecies: "Absol"
   },
   "Barbaracle-Mega": {
@@ -17221,7 +17223,7 @@ var ZA_PATCH2 = {
     types: ["Dragon"],
     bs: { hp: 108, at: 130, df: 85, sa: 141, sd: 85, sp: 151 },
     weightkg: 99,
-    abilities: { 0: "Sand Force" },
+    abilities: { 0: "Levitate" },
     baseSpecies: "Garchomp"
   },
   "Glimmora-Mega": {
@@ -17271,7 +17273,7 @@ var ZA_PATCH2 = {
     types: ["Fighting", "Steel"],
     bs: { hp: 70, at: 100, df: 70, sa: 164, sd: 70, sp: 151 },
     weightkg: 49.4,
-    abilities: { 0: "Adaptability" },
+    abilities: { 0: "Aura Guard" },
     baseSpecies: "Lucario"
   },
   "Magearna-Mega": {
@@ -17435,6 +17437,7 @@ var CHAMPIONS_LIST2 = [
   "Abomasnow-Mega",
   "Absol",
   "Absol-Mega",
+  "Absol-Mega-Z",
   "Aegislash-Blade",
   "Aegislash-Both",
   "Aegislash-Shield",
@@ -17547,6 +17550,7 @@ var CHAMPIONS_LIST2 = [
   "Garbodor",
   "Garchomp",
   "Garchomp-Mega",
+  "Garchomp-Mega-Z",
   "Gardevoir",
   "Gardevoir-Mega",
   "Garganacl",
@@ -17600,6 +17604,7 @@ var CHAMPIONS_LIST2 = [
   "Lopunny-Mega",
   "Lucario",
   "Lucario-Mega",
+  "Lucario-Mega-Z",
   "Luxray",
   "Lycanroc",
   "Lycanroc-Dusk",
@@ -18449,6 +18454,7 @@ var Side = class _Side {
   isNightmared;
   isSaltCured;
   isForesight;
+  isCharge;
   isTailwind;
   isHelpingHand;
   isFlowerGift;
@@ -18474,6 +18480,7 @@ var Side = class _Side {
     this.isNightmared = !!side.isNightmared;
     this.isSaltCured = !!side.isSaltCured;
     this.isForesight = !!side.isForesight;
+    this.isCharge = !!side.isCharge;
     this.isTailwind = !!side.isTailwind;
     this.isHelpingHand = !!side.isHelpingHand;
     this.isFlowerGift = !!side.isFlowerGift;
@@ -19246,7 +19253,7 @@ function checkRawStatChanges(pokemon, powerTrickActive, wonderRoomActive) {
 }
 function checkIntimidate(gen4, source, target) {
   const blocked = target.hasAbility("Clear Body", "White Smoke", "Hyper Cutter", "Full Metal Body") || // More abilities now block Intimidate in Gen 8+ (DaWoblefet, Cloudy Mistral)
-  gen4.num >= 8 && target.hasAbility("Inner Focus", "Own Tempo", "Oblivious", "Scrappy") || target.hasItem("Clear Amulet");
+  (gen4.num >= 8 || gen4.num === 0) && target.hasAbility("Inner Focus", "Own Tempo", "Oblivious", "Scrappy") || target.hasItem("Clear Amulet");
   if (source.hasAbility("Intimidate") && source.abilityOn && !blocked) {
     if (target.hasAbility("Contrary", "Defiant", "Guard Dog")) {
       target.boosts.atk = Math.min(6, target.boosts.atk + 1);
@@ -19945,13 +19952,13 @@ function getHazards(gen4, defender, defenderSide) {
   if (defenderSide.isSR && !defender.hasAbility("Magic Guard", "Mountaineer")) {
     const rockType = gen4.types.get("rock");
     const effectiveness = defender.teraType && defender.teraType !== "Stellar" ? rockType.effectiveness[defender.teraType] : rockType.effectiveness[defender.types[0]] * (defender.types[1] ? rockType.effectiveness[defender.types[1]] : 1);
-    damage += Math.floor(effectiveness * defender.maxHP() / 8);
+    damage += Math.max(Math.floor(effectiveness * defender.maxHP() / 8), 1);
     texts.push("Stealth Rock");
   }
   if (defenderSide.steelsurge && !defender.hasAbility("Magic Guard", "Mountaineer")) {
     const steelType = gen4.types.get("steel");
     const effectiveness = defender.teraType && defender.teraType !== "Stellar" ? steelType.effectiveness[defender.teraType] : steelType.effectiveness[defender.types[0]] * (defender.types[1] ? steelType.effectiveness[defender.types[1]] : 1);
-    damage += Math.floor(effectiveness * defender.maxHP() / 8);
+    damage += Math.max(Math.floor(effectiveness * defender.maxHP() / 8), 1);
     texts.push("Steelsurge");
   }
   if (!defender.hasType("Flying") && !defender.hasAbility("Magic Guard", "Levitate", "Eelevate") && !defender.hasItem("Air Balloon")) {
@@ -20240,6 +20247,9 @@ function buildDescription(description, attacker, defender) {
   if (description.isSwitching) {
     output += "switching boosted ";
   }
+  if (description.isCharge) {
+    output += "Charge boosted ";
+  }
   output += description.moveName + " ";
   if (description.moveBP && description.moveType) {
     output += "(" + description.moveBP + " BP " + description.moveType + ") ";
@@ -20440,6 +20450,8 @@ function multiDamageRange(damage) {
 
 // out/tmp/damage-calc/calc/src/mechanics/champions.ts
 function calculateChampions(gen4, attacker, defender, move, field) {
+  checkAirLock(attacker, field);
+  checkAirLock(defender, field);
   checkForecast(attacker, field.weather);
   checkForecast(defender, field.weather);
   checkItem(attacker, field.isMagicRoom);
@@ -20497,6 +20509,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     "Filter",
     "Flash Fire",
     "Flower Veil",
+    "Fluffy",
     "Friend Guard",
     "Fur Coat",
     "Heatproof",
@@ -20550,7 +20563,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     if (attackerIgnoresAbility) desc.attackerAbility = attacker.ability;
     defender.ability = "";
   }
-  const isCritical = !defender.hasAbility("Shell Armor") && (move.isCrit || attacker.hasAbility("Merciless") && defender.hasStatus("psn", "tox")) && move.timesUsed === 1;
+  const isCritical = !defender.hasAbility("Shell Armor", "Battle Armor") && (move.isCrit || attacker.hasAbility("Merciless") && defender.hasStatus("psn", "tox")) && move.timesUsed === 1;
   let type = move.type;
   if (move.originalName === "Weather Ball") {
     const isMegaSol = attacker.hasAbility("Mega Sol");
@@ -20584,6 +20597,9 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     field.defenderSide.isReflect = false;
     field.defenderSide.isLightScreen = false;
     field.defenderSide.isAuroraVeil = false;
+  }
+  if (attacker.hasAbility("Electromorphosis") && attacker.abilityOn) {
+    field.attackerSide.isCharge = true;
   }
   let hasAteAbilityTypeChange = false;
   let isAerilate = false;
@@ -20870,6 +20886,10 @@ function calculateBasePowerChampions(gen4, attacker, defender, move, field, hasA
       basePower = move.bp * (defender.status ? 2 : 1);
       desc.moveBP = basePower;
       break;
+    case "Barb Barrage":
+      basePower = move.bp * (defender.hasStatus("psn", "tox") ? 2 : 1);
+      desc.moveBP = basePower;
+      break;
     case "Heavy Slam":
     case "Heat Crash":
       const wr = getWeight(attacker, desc, "attacker") / getWeight(defender, desc, "defender");
@@ -20997,6 +21017,10 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
   if (attacker.hasAbility("Technician") && basePower <= 60 || attacker.hasAbility("Mega Launcher") && move.flags.pulse || attacker.hasAbility("Strong Jaw") && move.flags.bite || attacker.hasAbility("Sharpness") && move.flags.slicing) {
     bpMods.push(6144);
     desc.attackerAbility = attacker.ability;
+  }
+  if (field.attackerSide.isCharge && move.hasType("Electric")) {
+    bpMods.push(8192);
+    desc.isCharge = true;
   }
   const aura = `${move.type} Aura`;
   const isAttackerAura = attacker.hasAbility(aura);
@@ -21222,6 +21246,11 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
     finalMods.push(2048);
     desc.defenderAbility = defender.ability;
   }
+  const halveContactMoveDmg = defender.hasAbility("Fluffy") || defender.hasAbility("Aura Guard");
+  if (halveContactMoveDmg && move.flags.contact && !attacker.hasAbility("Long Reach")) {
+    finalMods.push(2048);
+    desc.defenderAbility = defender.ability;
+  }
   if (defender.hasAbility("Solid Rock", "Filter") && typeEffectiveness > 1) {
     finalMods.push(3072);
     desc.defenderAbility = defender.ability;
@@ -21229,6 +21258,10 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
   if (field.defenderSide.isFriendGuard) {
     finalMods.push(3072);
     desc.isFriendGuard = true;
+  }
+  if (defender.hasAbility("Fluffy") && move.hasType("Fire")) {
+    finalMods.push(8192);
+    desc.defenderAbility = defender.ability;
   }
   if (attacker.hasItem("Expert Belt") && typeEffectiveness > 1) {
     finalMods.push(4915);
@@ -21795,6 +21828,10 @@ function calculateFinalModsADV(baseDamage, attacker, move, field, desc, isCritic
     baseDamage *= 2;
     desc.moveBP = move.bp * 2;
   }
+  if (field.attackerSide.isCharge && move.hasType("Electric")) {
+    baseDamage *= 2;
+    desc.isCharge = true;
+  }
   if (field.attackerSide.isHelpingHand) {
     baseDamage = Math.floor(baseDamage * 1.5);
     desc.isHelpingHand = true;
@@ -22187,6 +22224,10 @@ function calculateBPModsDPP(attacker, defender, move, field, desc, basePower) {
   if (field.attackerSide.isHelpingHand) {
     basePower = Math.floor(basePower * 1.5);
     desc.isHelpingHand = true;
+  }
+  if (field.attackerSide.isCharge && move.hasType("Electric")) {
+    basePower = Math.floor(basePower * 2);
+    desc.isCharge = true;
   }
   if (attacker.hasAbility("Technician") && basePower <= 60) {
     basePower = Math.floor(basePower * 1.5);
@@ -22904,6 +22945,10 @@ function calculateBPModsBWXY(gen4, attacker, defender, move, field, desc, basePo
     bpMods.push(4915);
     desc.attackerAbility = attacker.ability;
   }
+  if (field.attackerSide.isCharge && move.hasType("Electric")) {
+    bpMods.push(8192);
+    desc.isCharge = true;
+  }
   if (defender.hasAbility("Heatproof") && move.hasType("Fire")) {
     bpMods.push(2048);
     desc.defenderAbility = defender.ability;
@@ -23486,6 +23531,9 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     field.defenderSide.isReflect = false;
     field.defenderSide.isLightScreen = false;
     field.defenderSide.isAuroraVeil = false;
+  }
+  if (attacker.hasAbility("Electromorphosis") && attacker.abilityOn) {
+    field.attackerSide.isCharge = true;
   }
   let hasAteAbilityTypeChange = false;
   let isAerilate = false;
@@ -24140,6 +24188,10 @@ function calculateBPModsSMSSSV(gen4, attacker, defender, move, field, desc, base
     bpMods.push(6144);
     desc.attackerAbility = attacker.ability;
   }
+  if (field.attackerSide.isCharge && move.hasType("Electric")) {
+    bpMods.push(8192);
+    desc.isCharge = true;
+  }
   const aura = `${move.type} Aura`;
   const isAttackerAura = attacker.hasAbility(aura);
   const isDefenderAura = defender.hasAbility(aura);
@@ -24483,7 +24535,8 @@ function calculateFinalModsSMSSSV(gen4, attacker, defender, move, field, desc, i
     finalMods.push(2048);
     desc.defenderAbility = defender.ability;
   }
-  if (defender.hasAbility("Fluffy") && move.flags.contact && !attacker.hasAbility("Long Reach")) {
+  const halveContactMoveDmg = defender.hasAbility("Fluffy") || defender.hasAbility("Aura Guard");
+  if (halveContactMoveDmg && move.flags.contact && !attacker.hasAbility("Long Reach")) {
     finalMods.push(2048);
     desc.defenderAbility = defender.ability;
   } else if (defender.hasAbility("Punk Rock") && move.flags.sound || defender.hasAbility("Ice Scales") && move.category === "Special") {

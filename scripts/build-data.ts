@@ -352,8 +352,11 @@ function pokemonZhOverride(id: string, name: string, fallback: string) {
 
 const MOVE_ZH_BY_ID: Record<string, string> = {
   barbbarrage: '毒千针',
+  doubleshock: '电光双击',
+  glaiverush: '巨剑突击',
   makeitrain: '淘金潮',
   ragefist: '愤怒之拳',
+  revivalblessing: '复生祈祷',
   soak: '浸水',
   accelerock: '冲岩',
   acidarmor: '溶化',
