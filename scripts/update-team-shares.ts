@@ -74,6 +74,7 @@ const TEAM_SHEET_ID = '1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw'
 const TEAM_SOURCE_NAME = 'VGCPastes Repository'
 const TEAM_SOURCE_HOME_URL = 'https://tinyurl.com/vgcpastes2026'
 const TEAM_SHEETS = [
+  { season: 'M-C', gid: '2001945654' },
   { season: 'M-B', gid: '1458357160' },
   { season: 'M-A', gid: '791705272' },
 ].map((sheet) => ({
