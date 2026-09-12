@@ -2,8 +2,8 @@ name: Sync usage and trainer rankings
 
 on:
   schedule:
-    # 15:00 Japan time.
-    - cron: '0 6 * * *'
+    # Run hourly, at minute 17 to avoid the top-of-hour rush.
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
