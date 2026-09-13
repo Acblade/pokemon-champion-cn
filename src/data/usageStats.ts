@@ -97,8 +97,12 @@ export function findUsageDataset(season: string, battleRule = '1'): UsageDataset
 }
 
 export function getPokemonUsageFromDataset(dataset: UsageDataset, ...names: string[]): UsageEntry | null {
+  const requestedKey = normalizeId(names[0] ?? '')
+  // Only Mega forms share base-species statistics; other forms need their own entry.
+  const allowBaseFallback = requestedKey.includes('mega')
   for (const name of names) {
     const key = normalizeId(name)
+    if (!allowBaseFallback && key !== requestedKey) continue
     const hit = dataset.entries[key]
     if (hit) return hit
     for (const alias of USAGE_ALIAS_KEYS[key] || []) {

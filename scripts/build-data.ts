@@ -11,6 +11,7 @@ type Species = {
   name: string
   baseSpecies?: string
   battleOnly?: string | string[]
+  forme?: string
   types?: string[]
   baseStats?: Record<string, number>
   abilities?: Record<string, string>
@@ -49,6 +50,7 @@ type MoveSecondary = {
 
 type FormatData = {
   tier?: string
+  isNonstandard?: string | null
 }
 
 type ItemData = {
@@ -987,8 +989,18 @@ async function main() {
     })
   }
 
+  const speciesIdByName = new Map(Object.entries(pokedex).map(([id, species]) => [species.name, id]))
+  const isIncludedPokemon = (id: string, data: FormatData) => {
+    if (data.tier === 'Illegal') return false
+    if (data.tier && data.tier !== 'Illegal') return true
+    if (data.isNonstandard || !pokedex[id]?.forme || pokedex[id].battleOnly) return false
+    const baseId = speciesIdByName.get(pokedex[id].baseSpecies || '')
+    const baseData = baseId ? formatsData[baseId] : undefined
+    return Boolean(baseData?.tier && baseData.tier !== 'Illegal')
+  }
+
   let pokemonIndex = Object.entries(formatsData)
-    .filter(([, data]) => data.tier && data.tier !== 'Illegal')
+    .filter(([id, data]) => isIncludedPokemon(id, data))
     .map(([id, format]) => {
       const species = pokedex[id]
       if (!species) return null
@@ -1014,7 +1026,7 @@ async function main() {
         baseSpeciesName: species.baseSpecies || species.name,
         baseSpeciesId: normalizeSearch(species.baseSpecies || species.name),
         types: species.types || [],
-        tier: format.tier,
+        tier: format.tier ?? formatsData[speciesIdByName.get(species.baseSpecies || '') || '']?.tier,
         hasMega: (species.otherFormes || []).some((forme) => forme.toLowerCase().includes('mega')),
         abilities: Object.values(species.abilities || {})
           .filter(Boolean)

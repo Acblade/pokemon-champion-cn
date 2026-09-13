@@ -8,10 +8,12 @@ type Species = {
   name: string
   baseSpecies?: string
   battleOnly?: string | string[]
+  forme?: string
 }
 
 type FormatData = {
   tier?: string
+  isNonstandard?: string | null
 }
 
 type FormatEntry = {
@@ -121,6 +123,21 @@ function findSpeciesIdByName(pokedex: Dict<Species>, name: string) {
   return Object.entries(pokedex).find(([, species]) => species.name === name)?.[0]
 }
 
+function isIncludedPokemon(
+  id: string,
+  data: FormatData,
+  formatsData: Dict<FormatData>,
+  pokedex: Dict<Species>,
+) {
+  if (data.tier === 'Illegal') return false
+  if (data.tier && data.tier !== 'Illegal') return true
+  const species = pokedex[id]
+  if (data.isNonstandard || !species?.forme || species.battleOnly) return false
+  const baseId = findSpeciesIdByName(pokedex, species.baseSpecies || '')
+  const baseData = baseId ? formatsData[baseId] : undefined
+  return Boolean(baseData?.tier && baseData.tier !== 'Illegal')
+}
+
 function resolveLearnsetId(
   id: string,
   detail: GeneratedPokemonDetail,
@@ -186,7 +203,7 @@ async function main() {
 
   const legalPokemonIds = new Set(
     Object.entries(formatsData)
-      .filter(([, data]) => data.tier && data.tier !== 'Illegal')
+      .filter(([id, data]) => isIncludedPokemon(id, data, formatsData, pokedex))
       .map(([id]) => canonicalPokemonAuditId(id)),
   )
   const generatedPokemonIds = new Set(Object.keys(generatedDetails).map((id) => canonicalPokemonAuditId(id)))

@@ -39,6 +39,7 @@ const PATHS = {
 const FORM_OVERRIDES: Record<string, string> = {
   '0026-01': 'raichualola',
   '0038-01': 'ninetalesalola',
+  '0053-01': 'persianalola',
   '0059-01': 'arcaninehisui',
   '0080-02': 'slowbrogalar',
   '0128-01': 'taurospaldeacombat',
@@ -65,7 +66,12 @@ const FORM_OVERRIDES: Record<string, string> = {
   '0724-01': 'decidueyehisui',
   '0745-01': 'lycanrocmidnight',
   '0745-02': 'lycanrocdusk',
+  '0849-01': 'toxtricitylowkey',
+  '0876-01': 'indeedeef',
   '0902-01': 'basculegionf',
+  '0931-01': 'squawkabillyblue',
+  '0931-02': 'squawkabillyyellow',
+  '0931-03': 'squawkabillywhite',
 }
 
 const GAMEWITH_FORM_KEY_OVERRIDES: Record<string, string> = {

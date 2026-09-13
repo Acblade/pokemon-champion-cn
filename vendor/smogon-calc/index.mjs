@@ -479,6 +479,7 @@ var CHAMPIONS = [
   "Effect Spore",
   "Electric Surge",
   "Electromorphosis",
+  "Emergency Exit",
   "Fairy Aura",
   "Filter",
   "Fire Mane",
@@ -495,6 +496,9 @@ var CHAMPIONS = [
   "Gluttony",
   "Good as Gold",
   "Gooey",
+  "Grass Pelt",
+  "Grassy Surge",
+  "Guard Dog",
   "Guts",
   "Harvest",
   "Healer",
@@ -522,9 +526,11 @@ var CHAMPIONS = [
   "Klutz",
   "Leaf Guard",
   "Levitate",
+  "Libero",
   "Light Metal",
   "Lightning Rod",
   "Limber",
+  "Liquid Ooze",
   "Liquid Voice",
   "Long Reach",
   "Magic Bounce",
@@ -563,12 +569,15 @@ var CHAMPIONS = [
   "Prankster",
   "Pressure",
   "Protean",
+  "Psychic Surge",
+  "Punk Rock",
   "Pure Power",
   "Purifying Salt",
   "Queenly Majesty",
   "Quick Draw",
   "Quick Feet",
   "Rain Dish",
+  "Rattled",
   "Receiver",
   "Reckless",
   "Refrigerate",
@@ -577,6 +586,7 @@ var CHAMPIONS = [
   "Rivalry",
   "Rock Head",
   "Rough Skin",
+  "Run Away",
   "Sand Force",
   "Sand Rush",
   "Sand Spit",
@@ -585,6 +595,7 @@ var CHAMPIONS = [
   "Sap Sipper",
   "Scrappy",
   "Screen Cleaner",
+  "Seed Sower",
   "Shadow Tag",
   "Sharpness",
   "Shed Skin",
@@ -601,12 +612,14 @@ var CHAMPIONS = [
   "Soundproof",
   "Speed Boost",
   "Spicy Spray",
+  "Stakeout",
   "Stall",
   "Stalwart",
   "Stamina",
   "Stance Change",
   "Static",
   "Steadfast",
+  "Steely Spirit",
   "Stench",
   "Sticky Hold",
   "Strong Jaw",
@@ -624,6 +637,7 @@ var CHAMPIONS = [
   "Tangled Feet",
   "Technician",
   "Telepathy",
+  "Thermal Exchange",
   "Thick Fat",
   "Torrent",
   "Tough Claws",
@@ -1213,6 +1227,7 @@ var SV2 = SS2.concat(
 var CHAMPIONS2 = [
   "Abomasite",
   "Absolite",
+  "Absolite Z",
   "Aerodactylite",
   "Aggronite",
   "Alakazite",
@@ -1221,6 +1236,7 @@ var CHAMPIONS2 = [
   "Audinite",
   "Banettite",
   "Barbaracite",
+  "Baxcalibrite",
   "Beedrillite",
   "Blastoisinite",
   "Blazikenite",
@@ -1245,10 +1261,12 @@ var CHAMPIONS2 = [
   "Froslassite",
   "Galladite",
   "Garchompite",
+  "Garchompite Z",
   "Gardevoirite",
   "Gengarite",
   "Glalitite",
   "Glimmoranite",
+  "Golisopite",
   "Golurkite",
   "Greninjite",
   "Gyaradosite",
@@ -1258,6 +1276,7 @@ var CHAMPIONS2 = [
   "Kangaskhanite",
   "Lopunnite",
   "Lucarionite",
+  "Lucarionite Z",
   "Malamarite",
   "Manectite",
   "Mawilite",
@@ -1271,6 +1290,7 @@ var CHAMPIONS2 = [
   "Raichunite X",
   "Raichunite Y",
   "Sablenite",
+  "Salamencite",
   "Sceptilite",
   "Scizorite",
   "Scolipite",
@@ -1287,9 +1307,11 @@ var CHAMPIONS2 = [
   "Tyranitarite",
   "Venusaurite",
   "Victreebelite",
+  "Air Balloon",
   "Aspear Berry",
   "Babiri Berry",
   "Big Root",
+  "Binding Band",
   "Black Belt",
   "Black Glasses",
   "Bright Powder",
@@ -1304,10 +1326,13 @@ var CHAMPIONS2 = [
   "Colbur Berry",
   "Damp Rock",
   "Dragon Fang",
+  "Electric Seed",
+  "Eject Button",
   "Expert Belt",
   "Fairy Feather",
   "Focus Band",
   "Focus Sash",
+  "Grassy Seed",
   "Haban Berry",
   "Hard Stone",
   "Heat Rock",
@@ -1316,6 +1341,7 @@ var CHAMPIONS2 = [
   "Kasib Berry",
   "Kebia Berry",
   "King's Rock",
+  "Leek",
   "Leftovers",
   "Leppa Berry",
   "Life Orb",
@@ -1327,9 +1353,11 @@ var CHAMPIONS2 = [
   "Metal Coat",
   "Metronome",
   "Miracle Seed",
+  "Misty Seed",
   "Muscle Band",
   "Mystic Water",
   "Never-Melt Ice",
+  "Normal Gem",
   "Occa Berry",
   "Oran Berry",
   "Passho Berry",
@@ -1337,9 +1365,12 @@ var CHAMPIONS2 = [
   "Pecha Berry",
   "Persim Berry",
   "Poison Barb",
+  "Psychic Seed",
   "Quick Claw",
   "Rawst Berry",
+  "Red Card",
   "Rindo Berry",
+  "Rocky Helmet",
   "Roseli Berry",
   "Scope Lens",
   "Sharp Beak",
@@ -1352,6 +1383,7 @@ var CHAMPIONS2 = [
   "Smooth Rock",
   "Soft Sand",
   "Tanga Berry",
+  "Terrain Extender",
   "Twisted Spoon",
   "Wacan Berry",
   "White Herb",
@@ -6450,6 +6482,7 @@ var CHAMPIONS_LIST = [
   "Cotton Guard",
   "Cotton Spore",
   "Counter",
+  "Court Change",
   "Covet",
   "Crabhammer",
   "Cross Chop",
@@ -6470,6 +6503,7 @@ var CHAMPIONS_LIST = [
   "Discharge",
   "Dive",
   "Double Hit",
+  "Double Shock",
   "Double Team",
   "Double-Edge",
   "Draco Meteor",
@@ -6484,6 +6518,7 @@ var CHAMPIONS_LIST = [
   "Draining Kiss",
   "Drill Peck",
   "Drill Run",
+  "Drum Beating",
   "Dual Wingbeat",
   "Dynamic Punch",
   "Earth Power",
@@ -6547,6 +6582,7 @@ var CHAMPIONS_LIST = [
   "Giga Drain",
   "Giga Impact",
   "Gigaton Hammer",
+  "Glaive Rush",
   "Glare",
   "Grass Knot",
   "Grassy Glide",
@@ -6601,6 +6637,7 @@ var CHAMPIONS_LIST = [
   "Iron Defense",
   "Iron Head",
   "Iron Tail",
+  "Jaw Lock",
   "Jet Punch",
   "King's Shield",
   "Knock Off",
@@ -6635,6 +6672,7 @@ var CHAMPIONS_LIST = [
   "Memento",
   "Metal Burst",
   "Metal Sound",
+  "Meteor Assault",
   "Meteor Beam",
   "Meteor Mash",
   "Milk Drink",
@@ -6658,7 +6696,9 @@ var CHAMPIONS_LIST = [
   "No Retreat",
   "Noble Roar",
   "Nuzzle",
+  "Octolock",
   "Outrage",
+  "Overdrive",
   "Overheat",
   "Pain Split",
   "Parabolic Charge",
@@ -6694,6 +6734,7 @@ var CHAMPIONS_LIST = [
   "Psycho Cut",
   "Psyshield Bash",
   "Psyshock",
+  "Pyro Ball",
   "Quash",
   "Quick Attack",
   "Quick Guard",
@@ -6711,6 +6752,7 @@ var CHAMPIONS_LIST = [
   "Reflect Type",
   "Rest",
   "Reversal",
+  "Revival Blessing",
   "Rising Voltage",
   "Roar",
   "Rock Blast",
@@ -6743,12 +6785,14 @@ var CHAMPIONS_LIST = [
   "Shell Side Arm",
   "Shell Smash",
   "Shelter",
+  "Shift Gear",
   "Simple Beam",
   "Sing",
   "Skill Swap",
   "Skitter Smack",
   "Sky Attack",
   "Slack Off",
+  "Slash",
   "Sleep Powder",
   "Sleep Talk",
   "Sludge Bomb",
@@ -6757,6 +6801,7 @@ var CHAMPIONS_LIST = [
   "Smart Strike",
   "Snap Trap",
   "Snarl",
+  "Snipe Shot",
   "Snore",
   "Snowscape",
   "Soak",
@@ -6865,7 +6910,8 @@ var CHAMPIONS_LIST = [
   "X-Scissor",
   "Yawn",
   "Zap Cannon",
-  "Zen Headbutt"
+  "Zen Headbutt",
+  "Zing Zap"
 ];
 var CHAMPIONS_PATCH = {
   "Anchor Shot": { bp: 90 },
@@ -6877,6 +6923,7 @@ var CHAMPIONS_PATCH = {
   "Bone Rush": { bp: 30 },
   "Crush Claw": { isSlicing: true },
   "Dire Claw": { isSlicing: true },
+  "Double Shock": { isPunch: true },
   "Dragon Claw": { isSlicing: true },
   "Dragon Cheer": { isSound: true },
   "Dragon Hammer": { bp: 100 },
@@ -6889,11 +6936,13 @@ var CHAMPIONS_PATCH = {
   "Infernal Parade": { bp: 65 },
   "Make It Rain": { self: { boosts: { spa: -2 } } },
   "Metal Claw": { isSlicing: true },
+  "Meteor Assault": { bp: 170 },
   "Mountain Gale": { bp: 120 },
   "Night Daze": { bp: 90 },
   "Psyshield Bash": { bp: 90 },
   "Revelation Dance": { bp: 100 },
   "Shadow Claw": { isSlicing: true },
+  "Slash": { bp: 80 },
   "Snap Trap": { type: "Steel" },
   "Snipe Shot": { bp: 85 },
   "Spirit Shackle": { bp: 90 },
@@ -17237,7 +17286,7 @@ var ZA_PATCH2 = {
     types: ["Bug", "Steel"],
     bs: { hp: 75, at: 150, df: 175, sa: 70, sd: 120, sp: 40 },
     weightkg: 148,
-    abilities: { 0: "Emergency Exit" },
+    abilities: { 0: "Tough Claws" },
     baseSpecies: "Golisopod"
   },
   "Golurk-Mega": {
@@ -17456,6 +17505,7 @@ var CHAMPIONS_LIST2 = [
   "Appletun",
   "Araquanid",
   "Arbok",
+  "Arboliva",
   "Arcanine",
   "Arcanine-Hisui",
   "Archaludon",
@@ -17475,6 +17525,8 @@ var CHAMPIONS_LIST2 = [
   "Basculegion",
   "Basculegion-F",
   "Bastiodon",
+  "Baxcalibur",
+  "Baxcalibur-Mega",
   "Beartic",
   "Beedrill",
   "Beedrill-Mega",
@@ -17499,6 +17551,7 @@ var CHAMPIONS_LIST2 = [
   "Chesnaught-Mega",
   "Chimecho",
   "Chimecho-Mega",
+  "Cinderace",
   "Clawitzer",
   "Clefable",
   "Clefable-Mega",
@@ -17533,6 +17586,7 @@ var CHAMPIONS_LIST2 = [
   "Excadrill-Mega",
   "Falinks",
   "Falinks-Mega",
+  "Farfetch\u2019d",
   "Farigiraf",
   "Feraligatr",
   "Feraligatr-Mega",
@@ -17563,6 +17617,9 @@ var CHAMPIONS_LIST2 = [
   "Glimmora",
   "Glimmora-Mega",
   "Gliscor",
+  "Gogoat",
+  "Golisopod",
+  "Golisopod-Mega",
   "Golurk",
   "Golurk-Mega",
   "Goodra",
@@ -17571,6 +17628,7 @@ var CHAMPIONS_LIST2 = [
   "Gourgeist-Large",
   "Gourgeist-Small",
   "Gourgeist-Super",
+  "Grapploct",
   "Greninja",
   "Greninja-Mega",
   "Grimmsnarl",
@@ -17589,7 +17647,10 @@ var CHAMPIONS_LIST2 = [
   "Hydrapple",
   "Hydreigon",
   "Incineroar",
+  "Indeedee",
+  "Indeedee-F",
   "Infernape",
+  "Inteleon",
   "Jolteon",
   "Kangaskhan",
   "Kangaskhan-Mega",
@@ -17609,6 +17670,7 @@ var CHAMPIONS_LIST2 = [
   "Lycanroc",
   "Lycanroc-Dusk",
   "Lycanroc-Midnight",
+  "Mabosstiff",
   "Machamp",
   "Malamar",
   "Malamar-Mega",
@@ -17635,6 +17697,7 @@ var CHAMPIONS_LIST2 = [
   "Mimikyu-Busted",
   "Morpeko",
   "Morpeko-Hangry",
+  "Mr. Mime",
   "Mr. Rime",
   "Mudsdale",
   "Musharna",
@@ -17648,10 +17711,15 @@ var CHAMPIONS_LIST2 = [
   "Palafin-Hero",
   "Pangoro",
   "Passimian",
+  "Pawmot",
   "Pelipper",
+  "Perrserker",
+  "Persian",
+  "Persian-Alola",
   "Pidgeot",
   "Pidgeot-Mega",
   "Pikachu",
+  "Pincurchin",
   "Pinsir",
   "Pinsir-Mega",
   "Politoed",
@@ -17669,6 +17737,7 @@ var CHAMPIONS_LIST2 = [
   "Rampardos",
   "Reuniclus",
   "Rhyperior",
+  "Rillaboom",
   "Roserade",
   "Rotom",
   "Rotom-Fan",
@@ -17679,6 +17748,8 @@ var CHAMPIONS_LIST2 = [
   "Runerigus",
   "Sableye",
   "Sableye-Mega",
+  "Salamence",
+  "Salamence-Mega",
   "Salazzle",
   "Samurott",
   "Samurott-Hisui",
@@ -17701,6 +17772,7 @@ var CHAMPIONS_LIST2 = [
   "Simisear",
   "Sinistcha",
   "Sinistcha-Masterpiece",
+  "Sirfetch\u2019d",
   "Skarmory",
   "Skarmory-Mega",
   "Skeledirge",
@@ -17713,6 +17785,10 @@ var CHAMPIONS_LIST2 = [
   "Sneasler",
   "Snorlax",
   "Spiritomb",
+  "Squawkabilly",
+  "Squawkabilly-Blue",
+  "Squawkabilly-White",
+  "Squawkabilly-Yellow",
   "Staraptor",
   "Staraptor-Mega",
   "Starmie",
@@ -17721,6 +17797,7 @@ var CHAMPIONS_LIST2 = [
   "Steelix-Mega",
   "Stunfisk",
   "Stunfisk-Galar",
+  "Swalot",
   "Swampert",
   "Swampert-Mega",
   "Sylveon",
@@ -17729,12 +17806,15 @@ var CHAMPIONS_LIST2 = [
   "Tauros-Paldea-Aqua",
   "Tauros-Paldea-Blaze",
   "Tauros-Paldea-Combat",
+  "Thievul",
   "Tinkaton",
   "Torkoal",
   "Torterra",
   "Toucannon",
   "Toxapex",
   "Toxicroak",
+  "Toxtricity",
+  "Toxtricity-Low-Key",
   "Trevenant",
   "Tsareena",
   "Typhlosion",
@@ -17757,6 +17837,7 @@ var CHAMPIONS_LIST2 = [
   "Watchog",
   "Weavile",
   "Whimsicott",
+  "Wigglytuff",
   "Wyrdeer",
   "Zoroark",
   "Zoroark-Hisui"
@@ -20094,10 +20175,10 @@ function getEndOfTurn(gen4, attacker, defender, move, field) {
   }
   if (!defender.hasAbility("Magic Guard") && TRAPPING.includes(move.name) && (gen4.num === 0 || gen4.num > 1)) {
     if (attacker.hasItem("Binding Band")) {
-      damage -= gen4.num > 5 ? Math.floor(defender.maxHP() / 6) : Math.floor(defender.maxHP() / 8);
+      damage -= gen4.num === 0 || gen4.num > 5 ? Math.floor(defender.maxHP() / 6) : Math.floor(defender.maxHP() / 8);
       texts.push("trapping damage");
     } else {
-      damage -= gen4.num > 5 ? Math.floor(defender.maxHP() / 8) : Math.floor(defender.maxHP() / 16);
+      damage -= gen4.num === 0 || gen4.num > 5 ? Math.floor(defender.maxHP() / 8) : Math.floor(defender.maxHP() / 16);
       texts.push("trapping damage");
     }
   }
@@ -20458,6 +20539,8 @@ function calculateChampions(gen4, attacker, defender, move, field) {
   checkItem(defender, field.isMagicRoom);
   checkRawStatChanges(attacker, field.attackerSide.isPowerTrick, field.isWonderRoom);
   checkRawStatChanges(defender, field.defenderSide.isPowerTrick, field.isWonderRoom);
+  checkSeedBoost(attacker, field);
+  checkSeedBoost(defender, field);
   computeFinalStats(gen4, attacker, defender, field, "def", "spd", "spe");
   checkIntimidate(gen4, attacker, defender);
   checkIntimidate(gen4, defender, attacker);
@@ -20494,6 +20577,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     return result;
   }
   const defenderAbilityIgnored = defender.hasAbility(
+    "Aura Guard",
     "Armor Tail",
     "Aroma Veil",
     "Battle Armor",
@@ -20512,6 +20596,8 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     "Fluffy",
     "Friend Guard",
     "Fur Coat",
+    "Grass Pelt",
+    "Guard Dog",
     "Heatproof",
     "Heavy Metal",
     "Hyper Cutter",
@@ -20534,6 +20620,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     "Oblivious",
     "Overcoat",
     "Own Tempo",
+    "Punk Rock",
     "Purifying Salt",
     "Queenly Majesty",
     "Sand Veil",
@@ -20549,6 +20636,7 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     "Sweet Veil",
     "Tangled Feet",
     "Telepathy",
+    "Thermal Exchange",
     "Thick Fat",
     "Unaware",
     "Vital Spirit",
@@ -20664,6 +20752,10 @@ function calculateChampions(gen4, attacker, defender, move, field) {
     desc.defenderAbility = defender.ability;
     return result;
   }
+  if (move.hasType("Ground") && !field.isGravity && defender.hasItem("Air Balloon")) {
+    desc.defenderItem = defender.item;
+    return result;
+  }
   if (move.priority > 0 && field.hasTerrain("Psychic") && isGrounded(defender, field)) {
     desc.terrain = field.terrain;
     return result;
@@ -20718,6 +20810,9 @@ function calculateChampions(gen4, attacker, defender, move, field) {
   if (attacker.hasAbility("Gale Wings") && move.hasType("Flying") && attacker.curHP() === attacker.maxHP()) {
     move.priority = 1;
     desc.attackerAbility = attacker.ability;
+  }
+  if (hasTerrainSeed(defender) && field.hasTerrain(defender.item.substring(0, defender.item.indexOf(" "))) && SEED_BOOSTED_STAT[defender.item] === defenseStat) {
+    desc.defenderItem = defender.item;
   }
   let stabMod = getStabMod(attacker, move, desc);
   const applyBurn = attacker.hasStatus("brn") && move.category === "Physical" && !attacker.hasAbility("Guts") && !move.named("Facade");
@@ -21014,7 +21109,7 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
       desc.terrain = field.terrain;
     }
   }
-  if (attacker.hasAbility("Technician") && basePower <= 60 || attacker.hasAbility("Mega Launcher") && move.flags.pulse || attacker.hasAbility("Strong Jaw") && move.flags.bite || attacker.hasAbility("Sharpness") && move.flags.slicing) {
+  if (attacker.hasAbility("Technician") && basePower <= 60 || attacker.hasAbility("Mega Launcher") && move.flags.pulse || attacker.hasAbility("Strong Jaw") && move.flags.bite || attacker.hasAbility("Steely Spirit") && move.hasType("Steel") || attacker.hasAbility("Sharpness") && move.flags.slicing) {
     bpMods.push(6144);
     desc.attackerAbility = attacker.ability;
   }
@@ -21033,7 +21128,7 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
     if (isAttackerAura) desc.attackerAbility = attacker.ability;
     if (isDefenderAura) desc.defenderAbility = defender.ability;
   }
-  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot")) || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out" || attacker.abilityOn) || attacker.hasAbility("Tough Claws") && move.flags.contact) {
+  if (attacker.hasAbility("Sheer Force") && (move.secondaries || move.named("Electro Shot")) || attacker.hasAbility("Sand Force") && field.hasWeather("Sand") && move.hasType("Rock", "Ground", "Steel") || attacker.hasAbility("Analytic") && (turnOrder !== "first" || field.defenderSide.isSwitching === "out" || attacker.abilityOn) || attacker.hasAbility("Tough Claws") && move.flags.contact || attacker.hasAbility("Punk Rock") && move.flags.sound) {
     bpMods.push(5325);
     desc.attackerAbility = attacker.ability;
   }
@@ -21064,7 +21159,10 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
     desc.attackerAbility = attacker.ability;
     desc.alliesFainted = attacker.alliesFainted;
   }
-  if (attacker.item && move.hasType(getItemBoostType(attacker.item))) {
+  if (attacker.hasItem(`${move.type} Gem`)) {
+    bpMods.push(5325);
+    desc.attackerItem = attacker.item;
+  } else if (attacker.item && move.hasType(getItemBoostType(attacker.item))) {
     bpMods.push(4915);
     desc.attackerItem = attacker.item;
   } else if (attacker.hasItem("Muscle Band") && move.category === "Physical" || attacker.hasItem("Wise Glasses") && move.category === "Special") {
@@ -21128,6 +21226,9 @@ function calculateAtModsChampions(gen4, attacker, defender, move, field, desc) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility("Water Bubble") && move.hasType("Water") || attacker.hasAbility("Huge Power", "Pure Power") && move.category === "Physical") {
+    atMods.push(8192);
+    desc.attackerAbility = attacker.ability;
+  } else if (attacker.hasAbility("Stakeout") && attacker.abilityOn) {
     atMods.push(8192);
     desc.attackerAbility = attacker.ability;
   }
@@ -21196,6 +21297,9 @@ function calculateDfModsChampions(gen4, attacker, defender, move, field, desc, i
   if (defender.hasAbility("Marvel Scale") && defender.status && hitsPhysical) {
     dfMods.push(6144);
     desc.defenderAbility = defender.ability;
+  } else if (defender.hasAbility("Grass Pelt") && field.hasTerrain("Grassy") && hitsPhysical) {
+    dfMods.push(6144);
+    desc.defenderAbility = defender.ability;
   } else if (defender.hasAbility("Fur Coat") && hitsPhysical) {
     dfMods.push(8192);
     desc.defenderAbility = defender.ability;
@@ -21250,6 +21354,9 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
   if (halveContactMoveDmg && move.flags.contact && !attacker.hasAbility("Long Reach")) {
     finalMods.push(2048);
     desc.defenderAbility = defender.ability;
+  } else if (defender.hasAbility("Punk Rock") && move.flags.sound) {
+    finalMods.push(2048);
+    desc.defenderAbility = defender.ability;
   }
   if (defender.hasAbility("Solid Rock", "Filter") && typeEffectiveness > 1) {
     finalMods.push(3072);
@@ -21287,6 +21394,9 @@ function calculateFinalModsChampions(gen4, attacker, defender, move, field, desc
     desc.defenderItem = defender.item;
   }
   return finalMods;
+}
+function hasTerrainSeed(pokemon) {
+  return pokemon.hasItem("Electric Seed", "Misty Seed", "Grassy Seed", "Psychic Seed");
 }
 
 // out/tmp/damage-calc/calc/src/mechanics/gen12.ts
@@ -23733,7 +23843,7 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     move.priority = 1;
     desc.attackerAbility = attacker.ability;
   }
-  if (hasTerrainSeed(defender) && field.hasTerrain(defender.item.substring(0, defender.item.indexOf(" "))) && SEED_BOOSTED_STAT[defender.item] === defenseStat) {
+  if (hasTerrainSeed2(defender) && field.hasTerrain(defender.item.substring(0, defender.item.indexOf(" "))) && SEED_BOOSTED_STAT[defender.item] === defenseStat) {
     desc.defenderItem = defender.item;
   }
   let preStellarStabMod = getStabMod(attacker, move, desc);
@@ -24580,7 +24690,7 @@ function calculateFinalModsSMSSSV(gen4, attacker, defender, move, field, desc, i
   }
   return finalMods;
 }
-function hasTerrainSeed(pokemon) {
+function hasTerrainSeed2(pokemon) {
   return pokemon.hasItem("Electric Seed", "Misty Seed", "Grassy Seed", "Psychic Seed");
 }
 

@@ -6104,7 +6104,7 @@
       "Dragon",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -13854,6 +13854,59 @@
     ]
   },
   {
+    "id": "toxtricitylowkey",
+    "num": 849,
+    "zh": "颤弦蝾螈",
+    "name": "Toxtricity-Low-Key",
+    "pinyin": "chanxianrongyuan",
+    "initials": "cxry",
+    "slugVariants": [
+      "颤弦蝾螈",
+      "toxtricitylowkey",
+      "chanxianrongyuan"
+    ],
+    "baseSpeciesName": "Toxtricity",
+    "baseSpeciesId": "toxtricity",
+    "types": [
+      "Electric",
+      "Poison"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "punkrock",
+        "en": "Punk Rock",
+        "zh": "庞克摇滚"
+      },
+      {
+        "id": "minus",
+        "en": "Minus",
+        "zh": "负电"
+      },
+      {
+        "id": "technician",
+        "en": "Technician",
+        "zh": "技术高手"
+      }
+    ],
+    "baseStats": {
+      "hp": 75,
+      "atk": 98,
+      "def": 70,
+      "spa": 114,
+      "spd": 70,
+      "spe": 75
+    },
+    "bst": 502,
+    "searchKeys": [
+      "颤弦蝾螈",
+      "toxtricitylowkey",
+      "chanxianrongyuan",
+      "cxry"
+    ]
+  },
+  {
     "id": "grapploct",
     "num": 853,
     "zh": "八爪武师",
@@ -15302,6 +15355,165 @@
     ]
   },
   {
+    "id": "squawkabillyblue",
+    "num": 931,
+    "zh": "怒鹦哥",
+    "name": "Squawkabilly-Blue",
+    "pinyin": "nuyingge",
+    "initials": "nyg",
+    "slugVariants": [
+      "怒鹦哥",
+      "squawkabillyblue",
+      "nuyingge"
+    ],
+    "baseSpeciesName": "Squawkabilly",
+    "baseSpeciesId": "squawkabilly",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      },
+      {
+        "id": "hustle",
+        "en": "Hustle",
+        "zh": "活力"
+      },
+      {
+        "id": "guts",
+        "en": "Guts",
+        "zh": "毅力"
+      }
+    ],
+    "baseStats": {
+      "hp": 82,
+      "atk": 96,
+      "def": 51,
+      "spa": 45,
+      "spd": 51,
+      "spe": 92
+    },
+    "bst": 417,
+    "searchKeys": [
+      "怒鹦哥",
+      "squawkabillyblue",
+      "nuyingge",
+      "nyg"
+    ]
+  },
+  {
+    "id": "squawkabillywhite",
+    "num": 931,
+    "zh": "怒鹦哥",
+    "name": "Squawkabilly-White",
+    "pinyin": "nuyingge",
+    "initials": "nyg",
+    "slugVariants": [
+      "怒鹦哥",
+      "squawkabillywhite",
+      "nuyingge"
+    ],
+    "baseSpeciesName": "Squawkabilly",
+    "baseSpeciesId": "squawkabilly",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      },
+      {
+        "id": "hustle",
+        "en": "Hustle",
+        "zh": "活力"
+      },
+      {
+        "id": "sheerforce",
+        "en": "Sheer Force",
+        "zh": "强行"
+      }
+    ],
+    "baseStats": {
+      "hp": 82,
+      "atk": 96,
+      "def": 51,
+      "spa": 45,
+      "spd": 51,
+      "spe": 92
+    },
+    "bst": 417,
+    "searchKeys": [
+      "怒鹦哥",
+      "squawkabillywhite",
+      "nuyingge",
+      "nyg"
+    ]
+  },
+  {
+    "id": "squawkabillyyellow",
+    "num": 931,
+    "zh": "怒鹦哥",
+    "name": "Squawkabilly-Yellow",
+    "pinyin": "nuyingge",
+    "initials": "nyg",
+    "slugVariants": [
+      "怒鹦哥",
+      "squawkabillyyellow",
+      "nuyingge"
+    ],
+    "baseSpeciesName": "Squawkabilly",
+    "baseSpeciesId": "squawkabilly",
+    "types": [
+      "Normal",
+      "Flying"
+    ],
+    "tier": "OU",
+    "hasMega": false,
+    "abilities": [
+      {
+        "id": "intimidate",
+        "en": "Intimidate",
+        "zh": "威吓"
+      },
+      {
+        "id": "hustle",
+        "en": "Hustle",
+        "zh": "活力"
+      },
+      {
+        "id": "sheerforce",
+        "en": "Sheer Force",
+        "zh": "强行"
+      }
+    ],
+    "baseStats": {
+      "hp": 82,
+      "atk": 96,
+      "def": 51,
+      "spa": 45,
+      "spd": 51,
+      "spe": 92
+    },
+    "bst": 417,
+    "searchKeys": [
+      "怒鹦哥",
+      "squawkabillyyellow",
+      "nuyingge",
+      "nyg"
+    ]
+  },
+  {
     "id": "garganacl",
     "num": 934,
     "zh": "盐石巨灵",
@@ -16213,11 +16425,6 @@
         "id": "thermalexchange",
         "en": "Thermal Exchange",
         "zh": "热交换"
-      },
-      {
-        "id": "icebody",
-        "en": "Ice Body",
-        "zh": "冰冻之躯"
       }
     ],
     "baseStats": {

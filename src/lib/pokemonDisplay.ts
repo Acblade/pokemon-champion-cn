@@ -28,9 +28,13 @@ const FORM_LABELS: Record<string, string> = {
   Combat: '斗战种',
   Blaze: '火炽种',
   Aqua: '水澜种',
+  Blue: '蓝羽毛',
+  Yellow: '黄羽毛',
+  White: '白羽毛',
 }
 
 function collectFormParts(name: string) {
+  if (name === 'Toxtricity-Low-Key') return ['低调的样子']
   if (name === 'Floette-Eternal') return []
   if (name === 'Floette-Mega') return ['Mega']
 
