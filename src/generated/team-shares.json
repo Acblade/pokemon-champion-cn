@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T08:42:18.799Z",
+  "updatedAt": "2026-09-24T08:34:54.745Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -135869,7 +135869,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/conner138382472/status/2101773605591720077?s=46",
-      "platformUrl": "https://pokepast.es/82a47c7cc134e16f",
+      "platformUrl": "https://pokepast.es/d3a1849223a946f8",
       "season": "M-C",
       "format": "区域赛 / Baltimore Regional 2027",
       "updatedAt": "2026-09-21",
@@ -135938,7 +135938,7 @@
           "item": "Miracle Seed",
           "ability": "Grassy Surge",
           "nature": "Adamant",
-          "spread": "32 HP / 15 Atk / 1 Def / 10 SpD / 7 Spe",
+          "spread": "32 HP / 15 Atk / 2 Def / 10 SpD / 7 Spe",
           "moves": [
             "青草滑梯",
             "木槌",
