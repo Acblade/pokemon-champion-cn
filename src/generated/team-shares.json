@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T08:34:54.745Z",
+  "updatedAt": "2026-09-25T08:56:41.491Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -134092,7 +134092,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/adisubra/status/2101876760665067946",
-      "platformUrl": "https://pokepast.es/8fdc2755b3ed6351",
+      "platformUrl": "https://pokepast.es/7c9c0663ef60180e",
       "season": "M-C",
       "format": "区域赛 / Baltimore Regional 2027",
       "updatedAt": "2026-09-21",
@@ -134101,7 +134101,7 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
@@ -134109,7 +134109,7 @@
         "喷火龙（Mega Y）",
         "具甲武者（Mega）"
       ],
-      "summary": "Baltimore Regional 2027，作者 Aditya Subramanian",
+      "summary": "Baltimore Regional 2027，作者 Aditya Subramanian，队伍码 1PAN6UVFSB",
       "members": [
         {
           "pokemonId": "charizardmegay",
@@ -134117,11 +134117,11 @@
           "item": "Charizardite Y",
           "ability": "Blaze",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "16 HP / 18 Def / 3 SpA / 29 Spe",
           "moves": [
             "热风",
-            "暴风",
             "气象球",
+            "暴风",
             "守住"
           ]
         },
@@ -134131,11 +134131,11 @@
           "item": "Golisopite",
           "ability": "Emergency Exit",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
           "moves": [
             "吸血",
-            "直冲钻",
             "铁头",
+            "直冲钻",
             "守住"
           ]
         },
@@ -134145,11 +134145,11 @@
           "item": "Mystic Water",
           "ability": "Drizzle",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "32 HP / 30 SpA / 4 Spe",
           "moves": [
+            "气象球",
             "浊流",
             "冰冻光束",
-            "气象球",
             "守住"
           ]
         },
@@ -134159,12 +134159,12 @@
           "item": "Sitrus Berry",
           "ability": "Armor Tail",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "29 HP / 20 Def / 17 SpD",
           "moves": [
             "精神强念",
+            "打草结",
             "戏法空间",
-            "守住",
-            "打草结"
+            "守住"
           ]
         },
         {
@@ -134173,12 +134173,12 @@
           "item": "Light Clay",
           "ability": "Prankster",
           "nature": "Sassy",
-          "spread": "-",
+          "spread": "32 HP / 14 Def / 20 SpD",
           "moves": [
-            "光墙",
+            "灵魂冲击",
             "反射壁",
-            "抛下狠话",
-            "灵魂冲击"
+            "光墙",
+            "抛下狠话"
           ]
         },
         {
@@ -134187,11 +134187,11 @@
           "item": "Leftovers",
           "ability": "Stamina",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "32 HP / 1 Def / 24 SpD / 9 Spe",
           "moves": [
             "龙之波动",
-            "大声咆哮",
             "电光束",
+            "大声咆哮",
             "守住"
           ]
         }
