@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-6-rule-1",
-  "updatedAt": "2026-09-28T00:45:51.764Z",
+  "updatedAt": "2026-09-28T06:53:21.042Z",
   "datasets": {
     "champs-season-6-rule-1": {
       "source": "GameWith JP",
@@ -19,7 +19,7 @@
       "season": "6",
       "rule": "1",
       "date": "2026-09-27",
-      "updatedAt": "2026-09-28T00:45:51.104Z",
+      "updatedAt": "2026-09-28T06:53:20.260Z",
       "count": 262,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
@@ -89364,7 +89364,7 @@
     "champs-season-6-rule-2": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/555373",
-      "sourceUpdatedAt": "2026-09-27T07:00:38.000Z",
+      "sourceUpdatedAt": "2026-09-28T06:14:07.000Z",
       "trainerSource": "OP.GG Pokémon Champions",
       "trainerSourceUrl": "https://op.gg/pokemon-champions/leaderboards?format=single&season=m-6",
       "trainerRankingsUpdatedAt": "2026-09-23T05:30:00.000Z",
@@ -89375,8 +89375,8 @@
       "battle": "Singles",
       "season": "6",
       "rule": "2",
-      "date": "2026-09-27",
-      "updatedAt": "2026-09-28T00:45:51.764Z",
+      "date": "2026-09-28",
+      "updatedAt": "2026-09-28T06:53:21.042Z",
       "count": 262,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
