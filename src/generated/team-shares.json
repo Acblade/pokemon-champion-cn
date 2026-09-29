@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T09:57:39.762Z",
+  "updatedAt": "2026-09-29T09:58:25.333Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -155956,7 +155956,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/HariPKMN/status/2101624468464624025",
-      "platformUrl": "https://pokepast.es/be520a6c8cb03827",
+      "platformUrl": "https://pokepast.es/f1837233cdf5dcda",
       "season": "M-C",
       "format": "线上赛事 / VR September Challenge #2",
       "updatedAt": "2026-09-20",
@@ -155966,7 +155966,7 @@
       "region": "线上",
       "category": "表格收录队伍",
       "placement": 10,
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "线上赛事",
@@ -155975,7 +155975,7 @@
         "永恒花叶蒂（Mega）（Mega）",
         "雷丘（Mega Y）"
       ],
-      "summary": "VR September Challenge #2，第 10 名，作者 Thomas Gravouille",
+      "summary": "VR September Challenge #2，第 10 名，作者 Thomas Gravouille，队伍码 N0KLQFB2SD",
       "members": [
         {
           "pokemonId": "floettemega",
@@ -155983,7 +155983,7 @@
           "item": "Floettite",
           "ability": "Flower Veil",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "12 HP / 27 Def / 5 SpA / 22 Spe",
           "moves": [
             "月亮之力",
             "魔法闪耀",
@@ -155997,7 +155997,7 @@
           "item": "Raichunite Y",
           "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "28 HP / 6 Def / 32 Spe",
           "moves": [
             "电磁炮",
             "真气弹",
@@ -156011,7 +156011,7 @@
           "item": "Sitrus Berry",
           "ability": "Intimidate",
           "nature": "Impish",
-          "spread": "-",
+          "spread": "32 HP / 20 Def / 8 SpD / 6 Spe",
           "moves": [
             "地狱突刺",
             "帮助",
@@ -156025,7 +156025,7 @@
           "item": "Grassy Seed",
           "ability": "Flame Body",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "16 HP / 15 Def / 5 SpA / 30 Spe",
           "moves": [
             "喷射火焰",
             "虫鸣",
@@ -156039,7 +156039,7 @@
           "item": "Miracle Seed",
           "ability": "Grassy Surge",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "32 HP / 25 Atk / 8 SpD / 1 Spe",
           "moves": [
             "木槌",
             "青草滑梯",
@@ -156053,7 +156053,7 @@
           "item": "Life Orb",
           "ability": "Good as Gold",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "7 HP / 27 SpA / 32 Spe",
           "moves": [
             "淘金潮",
             "暗影球",
@@ -166532,7 +166532,7 @@
     {
       "id": "vgcpastes-mc314",
       "title": "v1nzvgc's Gengar Altaria Perish Team",
-      "author": "v1nzvgc",
+      "author": "V1nz",
       "owner": "v1nzvgc",
       "teamId": "MC314",
       "source": "VGCPastes Repository",
@@ -166554,7 +166554,7 @@
         "线上",
         "耿鬼（Mega）"
       ],
-      "summary": "Video，作者 v1nzvgc，队伍码 Q233CRT930",
+      "summary": "Video，作者 V1nz，队伍码 Q233CRT930",
       "members": [
         {
           "pokemonId": "gengarmega",
