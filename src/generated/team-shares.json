@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T09:50:19.354Z",
+  "updatedAt": "2026-10-01T10:17:23.997Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -137649,7 +137649,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/unironicpanda/status/2101717914244026693",
-      "platformUrl": "https://pokepast.es/2a58ff9b99dab3a3",
+      "platformUrl": "https://pokepast.es/753cf48da749168a",
       "season": "M-C",
       "format": "区域赛 / Baltimore Regional 2027",
       "updatedAt": "2026-09-21",
@@ -137659,7 +137659,7 @@
       "region": "线上",
       "category": "表格收录队伍",
       "placement": 12,
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
@@ -137668,7 +137668,7 @@
         "妖火红狐（Mega）",
         "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Baltimore Regional 2027，第 12 名，作者 Justin Tang",
+      "summary": "Baltimore Regional 2027，第 12 名，作者 Justin Tang，队伍码 GBPUBW7UK9",
       "members": [
         {
           "pokemonId": "delphoxmega",
@@ -137676,7 +137676,7 @@
           "item": "Delphoxite",
           "ability": "Blaze",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "9 HP / 14 Def / 11 SpA / 32 Spe",
           "moves": [
             "热风",
             "精神强念",
@@ -137690,12 +137690,12 @@
           "item": "Floettite",
           "ability": "Flower Veil",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "10 HP / 25 Def / 16 SpA / 15 Spe",
           "moves": [
-            "月亮之力",
             "魔法闪耀",
-            "冥想",
-            "守住"
+            "月亮之力",
+            "守住",
+            "冥想"
           ]
         },
         {
@@ -137704,12 +137704,12 @@
           "item": "Sitrus Berry",
           "ability": "Intimidate",
           "nature": "Impish",
-          "spread": "-",
+          "spread": "32 HP / 10 Def / 1 SpD / 23 Spe",
           "moves": [
-            "抛下狠话",
+            "击掌奇袭",
             "闪焰冲锋",
             "地狱突刺",
-            "击掌奇袭"
+            "抛下狠话"
           ]
         },
         {
@@ -137718,11 +137718,11 @@
           "item": "Focus Sash",
           "ability": "Poison Touch",
           "nature": "Jolly",
-          "spread": "-",
+          "spread": "2 HP / 32 Atk / 32 Spe",
           "moves": [
             "击掌奇袭",
-            "近身战",
             "毒击",
+            "近身战",
             "快速防守"
           ]
         },
@@ -137732,7 +137732,7 @@
           "item": "Colbur Berry",
           "ability": "Hospitality",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "32 HP / 14 Def / 19 SpD / 1 Spe",
           "moves": [
             "刷刷茶炮",
             "愤怒粉",
@@ -137746,7 +137746,7 @@
           "item": "Life Orb",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "30 HP / 32 Atk / 1 SpD / 3 Spe",
           "moves": [
             "仆刀",
             "突袭",
@@ -139040,11 +139040,11 @@
       "id": "vgcpastes-mc394",
       "title": "ChessBoard's Baltimore Regional 2027 Top 32 Team",
       "author": "Mason Cutler",
-      "owner": "ChessBoard__",
+      "owner": "chessboard__",
       "teamId": "MC394",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/ChessBoard__/status/2101713480357146737",
+      "sourceUrl": "https://x.com/chessboard__/status/2102905712292569541?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
       "platformUrl": "https://pokepast.es/f0c719a12f5ca9c7",
       "season": "M-C",
       "format": "区域赛 / Baltimore Regional 2027",
