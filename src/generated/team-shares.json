@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T09:16:53.148Z",
+  "updatedAt": "2026-10-04T09:57:22.123Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -131683,7 +131683,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/clearmomdotcom/status/2104197723415314504?s=46",
-      "platformUrl": "https://pokepast.es/d95209fcf9ddfbf9",
+      "platformUrl": "https://pokepast.es/121bf6e0adae5935",
       "season": "M-C",
       "format": "区域赛 / Brisbane Regional 2027",
       "updatedAt": "2026-09-27",
@@ -131721,7 +131721,7 @@
         {
           "pokemonId": "starmiemega",
           "pokemonName": "Starmie-Mega",
-          "item": "Staraptite",
+          "item": "Starminite",
           "ability": "Natural Cure",
           "nature": "Hasty",
           "spread": "32 Atk / 16 SpA / 18 Spe",
@@ -132031,8 +132031,8 @@
     },
     {
       "id": "vgcpastes-mc432",
-      "title": "Balyn Wales-Lewis' Brisbane Regional 2027 Top 64 Team",
-      "author": "Balyn Wales-Lewis",
+      "title": "defiantvgc's Brisbane Regional 2027 Top 64 Team",
+      "author": "defiantvgc",
       "owner": "defiantvgc",
       "teamId": "MC432",
       "source": "VGCPastes Repository",
@@ -132057,7 +132057,7 @@
         "雷丘（Mega Y）",
         "暴飞龙（Mega）"
       ],
-      "summary": "Brisbane Regional 2027，第 35 名，作者 Balyn Wales-Lewis",
+      "summary": "Brisbane Regional 2027，第 35 名，作者 defiantvgc",
       "members": [
         {
           "pokemonId": "raichumegay",
@@ -161969,8 +161969,8 @@
     },
     {
       "id": "vgcpastes-mb346",
-      "title": "defiantvgc's Froslass Gholdengo Team",
-      "author": "defiantvgc",
+      "title": "Balyn Wales-Lewis' Froslass Gholdengo Team",
+      "author": "Balyn Wales-Lewis",
       "owner": "defiantvgc",
       "teamId": "MB346",
       "source": "VGCPastes Repository",
@@ -161992,7 +161992,7 @@
         "雪妖女（Mega）",
         "狠辣椒（Mega）"
       ],
-      "summary": "VGCPastes 收录队伍，作者 defiantvgc",
+      "summary": "VGCPastes 收录队伍，作者 Balyn Wales-Lewis",
       "members": [
         {
           "pokemonId": "froslassmega",
