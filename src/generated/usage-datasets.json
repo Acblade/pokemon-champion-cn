@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-6-rule-1",
-  "updatedAt": "2026-10-05T18:27:15.126Z",
+  "updatedAt": "2026-10-06T00:48:58.871Z",
   "datasets": {
     "champs-season-6-rule-1": {
       "source": "GameWith JP",
@@ -19,7 +19,7 @@
       "season": "6",
       "rule": "1",
       "date": "2026-10-05",
-      "updatedAt": "2026-10-05T18:27:14.220Z",
+      "updatedAt": "2026-10-06T00:48:58.032Z",
       "count": 262,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
@@ -89391,7 +89391,7 @@
       "season": "6",
       "rule": "2",
       "date": "2026-10-06",
-      "updatedAt": "2026-10-05T18:27:15.126Z",
+      "updatedAt": "2026-10-06T00:48:58.871Z",
       "count": 262,
       "missingPokemon": [],
       "trainerRankingsAvailable": true,
