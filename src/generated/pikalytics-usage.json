@@ -1,19 +1,19 @@
 {
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
-  "sourceUpdatedAt": "2026-10-08T05:45:23.000Z",
+  "sourceUpdatedAt": "2026-10-08T20:00:19.000Z",
   "trainerSourceUrl": "https://op.gg/pokemon-champions/leaderboards?format=double&season=m-7",
   "format": "champs-season-7-rule-1",
   "regulation": "M-C",
   "battle": "Doubles",
   "season": "7",
   "rule": "1",
-  "date": "2026-10-08",
-  "updatedAt": "2026-10-08T15:36:25.802Z",
+  "date": "2026-10-09",
+  "updatedAt": "2026-10-08T21:19:49.360Z",
   "count": 199,
   "missingPokemon": [],
   "trainerRankingsAvailable": false,
-  "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 1 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
+  "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 3 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
   "trainerRankings": [],
   "entries": {
     "sneasler": {
