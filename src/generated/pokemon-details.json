@@ -17,7 +17,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -3914,7 +3914,7 @@
     "types": [
       "Water"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -15251,7 +15251,7 @@
       "Ice",
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -16005,7 +16005,7 @@
       "Normal",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -17781,7 +17781,7 @@
     "types": [
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -18561,7 +18561,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -21572,7 +21572,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "UUBL",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -23756,7 +23756,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -27333,7 +27333,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -32736,7 +32736,7 @@
       "Psychic",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -34286,7 +34286,7 @@
       "Bug",
       "Flying"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -37453,7 +37453,7 @@
       "Water",
       "Flying"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -39081,7 +39081,7 @@
     "types": [
       "Water"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -46138,7 +46138,7 @@
       "Grass",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -49334,7 +49334,7 @@
       "Water",
       "Dragon"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -60852,7 +60852,7 @@
       "Bug",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -61622,7 +61622,7 @@
       "Bug",
       "Steel"
     ],
-    "tier": "(OU)",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -72514,7 +72514,7 @@
       "Water",
       "Ground"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -73411,7 +73411,7 @@
       "Water",
       "Ground"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -74941,7 +74941,7 @@
       "Psychic",
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -77824,7 +77824,7 @@
       "Dark",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -79673,7 +79673,7 @@
       "Steel",
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -85388,7 +85388,7 @@
     "types": [
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -86813,7 +86813,7 @@
       "Water",
       "Dark"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -89069,7 +89069,7 @@
     "types": [
       "Fire"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -89751,7 +89751,7 @@
       "Dragon",
       "Flying"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -90516,7 +90516,7 @@
       "Dragon",
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -91275,7 +91275,7 @@
     "types": [
       "Water"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -94783,7 +94783,7 @@
       "Psychic",
       "Steel"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -99348,7 +99348,7 @@
       "Dragon",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -101605,7 +101605,7 @@
       "Steel",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -103240,7 +103240,7 @@
       "Fire",
       "Fighting"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -105645,7 +105645,7 @@
       "Fighting",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -106800,7 +106800,7 @@
       "Grass",
       "Poison"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -109967,7 +109967,7 @@
       "Normal",
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -115504,7 +115504,7 @@
       "Fighting",
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -120396,7 +120396,7 @@
       "Ground",
       "Rock"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -123706,7 +123706,7 @@
       "Ice",
       "Ground"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -124454,7 +124454,7 @@
       "Psychic",
       "Fighting"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": true,
     "abilities": [
       {
@@ -125675,7 +125675,7 @@
       "Psychic",
       "Fighting"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -130020,7 +130020,7 @@
       "Electric",
       "Fire"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -131573,7 +131573,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -144898,7 +144898,7 @@
       "Ground",
       "Dark"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -147769,7 +147769,7 @@
     "types": [
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -149859,7 +149859,7 @@
       "Normal",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -150706,7 +150706,7 @@
     "types": [
       "Psychic"
     ],
-    "tier": "RU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -163911,7 +163911,7 @@
       "Fire",
       "Psychic"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -166256,7 +166256,7 @@
       "Normal",
       "Ground"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -166949,7 +166949,7 @@
       "Fire",
       "Flying"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -169257,7 +169257,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -169763,7 +169763,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "OU",
+    "tier": "UUBL",
     "hasMega": false,
     "abilities": [
       {
@@ -170816,7 +170816,7 @@
     "types": [
       "Grass"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -171460,7 +171460,7 @@
       "Fighting",
       "Dark"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -176085,7 +176085,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -180526,7 +180526,7 @@
       "Poison",
       "Dragon"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -181759,7 +181759,7 @@
       "Electric",
       "Normal"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -183261,7 +183261,7 @@
       "Rock",
       "Ice"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -183926,7 +183926,7 @@
     "types": [
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -193870,7 +193870,7 @@
       "Flying",
       "Dragon"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -195405,7 +195405,7 @@
       "Grass",
       "Fighting"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -199207,7 +199207,7 @@
       "Fighting",
       "Ice"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -202769,7 +202769,7 @@
     "types": [
       "Ground"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -206932,7 +206932,7 @@
       "Bug",
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": true,
     "abilities": [
       {
@@ -213215,7 +213215,7 @@
     "types": [
       "Water"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -214606,7 +214606,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -216959,7 +216959,7 @@
       "Electric",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -217762,7 +217762,7 @@
       "Electric",
       "Poison"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -218564,7 +218564,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -220412,7 +220412,7 @@
       "Dark",
       "Fairy"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -221170,7 +221170,7 @@
     "types": [
       "Steel"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -222038,7 +222038,7 @@
     "types": [
       "Fighting"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -223705,7 +223705,7 @@
       "Ground",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -226311,7 +226311,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -226889,7 +226889,7 @@
       "Psychic",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -227450,7 +227450,7 @@
       "Psychic",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -230916,7 +230916,7 @@
       "Water",
       "Ghost"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -231510,7 +231510,7 @@
       "Water",
       "Ghost"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -232841,7 +232841,7 @@
       "Dark",
       "Poison"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -237060,7 +237060,7 @@
       "Grass",
       "Normal"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -237594,7 +237594,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -238122,7 +238122,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -238650,7 +238650,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -239178,7 +239178,7 @@
       "Normal",
       "Flying"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -241663,7 +241663,7 @@
     "types": [
       "Electric"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {
@@ -242146,7 +242146,7 @@
     "types": [
       "Dark"
     ],
-    "tier": "OU",
+    "tier": "UU",
     "hasMega": false,
     "abilities": [
       {
@@ -250336,7 +250336,7 @@
       "Dragon",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": true,
     "abilities": [
       {
@@ -250947,7 +250947,7 @@
       "Dragon",
       "Ice"
     ],
-    "tier": "OU",
+    "tier": "Uber",
     "hasMega": false,
     "abilities": [
       {
@@ -253100,7 +253100,7 @@
       "Grass",
       "Dragon"
     ],
-    "tier": "UU",
+    "tier": "RU",
     "hasMega": false,
     "abilities": [
       {

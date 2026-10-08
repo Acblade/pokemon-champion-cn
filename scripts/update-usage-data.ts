@@ -13,7 +13,7 @@ const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   '1': 'https://gamewith.jp/pokemon-champions/558230',
   '2': 'https://gamewith.jp/pokemon-champions/555373',
 }
-const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5,6')
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5,6,7')
   .split(',')
   .map(value => value.trim())
   .filter(Boolean)
@@ -297,6 +297,7 @@ function regulationForSeason(season: string): 'M-A' | 'M-B' | 'M-C' {
     '4': 'M-B',
     '5': 'M-B',
     '6': 'M-C',
+    '7': 'M-C',
   }
   const regulation = regulationBySeason[season]
   if (!regulation) throw new Error(`No regulation mapping configured for Champions season ${season}`)

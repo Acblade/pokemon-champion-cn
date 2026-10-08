@@ -107,7 +107,7 @@ void LEGACY_RULE_META
 const BATTLE_USAGE_RULE = '1'
 const TRAINER_RANKING_PAGE_SIZE = 100
 const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
-  'M-C': { label: 'M-C', seasons: [{ id: '6', label: 'M-6' }] },
+  'M-C': { label: 'M-C', seasons: [{ id: '7', label: 'M-7' }, { id: '6', label: 'M-6' }] },
   'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
   'M-B': { label: 'M-B', seasons: [{ id: '5', label: 'M-5' }, { id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
 }

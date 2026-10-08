@@ -6719,7 +6719,6 @@ var CHAMPIONS_LIST = [
   "Population Bomb",
   "Pounce",
   "Power Gem",
-  "Power Shift",
   "Power Split",
   "Power Swap",
   "Power Trick",
@@ -6805,7 +6804,6 @@ var CHAMPIONS_LIST = [
   "Snore",
   "Snowscape",
   "Soak",
-  "Soft-Boiled",
   "Solar Beam",
   "Solar Blade",
   "Sparkling Aria",
@@ -6817,7 +6815,6 @@ var CHAMPIONS_LIST = [
   "Spirit Shackle",
   "Spit Up",
   "Spite",
-  "Spore",
   "Stealth Rock",
   "Steel Beam",
   "Steel Roller",
@@ -19655,9 +19652,7 @@ function getStatDescriptionText(gen4, pokemon, stat, powerTrickActive, wonderRoo
   }
   const nature = gen4.natures.get(toID(pokemon.nature));
   let desc = pokemon.evs[stat] + (stat === "hp" || nature.plus === nature.minus ? "" : nature.plus === stat ? "+" : nature.minus === stat ? "-" : "") + " " + Stats.displayStat(initialStat);
-  if (stat !== initialStat) {
-    desc = desc + " (" + Stats.displayStat(stat) + ")";
-  }
+  if (stat !== initialStat) desc += " (" + Stats.displayStat(stat) + ")";
   const iv = pokemon.ivs[stat];
   if (iv !== 31) desc += ` ${iv} IVs`;
   return desc;
@@ -21072,7 +21067,7 @@ function calculateBPModsChampions(gen4, attacker, defender, move, field, desc, b
   let resistedKnockOffDamage = !defenderItem;
   if (!resistedKnockOffDamage && defenderItem) {
     const item = gen4.items.get(toID(defenderItem));
-    resistedKnockOffDamage = !!(item.megaStone && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
+    resistedKnockOffDamage = !!((item == null ? void 0 : item.megaStone) && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
   }
   if (!resistedKnockOffDamage && hit > 1 && !defender.hasAbility("Sticky Hold")) {
     resistedKnockOffDamage = true;
@@ -21472,10 +21467,6 @@ function calculateRBYGSC(gen4, attacker, defender, move, field) {
   if (move.hits > 1) {
     desc.hits = move.hits;
   }
-  if (move.name === "Triple Kick") {
-    move.bp = move.hits === 2 ? 15 : move.hits === 3 ? 20 : 10;
-    desc.moveBP = move.bp;
-  }
   if (move.named("Flail", "Reversal")) {
     move.isCrit = false;
     const p = Math.floor(48 * attacker.curHP() / attacker.maxHP());
@@ -21610,22 +21601,38 @@ function calculateRBYGSC(gen4, attacker, defender, move, field) {
   result.damage = damage;
   if (move.hits > 1) {
     const damageMatrix = [damage];
-    for (let times = 1; times < move.hits; times++) {
-      const damage2 = [];
-      for (let damageMultiplier = 217; damageMultiplier <= 255; damageMultiplier++) {
-        let newFinalDamage = 0;
-        if (gen4.num === 2) {
-          newFinalDamage = Math.max(1, Math.floor(baseDamage * damageMultiplier / 255));
-        } else {
-          if (baseDamage === 1) {
-            newFinalDamage = 1;
-          } else {
-            newFinalDamage = Math.floor(baseDamage * damageMultiplier / 255);
-          }
-        }
-        damage2[damageMultiplier - 217] = newFinalDamage;
+    if (move.named("Triple Kick")) {
+      desc.moveBP = move.hits === 2 ? 30 : move.hits === 3 ? 60 : 10;
+      for (let hit = 1; hit < move.hits; hit++) {
+        const tripleKickMulti = move.clone();
+        tripleKickMulti.hits = 1;
+        tripleKickMulti.bp = (hit + 1) * 10;
+        damageMatrix[hit] = calculateRBYGSC(
+          gen4,
+          attacker,
+          defender,
+          tripleKickMulti,
+          field
+        ).damage;
       }
-      damageMatrix[times] = damage2;
+    } else {
+      for (let times = 1; times < move.hits; times++) {
+        const damage2 = [];
+        for (let damageMultiplier = 217; damageMultiplier <= 255; damageMultiplier++) {
+          let newFinalDamage = 0;
+          if (gen4.num === 2) {
+            newFinalDamage = Math.max(1, Math.floor(baseDamage * damageMultiplier / 255));
+          } else {
+            if (baseDamage === 1) {
+              newFinalDamage = 1;
+            } else {
+              newFinalDamage = Math.floor(baseDamage * damageMultiplier / 255);
+            }
+          }
+          damage2[damageMultiplier - 217] = newFinalDamage;
+        }
+        damageMatrix[times] = damage2;
+      }
     }
     result.damage = damageMatrix;
   }
@@ -21745,7 +21752,7 @@ function calculateADV(gen4, attacker, defender, move, field) {
     const origDefBoost = desc.defenseBoost;
     const origAtkBoost = desc.attackBoost;
     let numAttacks = 1;
-    if (move.dropsStats && move.timesUsed > 1) {
+    if (move.timesUsed > 1) {
       desc.moveTurns = `over ${move.timesUsed} turns`;
       numAttacks = move.timesUsed;
     } else {
@@ -21765,7 +21772,7 @@ function calculateADV(gen4, attacker, defender, move, field) {
         usedItems[1]
       );
       const newAt = calculateAttackADV(gen4, attacker, defender, move, desc, isCritical);
-      let newBp = calculateBasePowerADV(attacker, defender, move, desc);
+      let newBp = calculateBasePowerADV(attacker, defender, move, desc, times + 1);
       newBp = calculateBPModsADV(attacker, move, desc, newBp);
       let newBaseDmg = Math.floor(
         Math.floor(Math.floor(2 * lv / 5 + 2) * newAt * newBp / df) / 50
@@ -22188,7 +22195,7 @@ function calculateDPP(gen4, attacker, defender, move, field) {
     const origDefBoost = desc.defenseBoost;
     const origAtkBoost = desc.attackBoost;
     let numAttacks = 1;
-    if (move.dropsStats && move.timesUsed > 1) {
+    if (move.timesUsed > 1) {
       desc.moveTurns = `over ${move.timesUsed} turns`;
       numAttacks = move.timesUsed;
     } else {
@@ -22850,7 +22857,8 @@ function calculateBWXY(gen4, attacker, defender, move, field) {
         move,
         field,
         hasAteAbilityTypeChange,
-        desc
+        desc,
+        times + 1
       );
       const newBaseDamage = getBaseDamage(attacker.level, newBasePower, newAtk, newDef);
       const newFinalMods = calculateFinalModsBWXY(
@@ -23036,7 +23044,7 @@ function calculateBPModsBWXY(gen4, attacker, defender, move, field, desc, basePo
   let resistedKnockOffDamage = !defenderItem || defender.named("Giratina-Origin") && defenderItem === "Griseous Orb" || defender.name.includes("Arceus") && defenderItem.includes("Plate") || defender.name.includes("Genesect") && defenderItem.includes("Drive") || defender.named("Groudon", "Groudon-Primal") && defenderItem === "Red Orb" || defender.named("Kyogre", "Kyogre-Primal") && defenderItem === "Blue Orb";
   if (!resistedKnockOffDamage && defenderItem) {
     const item = gen4.items.get(toID(defenderItem));
-    resistedKnockOffDamage = !!(item.megaStone && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
+    resistedKnockOffDamage = !!((item == null ? void 0 : item.megaStone) && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
   }
   if (!resistedKnockOffDamage && hit > 1 && !defender.hasAbility("Sticky Hold")) {
     resistedKnockOffDamage = true;
@@ -23421,7 +23429,7 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     move.category = "Physical";
     move.flags.contact = 1;
   }
-  const breaksProtect = move.breaksProtect || move.isZ || attacker.isDynamaxed || attacker.hasAbility("Unseen Fist", "Piercing Drill") && move.flags.contact;
+  const breaksProtect = !defender.isDynamaxed && (move.breaksProtect || move.isZ || attacker.isDynamaxed || attacker.hasAbility("Unseen Fist", "Piercing Drill") && move.flags.contact) || move.name === "G-Max One Blow" || move.name === "G-Max Rapid Flow";
   if (field.defenderSide.isProtected && !breaksProtect) {
     desc.isProtected = true;
     return result;
@@ -23861,9 +23869,11 @@ function calculateSMSSSV(gen4, attacker, defender, move, field) {
     typeEffectiveness
   );
   let protect = false;
-  if (field.defenderSide.isProtected && (attacker.isDynamaxed || attacker.hasAbility("Unseen Fist", "Piercing Drill") || move.isZ && attacker.item && attacker.item.includes(" Z"))) {
-    protect = true;
-    desc.isProtected = true;
+  if (field.defenderSide.isProtected) {
+    if (attacker.isDynamaxed && !(move.name === "G-Max One Blow" || move.name === "G-Max Rapid Flow") || !attacker.isDynamaxed && (attacker.hasAbility("Unseen Fist", "Piercing Drill") || move.isZ && attacker.item && attacker.item.includes(" Z"))) {
+      protect = true;
+      desc.isProtected = true;
+    }
   }
   const finalMod = chainMods(finalMods, 41, 131072);
   const isSpread = field.gameType !== "Singles" && ["allAdjacent", "allAdjacentFoes"].includes(move.target);
@@ -24233,7 +24243,7 @@ function calculateBPModsSMSSSV(gen4, attacker, defender, move, field, desc, base
   defender.name.includes("Giratina-Origin") && defenderItem.includes("Griseous") || defender.name.includes("Arceus") && defenderItem.includes("Plate") || defender.name.includes("Genesect") && defenderItem.includes("Drive") || defender.named("Groudon", "Groudon-Primal") && defenderItem === "Red Orb" || defender.named("Kyogre", "Kyogre-Primal") && defenderItem === "Blue Orb" || defender.name.includes("Silvally") && defenderItem.includes("Memory") || defenderItem.includes(" Z") || defender.name.includes("Zacian") && defenderItem === "Rusted Sword" || defender.name.includes("Zamazenta") && defenderItem === "Rusted Shield" || defender.name.includes("Ogerpon-Cornerstone") && defenderItem === "Cornerstone Mask" || defender.name.includes("Ogerpon-Hearthflame") && defenderItem === "Hearthflame Mask" || defender.name.includes("Ogerpon-Wellspring") && defenderItem === "Wellspring Mask" || defender.named("Venomicon-Epilogue") && defenderItem === "Vile Vial";
   if (!resistedKnockOffDamage && defenderItem) {
     const item = gen4.items.get(toID(defenderItem));
-    resistedKnockOffDamage = !!(item.megaStone && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
+    resistedKnockOffDamage = !!((item == null ? void 0 : item.megaStone) && (item.megaStone[defender.name] || Object.values(item.megaStone).includes(defender.name)));
   }
   if (!resistedKnockOffDamage && hit > 1 && !defender.hasAbility("Sticky Hold")) {
     resistedKnockOffDamage = true;
