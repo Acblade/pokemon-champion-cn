@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-7-rule-1",
-  "updatedAt": "2026-10-08T08:29:29.246Z",
+  "updatedAt": "2026-10-08T15:36:26.696Z",
   "datasets": {
     "champs-season-6-rule-1": {
       "source": "GameWith JP",
@@ -576104,11 +576104,11 @@
       "season": "7",
       "rule": "1",
       "date": "2026-10-08",
-      "updatedAt": "2026-10-08T08:29:28.125Z",
+      "updatedAt": "2026-10-08T15:36:25.802Z",
       "count": 199,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
-      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 2 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
+      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 1 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
       "trainerRankings": [],
       "entries": {
         "sneasler": {
@@ -608642,11 +608642,11 @@
       "season": "7",
       "rule": "2",
       "date": "2026-10-08",
-      "updatedAt": "2026-10-08T08:29:29.246Z",
+      "updatedAt": "2026-10-08T15:36:26.696Z",
       "count": 224,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
-      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 4 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=2&page=1",
+      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 10 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=2&page=1",
       "trainerRankings": [],
       "entries": {
         "garchomp": {
