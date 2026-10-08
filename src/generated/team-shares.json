@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T10:25:17.521Z",
+  "updatedAt": "2026-10-08T10:44:50.062Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -109777,7 +109777,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/huyubare_poke/status/2104891600405237931?s=46",
-      "platformUrl": "https://pokepast.es/6ba0b0e81393d240",
+      "platformUrl": "https://pokepast.es/d093e52e364167c0",
       "season": "M-C",
       "format": "线上赛事 / 2027 Global Challenge I (Seniors)",
       "updatedAt": "2026-09-29",
@@ -109877,7 +109877,7 @@
           "spread": "30 HP / 1 Def / 1 SpA / 19 SpD / 15 Spe",
           "moves": [
             "龙之波动",
-            "电气场地",
+            "电光束",
             "波导弹",
             "守住"
           ]
