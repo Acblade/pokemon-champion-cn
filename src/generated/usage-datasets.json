@@ -2,7 +2,7 @@
   "source": "GameWith JP",
   "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
   "defaultKey": "champs-season-7-rule-1",
-  "updatedAt": "2026-10-09T09:03:10.071Z",
+  "updatedAt": "2026-10-09T16:12:18.386Z",
   "datasets": {
     "champs-season-6-rule-1": {
       "source": "GameWith JP",
@@ -576096,7 +576096,7 @@
     "champs-season-7-rule-1": {
       "source": "GameWith JP",
       "sourceUrl": "https://gamewith.jp/pokemon-champions/558230",
-      "sourceUpdatedAt": "2026-10-09T05:31:19.000Z",
+      "sourceUpdatedAt": "2026-10-09T09:15:08.000Z",
       "trainerSourceUrl": "https://op.gg/pokemon-champions/leaderboards?format=double&season=m-7",
       "format": "champs-season-7-rule-1",
       "regulation": "M-C",
@@ -576104,11 +576104,11 @@
       "season": "7",
       "rule": "1",
       "date": "2026-10-09",
-      "updatedAt": "2026-10-09T09:03:09.172Z",
+      "updatedAt": "2026-10-09T16:12:17.540Z",
       "count": 242,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
-      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 5 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
+      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 1 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
       "trainerRankings": [],
       "entries": {
         "sneasler": {
@@ -625317,11 +625317,11 @@
       "season": "7",
       "rule": "2",
       "date": "2026-10-09",
-      "updatedAt": "2026-10-09T09:03:10.071Z",
+      "updatedAt": "2026-10-09T16:12:18.386Z",
       "count": 255,
       "missingPokemon": [],
       "trainerRankingsAvailable": false,
-      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 6 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=2&page=1",
+      "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 9 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=2&page=1",
       "trainerRankings": [],
       "entries": {
         "garchomp": {
