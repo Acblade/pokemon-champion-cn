@@ -9,11 +9,11 @@
   "season": "7",
   "rule": "1",
   "date": "2026-10-10",
-  "updatedAt": "2026-10-10T13:40:52.520Z",
+  "updatedAt": "2026-10-10T18:35:16.246Z",
   "count": 242,
   "missingPokemon": [],
   "trainerRankingsAvailable": false,
-  "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 1 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
+  "trainerRankingsNote": "当前使用 GameWith JP 使用率数据；玩家排名同步失败：OP.GG OP.GG page 2 season mismatch: expected m-7；PokeDB HTTP 403 https://champs.pokedb.tokyo/trainer/list?season=7&rule=1&page=1",
   "trainerRankings": [],
   "entries": {
     "sneasler": {
