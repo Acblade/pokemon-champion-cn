@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10T09:59:31.563Z",
+  "updatedAt": "2026-10-11T10:08:55.681Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=2001945654#gid=2001945654",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-10-04",
-      "count": 558
+      "updatedAt": "2026-10-10",
+      "count": 584
     },
     {
       "name": "VGCPastes Repository",
@@ -93164,6 +93164,120 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc584",
+      "title": "Hari's Recreation of Striider and Carson's VR October Challenge Team",
+      "author": "Thomas Gravouille",
+      "owner": "haripkmn",
+      "teamId": "MC584",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/haripkmn/status/2108732119728226595?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/97a3c12af5f02e3e",
+      "season": "M-C",
+      "format": "队伍分享",
+      "updatedAt": "2026-10-10",
+      "eventDate": "2026-10-10",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "其它",
+        "永恒花叶蒂（Mega）（Mega）",
+        "具甲武者（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Thomas Gravouille，队伍码 T085AN97W0",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Timid",
+          "spread": "5 HP / 29 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "32 HP / 30 Atk / 4 SpD",
+          "moves": [
+            "吸血",
+            "铁头",
+            "突袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Focus Sash",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "浊流",
+            "暗影球",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Damp Rock",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "31 HP / 11 Def / 5 SpA / 16 SpD / 3 Spe",
+          "moves": [
+            "气象球",
+            "暴风",
+            "帮助",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "32 HP / 30 SpD / 4 Spe",
+          "moves": [
+            "龙之波动",
+            "电光束",
+            "波导弹",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb584",
       "title": "DjSanders' Tyranitar Aerodactyl Team",
       "author": "DjSanders",
@@ -93387,6 +93501,115 @@
             "魔法闪耀",
             "戏法空间",
             "帮助"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc583",
+      "title": "mizukiblooms' Garchomp-Z Froslass Team",
+      "author": "mizukiblooms",
+      "owner": "mizukiblooms",
+      "teamId": "MC583",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/mizukiblooms/status/2108652454921322939?s=46&t=WmXEnVa3rTSw0P9A0n6S3Q",
+      "platformUrl": "https://pokepast.es/56f142639821e358",
+      "season": "M-C",
+      "format": "队伍分享",
+      "updatedAt": "2026-10-10",
+      "eventDate": "2026-10-10",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "其它",
+        "雪妖女（Mega）",
+        "烈咬陆鲨（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 mizukiblooms，队伍码 Q43JP7TH08",
+      "members": [
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "10 HP / 15 Def / 9 SpA / 32 Spe",
+          "moves": [
+            "暴风雪",
+            "暗影球",
+            "极光幕",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "-",
+          "nature": "-",
+          "spread": "-",
+          "moves": []
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 20 Def / 14 SpD",
+          "moves": [
+            "闪焰冲锋",
+            "地狱突刺",
+            "击掌奇袭",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Grassy Seed",
+          "ability": "Flame Body",
+          "nature": "Modest",
+          "spread": "30 HP / 17 Def / 1 SpA / 1 SpD / 17 Spe",
+          "moves": [
+            "热风",
+            "守住",
+            "蝶舞",
+            "终极吸取"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "32 HP / 10 Atk / 2 Def / 22 SpD",
+          "moves": [
+            "击掌奇袭",
+            "青草滑梯",
+            "急速折返",
+            "木槌"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Unburden",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩崩",
+            "击掌奇袭"
           ]
         }
       ],
@@ -93627,6 +93850,121 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc582",
+      "title": "CloverBells' Raichu-Y Froslass Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC582",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/b144ff818976986e",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "雪妖女（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 CPQRMEGCFM",
+      "members": [
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "15 HP / 10 Def / 9 SpA / 32 Spe",
+          "moves": [
+            "暴风雪",
+            "暗影球",
+            "极光幕",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "No Guard",
+          "nature": "Timid",
+          "spread": "11 HP / 31 Def / 24 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "17 HP / 25 Atk / 1 Def / 10 SpD / 13 Spe",
+          "moves": [
+            "击掌奇袭",
+            "青草滑梯",
+            "木槌",
+            "十万马力"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Grassy Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "21 HP / 10 Atk / 2 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "24 HP / 32 Atk / 10 SpD",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb582",
       "title": "cona's Ai Off Team Battle Champion Team",
       "author": "Hiroshi Onishi",
@@ -93857,6 +94195,121 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc581",
+      "title": "CloverBells' Garchomp-Z Psyspam Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC581",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/41f8680834a90064",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "永恒花叶蒂（Mega）（Mega）",
+        "烈咬陆鲨（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 8AY0LCXBPL",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Fairy Aura",
+          "nature": "Modest",
+          "spread": "10 HP / 26 Def / 15 SpA / 15 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "Levitate",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "龙之波动",
+            "力量宝石",
+            "大地之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Focus Sash",
+          "ability": "Weak Armor",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "铠农炮",
+            "广域战力",
+            "广域防守",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Psychic Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "克命爪",
+            "近身战",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Rocky Helmet",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "31 HP / 32 Def / 3 SpD",
+          "moves": [
+            "精神强念",
+            "看我嘛",
+            "帮助",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 15 Atk / 14 Def / 4 SpD / 1 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "踢倒"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb581",
       "title": "newcon8's Ai Off Team Battle Runner Up Team",
       "author": "newcon8",
@@ -94080,6 +94533,121 @@
             "地震",
             "龙爪",
             "岩石封锁",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc580",
+      "title": "CloverBells' Raichu-Y Salamence Balance Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC580",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/2f7127befa6a8508",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "雷丘（Mega Y）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 UUTL6XH2V6",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "No Guard",
+          "nature": "Timid",
+          "spread": "11 HP / 31 Def / 24 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Aerilate",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "双刃头锤",
+            "闪焰冲锋",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Grassy Seed",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "21 HP / 24 Def / 5 SpA / 16 Spe",
+          "moves": [
+            "巨声",
+            "月亮之力",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "17 HP / 25 Atk / 1 Def / 10 SpD / 13 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "24 HP / 32 Atk / 10 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
             "守住"
           ]
         }
@@ -94321,6 +94889,121 @@
       }
     },
     {
+      "id": "vgcpastes-mc579",
+      "title": "CloverBells' Garchomp-Z Golisopod Rain Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC579",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/3c441ea97058e6c1",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "烈咬陆鲨（Mega）",
+        "具甲武者（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 E2ENKW4L8F",
+      "members": [
+        {
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "Levitate",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "龙之波动",
+            "大地之力",
+            "力量宝石",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Tough Claws",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "moves": [
+            "铁头",
+            "突袭",
+            "吸血",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Chople Berry",
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "spread": "32 HP / 19 Atk / 3 Def / 12 SpD",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "抛下狠话",
+            "地狱突刺"
+          ]
+        },
+        {
+          "pokemonId": "politoed",
+          "pokemonName": "Politoed",
+          "item": "Mystic Water",
+          "ability": "Drizzle",
+          "nature": "Modest",
+          "spread": "32 HP / 30 SpA / 4 Spe",
+          "moves": [
+            "气象球",
+            "浊流",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "29 HP / 20 Def / 17 SpD",
+          "moves": [
+            "精神强念",
+            "帮助",
+            "戏法空间",
+            "吼叫"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "32 HP / 1 Def / 1 SpA / 23 SpD / 9 Spe",
+          "moves": [
+            "电光束",
+            "龙之波动",
+            "大声咆哮",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb579",
       "title": "barudoru's Abomasnow Aerodactyl Team",
       "author": "Ryota Otsubo",
@@ -94550,6 +95233,121 @@
       "metrics": {
         "finalRanking": "4"
       }
+    },
+    {
+      "id": "vgcpastes-mc578",
+      "title": "CloverBells' Dragonite Floette Balance Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC578",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/82ec0abc7fc3dfc9",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "快龙（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 NBLEWS1B46",
+      "members": [
+        {
+          "pokemonId": "dragonitemega",
+          "pokemonName": "Dragonite-Mega",
+          "item": "Dragoninite",
+          "ability": "Inner Focus",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "龙之波动",
+            "热风",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "10 HP / 26 Def / 15 SpA / 15 Spe",
+          "moves": [
+            "魔法闪耀",
+            "月亮之力",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "30 HP / 20 Def / 9 SpD / 7 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "击掌奇袭",
+            "地狱突刺",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "17 HP / 25 Atk / 1 Def / 10 SpD / 13 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "10 HP / 30 Atk / 8 SpD / 18 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩石封锁",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "17 HP / 7 SpA / 15 SpD / 27 Spe",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb578",
@@ -94782,6 +95580,121 @@
       "metrics": {
         "finalRanking": "5"
       }
+    },
+    {
+      "id": "vgcpastes-mc577",
+      "title": "CloverBells' Staraptor Psyspam Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC577",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/fb9b1b33e46437a4",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "沙奈朵（Mega）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 83Q2UJM17G",
+      "members": [
+        {
+          "pokemonId": "gardevoirmega",
+          "pokemonName": "Gardevoir-Mega",
+          "item": "Gardevoirite",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "32 HP / 15 Def / 8 SpA / 11 Spe",
+          "moves": [
+            "巨声",
+            "广域战力",
+            "戏法空间",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Reckless",
+          "nature": "Jolly",
+          "spread": "25 HP / 9 Atk / 32 Spe",
+          "moves": [
+            "近身战",
+            "勇鸟猛攻",
+            "顺风",
+            "羽栖"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "4 HP / 18 Atk / 12 Def / 32 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "annihilape",
+          "pokemonName": "Annihilape",
+          "item": "Choice Scarf",
+          "ability": "Defiant",
+          "nature": "Jolly",
+          "spread": "7 HP / 32 Atk / 27 Spe",
+          "moves": [
+            "近身战",
+            "暗影爪",
+            "潜灵奇袭",
+            "冰冻拳"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Rocky Helmet",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "31 HP / 32 Def / 3 SpD",
+          "moves": [
+            "看我嘛",
+            "精神强念",
+            "帮助",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb577",
@@ -95017,6 +95930,121 @@
       }
     },
     {
+      "id": "vgcpastes-mc576",
+      "title": "CloverBells' Raichu-Y Staraptor Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC576",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/ef3402cf114f64b0",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 2JGGEM5YU7",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "No Guard",
+          "nature": "Timid",
+          "spread": "11 HP / 31 Def / 24 Spe",
+          "moves": [
+            "击掌奇袭",
+            "电磁炮",
+            "真气弹",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Contrary",
+          "nature": "Jolly",
+          "spread": "25 HP / 9 Atk / 32 Spe",
+          "moves": [
+            "顺风",
+            "勇鸟猛攻",
+            "近身战",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Grassy Seed",
+          "ability": "Flame Body",
+          "nature": "Modest",
+          "spread": "16 HP / 15 Def / 5 SpA / 30 Spe",
+          "moves": [
+            "热风",
+            "虫鸣",
+            "蝶舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Focus Sash",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "水流裂破",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "17 HP / 25 Atk / 1 Def / 10 SpD / 13 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "急速折返",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "17 HP / 7 SpA / 15 SpD / 27 Spe",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb576",
       "title": "anboxing's Kangaskhan Toxapex Team",
       "author": "anboxing",
@@ -95244,6 +96272,121 @@
       "metrics": {
         "finalRanking": "7"
       }
+    },
+    {
+      "id": "vgcpastes-mc575",
+      "title": "CloverBells' Salamence Sand Team",
+      "author": "CloverBells",
+      "owner": "cloverbells21",
+      "teamId": "MC575",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/cloverbells21/status/2108065924628525120?s=46",
+      "platformUrl": "https://pokepast.es/67974460bcb44368",
+      "season": "M-C",
+      "format": "线上赛事 / Video",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Video",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "暴飞龙（Mega）",
+        "班基拉斯（Mega）"
+      ],
+      "summary": "Video，作者 CloverBells，队伍码 WMF9SYYDXT",
+      "members": [
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Aerilate",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Jolly",
+          "spread": "17 HP / 16 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "岩崩",
+            "踢倒",
+            "拍落",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Life Orb",
+          "ability": "Flash Fire",
+          "nature": "Modest",
+          "spread": "9 HP / 32 SpA / 7 SpD / 18 Spe",
+          "moves": [
+            "铠农炮",
+            "广域战力",
+            "广域防守",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "铁头",
+            "地震",
+            "十万马力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Psychic Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "4 HP / 30 Atk / 15 Def / 17 Spe",
+          "moves": [
+            "克命爪",
+            "近身战",
+            "地狱突刺",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Rocky Helmet",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "30 HP / 32 Def / 4 SpD",
+          "moves": [
+            "看我嘛",
+            "精神强念",
+            "帮助",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb575",
@@ -95476,6 +96619,125 @@
       ],
       "metrics": {
         "finalRanking": "8"
+      }
+    },
+    {
+      "id": "vgcpastes-mc574",
+      "title": "online's Ranked Season M-6 Top 8 Team",
+      "author": "online",
+      "owner": "online_poke",
+      "teamId": "MC574",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/online_poke/status/2107794241116328158?s=46",
+      "platformUrl": "https://pokepast.es/92f2d49c309928a4",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 6,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#6",
+        "喷火龙（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 6 名，作者 online，队伍码 S3Q83HYNH0",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "28 HP / 14 Def / 3 SpA / 21 Spe",
+          "moves": [
+            "热风",
+            "日光束",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "15 HP / 23 Atk / 28 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "羽栖",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Life Orb",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "力量宝石",
+            "污泥炸弹",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "indeedee",
+          "pokemonName": "Indeedee",
+          "item": "Focus Sash",
+          "ability": "Psychic Surge",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "广域战力",
+            "巨声",
+            "封印",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Babiri Berry",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "32 HP / 10 Def / 17 SpD / 7 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "撒娇"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "龙爪",
+            "跺脚",
+            "岩崩",
+            "地震"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "6"
       }
     },
     {
@@ -95717,6 +96979,120 @@
       }
     },
     {
+      "id": "vgcpastes-mc573",
+      "title": "Rinya's Ranked Season M-6 Top 16 Team",
+      "author": "Rinya Kobayashi",
+      "owner": "gozira2004",
+      "teamId": "MC573",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/gozira2004/status/2107768621770625092?s=46",
+      "platformUrl": "https://pokepast.es/6283a52559e15d6a",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 13,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#13",
+        "喷火龙（Mega Y）",
+        "烈咬陆鲨（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 13 名，作者 Rinya Kobayashi，队伍码 KQK6SB39AJ",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "26 HP / 9 Def / 6 SpA / 25 Spe",
+          "moves": [
+            "热风",
+            "气象球",
+            "暴风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "-",
+          "nature": "-",
+          "spread": "-",
+          "moves": []
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Modest",
+          "spread": "31 HP / 9 Def / 5 SpA / 10 SpD / 11 Spe",
+          "moves": [
+            "暴风",
+            "气象球",
+            "广域防守",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Focus Sash",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "飞叶风暴",
+            "污泥炸弹",
+            "催眠粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "grimmsnarl",
+          "pokemonName": "Grimmsnarl",
+          "item": "Light Clay",
+          "ability": "Prankster",
+          "nature": "Careful",
+          "spread": "32 HP / 24 Def / 9 SpD / 1 Spe",
+          "moves": [
+            "灵魂冲击",
+            "反射壁",
+            "光墙",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Calm",
+          "spread": "30 HP / 1 Def / 25 SpD / 10 Spe",
+          "moves": [
+            "流星群",
+            "加农光炮",
+            "电光束",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "13"
+      }
+    },
+    {
       "id": "vgcpastes-mb573",
       "title": "prncessdianaaa's Hatterene Series W29 Runner Up Team",
       "author": "Prncessdiana",
@@ -95951,6 +97327,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc572",
+      "title": "7nananana90's Ranked Season M-6 Top 32 Team",
+      "author": "7nananana90",
+      "owner": "7nananana90",
+      "teamId": "MC572",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/7nananana90/status/2107732524428620269?s=46",
+      "platformUrl": "https://pokepast.es/c097ddeba8ffa6e1",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 20,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#20",
+        "具甲武者（Mega）",
+        "巨金怪（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 20 名，作者 7nananana90",
+      "members": [
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "32 HP / 11 Atk / 1 Def / 20 SpD / 2 Spe",
+          "moves": [
+            "守住",
+            "吸血",
+            "铁头",
+            "突袭"
+          ]
+        },
+        {
+          "pokemonId": "metagrossmega",
+          "pokemonName": "Metagross-Mega",
+          "item": "Metagrossite",
+          "ability": "Clear Body",
+          "nature": "Jolly",
+          "spread": "6 HP / 32 Atk / 1 Def / 1 SpD / 26 Spe",
+          "moves": [
+            "守住",
+            "子弹拳",
+            "劈瓦",
+            "尖石攻击"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Life Orb",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "守住",
+            "浊流",
+            "暗影球",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Choice Scarf",
+          "ability": "Drizzle",
+          "nature": "Timid",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "浊流",
+            "暴风",
+            "冰冻光束",
+            "急速折返"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Focus Sash",
+          "ability": "Toxic Debris",
+          "nature": "Timid",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "尖刺防守",
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Timid",
+          "spread": "30 HP / 1 Def / 22 SpD / 13 Spe",
+          "moves": [
+            "守住",
+            "龙之波动",
+            "电光束",
+            "波导弹"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "20"
+      }
+    },
+    {
       "id": "vgcpastes-mb572",
       "title": "cayennevgc's Charizard-Y Ditto Team",
       "author": "cayennevgc",
@@ -96178,6 +97673,125 @@
       ],
       "metrics": {
         "finalRanking": "11"
+      }
+    },
+    {
+      "id": "vgcpastes-mc571",
+      "title": "Victor's Ranked Season M-6 Top 32 Team",
+      "author": "Victor Matos",
+      "owner": "victormatosrd",
+      "teamId": "MC571",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/victormatosrd/status/2108040199481827598?s=46",
+      "platformUrl": "https://pokepast.es/e883ba6865e59719",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 21,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#21",
+        "永恒花叶蒂（Mega）（Mega）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 21 名，作者 Victor Matos，队伍码 N2RYASNLNJ",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "32 HP / 1 Def / 32 SpA / 1 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 32 Def / 2 SpD",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Occa Berry",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "32 HP / 15 Atk / 1 Def / 7 SpD / 11 Spe",
+          "moves": [
+            "击掌奇袭",
+            "青草滑梯",
+            "鼓击",
+            "十万马力"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Grassy Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "岩石封锁",
+            "近身战",
+            "克命爪",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Focus Sash",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "暗影球",
+            "力量宝石",
+            "淘金潮",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "21"
       }
     },
     {
@@ -96409,6 +98023,124 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc570",
+      "title": "DDee's Ranked Season M-6 Top 64 Team",
+      "author": "Michael Uko",
+      "owner": "ddee_ssbu",
+      "teamId": "MC570",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ddee_ssbu/status/2107805019089334552?s=46",
+      "platformUrl": "https://pokepast.es/9387c29abe2fbdfe",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 53,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#53",
+        "快龙（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 53 名，作者 Michael Uko，队伍码 7D9QJMW1KN",
+      "members": [
+        {
+          "pokemonId": "dragonitemega",
+          "pokemonName": "Dragonite-Mega",
+          "item": "Dragoninite",
+          "ability": "Inner Focus",
+          "nature": "Timid",
+          "spread": "11 HP / 32 SpA / 23 Spe",
+          "moves": [
+            "龙之波动",
+            "热风",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "32 HP / 20 Def / 10 SpD / 4 Spe",
+          "moves": [
+            "抛下狠话",
+            "闪焰冲锋",
+            "大声咆哮",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "1 HP / 25 Atk / 15 Def / 25 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "快速折返",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "31 HP / 15 Atk / 17 SpD / 3 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "17 HP / 20 Atk / 6 Def / 5 SpD / 18 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩石封锁",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "27 HP / 17 SpA / 17 SpD / 5 Spe",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "53"
+      }
+    },
+    {
       "id": "vgcpastes-mb570",
       "title": "spy_anya11's Raichu Y Sylveon Team",
       "author": "spy_anya11",
@@ -96634,6 +98366,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc569",
+      "title": "Onion's Ranked Season M-6 Top 64 Team",
+      "author": "Onion",
+      "owner": "0nion_poke",
+      "teamId": "MC569",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/0nion_poke/status/2107722264745857137?s=46",
+      "platformUrl": "https://pokepast.es/e4da2bd007f8c23c",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 60,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#60",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 60 名，作者 Onion，队伍码 B3FHCE059U",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "23 HP / 18 Def / 25 Spe",
+          "moves": [
+            "电磁炮",
+            "再来一次",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "26 HP / 8 Atk / 32 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Mystic Water",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "32 HP / 10 Def / 14 SpA / 10 Spe",
+          "moves": [
+            "巨声",
+            "月亮之力",
+            "精神噪音",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Modest",
+          "spread": "3 HP / 7 Def / 30 SpA / 11 SpD / 15 Spe",
+          "moves": [
+            "广域战力",
+            "巨声",
+            "封印",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Black Glasses",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "60"
+      }
     },
     {
       "id": "vgcpastes-mb569",
@@ -96865,6 +98716,124 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc568",
+      "title": "Ruuto's Ranked Season M-6 Top 128 Team",
+      "author": "Ruuto",
+      "owner": "tbhla7130",
+      "teamId": "MC568",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/tbhla7130/status/2107717523458473998?s=46",
+      "platformUrl": "https://pokepast.es/c7ff2c0573f3ada1",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-06",
+      "eventDate": "2026-10-06",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 81,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#81",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 81 名，作者 Ruuto，队伍码 1T1M4UQVCF",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "ninetales",
+          "pokemonName": "Ninetales",
+          "item": "Charcoal",
+          "ability": "Drought",
+          "nature": "Timid",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "热风",
+            "气象球",
+            "热沙大地",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Modest",
+          "spread": "2 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "暗影球",
+            "水炮",
+            "浊流",
+            "冰冻光束"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Life Orb",
+          "ability": "Toxic Debris",
+          "nature": "Timid",
+          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "力量宝石",
+            "污泥炸弹",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "indeedee",
+          "pokemonName": "Indeedee",
+          "item": "Focus Sash",
+          "ability": "Psychic Surge",
+          "nature": "Modest",
+          "spread": "2 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "广域战力",
+            "巨声",
+            "戏法空间",
+            "封印"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Babiri Berry",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "26 SpA / 21 SpD / 19 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "81"
+      }
+    },
+    {
       "id": "vgcpastes-mb568",
       "title": "cecilily's Raichu X Meganium Team",
       "author": "cecilily",
@@ -97094,6 +99063,124 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc567",
+      "title": "johnnychiou36's Ranked Season M-6 Top 128 Team",
+      "author": "johnnychiou36",
+      "owner": "johnnychiou36",
+      "teamId": "MC567",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/johnnychiou36/status/2107750901884846330?s=46",
+      "platformUrl": "https://pokepast.es/4da277917028127a",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 116,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#116",
+        "大嘴娃（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 116 名，作者 johnnychiou36，队伍码 F2X3RFT42E",
+      "members": [
+        {
+          "pokemonId": "mawilemega",
+          "pokemonName": "Mawile-Mega",
+          "item": "Mawilite",
+          "ability": "Hyper Cutter",
+          "nature": "Brave",
+          "spread": "32 HP / 32 Atk / 2 Def",
+          "moves": [
+            "嬉闹",
+            "岩崩",
+            "突袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Twisted Spoon",
+          "ability": "Flash Fire",
+          "nature": "Quiet",
+          "spread": "32 HP / 2 Def / 32 SpA",
+          "moves": [
+            "铠农炮",
+            "广域战力",
+            "戏法空间",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "White Herb",
+          "ability": "Intimidate",
+          "nature": "Brave",
+          "spread": "32 HP / 31 Atk / 3 Def",
+          "moves": [
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "近身战",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "torkoal",
+          "pokemonName": "Torkoal",
+          "item": "Charcoal",
+          "ability": "Drought",
+          "nature": "Quiet",
+          "spread": "32 HP / 32 SpA / 2 SpD",
+          "moves": [
+            "喷火",
+            "气象球",
+            "大地之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Psychic Seed",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "31 HP / 32 Def / 3 SpD",
+          "moves": [
+            "精神强念",
+            "戏法空间",
+            "帮助",
+            "看我嘛"
+          ]
+        },
+        {
+          "pokemonId": "hatterene",
+          "pokemonName": "Hatterene",
+          "item": "Life Orb",
+          "ability": "Magic Bounce",
+          "nature": "Quiet",
+          "spread": "27 HP / 7 Def / 32 SpA",
+          "moves": [
+            "广域战力",
+            "戏法空间",
+            "魔法闪耀",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "116"
+      }
+    },
+    {
       "id": "vgcpastes-mb567",
       "title": "renjamino's Scolipede Weavile Team",
       "author": "renjamino",
@@ -97321,6 +99408,125 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc566",
+      "title": "twelveswordssub's Ranked Season M-6 Top 128 Team",
+      "author": "twelveswordssub",
+      "owner": "twelveswordssub",
+      "teamId": "MC566",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/twelveswordssub/status/2107763873537540362?s=46",
+      "platformUrl": "https://pokepast.es/2961537a2765c8bd",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 120,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#120",
+        "具甲武者（Mega）",
+        "巨沼怪（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 120 名，作者 twelveswordssub，队伍码 77YKYY69EP",
+      "members": [
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 2 SpD",
+          "moves": [
+            "铁头",
+            "突袭",
+            "吸血",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "swampertmega",
+          "pokemonName": "Swampert-Mega",
+          "item": "Swampertite",
+          "ability": "Damp",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "十万马力",
+            "冰冻拳",
+            "波动冲",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Focus Sash",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "暗影球",
+            "浊流",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Damp Rock",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "32 HP / 10 Def / 17 SpA / 7 SpD",
+          "moves": [
+            "气象球",
+            "暴风",
+            "帮助",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Choice Scarf",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "4 HP / 32 Atk / 1 SpD / 29 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "急速折返",
+            "十万马力"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Timid",
+          "spread": "30 HP / 1 Def / 26 SpD / 9 Spe",
+          "moves": [
+            "龙之波动",
+            "电光束",
+            "波导弹",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "120"
+      }
+    },
+    {
       "id": "vgcpastes-mb566",
       "title": "Cybertron's Raichu X Rain Team",
       "author": "Aaron Zheng",
@@ -97545,6 +99751,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc565",
+      "title": "Peter's Ranked Season M-6 Top 256 Team (Annihilape)",
+      "author": "Peter Chen",
+      "owner": "mrptpablo",
+      "teamId": "MC565",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/mrptpablo/status/2107818228881969616?s=46",
+      "platformUrl": "https://pokepast.es/03b70606ab4a36bc",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 176,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#176",
+        "化石翼龙（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Ranked Season M-6，第 176 名，作者 Peter Chen",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "20 HP / 12 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "广域防守",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "30 HP / 11 Def / 2 SpA / 23 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "30 HP / 3 Atk / 8 Def / 10 SpD / 15 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Life Orb",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "31 HP / 15 Atk / 1 Def / 12 SpD / 7 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "annihilape",
+          "pokemonName": "Annihilape",
+          "item": "Leftovers",
+          "ability": "Defiant",
+          "nature": "Jolly",
+          "spread": "23 HP / 11 Atk / 32 Spe",
+          "moves": [
+            "吸取拳",
+            "愤怒之拳",
+            "健美",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "围攻",
+            "再来一次"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "176"
+      }
     },
     {
       "id": "vgcpastes-mb565",
@@ -97775,6 +100100,125 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc564",
+      "title": "Trick Room's Ranked Season M-6 Top 256 Team",
+      "author": "Trick Room",
+      "owner": "tr_pkmchampions",
+      "teamId": "MC564",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/tr_pkmchampions/status/2107753768213221424?s=46",
+      "platformUrl": "https://pokepast.es/04fc15e954465886",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 185,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#185",
+        "具甲武者（Mega）",
+        "巨沼怪（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 185 名，作者 Trick Room，队伍码 KGL6KCRQM8",
+      "members": [
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 2 SpD",
+          "moves": [
+            "吸血",
+            "铁头",
+            "突袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "swampertmega",
+          "pokemonName": "Swampert-Mega",
+          "item": "Swampertite",
+          "ability": "Damp",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "波动冲",
+            "地震",
+            "十万马力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Focus Sash",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "浊流",
+            "暗影球",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Damp Rock",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "32 HP / 10 Def / 17 SpA / 7 SpD",
+          "moves": [
+            "气象球",
+            "暴风",
+            "帮助",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "21 HP / 14 Atk / 1 SpD / 30 Spe",
+          "moves": [
+            "垃圾射击",
+            "近身战",
+            "急速折返",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "30 HP / 1 Def / 1 SpA / 19 SpD / 15 Spe",
+          "moves": [
+            "龙之波动",
+            "电光束",
+            "波导弹",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "185"
+      }
+    },
+    {
       "id": "vgcpastes-mb564",
       "title": "SwapDogVGC's Staraptor Gholdengo Team",
       "author": "SwapDogVGC",
@@ -98001,6 +100445,125 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc563",
+      "title": "Peter's Ranked Season M-6 Top 256 Team (Volcarona)",
+      "author": "Peter Chen",
+      "owner": "mrptpablo",
+      "teamId": "MC563",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/mrptpablo/status/2107818228881969616?s=46",
+      "platformUrl": "https://pokepast.es/234daae345da97a1",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 191,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#191",
+        "化石翼龙（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Ranked Season M-6，第 191 名，作者 Peter Chen",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "20 HP / 12 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "30 HP / 11 Def / 2 SpA / 23 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Rocky Helmet",
+          "ability": "Flame Body",
+          "nature": "Calm",
+          "spread": "32 HP / 22 Def / 1 SpA / 7 SpD / 4 Spe",
+          "moves": [
+            "过热",
+            "虫之抵抗",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "31 HP / 25 Atk / 1 Def / 1 SpD / 8 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "1 HP / 32 Atk / 1 SpD / 32 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "dragapult",
+          "pokemonName": "Dragapult",
+          "item": "Life Orb",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "流星群",
+            "暗影球",
+            "鬼火",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "191"
+      }
+    },
+    {
       "id": "vgcpastes-mb563",
       "title": "alcana's Milotic Sand Team",
       "author": "Kiwamu Endo",
@@ -98224,6 +100787,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc562",
+      "title": "dartsvgc's Ranked Season M-6 Top 256 Team",
+      "author": "dartsvgc",
+      "owner": "dartsvgc",
+      "teamId": "MC562",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/dartsvgc/status/2107905439249932511?s=46",
+      "platformUrl": "https://pokepast.es/0b4ca15a5b1bf532",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 205,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#205",
+        "沙奈朵（Mega）",
+        "耿鬼（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 205 名，作者 dartsvgc，队伍码 AYDR9GMFLK",
+      "members": [
+        {
+          "pokemonId": "gardevoirmega",
+          "pokemonName": "Gardevoir-Mega",
+          "item": "Gardevoirite",
+          "ability": "Triage",
+          "nature": "Modest",
+          "spread": "30 HP / 3 Def / 25 SpA / 1 SpD / 7 Spe",
+          "moves": [
+            "巨声",
+            "广域战力",
+            "十万伏特",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gengarmega",
+          "pokemonName": "Gengar-Mega",
+          "item": "Gengarite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "2 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "暗影球",
+            "污泥炸弹",
+            "冰冻之风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Life Orb",
+          "ability": "Flash Fire",
+          "nature": "Modest",
+          "spread": "19 HP / 32 SpA / 2 SpD / 13 Spe",
+          "moves": [
+            "铠农炮",
+            "广域战力",
+            "戏法空间",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "meowscarada",
+          "pokemonName": "Meowscarada",
+          "item": "Choice Scarf",
+          "ability": "Protean",
+          "nature": "Adamant",
+          "spread": "32 Atk / 3 Def / 31 Spe",
+          "moves": [
+            "千变万花",
+            "拍落",
+            "三旋击",
+            "急速折返"
+          ]
+        },
+        {
+          "pokemonId": "annihilape",
+          "pokemonName": "Annihilape",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "近身战",
+            "潜灵奇袭",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Rocky Helmet",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "32 HP / 32 Def / 2 SpD",
+          "moves": [
+            "精神强念",
+            "看我嘛",
+            "帮助",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "205"
+      }
     },
     {
       "id": "vgcpastes-mb562",
@@ -98453,6 +101135,124 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc561",
+      "title": "ikdr_poke's Ranked Season M-6 Top 256 Team",
+      "author": "ikdr_poke",
+      "owner": "ikdr_poke",
+      "teamId": "MC561",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ikdr_poke/status/2108167125634630137?s=46",
+      "platformUrl": "https://pokepast.es/a9e31ad606644502",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 252,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#252",
+        "喷火驼（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 252 名，作者 ikdr_poke，队伍码 NJMPAYLQLR",
+      "members": [
+        {
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "32 HP / 4 Def / 30 SpA",
+          "moves": [
+            "热风",
+            "大地之力",
+            "原始之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "24 Atk / 18 Def / 24 Spe",
+          "moves": [
+            "扫墓",
+            "波动冲",
+            "快速折返",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Brave",
+          "spread": "32 HP / 5 Atk / 29 SpD",
+          "moves": [
+            "青草滑梯",
+            "木槌",
+            "急速折返",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "zoroark",
+          "pokemonName": "Zoroark",
+          "item": "Focus Sash",
+          "ability": "Illusion",
+          "nature": "Naive",
+          "spread": "32 Atk / 2 SpA / 32 Spe",
+          "moves": [
+            "地狱突刺",
+            "大晴天",
+            "大声咆哮",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Grassy Seed",
+          "ability": "Armor Tail",
+          "nature": "Sassy",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "守住",
+            "精神强念",
+            "帮助",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Quiet",
+          "spread": "32 HP / 4 Def / 30 SpA",
+          "moves": [
+            "守住",
+            "巨声",
+            "破坏光线",
+            "电光一闪"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "252"
+      }
+    },
+    {
       "id": "vgcpastes-mb561",
       "title": "AGNI's Starmie Sneasler Team",
       "author": "AGNI",
@@ -98678,6 +101478,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc560",
+      "title": "morikamome39's Ranked Season M-6 Top 300 Team",
+      "author": "morikamome39",
+      "owner": "morikamome39",
+      "teamId": "MC560",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/morikamome39/status/2107715872261587420?s=46",
+      "platformUrl": "https://pokepast.es/01f9c4d5df525bb3",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-06",
+      "eventDate": "2026-10-06",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 271,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#271",
+        "喷火龙（Mega X）",
+        "晶光花（Mega）"
+      ],
+      "summary": "Ranked Season M-6，第 271 名，作者 morikamome39，队伍码 P8R8JUAEMB",
+      "members": [
+        {
+          "pokemonId": "charizardmegax",
+          "pokemonName": "Charizard-Mega-X",
+          "item": "Charizardite X",
+          "ability": "Blaze",
+          "nature": "Adamant",
+          "spread": "22 HP / 30 Atk / 10 Def / 4 Spe",
+          "moves": [
+            "龙爪",
+            "豁出去",
+            "蓄能焰袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "glimmoramega",
+          "pokemonName": "Glimmora-Mega",
+          "item": "Glimmoranite",
+          "ability": "Toxic Debris",
+          "nature": "Timid",
+          "spread": "18 HP / 16 SpA / 32 Spe",
+          "moves": [
+            "污泥波",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "地震",
+            "铁头",
+            "十万马力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tyranitar",
+          "pokemonName": "Tyranitar",
+          "item": "Passho Berry",
+          "ability": "Sand Stream",
+          "nature": "Adamant",
+          "spread": "32 HP / 26 Atk / 8 SpD",
+          "moves": [
+            "岩崩",
+            "拍落",
+            "踢倒",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "corviknight",
+          "pokemonName": "Corviknight",
+          "item": "Sitrus Berry",
+          "ability": "Mirror Armor",
+          "nature": "Impish",
+          "spread": "32 HP / 1 Atk / 6 Def / 24 SpD / 3 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "健美",
+            "顺风",
+            "羽栖"
+          ]
+        },
+        {
+          "pokemonId": "kommoo",
+          "pokemonName": "Kommo-o",
+          "item": "Leftovers",
+          "ability": "Bulletproof",
+          "nature": "Modest",
+          "spread": "25 HP / 11 SpA / 1 SpD / 29 Spe",
+          "moves": [
+            "鳞片噪音",
+            "波导弹",
+            "魂舞烈音爆",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "271"
+      }
     },
     {
       "id": "vgcpastes-mb560",
@@ -98907,6 +101826,124 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc559",
+      "title": "robstar029's Ranked Season M-6 Top 300 Team",
+      "author": "robstar029",
+      "owner": "robstar029",
+      "teamId": "MC559",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/robstar029/status/2107787417314836894?s=46",
+      "platformUrl": "https://pokepast.es/7fccba432286b652",
+      "season": "M-C",
+      "format": "线上赛事 / Ranked Season M-6",
+      "updatedAt": "2026-10-07",
+      "eventDate": "2026-10-07",
+      "eventName": "Ranked Season M-6",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 298,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#298",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Ranked Season M-6，第 298 名，作者 robstar029，队伍码 F7FL6R7NBL",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "25 HP / 11 Def / 30 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "spread": "30 HP / 5 Atk / 31 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Leftovers",
+          "ability": "Flame Body",
+          "nature": "Timid",
+          "spread": "29 HP / 17 Def / 1 SpA / 1 SpD / 18 Spe",
+          "moves": [
+            "热风",
+            "虫之抵抗",
+            "蝶舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Focus Sash",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "水流裂破",
+            "水流喷射",
+            "扫墓",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Life Orb",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "24 HP / 32 Atk / 6 SpD / 4 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "vanilluxe",
+          "pokemonName": "Vanilluxe",
+          "item": "Choice Scarf",
+          "ability": "Snow Warning",
+          "nature": "Timid",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "暴风雪",
+            "冷冻干燥",
+            "冰冻之风",
+            "绝对零度"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "298"
+      }
     },
     {
       "id": "vgcpastes-mb559",
