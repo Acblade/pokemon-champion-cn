@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T08:16:09.270Z",
+  "updatedAt": "2026-10-26T09:08:01.222Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -16,8 +16,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=1458357160#gid=1458357160",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-09-04",
-      "count": 861
+      "updatedAt": "2026-09-11",
+      "count": 863
     },
     {
       "name": "VGCPastes Repository",
@@ -28235,6 +28235,125 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mb863",
+      "title": "syatenie's Season M-5 Top 32 Team",
+      "author": "syatenie",
+      "owner": "syatenie",
+      "teamId": "MB863",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/syatenie/status/2097606137743077658?s=46",
+      "platformUrl": "https://pokepast.es/4aeb1ef674bfe247",
+      "season": "M-B",
+      "format": "线上赛事 / Season M-5",
+      "updatedAt": "2026-09-09",
+      "eventDate": "2026-09-09",
+      "eventName": "Season M-5",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 19,
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "线上",
+        "#19",
+        "水晶灯火灵（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Season M-5，第 19 名，作者 syatenie，队伍码 QUU1GUA8TG",
+      "members": [
+        {
+          "pokemonId": "chandeluremega",
+          "pokemonName": "Chandelure-Mega",
+          "item": "Chandelurite",
+          "ability": "Flash Fire",
+          "nature": "Timid",
+          "spread": "30 HP / 15 SpD / 21 Spe",
+          "moves": [
+            "热风",
+            "暗影球",
+            "守住",
+            "挑衅"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "魔法闪耀",
+            "月亮之力",
+            "守住",
+            "破灭之光"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Colbur Berry",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "守住",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "kleavor",
+          "pokemonName": "Kleavor",
+          "item": "Life Orb",
+          "ability": "Sharpness",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 4 Def / 28 Spe",
+          "moves": [
+            "十字剪",
+            "岩斧",
+            "守住",
+            "暗袭要害"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "克命爪",
+            "近身战",
+            "击掌奇袭",
+            "岩崩"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "1 Def / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "蛮干",
+            "再来一次",
+            "顺风"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "19"
+      }
+    },
+    {
       "id": "vgcpastes-pc863",
       "title": "Giancarlo's Froslass Aerodactyl Team",
       "author": "Giancarlo Abiera",
@@ -28346,6 +28465,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mb862",
+      "title": "oscaaulait's Tryout Draft League Top 4 Team",
+      "author": "oscaaulait",
+      "owner": "oscaaulait",
+      "teamId": "MB862",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "Discord Submission",
+      "platformUrl": "https://pokepast.es/948d0b2c3e790c84",
+      "season": "M-B",
+      "format": "线上赛事 / Tryout Draft League",
+      "updatedAt": "2026-09-11",
+      "eventDate": "2026-09-11",
+      "eventName": "Tryout Draft League",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 4,
+      "detailLevel": "full",
+      "tags": [
+        "M-B",
+        "线上赛事",
+        "线上",
+        "#4",
+        "化石翼龙（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Tryout Draft League，第 4 名，作者 oscaaulait，队伍码 EPPU1HXXXA",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "16 HP / 13 Atk / 5 SpD / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "冰冻牙",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "32 HP / 3 Def / 2 SpA / 5 SpD / 24 Spe",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "meowscarada",
+          "pokemonName": "Meowscarada",
+          "item": "Choice Scarf",
+          "ability": "Protean",
+          "nature": "Jolly",
+          "spread": "1 HP / 32 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "千变万花",
+            "地狱突刺",
+            "三旋击",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "踢倒",
+            "突袭"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "看穿"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "龙爪",
+            "地震",
+            "岩崩",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "4"
+      }
     },
     {
       "id": "vgcpastes-pc862",
