@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T10:13:31.872Z",
+  "updatedAt": "2026-10-31T09:49:03.108Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=2001945654#gid=2001945654",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-10-26",
-      "count": 748
+      "updatedAt": "2026-10-30",
+      "count": 755
     },
     {
       "name": "VGCPastes Repository",
@@ -53590,6 +53590,120 @@
       }
     },
     {
+      "id": "vgcpastes-mc755",
+      "title": "Chompy's Recreation of Erizabeth's VR October Challenge #4 Top 4 Team",
+      "author": "Chompy",
+      "owner": "ChompyGM_",
+      "teamId": "MC755",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ChompyGM_/status/2115490867368640602?s=20",
+      "platformUrl": "https://pokepast.es/9d3c3ee9e145f6b8",
+      "season": "M-C",
+      "format": "队伍分享",
+      "updatedAt": "2026-10-29",
+      "eventDate": "2026-10-29",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "其它",
+        "喷火驼（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Chompy，队伍码 9KDKCQ8YAY",
+      "members": [
+        {
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "32 HP / 2 Def / 32 SpA",
+          "moves": [
+            "守住",
+            "热风",
+            "原始之力",
+            "大地之力"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "30 HP / 12 Def / 24 Spe",
+          "moves": [
+            "守住",
+            "击掌奇袭",
+            "电磁炮",
+            "真气弹"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Charcoal",
+          "ability": "Intimidate",
+          "nature": "Brave",
+          "spread": "32 HP / 32 Atk / 2 SpD",
+          "moves": [
+            "击掌奇袭",
+            "抛下狠话",
+            "闪焰冲锋",
+            "ＤＤ金勾臂"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Life Orb",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "32 HP / 27 Atk / 6 SpD / 1 Spe",
+          "moves": [
+            "青草滑梯",
+            "击掌奇袭",
+            "木槌",
+            "急速折返"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Calm",
+          "spread": "29 HP / 22 Def / 15 SpD",
+          "moves": [
+            "守住",
+            "精神强念",
+            "戏法空间",
+            "帮助"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "31 HP / 13 Def / 21 SpA / 1 SpD",
+          "moves": [
+            "守住",
+            "月亮之力",
+            "巨声",
+            "冥想"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb755",
       "title": "abelpoke49r's Gardevoir Grimmsnarl Team",
       "author": "abelpoke49r",
@@ -53819,6 +53933,119 @@
       "metrics": {
         "finalRanking": "67"
       }
+    },
+    {
+      "id": "vgcpastes-mc754",
+      "title": "anboxing's Camerupt HTR Team",
+      "author": "anboxing",
+      "owner": "anboxing11",
+      "teamId": "MC754",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/anboxing11/status/2115752015288504779?s=19",
+      "platformUrl": "https://pokepast.es/bcfed53686b3984c",
+      "season": "M-C",
+      "format": "队伍分享",
+      "updatedAt": "2026-10-29",
+      "eventDate": "2026-10-29",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "其它",
+        "喷火驼（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 anboxing",
+      "members": [
+        {
+          "pokemonId": "cameruptmega",
+          "pokemonName": "Camerupt-Mega",
+          "item": "Cameruptite",
+          "ability": "Solid Rock",
+          "nature": "Quiet",
+          "spread": "-",
+          "moves": [
+            "大地之力",
+            "热风",
+            "守住",
+            "原始之力"
+          ]
+        },
+        {
+          "pokemonId": "gallade",
+          "pokemonName": "Gallade",
+          "item": "Focus Sash",
+          "ability": "Sharpness",
+          "nature": "Brave",
+          "spread": "-",
+          "moves": [
+            "精神利刃",
+            "圣剑",
+            "戏法空间",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Rocky Helmet",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "-",
+          "moves": [
+            "魅诱之声",
+            "帮助",
+            "看我嘛",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Relaxed",
+          "spread": "-",
+          "moves": [
+            "十万伏特",
+            "吼叫",
+            "帮助",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Muscle Band",
+          "ability": "Defiant",
+          "nature": "Brave",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "hatterene",
+          "pokemonName": "Hatterene",
+          "item": "Life Orb",
+          "ability": "Magic Bounce",
+          "nature": "Quiet",
+          "spread": "-",
+          "moves": [
+            "广域战力",
+            "魔法闪耀",
+            "魔法火焰",
+            "戏法空间"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb754",
@@ -54058,6 +54285,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc753",
+      "title": "Nirinbo's Battle Cruise Top 8 Team",
+      "author": "Davide Carrer",
+      "owner": "Nirinbo_VGC",
+      "teamId": "MC753",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ssteccaa/status/2115123836459090234?s=46",
+      "platformUrl": "https://pokepast.es/a3405a6e98d765aa",
+      "season": "M-C",
+      "format": "线上赛事 / TeamAqua ASD Battle Cruise",
+      "updatedAt": "2026-10-28",
+      "eventDate": "2026-10-28",
+      "eventName": "TeamAqua ASD Battle Cruise",
+      "eventType": "线上赛事",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 8,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "线上",
+        "#8",
+        "晶光花（Mega）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "TeamAqua ASD Battle Cruise，第 8 名，作者 Davide Carrer，队伍码 LRA7PMUAAF",
+      "members": [
+        {
+          "pokemonId": "glimmoramega",
+          "pokemonName": "Glimmora-Mega",
+          "item": "Glimmoranite",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "32 SpA / 2 SpD / 32 Spe",
+          "moves": [
+            "力量宝石",
+            "污泥炸弹",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Charti Berry",
+          "ability": "Flame Body",
+          "nature": "Bold",
+          "spread": "32 HP / 20 Def / 14 Spe",
+          "moves": [
+            "过热",
+            "虫之抵抗",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "32 HP / 30 Atk / 4 Spe",
+          "moves": [
+            "蛮力",
+            "青草滑梯",
+            "木槌",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 2 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "14 HP / 20 Atk / 32 Spe",
+          "moves": [
+            "地震",
+            "岩崩",
+            "跺脚",
+            "龙爪"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "8"
+      }
+    },
+    {
       "id": "vgcpastes-mb753",
       "title": "trickrubyvgc's Abomasnow Simipour Team",
       "author": "trickrubyvgc",
@@ -54288,6 +54634,120 @@
       "metrics": {
         "finalRanking": "82"
       }
+    },
+    {
+      "id": "vgcpastes-mc752",
+      "title": "BTrickroomZ's Floette Kingambit Team",
+      "author": "Yuta Ishigaki",
+      "owner": "BTrickroomZ",
+      "teamId": "MC752",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/BTrickroomZ/status/2115470447848599624?s=20",
+      "platformUrl": "https://pokepast.es/8aa5d225332186aa",
+      "season": "M-C",
+      "format": "队伍分享",
+      "updatedAt": "2026-10-28",
+      "eventDate": "2026-10-28",
+      "eventType": "线上赛事",
+      "region": "其它",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "线上赛事",
+        "其它",
+        "永恒花叶蒂（Mega）（Mega）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "VGCPastes 收录队伍，作者 Yuta Ishigaki，队伍码 EGJR0PYH5A",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "16 HP / 12 Def / 29 SpA / 9 Spe",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Timid",
+          "spread": "29 HP / 31 SpD / 6 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Rocky Helmet",
+          "ability": "Flame Body",
+          "nature": "Bold",
+          "spread": "32 HP / 25 Def / 1 SpD / 8 Spe",
+          "moves": [
+            "过热",
+            "虫之抵抗",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "22 HP / 15 Atk / 1 Def / 14 SpD / 14 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Expert Belt",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "30 HP / 2 Atk / 4 Def / 8 SpD / 22 Spe",
+          "moves": [
+            "龙爪",
+            "跺脚",
+            "毒击",
+            "岩崩"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb752",
@@ -54524,6 +54984,121 @@
       }
     },
     {
+      "id": "vgcpastes-mc751",
+      "title": "Animus' Puebla Regional 2027 Champion Team",
+      "author": "Kyle Livinghouse",
+      "owner": "animusvgc",
+      "teamId": "MC751",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/animusvgc/status/2114741715794002315?s=46",
+      "platformUrl": "https://pokepast.es/5580526d5771cf1b",
+      "season": "M-C",
+      "format": "区域赛 / Puebla Regional 2027",
+      "updatedAt": "2026-10-25",
+      "eventDate": "2026-10-25",
+      "eventName": "Puebla Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "喷火龙（Mega Y）",
+        "雪妖女（Mega）"
+      ],
+      "summary": "Puebla Regional 2027，作者 Kyle Livinghouse，队伍码 0QK4AB237U",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "20 HP / 32 Def / 1 SpA / 13 Spe",
+          "moves": [
+            "气象球",
+            "守住",
+            "热风",
+            "日光束"
+          ]
+        },
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "32 HP / 2 SpA / 32 Spe",
+          "moves": [
+            "暴风雪",
+            "极光幕",
+            "暗影球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "16 HP / 20 Atk / 30 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩石封锁",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "守住",
+            "再来一次",
+            "月亮之力",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 25 Atk / 8 Def / 1 SpD",
+          "moves": [
+            "突袭",
+            "铁头",
+            "仆刀",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "6 HP / 28 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "地震",
+            "龙爪",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb751",
       "title": "João Felipe Leite's VR to San Francisco Runner Up Team",
       "author": "João Felipe Leite",
@@ -54756,6 +55331,121 @@
       "metrics": {
         "finalRanking": "100"
       }
+    },
+    {
+      "id": "vgcpastes-mc750",
+      "title": "Prro-T's Puebla Regional 2027 Runner Up Team",
+      "author": "Renzo Navarro",
+      "owner": "Prro_T93",
+      "teamId": "MC750",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/Prro_T93/status/2114557271036264944",
+      "platformUrl": "https://pokepast.es/82416fcf934eba27",
+      "season": "M-C",
+      "format": "区域赛 / Puebla Regional 2027",
+      "updatedAt": "2026-10-25",
+      "eventDate": "2026-10-25",
+      "eventName": "Puebla Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Puebla Regional 2027，作者 Renzo Navarro",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "勇鸟猛攻",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "闪焰冲锋",
+            "神速",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Leftovers",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "巨声",
+            "月亮之力",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
     },
     {
       "id": "vgcpastes-mb750",
@@ -54992,6 +55682,125 @@
       ],
       "metrics": {
         "finalRanking": "117"
+      }
+    },
+    {
+      "id": "vgcpastes-mc749",
+      "title": "Thurmos7's Puebla Regional 2027 Top 4 Team",
+      "author": "Thurmos7",
+      "owner": "Thurmos7",
+      "teamId": "MC749",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/Thurmos7/status/2114523299166200246",
+      "platformUrl": "https://pokepast.es/6cf44102b6790f63",
+      "season": "M-C",
+      "format": "区域赛 / Puebla Regional 2027",
+      "updatedAt": "2026-10-25",
+      "eventDate": "2026-10-25",
+      "eventName": "Puebla Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 3,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#3",
+        "姆克鹰（Mega）",
+        "班基拉斯（Mega）"
+      ],
+      "summary": "Puebla Regional 2027，第 3 名，作者 Thurmos7",
+      "members": [
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "岩崩",
+            "拍落",
+            "龙之舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "milotic",
+          "pokemonName": "Milotic",
+          "item": "Sitrus Berry",
+          "ability": "Competitive",
+          "nature": "Calm",
+          "spread": "-",
+          "moves": [
+            "热水",
+            "冰冻光束",
+            "冰冻之风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "十万马力",
+            "铁头",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Rocky Helmet",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "-",
+          "moves": [
+            "刷刷茶炮",
+            "吸取力量",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "暗影球",
+            "淘金潮",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "3"
       }
     },
     {
@@ -55234,14 +56043,14 @@
     },
     {
       "id": "vgcpastes-mc748",
-      "title": "Animus' Puebla Regional 2027 Champion Team",
-      "author": "Kyle Livinghouse",
-      "owner": "animusvgc",
+      "title": "Snaf's Puebla Regional 2027 Top 4 Team",
+      "author": "Zach Holowiak",
+      "owner": "Snaf269",
       "teamId": "MC748",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/animusvgc/status/2114741715794002315?s=46",
-      "platformUrl": "https://pokepast.es/5580526d5771cf1b",
+      "sourceUrl": "https://x.com/Snaf269",
+      "platformUrl": "https://pokepast.es/c7fd73b157ce6d38",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -55250,102 +56059,106 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "detailLevel": "full",
+      "placement": 4,
+      "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "喷火龙（Mega Y）",
-        "雪妖女（Mega）"
+        "#4",
+        "火焰鸡（Mega）",
+        "雷丘（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，作者 Kyle Livinghouse，队伍码 0QK4AB237U",
+      "summary": "Puebla Regional 2027，第 4 名，作者 Zach Holowiak",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "20 HP / 32 Def / 1 SpA / 13 Spe",
+          "pokemonId": "blazikenmega",
+          "pokemonName": "Blaziken-Mega",
+          "item": "Blazikenite",
+          "ability": "Speed Boost",
+          "nature": "Adamant",
+          "spread": "-",
           "moves": [
-            "气象球",
-            "守住",
-            "热风",
-            "日光束"
+            "看穿",
+            "闪焰冲锋",
+            "近身战",
+            "岩崩"
           ]
         },
         {
-          "pokemonId": "froslassmega",
-          "pokemonName": "Froslass-Mega",
-          "item": "Froslassite",
-          "ability": "Cursed Body",
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "32 HP / 2 SpA / 32 Spe",
+          "spread": "-",
           "moves": [
-            "暴风雪",
-            "极光幕",
-            "暗影球",
+            "击掌奇袭",
+            "电磁炮",
+            "真气弹",
             "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Leftovers",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "冥想",
+            "巨声",
+            "月亮之力"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "青草滑梯",
+            "木槌",
+            "击掌奇袭",
+            "急速折返"
           ]
         },
         {
           "pokemonId": "sneasler",
           "pokemonName": "Sneasler",
-          "item": "White Herb",
+          "item": "Grassy Seed",
           "ability": "Unburden",
           "nature": "Adamant",
-          "spread": "16 HP / 20 Atk / 30 Spe",
+          "spread": "-",
           "moves": [
+            "岩崩",
             "近身战",
             "克命爪",
-            "岩石封锁",
             "守住"
-          ]
-        },
-        {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
-          "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
-          "spread": "2 HP / 32 SpA / 32 Spe",
-          "moves": [
-            "守住",
-            "再来一次",
-            "月亮之力",
-            "顺风"
           ]
         },
         {
           "pokemonId": "kingambit",
           "pokemonName": "Kingambit",
-          "item": "Chople Berry",
+          "item": "Black Glasses",
           "ability": "Defiant",
           "nature": "Adamant",
-          "spread": "32 HP / 25 Atk / 8 Def / 1 SpD",
+          "spread": "-",
           "moves": [
             "突袭",
-            "铁头",
             "仆刀",
-            "踢倒"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
-          "spread": "6 HP / 28 Atk / 32 Spe",
-          "moves": [
-            "岩崩",
-            "地震",
-            "龙爪",
+            "剑舞",
             "守住"
           ]
         }
       ],
-      "metrics": {}
+      "metrics": {
+        "finalRanking": "4"
+      }
     },
     {
       "id": "vgcpastes-mb748",
@@ -55587,14 +56400,14 @@
     },
     {
       "id": "vgcpastes-mc747",
-      "title": "Prro-T's Puebla Regional 2027 Runner Up Team",
-      "author": "Renzo Navarro",
-      "owner": "Prro_T93",
+      "title": "Davidness' Puebla Regional 2027 Top 8 Team",
+      "author": "David Rodríguez",
+      "owner": "davidness2",
       "teamId": "MC747",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Prro_T93/status/2114557271036264944",
-      "platformUrl": "https://pokepast.es/82416fcf934eba27",
+      "sourceUrl": "https://x.com/davidness2/status/2115052502118744297",
+      "platformUrl": "https://pokepast.es/4df6c1a5f7643370",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -55603,102 +56416,105 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
+      "placement": 5,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "雷丘（Mega Y）",
-        "姆克鹰（Mega）"
+        "#5",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，作者 Renzo Navarro",
+      "summary": "Puebla Regional 2027，第 5 名，作者 David Rodríguez",
       "members": [
         {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
-          "nature": "Timid",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
           "spread": "-",
           "moves": [
-            "电磁炮",
-            "真气弹",
+            "气象球",
+            "热风",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "水流喷射",
+            "扫墓",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "克命爪",
             "击掌奇袭",
             "守住"
           ]
         },
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
-            "近身战",
-            "勇鸟猛攻",
-            "顺风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "arcaninehisui",
-          "pokemonName": "Arcanine-Hisui",
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
           "item": "Focus Sash",
-          "ability": "Rock Head",
-          "nature": "Jolly",
+          "ability": "Prankster",
+          "nature": "Timid",
           "spread": "-",
           "moves": [
-            "闪焰冲锋",
-            "神速",
-            "岩崩",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "primarina",
-          "pokemonName": "Primarina",
-          "item": "Leftovers",
-          "ability": "Liquid Voice",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "巨声",
             "月亮之力",
-            "冥想",
+            "顺风",
+            "再来一次",
             "守住"
           ]
         },
         {
-          "pokemonId": "rillaboom",
-          "pokemonName": "Rillaboom",
-          "item": "Miracle Seed",
-          "ability": "Grassy Surge",
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
           "nature": "Adamant",
           "spread": "-",
           "moves": [
-            "木槌",
-            "青草滑梯",
-            "十万马力",
-            "击掌奇袭"
+            "仆刀",
+            "踢倒",
+            "突袭",
+            "铁头"
           ]
         },
         {
-          "pokemonId": "gholdengo",
-          "pokemonName": "Gholdengo",
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
           "item": "Life Orb",
-          "ability": "Good as Gold",
-          "nature": "Modest",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
           "spread": "-",
           "moves": [
-            "淘金潮",
-            "暗影球",
-            "诡计",
+            "龙爪",
+            "地震",
+            "岩崩",
             "守住"
           ]
         }
       ],
-      "metrics": {}
+      "metrics": {
+        "finalRanking": "5"
+      }
     },
     {
       "id": "vgcpastes-mb747",
@@ -55939,14 +56755,14 @@
     },
     {
       "id": "vgcpastes-mc746",
-      "title": "Thurmos7's Puebla Regional 2027 Top 4 Team",
-      "author": "Thurmos7",
-      "owner": "Thurmos7",
+      "title": "Otoniel Longorio's Puebla Regional 2027 Top 8 Team",
+      "author": "Otoniel Longorio",
+      "owner": "Otoniel Longorio",
       "teamId": "MC746",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Thurmos7/status/2114523299166200246",
-      "platformUrl": "https://pokepast.es/6cf44102b6790f63",
+      "sourceUrl": "No Tweet",
+      "platformUrl": "https://pokepast.es/a36e52c19b360724",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -55955,105 +56771,105 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 3,
+      "placement": 6,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#3",
-        "姆克鹰（Mega）",
-        "班基拉斯（Mega）"
+        "#6",
+        "化石翼龙（Mega）",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，第 3 名，作者 Thurmos7",
+      "summary": "Puebla Regional 2027，第 6 名，作者 Otoniel Longorio",
       "members": [
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
           "nature": "Jolly",
           "spread": "-",
           "moves": [
-            "勇鸟猛攻",
-            "近身战",
             "顺风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "tyranitarmega",
-          "pokemonName": "Tyranitar-Mega",
-          "item": "Tyranitarite",
-          "ability": "Sand Stream",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
             "岩崩",
-            "拍落",
-            "龙之舞",
-            "守住"
+            "守住",
+            "双翼"
           ]
         },
         {
-          "pokemonId": "milotic",
-          "pokemonName": "Milotic",
-          "item": "Sitrus Berry",
-          "ability": "Competitive",
-          "nature": "Calm",
-          "spread": "-",
-          "moves": [
-            "热水",
-            "冰冻光束",
-            "冰冻之风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "excadrill",
-          "pokemonName": "Excadrill",
-          "item": "Focus Sash",
-          "ability": "Sand Rush",
-          "nature": "Adamant",
-          "spread": "-",
-          "moves": [
-            "十万马力",
-            "铁头",
-            "岩崩",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Rocky Helmet",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "-",
-          "moves": [
-            "刷刷茶炮",
-            "吸取力量",
-            "愤怒粉",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "gholdengo",
-          "pokemonName": "Gholdengo",
-          "item": "Life Orb",
-          "ability": "Good as Gold",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
           "nature": "Modest",
           "spread": "-",
           "moves": [
-            "暗影球",
-            "淘金潮",
-            "诡计",
-            "守住"
+            "守住",
+            "热风",
+            "气象球",
+            "日光束"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "-",
+          "moves": [
+            "精神强念",
+            "戏法空间",
+            "十万伏特",
+            "帮助"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "踢倒",
+            "仆刀",
+            "铁头",
+            "突袭"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "看穿",
+            "巨声",
+            "破坏光线",
+            "电光一闪"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "地震",
+            "龙爪",
+            "跺脚",
+            "岩崩"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "3"
+        "finalRanking": "6"
       }
     },
     {
@@ -56295,14 +57111,14 @@
     },
     {
       "id": "vgcpastes-mc745",
-      "title": "Snaf's Puebla Regional 2027 Top 4 Team",
-      "author": "Zach Holowiak",
-      "owner": "Snaf269",
+      "title": "MaineMarshtomp's Puebla Regional 2027 Top 8 Team",
+      "author": "MaineMarshtomp",
+      "owner": "MaineMarshtomp",
       "teamId": "MC745",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Snaf269",
-      "platformUrl": "https://pokepast.es/c7fd73b157ce6d38",
+      "sourceUrl": "https://x.com/MaineMarshtomp",
+      "platformUrl": "https://pokepast.es/02e5884b5effae78",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -56311,105 +57127,104 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 4,
+      "placement": 7,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#4",
-        "火焰鸡（Mega）",
-        "雷丘（Mega Y）"
+        "#7",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，第 4 名，作者 Zach Holowiak",
+      "summary": "Puebla Regional 2027，第 7 名，作者 MaineMarshtomp",
       "members": [
         {
-          "pokemonId": "blazikenmega",
-          "pokemonName": "Blaziken-Mega",
-          "item": "Blazikenite",
-          "ability": "Speed Boost",
-          "nature": "Adamant",
-          "spread": "-",
-          "moves": [
-            "看穿",
-            "闪焰冲锋",
-            "近身战",
-            "岩崩"
-          ]
-        },
-        {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
-          "nature": "Timid",
-          "spread": "-",
-          "moves": [
-            "击掌奇袭",
-            "电磁炮",
-            "真气弹",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "primarina",
-          "pokemonName": "Primarina",
-          "item": "Leftovers",
-          "ability": "Liquid Voice",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
           "nature": "Modest",
           "spread": "-",
           "moves": [
             "守住",
-            "冥想",
-            "巨声",
-            "月亮之力"
+            "热风",
+            "气象球",
+            "暴风"
           ]
         },
         {
-          "pokemonId": "rillaboom",
-          "pokemonName": "Rillaboom",
-          "item": "Miracle Seed",
-          "ability": "Grassy Surge",
-          "nature": "Adamant",
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Calm",
           "spread": "-",
           "moves": [
-            "青草滑梯",
-            "木槌",
-            "击掌奇袭",
-            "急速折返"
+            "气象球",
+            "暴风",
+            "守住",
+            "顺风"
           ]
         },
         {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "Grassy Seed",
-          "ability": "Unburden",
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Focus Sash",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "污泥炸弹",
+            "催眠粉",
+            "大地之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "grimmsnarl",
+          "pokemonName": "Grimmsnarl",
+          "item": "Light Clay",
+          "ability": "Prankster",
+          "nature": "Impish",
+          "spread": "-",
+          "moves": [
+            "光墙",
+            "反射壁",
+            "抛下狠话",
+            "灵魂冲击"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "龙之波动",
+            "守住",
+            "电光束",
+            "大声咆哮"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
           "nature": "Adamant",
           "spread": "-",
           "moves": [
+            "龙爪",
+            "地震",
             "岩崩",
-            "近身战",
-            "克命爪",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Black Glasses",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "-",
-          "moves": [
-            "突袭",
-            "仆刀",
-            "剑舞",
-            "守住"
+            "重踏"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "4"
+        "finalRanking": "7"
       }
     },
     {
@@ -56651,14 +57466,14 @@
     },
     {
       "id": "vgcpastes-mc744",
-      "title": "Davidness' Puebla Regional 2027 Top 8 Team",
-      "author": "David Rodríguez",
-      "owner": "davidness2",
+      "title": "Vanz_Ssb's Puebla Regional 2027 Top 8 Team",
+      "author": "Vanz_Ssb",
+      "owner": "Vanz_Ssb",
       "teamId": "MC744",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/davidness2/status/2115052502118744297",
-      "platformUrl": "https://pokepast.es/4df6c1a5f7643370",
+      "sourceUrl": "https://x.com/Vanz_Ssb/status/2114497259916181814",
+      "platformUrl": "https://pokepast.es/e459145b3a11638c",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -56667,16 +57482,17 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 5,
+      "placement": 8,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#5",
-        "喷火龙（Mega Y）"
+        "#8",
+        "喷火龙（Mega Y）",
+        "烈咬陆鲨（Mega）"
       ],
-      "summary": "Puebla Regional 2027，第 5 名，作者 David Rodríguez",
+      "summary": "Puebla Regional 2027，第 8 名，作者 Vanz_Ssb",
       "members": [
         {
           "pokemonId": "charizardmegay",
@@ -56686,85 +57502,80 @@
           "nature": "Modest",
           "spread": "-",
           "moves": [
-            "气象球",
             "热风",
-            "日光束",
+            "原始之力",
+            "气象球",
             "守住"
           ]
         },
         {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
-          "item": "Mystic Water",
-          "ability": "Adaptability",
-          "nature": "Adamant",
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "-",
+          "nature": "-",
           "spread": "-",
-          "moves": [
-            "波动冲",
-            "水流喷射",
-            "扫墓",
-            "守住"
-          ]
+          "moves": []
         },
         {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "White Herb",
-          "ability": "Unburden",
-          "nature": "Adamant",
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Leftovers",
+          "ability": "Intimidate",
+          "nature": "Relaxed",
           "spread": "-",
           "moves": [
-            "近身战",
-            "克命爪",
             "击掌奇袭",
-            "守住"
+            "大声咆哮",
+            "闪焰冲锋",
+            "抛下狠话"
           ]
         },
         {
-          "pokemonId": "whimsicott",
-          "pokemonName": "Whimsicott",
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
           "item": "Focus Sash",
-          "ability": "Prankster",
-          "nature": "Timid",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
           "spread": "-",
           "moves": [
-            "月亮之力",
-            "顺风",
-            "再来一次",
+            "大地之力",
+            "污泥炸弹",
+            "催眠粉",
             "守住"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Chople Berry",
-          "ability": "Defiant",
-          "nature": "Adamant",
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Modest",
           "spread": "-",
           "moves": [
-            "仆刀",
-            "踢倒",
-            "突袭",
-            "铁头"
+            "精神强念",
+            "守住",
+            "戏法空间",
+            "十万伏特"
           ]
         },
         {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Life Orb",
-          "ability": "Rough Skin",
-          "nature": "Jolly",
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
           "spread": "-",
           "moves": [
-            "龙爪",
-            "地震",
-            "岩崩",
-            "守住"
+            "看穿",
+            "巨声",
+            "哈欠",
+            "电光一闪"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "5"
+        "finalRanking": "8"
       }
     },
     {
@@ -57003,14 +57814,14 @@
     },
     {
       "id": "vgcpastes-mc743",
-      "title": "Otoniel Longorio's Puebla Regional 2027 Top 8 Team",
-      "author": "Otoniel Longorio",
-      "owner": "Otoniel Longorio",
+      "title": "sley's Puebla Regional 2027 Top 16 Team",
+      "author": "Jimmy Suárez",
+      "owner": "Jimmysley28",
       "teamId": "MC743",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "No Tweet",
-      "platformUrl": "https://pokepast.es/a36e52c19b360724",
+      "sourceUrl": "https://x.com/Jimmysley28",
+      "platformUrl": "https://pokepast.es/610f8ddd90f3fabf",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -57019,105 +57830,105 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 6,
+      "placement": 9,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#6",
-        "化石翼龙（Mega）",
-        "喷火龙（Mega Y）"
+        "#9",
+        "永恒花叶蒂（Mega）（Mega）",
+        "雷丘（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，第 6 名，作者 Otoniel Longorio",
+      "summary": "Puebla Regional 2027，第 9 名，作者 Jimmy Suárez",
       "members": [
         {
-          "pokemonId": "aerodactylmega",
-          "pokemonName": "Aerodactyl-Mega",
-          "item": "Aerodactylite",
-          "ability": "Unnerve",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "电磁炮",
+            "真气弹",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Grassy Seed",
+          "ability": "Flame Body",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "终极吸取",
+            "蝶舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
           "nature": "Jolly",
           "spread": "-",
           "moves": [
-            "顺风",
-            "岩崩",
-            "守住",
-            "双翼"
+            "波动冲",
+            "扫墓",
+            "快速折返",
+            "浸水"
           ]
         },
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
-          "ability": "Blaze",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "守住",
-            "热风",
-            "气象球",
-            "日光束"
-          ]
-        },
-        {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Bold",
-          "spread": "-",
-          "moves": [
-            "精神强念",
-            "戏法空间",
-            "十万伏特",
-            "帮助"
-          ]
-        },
-        {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Focus Sash",
-          "ability": "Defiant",
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
           "nature": "Adamant",
           "spread": "-",
           "moves": [
-            "踢倒",
-            "仆刀",
-            "铁头",
-            "突袭"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "看穿",
-            "巨声",
-            "破坏光线",
-            "电光一闪"
-          ]
-        },
-        {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Choice Scarf",
-          "ability": "Rough Skin",
-          "nature": "Adamant",
-          "spread": "-",
-          "moves": [
-            "地震",
-            "龙爪",
-            "跺脚",
-            "岩崩"
+            "击掌奇袭",
+            "青草滑梯",
+            "木槌",
+            "急速折返"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "6"
+        "finalRanking": "9"
       }
     },
     {
@@ -57355,14 +58166,14 @@
     },
     {
       "id": "vgcpastes-mc742",
-      "title": "MaineMarshtomp's Puebla Regional 2027 Top 8 Team",
-      "author": "MaineMarshtomp",
-      "owner": "MaineMarshtomp",
+      "title": "canseco_salas' Puebla Regional 2027 Top 16 Team",
+      "author": "canseco_salas",
+      "owner": "canseco_salas",
       "teamId": "MC742",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/MaineMarshtomp",
-      "platformUrl": "https://pokepast.es/02e5884b5effae78",
+      "sourceUrl": "https://x.com/canseco_salas",
+      "platformUrl": "https://pokepast.es/750c77f8ff839421",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -57371,104 +58182,105 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 7,
+      "placement": 10,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#7",
-        "喷火龙（Mega Y）"
+        "#10",
+        "妖火红狐（Mega）",
+        "姆克鹰（Mega）"
       ],
-      "summary": "Puebla Regional 2027，第 7 名，作者 MaineMarshtomp",
+      "summary": "Puebla Regional 2027，第 10 名，作者 canseco_salas",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
           "ability": "Blaze",
-          "nature": "Modest",
+          "nature": "Timid",
           "spread": "-",
           "moves": [
-            "守住",
             "热风",
-            "气象球",
-            "暴风"
-          ]
-        },
-        {
-          "pokemonId": "pelipper",
-          "pokemonName": "Pelipper",
-          "item": "Sitrus Berry",
-          "ability": "Drizzle",
-          "nature": "Calm",
-          "spread": "-",
-          "moves": [
-            "气象球",
-            "暴风",
-            "守住",
-            "顺风"
-          ]
-        },
-        {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
-          "item": "Focus Sash",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "污泥炸弹",
-            "催眠粉",
-            "大地之力",
+            "精神强念",
+            "诡计",
             "守住"
           ]
         },
         {
-          "pokemonId": "grimmsnarl",
-          "pokemonName": "Grimmsnarl",
-          "item": "Light Clay",
-          "ability": "Prankster",
-          "nature": "Impish",
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
           "spread": "-",
           "moves": [
-            "光墙",
-            "反射壁",
-            "抛下狠话",
-            "灵魂冲击"
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
           ]
         },
         {
-          "pokemonId": "archaludon",
-          "pokemonName": "Archaludon",
-          "item": "Leftovers",
-          "ability": "Stamina",
-          "nature": "Modest",
+          "pokemonId": "torkoal",
+          "pokemonName": "Torkoal",
+          "item": "Charcoal",
+          "ability": "Drought",
+          "nature": "Quiet",
           "spread": "-",
           "moves": [
-            "龙之波动",
+            "喷火",
+            "大地之力",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "岩崩",
+            "毒击",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "-",
+          "moves": [
+            "帮助",
+            "精神强念",
             "守住",
-            "电光束",
-            "大声咆哮"
+            "戏法空间"
           ]
         },
         {
-          "pokemonId": "garchomp",
-          "pokemonName": "Garchomp",
-          "item": "Choice Scarf",
-          "ability": "Rough Skin",
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
           "nature": "Adamant",
           "spread": "-",
           "moves": [
-            "龙爪",
-            "地震",
-            "岩崩",
-            "重踏"
+            "仆刀",
+            "突袭",
+            "铁头",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "7"
+        "finalRanking": "10"
       }
     },
     {
@@ -57707,14 +58519,14 @@
     },
     {
       "id": "vgcpastes-mc741",
-      "title": "Vanz_Ssb's Puebla Regional 2027 Top 8 Team",
-      "author": "Vanz_Ssb",
-      "owner": "Vanz_Ssb",
+      "title": "SkrollexVGC's Puebla Regional 2027 Top 16 Team",
+      "author": "SkrollexVGC",
+      "owner": "SkrollexVGC",
       "teamId": "MC741",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Vanz_Ssb/status/2114497259916181814",
-      "platformUrl": "https://pokepast.es/e459145b3a11638c",
+      "sourceUrl": "https://x.com/SkrollexVGC/status/2114748884035448907",
+      "platformUrl": "https://pokepast.es/6ed1fe84912b44e0",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
       "updatedAt": "2026-10-25",
@@ -57723,100 +58535,105 @@
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 8,
+      "placement": 11,
       "detailLevel": "sets",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#8",
-        "喷火龙（Mega Y）",
-        "烈咬陆鲨（Mega）"
+        "#11",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
       ],
-      "summary": "Puebla Regional 2027，第 8 名，作者 Vanz_Ssb",
+      "summary": "Puebla Regional 2027，第 11 名，作者 SkrollexVGC",
       "members": [
         {
-          "pokemonId": "charizardmegay",
-          "pokemonName": "Charizard-Mega-Y",
-          "item": "Charizardite Y",
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
           "ability": "Blaze",
-          "nature": "Modest",
+          "nature": "Timid",
           "spread": "-",
           "moves": [
             "热风",
-            "原始之力",
-            "气象球",
+            "诡计",
+            "精神强念",
             "守住"
           ]
         },
         {
-          "pokemonId": "garchompmegaz",
-          "pokemonName": "Garchomp-Mega-Z",
-          "item": "Garchompite Z",
-          "ability": "-",
-          "nature": "-",
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
           "spread": "-",
-          "moves": []
+          "moves": [
+            "守住",
+            "魔法闪耀",
+            "吸取之吻",
+            "冥想"
+          ]
         },
         {
           "pokemonId": "incineroar",
           "pokemonName": "Incineroar",
-          "item": "Leftovers",
+          "item": "Sitrus Berry",
           "ability": "Intimidate",
-          "nature": "Relaxed",
+          "nature": "Careful",
           "spread": "-",
           "moves": [
             "击掌奇袭",
-            "大声咆哮",
             "闪焰冲锋",
+            "大声咆哮",
             "抛下狠话"
           ]
         },
         {
-          "pokemonId": "venusaur",
-          "pokemonName": "Venusaur",
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
           "item": "Focus Sash",
-          "ability": "Chlorophyll",
-          "nature": "Modest",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
           "spread": "-",
           "moves": [
-            "大地之力",
-            "污泥炸弹",
-            "催眠粉",
+            "毒击",
+            "近身战",
+            "击掌奇袭",
+            "快速防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Occa Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "-",
+          "moves": [
+            "刷刷茶炮",
+            "戏法空间",
+            "愤怒粉",
             "守住"
           ]
         },
         {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Modest",
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
           "spread": "-",
           "moves": [
-            "精神强念",
-            "守住",
-            "戏法空间",
-            "十万伏特"
-          ]
-        },
-        {
-          "pokemonId": "sylveon",
-          "pokemonName": "Sylveon",
-          "item": "Fairy Feather",
-          "ability": "Pixilate",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "看穿",
-            "巨声",
-            "哈欠",
-            "电光一闪"
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "8"
+        "finalRanking": "11"
       }
     },
     {
@@ -58055,60 +58872,45 @@
     },
     {
       "id": "vgcpastes-mc740",
-      "title": "sley's Puebla Regional 2027 Top 16 Team",
-      "author": "Jimmy Suárez",
-      "owner": "Jimmysley28",
+      "title": "punihina1334's Puebla Regional 2027 Top 32 Team",
+      "author": "punihina1334",
+      "owner": "punihina1334",
       "teamId": "MC740",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Jimmysley28",
-      "platformUrl": "https://pokepast.es/610f8ddd90f3fabf",
+      "sourceUrl": "https://x.com/punihina1334/status/2115079344104128641?s=46",
+      "platformUrl": "https://pokepast.es/9c031a787b16b322",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
-      "updatedAt": "2026-10-25",
-      "eventDate": "2026-10-25",
+      "updatedAt": "2026-10-27",
+      "eventDate": "2026-10-27",
       "eventName": "Puebla Regional 2027",
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 9,
-      "detailLevel": "sets",
+      "placement": 21,
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#9",
-        "永恒花叶蒂（Mega）（Mega）",
-        "雷丘（Mega Y）"
+        "#21",
+        "喷火龙（Mega Y）"
       ],
-      "summary": "Puebla Regional 2027，第 9 名，作者 Jimmy Suárez",
+      "summary": "Puebla Regional 2027，第 21 名，作者 punihina1334，队伍码 5BM86P0C7E",
       "members": [
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Modest",
-          "spread": "-",
-          "moves": [
-            "月亮之力",
-            "魔法闪耀",
-            "冥想",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "raichumegay",
-          "pokemonName": "Raichu-Mega-Y",
-          "item": "Raichunite Y",
-          "ability": "Lightning Rod",
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "17 HP / 12 Def / 13 SpA / 1 SpD / 23 Spe",
           "moves": [
-            "击掌奇袭",
-            "电磁炮",
-            "真气弹",
-            "守住"
+            "守住",
+            "气象球",
+            "原始之力",
+            "热风"
           ]
         },
         {
@@ -58117,59 +58919,73 @@
           "item": "Sitrus Berry",
           "ability": "Intimidate",
           "nature": "Impish",
-          "spread": "-",
+          "spread": "31 HP / 21 Def / 12 SpD / 2 Spe",
           "moves": [
-            "击掌奇袭",
             "闪焰冲锋",
             "地狱突刺",
+            "击掌奇袭",
             "抛下狠话"
           ]
         },
         {
-          "pokemonId": "volcarona",
-          "pokemonName": "Volcarona",
-          "item": "Grassy Seed",
-          "ability": "Flame Body",
-          "nature": "Timid",
-          "spread": "-",
+          "pokemonId": "toxapex",
+          "pokemonName": "Toxapex",
+          "item": "Leftovers",
+          "ability": "Regenerator",
+          "nature": "Bold",
+          "spread": "32 HP / 8 Def / 26 SpD",
           "moves": [
-            "热风",
-            "终极吸取",
-            "蝶舞",
-            "守住"
+            "死缠烂打",
+            "广域防守",
+            "碉堡",
+            "剧毒"
           ]
         },
         {
-          "pokemonId": "basculegion",
-          "pokemonName": "Basculegion",
+          "pokemonId": "venusaur",
+          "pokemonName": "Venusaur",
+          "item": "Life Orb",
+          "ability": "Chlorophyll",
+          "nature": "Modest",
+          "spread": "4 HP / 30 SpA / 32 Spe",
+          "moves": [
+            "飞叶风暴",
+            "污泥炸弹",
+            "守住",
+            "大地之力"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "31 HP / 25 Def / 10 SpA",
+          "moves": [
+            "看穿",
+            "巨声",
+            "哈欠",
+            "电光一闪"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
           "item": "Choice Scarf",
-          "ability": "Adaptability",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
-            "波动冲",
-            "扫墓",
-            "快速折返",
-            "浸水"
-          ]
-        },
-        {
-          "pokemonId": "rillaboom",
-          "pokemonName": "Rillaboom",
-          "item": "Miracle Seed",
-          "ability": "Grassy Surge",
+          "ability": "Rough Skin",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "14 HP / 20 Atk / 32 Spe",
           "moves": [
-            "击掌奇袭",
-            "青草滑梯",
-            "木槌",
-            "急速折返"
+            "岩崩",
+            "龙爪",
+            "跺脚",
+            "地震"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "9"
+        "finalRanking": "21"
       }
     },
     {
@@ -58406,121 +59222,116 @@
     },
     {
       "id": "vgcpastes-mc739",
-      "title": "canseco_salas' Puebla Regional 2027 Top 16 Team",
-      "author": "canseco_salas",
-      "owner": "canseco_salas",
+      "title": "fireb7799's Puebla Regional 2027 Top 32 Team",
+      "author": "fireb7799",
+      "owner": "fireb7799",
       "teamId": "MC739",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/canseco_salas",
-      "platformUrl": "https://pokepast.es/750c77f8ff839421",
+      "sourceUrl": "https://x.com/fireb7799/status/2114449257474433214?s=46",
+      "platformUrl": "https://pokepast.es/c6b6fd3ce9a82cea",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
-      "updatedAt": "2026-10-25",
-      "eventDate": "2026-10-25",
+      "updatedAt": "2026-10-26",
+      "eventDate": "2026-10-26",
       "eventName": "Puebla Regional 2027",
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 10,
-      "detailLevel": "sets",
+      "placement": 20,
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#10",
-        "妖火红狐（Mega）",
-        "姆克鹰（Mega）"
+        "#20",
+        "烈咬陆鲨（Mega）",
+        "具甲武者（Mega）"
       ],
-      "summary": "Puebla Regional 2027，第 10 名，作者 canseco_salas",
+      "summary": "Puebla Regional 2027，第 20 名，作者 fireb7799，队伍码 06QQRF03CE",
       "members": [
         {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
-          "nature": "Timid",
+          "pokemonId": "garchompmegaz",
+          "pokemonName": "Garchomp-Mega-Z",
+          "item": "Garchompite Z",
+          "ability": "-",
+          "nature": "-",
           "spread": "-",
-          "moves": [
-            "热风",
-            "精神强念",
-            "诡计",
-            "守住"
-          ]
+          "moves": []
         },
         {
-          "pokemonId": "staraptormega",
-          "pokemonName": "Staraptor-Mega",
-          "item": "Staraptite",
-          "ability": "Intimidate",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
-            "勇鸟猛攻",
-            "近身战",
-            "顺风",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "torkoal",
-          "pokemonName": "Torkoal",
-          "item": "Charcoal",
-          "ability": "Drought",
-          "nature": "Quiet",
-          "spread": "-",
-          "moves": [
-            "喷火",
-            "大地之力",
-            "气象球",
-            "守住"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "Focus Sash",
-          "ability": "Poison Touch",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
-            "近身战",
-            "岩崩",
-            "毒击",
-            "击掌奇袭"
-          ]
-        },
-        {
-          "pokemonId": "farigiraf",
-          "pokemonName": "Farigiraf",
-          "item": "Sitrus Berry",
-          "ability": "Armor Tail",
-          "nature": "Bold",
-          "spread": "-",
-          "moves": [
-            "帮助",
-            "精神强念",
-            "守住",
-            "戏法空间"
-          ]
-        },
-        {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Life Orb",
-          "ability": "Defiant",
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "29 HP / 30 Atk / 7 Spe",
           "moves": [
-            "仆刀",
             "突袭",
-            "铁头",
+            "吸血",
+            "守住",
+            "铁头"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Swift Swim",
+          "nature": "Adamant",
+          "spread": "13 HP / 28 Atk / 25 Spe",
+          "moves": [
+            "扫墓",
+            "水流喷射",
+            "波动冲",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Focus Sash",
+          "ability": "Drizzle",
+          "nature": "Timid",
+          "spread": "2 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "暴风",
+            "气象球",
+            "守住",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "meowstic",
+          "pokemonName": "Meowstic",
+          "item": "Sitrus Berry",
+          "ability": "Prankster",
+          "nature": "Calm",
+          "spread": "32 HP / 15 Def / 19 SpD",
+          "moves": [
+            "光墙",
+            "戏法空间",
+            "击掌奇袭",
+            "求雨"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Modest",
+          "spread": "27 HP / 15 SpA / 11 SpD / 13 Spe",
+          "moves": [
+            "电光束",
+            "流星群",
+            "加农光炮",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "10"
+        "finalRanking": "20"
       }
     },
     {
@@ -58757,121 +59568,121 @@
     },
     {
       "id": "vgcpastes-mc738",
-      "title": "SkrollexVGC's Puebla Regional 2027 Top 16 Team",
-      "author": "SkrollexVGC",
-      "owner": "SkrollexVGC",
+      "title": "Ewok's Puebla Regional 2027 Top 64 Team",
+      "author": "Christian Ramírez",
+      "owner": "Ewok_Padawan",
       "teamId": "MC738",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/SkrollexVGC/status/2114748884035448907",
-      "platformUrl": "https://pokepast.es/6ed1fe84912b44e0",
+      "sourceUrl": "https://x.com/Ewok_Padawan/status/2115852490973319569?s=20",
+      "platformUrl": "https://pokepast.es/4ee5d23f26213d8e",
       "season": "M-C",
       "format": "区域赛 / Puebla Regional 2027",
-      "updatedAt": "2026-10-25",
-      "eventDate": "2026-10-25",
+      "updatedAt": "2026-10-30",
+      "eventDate": "2026-10-30",
       "eventName": "Puebla Regional 2027",
       "eventType": "区域赛",
       "region": "线上",
       "category": "表格收录队伍",
-      "placement": 11,
-      "detailLevel": "sets",
+      "placement": 41,
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
         "线上",
-        "#11",
-        "妖火红狐（Mega）",
-        "永恒花叶蒂（Mega）（Mega）"
+        "#41",
+        "沙奈朵（Mega）",
+        "具甲武者（Mega）"
       ],
-      "summary": "Puebla Regional 2027，第 11 名，作者 SkrollexVGC",
+      "summary": "Puebla Regional 2027，第 41 名，作者 Christian Ramírez，队伍码 199JW2B5GE",
       "members": [
         {
-          "pokemonId": "delphoxmega",
-          "pokemonName": "Delphox-Mega",
-          "item": "Delphoxite",
-          "ability": "Blaze",
+          "pokemonId": "gardevoirmega",
+          "pokemonName": "Gardevoir-Mega",
+          "item": "Gardevoirite",
+          "ability": "Synchronize",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "2 HP / 32 SpA / 32 Spe",
           "moves": [
-            "热风",
-            "诡计",
+            "巨声",
+            "广域战力",
             "精神强念",
             "守住"
           ]
         },
         {
-          "pokemonId": "floettemega",
-          "pokemonName": "Floette-Mega",
-          "item": "Floettite",
-          "ability": "Flower Veil",
-          "nature": "Modest",
-          "spread": "-",
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Brave",
+          "spread": "32 HP / 32 Atk / 2 SpD",
           "moves": [
-            "守住",
-            "魔法闪耀",
-            "吸取之吻",
-            "冥想"
-          ]
-        },
-        {
-          "pokemonId": "incineroar",
-          "pokemonName": "Incineroar",
-          "item": "Sitrus Berry",
-          "ability": "Intimidate",
-          "nature": "Careful",
-          "spread": "-",
-          "moves": [
-            "击掌奇袭",
-            "闪焰冲锋",
-            "大声咆哮",
-            "抛下狠话"
-          ]
-        },
-        {
-          "pokemonId": "sneasler",
-          "pokemonName": "Sneasler",
-          "item": "Focus Sash",
-          "ability": "Poison Touch",
-          "nature": "Jolly",
-          "spread": "-",
-          "moves": [
-            "毒击",
-            "近身战",
-            "击掌奇袭",
-            "快速防守"
-          ]
-        },
-        {
-          "pokemonId": "sinistcha",
-          "pokemonName": "Sinistcha",
-          "item": "Occa Berry",
-          "ability": "Hospitality",
-          "nature": "Bold",
-          "spread": "-",
-          "moves": [
-            "刷刷茶炮",
-            "戏法空间",
-            "愤怒粉",
+            "吸血",
+            "铁头",
+            "突袭",
             "守住"
           ]
         },
         {
-          "pokemonId": "kingambit",
-          "pokemonName": "Kingambit",
-          "item": "Life Orb",
-          "ability": "Defiant",
-          "nature": "Adamant",
-          "spread": "-",
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "4 HP / 21 Atk / 13 Def / 28 Spe",
           "moves": [
-            "仆刀",
-            "突袭",
-            "剑舞",
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "快速折返"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Focus Sash",
+          "ability": "Drizzle",
+          "nature": "Calm",
+          "spread": "31 HP / 2 Def / 15 SpA / 17 SpD / 1 Spe",
+          "moves": [
+            "浊流",
+            "暴风",
+            "顺风",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "indeedeef",
+          "pokemonName": "Indeedee-F",
+          "item": "Lum Berry",
+          "ability": "Psychic Surge",
+          "nature": "Relaxed",
+          "spread": "32 HP / 25 Def / 4 SpA / 5 SpD",
+          "moves": [
+            "看我嘛",
+            "帮助",
+            "戏法空间",
+            "精神强念"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "32 HP / 1 Def / 1 SpA / 20 SpD / 12 Spe",
+          "moves": [
+            "电光束",
+            "龙之波动",
+            "波导弹",
             "守住"
           ]
         }
       ],
       "metrics": {
-        "finalRanking": "11"
+        "finalRanking": "41"
       }
     },
     {
