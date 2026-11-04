@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T11:02:56.859Z",
+  "updatedAt": "2026-11-04T11:11:24.785Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -7,8 +7,8 @@
       "url": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/view?gid=2001945654#gid=2001945654",
       "homeUrl": "https://tinyurl.com/vgcpastes2026",
       "note": "Google Sheets 队伍库；列表来自表格，完整配置从每行 Pokepaste 链接同步。",
-      "updatedAt": "2026-10-30",
-      "count": 755
+      "updatedAt": "2026-11-03",
+      "count": 780
     },
     {
       "name": "VGCPastes Repository",
@@ -47786,6 +47786,121 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc780",
+      "title": "javivarela56's Gdańsk Regional 2027 Champion Team",
+      "author": "javivarela56",
+      "owner": "javivarela56",
+      "teamId": "MC780",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/javivarela56/status/2116960888120873152?s=20",
+      "platformUrl": "https://pokepast.es/f3296782162e51c4",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "姆克鹰（Mega）",
+        "班基拉斯（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，作者 javivarela56，队伍码 1V4XVBR3Y6",
+      "members": [
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "29 HP / 1 Atk / 4 SpD / 32 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "tyranitarmega",
+          "pokemonName": "Tyranitar-Mega",
+          "item": "Tyranitarite",
+          "ability": "Sand Stream",
+          "nature": "Jolly",
+          "spread": "18 HP / 16 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "拍落",
+            "龙之舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "milotic",
+          "pokemonName": "Milotic",
+          "item": "Sitrus Berry",
+          "ability": "Competitive",
+          "nature": "Calm",
+          "spread": "32 HP / 17 Def / 8 SpA / 5 SpD / 4 Spe",
+          "moves": [
+            "热水",
+            "冰冻光束",
+            "冰冻之风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "excadrill",
+          "pokemonName": "Excadrill",
+          "item": "Focus Sash",
+          "ability": "Sand Rush",
+          "nature": "Adamant",
+          "spread": "32 Atk / 1 Def / 1 SpD / 32 Spe",
+          "moves": [
+            "十万马力",
+            "铁头",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Rocky Helmet",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "29 HP / 14 Def / 23 SpD",
+          "moves": [
+            "刷刷茶炮",
+            "吸取力量",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "27 HP / 12 Def / 17 SpD / 10 Spe",
+          "moves": [
+            "暗影球",
+            "淘金潮",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "id": "vgcpastes-mb780",
       "title": "_Ghira_'s Venusaur Tyranitar Team",
       "author": "_Ghira_",
@@ -48008,6 +48123,121 @@
             "极光幕",
             "冷冻干燥",
             "魔法闪耀"
+          ]
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc779",
+      "title": "maGicaUra's Gdańsk Regional 2027 Runner Up Team",
+      "author": "Jude Lee",
+      "owner": "magicauravgc",
+      "teamId": "MC779",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/magicauravgc/status/2116990444269945279?s=20",
+      "platformUrl": "https://pokepast.es/527dcd9007995d9e",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "永恒花叶蒂（Mega）（Mega）",
+        "烈咬陆鲨（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，作者 Jude Lee，队伍码 C8BN5AKEH8",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "28 HP / 14 Def / 5 SpA / 19 Spe",
+          "moves": [
+            "魔法闪耀",
+            "吸取之吻",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchompmega",
+          "pokemonName": "Garchomp-Mega",
+          "item": "Garchompite",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "9 HP / 20 Atk / 22 SpD / 15 Spe",
+          "moves": [
+            "跺脚",
+            "鳞射",
+            "守住",
+            "岩崩"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Sassy",
+          "spread": "32 HP / 4 Def / 30 SpD",
+          "moves": [
+            "闪焰冲锋",
+            "击掌奇袭",
+            "抛下狠话",
+            "帮助"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "17 HP / 31 Atk / 10 SpD / 8 Spe",
+          "moves": [
+            "木槌",
+            "十万马力",
+            "击掌奇袭",
+            "青草滑梯"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "32 Atk / 2 Def / 32 Spe",
+          "moves": [
+            "克命爪",
+            "击掌奇袭",
+            "指导",
+            "近身战"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 Def / 1 Spe",
+          "moves": [
+            "仆刀",
+            "剑舞",
+            "突袭",
+            "守住"
           ]
         }
       ],
@@ -48242,6 +48472,125 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc778",
+      "title": "MichaelderBeste's Gdańsk Regional 2027 Top 4 Team",
+      "author": "Michael Kelsch",
+      "owner": "michaelderbeste",
+      "teamId": "MC778",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/michaelderbeste/status/2117597497740955740?s=46",
+      "platformUrl": "https://pokepast.es/dacb44cc949cf739",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-03",
+      "eventDate": "2026-11-03",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 3,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#3",
+        "喷火龙（Mega Y）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 3 名，作者 Michael Kelsch，队伍码 JQDVTFK10X",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "30 HP / 31 Def / 1 SpA / 4 Spe",
+          "moves": [
+            "热风",
+            "气象球",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Modest",
+          "spread": "1 HP / 24 SpA / 9 SpD / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "喷射火焰",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "1 HP / 20 Atk / 13 Def / 32 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "32 HP / 2 Atk / 6 Def / 4 SpD / 22 Spe",
+          "moves": [
+            "近身战",
+            "垃圾射击",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 20 Atk / 11 Def / 2 SpD / 1 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "3"
+      }
+    },
+    {
       "id": "vgcpastes-mb778",
       "title": "whairing's WCS Open 2026 Champion Team",
       "author": "whairing",
@@ -48471,6 +48820,124 @@
       "metrics": {}
     },
     {
+      "id": "vgcpastes-mc777",
+      "title": "Huyubare's Gdańsk Regional 2027 Top 4 Team",
+      "author": "Ko Tsukide",
+      "owner": "huyubare_poke",
+      "teamId": "MC777",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/huyubare_poke/status/2116939137819279376?s=46",
+      "platformUrl": "https://pokepast.es/4b95294006c6d632",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 4,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#4",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 4 名，作者 Ko Tsukide，队伍码 RK5BCHW4S0",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "20 HP / 20 Def / 12 SpA / 14 Spe",
+          "moves": [
+            "热风",
+            "日光束",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "18 Atk / 25 Def / 23 Spe",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "7 HP / 20 Atk / 1 Def / 6 SpD / 32 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "岩石封锁",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "月亮之力",
+            "再来一次",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 25 Atk / 8 Def / 1 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "31 Atk / 3 Def / 32 Spe",
+          "moves": [
+            "地震",
+            "龙爪",
+            "岩崩",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "4"
+      }
+    },
+    {
       "id": "vgcpastes-mb777",
       "title": "barudoru's Abomasnow Camerupt Team",
       "author": "Ryota Otsubo",
@@ -48698,6 +49165,125 @@
         }
       ],
       "metrics": {}
+    },
+    {
+      "id": "vgcpastes-mc776",
+      "title": "Liam Chatterjee's Gdańsk Regional 2027 Top 8 Team",
+      "author": "Liam Chatterjee",
+      "owner": "Liam Chatterjee",
+      "teamId": "MC776",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "No Tweet",
+      "platformUrl": "https://pokepast.es/fe105bb254f07e0d",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 5,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#5",
+        "喷火龙（Mega Y）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 5 名，作者 Liam Chatterjee",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "气象球",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Life Orb",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "indeedee",
+          "pokemonName": "Indeedee",
+          "item": "Focus Sash",
+          "ability": "Psychic Surge",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "广域战力",
+            "巨声",
+            "戏法空间",
+            "封印"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Occa Berry",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "地震",
+            "龙爪",
+            "岩崩",
+            "跺脚"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "5"
+      }
     },
     {
       "id": "vgcpastes-mb776",
@@ -48930,6 +49516,125 @@
       ],
       "metrics": {
         "finalRanking": "3"
+      }
+    },
+    {
+      "id": "vgcpastes-mc775",
+      "title": "Nix's Gdańsk Regional 2027 Top 8 Team",
+      "author": "Nikola Zirdum",
+      "owner": "NFJontra",
+      "teamId": "MC775",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/NFJontra/status/2117040349105299495",
+      "platformUrl": "https://pokepast.es/7eb352a4795148cd",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 6,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#6",
+        "永恒花叶蒂（Mega）（Mega）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 6 名，作者 Nikola Zirdum",
+      "members": [
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "魔法闪耀",
+            "守住",
+            "月亮之力",
+            "冥想"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "顺风",
+            "巨声",
+            "守住",
+            "喷射火焰"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Colbur Berry",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "水流喷射",
+            "波动冲",
+            "守住",
+            "扫墓"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Life Orb",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "木槌",
+            "十万马力",
+            "青草滑梯",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "守住",
+            "铁头"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "6"
       }
     },
     {
@@ -49167,6 +49872,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc774",
+      "title": "Aborig's Gdańsk Regional 2027 Top 8 Team",
+      "author": "Dennis Komen",
+      "owner": "Aborig24",
+      "teamId": "MC774",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/Aborig24/status/2116891432313295076",
+      "platformUrl": "https://pokepast.es/1b456d7a880aceff",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 7,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#7",
+        "喷火龙（Mega Y）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 7 名，作者 Dennis Komen",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "日光束",
+            "守住",
+            "气象球"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "巨声",
+            "流星群",
+            "喷射火焰",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Life Orb",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "近身战",
+            "垃圾射击",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "7"
+      }
+    },
+    {
       "id": "vgcpastes-mb774",
       "title": "fruitmanvgc's Mawile Chandelure Team",
       "author": "fruitmanvgc",
@@ -49400,6 +50224,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc773",
+      "title": "LenVGC's Gdańsk Regional 2027 Top 8 Team",
+      "author": "Alex Soto",
+      "owner": "LenVGC",
+      "teamId": "MC773",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/LenVGC/status/2117366894563078265",
+      "platformUrl": "https://pokepast.es/f51c9946ab320f2d",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 8,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#8",
+        "妖火红狐（Mega）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 8 名，作者 Alex Soto",
+      "members": [
+        {
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "热风",
+            "精神冲击",
+            "诡计"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "月亮之力",
+            "魔法闪耀",
+            "冥想"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "大声咆哮",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Focus Sash",
+          "ability": "Poison Touch",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "近身战",
+            "毒击",
+            "快速防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Occa Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "刷刷茶炮",
+            "愤怒粉",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "守住",
+            "仆刀",
+            "突袭",
+            "剑舞"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "8"
+      }
+    },
+    {
       "id": "vgcpastes-mb773",
       "title": "punihina1334's Charizard-Y Mawile Team",
       "author": "punihina1334",
@@ -49629,6 +50572,124 @@
       ],
       "metrics": {
         "finalRanking": "6"
+      }
+    },
+    {
+      "id": "vgcpastes-mc772",
+      "title": "mizmiz's Gdańsk Regional 2027 Top 16 Team",
+      "author": "Naoya Takasago",
+      "owner": "mizmiz_790",
+      "teamId": "MC772",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/mizmiz_790/status/2116881036088873351",
+      "platformUrl": "https://pokepast.es/ae7214a91ba4d75a",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 9,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#9",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 9 名，作者 Naoya Takasago",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "气象球",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Mystic Water",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "水流喷射",
+            "扫墓",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "克命爪",
+            "近身战",
+            "岩石封锁",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "地震",
+            "岩崩",
+            "龙爪",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "9"
       }
     },
     {
@@ -49868,6 +50929,124 @@
       }
     },
     {
+      "id": "vgcpastes-mc771",
+      "title": "Torviv's Gdańsk Regional 2027 Top 16 Team",
+      "author": "Víctor Medina",
+      "owner": "TorvivVGC",
+      "teamId": "MC771",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/TorvivVGC/status/2116897840370704446",
+      "platformUrl": "https://pokepast.es/a80e7f39215eaf3e",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 10,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#10",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 10 名，作者 Víctor Medina",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "气象球",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Impish",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "milotic",
+          "pokemonName": "Milotic",
+          "item": "Leftovers",
+          "ability": "Competitive",
+          "nature": "Calm",
+          "spread": "-",
+          "moves": [
+            "浊流",
+            "盘蜷",
+            "催眠术",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Life Orb",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "大晴天"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "龙爪",
+            "地震",
+            "跺脚",
+            "岩崩"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "10"
+      }
+    },
+    {
       "id": "vgcpastes-mb771",
       "title": "AndyBakes' Scovillain Maushold Rain Team",
       "author": "AndyBakes",
@@ -50097,6 +51276,125 @@
       ],
       "metrics": {
         "finalRanking": "8"
+      }
+    },
+    {
+      "id": "vgcpastes-mc770",
+      "title": "ApronVGC's Gdańsk Regional 2027 Top 16 Team",
+      "author": "Sebastian Li",
+      "owner": "apronvgc",
+      "teamId": "MC770",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/apronvgc/status/2117156285162639678",
+      "platformUrl": "https://pokepast.es/0b0a31bfe993b638",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 11,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#11",
+        "喷火龙（Mega Y）",
+        "永恒花叶蒂（Mega）（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 11 名，作者 Sebastian Li",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "热风",
+            "原始之力",
+            "气象球",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "floettemega",
+          "pokemonName": "Floette-Mega",
+          "item": "Floettite",
+          "ability": "Flower Veil",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "魔法闪耀",
+            "破灭之光",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Colbur Berry",
+          "ability": "Adaptability",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "水流喷射",
+            "扫墓",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Focus Sash",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Chople Berry",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "龙爪",
+            "地震",
+            "岩崩",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "11"
       }
     },
     {
@@ -50332,6 +51630,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc769",
+      "title": "Pado's Gdańsk Regional 2027 Top 16 Team",
+      "author": "Flavio Del Pidio",
+      "owner": "PadoVGC",
+      "teamId": "MC769",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/PadoVGC/status/2116920386503762136",
+      "platformUrl": "https://pokepast.es/9b5db0d2f0b6ab12",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 12,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#12",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 12 名，作者 Flavio Del Pidio",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "电磁炮",
+            "守住",
+            "真气弹",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Leftovers",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "巨声",
+            "月亮之力",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "十万马力",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "12"
+      }
+    },
+    {
       "id": "vgcpastes-mb769",
       "title": "Jaylun's Meganium Aerodactyl Team",
       "author": "Yang Chieh-Lun",
@@ -50564,6 +51981,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc768",
+      "title": "frpio_pero's Gdańsk Regional 2027 Top 16 Team",
+      "author": "frpio_pero",
+      "owner": "frpio_pero",
+      "teamId": "MC768",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/frpio_pero/status/2116854348642980127",
+      "platformUrl": "https://pokepast.es/8950c4a66fee515c",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 13,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#13",
+        "雷丘（Mega Y）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 13 名，作者 frpio_pero",
+      "members": [
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "arcaninehisui",
+          "pokemonName": "Arcanine-Hisui",
+          "item": "Focus Sash",
+          "ability": "Rock Head",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "闪焰冲锋",
+            "双刃头锤",
+            "神速",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "primarina",
+          "pokemonName": "Primarina",
+          "item": "Leftovers",
+          "ability": "Liquid Voice",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "巨声",
+            "月亮之力",
+            "冥想",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "木槌",
+            "十万马力",
+            "青草滑梯",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "淘金潮",
+            "暗影球",
+            "诡计",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "13"
+      }
+    },
+    {
       "id": "vgcpastes-mb768",
       "title": "gahaku's Solo Staraptor Team",
       "author": "Masahiro Ito",
@@ -50793,6 +52329,125 @@
       ],
       "metrics": {
         "finalRanking": "11"
+      }
+    },
+    {
+      "id": "vgcpastes-mc767",
+      "title": "AuraRayquaza's Gdańsk Regional 2027 Top 16 Team",
+      "author": "Taran Birdee",
+      "owner": "AuraRayquaza",
+      "teamId": "MC767",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/AuraRayquaza/status/2117188891102847117",
+      "platformUrl": "https://pokepast.es/50adea42373fefd9",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 14,
+      "detailLevel": "sets",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#14",
+        "快龙（Mega）",
+        "雪妖女（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 14 名，作者 Taran Birdee",
+      "members": [
+        {
+          "pokemonId": "dragonitemega",
+          "pokemonName": "Dragonite-Mega",
+          "item": "Dragoninite",
+          "ability": "Multiscale",
+          "nature": "Modest",
+          "spread": "-",
+          "moves": [
+            "龙之波动",
+            "热风",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "-",
+          "moves": [
+            "暴风雪",
+            "暗影球",
+            "极光幕",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Sitrus Berry",
+          "ability": "Intimidate",
+          "nature": "Careful",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "地狱突刺",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "-",
+          "moves": [
+            "波动冲",
+            "扫墓",
+            "水流喷射",
+            "快速折返"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "击掌奇袭",
+            "近身战",
+            "垃圾射击",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Black Glasses",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "-",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "14"
       }
     },
     {
@@ -51029,6 +52684,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc766",
+      "title": "Leo's Gdańsk Regional 2027 Top 32 Team",
+      "author": "Leonardo Bonanomi",
+      "owner": "ilbonavgc",
+      "teamId": "MC766",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ilbonavgc/status/2117589516722512117?s=46",
+      "platformUrl": "https://pokepast.es/26cb3dfe88d8c344",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-03",
+      "eventDate": "2026-11-03",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 17,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#17",
+        "晶光花（Mega）",
+        "暴飞龙（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 17 名，作者 Leonardo Bonanomi，队伍码 6CNDDNSNSW",
+      "members": [
+        {
+          "pokemonId": "glimmoramega",
+          "pokemonName": "Glimmora-Mega",
+          "item": "Glimmoranite",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "31 HP / 20 SpA / 1 SpD / 14 Spe",
+          "moves": [
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "salamencemega",
+          "pokemonName": "Salamence-Mega",
+          "item": "Salamencite",
+          "ability": "Intimidate",
+          "nature": "Timid",
+          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "巨声",
+            "流星群",
+            "顺风",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "volcarona",
+          "pokemonName": "Volcarona",
+          "item": "Charti Berry",
+          "ability": "Flame Body",
+          "nature": "Timid",
+          "spread": "22 HP / 21 Def / 23 Spe",
+          "moves": [
+            "过热",
+            "虫之抵抗",
+            "愤怒粉",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Miracle Seed",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "30 HP / 25 Atk / 11 Spe",
+          "moves": [
+            "击掌奇袭",
+            "木槌",
+            "青草滑梯",
+            "蛮力"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "跺脚",
+            "地震",
+            "龙爪",
+            "岩崩"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "17"
+      }
+    },
+    {
       "id": "vgcpastes-mb766",
       "title": "Gworf's Pidgeot Sun Team V2",
       "author": "Zach Knight",
@@ -51258,6 +53032,125 @@
       ],
       "metrics": {
         "finalRanking": "13"
+      }
+    },
+    {
+      "id": "vgcpastes-mc765",
+      "title": "jonen00's Gdańsk Regional 2027 Top 32 Team",
+      "author": "jonen00",
+      "owner": "jonen00",
+      "teamId": "MC765",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/jonen00/status/2116861455278743871?s=46",
+      "platformUrl": "https://pokepast.es/d7003f722cc59699",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-01",
+      "eventDate": "2026-11-01",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 19,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#19",
+        "雪妖女（Mega）",
+        "姆克鹰（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 19 名，作者 jonen00，队伍码 MC027MKNDF",
+      "members": [
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Modest",
+          "spread": "32 HP / 10 SpA / 1 SpD / 23 Spe",
+          "moves": [
+            "暴风雪",
+            "暗影球",
+            "极光幕",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "27 HP / 4 Atk / 1 Def / 2 SpD / 32 Spe",
+          "moves": [
+            "勇鸟猛攻",
+            "近身战",
+            "羽栖",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "armarouge",
+          "pokemonName": "Armarouge",
+          "item": "Sitrus Berry",
+          "ability": "Flash Fire",
+          "nature": "Modest",
+          "spread": "31 HP / 5 SpA / 22 SpD / 8 Spe",
+          "moves": [
+            "铠农炮",
+            "精神冲击",
+            "广域防守",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "glimmora",
+          "pokemonName": "Glimmora",
+          "item": "Focus Sash",
+          "ability": "Toxic Debris",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "污泥炸弹",
+            "力量宝石",
+            "大地之力",
+            "尖刺防守"
+          ]
+        },
+        {
+          "pokemonId": "whimsicott",
+          "pokemonName": "Whimsicott",
+          "item": "Fairy Feather",
+          "ability": "Prankster",
+          "nature": "Timid",
+          "spread": "32 HP / 16 Def / 1 SpA / 5 SpD / 12 Spe",
+          "moves": [
+            "月亮之力",
+            "顺风",
+            "撒娇",
+            "再来一次"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "8 HP / 32 Atk / 26 Spe",
+          "moves": [
+            "仆刀",
+            "突袭",
+            "铁头",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "19"
       }
     },
     {
@@ -51494,6 +53387,124 @@
       }
     },
     {
+      "id": "vgcpastes-mc764",
+      "title": "NikolajHoej's Gdańsk Regional 2027 Top 32 Team",
+      "author": "Nikolaj Høj Nielsen",
+      "owner": "nikolajhoej",
+      "teamId": "MC764",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/nikolajhoej/status/2117042050344579242?s=46",
+      "platformUrl": "https://pokepast.es/31d51c2d516fe5bc",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 26,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#26",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 26 名，作者 Nikolaj Høj Nielsen，队伍码 5GCS285NPL",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "32 HP / 23 Def / 1 SpA / 10 SpD",
+          "moves": [
+            "热风",
+            "气象球",
+            "守住",
+            "日光束"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Chople Berry",
+          "ability": "Intimidate",
+          "nature": "Sassy",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "闪焰冲锋",
+            "大声咆哮",
+            "击掌奇袭",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "annihilape",
+          "pokemonName": "Annihilape",
+          "item": "Spell Tag",
+          "ability": "Defiant",
+          "nature": "Brave",
+          "spread": "32 HP / 5 Atk / 29 SpD",
+          "moves": [
+            "愤怒之拳",
+            "吸取拳",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Calm",
+          "spread": "29 HP / 16 Def / 21 SpD",
+          "moves": [
+            "精神强念",
+            "十万伏特",
+            "戏法空间",
+            "围攻"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "14 HP / 32 Def / 20 SpA",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "哈欠",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "6 HP / 28 Atk / 32 Spe",
+          "moves": [
+            "跺脚",
+            "龙爪",
+            "岩崩",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "26"
+      }
+    },
+    {
       "id": "vgcpastes-mb764",
       "title": "missarye's Pyroar Scrafty Team",
       "author": "missarye",
@@ -51723,6 +53734,125 @@
       ],
       "metrics": {
         "finalRanking": "15"
+      }
+    },
+    {
+      "id": "vgcpastes-mc763",
+      "title": "gabryyl_'s Gdańsk Regional 2027 Top 32 Team",
+      "author": "gabryyl_",
+      "owner": "gabryyl_",
+      "teamId": "MC763",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/gabryyl_/status/2117260243172577431?s=46",
+      "platformUrl": "https://pokepast.es/2a9f1437c1700338",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 30,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#30",
+        "化石翼龙（Mega）",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 30 名，作者 gabryyl_，队伍码 BKS8L17LK5",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "6 HP / 28 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "32 HP / 9 Def / 1 SpA / 24 SpD",
+          "moves": [
+            "气象球",
+            "热风",
+            "日光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "31 HP / 21 Def / 14 SpD",
+          "moves": [
+            "精神强念",
+            "十万伏特",
+            "守住",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "铁头",
+            "仆刀",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "20 HP / 16 Def / 20 SpA / 10 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "龙爪",
+            "地震",
+            "岩石封锁",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "30"
       }
     },
     {
@@ -51960,6 +54090,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc762",
+      "title": "DaniVGC's Gdańsk Regional 2027 Top 64 Team",
+      "author": "DaniVGC",
+      "owner": "vgcdani",
+      "teamId": "MC762",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/vgcdani/status/2116994347379917230?s=46",
+      "platformUrl": "https://pokepast.es/2eaffce00e93b550",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 38,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#38",
+        "具甲武者（Mega）",
+        "雷丘（Mega X）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 38 名，作者 DaniVGC，队伍码 RJWTJGEJH1",
+      "members": [
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 2 Spe",
+          "moves": [
+            "铁头",
+            "吸血",
+            "突袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegax",
+          "pokemonName": "Raichu-Mega-X",
+          "item": "Raichunite X",
+          "ability": "Lightning Rod",
+          "nature": "Jolly",
+          "spread": "30 HP / 4 Def / 32 Spe",
+          "moves": [
+            "伏特攻击",
+            "伏特替换",
+            "击掌奇袭",
+            "佯攻"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Focus Sash",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "1 HP / 32 SpA / 1 SpD / 32 Spe",
+          "moves": [
+            "浊流",
+            "暗影球",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Damp Rock",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "32 HP / 10 Def / 11 SpA / 7 SpD / 6 Spe",
+          "moves": [
+            "气象球",
+            "暴风",
+            "帮助",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Electric Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "20 HP / 20 Atk / 10 Def / 16 Spe",
+          "moves": [
+            "毒击",
+            "近身战",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Calm",
+          "spread": "30 HP / 1 SpA / 25 SpD / 10 Spe",
+          "moves": [
+            "龙之波动",
+            "电光束",
+            "大声咆哮",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "38"
+      }
+    },
+    {
       "id": "vgcpastes-mb762",
       "title": "Narsus' Gengar Dragonite Sand Team",
       "author": "Yoshikazu Sawane",
@@ -52189,6 +54438,125 @@
       ],
       "metrics": {
         "finalRanking": "4"
+      }
+    },
+    {
+      "id": "vgcpastes-mc761",
+      "title": "Trimoxis' Gdańsk Regional 2027 Top 64 Team",
+      "author": "Alejandro Iglesias (Alex)",
+      "owner": "trimoxis12",
+      "teamId": "MC761",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/trimoxis12/status/2116989422038298699?s=46",
+      "platformUrl": "https://pokepast.es/8459bad287052762",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 41,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#41",
+        "具甲武者（Mega）",
+        "雷丘（Mega X）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 41 名，作者 Alejandro Iglesias (Alex)，队伍码 MGKLWBSEVE",
+      "members": [
+        {
+          "pokemonId": "golisopodmega",
+          "pokemonName": "Golisopod-Mega",
+          "item": "Golisopite",
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "spread": "31 HP / 30 Atk / 4 SpD / 1 Spe",
+          "moves": [
+            "铁头",
+            "吸血",
+            "突袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "raichumegax",
+          "pokemonName": "Raichu-Mega-X",
+          "item": "Raichunite X",
+          "ability": "Lightning Rod",
+          "nature": "Jolly",
+          "spread": "30 HP / 4 Def / 32 Spe",
+          "moves": [
+            "击掌奇袭",
+            "佯攻",
+            "伏特替换",
+            "伏特攻击"
+          ]
+        },
+        {
+          "pokemonId": "basculegionf",
+          "pokemonName": "Basculegion-F",
+          "item": "Focus Sash",
+          "ability": "Swift Swim",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "浊流",
+            "暗影球",
+            "冰冻光束",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Damp Rock",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "32 HP / 10 Def / 17 SpA / 7 SpD",
+          "moves": [
+            "气象球",
+            "暴风",
+            "帮助",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "Electric Seed",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "30 HP / 14 Atk / 4 SpD / 18 Spe",
+          "moves": [
+            "近身战",
+            "克命爪",
+            "剑舞",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "32 HP / 1 Def / 1 SpA / 29 SpD / 3 Spe",
+          "moves": [
+            "龙之波动",
+            "大声咆哮",
+            "电光束",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "41"
       }
     },
     {
@@ -52425,6 +54793,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc760",
+      "title": "ildrarvgc's Gdańsk Regional 2027 Top 64 Team",
+      "author": "ildrarvgc",
+      "owner": "ildrarvgc",
+      "teamId": "MC760",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/ildrarvgc/status/2117179219570499644?s=46",
+      "platformUrl": "https://pokepast.es/69cab68cd7298757",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 58,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#58",
+        "火焰鸡（Mega）",
+        "雪妖女（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 58 名，作者 ildrarvgc，队伍码 SN0Q5JTUCH",
+      "members": [
+        {
+          "pokemonId": "blazikenmega",
+          "pokemonName": "Blaziken-Mega",
+          "item": "Blazikenite",
+          "ability": "Speed Boost",
+          "nature": "Adamant",
+          "spread": "4 HP / 29 Atk / 1 Def / 32 Spe",
+          "moves": [
+            "近身战",
+            "闪焰冲锋",
+            "岩崩",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "froslassmega",
+          "pokemonName": "Froslass-Mega",
+          "item": "Froslassite",
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "spread": "30 HP / 4 Def / 4 SpA / 4 SpD / 24 Spe",
+          "moves": [
+            "暴风雪",
+            "暗影球",
+            "极光幕",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "basculegion",
+          "pokemonName": "Basculegion",
+          "item": "Choice Scarf",
+          "ability": "Adaptability",
+          "nature": "Jolly",
+          "spread": "4 HP / 26 Atk / 8 Def / 28 Spe",
+          "moves": [
+            "扫墓",
+            "波动冲",
+            "快速折返",
+            "水流喷射"
+          ]
+        },
+        {
+          "pokemonId": "rillaboom",
+          "pokemonName": "Rillaboom",
+          "item": "Occa Berry",
+          "ability": "Grassy Surge",
+          "nature": "Adamant",
+          "spread": "31 HP / 11 Atk / 22 SpD / 2 Spe",
+          "moves": [
+            "木槌",
+            "青草滑梯",
+            "击掌奇袭",
+            "急速折返"
+          ]
+        },
+        {
+          "pokemonId": "sneasler",
+          "pokemonName": "Sneasler",
+          "item": "White Herb",
+          "ability": "Unburden",
+          "nature": "Adamant",
+          "spread": "21 HP / 10 Atk / 3 SpD / 32 Spe",
+          "moves": [
+            "垃圾射击",
+            "近身战",
+            "击掌奇袭",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Life Orb",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "32 HP / 32 Atk / 1 SpD / 1 Spe",
+          "moves": [
+            "剑舞",
+            "仆刀",
+            "突袭",
+            "守住"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "58"
+      }
+    },
+    {
       "id": "vgcpastes-mb760",
       "title": "MemeGuy924's Charizard-Y Aerodactyl Team",
       "author": "MemeGuy924",
@@ -52655,6 +55142,125 @@
       ],
       "metrics": {
         "finalRanking": "14"
+      }
+    },
+    {
+      "id": "vgcpastes-mc759",
+      "title": "krlos_cb's Gdańsk Regional 2027 Top 64 Team",
+      "author": "krlos_cb",
+      "owner": "krlos_cb",
+      "teamId": "MC759",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/krlos_cb/status/2117323710373736599?s=46",
+      "platformUrl": "https://pokepast.es/acf64d94c9e32396",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-03",
+      "eventDate": "2026-11-03",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 63,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#63",
+        "妖火红狐（Mega）",
+        "雷丘（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 63 名，作者 krlos_cb，队伍码 BGR86EBGRT",
+      "members": [
+        {
+          "pokemonId": "delphoxmega",
+          "pokemonName": "Delphox-Mega",
+          "item": "Delphoxite",
+          "ability": "Blaze",
+          "nature": "Timid",
+          "spread": "26 HP / 8 Def / 32 Spe",
+          "moves": [
+            "守住",
+            "热风",
+            "精神冲击",
+            "诡计"
+          ]
+        },
+        {
+          "pokemonId": "raichumegay",
+          "pokemonName": "Raichu-Mega-Y",
+          "item": "Raichunite Y",
+          "ability": "Lightning Rod",
+          "nature": "Timid",
+          "spread": "25 HP / 9 Def / 32 Spe",
+          "moves": [
+            "守住",
+            "电磁炮",
+            "真气弹",
+            "击掌奇袭"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Chople Berry",
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "spread": "32 HP / 5 Atk / 5 SpD / 24 Spe",
+          "moves": [
+            "闪焰冲锋",
+            "ＤＤ金勾臂",
+            "击掌奇袭",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "29 HP / 10 Def / 9 SpD / 18 Spe",
+          "moves": [
+            "守住",
+            "暴风",
+            "气象球",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Focus Sash",
+          "ability": "Hospitality",
+          "nature": "Modest",
+          "spread": "1 HP / 1 Def / 32 SpA / 32 Spe",
+          "moves": [
+            "刷刷茶炮",
+            "暗影球",
+            "愤怒粉",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Bold",
+          "spread": "27 HP / 5 Def / 1 SpA / 32 SpD / 1 Spe",
+          "moves": [
+            "守住",
+            "龙之波动",
+            "电光束",
+            "大声咆哮"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "63"
       }
     },
     {
@@ -52892,6 +55498,125 @@
       }
     },
     {
+      "id": "vgcpastes-mc758",
+      "title": "draxolotl12's Gdańsk Regional 2027 Top 128 Team",
+      "author": "draxolotl12",
+      "owner": "draxolotl12",
+      "teamId": "MC758",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/draxolotl12/status/2117010390010015916?s=46",
+      "platformUrl": "https://pokepast.es/231bfe2760e85828",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 75,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#75",
+        "姆克鹰（Mega）",
+        "巨沼怪（Mega）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 75 名，作者 draxolotl12，队伍码 UXBHR9D5RK",
+      "members": [
+        {
+          "pokemonId": "staraptormega",
+          "pokemonName": "Staraptor-Mega",
+          "item": "Staraptite",
+          "ability": "Intimidate",
+          "nature": "Jolly",
+          "spread": "29 HP / 1 Atk / 4 SpD / 32 Spe",
+          "moves": [
+            "守住",
+            "勇鸟猛攻",
+            "近身战",
+            "顺风"
+          ]
+        },
+        {
+          "pokemonId": "swampertmega",
+          "pokemonName": "Swampert-Mega",
+          "item": "Swampertite",
+          "ability": "Torrent",
+          "nature": "Adamant",
+          "spread": "18 HP / 30 Atk / 18 Spe",
+          "moves": [
+            "守住",
+            "波动冲",
+            "地震",
+            "冰冻拳"
+          ]
+        },
+        {
+          "pokemonId": "pelipper",
+          "pokemonName": "Pelipper",
+          "item": "Sitrus Berry",
+          "ability": "Drizzle",
+          "nature": "Bold",
+          "spread": "32 HP / 11 Def / 15 SpD / 8 Spe",
+          "moves": [
+            "暴风",
+            "气象球",
+            "顺风",
+            "广域防守"
+          ]
+        },
+        {
+          "pokemonId": "sinistcha",
+          "pokemonName": "Sinistcha",
+          "item": "Kasib Berry",
+          "ability": "Hospitality",
+          "nature": "Bold",
+          "spread": "31 HP / 4 Def / 31 SpD",
+          "moves": [
+            "守住",
+            "刷刷茶炮",
+            "戏法空间",
+            "愤怒粉"
+          ]
+        },
+        {
+          "pokemonId": "gholdengo",
+          "pokemonName": "Gholdengo",
+          "item": "Life Orb",
+          "ability": "Good as Gold",
+          "nature": "Timid",
+          "spread": "7 HP / 27 SpA / 32 Spe",
+          "moves": [
+            "守住",
+            "淘金潮",
+            "暗影球",
+            "力量宝石"
+          ]
+        },
+        {
+          "pokemonId": "archaludon",
+          "pokemonName": "Archaludon",
+          "item": "Leftovers",
+          "ability": "Stamina",
+          "nature": "Calm",
+          "spread": "30 HP / 4 Def / 25 SpD / 7 Spe",
+          "moves": [
+            "守住",
+            "电光束",
+            "龙之波动",
+            "大声咆哮"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "75"
+      }
+    },
+    {
       "id": "vgcpastes-mb758",
       "title": "Jhin's Charizard-Y Tyranitar TR Team",
       "author": "Jhin",
@@ -53125,6 +55850,124 @@
       }
     },
     {
+      "id": "vgcpastes-mc757",
+      "title": "mynamesuckzvgc's Gdańsk Regional 2027 Top 128 Team",
+      "author": "mynamesuckzvgc",
+      "owner": "mynamesuckzvgc",
+      "teamId": "MC757",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/mynamesuckzvgc/status/2117268641557197017?s=46",
+      "platformUrl": "https://pokepast.es/0a446c14040b0587",
+      "season": "M-C",
+      "format": "区域赛 / Gdańsk Regional 2027",
+      "updatedAt": "2026-11-02",
+      "eventDate": "2026-11-02",
+      "eventName": "Gdańsk Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 128,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#128",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Gdańsk Regional 2027，第 128 名，作者 mynamesuckzvgc，队伍码 EN43XY37V1",
+      "members": [
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Blaze",
+          "nature": "Modest",
+          "spread": "32 HP / 23 Def / 1 SpA / 10 SpD",
+          "moves": [
+            "守住",
+            "气象球",
+            "热风",
+            "日光束"
+          ]
+        },
+        {
+          "pokemonId": "incineroar",
+          "pokemonName": "Incineroar",
+          "item": "Chople Berry",
+          "ability": "Intimidate",
+          "nature": "Sassy",
+          "spread": "32 HP / 14 Def / 20 SpD",
+          "moves": [
+            "击掌奇袭",
+            "闪焰冲锋",
+            "大声咆哮",
+            "抛下狠话"
+          ]
+        },
+        {
+          "pokemonId": "annihilape",
+          "pokemonName": "Annihilape",
+          "item": "Spell Tag",
+          "ability": "Defiant",
+          "nature": "Brave",
+          "spread": "32 HP / 5 Atk / 29 SpD",
+          "moves": [
+            "愤怒之拳",
+            "吸取拳",
+            "再来一次",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Calm",
+          "spread": "29 HP / 16 Def / 21 SpD",
+          "moves": [
+            "戏法空间",
+            "围攻",
+            "十万伏特",
+            "精神强念"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Fairy Feather",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "13 HP / 32 Def / 21 SpA",
+          "moves": [
+            "破坏光线",
+            "巨声",
+            "看穿",
+            "哈欠"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Life Orb",
+          "ability": "Rough Skin",
+          "nature": "Jolly",
+          "spread": "6 HP / 28 Atk / 32 Spe",
+          "moves": [
+            "守住",
+            "跺脚",
+            "岩崩",
+            "龙爪"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "128"
+      }
+    },
+    {
       "id": "vgcpastes-mb757",
       "title": "NatusPKMN's Gengar Tinkaton Team",
       "author": "Nate Innocenti",
@@ -53354,6 +56197,125 @@
       ],
       "metrics": {
         "finalRanking": "42"
+      }
+    },
+    {
+      "id": "vgcpastes-mc756",
+      "title": "Avalos_VGC's Nice Regional 2027 Top 32 Team",
+      "author": "Avalos_VGC",
+      "owner": "Avalos_VGC",
+      "teamId": "MC756",
+      "source": "VGCPastes Repository",
+      "sourceGroup": "VGCPastes Repository",
+      "sourceUrl": "https://x.com/Avalos_VGC/status/2116660122457976885?s=20",
+      "platformUrl": "https://pokepast.es/afffb5cb120e14bf",
+      "season": "M-C",
+      "format": "区域赛 / Nice Regional 2027",
+      "updatedAt": "2026-11-01",
+      "eventDate": "2026-11-01",
+      "eventName": "Nice Regional 2027",
+      "eventType": "区域赛",
+      "region": "线上",
+      "category": "表格收录队伍",
+      "placement": 27,
+      "detailLevel": "full",
+      "tags": [
+        "M-C",
+        "区域赛",
+        "线上",
+        "#27",
+        "化石翼龙（Mega）",
+        "喷火龙（Mega Y）"
+      ],
+      "summary": "Nice Regional 2027，第 27 名，作者 Avalos_VGC，队伍码 8Q5AAFHHMM",
+      "members": [
+        {
+          "pokemonId": "aerodactylmega",
+          "pokemonName": "Aerodactyl-Mega",
+          "item": "Aerodactylite",
+          "ability": "Unnerve",
+          "nature": "Jolly",
+          "spread": "10 HP / 20 Atk / 1 Def / 3 SpD / 32 Spe",
+          "moves": [
+            "岩崩",
+            "双翼",
+            "顺风",
+            "冰冻牙"
+          ]
+        },
+        {
+          "pokemonId": "charizardmegay",
+          "pokemonName": "Charizard-Mega-Y",
+          "item": "Charizardite Y",
+          "ability": "Drought",
+          "nature": "Timid",
+          "spread": "8 HP / 24 Def / 11 SpA / 23 Spe",
+          "moves": [
+            "气象球",
+            "热风",
+            "原始之力",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "farigiraf",
+          "pokemonName": "Farigiraf",
+          "item": "Sitrus Berry",
+          "ability": "Armor Tail",
+          "nature": "Bold",
+          "spread": "23 HP / 27 Def / 10 SpA / 6 SpD",
+          "moves": [
+            "精神强念",
+            "帮助",
+            "吼叫",
+            "戏法空间"
+          ]
+        },
+        {
+          "pokemonId": "kingambit",
+          "pokemonName": "Kingambit",
+          "item": "Focus Sash",
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "仆刀",
+            "铁头",
+            "突袭",
+            "踢倒"
+          ]
+        },
+        {
+          "pokemonId": "sylveon",
+          "pokemonName": "Sylveon",
+          "item": "Life Orb",
+          "ability": "Pixilate",
+          "nature": "Modest",
+          "spread": "2 HP / 32 SpA / 32 Spe",
+          "moves": [
+            "巨声",
+            "破坏光线",
+            "电光一闪",
+            "守住"
+          ]
+        },
+        {
+          "pokemonId": "garchomp",
+          "pokemonName": "Garchomp",
+          "item": "Choice Scarf",
+          "ability": "Rough Skin",
+          "nature": "Adamant",
+          "spread": "2 HP / 32 Atk / 32 Spe",
+          "moves": [
+            "岩崩",
+            "龙爪",
+            "地震",
+            "跺脚"
+          ]
+        }
+      ],
+      "metrics": {
+        "finalRanking": "27"
       }
     },
     {
@@ -73873,12 +76835,12 @@
       "id": "vgcpastes-mc697",
       "title": "Triir's Nice Regional 2027 Top 8 Team",
       "author": "Riccardo Stellini",
-      "owner": "Triir22",
+      "owner": "triir22",
       "teamId": "MC697",
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
-      "sourceUrl": "https://x.com/Triir22/status/2111822127741735058",
-      "platformUrl": "https://pokepast.es/e7b7817d50443bff",
+      "sourceUrl": "https://x.com/triir22/status/2117218516705403033?s=46",
+      "platformUrl": "https://pokepast.es/b9422630d1c3f8bc",
       "season": "M-C",
       "format": "区域赛 / Nice Regional 2027",
       "updatedAt": "2026-10-18",
@@ -73888,7 +76850,7 @@
       "region": "线上",
       "category": "表格收录队伍",
       "placement": 6,
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "区域赛",
@@ -73897,7 +76859,7 @@
         "喷火驼（Mega）",
         "雷丘（Mega Y）"
       ],
-      "summary": "Nice Regional 2027，第 6 名，作者 Riccardo Stellini",
+      "summary": "Nice Regional 2027，第 6 名，作者 Riccardo Stellini，队伍码 B1V7P36K13",
       "members": [
         {
           "pokemonId": "cameruptmega",
@@ -73905,7 +76867,7 @@
           "item": "Cameruptite",
           "ability": "Solid Rock",
           "nature": "Quiet",
-          "spread": "-",
+          "spread": "32 HP / 32 SpA / 2 Spe",
           "moves": [
             "热风",
             "大地之力",
@@ -73919,7 +76881,7 @@
           "item": "Raichunite Y",
           "ability": "Lightning Rod",
           "nature": "Timid",
-          "spread": "-",
+          "spread": "32 HP / 11 Def / 23 Spe",
           "moves": [
             "电磁炮",
             "真气弹",
@@ -73933,7 +76895,7 @@
           "item": "White Herb",
           "ability": "Intimidate",
           "nature": "Brave",
-          "spread": "-",
+          "spread": "32 HP / 32 Atk / 2 SpD",
           "moves": [
             "闪焰冲锋",
             "ＤＤ金勾臂",
@@ -73947,7 +76909,7 @@
           "item": "Life Orb",
           "ability": "Grassy Surge",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "32 HP / 28 Atk / 6 SpD",
           "moves": [
             "木槌",
             "青草滑梯",
@@ -73961,7 +76923,7 @@
           "item": "Sitrus Berry",
           "ability": "Armor Tail",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "31 HP / 20 Def / 1 SpA / 14 SpD",
           "moves": [
             "精神强念",
             "帮助",
@@ -73975,7 +76937,7 @@
           "item": "Fairy Feather",
           "ability": "Pixilate",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "13 HP / 21 Def / 32 SpA",
           "moves": [
             "巨声",
             "月亮之力",
