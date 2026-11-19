@@ -13,7 +13,7 @@ const GAMEWITH_URL_BY_RULE: Record<string, string> = {
   '1': 'https://gamewith.jp/pokemon-champions/558230',
   '2': 'https://gamewith.jp/pokemon-champions/555373',
 }
-const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5,6,7')
+const TARGET_SEASONS = (process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON ?? '1,2,3,4,5,6,7,8')
   .split(',')
   .map(value => value.trim())
   .filter(Boolean)
@@ -298,6 +298,7 @@ function regulationForSeason(season: string): 'M-A' | 'M-B' | 'M-C' {
     '5': 'M-B',
     '6': 'M-C',
     '7': 'M-C',
+    '8': 'M-C',
   }
   const regulation = regulationBySeason[season]
   if (!regulation) throw new Error(`No regulation mapping configured for Champions season ${season}`)
@@ -854,6 +855,12 @@ function trainerRankingSource(existing: UsageDataset | undefined) {
   }
 }
 
+function pokedbTrainerRuleForDatasetRule(rule: string) {
+  if (rule === '1') return '1'
+  if (rule === '2') return '0'
+  throw new Error(`No Battle Database trainer rule configured for Champions rule ${rule}`)
+}
+
 function gameWithUrlForRule(rule: string) {
   const url = GAMEWITH_URL_BY_RULE[rule]
   if (!url) throw new Error(`No GameWith JP fallback URL configured for rule=${rule}`)
@@ -1032,9 +1039,10 @@ async function fetchAllPokemon() {
 
 async function fetchAllTrainers(existing?: UsageDataset): Promise<TrainerRankingResult> {
   const source = trainerRankingSource(existing)
-  const requestedUrl = `${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}`
+  const pokedbRule = pokedbTrainerRuleForDatasetRule(source.rule)
+  const requestedUrl = `${BASE_URL}/trainer/list?season=${source.season}&rule=${pokedbRule}`
   const firstPage = await getPage(`${requestedUrl}&page=1`)
-  if (!isRequestedListPage(firstPage.finalUrl, 'trainer', source.season, source.rule)) {
+  if (!isRequestedListPage(firstPage.finalUrl, 'trainer', source.season, pokedbRule)) {
     console.warn(`Trainer rankings unavailable for season=${SEASON} rule=${RULE}; source returned ${firstPage.finalUrl}`)
     return {
       sourceUrl: requestedUrl,
@@ -1043,13 +1051,34 @@ async function fetchAllTrainers(existing?: UsageDataset): Promise<TrainerRanking
       rankings: [] as TrainerRankingEntry[],
     }
   }
-  const pages = maxPage(firstPage.text, 'trainer', source.season, source.rule)
-  const all = parseTrainers(firstPage.text)
-  for (let p = 2; p <= pages; p++) {
-    const html = await getText(`${BASE_URL}/trainer/list?season=${source.season}&rule=${source.rule}&page=${p}`)
-    all.push(...parseTrainers(html))
+  const pages = maxPage(firstPage.text, 'trainer', source.season, pokedbRule)
+  if (pages < OPGG_TRAINER_PAGE_COUNT) {
+    throw new Error(`Battle Database trainer pages are below 10: ${pages}`)
   }
-  if (all.length === 0) throw new Error(`Battle Database trainer schema returned no rankings for season=${source.season} rule=${source.rule}`)
+  const pageRankings = [parseTrainers(firstPage.text)]
+  for (let p = 2; p <= OPGG_TRAINER_PAGE_COUNT; p++) {
+    const html = await getText(`${BASE_URL}/trainer/list?season=${source.season}&rule=${pokedbRule}&page=${p}`)
+    pageRankings.push(parseTrainers(html))
+  }
+  for (let index = 0; index < pageRankings.length; index++) {
+    if (pageRankings[index].length !== OPGG_TRAINER_PAGE_SIZE) {
+      throw new Error(`Battle Database trainer page ${index + 1} contained ${pageRankings[index].length} rankings`)
+    }
+  }
+  const all = pageRankings.flat()
+  const expectedCount = OPGG_TRAINER_PAGE_COUNT * OPGG_TRAINER_PAGE_SIZE
+  if (all.length !== expectedCount) {
+    throw new Error(`Battle Database Top 1000 contained ${all.length} trainers`)
+  }
+  for (let index = 0; index < all.length; index++) {
+    const trainer = all[index]
+    if (!Number.isInteger(trainer.rank) || trainer.rank < 1 || !trainer.name || trainer.rating === null || trainer.rating <= 0) {
+      throw new Error(`Battle Database trainer position ${index + 1} is incomplete`)
+    }
+    if (index > 0 && trainer.rank < all[index - 1].rank) {
+      throw new Error(`Battle Database ranks are not monotonic at position ${index + 1}`)
+    }
+  }
   return {
     source: 'Battle Database Champions',
     sourceUrl: requestedUrl,

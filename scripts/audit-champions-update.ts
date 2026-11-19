@@ -167,6 +167,8 @@ function parseList(value: string | undefined) {
   return (value ?? '').split(',').map((part) => part.trim()).filter(Boolean)
 }
 
+const MIN_TRAINER_RANKINGS = 1000
+
 function usageTargets(usage: UsageCollection) {
   const seasons = parseList(process.env.CHAMPS_SEASONS ?? process.env.CHAMPS_SEASON)
   const rules = parseList(process.env.CHAMPS_RULES ?? process.env.CHAMPS_RULE)
@@ -272,6 +274,9 @@ async function main() {
       audit.missingPokemon.length ? `usage missing pokemon in ${audit.key}: ${audit.missingPokemon.length}` : '',
       !allowPendingUsage && audit.exists && audit.count === 0 ? `usage dataset empty: ${audit.key}` : '',
       !allowPendingUsage && (!audit.trainerRankingsAvailable || audit.trainerRankingCount === 0) ? `trainer rankings missing: ${audit.key}` : '',
+      !allowPendingUsage && audit.trainerRankingsAvailable && audit.trainerRankingCount > 0 && audit.trainerRankingCount < MIN_TRAINER_RANKINGS
+        ? `trainer rankings incomplete in ${audit.key}: ${audit.trainerRankingCount}/${MIN_TRAINER_RANKINGS}`
+        : '',
     ]),
   ].filter(Boolean)
 
