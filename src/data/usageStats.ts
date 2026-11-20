@@ -75,6 +75,17 @@ export type UsageCollection = {
 export const usageCollection = usageData as unknown as UsageCollection
 export const usageDataset = usageCollection.datasets[usageCollection.defaultKey] ?? Object.values(usageCollection.datasets)[0]
 
+export function seasonOptions(collection: UsageCollection) {
+  const rules: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {}
+  for (const dataset of Object.values(collection.datasets).sort((a, b) => Number(b.season) - Number(a.season))) {
+    const rule = rules[dataset.regulation] ??= { label: dataset.regulation, seasons: [] }
+    if (!rule.seasons.some(season => season.id === dataset.season)) {
+      rule.seasons.push({ id: dataset.season, label: `M-${dataset.season}` })
+    }
+  }
+  return rules
+}
+
 function normalizeId(name: string) {
   return name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '')
 }

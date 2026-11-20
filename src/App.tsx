@@ -8,7 +8,7 @@ import { loadSavedPokemon, saveSavedPokemon, type SavedPokemonEntry } from './li
 import { loadSavedGroups, saveSavedGroups } from './lib/savedGroups'
 import { loadTheme, saveTheme, type ThemeMode } from './lib/viewState'
 import { pokemonDisplayName, pokemonSearchText } from './lib/pokemonDisplay'
-import { findUsageDataset, getPokemonUsageFromDataset, getUsageDataset } from './data/usageStats'
+import { findUsageDataset, getPokemonUsageFromDataset, getUsageDataset, seasonOptions, usageCollection, usageDataset } from './data/usageStats'
 import { PokemonDetailPanel } from './components/PokemonDetailPanel'
 import { ruleItems } from './data/items'
 import { teamShareSources, teamShares, teamSharesUpdatedAt, type TeamShare, type TeamShareMember, type TeamShareSource } from './data/teamShares'
@@ -96,21 +96,9 @@ const TRAINER_COLUMN_WIDTHS: Record<TrainerColumnKey, number> = {
   winRate: 82,
 }
 
-const LEGACY_RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
-  '1': { label: 'M-A', seasons: [{ id: '1', label: 'M-1：4/8 ~ 5/13' }] },
-}
-
-
-
-void LEGACY_RULE_META
-
 const BATTLE_USAGE_RULE = '1'
 const TRAINER_RANKING_PAGE_SIZE = 100
-const RULE_META: Record<string, { label: string; seasons: { id: string; label: string }[] }> = {
-  'M-C': { label: 'M-C', seasons: [{ id: '8', label: 'M-8' }, { id: '7', label: 'M-7' }, { id: '6', label: 'M-6' }] },
-  'M-A': { label: 'M-A', seasons: [{ id: '1', label: 'M-1' }, { id: '2', label: 'M-2' }] },
-  'M-B': { label: 'M-B', seasons: [{ id: '5', label: 'M-5' }, { id: '4', label: 'M-4' }, { id: '3', label: 'M-3' }] },
-}
+const RULE_META = seasonOptions(usageCollection)
 
 type HomeTab = 'list' | 'trainers' | 'teams' | 'damage'
 
@@ -800,8 +788,8 @@ function App() {
   const [draftConfigs, setDraftConfigs] = useState<Record<string, DraftConfig>>({})
   const [topbarVisible, setTopbarVisible] = useState(true)
   const [homeTab, setHomeTab] = useState<HomeTab>(initialHomeTab)
-  const [currentRule, setCurrentRule] = useState('M-C')
-  const [currentSeason, setCurrentSeason] = useState('6')
+  const [currentRule, setCurrentRule] = useState(usageDataset.regulation)
+  const [currentSeason, setCurrentSeason] = useState(usageDataset.season)
   const [trainerBattleRule, setTrainerBattleRule] = useState<'1' | '2'>('1')
   const [trainerRankingPage, setTrainerRankingPage] = useState(1)
   const [trainerQuery, setTrainerQuery] = useState('')
@@ -1756,8 +1744,11 @@ function App() {
                       )}
                     </div>
                   )}
-                  {trainerRankingDataset.trainerRankingsNote && trainerRankingDataset.trainerSource !== 'OP.GG Pokémon Champions' && (
-                    <div className="data-fallback-note">{trainerRankingDataset.trainerRankingsNote}</div>
+                  {trainerRankingDataset.trainerSource === 'Battle Database Champions' && (
+                    <div className="data-fallback-note">当前显示 Battle Database 玩家排名；该来源未提供国家、语言和胜负记录，缺失项目显示为“—”。</div>
+                  )}
+                  {trainerRankingNeedsUpdate && (
+                    <div className="data-fallback-note">排名超过 24 小时未更新，当前保留最近一次成功同步的数据。</div>
                   )}
                 </>
               )}
