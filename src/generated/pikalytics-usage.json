@@ -4,14 +4,14 @@
   "sourceUpdatedAt": "2026-11-21T05:14:18.000Z",
   "trainerSource": "Battle Database Champions",
   "trainerSourceUrl": "https://champs.pokedb.tokyo/trainer/list?season=8&rule=1",
-  "trainerRankingsUpdatedAt": "2026-11-21T23:15:33.238Z",
+  "trainerRankingsUpdatedAt": "2026-11-22T03:12:59.889Z",
   "format": "champs-season-8-rule-1",
   "regulation": "M-C",
   "battle": "Doubles",
   "season": "8",
   "rule": "1",
   "date": "2026-11-21",
-  "updatedAt": "2026-11-21T23:15:33.239Z",
+  "updatedAt": "2026-11-22T03:12:59.889Z",
   "count": 262,
   "missingPokemon": [],
   "trainerRankingsAvailable": true,
@@ -24,8 +24,8 @@
     },
     {
       "rank": 2,
-      "rating": 2219.888,
-      "name": "疆爺"
+      "rating": 2215.293,
+      "name": "MeLuCa"
     },
     {
       "rank": 3,
@@ -34,4988 +34,4988 @@
     },
     {
       "rank": 4,
-      "rating": 2203.58,
-      "name": "ざわこ"
-    },
-    {
-      "rank": 5,
-      "rating": 2186.647,
-      "name": "SeaWolfMikes"
-    },
-    {
-      "rank": 6,
-      "rating": 2184.361,
-      "name": "ナーク"
-    },
-    {
-      "rank": 7,
-      "rating": 2174.556,
+      "rating": 2200.189,
       "name": "くれあ"
     },
     {
-      "rank": 8,
-      "rating": 2174.158,
-      "name": "F ∞1ISH"
+      "rank": 5,
+      "rating": 2193.318,
+      "name": "疆爺"
     },
     {
-      "rank": 9,
-      "rating": 2170.404,
-      "name": "みずさき"
-    },
-    {
-      "rank": 10,
-      "rating": 2163.958,
+      "rank": 6,
+      "rating": 2193.303,
       "name": "Hoej"
     },
     {
+      "rank": 7,
+      "rating": 2187.44,
+      "name": "ナーク"
+    },
+    {
+      "rank": 8,
+      "rating": 2178.056,
+      "name": "トレーナー"
+    },
+    {
+      "rank": 9,
+      "rating": 2173.835,
+      "name": "Dubious"
+    },
+    {
+      "rank": 10,
+      "rating": 2169.888,
+      "name": "빵실"
+    },
+    {
       "rank": 11,
+      "rating": 2169.225,
+      "name": "lelouchswag"
+    },
+    {
+      "rank": 12,
+      "rating": 2168.72,
+      "name": "SeaWolfMikes"
+    },
+    {
+      "rank": 13,
+      "rating": 2159.106,
+      "name": "Xena"
+    },
+    {
+      "rank": 14,
+      "rating": 2158.305,
+      "name": "갈참"
+    },
+    {
+      "rank": 15,
+      "rating": 2156.402,
+      "name": "★Sanvy"
+    },
+    {
+      "rank": 16,
+      "rating": 2154.881,
+      "name": "いかりまもる"
+    },
+    {
+      "rank": 17,
       "rating": 2154.448,
       "name": "X-BRAVERS"
     },
     {
-      "rank": 12,
-      "rating": 2154.229,
-      "name": "ひろこ♀"
+      "rank": 18,
+      "rating": 2150.503,
+      "name": "トレーナー"
     },
     {
-      "rank": 13,
-      "rating": 2152.135,
-      "name": "빵실"
-    },
-    {
-      "rank": 14,
+      "rank": 19,
       "rating": 2149.758,
       "name": "Lele"
     },
     {
-      "rank": 15,
+      "rank": 20,
+      "rating": 2148.003,
+      "name": "ひろこ♀"
+    },
+    {
+      "rank": 21,
       "rating": 2146.14,
       "name": "Campo"
     },
     {
-      "rank": 16,
-      "rating": 2142.106,
-      "name": "云荒VGC"
+      "rank": 22,
+      "rating": 2138.083,
+      "name": "ざわこ"
     },
     {
-      "rank": 17,
-      "rating": 2137.707,
-      "name": "yura"
-    },
-    {
-      "rank": 18,
-      "rating": 2136.252,
-      "name": "いかりまもる"
-    },
-    {
-      "rank": 19,
-      "rating": 2133.521,
-      "name": "ミツネ"
-    },
-    {
-      "rank": 20,
-      "rating": 2126.928,
-      "name": "Xena"
-    },
-    {
-      "rank": 21,
+      "rank": 23,
       "rating": 2123.149,
       "name": "Juanma"
     },
     {
-      "rank": 22,
+      "rank": 24,
       "rating": 2122.615,
       "name": "レプリカ"
     },
     {
-      "rank": 23,
-      "rating": 2120.339,
+      "rank": 25,
+      "rating": 2121.973,
+      "name": "TKD"
+    },
+    {
+      "rank": 26,
+      "rating": 2120.891,
       "name": "RoyKeen"
     },
     {
-      "rank": 24,
-      "rating": 2118.303,
-      "name": "갈참"
+      "rank": 27,
+      "rating": 2118.002,
+      "name": "Mev"
     },
     {
-      "rank": 25,
+      "rank": 28,
+      "rating": 2117.494,
+      "name": "けい"
+    },
+    {
+      "rank": 29,
+      "rating": 2117.245,
+      "name": "CreativeName"
+    },
+    {
+      "rank": 30,
+      "rating": 2116.487,
+      "name": "ココ"
+    },
+    {
+      "rank": 31,
       "rating": 2114.742,
       "name": "ゆヌ"
     },
     {
-      "rank": 26,
-      "rating": 2112.721,
-      "name": "トレーナー"
+      "rank": 32,
+      "rating": 2114.463,
+      "name": "アルター"
     },
     {
-      "rank": 27,
+      "rank": 33,
+      "rating": 2114.07,
+      "name": "Megan"
+    },
+    {
+      "rank": 34,
       "rating": 2111.514,
       "name": "Jims"
     },
     {
-      "rank": 28,
-      "rating": 2111.293,
-      "name": "トッポギ"
+      "rank": 35,
+      "rating": 2109.369,
+      "name": "ふれいむ"
     },
     {
-      "rank": 29,
-      "rating": 2111.286,
-      "name": "Dubious"
+      "rank": 36,
+      "rating": 2108.722,
+      "name": "yura"
     },
     {
-      "rank": 30,
-      "rating": 2111.055,
-      "name": "MeLuCa"
+      "rank": 37,
+      "rating": 2108.569,
+      "name": "Boo"
     },
     {
-      "rank": 31,
-      "rating": 2110.859,
-      "name": "オカキン"
+      "rank": 38,
+      "rating": 2108.298,
+      "name": "cindy"
     },
     {
-      "rank": 32,
+      "rank": 39,
       "rating": 2108.059,
       "name": "ドリちゅん"
     },
     {
-      "rank": 33,
-      "rating": 2107.02,
-      "name": "갈참세컨"
+      "rank": 40,
+      "rating": 2106.089,
+      "name": "Ruby"
     },
     {
-      "rank": 34,
-      "rating": 2106.252,
-      "name": "トレーナー"
-    },
-    {
-      "rank": 35,
+      "rank": 41,
       "rating": 2106.065,
       "name": "cristo"
     },
     {
-      "rank": 36,
-      "rating": 2105.102,
-      "name": "Eduardo"
+      "rank": 42,
+      "rating": 2106.047,
+      "name": "ミツネ"
     },
     {
-      "rank": 37,
+      "rank": 43,
+      "rating": 2105.937,
+      "name": "포챔스괴력몬"
+    },
+    {
+      "rank": 44,
+      "rating": 2105.392,
+      "name": "バイヨン"
+    },
+    {
+      "rank": 45,
+      "rating": 2105.115,
+      "name": "Calculus"
+    },
+    {
+      "rank": 46,
       "rating": 2104.949,
       "name": "Cubo"
     },
     {
-      "rank": 38,
+      "rank": 47,
       "rating": 2104.621,
       "name": "苍璃"
     },
     {
-      "rank": 39,
-      "rating": 2104.521,
-      "name": "Mev"
-    },
-    {
-      "rank": 40,
+      "rank": 48,
       "rating": 2104.302,
       "name": "泰山钱德勒"
     },
     {
-      "rank": 41,
-      "rating": 2103.952,
-      "name": "バイヨン"
-    },
-    {
-      "rank": 42,
+      "rank": 49,
       "rating": 2103.468,
       "name": "佐伊"
     },
     {
-      "rank": 43,
-      "rating": 2103.073,
-      "name": "CreativeName"
+      "rank": 50,
+      "rating": 2103.453,
+      "name": "Jocario"
     },
     {
-      "rank": 44,
+      "rank": 51,
+      "rating": 2103.435,
+      "name": "DDee"
+    },
+    {
+      "rank": 52,
+      "rating": 2101.886,
+      "name": "云荒VGC"
+    },
+    {
+      "rank": 53,
       "rating": 2101.545,
       "name": "トレーナー"
     },
     {
-      "rank": 45,
-      "rating": 2099.549,
-      "name": "アルター"
+      "rank": 54,
+      "rating": 2101.423,
+      "name": "ふぉーす"
     },
     {
-      "rank": 46,
+      "rank": 55,
+      "rating": 2101.154,
+      "name": "Luan"
+    },
+    {
+      "rank": 56,
+      "rating": 2100.336,
+      "name": "Zeh"
+    },
+    {
+      "rank": 57,
+      "rating": 2099.411,
+      "name": "IB Woomy"
+    },
+    {
+      "rank": 58,
       "rating": 2099.289,
       "name": "纯粹精心努力"
     },
     {
-      "rank": 47,
-      "rating": 2099.038,
-      "name": "ジャオウガ"
-    },
-    {
-      "rank": 48,
+      "rank": 59,
       "rating": 2098.58,
       "name": "マリン"
     },
     {
-      "rank": 49,
-      "rating": 2097.557,
-      "name": "Ruby"
+      "rank": 60,
+      "rating": 2098.333,
+      "name": "かみーゆ"
     },
     {
-      "rank": 50,
-      "rating": 2096.568,
-      "name": "Boo"
+      "rank": 61,
+      "rating": 2097.38,
+      "name": "ASH !"
     },
     {
-      "rank": 51,
+      "rank": 62,
+      "rating": 2097.321,
+      "name": "みんくる"
+    },
+    {
+      "rank": 63,
+      "rating": 2097.018,
+      "name": "Tyler"
+    },
+    {
+      "rank": 64,
+      "rating": 2096.743,
+      "name": "オーレリー"
+    },
+    {
+      "rank": 65,
       "rating": 2096.268,
       "name": "Corey"
     },
     {
-      "rank": 52,
-      "rating": 2095.333,
+      "rank": 66,
+      "rating": 2095.871,
+      "name": "シリル"
+    },
+    {
+      "rank": 67,
+      "rating": 2095.835,
       "name": "Orphic"
     },
     {
-      "rank": 53,
+      "rank": 68,
       "rating": 2095.038,
       "name": "Sam"
     },
     {
-      "rank": 54,
+      "rank": 69,
       "rating": 2094.789,
       "name": "Cary"
     },
     {
-      "rank": 55,
+      "rank": 70,
       "rating": 2094.599,
       "name": "Gumster"
     },
     {
-      "rank": 56,
-      "rating": 2094.094,
-      "name": "かみーゆ"
-    },
-    {
-      "rank": 57,
-      "rating": 2093.755,
-      "name": "ココ"
-    },
-    {
-      "rank": 58,
+      "rank": 71,
       "rating": 2092.328,
       "name": "かいと"
     },
     {
-      "rank": 59,
-      "rating": 2092.03,
-      "name": "★Sanvy"
+      "rank": 72,
+      "rating": 2090.801,
+      "name": "ブリガロン"
     },
     {
-      "rank": 60,
-      "rating": 2091.338,
-      "name": "TKD"
-    },
-    {
-      "rank": 61,
+      "rank": 73,
       "rating": 2089.599,
       "name": "Rank_rana"
     },
     {
-      "rank": 62,
-      "rating": 2087.789,
-      "name": "Zeh"
-    },
-    {
-      "rank": 63,
+      "rank": 74,
       "rating": 2087.581,
       "name": "ぴさこ"
     },
     {
-      "rank": 64,
-      "rating": 2085.804,
-      "name": "Megan"
+      "rank": 75,
+      "rating": 2087.089,
+      "name": "パラつじ"
     },
     {
-      "rank": 65,
-      "rating": 2083.989,
-      "name": "こたつ"
+      "rank": 76,
+      "rating": 2086.966,
+      "name": "麻婆豆腐定食"
     },
     {
-      "rank": 66,
+      "rank": 77,
+      "rating": 2085.697,
+      "name": "Austin"
+    },
+    {
+      "rank": 78,
+      "rating": 2085.29,
+      "name": "Kirito"
+    },
+    {
+      "rank": 79,
+      "rating": 2085.266,
+      "name": "おれんじ"
+    },
+    {
+      "rank": 80,
+      "rating": 2083.347,
+      "name": "PTP"
+    },
+    {
+      "rank": 81,
       "rating": 2082.955,
       "name": "pdf"
     },
     {
-      "rank": 67,
-      "rating": 2082.764,
-      "name": "DDee"
+      "rank": 82,
+      "rating": 2082.085,
+      "name": "トレーナー"
     },
     {
-      "rank": 68,
-      "rating": 2081.445,
-      "name": "シリル"
+      "rank": 83,
+      "rating": 2077.618,
+      "name": "Perrin"
     },
     {
-      "rank": 69,
-      "rating": 2080.447,
-      "name": "lelouchswag"
+      "rank": 84,
+      "rating": 2076.844,
+      "name": "こたつ"
     },
     {
-      "rank": 70,
-      "rating": 2078.447,
-      "name": "みんくる"
-    },
-    {
-      "rank": 71,
+      "rank": 85,
       "rating": 2076.437,
       "name": "さとちん"
     },
     {
-      "rank": 72,
+      "rank": 86,
       "rating": 2076.402,
       "name": "すいか/S"
     },
     {
-      "rank": 73,
-      "rating": 2076.367,
-      "name": "Jocario"
+      "rank": 87,
+      "rating": 2075.614,
+      "name": "ゆー"
     },
     {
-      "rank": 74,
+      "rank": 88,
+      "rating": 2075.503,
+      "name": "iLiFE!"
+    },
+    {
+      "rank": 89,
       "rating": 2074.045,
       "name": "Léo"
     },
     {
-      "rank": 75,
-      "rating": 2073.853,
-      "name": "麻婆豆腐定食"
+      "rank": 90,
+      "rating": 2071.504,
+      "name": "Sebixxl"
     },
     {
-      "rank": 76,
-      "rating": 2072.911,
-      "name": "バラゴモード"
-    },
-    {
-      "rank": 77,
-      "rating": 2071.081,
-      "name": "Null"
-    },
-    {
-      "rank": 78,
+      "rank": 91,
       "rating": 2070.987,
       "name": "Il Mule"
     },
     {
-      "rank": 79,
-      "rating": 2069.882,
-      "name": "Perrin"
+      "rank": 92,
+      "rating": 2069.491,
+      "name": "=LOVE"
     },
     {
-      "rank": 80,
-      "rating": 2069.588,
-      "name": "Aloniz"
+      "rank": 93,
+      "rating": 2069.135,
+      "name": "ScubaZubat"
     },
     {
-      "rank": 81,
-      "rating": 2069.375,
-      "name": "iLiFE!"
+      "rank": 94,
+      "rating": 2068.888,
+      "name": "ネギねこ"
     },
     {
-      "rank": 82,
-      "rating": 2069.217,
-      "name": "ブリガロン"
-    },
-    {
-      "rank": 83,
+      "rank": 95,
       "rating": 2068.559,
       "name": "MOTOTE"
     },
     {
-      "rank": 84,
-      "rating": 2068.23,
-      "name": "PTP"
+      "rank": 96,
+      "rating": 2068.44,
+      "name": "Tian"
     },
     {
-      "rank": 85,
-      "rating": 2065.788,
-      "name": "Mark"
+      "rank": 97,
+      "rating": 2067.155,
+      "name": "甜橙"
     },
     {
-      "rank": 86,
+      "rank": 98,
+      "rating": 2067.032,
+      "name": "やましょー"
+    },
+    {
+      "rank": 99,
+      "rating": 2067.009,
+      "name": "F ∞1ISH"
+    },
+    {
+      "rank": 100,
+      "rating": 2065.855,
+      "name": "Eduardo"
+    },
+    {
+      "rank": 101,
+      "rating": 2065.755,
+      "name": "ミナトザキ"
+    },
+    {
+      "rank": 102,
+      "rating": 2064.569,
+      "name": "シュン"
+    },
+    {
+      "rank": 103,
+      "rating": 2064.089,
+      "name": "Wijuci"
+    },
+    {
+      "rank": 104,
       "rating": 2063.937,
       "name": "Louis"
     },
     {
-      "rank": 87,
-      "rating": 2062.06,
-      "name": "コルダン"
+      "rank": 105,
+      "rating": 2063.8,
+      "name": "ぴか"
     },
     {
-      "rank": 88,
-      "rating": 2061.302,
-      "name": "オーレリー"
+      "rank": 106,
+      "rating": 2063.26,
+      "name": "JT"
     },
     {
-      "rank": 89,
+      "rank": 107,
+      "rating": 2062.128,
+      "name": "Tildy"
+    },
+    {
+      "rank": 108,
+      "rating": 2061.987,
+      "name": "エグチえぐち"
+    },
+    {
+      "rank": 109,
+      "rating": 2061.94,
+      "name": "ゆきみうさぎ"
+    },
+    {
+      "rank": 110,
+      "rating": 2061.938,
+      "name": "333"
+    },
+    {
+      "rank": 111,
+      "rating": 2061.395,
+      "name": "UK"
+    },
+    {
+      "rank": 112,
       "rating": 2060.944,
       "name": "GenOne"
     },
     {
-      "rank": 90,
-      "rating": 2060.3,
-      "name": "天泽一夏"
+      "rank": 113,
+      "rating": 2060.782,
+      "name": "ゆっきー"
     },
     {
-      "rank": 91,
+      "rank": 114,
+      "rating": 2060.757,
+      "name": "ひなた"
+    },
+    {
+      "rank": 115,
+      "rating": 2059.974,
+      "name": "HRK"
+    },
+    {
+      "rank": 116,
+      "rating": 2059.808,
+      "name": "BienNgocNhi"
+    },
+    {
+      "rank": 117,
+      "rating": 2059.739,
+      "name": "トッポギ"
+    },
+    {
+      "rank": 118,
+      "rating": 2059.34,
+      "name": "みずさき"
+    },
+    {
+      "rank": 119,
+      "rating": 2058.587,
+      "name": "Hinchy"
+    },
+    {
+      "rank": 120,
       "rating": 2058.504,
       "name": "キム"
     },
     {
-      "rank": 92,
-      "rating": 2057.935,
-      "name": "ネギねこ"
+      "rank": 121,
+      "rating": 2058.376,
+      "name": "有才伍德"
     },
     {
-      "rank": 93,
-      "rating": 2055.704,
-      "name": "cindy"
+      "rank": 122,
+      "rating": 2057.905,
+      "name": "Nirinbo"
     },
     {
-      "rank": 94,
+      "rank": 123,
+      "rating": 2057.766,
+      "name": "パトリシア"
+    },
+    {
+      "rank": 124,
+      "rating": 2057.48,
+      "name": "CHIAKI"
+    },
+    {
+      "rank": 125,
+      "rating": 2057.306,
+      "name": "ジャオウガ"
+    },
+    {
+      "rank": 126,
+      "rating": 2057.097,
+      "name": "しろいあくま"
+    },
+    {
+      "rank": 127,
+      "rating": 2056.587,
+      "name": "ナガ"
+    },
+    {
+      "rank": 128,
+      "rating": 2056.507,
+      "name": "tldjmf"
+    },
+    {
+      "rank": 129,
+      "rating": 2055.931,
+      "name": "阿辰"
+    },
+    {
+      "rank": 130,
+      "rating": 2055.652,
+      "name": "レンゲ"
+    },
+    {
+      "rank": 131,
+      "rating": 2055.362,
+      "name": "kenneth"
+    },
+    {
+      "rank": 132,
+      "rating": 2055.172,
+      "name": "爱你写进诗尾"
+    },
+    {
+      "rank": 133,
       "rating": 2055.063,
       "name": "Koen"
     },
     {
-      "rank": 95,
+      "rank": 134,
       "rating": 2055.056,
       "name": "Joe-J"
     },
     {
-      "rank": 96,
-      "rating": 2054.879,
-      "name": "タケヒロ"
-    },
-    {
-      "rank": 97,
+      "rank": 135,
       "rating": 2054.864,
       "name": "nick"
     },
     {
-      "rank": 98,
+      "rank": 136,
       "rating": 2054.55,
       "name": "LHabc"
     },
     {
-      "rank": 99,
+      "rank": 137,
       "rating": 2054.4,
       "name": "Dinomite"
     },
     {
-      "rank": 100,
+      "rank": 138,
       "rating": 2054.344,
       "name": "Tcha"
     },
     {
-      "rank": 101,
-      "rating": 2053.94,
-      "name": "=LOVE"
+      "rank": 139,
+      "rating": 2054.216,
+      "name": "マギカウラ"
     },
     {
-      "rank": 102,
-      "rating": 2053.242,
-      "name": "Cish"
+      "rank": 140,
+      "rating": 2053.84,
+      "name": "皮卡"
     },
     {
-      "rank": 103,
+      "rank": 141,
+      "rating": 2053.57,
+      "name": "リックリー"
+    },
+    {
+      "rank": 142,
+      "rating": 2053.264,
+      "name": "こまろ"
+    },
+    {
+      "rank": 143,
       "rating": 2053.213,
       "name": "いるかにゃん"
     },
     {
-      "rank": 104,
+      "rank": 144,
+      "rating": 2053.166,
+      "name": "たかし"
+    },
+    {
+      "rank": 145,
+      "rating": 2053.007,
+      "name": "S.REM"
+    },
+    {
+      "rank": 146,
       "rating": 2052.806,
       "name": "Conkledonk"
     },
     {
-      "rank": 105,
-      "rating": 2052.069,
-      "name": "パトリシア"
+      "rank": 147,
+      "rating": 2052.731,
+      "name": "gioppy"
     },
     {
-      "rank": 106,
+      "rank": 148,
       "rating": 2051.989,
       "name": "バイオレット"
     },
     {
-      "rank": 107,
+      "rank": 149,
       "rating": 2051.373,
       "name": "Ris7"
     },
     {
-      "rank": 108,
-      "rating": 2050.81,
-      "name": "やましょー"
+      "rank": 150,
+      "rating": 2051.237,
+      "name": "Open Papoi"
     },
     {
-      "rank": 109,
-      "rating": 2050.803,
-      "name": "Sen"
+      "rank": 151,
+      "rating": 2050.202,
+      "name": "みれい"
     },
     {
-      "rank": 110,
+      "rank": 152,
       "rating": 2050.103,
       "name": "ORB"
     },
     {
-      "rank": 111,
-      "rating": 2049.888,
-      "name": "î◆Sona"
+      "rank": 153,
+      "rating": 2049.995,
+      "name": "Nontaro"
     },
     {
-      "rank": 112,
-      "rating": 2049.856,
-      "name": "Austin"
+      "rank": 154,
+      "rating": 2049.909,
+      "name": "翊策"
     },
     {
-      "rank": 113,
+      "rank": 155,
+      "rating": 2049.732,
+      "name": "タケヒロ"
+    },
+    {
+      "rank": 156,
       "rating": 2049.693,
       "name": "Kiwi"
     },
     {
-      "rank": 114,
-      "rating": 2049.657,
-      "name": "パラつじ"
+      "rank": 157,
+      "rating": 2049.585,
+      "name": "Wyvern"
     },
     {
-      "rank": 115,
-      "rating": 2048.864,
-      "name": "シュン"
+      "rank": 158,
+      "rating": 2049.226,
+      "name": "haviy"
     },
     {
-      "rank": 116,
+      "rank": 159,
+      "rating": 2048.998,
+      "name": "Shub"
+    },
+    {
+      "rank": 160,
+      "rating": 2048.904,
+      "name": "きよまろ"
+    },
+    {
+      "rank": 161,
       "rating": 2048.784,
       "name": "Golden Foo"
     },
     {
-      "rank": 117,
+      "rank": 162,
       "rating": 2048.478,
       "name": "Marco"
     },
     {
-      "rank": 118,
-      "rating": 2048.239,
-      "name": "りく"
+      "rank": 163,
+      "rating": 2048.25,
+      "name": "ÜSazandøraÜ"
     },
     {
-      "rank": 119,
+      "rank": 164,
+      "rating": 2048.141,
+      "name": "미라이돈"
+    },
+    {
+      "rank": 165,
       "rating": 2047.937,
       "name": "Tom"
     },
     {
-      "rank": 120,
-      "rating": 2047.035,
-      "name": "JT"
+      "rank": 166,
+      "rating": 2047.589,
+      "name": "にげみず"
     },
     {
-      "rank": 121,
-      "rating": 2046.992,
-      "name": "ふれいむ"
+      "rank": 167,
+      "rating": 2047.311,
+      "name": "リーフ"
     },
     {
-      "rank": 122,
+      "rank": 168,
+      "rating": 2047.304,
+      "name": "Slayer"
+    },
+    {
+      "rank": 169,
+      "rating": 2047.004,
+      "name": "KaiVGC"
+    },
+    {
+      "rank": 170,
+      "rating": 2046.993,
+      "name": "miku snow"
+    },
+    {
+      "rank": 171,
+      "rating": 2046.913,
+      "name": "GDYEE"
+    },
+    {
+      "rank": 172,
+      "rating": 2046.912,
+      "name": "Swaroop"
+    },
+    {
+      "rank": 173,
+      "rating": 2046.764,
+      "name": "俊城"
+    },
+    {
+      "rank": 174,
       "rating": 2046.716,
       "name": "5ft5"
     },
     {
-      "rank": 123,
-      "rating": 2046.491,
-      "name": "爱你写进诗尾"
+      "rank": 175,
+      "rating": 2046.593,
+      "name": "ルタお"
     },
     {
-      "rank": 124,
-      "rating": 2045.921,
+      "rank": 176,
+      "rating": 2046.542,
+      "name": "DEATH"
+    },
+    {
+      "rank": 177,
+      "rating": 2046.466,
+      "name": "CrazyBoi"
+    },
+    {
+      "rank": 178,
+      "rating": 2046.137,
+      "name": "Player1"
+    },
+    {
+      "rank": 179,
+      "rating": 2045.967,
       "name": "hsy"
     },
     {
-      "rank": 125,
+      "rank": 180,
+      "rating": 2045.811,
+      "name": "とかげ"
+    },
+    {
+      "rank": 181,
       "rating": 2045.317,
       "name": "Wiji"
     },
     {
-      "rank": 126,
+      "rank": 182,
       "rating": 2045.291,
       "name": "わびすけ"
     },
     {
-      "rank": 127,
-      "rating": 2044.779,
-      "name": "Misso"
+      "rank": 183,
+      "rating": 2045.14,
+      "name": "浮游"
     },
     {
-      "rank": 128,
+      "rank": 184,
+      "rating": 2045.085,
+      "name": "Toilailee"
+    },
+    {
+      "rank": 185,
+      "rating": 2044.993,
+      "name": "ぐっうみせみ"
+    },
+    {
+      "rank": 186,
       "rating": 2044.521,
       "name": "俊城"
     },
     {
-      "rank": 129,
-      "rating": 2043.92,
-      "name": "ccccz"
-    },
-    {
-      "rank": 130,
-      "rating": 2043.46,
-      "name": "ナガ"
-    },
-    {
-      "rank": 131,
-      "rating": 2043.396,
-      "name": "こまろ"
-    },
-    {
-      "rank": 132,
-      "rating": 2042.548,
-      "name": "ルタお"
-    },
-    {
-      "rank": 133,
-      "rating": 2041.887,
-      "name": "けい"
-    },
-    {
-      "rank": 133,
-      "rating": 2041.887,
-      "name": "Aaron"
-    },
-    {
-      "rank": 135,
-      "rating": 2041.8,
-      "name": "Thara Blake"
-    },
-    {
-      "rank": 136,
-      "rating": 2041.358,
-      "name": "皮卡"
-    },
-    {
-      "rank": 137,
-      "rating": 2040.912,
-      "name": "つばさま"
-    },
-    {
-      "rank": 138,
-      "rating": 2040.657,
-      "name": "Leona"
-    },
-    {
-      "rank": 139,
-      "rating": 2040.572,
-      "name": "ShaikhVgc :)"
-    },
-    {
-      "rank": 140,
-      "rating": 2040.522,
-      "name": "しろいあくま"
-    },
-    {
-      "rank": 141,
-      "rating": 2040.431,
-      "name": "たかし"
-    },
-    {
-      "rank": 142,
-      "rating": 2040.247,
-      "name": "Fester"
-    },
-    {
-      "rank": 143,
-      "rating": 2039.427,
-      "name": "子修"
-    },
-    {
-      "rank": 144,
-      "rating": 2039.216,
-      "name": "かきくけこ！"
-    },
-    {
-      "rank": 145,
-      "rating": 2039.214,
-      "name": "甜橙"
-    },
-    {
-      "rank": 146,
-      "rating": 2038.587,
-      "name": "CHIAKI"
-    },
-    {
-      "rank": 147,
-      "rating": 2038.091,
-      "name": "Jαvι♡†"
-    },
-    {
-      "rank": 148,
-      "rating": 2037.448,
-      "name": "kenneth"
-    },
-    {
-      "rank": 149,
-      "rating": 2037.13,
-      "name": "ピーナツくん"
-    },
-    {
-      "rank": 150,
-      "rating": 2037.129,
-      "name": "포챔스괴력몬"
-    },
-    {
-      "rank": 151,
-      "rating": 2036.546,
-      "name": "トレーナー"
-    },
-    {
-      "rank": 152,
-      "rating": 2036.41,
-      "name": "どやどや"
-    },
-    {
-      "rank": 153,
-      "rating": 2036.3,
-      "name": "ぴか"
-    },
-    {
-      "rank": 154,
-      "rating": 2036.125,
-      "name": "ArKane"
-    },
-    {
-      "rank": 155,
-      "rating": 2036.106,
-      "name": "Sebixxl"
-    },
-    {
-      "rank": 156,
-      "rating": 2036.052,
-      "name": "とんかち"
-    },
-    {
-      "rank": 157,
-      "rating": 2035.882,
-      "name": "Zexus"
-    },
-    {
-      "rank": 158,
-      "rating": 2035.711,
-      "name": "BienNgocNhi"
-    },
-    {
-      "rank": 159,
-      "rating": 2035.641,
-      "name": "Ha???"
-    },
-    {
-      "rank": 160,
-      "rating": 2035.629,
-      "name": "Pennon"
-    },
-    {
-      "rank": 161,
-      "rating": 2035.61,
-      "name": "TylerDark"
-    },
-    {
-      "rank": 162,
-      "rating": 2035.17,
-      "name": "ミナトザキ"
-    },
-    {
-      "rank": 163,
-      "rating": 2034.463,
-      "name": "Shinka"
-    },
-    {
-      "rank": 164,
-      "rating": 2034.295,
-      "name": "さいり"
-    },
-    {
-      "rank": 165,
-      "rating": 2034.176,
-      "name": "Shub"
-    },
-    {
-      "rank": 166,
-      "rating": 2034.12,
-      "name": "Player1"
-    },
-    {
-      "rank": 167,
-      "rating": 2033.861,
-      "name": "Johnny"
-    },
-    {
-      "rank": 168,
-      "rating": 2033.85,
-      "name": "エグチえぐち"
-    },
-    {
-      "rank": 169,
-      "rating": 2033.84,
-      "name": "Vibe"
-    },
-    {
-      "rank": 170,
-      "rating": 2033.827,
-      "name": "Nerfcrits"
-    },
-    {
-      "rank": 171,
-      "rating": 2033.532,
-      "name": "haviy"
-    },
-    {
-      "rank": 172,
-      "rating": 2033.226,
-      "name": "Lemon"
-    },
-    {
-      "rank": 173,
-      "rating": 2033.176,
-      "name": "lek"
-    },
-    {
-      "rank": 174,
-      "rating": 2033.136,
-      "name": "Leozin"
-    },
-    {
-      "rank": 175,
-      "rating": 2033.099,
-      "name": "Wyvern"
-    },
-    {
-      "rank": 176,
-      "rating": 2033.042,
-      "name": "浮游"
-    },
-    {
-      "rank": 177,
-      "rating": 2032.945,
-      "name": "Phione"
-    },
-    {
-      "rank": 178,
-      "rating": 2032.864,
-      "name": "가누군"
-    },
-    {
-      "rank": 179,
-      "rating": 2032.833,
-      "name": "333"
-    },
-    {
-      "rank": 180,
-      "rating": 2032.756,
-      "name": "Pé"
-    },
-    {
-      "rank": 181,
-      "rating": 2032.559,
-      "name": "DEATH"
-    },
-    {
-      "rank": 182,
-      "rating": 2032.533,
-      "name": "Kobra"
-    },
-    {
-      "rank": 183,
-      "rating": 2032.325,
-      "name": "スターク"
-    },
-    {
-      "rank": 184,
-      "rating": 2032.249,
-      "name": "Mario"
-    },
-    {
-      "rank": 185,
-      "rating": 2031.854,
-      "name": "ゆっきー"
-    },
-    {
-      "rank": 186,
-      "rating": 2031.515,
-      "name": "Fr33z"
-    },
-    {
       "rank": 187,
-      "rating": 2031.357,
-      "name": "ゆきみうさぎ"
+      "rating": 2044.467,
+      "name": "じらまる"
     },
     {
       "rank": 188,
-      "rating": 2031.321,
-      "name": "UK"
+      "rating": 2044.224,
+      "name": "Avalos"
     },
     {
-      "rank": 189,
-      "rating": 2031.249,
+      "rank": 188,
+      "rating": 2044.224,
       "name": "绪方理奈"
     },
     {
       "rank": 190,
-      "rating": 2030.984,
-      "name": "ぼくちゃん"
+      "rating": 2043.92,
+      "name": "ccccz"
     },
     {
       "rank": 191,
-      "rating": 2030.961,
-      "name": "にげみず"
+      "rating": 2043.769,
+      "name": "しらたま"
     },
     {
       "rank": 192,
-      "rating": 2030.592,
-      "name": "ルタこ"
+      "rating": 2043.579,
+      "name": "くらげ"
     },
     {
       "rank": 193,
-      "rating": 2030.586,
-      "name": "Vicarin"
+      "rating": 2043.301,
+      "name": "Queiroz"
     },
     {
       "rank": 194,
-      "rating": 2030.541,
-      "name": "JL"
+      "rating": 2043.148,
+      "name": "Paul"
     },
     {
       "rank": 195,
-      "rating": 2030.266,
-      "name": "Moth"
+      "rating": 2042.644,
+      "name": "Faz"
     },
     {
       "rank": 196,
-      "rating": 2030.082,
-      "name": "UIBEXT"
+      "rating": 2042.395,
+      "name": "ぅチゎギゃル"
     },
     {
       "rank": 197,
-      "rating": 2030,
-      "name": "쉼코"
+      "rating": 2042.363,
+      "name": "Cish"
     },
     {
       "rank": 198,
-      "rating": 2029.974,
+      "rating": 2042.071,
       "name": "みなとともか"
     },
     {
       "rank": 199,
-      "rating": 2029.971,
-      "name": "G.END"
+      "rating": 2041.983,
+      "name": "BananaFree"
     },
     {
       "rank": 200,
-      "rating": 2029.618,
-      "name": "じらまる"
+      "rating": 2041.916,
+      "name": "yume"
     },
     {
       "rank": 201,
-      "rating": 2029.566,
-      "name": "Gen"
+      "rating": 2041.8,
+      "name": "Thara Blake"
     },
     {
       "rank": 202,
-      "rating": 2029.552,
-      "name": "Paul"
+      "rating": 2041.677,
+      "name": "くぼーん"
     },
     {
       "rank": 203,
+      "rating": 2041.611,
+      "name": "アネモネ"
+    },
+    {
+      "rank": 204,
+      "rating": 2041.464,
+      "name": "小熊猫"
+    },
+    {
+      "rank": 205,
+      "rating": 2041.283,
+      "name": "コーディエ"
+    },
+    {
+      "rank": 206,
+      "rating": 2040.988,
+      "name": "Virtùe"
+    },
+    {
+      "rank": 207,
+      "rating": 2040.912,
+      "name": "つばさま"
+    },
+    {
+      "rank": 208,
+      "rating": 2040.8,
+      "name": "ます"
+    },
+    {
+      "rank": 209,
+      "rating": 2040.667,
+      "name": "Nahh I'd Win"
+    },
+    {
+      "rank": 210,
+      "rating": 2040.247,
+      "name": "Fester"
+    },
+    {
+      "rank": 211,
+      "rating": 2040.099,
+      "name": "Doom"
+    },
+    {
+      "rank": 212,
+      "rating": 2040.066,
+      "name": "ドールメイク"
+    },
+    {
+      "rank": 213,
+      "rating": 2039.885,
+      "name": "Pennon"
+    },
+    {
+      "rank": 214,
+      "rating": 2039.773,
+      "name": "タイチ"
+    },
+    {
+      "rank": 215,
+      "rating": 2039.66,
+      "name": "Giel"
+    },
+    {
+      "rank": 216,
+      "rating": 2038.837,
+      "name": "Delphicc"
+    },
+    {
+      "rank": 217,
+      "rating": 2038.531,
+      "name": "いまがわまり"
+    },
+    {
+      "rank": 218,
+      "rating": 2038.51,
+      "name": "Yuyu"
+    },
+    {
+      "rank": 219,
+      "rating": 2038.193,
+      "name": "Syuan"
+    },
+    {
+      "rank": 220,
+      "rating": 2038.04,
+      "name": "まるうぇあ"
+    },
+    {
+      "rank": 221,
+      "rating": 2038.01,
+      "name": "Brian"
+    },
+    {
+      "rank": 222,
+      "rating": 2037.535,
+      "name": "ひばり"
+    },
+    {
+      "rank": 223,
+      "rating": 2037.518,
+      "name": "香草斗笠菇"
+    },
+    {
+      "rank": 224,
+      "rating": 2037.13,
+      "name": "ピーナツくん"
+    },
+    {
+      "rank": 225,
+      "rating": 2036.41,
+      "name": "どやどや"
+    },
+    {
+      "rank": 226,
+      "rating": 2036.349,
+      "name": "やんす"
+    },
+    {
+      "rank": 227,
+      "rating": 2036.333,
+      "name": "Zexus"
+    },
+    {
+      "rank": 228,
+      "rating": 2036.332,
+      "name": "ccf"
+    },
+    {
+      "rank": 229,
+      "rating": 2036.262,
+      "name": "魂淡球"
+    },
+    {
+      "rank": 230,
+      "rating": 2036.149,
+      "name": "子修"
+    },
+    {
+      "rank": 231,
+      "rating": 2036.125,
+      "name": "ArKane"
+    },
+    {
+      "rank": 232,
+      "rating": 2036.052,
+      "name": "とんかち"
+    },
+    {
+      "rank": 233,
+      "rating": 2035.831,
+      "name": "ベッキー"
+    },
+    {
+      "rank": 234,
+      "rating": 2035.61,
+      "name": "TylerDark"
+    },
+    {
+      "rank": 235,
+      "rating": 2035.582,
+      "name": "风妖精侠qx"
+    },
+    {
+      "rank": 236,
+      "rating": 2035.401,
+      "name": "メル"
+    },
+    {
+      "rank": 237,
+      "rating": 2034.96,
+      "name": "브리가론"
+    },
+    {
+      "rank": 238,
+      "rating": 2034.463,
+      "name": "Shinka"
+    },
+    {
+      "rank": 239,
+      "rating": 2034.453,
+      "name": "cheol"
+    },
+    {
+      "rank": 240,
+      "rating": 2034.337,
+      "name": "トマト"
+    },
+    {
+      "rank": 241,
+      "rating": 2034.295,
+      "name": "さいり"
+    },
+    {
+      "rank": 242,
+      "rating": 2034.116,
+      "name": "Unsaying"
+    },
+    {
+      "rank": 243,
+      "rating": 2033.871,
+      "name": "Michael"
+    },
+    {
+      "rank": 244,
+      "rating": 2033.84,
+      "name": "Vibe"
+    },
+    {
+      "rank": 245,
+      "rating": 2033.827,
+      "name": "Nerfcrits"
+    },
+    {
+      "rank": 246,
+      "rating": 2033.667,
+      "name": "GVE_Skull"
+    },
+    {
+      "rank": 247,
+      "rating": 2033.604,
+      "name": "はなも"
+    },
+    {
+      "rank": 248,
+      "rating": 2033.176,
+      "name": "lek"
+    },
+    {
+      "rank": 249,
+      "rating": 2033.136,
+      "name": "Leozin"
+    },
+    {
+      "rank": 250,
+      "rating": 2032.996,
+      "name": "みちしげ"
+    },
+    {
+      "rank": 251,
+      "rating": 2032.925,
+      "name": "Ruka"
+    },
+    {
+      "rank": 252,
+      "rating": 2032.756,
+      "name": "Pé"
+    },
+    {
+      "rank": 253,
+      "rating": 2032.621,
+      "name": "ミツルギ"
+    },
+    {
+      "rank": 254,
+      "rating": 2032.586,
+      "name": "フラダリ"
+    },
+    {
+      "rank": 255,
+      "rating": 2032.431,
+      "name": "阿炸"
+    },
+    {
+      "rank": 256,
+      "rating": 2032.075,
+      "name": "りょうた"
+    },
+    {
+      "rank": 257,
+      "rating": 2032.027,
+      "name": "泥啪"
+    },
+    {
+      "rank": 258,
+      "rating": 2031.831,
+      "name": "ころしヤス"
+    },
+    {
+      "rank": 259,
+      "rating": 2031.734,
+      "name": "ヌノケン"
+    },
+    {
+      "rank": 260,
+      "rating": 2031.699,
+      "name": "Lunger"
+    },
+    {
+      "rank": 261,
+      "rating": 2031.499,
+      "name": "アレックス"
+    },
+    {
+      "rank": 262,
+      "rating": 2031.21,
+      "name": "chara"
+    },
+    {
+      "rank": 263,
+      "rating": 2031.022,
+      "name": "Woooby"
+    },
+    {
+      "rank": 264,
+      "rating": 2030.984,
+      "name": "ぼくちゃん"
+    },
+    {
+      "rank": 265,
+      "rating": 2030.964,
+      "name": "ナッシュ"
+    },
+    {
+      "rank": 266,
+      "rating": 2030.935,
+      "name": "SHeart"
+    },
+    {
+      "rank": 267,
+      "rating": 2030.807,
+      "name": "Wakem1"
+    },
+    {
+      "rank": 268,
+      "rating": 2030.77,
+      "name": "HipのU!"
+    },
+    {
+      "rank": 269,
+      "rating": 2030.592,
+      "name": "ルタこ"
+    },
+    {
+      "rank": 270,
+      "rating": 2030.584,
+      "name": "皮卡邱"
+    },
+    {
+      "rank": 271,
+      "rating": 2030.541,
+      "name": "JL"
+    },
+    {
+      "rank": 272,
+      "rating": 2030.266,
+      "name": "Moth"
+    },
+    {
+      "rank": 273,
+      "rating": 2030.261,
+      "name": "JR"
+    },
+    {
+      "rank": 274,
+      "rating": 2030.259,
+      "name": "Lowpass"
+    },
+    {
+      "rank": 275,
+      "rating": 2030,
+      "name": "쉼코"
+    },
+    {
+      "rank": 276,
+      "rating": 2029.699,
+      "name": "にいと"
+    },
+    {
+      "rank": 277,
+      "rating": 2029.4,
+      "name": "LycanduskVGC"
+    },
+    {
+      "rank": 278,
       "rating": 2029.396,
       "name": "Ale"
     },
     {
-      "rank": 204,
+      "rank": 279,
       "rating": 2029.379,
       "name": "トレーナー"
     },
     {
-      "rank": 205,
+      "rank": 280,
       "rating": 2029.247,
       "name": "よこたわりん"
     },
     {
-      "rank": 206,
-      "rating": 2029.003,
-      "name": "Queiroz"
+      "rank": 281,
+      "rating": 2029.111,
+      "name": "Cheong"
     },
     {
-      "rank": 207,
-      "rating": 2028.953,
-      "name": "おれんじ"
+      "rank": 282,
+      "rating": 2028.938,
+      "name": "ネルケ"
     },
     {
-      "rank": 208,
-      "rating": 2028.904,
-      "name": "ふぉーす"
+      "rank": 283,
+      "rating": 2028.607,
+      "name": "Kobra"
     },
     {
-      "rank": 209,
-      "rating": 2028.843,
-      "name": "CrazyBoi"
+      "rank": 284,
+      "rating": 2028.481,
+      "name": "CuboX"
     },
     {
-      "rank": 210,
-      "rating": 2028.768,
-      "name": "Avalos"
-    },
-    {
-      "rank": 211,
-      "rating": 2028.754,
-      "name": "ドラつぶ"
-    },
-    {
-      "rank": 212,
-      "rating": 2028.703,
-      "name": "BananaFree"
-    },
-    {
-      "rank": 213,
-      "rating": 2028.532,
-      "name": "qm"
-    },
-    {
-      "rank": 214,
-      "rating": 2028.316,
-      "name": "Hinchy"
-    },
-    {
-      "rank": 215,
+      "rank": 285,
       "rating": 2028.249,
       "name": "きみこ"
     },
     {
-      "rank": 216,
-      "rating": 2028.125,
-      "name": "Nirinbo"
+      "rank": 286,
+      "rating": 2027.717,
+      "name": "Osborn"
     },
     {
-      "rank": 217,
-      "rating": 2027.776,
-      "name": "サッソ"
+      "rank": 287,
+      "rating": 2027.505,
+      "name": "Jah"
     },
     {
-      "rank": 218,
-      "rating": 2027.614,
-      "name": "Shaboogles"
+      "rank": 288,
+      "rating": 2027.299,
+      "name": "みかづき"
     },
     {
-      "rank": 219,
-      "rating": 2027.41,
-      "name": "阿辰"
+      "rank": 289,
+      "rating": 2027.092,
+      "name": "TrucAnh<3"
     },
     {
-      "rank": 220,
-      "rating": 2026.589,
-      "name": "John"
+      "rank": 290,
+      "rating": 2027.043,
+      "name": "Opal"
     },
     {
-      "rank": 221,
-      "rating": 2026.508,
-      "name": "やんす"
+      "rank": 291,
+      "rating": 2026.82,
+      "name": "阿鑫"
     },
     {
-      "rank": 222,
-      "rating": 2026.487,
-      "name": "ミズキ"
+      "rank": 292,
+      "rating": 2026.646,
+      "name": "DanielAcorn"
     },
     {
-      "rank": 223,
+      "rank": 293,
       "rating": 2026.26,
       "name": "플레어단"
     },
     {
-      "rank": 224,
+      "rank": 294,
+      "rating": 2026.23,
+      "name": "ハルタート"
+    },
+    {
+      "rank": 295,
+      "rating": 2026.088,
+      "name": "호날SiuU"
+    },
+    {
+      "rank": 296,
+      "rating": 2026.078,
+      "name": "かきくけこ！"
+    },
+    {
+      "rank": 297,
       "rating": 2025.844,
       "name": "Vahe"
     },
     {
-      "rank": 225,
+      "rank": 298,
       "rating": 2025.799,
       "name": "Ash"
     },
     {
-      "rank": 226,
-      "rating": 2025.453,
-      "name": "レンゲ"
-    },
-    {
-      "rank": 227,
+      "rank": 299,
       "rating": 2025.366,
       "name": "CostaYo"
     },
     {
-      "rank": 228,
+      "rank": 300,
       "rating": 2025.265,
       "name": "Onemagician"
     },
     {
-      "rank": 229,
+      "rank": 301,
       "rating": 2025.165,
       "name": "trinki"
     },
     {
-      "rank": 230,
+      "rank": 302,
+      "rating": 2024.987,
+      "name": "司令罗"
+    },
+    {
+      "rank": 303,
+      "rating": 2024.848,
+      "name": "りく"
+    },
+    {
+      "rank": 304,
       "rating": 2024.774,
       "name": "ユク"
     },
     {
-      "rank": 231,
-      "rating": 2024.758,
-      "name": "マイキー"
+      "rank": 305,
+      "rating": 2024.444,
+      "name": "zhang"
     },
     {
-      "rank": 232,
-      "rating": 2024.61,
-      "name": "いまがわまり"
-    },
-    {
-      "rank": 233,
+      "rank": 306,
       "rating": 2024.351,
       "name": "Tom"
     },
     {
-      "rank": 234,
-      "rating": 2024.322,
-      "name": "Swaroop"
+      "rank": 307,
+      "rating": 2024.171,
+      "name": "YenYen"
     },
     {
-      "rank": 235,
+      "rank": 308,
       "rating": 2024.148,
       "name": "Visas"
     },
     {
-      "rank": 236,
-      "rating": 2023.904,
-      "name": "Sugar"
+      "rank": 309,
+      "rating": 2024.035,
+      "name": "あくりる"
     },
     {
-      "rank": 237,
-      "rating": 2023.835,
-      "name": "まるうぇあ"
-    },
-    {
-      "rank": 238,
-      "rating": 2023.815,
-      "name": "tldjmf"
-    },
-    {
-      "rank": 239,
+      "rank": 310,
       "rating": 2023.77,
       "name": "ワタリ"
     },
     {
-      "rank": 240,
-      "rating": 2023.759,
-      "name": "miku snow"
-    },
-    {
-      "rank": 241,
+      "rank": 311,
       "rating": 2023.747,
       "name": "JoMcCloud"
     },
     {
-      "rank": 242,
-      "rating": 2023.531,
-      "name": "Syuan"
-    },
-    {
-      "rank": 243,
+      "rank": 312,
       "rating": 2023.064,
       "name": "パルキア"
     },
     {
-      "rank": 244,
-      "rating": 2023.03,
-      "name": "ぅチゎギゃル"
-    },
-    {
-      "rank": 245,
+      "rank": 313,
       "rating": 2022.723,
       "name": "とり。"
     },
     {
-      "rank": 246,
-      "rating": 2022.507,
-      "name": "ひなた"
+      "rank": 314,
+      "rating": 2022.271,
+      "name": "F"
     },
     {
-      "rank": 247,
+      "rank": 315,
       "rating": 2021.679,
       "name": "くろもけけ"
     },
     {
-      "rank": 247,
+      "rank": 315,
       "rating": 2021.679,
       "name": "Vonz"
     },
     {
-      "rank": 249,
-      "rating": 2021.633,
-      "name": "ひばり"
+      "rank": 317,
+      "rating": 2021.028,
+      "name": "Silvereign"
     },
     {
-      "rank": 250,
+      "rank": 318,
       "rating": 2020.667,
       "name": "あどまる"
     },
     {
-      "rank": 251,
-      "rating": 2020.558,
-      "name": "미라이돈"
-    },
-    {
-      "rank": 252,
+      "rank": 319,
       "rating": 2020.407,
       "name": "ナンス"
     },
     {
-      "rank": 253,
+      "rank": 320,
       "rating": 2020.329,
       "name": "TheXich"
     },
     {
-      "rank": 254,
-      "rating": 2020.212,
-      "name": "Doom"
+      "rank": 321,
+      "rating": 2020.068,
+      "name": "Null"
     },
     {
-      "rank": 255,
-      "rating": 2020.132,
-      "name": "香草斗笠菇"
+      "rank": 322,
+      "rating": 2019.917,
+      "name": "î◆Sona"
     },
     {
-      "rank": 256,
-      "rating": 2020.051,
-      "name": "브리가론"
-    },
-    {
-      "rank": 257,
+      "rank": 323,
       "rating": 2019.897,
       "name": "Caru"
     },
     {
-      "rank": 258,
+      "rank": 324,
       "rating": 2019.822,
       "name": "こん"
     },
     {
-      "rank": 259,
-      "rating": 2019.813,
-      "name": "Delphicc"
+      "rank": 325,
+      "rating": 2019.82,
+      "name": "deltate"
     },
     {
-      "rank": 260,
-      "rating": 2019.742,
-      "name": "阿炸"
+      "rank": 326,
+      "rating": 2019.584,
+      "name": "けんと"
     },
     {
-      "rank": 261,
-      "rating": 2019.671,
-      "name": "ちゃあじ"
+      "rank": 327,
+      "rating": 2019.414,
+      "name": "Herasito"
     },
     {
-      "rank": 262,
-      "rating": 2019.465,
-      "name": "AIアンセナ"
-    },
-    {
-      "rank": 263,
-      "rating": 2019.46,
-      "name": "木馬"
-    },
-    {
-      "rank": 264,
-      "rating": 2019.439,
-      "name": "Toilailee"
-    },
-    {
-      "rank": 265,
-      "rating": 2019.337,
-      "name": "おちゃ"
-    },
-    {
-      "rank": 266,
+      "rank": 328,
       "rating": 2019.26,
       "name": "オクラン"
     },
     {
-      "rank": 267,
-      "rating": 2018.86,
-      "name": "Yuyu"
-    },
-    {
-      "rank": 268,
+      "rank": 329,
       "rating": 2018.523,
       "name": "ミガワリ"
     },
     {
-      "rank": 269,
-      "rating": 2018.234,
-      "name": "KaiVGC"
+      "rank": 330,
+      "rating": 2018.237,
+      "name": "ヒカル"
     },
     {
-      "rank": 270,
-      "rating": 2018.157,
-      "name": "俊城"
+      "rank": 331,
+      "rating": 2018.091,
+      "name": "ぱぴ☆"
     },
     {
-      "rank": 271,
-      "rating": 2018.057,
-      "name": "Jawnzu"
+      "rank": 332,
+      "rating": 2017.191,
+      "name": "わたあめ"
     },
     {
-      "rank": 272,
-      "rating": 2018.01,
-      "name": "Fabi"
+      "rank": 333,
+      "rating": 2016.431,
+      "name": "Leona"
     },
     {
-      "rank": 273,
-      "rating": 2017.917,
-      "name": "はぎわら"
+      "rank": 334,
+      "rating": 2016.36,
+      "name": "IdkVice"
     },
     {
-      "rank": 274,
-      "rating": 2017.2,
-      "name": "アレックス"
+      "rank": 335,
+      "rating": 2016.089,
+      "name": "ゆうだい"
     },
     {
-      "rank": 275,
-      "rating": 2016.852,
-      "name": "あか"
+      "rank": 336,
+      "rating": 2016.042,
+      "name": "filston"
     },
     {
-      "rank": 276,
-      "rating": 2016.79,
-      "name": "Giel"
+      "rank": 337,
+      "rating": 2015.579,
+      "name": "CANAAN"
     },
     {
-      "rank": 277,
-      "rating": 2016.775,
-      "name": "JR"
-    },
-    {
-      "rank": 278,
-      "rating": 2016.68,
-      "name": "S.REM"
-    },
-    {
-      "rank": 279,
-      "rating": 2016.645,
-      "name": "zhang"
-    },
-    {
-      "rank": 280,
-      "rating": 2016.41,
-      "name": "しの"
-    },
-    {
-      "rank": 281,
-      "rating": 2016.04,
-      "name": "ます"
-    },
-    {
-      "rank": 282,
-      "rating": 2015.766,
-      "name": "Lando"
-    },
-    {
-      "rank": 283,
-      "rating": 2015.695,
-      "name": "皮卡邱"
-    },
-    {
-      "rank": 284,
-      "rating": 2015.452,
-      "name": "Judge"
-    },
-    {
-      "rank": 285,
-      "rating": 2015.355,
-      "name": "Tildy"
-    },
-    {
-      "rank": 286,
+      "rank": 338,
       "rating": 2015.322,
       "name": "Steven"
     },
     {
-      "rank": 287,
+      "rank": 339,
+      "rating": 2015.316,
+      "name": "てんかいち"
+    },
+    {
+      "rank": 340,
       "rating": 2014.99,
       "name": "ひろま"
     },
     {
-      "rank": 288,
-      "rating": 2014.987,
-      "name": "ハッチ"
+      "rank": 341,
+      "rating": 2014.863,
+      "name": "Mattes"
     },
     {
-      "rank": 289,
+      "rank": 342,
       "rating": 2014.851,
       "name": "ねの"
     },
     {
-      "rank": 290,
-      "rating": 2014.42,
-      "name": "Wakem1"
+      "rank": 343,
+      "rating": 2014.848,
+      "name": "Johnny"
     },
     {
-      "rank": 291,
-      "rating": 2014.161,
-      "name": "chara"
+      "rank": 344,
+      "rating": 2014.775,
+      "name": "ミズキ"
     },
     {
-      "rank": 292,
+      "rank": 345,
+      "rating": 2014.232,
+      "name": "おにどりる"
+    },
+    {
+      "rank": 346,
+      "rating": 2014.038,
+      "name": "르마"
+    },
+    {
+      "rank": 347,
       "rating": 2013.978,
       "name": "寒雨映月容"
     },
     {
-      "rank": 293,
-      "rating": 2013.434,
-      "name": "ネルケ"
+      "rank": 348,
+      "rating": 2013.206,
+      "name": "Lorcy"
     },
     {
-      "rank": 294,
+      "rank": 349,
+      "rating": 2013.175,
+      "name": "Carlos Edu"
+    },
+    {
+      "rank": 350,
       "rating": 2013.149,
       "name": "ギュンビ"
     },
     {
-      "rank": 295,
-      "rating": 2013.073,
-      "name": "アネモネ"
+      "rank": 351,
+      "rating": 2012.608,
+      "name": "Fabi"
     },
     {
-      "rank": 296,
-      "rating": 2013.063,
-      "name": "CuboX"
-    },
-    {
-      "rank": 297,
-      "rating": 2013.006,
-      "name": "TrucAnh<3"
-    },
-    {
-      "rank": 298,
-      "rating": 2012.844,
-      "name": "yume"
-    },
-    {
-      "rank": 299,
-      "rating": 2012.686,
-      "name": "Open Papoi"
-    },
-    {
-      "rank": 300,
+      "rank": 352,
       "rating": 2012.483,
       "name": "とまと"
     },
     {
-      "rank": 301,
+      "rank": 353,
       "rating": 2012.391,
       "name": "Kian"
     },
     {
-      "rank": 302,
-      "rating": 2012.346,
-      "name": "Wijuci"
+      "rank": 354,
+      "rating": 2011.992,
+      "name": "Sen"
     },
     {
-      "rank": 303,
-      "rating": 2012.207,
-      "name": "NWE~Python"
+      "rank": 355,
+      "rating": 2011.743,
+      "name": "apa"
     },
     {
-      "rank": 304,
-      "rating": 2012.151,
-      "name": "くらげ"
+      "rank": 356,
+      "rating": 2011.664,
+      "name": "Jαvι♡†"
     },
     {
-      "rank": 305,
-      "rating": 2012.137,
-      "name": "みかづき"
-    },
-    {
-      "rank": 306,
-      "rating": 2011.923,
-      "name": "YenYen"
-    },
-    {
-      "rank": 307,
-      "rating": 2011.628,
-      "name": "さーもんもん"
-    },
-    {
-      "rank": 308,
-      "rating": 2011.554,
-      "name": "Tyler"
-    },
-    {
-      "rank": 309,
+      "rank": 357,
       "rating": 2011.238,
       "name": "Hikawari"
     },
     {
-      "rank": 310,
-      "rating": 2010.779,
-      "name": "k3ngo"
+      "rank": 358,
+      "rating": 2010.705,
+      "name": "Saturn11"
     },
     {
-      "rank": 311,
+      "rank": 359,
       "rating": 2010.663,
       "name": "Kv959"
     },
     {
-      "rank": 312,
-      "rating": 2010.507,
-      "name": "ÜSazandøraÜ"
-    },
-    {
-      "rank": 313,
+      "rank": 360,
       "rating": 2010.454,
       "name": "シュー"
     },
     {
-      "rank": 314,
-      "rating": 2010.45,
-      "name": "Dullo"
-    },
-    {
-      "rank": 315,
+      "rank": 361,
       "rating": 2010.225,
       "name": "HRK"
     },
     {
-      "rank": 316,
-      "rating": 2010.157,
-      "name": "コーディエ"
+      "rank": 362,
+      "rating": 2009.328,
+      "name": "kurake"
     },
     {
-      "rank": 317,
-      "rating": 2009.376,
-      "name": "ヌノケン"
+      "rank": 363,
+      "rating": 2009.169,
+      "name": "Mysticat"
     },
     {
-      "rank": 318,
+      "rank": 364,
       "rating": 2009.14,
       "name": "スカーレット"
     },
     {
-      "rank": 319,
-      "rating": 2009.012,
-      "name": "喆哥"
+      "rank": 365,
+      "rating": 2008.938,
+      "name": "YuWei"
     },
     {
-      "rank": 320,
-      "rating": 2008.861,
-      "name": "リーフ"
-    },
-    {
-      "rank": 321,
-      "rating": 2008.768,
-      "name": "Nonkey"
-    },
-    {
-      "rank": 322,
+      "rank": 366,
       "rating": 2008.762,
       "name": "妖风"
     },
     {
-      "rank": 323,
-      "rating": 2008.389,
-      "name": "Leo"
+      "rank": 367,
+      "rating": 2008.529,
+      "name": "G.END"
     },
     {
-      "rank": 324,
+      "rank": 368,
       "rating": 2008.344,
       "name": "うみ"
     },
     {
-      "rank": 325,
-      "rating": 2008.022,
-      "name": "IB Woomy"
-    },
-    {
-      "rank": 326,
+      "rank": 369,
       "rating": 2008.007,
       "name": "Hyou"
     },
     {
-      "rank": 327,
-      "rating": 2007.533,
-      "name": "小熊猫"
+      "rank": 370,
+      "rating": 2007.922,
+      "name": "RednaL"
     },
     {
-      "rank": 328,
-      "rating": 2007.394,
-      "name": "ぼんごれ"
+      "rank": 371,
+      "rating": 2007.526,
+      "name": "天泽一夏"
     },
     {
-      "rank": 329,
+      "rank": 372,
+      "rating": 2007.156,
+      "name": "Ame*"
+    },
+    {
+      "rank": 373,
       "rating": 2007.079,
       "name": "やまがみ"
     },
     {
-      "rank": 330,
-      "rating": 2006.867,
-      "name": "メル"
+      "rank": 374,
+      "rating": 2006.954,
+      "name": "Judge"
     },
     {
-      "rank": 331,
-      "rating": 2006.766,
-      "name": "あいちゃん"
+      "rank": 375,
+      "rating": 2006.904,
+      "name": "Alex"
     },
     {
-      "rank": 332,
+      "rank": 376,
+      "rating": 2006.811,
+      "name": "しばいぬ"
+    },
+    {
+      "rank": 377,
+      "rating": 2006.681,
+      "name": "가누군"
+    },
+    {
+      "rank": 378,
       "rating": 2006.624,
       "name": "apa"
     },
     {
-      "rank": 333,
-      "rating": 2006.605,
-      "name": "KYE"
+      "rank": 379,
+      "rating": 2006.529,
+      "name": "シャチホコ"
     },
     {
-      "rank": 334,
-      "rating": 2006.474,
-      "name": "タイチ"
-    },
-    {
-      "rank": 335,
-      "rating": 2006.133,
-      "name": "泥啪"
-    },
-    {
-      "rank": 336,
+      "rank": 380,
       "rating": 2005.955,
       "name": "チャン"
     },
     {
-      "rank": 337,
+      "rank": 381,
       "rating": 2005.921,
       "name": "eSchool"
     },
     {
-      "rank": 338,
+      "rank": 382,
+      "rating": 2005.748,
+      "name": "AIアンセナ"
+    },
+    {
+      "rank": 383,
+      "rating": 2005.482,
+      "name": "ダニエル"
+    },
+    {
+      "rank": 384,
+      "rating": 2005.382,
+      "name": "たきもと"
+    },
+    {
+      "rank": 385,
       "rating": 2005.234,
       "name": "YAY"
     },
     {
-      "rank": 339,
+      "rank": 386,
       "rating": 2005.106,
       "name": "オンセン"
     },
     {
-      "rank": 340,
+      "rank": 387,
       "rating": 2005.021,
       "name": "すけ"
     },
     {
-      "rank": 341,
-      "rating": 2004.672,
-      "name": "ScubaZubat"
+      "rank": 388,
+      "rating": 2004.891,
+      "name": "月见山蔻蔻龙"
     },
     {
-      "rank": 342,
-      "rating": 2004.244,
-      "name": "ちゅうそん"
+      "rank": 389,
+      "rating": 2004.826,
+      "name": "骨力TV"
     },
     {
-      "rank": 343,
-      "rating": 2003.657,
-      "name": "ハナノユメ"
+      "rank": 390,
+      "rating": 2004.362,
+      "name": "レシラム"
     },
     {
-      "rank": 344,
+      "rank": 391,
+      "rating": 2004.226,
+      "name": "ドラつぶ"
+    },
+    {
+      "rank": 392,
+      "rating": 2003.831,
+      "name": "MrKiran"
+    },
+    {
+      "rank": 393,
       "rating": 2003.493,
       "name": "bwenty"
     },
     {
-      "rank": 345,
-      "rating": 2003.357,
-      "name": "★ HUSKY ★"
+      "rank": 394,
+      "rating": 2003.374,
+      "name": "KYE"
     },
     {
-      "rank": 346,
-      "rating": 2003.309,
-      "name": "HRK"
-    },
-    {
-      "rank": 347,
+      "rank": 395,
       "rating": 2003.231,
       "name": "ちゃぐま"
     },
     {
-      "rank": 348,
+      "rank": 396,
       "rating": 2002.881,
       "name": "つき"
     },
     {
-      "rank": 349,
-      "rating": 2002.76,
-      "name": "※※※※※※"
+      "rank": 397,
+      "rating": 2002.668,
+      "name": "ゆみかたん"
     },
     {
-      "rank": 350,
+      "rank": 398,
       "rating": 2002.636,
       "name": "John"
     },
     {
-      "rank": 351,
-      "rating": 2002.221,
-      "name": "フラダリ"
+      "rank": 399,
+      "rating": 2002.632,
+      "name": "Mr.NB"
     },
     {
-      "rank": 352,
-      "rating": 2002.208,
-      "name": "Draco"
+      "rank": 400,
+      "rating": 2002.475,
+      "name": "カナエル"
     },
     {
-      "rank": 353,
+      "rank": 401,
       "rating": 2002.132,
       "name": "R"
     },
     {
-      "rank": 354,
-      "rating": 2002.092,
-      "name": "Nahh I'd Win"
+      "rank": 402,
+      "rating": 2001.963,
+      "name": "はや"
     },
     {
-      "rank": 355,
+      "rank": 403,
       "rating": 2001.878,
       "name": "我爸是草钢"
     },
     {
-      "rank": 356,
-      "rating": 2001.759,
-      "name": "Woooby"
+      "rank": 404,
+      "rating": 2001.63,
+      "name": "K8"
     },
     {
-      "rank": 357,
-      "rating": 2001.617,
-      "name": "ぐっうみせみ"
+      "rank": 405,
+      "rating": 2001.298,
+      "name": "Leo"
     },
     {
-      "rank": 358,
-      "rating": 2001.409,
-      "name": "Wiltank"
+      "rank": 406,
+      "rating": 2000.976,
+      "name": "K"
     },
     {
-      "rank": 359,
-      "rating": 2001.003,
-      "name": "Lorcy"
-    },
-    {
-      "rank": 360,
-      "rating": 2000.958,
-      "name": "CANAAN"
-    },
-    {
-      "rank": 361,
+      "rank": 407,
       "rating": 2000.875,
       "name": "MーBenz"
     },
     {
-      "rank": 362,
-      "rating": 2000.667,
-      "name": "Mattes"
+      "rank": 408,
+      "rating": 2000.733,
+      "name": "Nadav"
     },
     {
-      "rank": 363,
+      "rank": 409,
+      "rating": 2000.276,
+      "name": "なこ"
+    },
+    {
+      "rank": 409,
+      "rating": 2000.276,
+      "name": "Kaito"
+    },
+    {
+      "rank": 411,
+      "rating": 2000.074,
+      "name": "あか"
+    },
+    {
+      "rank": 412,
+      "rating": 2000.06,
+      "name": "ほるひす"
+    },
+    {
+      "rank": 413,
+      "rating": 1999.902,
+      "name": "姜饼"
+    },
+    {
+      "rank": 414,
+      "rating": 1999.76,
+      "name": "ルウ"
+    },
+    {
+      "rank": 415,
       "rating": 1999.518,
       "name": "Biro"
     },
     {
-      "rank": 364,
+      "rank": 416,
+      "rating": 1999.319,
+      "name": "Nonkey"
+    },
+    {
+      "rank": 417,
+      "rating": 1998.498,
+      "name": "Patrat Soup"
+    },
+    {
+      "rank": 418,
       "rating": 1998.385,
       "name": "ぽむ"
     },
     {
-      "rank": 364,
-      "rating": 1998.385,
-      "name": "sparkltastix"
+      "rank": 419,
+      "rating": 1998.29,
+      "name": "けー"
     },
     {
-      "rank": 366,
+      "rank": 420,
+      "rating": 1998.264,
+      "name": "STARMAXXIMUS"
+    },
+    {
+      "rank": 421,
+      "rating": 1998.049,
+      "name": "Rena"
+    },
+    {
+      "rank": 422,
+      "rating": 1998.003,
+      "name": "ときのパズル"
+    },
+    {
+      "rank": 423,
       "rating": 1997.929,
       "name": "Fauss"
     },
     {
-      "rank": 367,
+      "rank": 424,
+      "rating": 1997.523,
+      "name": "Keiko"
+    },
+    {
+      "rank": 425,
       "rating": 1997.399,
       "name": "婤甜依"
     },
     {
-      "rank": 368,
+      "rank": 426,
       "rating": 1997.205,
       "name": "シンゴ"
     },
     {
-      "rank": 369,
+      "rank": 427,
+      "rating": 1997.026,
+      "name": "ShaikhVgc :)"
+    },
+    {
+      "rank": 428,
       "rating": 1996.919,
       "name": "meadows"
     },
     {
-      "rank": 370,
-      "rating": 1996.771,
-      "name": "HipのU!"
-    },
-    {
-      "rank": 371,
+      "rank": 429,
       "rating": 1996.612,
       "name": "Lusca"
     },
     {
-      "rank": 372,
-      "rating": 1996.526,
-      "name": "わたあめ"
+      "rank": 430,
+      "rating": 1996.529,
+      "name": "Jason"
     },
     {
-      "rank": 373,
+      "rank": 431,
       "rating": 1996.199,
       "name": "spookie"
     },
     {
-      "rank": 374,
-      "rating": 1995.671,
-      "name": "Venumm"
+      "rank": 432,
+      "rating": 1995.858,
+      "name": "Snowball"
     },
     {
-      "rank": 375,
-      "rating": 1995.536,
-      "name": "とかげ"
-    },
-    {
-      "rank": 376,
-      "rating": 1995.485,
-      "name": "GVE_Skull"
-    },
-    {
-      "rank": 377,
+      "rank": 433,
       "rating": 1995.338,
       "name": "emilia"
     },
     {
-      "rank": 378,
+      "rank": 434,
+      "rating": 1995.263,
+      "name": "SinistcHans"
+    },
+    {
+      "rank": 435,
       "rating": 1995.11,
       "name": "CSデデンネ"
     },
     {
-      "rank": 379,
-      "rating": 1994.831,
-      "name": "ちゃま"
+      "rank": 436,
+      "rating": 1994.956,
+      "name": "DIZ"
     },
     {
-      "rank": 380,
-      "rating": 1994.796,
-      "name": "あくりる"
+      "rank": 437,
+      "rating": 1994.842,
+      "name": "ひゆ"
     },
     {
-      "rank": 381,
+      "rank": 438,
       "rating": 1994.655,
       "name": "伊藤峻峻"
     },
     {
-      "rank": 382,
-      "rating": 1994.233,
-      "name": "ハルト"
+      "rank": 439,
+      "rating": 1994.59,
+      "name": "Brad"
     },
     {
-      "rank": 383,
+      "rank": 440,
+      "rating": 1994.568,
+      "name": "tomo"
+    },
+    {
+      "rank": 441,
       "rating": 1994.111,
       "name": "ももかわ"
     },
     {
-      "rank": 384,
+      "rank": 442,
+      "rating": 1994.065,
+      "name": "BlaZ"
+    },
+    {
+      "rank": 443,
       "rating": 1993.552,
       "name": "ぴろきち"
     },
     {
-      "rank": 385,
-      "rating": 1993.218,
-      "name": "ケイ"
+      "rank": 444,
+      "rating": 1993.423,
+      "name": "Baldo"
     },
     {
-      "rank": 386,
-      "rating": 1993.15,
-      "name": "Brad"
+      "rank": 445,
+      "rating": 1992.618,
+      "name": "しょへ"
     },
     {
-      "rank": 387,
-      "rating": 1992.81,
-      "name": "Sack"
-    },
-    {
-      "rank": 388,
+      "rank": 446,
       "rating": 1992.315,
       "name": "Riopaser"
     },
     {
-      "rank": 389,
-      "rating": 1992.25,
-      "name": "cheol"
-    },
-    {
-      "rank": 390,
+      "rank": 447,
       "rating": 1992.191,
       "name": "Trevor"
     },
     {
-      "rank": 391,
-      "rating": 1991.913,
-      "name": "Stella"
+      "rank": 448,
+      "rating": 1991.841,
+      "name": "JeongPGA"
     },
     {
-      "rank": 392,
+      "rank": 449,
       "rating": 1991.758,
       "name": "シャンディ"
     },
     {
-      "rank": 393,
+      "rank": 450,
       "rating": 1991.733,
       "name": "davidness"
     },
     {
-      "rank": 394,
+      "rank": 451,
+      "rating": 1991.673,
+      "name": "DeyTey"
+    },
+    {
+      "rank": 452,
       "rating": 1991.671,
       "name": "Lyon"
     },
     {
-      "rank": 395,
-      "rating": 1991.319,
-      "name": "Kirito"
+      "rank": 453,
+      "rating": 1991.487,
+      "name": "Julzzie"
     },
     {
-      "rank": 396,
-      "rating": 1991.239,
-      "name": "VIVANT"
+      "rank": 454,
+      "rating": 1991.372,
+      "name": "Niko"
     },
     {
-      "rank": 397,
-      "rating": 1990.872,
-      "name": "トマト"
+      "rank": 455,
+      "rating": 1991.24,
+      "name": "りも"
     },
     {
-      "rank": 398,
+      "rank": 456,
       "rating": 1990.787,
       "name": "Pephan"
     },
     {
-      "rank": 399,
-      "rating": 1990.763,
-      "name": "リュウ"
+      "rank": 457,
+      "rating": 1990.776,
+      "name": "Lemon"
     },
     {
-      "rank": 400,
-      "rating": 1990.283,
-      "name": "Anthony"
+      "rank": 458,
+      "rating": 1989.7,
+      "name": "飛鳥"
     },
     {
-      "rank": 401,
+      "rank": 459,
       "rating": 1989.668,
       "name": "カヌ"
     },
     {
-      "rank": 402,
+      "rank": 460,
       "rating": 1989.42,
       "name": "パゴ"
     },
     {
-      "rank": 403,
+      "rank": 461,
+      "rating": 1989.356,
+      "name": "A・ロッド"
+    },
+    {
+      "rank": 462,
+      "rating": 1989.174,
+      "name": "다꼬리꼬리"
+    },
+    {
+      "rank": 463,
+      "rating": 1989.093,
+      "name": "Stella"
+    },
+    {
+      "rank": 464,
       "rating": 1989.007,
       "name": "Alexis"
     },
     {
-      "rank": 404,
-      "rating": 1988.889,
-      "name": "STARMAXXIMUS"
+      "rank": 465,
+      "rating": 1988.515,
+      "name": "babatunde"
     },
     {
-      "rank": 405,
-      "rating": 1988.355,
-      "name": "ゆうだい"
-    },
-    {
-      "rank": 406,
-      "rating": 1988.019,
-      "name": "DanielAcorn"
-    },
-    {
-      "rank": 407,
-      "rating": 1987.885,
-      "name": "りょうた"
-    },
-    {
-      "rank": 408,
-      "rating": 1987.648,
-      "name": "Jah"
-    },
-    {
-      "rank": 409,
-      "rating": 1987.516,
-      "name": "Eyldeynn"
-    },
-    {
-      "rank": 410,
+      "rank": 466,
       "rating": 1987.425,
       "name": "Andrew"
     },
     {
-      "rank": 411,
-      "rating": 1987.311,
-      "name": "toomenator"
+      "rank": 467,
+      "rating": 1987.301,
+      "name": "Leo"
     },
     {
-      "rank": 412,
-      "rating": 1987.16,
-      "name": "Lunger"
+      "rank": 468,
+      "rating": 1986.9,
+      "name": "Kira"
     },
     {
-      "rank": 413,
+      "rank": 469,
       "rating": 1986.87,
       "name": "YUU"
     },
     {
-      "rank": 414,
+      "rank": 470,
+      "rating": 1986.837,
+      "name": "True"
+    },
+    {
+      "rank": 471,
       "rating": 1986.755,
       "name": "たろ"
     },
     {
-      "rank": 415,
+      "rank": 472,
       "rating": 1986.71,
       "name": "ナエギ"
     },
     {
-      "rank": 416,
-      "rating": 1986.193,
-      "name": "风妖精侠qx"
+      "rank": 473,
+      "rating": 1986.187,
+      "name": "CT_BINO"
     },
     {
-      "rank": 417,
-      "rating": 1986.121,
-      "name": "Bone"
+      "rank": 474,
+      "rating": 1986.12,
+      "name": "Jack"
     },
     {
-      "rank": 418,
+      "rank": 475,
       "rating": 1985.861,
       "name": "Furkan58y"
     },
     {
-      "rank": 419,
-      "rating": 1985.672,
-      "name": "Jackyya"
+      "rank": 476,
+      "rating": 1985.846,
+      "name": "qstnmark"
     },
     {
-      "rank": 420,
-      "rating": 1985.547,
-      "name": "K"
+      "rank": 477,
+      "rating": 1985.365,
+      "name": "Alex"
     },
     {
-      "rank": 421,
+      "rank": 478,
+      "rating": 1984.985,
+      "name": "スーシェフ"
+    },
+    {
+      "rank": 479,
       "rating": 1984.981,
       "name": "Delta"
     },
     {
-      "rank": 422,
+      "rank": 480,
+      "rating": 1984.74,
+      "name": "osaka"
+    },
+    {
+      "rank": 481,
       "rating": 1984.508,
       "name": "vincy18"
     },
     {
-      "rank": 423,
+      "rank": 482,
+      "rating": 1984.439,
+      "name": "Cero"
+    },
+    {
+      "rank": 483,
       "rating": 1984.211,
       "name": "結詠冰曦"
     },
     {
-      "rank": 424,
-      "rating": 1983.644,
-      "name": "USTM"
+      "rank": 484,
+      "rating": 1983.907,
+      "name": "EZyroX"
     },
     {
-      "rank": 425,
+      "rank": 485,
+      "rating": 1983.778,
+      "name": "リョーカ"
+    },
+    {
+      "rank": 486,
+      "rating": 1983.73,
+      "name": "PokeReplay"
+    },
+    {
+      "rank": 487,
       "rating": 1983.452,
       "name": "星璃"
     },
     {
-      "rank": 426,
+      "rank": 488,
       "rating": 1983.302,
       "name": "Stephen"
     },
     {
-      "rank": 427,
-      "rating": 1983.285,
-      "name": "けんと"
+      "rank": 489,
+      "rating": 1983.283,
+      "name": "こうへい"
     },
     {
-      "rank": 428,
+      "rank": 490,
       "rating": 1982.916,
       "name": "Richy"
     },
     {
-      "rank": 429,
-      "rating": 1982.895,
-      "name": "Zestriya"
+      "rank": 491,
+      "rating": 1982.904,
+      "name": "せんばりつ"
     },
     {
-      "rank": 430,
-      "rating": 1982.829,
-      "name": "kurake"
+      "rank": 492,
+      "rating": 1982.765,
+      "name": "ブレス"
     },
     {
-      "rank": 431,
-      "rating": 1982.712,
-      "name": "Nadav"
-    },
-    {
-      "rank": 432,
+      "rank": 493,
       "rating": 1982.422,
       "name": "Soh"
     },
     {
-      "rank": 433,
-      "rating": 1981.955,
-      "name": "シトラス"
+      "rank": 494,
+      "rating": 1982.239,
+      "name": "Zephyr"
     },
     {
-      "rank": 434,
-      "rating": 1981.442,
-      "name": "ぱぴ☆"
+      "rank": 495,
+      "rating": 1982.007,
+      "name": "ともさま"
     },
     {
-      "rank": 435,
-      "rating": 1981.414,
-      "name": "くずは"
+      "rank": 496,
+      "rating": 1981.987,
+      "name": "Wiltank"
     },
     {
-      "rank": 436,
-      "rating": 1981.259,
-      "name": "Hare"
+      "rank": 497,
+      "rating": 1981.719,
+      "name": "こーひー"
     },
     {
-      "rank": 437,
-      "rating": 1981.01,
-      "name": "장동민"
+      "rank": 498,
+      "rating": 1981.624,
+      "name": "Loz"
     },
     {
-      "rank": 438,
-      "rating": 1980.767,
-      "name": "阿鑫"
+      "rank": 499,
+      "rating": 1981.592,
+      "name": "Ectis"
     },
     {
-      "rank": 439,
+      "rank": 500,
+      "rating": 1981.374,
+      "name": "JJ"
+    },
+    {
+      "rank": 501,
+      "rating": 1981.097,
+      "name": "Eyldeynn"
+    },
+    {
+      "rank": 502,
+      "rating": 1981.003,
+      "name": "おちゃ"
+    },
+    {
+      "rank": 503,
+      "rating": 1980.76,
+      "name": "LEO★SSQ"
+    },
+    {
+      "rank": 504,
+      "rating": 1980.705,
+      "name": "k3ngo"
+    },
+    {
+      "rank": 505,
+      "rating": 1980.45,
+      "name": "Stormrage"
+    },
+    {
+      "rank": 506,
       "rating": 1980.23,
       "name": "かえで"
     },
     {
-      "rank": 440,
+      "rank": 507,
       "rating": 1979.905,
       "name": "Lexicon"
     },
     {
-      "rank": 441,
-      "rating": 1979.67,
-      "name": "なかた"
+      "rank": 508,
+      "rating": 1979.808,
+      "name": "ArchPony"
     },
     {
-      "rank": 442,
-      "rating": 1979.633,
-      "name": "F"
+      "rank": 509,
+      "rating": 1979.502,
+      "name": "ワカメ"
     },
     {
-      "rank": 443,
-      "rating": 1979.579,
-      "name": "れある"
+      "rank": 510,
+      "rating": 1979.437,
+      "name": "てら"
     },
     {
-      "rank": 444,
-      "rating": 1979.412,
-      "name": "EGAO"
+      "rank": 511,
+      "rating": 1979.424,
+      "name": "ハナノユメ"
     },
     {
-      "rank": 445,
-      "rating": 1978.815,
-      "name": "tomo"
+      "rank": 512,
+      "rating": 1979.341,
+      "name": "もいもい"
     },
     {
-      "rank": 446,
+      "rank": 513,
+      "rating": 1979.333,
+      "name": "たいよう"
+    },
+    {
+      "rank": 514,
       "rating": 1978.795,
       "name": "Lojic"
     },
     {
-      "rank": 447,
-      "rating": 1978.601,
-      "name": "トシニキ"
+      "rank": 515,
+      "rating": 1978.53,
+      "name": "F"
     },
     {
-      "rank": 448,
-      "rating": 1978.557,
-      "name": "おにどりる"
+      "rank": 516,
+      "rating": 1978.477,
+      "name": "SrMomo"
     },
     {
-      "rank": 449,
+      "rank": 517,
+      "rating": 1978.459,
+      "name": "Andy"
+    },
+    {
+      "rank": 518,
       "rating": 1978.433,
       "name": "Francis"
     },
     {
-      "rank": 450,
-      "rating": 1978.122,
-      "name": "MrKiran"
+      "rank": 519,
+      "rating": 1978.271,
+      "name": "Uzi"
     },
     {
-      "rank": 451,
+      "rank": 520,
       "rating": 1978.072,
       "name": "のらねこ"
     },
     {
-      "rank": 452,
-      "rating": 1978.031,
-      "name": "Shabby"
-    },
-    {
-      "rank": 453,
+      "rank": 521,
       "rating": 1977.92,
       "name": "リン"
     },
     {
-      "rank": 454,
+      "rank": 522,
       "rating": 1977.885,
       "name": "Grant"
     },
     {
-      "rank": 455,
-      "rating": 1977.457,
-      "name": "Dec"
+      "rank": 523,
+      "rating": 1977.528,
+      "name": "MacGyverX"
     },
     {
-      "rank": 456,
-      "rating": 1977.415,
-      "name": "飛鳥"
+      "rank": 524,
+      "rating": 1977.439,
+      "name": "Aloniz"
     },
     {
-      "rank": 457,
-      "rating": 1976.75,
-      "name": "Mr.NB"
+      "rank": 525,
+      "rating": 1977.42,
+      "name": "ポテトボーイ"
     },
     {
-      "rank": 458,
-      "rating": 1976.727,
-      "name": "m"
+      "rank": 526,
+      "rating": 1977.215,
+      "name": "Zestriya"
     },
     {
-      "rank": 459,
+      "rank": 527,
+      "rating": 1976.633,
+      "name": "えるふぅぅん"
+    },
+    {
+      "rank": 528,
       "rating": 1976.485,
       "name": "Guti"
     },
     {
-      "rank": 460,
-      "rating": 1976.273,
-      "name": "Jzy"
+      "rank": 529,
+      "rating": 1976.296,
+      "name": "Aaron"
     },
     {
-      "rank": 461,
+      "rank": 530,
       "rating": 1976.085,
       "name": "黑澤ルビィ"
     },
     {
-      "rank": 462,
+      "rank": 531,
       "rating": 1975.775,
       "name": "ミイ"
     },
     {
-      "rank": 463,
-      "rating": 1975.415,
-      "name": "ダニエル"
+      "rank": 532,
+      "rating": 1975.506,
+      "name": "まさのり"
     },
     {
-      "rank": 464,
-      "rating": 1975.311,
-      "name": "さつまいも"
+      "rank": 533,
+      "rating": 1975.472,
+      "name": "はぎわら"
     },
     {
-      "rank": 465,
-      "rating": 1975.281,
-      "name": "しょへ"
+      "rank": 534,
+      "rating": 1975.139,
+      "name": "Davide"
     },
     {
-      "rank": 466,
-      "rating": 1975.233,
-      "name": "ときのパズル"
+      "rank": 535,
+      "rating": 1975.075,
+      "name": "くろず"
     },
     {
-      "rank": 467,
-      "rating": 1975.14,
-      "name": "GDYEE"
+      "rank": 536,
+      "rating": 1975.016,
+      "name": "James"
     },
     {
-      "rank": 468,
-      "rating": 1974.988,
-      "name": "らんぷ"
+      "rank": 537,
+      "rating": 1974.907,
+      "name": "ぶっちょ"
     },
     {
-      "rank": 469,
-      "rating": 1974.812,
-      "name": "てんかいち"
-    },
-    {
-      "rank": 470,
-      "rating": 1974.803,
-      "name": "Loz"
-    },
-    {
-      "rank": 471,
+      "rank": 538,
       "rating": 1974.781,
       "name": "Freshmanyas"
     },
     {
-      "rank": 472,
+      "rank": 539,
       "rating": 1974.649,
       "name": "Peetorr"
     },
     {
-      "rank": 473,
-      "rating": 1974.598,
-      "name": "ともさま"
+      "rank": 539,
+      "rating": 1974.649,
+      "name": "なかた"
     },
     {
-      "rank": 474,
+      "rank": 541,
+      "rating": 1974.646,
+      "name": "m"
+    },
+    {
+      "rank": 542,
       "rating": 1974.546,
       "name": "マツヤン"
     },
     {
-      "rank": 475,
-      "rating": 1974.457,
-      "name": "Unsaying"
+      "rank": 543,
+      "rating": 1974.425,
+      "name": "Pantelsss"
     },
     {
-      "rank": 476,
-      "rating": 1973.954,
-      "name": "リョーカ"
+      "rank": 544,
+      "rating": 1974.387,
+      "name": "おんらいね"
     },
     {
-      "rank": 477,
+      "rank": 545,
+      "rating": 1974.166,
+      "name": "MrSteelix"
+    },
+    {
+      "rank": 546,
+      "rating": 1974.097,
+      "name": "Jawnzu"
+    },
+    {
+      "rank": 547,
       "rating": 1973.914,
       "name": "惠子"
     },
     {
-      "rank": 478,
+      "rank": 548,
       "rating": 1973.724,
       "name": "Mr.せんり"
     },
     {
-      "rank": 479,
-      "rating": 1973.712,
-      "name": "Prossetti"
-    },
-    {
-      "rank": 480,
-      "rating": 1973.688,
-      "name": "月见山蔻蔻龙"
-    },
-    {
-      "rank": 481,
+      "rank": 549,
       "rating": 1973.482,
       "name": "ケイト"
     },
     {
-      "rank": 482,
-      "rating": 1972.976,
-      "name": "Flipsicle"
+      "rank": 550,
+      "rating": 1973.028,
+      "name": "カ・エール"
     },
     {
-      "rank": 483,
-      "rating": 1972.923,
-      "name": "Senzumi"
+      "rank": 551,
+      "rating": 1972.929,
+      "name": "らんぷ"
     },
     {
-      "rank": 484,
+      "rank": 552,
+      "rating": 1972.891,
+      "name": "Shabby"
+    },
+    {
+      "rank": 553,
+      "rating": 1972.489,
+      "name": "霏霏"
+    },
+    {
+      "rank": 554,
       "rating": 1972.488,
       "name": "小鬼头"
     },
     {
-      "rank": 485,
+      "rank": 555,
+      "rating": 1972.401,
+      "name": "JON"
+    },
+    {
+      "rank": 556,
+      "rating": 1972.298,
+      "name": "ししとう"
+    },
+    {
+      "rank": 557,
+      "rating": 1972.26,
+      "name": "シャングリラ"
+    },
+    {
+      "rank": 558,
       "rating": 1972.247,
       "name": "sarastro"
     },
     {
-      "rank": 486,
+      "rank": 559,
+      "rating": 1972.231,
+      "name": "Vicarin"
+    },
+    {
+      "rank": 560,
       "rating": 1972.182,
       "name": "L"
     },
     {
-      "rank": 487,
-      "rating": 1972.002,
-      "name": "なこ"
+      "rank": 561,
+      "rating": 1971.941,
+      "name": "Renn"
     },
     {
-      "rank": 488,
-      "rating": 1971.642,
-      "name": "スーシェフ"
+      "rank": 562,
+      "rating": 1971.62,
+      "name": "Prof. Pollo"
     },
     {
-      "rank": 489,
-      "rating": 1971.196,
-      "name": "PDF"
+      "rank": 563,
+      "rating": 1971.601,
+      "name": "★ HUSKY ★"
     },
     {
-      "rank": 490,
+      "rank": 564,
+      "rating": 1971.587,
+      "name": "Marco"
+    },
+    {
+      "rank": 565,
+      "rating": 1971.513,
+      "name": "ルンテット"
+    },
+    {
+      "rank": 566,
+      "rating": 1971.255,
+      "name": "ちゃま"
+    },
+    {
+      "rank": 567,
+      "rating": 1971.147,
+      "name": "Prossetti"
+    },
+    {
+      "rank": 568,
       "rating": 1970.998,
       "name": "Coi"
     },
     {
-      "rank": 491,
-      "rating": 1970.898,
-      "name": "SupStePer"
+      "rank": 569,
+      "rating": 1970.983,
+      "name": "Jzy"
     },
     {
-      "rank": 492,
+      "rank": 570,
+      "rating": 1970.954,
+      "name": "コルダン"
+    },
+    {
+      "rank": 571,
       "rating": 1970.756,
       "name": "Mora"
     },
     {
-      "rank": 493,
+      "rank": 572,
       "rating": 1970.724,
       "name": "kei"
     },
     {
-      "rank": 494,
+      "rank": 573,
+      "rating": 1970.698,
+      "name": "ZA"
+    },
+    {
+      "rank": 574,
       "rating": 1970.667,
       "name": "污水塘"
     },
     {
-      "rank": 495,
-      "rating": 1970.176,
-      "name": "マモル"
+      "rank": 575,
+      "rating": 1970.635,
+      "name": "スターク"
     },
     {
-      "rank": 496,
+      "rank": 576,
+      "rating": 1970.557,
+      "name": "Axis Z-666"
+    },
+    {
+      "rank": 577,
       "rating": 1969.794,
       "name": "mistmadensau"
     },
     {
-      "rank": 497,
-      "rating": 1969.722,
-      "name": "メープルくま"
+      "rank": 578,
+      "rating": 1969.706,
+      "name": "John"
     },
     {
-      "rank": 498,
-      "rating": 1969.26,
-      "name": "はや"
-    },
-    {
-      "rank": 499,
-      "rating": 1969.079,
-      "name": "osaka"
-    },
-    {
-      "rank": 500,
-      "rating": 1968.809,
-      "name": "ToToLaw"
-    },
-    {
-      "rank": 501,
-      "rating": 1968.74,
-      "name": "filston"
-    },
-    {
-      "rank": 502,
-      "rating": 1968.544,
-      "name": "Jack"
-    },
-    {
-      "rank": 503,
+      "rank": 579,
       "rating": 1968.49,
       "name": "IOO4"
     },
     {
-      "rank": 504,
-      "rating": 1968.467,
-      "name": "ゆいと"
-    },
-    {
-      "rank": 505,
-      "rating": 1968.187,
-      "name": "Snowball"
-    },
-    {
-      "rank": 506,
+      "rank": 580,
       "rating": 1968.14,
       "name": "lahaye"
     },
     {
-      "rank": 507,
-      "rating": 1968.058,
-      "name": "ヒカル"
+      "rank": 581,
+      "rating": 1968.099,
+      "name": "バッキー"
     },
     {
-      "rank": 508,
-      "rating": 1967.845,
-      "name": "レイス"
+      "rank": 582,
+      "rating": 1968.086,
+      "name": "もりお"
     },
     {
-      "rank": 509,
-      "rating": 1967.73,
-      "name": "Silvereign"
+      "rank": 583,
+      "rating": 1967.825,
+      "name": "ゴッドアルス"
     },
     {
-      "rank": 510,
-      "rating": 1967.724,
-      "name": "nori"
-    },
-    {
-      "rank": 511,
+      "rank": 584,
       "rating": 1967.719,
       "name": "ジャローナ"
     },
     {
-      "rank": 512,
+      "rank": 585,
+      "rating": 1967.708,
+      "name": "USTM"
+    },
+    {
+      "rank": 586,
+      "rating": 1967.608,
+      "name": "Éclair"
+    },
+    {
+      "rank": 587,
       "rating": 1967.585,
       "name": "BTzzz"
     },
     {
-      "rank": 513,
+      "rank": 588,
       "rating": 1967.571,
       "name": "あらみな"
     },
     {
-      "rank": 514,
+      "rank": 589,
       "rating": 1967.456,
       "name": "F.T"
     },
     {
-      "rank": 515,
+      "rank": 590,
+      "rating": 1967.438,
+      "name": "ケイ"
+    },
+    {
+      "rank": 591,
       "rating": 1967.358,
       "name": "freddo"
     },
     {
-      "rank": 516,
+      "rank": 592,
       "rating": 1967.194,
       "name": "Darthnius"
     },
     {
-      "rank": 517,
-      "rating": 1967.163,
-      "name": "아이앰 딸기"
+      "rank": 593,
+      "rating": 1966.88,
+      "name": "snik"
     },
     {
-      "rank": 518,
-      "rating": 1966.937,
-      "name": "こうへい"
-    },
-    {
-      "rank": 519,
-      "rating": 1966.873,
-      "name": "Jiggity"
-    },
-    {
-      "rank": 520,
-      "rating": 1966.646,
-      "name": "qstnmark"
-    },
-    {
-      "rank": 521,
-      "rating": 1966.633,
-      "name": "カタハバ"
-    },
-    {
-      "rank": 522,
+      "rank": 594,
       "rating": 1966.521,
       "name": "Alonso"
     },
     {
-      "rank": 523,
-      "rating": 1966.495,
-      "name": "Jinrai"
+      "rank": 595,
+      "rating": 1966.447,
+      "name": "Flipsicle"
     },
     {
-      "rank": 524,
-      "rating": 1966.207,
-      "name": "しばいぬ"
+      "rank": 596,
+      "rating": 1966.172,
+      "name": "Anthony"
     },
     {
-      "rank": 525,
-      "rating": 1965.886,
-      "name": "Carlos Edu"
+      "rank": 597,
+      "rating": 1966.091,
+      "name": "Zeph"
     },
     {
-      "rank": 526,
+      "rank": 598,
+      "rating": 1965.868,
+      "name": "Vini"
+    },
+    {
+      "rank": 599,
       "rating": 1965.657,
       "name": "Edgeon"
     },
     {
-      "rank": 527,
+      "rank": 600,
+      "rating": 1965.551,
+      "name": "セイテン"
+    },
+    {
+      "rank": 601,
+      "rating": 1965.412,
+      "name": "아이앰 딸기"
+    },
+    {
+      "rank": 602,
+      "rating": 1965.246,
+      "name": "샤비"
+    },
+    {
+      "rank": 603,
       "rating": 1965.231,
       "name": "Azun"
     },
     {
-      "rank": 528,
-      "rating": 1965.132,
-      "name": "まさのり"
+      "rank": 604,
+      "rating": 1965.12,
+      "name": "カナリィ？"
     },
     {
-      "rank": 529,
+      "rank": 605,
+      "rating": 1965.093,
+      "name": "ユタカ"
+    },
+    {
+      "rank": 606,
       "rating": 1965.08,
       "name": "MrRishi"
     },
     {
-      "rank": 530,
+      "rank": 607,
       "rating": 1965.042,
       "name": "Rasty"
     },
     {
-      "rank": 531,
-      "rating": 1964.739,
-      "name": "Tian"
+      "rank": 608,
+      "rating": 1965.008,
+      "name": "ミユル©"
     },
     {
-      "rank": 532,
-      "rating": 1964.728,
-      "name": "Padilla"
+      "rank": 609,
+      "rating": 1964.872,
+      "name": "Pako Glitch"
     },
     {
-      "rank": 533,
+      "rank": 610,
+      "rating": 1964.745,
+      "name": "Vardul"
+    },
+    {
+      "rank": 611,
       "rating": 1964.722,
       "name": "TheBardo"
     },
     {
-      "rank": 534,
-      "rating": 1964.602,
-      "name": "チャンアンチ"
+      "rank": 612,
+      "rating": 1964.636,
+      "name": "Reyhan"
     },
     {
-      "rank": 535,
-      "rating": 1964.588,
-      "name": "もりお"
+      "rank": 613,
+      "rating": 1964.533,
+      "name": "Jihyo"
     },
     {
-      "rank": 536,
+      "rank": 614,
       "rating": 1964.171,
       "name": "DMR"
     },
     {
-      "rank": 537,
-      "rating": 1964.17,
-      "name": "アベじゅん"
+      "rank": 615,
+      "rating": 1964.137,
+      "name": "아나스"
     },
     {
-      "rank": 538,
-      "rating": 1964.109,
-      "name": "ゆ"
-    },
-    {
-      "rank": 539,
-      "rating": 1964.064,
-      "name": "goldenBeak"
-    },
-    {
-      "rank": 540,
-      "rating": 1964.013,
-      "name": "トレーナー"
-    },
-    {
-      "rank": 541,
+      "rank": 616,
       "rating": 1963.913,
       "name": "Livio"
     },
     {
-      "rank": 542,
-      "rating": 1963.834,
-      "name": "ぱりす"
+      "rank": 617,
+      "rating": 1963.634,
+      "name": "pokepanic"
     },
     {
-      "rank": 543,
-      "rating": 1963.638,
-      "name": "ブレス"
-    },
-    {
-      "rank": 544,
-      "rating": 1963.561,
-      "name": "いしでぃー"
-    },
-    {
-      "rank": 545,
-      "rating": 1963.527,
-      "name": "90sevenn"
-    },
-    {
-      "rank": 546,
+      "rank": 618,
       "rating": 1963.476,
       "name": "caiovibora"
     },
     {
-      "rank": 547,
-      "rating": 1963.253,
-      "name": "Lowpass"
-    },
-    {
-      "rank": 548,
+      "rank": 619,
       "rating": 1963.178,
       "name": "かみロマン"
     },
     {
-      "rank": 549,
-      "rating": 1963.122,
-      "name": "Husky"
-    },
-    {
-      "rank": 550,
-      "rating": 1963.09,
-      "name": "John Pork"
-    },
-    {
-      "rank": 551,
+      "rank": 620,
       "rating": 1963.037,
-      "name": "Keiko"
+      "name": "Lando"
     },
     {
-      "rank": 552,
-      "rating": 1962.861,
-      "name": "てとら"
+      "rank": 621,
+      "rating": 1962.864,
+      "name": "Shaiye"
     },
     {
-      "rank": 553,
+      "rank": 622,
+      "rating": 1962.744,
+      "name": "めたる"
+    },
+    {
+      "rank": 623,
+      "rating": 1962.72,
+      "name": "れある"
+    },
+    {
+      "rank": 624,
+      "rating": 1962.636,
+      "name": "ABCDEF"
+    },
+    {
+      "rank": 625,
       "rating": 1962.573,
       "name": "Peter"
     },
     {
-      "rank": 554,
+      "rank": 626,
       "rating": 1962.547,
       "name": "シルバー"
     },
     {
-      "rank": 555,
-      "rating": 1962.485,
-      "name": "あきひ"
+      "rank": 627,
+      "rating": 1962.533,
+      "name": "あいちゃん"
     },
     {
-      "rank": 556,
-      "rating": 1962.387,
-      "name": "たきもと"
+      "rank": 628,
+      "rating": 1962.52,
+      "name": "Draco"
     },
     {
-      "rank": 557,
+      "rank": 629,
+      "rating": 1962.368,
+      "name": "バラゴモード"
+    },
+    {
+      "rank": 630,
+      "rating": 1962.205,
+      "name": "ツナマヨ"
+    },
+    {
+      "rank": 631,
       "rating": 1962.175,
       "name": "こすも"
     },
     {
-      "rank": 558,
-      "rating": 1962.151,
-      "name": "SHeart"
+      "rank": 632,
+      "rating": 1962.079,
+      "name": "シトラス"
     },
     {
-      "rank": 559,
-      "rating": 1962.07,
-      "name": "Stormrage"
+      "rank": 633,
+      "rating": 1962.028,
+      "name": "Rshawn"
     },
     {
-      "rank": 560,
-      "rating": 1961.8,
-      "name": "Dadoago"
+      "rank": 634,
+      "rating": 1961.669,
+      "name": "FGYY"
     },
     {
-      "rank": 561,
-      "rating": 1961.655,
-      "name": "霏霏"
+      "rank": 635,
+      "rating": 1961.346,
+      "name": "あでかん"
     },
     {
-      "rank": 562,
-      "rating": 1961.21,
-      "name": "ミツルギ"
+      "rank": 636,
+      "rating": 1960.833,
+      "name": "Jojonathan"
     },
     {
-      "rank": 563,
-      "rating": 1961.187,
-      "name": "snik"
+      "rank": 637,
+      "rating": 1960.783,
+      "name": "KianA"
     },
     {
-      "rank": 564,
+      "rank": 638,
+      "rating": 1960.764,
+      "name": "donovan_79"
+    },
+    {
+      "rank": 639,
       "rating": 1960.726,
       "name": "Agni"
     },
     {
-      "rank": 565,
-      "rating": 1960.548,
-      "name": "nilzk"
+      "rank": 640,
+      "rating": 1960.498,
+      "name": "Phylo"
     },
     {
-      "rank": 566,
-      "rating": 1960.449,
-      "name": "Andy"
-    },
-    {
-      "rank": 567,
+      "rank": 641,
       "rating": 1960.314,
       "name": "キモリ"
     },
     {
-      "rank": 568,
+      "rank": 642,
+      "rating": 1960.181,
+      "name": "ちく"
+    },
+    {
+      "rank": 643,
       "rating": 1960.162,
       "name": "KUMAER"
     },
     {
-      "rank": 569,
-      "rating": 1960.118,
-      "name": "spellweaver☆"
+      "rank": 644,
+      "rating": 1960.11,
+      "name": "ミキコ"
     },
     {
-      "rank": 570,
-      "rating": 1959.731,
-      "name": "Aetherias"
+      "rank": 645,
+      "rating": 1960.006,
+      "name": "Post"
     },
     {
-      "rank": 571,
-      "rating": 1959.364,
-      "name": "Kira"
+      "rank": 646,
+      "rating": 1959.801,
+      "name": "ウェイジロウ"
     },
     {
-      "rank": 572,
-      "rating": 1959.226,
-      "name": "カナリィ？"
+      "rank": 647,
+      "rating": 1959.67,
+      "name": "karkar"
     },
     {
-      "rank": 573,
+      "rank": 648,
+      "rating": 1959.537,
+      "name": "トレーナー"
+    },
+    {
+      "rank": 649,
+      "rating": 1959.465,
+      "name": "Fish"
+    },
+    {
+      "rank": 650,
+      "rating": 1959.266,
+      "name": "穗緣"
+    },
+    {
+      "rank": 651,
+      "rating": 1959.212,
+      "name": "casey"
+    },
+    {
+      "rank": 652,
       "rating": 1959.165,
       "name": "Black"
     },
     {
-      "rank": 574,
-      "rating": 1959.041,
-      "name": "SirSmurf"
+      "rank": 653,
+      "rating": 1958.996,
+      "name": "リュウ"
     },
     {
-      "rank": 575,
+      "rank": 654,
       "rating": 1958.963,
       "name": "Abe"
     },
     {
-      "rank": 576,
-      "rating": 1958.718,
-      "name": "A・ロッド"
-    },
-    {
-      "rank": 577,
+      "rank": 655,
       "rating": 1958.661,
       "name": "こみさん"
     },
     {
-      "rank": 578,
-      "rating": 1958.634,
-      "name": "Vergil"
-    },
-    {
-      "rank": 579,
-      "rating": 1958.593,
-      "name": "CJ"
-    },
-    {
-      "rank": 580,
+      "rank": 656,
       "rating": 1958.496,
       "name": "Adrian"
     },
     {
-      "rank": 581,
-      "rating": 1958.315,
-      "name": "ヨハネ"
+      "rank": 657,
+      "rating": 1958.319,
+      "name": "あんこ"
     },
     {
-      "rank": 582,
+      "rank": 658,
+      "rating": 1958.263,
+      "name": "Dullo"
+    },
+    {
+      "rank": 659,
       "rating": 1958.146,
       "name": "royalG"
     },
     {
-      "rank": 583,
-      "rating": 1958.089,
-      "name": "Ectis"
+      "rank": 660,
+      "rating": 1958.101,
+      "name": "Senzumi"
     },
     {
-      "rank": 584,
+      "rank": 661,
+      "rating": 1957.911,
+      "name": "Jackyya"
+    },
+    {
+      "rank": 662,
       "rating": 1957.832,
       "name": "ねぼすけ"
     },
     {
-      "rank": 585,
+      "rank": 663,
+      "rating": 1957.75,
+      "name": "Element18"
+    },
+    {
+      "rank": 664,
       "rating": 1957.686,
       "name": "XNinja7"
     },
     {
-      "rank": 586,
-      "rating": 1957.354,
-      "name": "たいよう"
+      "rank": 665,
+      "rating": 1957.411,
+      "name": "MB"
     },
     {
-      "rank": 587,
-      "rating": 1957.121,
-      "name": "シャチホコ"
+      "rank": 666,
+      "rating": 1957.336,
+      "name": "magno"
     },
     {
-      "rank": 588,
-      "rating": 1957.104,
-      "name": "Nontaro"
+      "rank": 667,
+      "rating": 1957.278,
+      "name": "がいねん"
     },
     {
-      "rank": 589,
-      "rating": 1956.976,
-      "name": "ころしヤス"
+      "rank": 668,
+      "rating": 1957.074,
+      "name": "Toshi"
     },
     {
-      "rank": 590,
-      "rating": 1956.357,
-      "name": "Niko"
+      "rank": 669,
+      "rating": 1957.014,
+      "name": "凌霜羽翼"
     },
     {
-      "rank": 591,
-      "rating": 1956.276,
-      "name": "TakeThyFlame"
+      "rank": 670,
+      "rating": 1957.007,
+      "name": "玛尔蒂娜"
     },
     {
-      "rank": 592,
-      "rating": 1956.187,
-      "name": "Purple"
+      "rank": 671,
+      "rating": 1956.888,
+      "name": "わおん"
     },
     {
-      "rank": 593,
+      "rank": 672,
+      "rating": 1956.619,
+      "name": "V"
+    },
+    {
+      "rank": 673,
+      "rating": 1956.548,
+      "name": "ナショナル"
+    },
+    {
+      "rank": 674,
+      "rating": 1956.326,
+      "name": "Jiggity"
+    },
+    {
+      "rank": 675,
+      "rating": 1956.248,
+      "name": "Husky"
+    },
+    {
+      "rank": 676,
       "rating": 1956.065,
       "name": "HardFreaQ"
     },
     {
-      "rank": 594,
+      "rank": 677,
       "rating": 1956.024,
       "name": "JoodleJay"
     },
     {
-      "rank": 595,
+      "rank": 678,
       "rating": 1955.937,
       "name": "Bleudeon"
     },
     {
-      "rank": 596,
-      "rating": 1955.773,
-      "name": "rockflower"
+      "rank": 679,
+      "rating": 1955.774,
+      "name": "LeunamTG"
     },
     {
-      "rank": 597,
-      "rating": 1955.443,
-      "name": "Cero"
+      "rank": 680,
+      "rating": 1955.749,
+      "name": "goldenBeak"
     },
     {
-      "rank": 598,
-      "rating": 1955.376,
-      "name": "PokeReplay"
+      "rank": 681,
+      "rating": 1955.69,
+      "name": "きょーか"
     },
     {
-      "rank": 599,
+      "rank": 682,
+      "rating": 1955.681,
+      "name": "なつ"
+    },
+    {
+      "rank": 683,
+      "rating": 1955.676,
+      "name": "Matt"
+    },
+    {
+      "rank": 684,
+      "rating": 1955.399,
+      "name": "春见咲"
+    },
+    {
+      "rank": 685,
+      "rating": 1955.369,
+      "name": "BadIntent"
+    },
+    {
+      "rank": 686,
       "rating": 1955.354,
       "name": "Ella"
     },
     {
-      "rank": 600,
+      "rank": 687,
+      "rating": 1955.348,
+      "name": "TheOnlyFizzo"
+    },
+    {
+      "rank": 688,
       "rating": 1955.165,
       "name": "ヨッシーSC"
     },
     {
-      "rank": 601,
+      "rank": 689,
+      "rating": 1955.152,
+      "name": "トレーナー"
+    },
+    {
+      "rank": 690,
       "rating": 1955.12,
       "name": "Someone"
     },
     {
-      "rank": 602,
-      "rating": 1954.785,
-      "name": "deceive"
+      "rank": 691,
+      "rating": 1955.11,
+      "name": "QuiijiiVGC"
     },
     {
-      "rank": 603,
-      "rating": 1954.738,
-      "name": "トレーナー"
+      "rank": 692,
+      "rating": 1954.886,
+      "name": "AidanZ"
     },
     {
-      "rank": 604,
-      "rating": 1954.607,
-      "name": "はなも"
+      "rank": 693,
+      "rating": 1954.846,
+      "name": "うちけん"
     },
     {
-      "rank": 605,
-      "rating": 1954.605,
-      "name": "Santi"
+      "rank": 694,
+      "rating": 1954.774,
+      "name": "かしわぎねる"
     },
     {
-      "rank": 606,
-      "rating": 1954.42,
-      "name": "Z"
+      "rank": 695,
+      "rating": 1954.686,
+      "name": "Casa"
     },
     {
-      "rank": 607,
-      "rating": 1954.308,
-      "name": "Ludwig"
+      "rank": 696,
+      "rating": 1954.624,
+      "name": "Ronron"
     },
     {
-      "rank": 608,
+      "rank": 697,
+      "rating": 1954.62,
+      "name": "ElRey"
+    },
+    {
+      "rank": 698,
+      "rating": 1954.484,
+      "name": "リンディス"
+    },
+    {
+      "rank": 699,
+      "rating": 1954.263,
+      "name": "iceice"
+    },
+    {
+      "rank": 700,
       "rating": 1954.235,
       "name": "N"
     },
     {
-      "rank": 609,
-      "rating": 1954.22,
-      "name": "もいもい"
+      "rank": 701,
+      "rating": 1954.15,
+      "name": "Santi14"
     },
     {
-      "rank": 610,
-      "rating": 1954.086,
-      "name": "てら"
+      "rank": 702,
+      "rating": 1954.062,
+      "name": "Hutch"
     },
     {
-      "rank": 611,
-      "rating": 1953.797,
-      "name": "きよまろ"
+      "rank": 703,
+      "rating": 1953.969,
+      "name": "げん"
     },
     {
-      "rank": 612,
-      "rating": 1953.745,
-      "name": "yitaku"
-    },
-    {
-      "rank": 613,
+      "rank": 704,
       "rating": 1953.683,
-      "name": "Faz"
+      "name": "Merijn"
     },
     {
-      "rank": 614,
-      "rating": 1953.575,
-      "name": "Vardul"
+      "rank": 705,
+      "rating": 1953.43,
+      "name": "toomenator"
     },
     {
-      "rank": 615,
+      "rank": 706,
       "rating": 1953.297,
       "name": "ヨタチ"
     },
     {
-      "rank": 616,
-      "rating": 1953.283,
-      "name": "JON"
-    },
-    {
-      "rank": 617,
-      "rating": 1953.267,
-      "name": "Vivian"
-    },
-    {
-      "rank": 618,
-      "rating": 1953.255,
-      "name": "セイテン"
-    },
-    {
-      "rank": 619,
+      "rank": 707,
       "rating": 1953.245,
       "name": "Häuschen"
     },
     {
-      "rank": 620,
-      "rating": 1953.226,
-      "name": "JJ"
+      "rank": 708,
+      "rating": 1953.243,
+      "name": "宋仲基"
     },
     {
-      "rank": 621,
-      "rating": 1953.072,
-      "name": "恶魔之牙"
+      "rank": 709,
+      "rating": 1953.185,
+      "name": "りゅうおう"
     },
     {
-      "rank": 622,
-      "rating": 1952.576,
-      "name": "Reyhan"
+      "rank": 710,
+      "rating": 1952.873,
+      "name": "George"
     },
     {
-      "rank": 623,
+      "rank": 711,
+      "rating": 1952.739,
+      "name": "トーーーーリ"
+    },
+    {
+      "rank": 712,
       "rating": 1952.528,
       "name": "いな"
     },
     {
-      "rank": 624,
+      "rank": 713,
       "rating": 1952.484,
       "name": "LestyWiam"
     },
     {
-      "rank": 625,
-      "rating": 1952.426,
-      "name": "BoogiePop"
+      "rank": 714,
+      "rating": 1952.161,
+      "name": "keisuke"
     },
     {
-      "rank": 626,
-      "rating": 1952.214,
-      "name": "iceice"
+      "rank": 715,
+      "rating": 1952.116,
+      "name": "Aapo"
     },
     {
-      "rank": 627,
+      "rank": 716,
       "rating": 1952.115,
       "name": "Owless"
     },
     {
-      "rank": 628,
+      "rank": 717,
+      "rating": 1952.036,
+      "name": "Seimei"
+    },
+    {
+      "rank": 718,
+      "rating": 1951.935,
+      "name": "Sanjo"
+    },
+    {
+      "rank": 719,
       "rating": 1951.923,
       "name": "BassoTara"
     },
     {
-      "rank": 629,
+      "rank": 720,
       "rating": 1951.92,
       "name": "Jhin"
     },
     {
-      "rank": 630,
-      "rating": 1951.754,
-      "name": "Molly"
+      "rank": 721,
+      "rating": 1951.799,
+      "name": "けんと"
     },
     {
-      "rank": 631,
-      "rating": 1951.503,
-      "name": "すずねこ"
+      "rank": 722,
+      "rating": 1951.686,
+      "name": "つむり"
     },
     {
-      "rank": 632,
+      "rank": 723,
+      "rating": 1951.635,
+      "name": "KEMPO"
+    },
+    {
+      "rank": 724,
+      "rating": 1951.513,
+      "name": "べくと"
+    },
+    {
+      "rank": 725,
       "rating": 1951.476,
       "name": "Keitf"
     },
     {
-      "rank": 633,
-      "rating": 1951.261,
-      "name": "한창운"
+      "rank": 726,
+      "rating": 1951.191,
+      "name": "Mario"
     },
     {
-      "rank": 634,
-      "rating": 1951.207,
-      "name": "Alex"
+      "rank": 727,
+      "rating": 1951.105,
+      "name": "いるかさん"
     },
     {
-      "rank": 635,
-      "rating": 1951.173,
-      "name": "ほるひす"
-    },
-    {
-      "rank": 636,
-      "rating": 1951.156,
-      "name": "Jn3:16"
-    },
-    {
-      "rank": 637,
+      "rank": 728,
       "rating": 1951.068,
       "name": "ラン"
     },
     {
-      "rank": 638,
-      "rating": 1950.909,
-      "name": "afrork"
+      "rank": 729,
+      "rating": 1951,
+      "name": "John Pork"
     },
     {
-      "rank": 639,
+      "rank": 730,
+      "rating": 1950.966,
+      "name": "ToToLaw"
+    },
+    {
+      "rank": 731,
+      "rating": 1950.959,
+      "name": "ぼんごれ"
+    },
+    {
+      "rank": 732,
+      "rating": 1950.874,
+      "name": "kensin(kaede"
+    },
+    {
+      "rank": 733,
       "rating": 1950.792,
       "name": "ナカザワ"
     },
     {
-      "rank": 640,
-      "rating": 1950.79,
-      "name": "Yuri.JJ"
-    },
-    {
-      "rank": 641,
-      "rating": 1950.719,
-      "name": "ディド"
-    },
-    {
-      "rank": 642,
-      "rating": 1950.682,
-      "name": "るなさ"
-    },
-    {
-      "rank": 643,
-      "rating": 1950.677,
-      "name": "あ"
-    },
-    {
-      "rank": 644,
+      "rank": 734,
       "rating": 1950.572,
       "name": "怨灵猫"
     },
     {
-      "rank": 645,
-      "rating": 1950.355,
-      "name": "Jake"
-    },
-    {
-      "rank": 646,
-      "rating": 1950.301,
+      "rank": 735,
+      "rating": 1950.497,
       "name": "ヨシコシ"
     },
     {
-      "rank": 647,
-      "rating": 1950.259,
-      "name": "Hutch"
+      "rank": 736,
+      "rating": 1950.334,
+      "name": "Twib"
     },
     {
-      "rank": 648,
-      "rating": 1950.236,
-      "name": "Julzzie"
+      "rank": 737,
+      "rating": 1950.301,
+      "name": "ツルシマ"
     },
     {
-      "rank": 649,
-      "rating": 1950.124,
-      "name": "りも"
+      "rank": 738,
+      "rating": 1950.031,
+      "name": "BattleRoom"
     },
     {
-      "rank": 650,
-      "rating": 1950.046,
-      "name": "JeongPGA"
+      "rank": 739,
+      "rating": 1949.972,
+      "name": "レイ"
     },
     {
-      "rank": 651,
+      "rank": 740,
+      "rating": 1949.604,
+      "name": "ギング"
+    },
+    {
+      "rank": 741,
       "rating": 1949.498,
       "name": "rr12rr12"
     },
     {
-      "rank": 652,
-      "rating": 1949.33,
-      "name": "Fish"
+      "rank": 742,
+      "rating": 1949.437,
+      "name": "JohnnyZyns"
     },
     {
-      "rank": 653,
+      "rank": 743,
       "rating": 1949.319,
       "name": "ほりだいすけ"
     },
     {
-      "rank": 654,
-      "rating": 1949.263,
-      "name": "Patrat Soup"
+      "rank": 744,
+      "rating": 1949.235,
+      "name": "いんす"
     },
     {
-      "rank": 655,
-      "rating": 1949.181,
-      "name": "Twib"
+      "rank": 745,
+      "rating": 1948.954,
+      "name": "Jinrai"
     },
     {
-      "rank": 656,
-      "rating": 1948.981,
-      "name": "AidanZ"
-    },
-    {
-      "rank": 657,
+      "rank": 746,
       "rating": 1948.848,
       "name": "tacoconsumer"
     },
     {
-      "rank": 658,
-      "rating": 1948.834,
-      "name": "FGYY"
-    },
-    {
-      "rank": 659,
-      "rating": 1948.603,
-      "name": "FrankS"
-    },
-    {
-      "rank": 660,
+      "rank": 747,
       "rating": 1948.574,
       "name": "あいてめせん"
     },
     {
-      "rank": 661,
-      "rating": 1948.39,
-      "name": "しらたま"
+      "rank": 748,
+      "rating": 1948.404,
+      "name": "Bobby"
     },
     {
-      "rank": 662,
+      "rank": 749,
       "rating": 1948.367,
       "name": "よしまP"
     },
     {
-      "rank": 663,
+      "rank": 750,
       "rating": 1948.179,
       "name": "Tony"
     },
     {
-      "rank": 664,
-      "rating": 1947.849,
-      "name": "Vini"
+      "rank": 751,
+      "rating": 1947.772,
+      "name": "Gen"
     },
     {
-      "rank": 665,
-      "rating": 1947.835,
-      "name": "Kiz"
-    },
-    {
-      "rank": 666,
+      "rank": 752,
       "rating": 1947.768,
       "name": "PADØ"
     },
     {
-      "rank": 667,
-      "rating": 1947.696,
-      "name": "ちく"
+      "rank": 753,
+      "rating": 1947.741,
+      "name": "Manu"
     },
     {
-      "rank": 668,
+      "rank": 754,
       "rating": 1947.642,
       "name": "M-rada"
     },
     {
-      "rank": 669,
-      "rating": 1947.6,
-      "name": "にいと"
+      "rank": 755,
+      "rating": 1947.596,
+      "name": "Kiz"
     },
     {
-      "rank": 670,
-      "rating": 1947.52,
-      "name": "Pako Glitch"
+      "rank": 756,
+      "rating": 1947.566,
+      "name": "tcmd"
     },
     {
-      "rank": 671,
-      "rating": 1947.487,
-      "name": "Tos"
+      "rank": 757,
+      "rating": 1947.437,
+      "name": "阿米"
     },
     {
-      "rank": 672,
+      "rank": 758,
+      "rating": 1947.304,
+      "name": "Fortubruno"
+    },
+    {
+      "rank": 759,
       "rating": 1947.274,
       "name": "James"
     },
     {
-      "rank": 673,
+      "rank": 760,
       "rating": 1947.218,
       "name": "AMeng"
     },
     {
-      "rank": 674,
-      "rating": 1947.102,
-      "name": "Marco"
+      "rank": 761,
+      "rating": 1947.014,
+      "name": "Shining M"
     },
     {
-      "rank": 675,
-      "rating": 1947.024,
-      "name": "Sturby"
-    },
-    {
-      "rank": 676,
+      "rank": 762,
       "rating": 1946.92,
       "name": "Vit"
     },
     {
-      "rank": 677,
-      "rating": 1946.91,
-      "name": "かしわぎねる"
+      "rank": 763,
+      "rating": 1946.498,
+      "name": "Charpie"
     },
     {
-      "rank": 678,
-      "rating": 1946.631,
-      "name": "Rena"
+      "rank": 764,
+      "rating": 1946.42,
+      "name": "phil"
     },
     {
-      "rank": 679,
-      "rating": 1946.382,
-      "name": "MacGyverX"
+      "rank": 765,
+      "rating": 1946.342,
+      "name": "アニキング"
     },
     {
-      "rank": 680,
-      "rating": 1946.1,
-      "name": "Saha"
+      "rank": 766,
+      "rating": 1946.301,
+      "name": "Bone"
     },
     {
-      "rank": 681,
-      "rating": 1945.862,
-      "name": "Nellvv"
+      "rank": 767,
+      "rating": 1946.12,
+      "name": "afrork"
     },
     {
-      "rank": 682,
+      "rank": 768,
       "rating": 1945.756,
       "name": "ユウキ"
     },
     {
-      "rank": 683,
+      "rank": 769,
       "rating": 1945.734,
       "name": "Toji"
     },
     {
-      "rank": 684,
-      "rating": 1945.687,
-      "name": "이양반"
-    },
-    {
-      "rank": 685,
+      "rank": 770,
       "rating": 1945.603,
       "name": "Hippo"
     },
     {
-      "rank": 686,
+      "rank": 771,
+      "rating": 1945.532,
+      "name": "凌霜羽翼"
+    },
+    {
+      "rank": 772,
       "rating": 1945.498,
       "name": "Blue"
     },
     {
-      "rank": 687,
+      "rank": 773,
       "rating": 1945.46,
       "name": "ToastyDreams"
     },
     {
-      "rank": 688,
+      "rank": 774,
+      "rating": 1945.424,
+      "name": "Molly"
+    },
+    {
+      "rank": 775,
       "rating": 1945.382,
       "name": "Carmelo"
     },
     {
-      "rank": 689,
-      "rating": 1945.289,
-      "name": "くろず"
+      "rank": 776,
+      "rating": 1945.292,
+      "name": "Manuel"
     },
     {
-      "rank": 690,
-      "rating": 1945.102,
-      "name": "がいねん"
+      "rank": 777,
+      "rating": 1945.119,
+      "name": "BARTER 6"
     },
     {
-      "rank": 691,
+      "rank": 778,
       "rating": 1945.054,
       "name": "Aminko"
     },
     {
-      "rank": 692,
+      "rank": 778,
+      "rating": 1945.054,
+      "name": "PokePhysio"
+    },
+    {
+      "rank": 780,
       "rating": 1945.026,
       "name": "エルム"
     },
     {
-      "rank": 693,
-      "rating": 1945.008,
-      "name": "Phylo"
+      "rank": 781,
+      "rating": 1944.691,
+      "name": "盖欧卡侠"
     },
     {
-      "rank": 694,
-      "rating": 1944.85,
-      "name": "Opal"
+      "rank": 782,
+      "rating": 1944.646,
+      "name": "Alex G"
     },
     {
-      "rank": 695,
-      "rating": 1944.581,
-      "name": "SinistcHans"
+      "rank": 783,
+      "rating": 1944.63,
+      "name": "ゲオルグ"
     },
     {
-      "rank": 696,
-      "rating": 1944.516,
-      "name": "ベッキー"
+      "rank": 784,
+      "rating": 1944.519,
+      "name": "seeyou"
     },
     {
-      "rank": 697,
-      "rating": 1944.359,
-      "name": "也许"
+      "rank": 785,
+      "rating": 1944.514,
+      "name": "Saha"
     },
     {
-      "rank": 698,
-      "rating": 1944.32,
-      "name": "Behzad"
+      "rank": 786,
+      "rating": 1944.513,
+      "name": "ゆめをみない"
     },
     {
-      "rank": 699,
-      "rating": 1944.304,
-      "name": "Jon-chama"
+      "rank": 787,
+      "rating": 1944.429,
+      "name": "つね"
     },
     {
-      "rank": 700,
-      "rating": 1944.235,
-      "name": "ClaarVGC"
+      "rank": 788,
+      "rating": 1944.282,
+      "name": "kaede"
     },
     {
-      "rank": 701,
+      "rank": 789,
+      "rating": 1944.265,
+      "name": "Jeversonnn"
+    },
+    {
+      "rank": 790,
+      "rating": 1944.219,
+      "name": "Velozozz"
+    },
+    {
+      "rank": 791,
+      "rating": 1944.167,
+      "name": "wejjkejkej"
+    },
+    {
+      "rank": 792,
+      "rating": 1944.157,
+      "name": "이양반"
+    },
+    {
+      "rank": 793,
+      "rating": 1943.929,
+      "name": "Fran"
+    },
+    {
+      "rank": 794,
+      "rating": 1943.769,
+      "name": "pro pokemon"
+    },
+    {
+      "rank": 795,
       "rating": 1943.679,
       "name": "メーデー"
     },
     {
-      "rank": 702,
-      "rating": 1943.634,
-      "name": "たいき"
+      "rank": 796,
+      "rating": 1943.673,
+      "name": "Jussito"
     },
     {
-      "rank": 703,
-      "rating": 1943.488,
-      "name": "あんこ"
+      "rank": 797,
+      "rating": 1943.536,
+      "name": "Cold"
     },
     {
-      "rank": 704,
+      "rank": 798,
       "rating": 1943.344,
       "name": "Bishop"
     },
     {
-      "rank": 705,
-      "rating": 1942.884,
-      "name": "ぎん"
+      "rank": 799,
+      "rating": 1943.323,
+      "name": "airnes"
     },
     {
-      "rank": 706,
-      "rating": 1942.82,
-      "name": "骨力TV"
+      "rank": 800,
+      "rating": 1943.289,
+      "name": "4ment"
     },
     {
-      "rank": 707,
+      "rank": 801,
+      "rating": 1942.891,
+      "name": "マキ"
+    },
+    {
+      "rank": 802,
+      "rating": 1942.89,
+      "name": "Gigio"
+    },
+    {
+      "rank": 803,
       "rating": 1942.788,
       "name": "昭洁映月瑶♪"
     },
     {
-      "rank": 708,
+      "rank": 804,
+      "rating": 1942.776,
+      "name": "Mishel D."
+    },
+    {
+      "rank": 805,
+      "rating": 1942.704,
+      "name": "けろ"
+    },
+    {
+      "rank": 806,
+      "rating": 1942.7,
+      "name": "セラス"
+    },
+    {
+      "rank": 807,
+      "rating": 1942.507,
+      "name": "咆哮伊布"
+    },
+    {
+      "rank": 808,
+      "rating": 1942.476,
+      "name": "Iroquis"
+    },
+    {
+      "rank": 809,
       "rating": 1942.328,
       "name": "Big Malta"
     },
     {
-      "rank": 709,
-      "rating": 1942.202,
-      "name": "有才伍德"
-    },
-    {
-      "rank": 710,
+      "rank": 810,
       "rating": 1942.047,
       "name": "さちお"
     },
     {
-      "rank": 711,
-      "rating": 1941.967,
-      "name": "EZyroX"
+      "rank": 811,
+      "rating": 1942.023,
+      "name": "Silver"
     },
     {
-      "rank": 712,
-      "rating": 1941.9,
-      "name": "淺淺丘粉絲♡"
+      "rank": 812,
+      "rating": 1941.979,
+      "name": "Gab"
     },
     {
-      "rank": 713,
-      "rating": 1941.857,
-      "name": "Casa"
+      "rank": 813,
+      "rating": 1941.797,
+      "name": "いしでぃー"
     },
     {
-      "rank": 714,
+      "rank": 814,
       "rating": 1941.794,
       "name": "은기"
     },
     {
-      "rank": 715,
-      "rating": 1941.624,
-      "name": "玛尔蒂娜"
+      "rank": 815,
+      "rating": 1941.765,
+      "name": "DreamPrince"
     },
     {
-      "rank": 716,
-      "rating": 1941.219,
-      "name": "LeunamTG"
+      "rank": 816,
+      "rating": 1941.617,
+      "name": "Atey"
     },
     {
-      "rank": 717,
+      "rank": 817,
+      "rating": 1941.502,
+      "name": "ヨッコラ"
+    },
+    {
+      "rank": 818,
+      "rating": 1941.397,
+      "name": "Pontus"
+    },
+    {
+      "rank": 819,
+      "rating": 1941.199,
+      "name": "りょた"
+    },
+    {
+      "rank": 820,
+      "rating": 1941.167,
+      "name": "Minato"
+    },
+    {
+      "rank": 821,
+      "rating": 1941.162,
+      "name": "Steven"
+    },
+    {
+      "rank": 822,
+      "rating": 1941.125,
+      "name": "Jimmy"
+    },
+    {
+      "rank": 823,
+      "rating": 1940.978,
+      "name": "あかね"
+    },
+    {
+      "rank": 824,
       "rating": 1940.905,
       "name": "空山清雨"
     },
     {
-      "rank": 718,
-      "rating": 1940.73,
-      "name": "Gestober"
+      "rank": 825,
+      "rating": 1940.818,
+      "name": "Venumm"
     },
     {
-      "rank": 719,
-      "rating": 1940.696,
-      "name": "Calculus"
+      "rank": 826,
+      "rating": 1940.498,
+      "name": "Andrew"
     },
     {
-      "rank": 720,
-      "rating": 1940.51,
-      "name": "ししとう"
-    },
-    {
-      "rank": 721,
-      "rating": 1940.494,
-      "name": "PokePhysio"
-    },
-    {
-      "rank": 722,
-      "rating": 1940.334,
-      "name": "アベル"
-    },
-    {
-      "rank": 723,
-      "rating": 1940.312,
-      "name": "Pantelsss"
-    },
-    {
-      "rank": 724,
-      "rating": 1940.307,
-      "name": "リッカ"
-    },
-    {
-      "rank": 725,
-      "rating": 1940.305,
-      "name": "Ray"
-    },
-    {
-      "rank": 726,
+      "rank": 827,
       "rating": 1940.219,
       "name": "Chimp"
     },
     {
-      "rank": 727,
-      "rating": 1940.155,
-      "name": "Alex"
-    },
-    {
-      "rank": 728,
-      "rating": 1940.125,
-      "name": "CT_BINO"
-    },
-    {
-      "rank": 729,
-      "rating": 1940.092,
-      "name": "YoshiMane"
-    },
-    {
-      "rank": 730,
+      "rank": 828,
       "rating": 1940.045,
       "name": "Sonnie"
     },
     {
-      "rank": 731,
-      "rating": 1940.044,
-      "name": "Asturiano"
-    },
-    {
-      "rank": 732,
+      "rank": 829,
       "rating": 1939.877,
       "name": "ようすけ"
     },
     {
-      "rank": 733,
-      "rating": 1939.857,
-      "name": "しょー"
+      "rank": 830,
+      "rating": 1939.873,
+      "name": "90sevenn"
     },
     {
-      "rank": 734,
+      "rank": 831,
       "rating": 1939.713,
       "name": "Kevin"
     },
     {
-      "rank": 735,
-      "rating": 1939.291,
-      "name": "Luan"
+      "rank": 832,
+      "rating": 1939.645,
+      "name": "オカキン"
     },
     {
-      "rank": 736,
+      "rank": 833,
+      "rating": 1939.531,
+      "name": "ちゅうそん"
+    },
+    {
+      "rank": 834,
       "rating": 1939.215,
       "name": "Phoenix"
     },
     {
-      "rank": 737,
+      "rank": 835,
       "rating": 1939.198,
       "name": "D4RKEVA"
     },
     {
-      "rank": 738,
+      "rank": 836,
       "rating": 1939.141,
       "name": "ルーケイ"
     },
     {
-      "rank": 738,
+      "rank": 836,
       "rating": 1939.141,
       "name": "LOR Kauezão"
     },
     {
-      "rank": 740,
-      "rating": 1939.078,
-      "name": "けんと"
+      "rank": 838,
+      "rating": 1939.128,
+      "name": "Brax"
     },
     {
-      "rank": 741,
-      "rating": 1938.724,
-      "name": "€$%"
+      "rank": 839,
+      "rating": 1939.011,
+      "name": "Rold"
     },
     {
-      "rank": 742,
+      "rank": 840,
+      "rating": 1938.857,
+      "name": "FrankS"
+    },
+    {
+      "rank": 841,
+      "rating": 1938.692,
+      "name": "あゆむん"
+    },
+    {
+      "rank": 842,
       "rating": 1938.684,
       "name": "なこ"
     },
     {
-      "rank": 743,
-      "rating": 1938.646,
-      "name": "Suiren"
+      "rank": 843,
+      "rating": 1938.615,
+      "name": "嘛这么难"
     },
     {
-      "rank": 744,
-      "rating": 1938.507,
-      "name": "ElRey"
+      "rank": 844,
+      "rating": 1938.607,
+      "name": "リッカ"
     },
     {
-      "rank": 745,
-      "rating": 1938.429,
-      "name": "Jimmy"
+      "rank": 845,
+      "rating": 1938.512,
+      "name": "ディド"
     },
     {
-      "rank": 746,
-      "rating": 1938.386,
-      "name": "Renn"
+      "rank": 846,
+      "rating": 1938.363,
+      "name": "AleDalfons"
     },
     {
-      "rank": 747,
-      "rating": 1938.374,
-      "name": "トレーナー"
+      "rank": 847,
+      "rating": 1938.19,
+      "name": "凌霜羽翼"
     },
     {
-      "rank": 748,
-      "rating": 1938.367,
-      "name": "MeatyTreaty"
+      "rank": 848,
+      "rating": 1938.181,
+      "name": "44%"
     },
     {
-      "rank": 749,
-      "rating": 1938.124,
-      "name": "Brian"
+      "rank": 849,
+      "rating": 1938.01,
+      "name": "Faded"
     },
     {
-      "rank": 750,
-      "rating": 1938.042,
-      "name": "えみつき"
-    },
-    {
-      "rank": 751,
+      "rank": 850,
       "rating": 1937.98,
       "name": "りんご"
     },
     {
-      "rank": 752,
-      "rating": 1937.899,
-      "name": "pokepanic"
+      "rank": 851,
+      "rating": 1937.955,
+      "name": "eden"
     },
     {
-      "rank": 753,
-      "rating": 1937.863,
-      "name": "コウ"
+      "rank": 852,
+      "rating": 1937.734,
+      "name": "さつまいも"
     },
     {
-      "rank": 754,
-      "rating": 1937.854,
-      "name": "Baldo"
-    },
-    {
-      "rank": 755,
-      "rating": 1937.816,
-      "name": "Steven"
-    },
-    {
-      "rank": 756,
+      "rank": 853,
       "rating": 1937.724,
       "name": "どんぐりDJ"
     },
     {
-      "rank": 757,
+      "rank": 854,
       "rating": 1937.551,
       "name": "Flinch plz"
     },
     {
-      "rank": 758,
-      "rating": 1937.477,
-      "name": "リックリー"
+      "rank": 855,
+      "rating": 1937.526,
+      "name": "Bellakon"
     },
     {
-      "rank": 759,
+      "rank": 856,
+      "rating": 1937.499,
+      "name": "Bananan"
+    },
+    {
+      "rank": 857,
+      "rating": 1937.442,
+      "name": "Fr33z"
+    },
+    {
+      "rank": 858,
+      "rating": 1937.358,
+      "name": "Ludwig"
+    },
+    {
+      "rank": 859,
+      "rating": 1937.286,
+      "name": "Adishu0207"
+    },
+    {
+      "rank": 860,
       "rating": 1937.282,
       "name": "ryoshino"
     },
     {
-      "rank": 760,
+      "rank": 861,
+      "rating": 1937.262,
+      "name": "Divine"
+    },
+    {
+      "rank": 862,
+      "rating": 1937.26,
+      "name": "Hole34"
+    },
+    {
+      "rank": 863,
+      "rating": 1937.202,
+      "name": "cyr1l"
+    },
+    {
+      "rank": 864,
+      "rating": 1937.172,
+      "name": "Jewel"
+    },
+    {
+      "rank": 865,
       "rating": 1937.145,
       "name": "Skylani"
     },
     {
-      "rank": 761,
-      "rating": 1937.099,
-      "name": "ItzMar"
+      "rank": 866,
+      "rating": 1937.091,
+      "name": "Lloydz"
     },
     {
-      "rank": 762,
-      "rating": 1936.802,
-      "name": "Bobby"
+      "rank": 867,
+      "rating": 1937.007,
+      "name": "NPC"
     },
     {
-      "rank": 763,
-      "rating": 1936.695,
-      "name": "Sanjo"
+      "rank": 868,
+      "rating": 1936.914,
+      "name": "Tyran7"
     },
     {
-      "rank": 764,
-      "rating": 1936.624,
-      "name": "ユタカ"
+      "rank": 869,
+      "rating": 1936.801,
+      "name": "Sebas"
     },
     {
-      "rank": 765,
-      "rating": 1936.616,
-      "name": "kazu"
+      "rank": 870,
+      "rating": 1936.753,
+      "name": "ウッチー"
     },
     {
-      "rank": 766,
-      "rating": 1936.613,
-      "name": "いるかさん"
+      "rank": 871,
+      "rating": 1936.622,
+      "name": "Jclevy"
     },
     {
-      "rank": 767,
+      "rank": 872,
       "rating": 1936.602,
       "name": "ちゅり"
     },
     {
-      "rank": 768,
+      "rank": 873,
+      "rating": 1936.548,
+      "name": "Noodles"
+    },
+    {
+      "rank": 874,
+      "rating": 1936.434,
+      "name": "えみつき"
+    },
+    {
+      "rank": 875,
+      "rating": 1936.193,
+      "name": "凯猫猫万岁"
+    },
+    {
+      "rank": 876,
       "rating": 1936.172,
       "name": "Rhy"
     },
     {
-      "rank": 769,
-      "rating": 1936.154,
-      "name": "ろぼ"
+      "rank": 877,
+      "rating": 1935.991,
+      "name": "Will"
     },
     {
-      "rank": 770,
-      "rating": 1935.981,
-      "name": "strak"
+      "rank": 878,
+      "rating": 1935.942,
+      "name": "Giodude"
     },
     {
-      "rank": 771,
-      "rating": 1935.955,
-      "name": "제발급소!!"
-    },
-    {
-      "rank": 772,
-      "rating": 1935.912,
-      "name": "Shining M"
-    },
-    {
-      "rank": 773,
+      "rank": 879,
       "rating": 1935.877,
       "name": "FLima"
     },
     {
-      "rank": 774,
-      "rating": 1935.787,
-      "name": "Kaito"
+      "rank": 880,
+      "rating": 1935.844,
+      "name": "mole"
     },
     {
-      "rank": 775,
+      "rank": 881,
+      "rating": 1935.809,
+      "name": "みずも"
+    },
+    {
+      "rank": 882,
       "rating": 1935.569,
       "name": "Bane"
     },
     {
-      "rank": 776,
-      "rating": 1935.518,
-      "name": "Lloydz"
+      "rank": 883,
+      "rating": 1935.538,
+      "name": "Giovanni"
     },
     {
-      "rank": 777,
+      "rank": 884,
       "rating": 1935.495,
       "name": "Quinlan"
     },
     {
-      "rank": 778,
-      "rating": 1935.303,
-      "name": "めががいもん"
+      "rank": 885,
+      "rating": 1935.44,
+      "name": "ミラザール"
     },
     {
-      "rank": 779,
-      "rating": 1935.301,
-      "name": "Luke"
+      "rank": 886,
+      "rating": 1935.405,
+      "name": "Lucas"
     },
     {
-      "rank": 780,
-      "rating": 1935.28,
-      "name": "gioppy"
+      "rank": 887,
+      "rating": 1934.938,
+      "name": "오마츠리맘보"
     },
     {
-      "rank": 781,
-      "rating": 1935.064,
-      "name": "RednaL"
+      "rank": 888,
+      "rating": 1934.681,
+      "name": "とうや"
     },
     {
-      "rank": 782,
-      "rating": 1934.927,
-      "name": "BattleRoom"
-    },
-    {
-      "rank": 783,
-      "rating": 1934.788,
-      "name": "Jihyo"
-    },
-    {
-      "rank": 784,
-      "rating": 1934.61,
-      "name": "SaltWâter7"
-    },
-    {
-      "rank": 785,
-      "rating": 1934.584,
-      "name": "YuWei"
-    },
-    {
-      "rank": 786,
-      "rating": 1934.552,
-      "name": "レシラム"
-    },
-    {
-      "rank": 787,
-      "rating": 1934.459,
-      "name": "xXDuelerXx"
-    },
-    {
-      "rank": 788,
+      "rank": 889,
       "rating": 1934.299,
       "name": "CybertronVGC"
     },
     {
-      "rank": 789,
+      "rank": 890,
       "rating": 1934.289,
       "name": "Lorenzo"
     },
     {
-      "rank": 790,
+      "rank": 891,
+      "rating": 1934.27,
+      "name": "恶魔之牙"
+    },
+    {
+      "rank": 892,
+      "rating": 1934.258,
+      "name": "Sack"
+    },
+    {
+      "rank": 893,
+      "rating": 1934.235,
+      "name": "Zephyr"
+    },
+    {
+      "rank": 894,
       "rating": 1934.11,
       "name": "Cyberman"
     },
     {
-      "rank": 791,
-      "rating": 1934.021,
-      "name": "ポテトボーイ"
+      "rank": 894,
+      "rating": 1934.11,
+      "name": "Padilla"
     },
     {
-      "rank": 792,
-      "rating": 1933.908,
-      "name": "Alakazouille"
+      "rank": 896,
+      "rating": 1934.08,
+      "name": "찬"
     },
     {
-      "rank": 793,
-      "rating": 1933.815,
-      "name": "Divine"
+      "rank": 897,
+      "rating": 1933.768,
+      "name": "Winnie"
     },
     {
-      "rank": 794,
+      "rank": 898,
       "rating": 1933.747,
       "name": "panda"
     },
     {
-      "rank": 795,
-      "rating": 1933.511,
-      "name": "Longo"
+      "rank": 899,
+      "rating": 1933.526,
+      "name": "진배"
     },
     {
-      "rank": 796,
-      "rating": 1933.343,
-      "name": "George"
+      "rank": 900,
+      "rating": 1933.515,
+      "name": "しぶきらん♡"
     },
     {
-      "rank": 797,
+      "rank": 901,
+      "rating": 1933.473,
+      "name": "Misso"
+    },
+    {
+      "rank": 902,
+      "rating": 1933.472,
+      "name": "たねかた"
+    },
+    {
+      "rank": 903,
+      "rating": 1933.423,
+      "name": "bug catcher"
+    },
+    {
+      "rank": 904,
       "rating": 1933.338,
       "name": "rck"
     },
     {
-      "rank": 798,
+      "rank": 905,
+      "rating": 1933.253,
+      "name": "WeAreToast"
+    },
+    {
+      "rank": 906,
       "rating": 1933.245,
       "name": "偶树"
     },
     {
-      "rank": 799,
-      "rating": 1932.886,
-      "name": "Jimmer"
+      "rank": 907,
+      "rating": 1933.238,
+      "name": "Matt"
     },
     {
-      "rank": 800,
+      "rank": 908,
+      "rating": 1933.073,
+      "name": "AC"
+    },
+    {
+      "rank": 909,
+      "rating": 1932.932,
+      "name": "Shuai"
+    },
+    {
+      "rank": 910,
+      "rating": 1932.861,
+      "name": "Byrd"
+    },
+    {
+      "rank": 911,
+      "rating": 1932.688,
+      "name": "sunSeT"
+    },
+    {
+      "rank": 912,
       "rating": 1932.597,
       "name": "ぱるこ"
     },
     {
-      "rank": 801,
-      "rating": 1932.539,
-      "name": "Mrbozz"
+      "rank": 913,
+      "rating": 1932.563,
+      "name": "nt"
     },
     {
-      "rank": 802,
-      "rating": 1932.535,
-      "name": "SoupaPowa"
-    },
-    {
-      "rank": 803,
-      "rating": 1932.479,
-      "name": "Lemon"
-    },
-    {
-      "rank": 804,
+      "rank": 914,
       "rating": 1932.477,
       "name": "Belle"
     },
     {
-      "rank": 805,
-      "rating": 1932.348,
-      "name": "Zekriy"
-    },
-    {
-      "rank": 806,
+      "rank": 915,
       "rating": 1932.322,
       "name": "123"
     },
     {
-      "rank": 807,
-      "rating": 1932.281,
-      "name": "Fran"
-    },
-    {
-      "rank": 807,
+      "rank": 916,
       "rating": 1932.281,
       "name": "Tovar"
     },
     {
-      "rank": 809,
+      "rank": 917,
+      "rating": 1932.275,
+      "name": "Tos"
+    },
+    {
+      "rank": 918,
       "rating": 1932.253,
       "name": "Miguel"
     },
     {
-      "rank": 810,
+      "rank": 919,
       "rating": 1932.142,
       "name": "KRNA"
     },
     {
-      "rank": 811,
-      "rating": 1932.134,
-      "name": "Jclevy"
+      "rank": 920,
+      "rating": 1932.131,
+      "name": "Purple"
     },
     {
-      "rank": 812,
-      "rating": 1932.119,
-      "name": "Cold"
+      "rank": 921,
+      "rating": 1932.041,
+      "name": "ひなた"
     },
     {
-      "rank": 813,
+      "rank": 922,
+      "rating": 1932.033,
+      "name": "Salcense"
+    },
+    {
+      "rank": 923,
       "rating": 1931.963,
       "name": "angelo"
     },
     {
-      "rank": 814,
+      "rank": 924,
+      "rating": 1931.959,
+      "name": "Riceping"
+    },
+    {
+      "rank": 925,
+      "rating": 1931.88,
+      "name": "リョウ"
+    },
+    {
+      "rank": 926,
+      "rating": 1931.857,
+      "name": "きいあまけ"
+    },
+    {
+      "rank": 927,
+      "rating": 1931.855,
+      "name": "Hare"
+    },
+    {
+      "rank": 928,
       "rating": 1931.841,
       "name": "karl"
     },
     {
-      "rank": 814,
-      "rating": 1931.841,
-      "name": "レイ"
+      "rank": 929,
+      "rating": 1931.817,
+      "name": "장산범"
     },
     {
-      "rank": 816,
-      "rating": 1931.751,
-      "name": "Alex G"
+      "rank": 930,
+      "rating": 1931.812,
+      "name": "fsh"
     },
     {
-      "rank": 817,
+      "rank": 931,
+      "rating": 1931.794,
+      "name": "Tuna"
+    },
+    {
+      "rank": 932,
+      "rating": 1931.616,
+      "name": "InmKng"
+    },
+    {
+      "rank": 933,
+      "rating": 1931.614,
+      "name": "Ymax"
+    },
+    {
+      "rank": 934,
+      "rating": 1931.448,
+      "name": "もっち～"
+    },
+    {
+      "rank": 935,
       "rating": 1931.413,
       "name": "我还是爱着她"
     },
     {
-      "rank": 818,
-      "rating": 1931.386,
-      "name": "Herasito"
+      "rank": 936,
+      "rating": 1931.309,
+      "name": "♪ΚαJi♪"
     },
     {
-      "rank": 819,
-      "rating": 1931.335,
-      "name": "tcmd"
-    },
-    {
-      "rank": 820,
-      "rating": 1931.244,
-      "name": "bug catcher"
-    },
-    {
-      "rank": 821,
+      "rank": 937,
       "rating": 1931.133,
       "name": "嘻哈哈么么熊"
     },
     {
-      "rank": 822,
-      "rating": 1931.048,
-      "name": "つね"
+      "rank": 938,
+      "rating": 1931.113,
+      "name": "しょー"
     },
     {
-      "rank": 823,
+      "rank": 939,
       "rating": 1931.042,
       "name": "PinkSylvie"
     },
     {
-      "rank": 824,
-      "rating": 1930.949,
-      "name": "tz"
+      "rank": 940,
+      "rating": 1931.03,
+      "name": "震"
     },
     {
-      "rank": 825,
-      "rating": 1930.929,
-      "name": "Dunkelheit"
+      "rank": 941,
+      "rating": 1930.978,
+      "name": "Snakeburger"
     },
     {
-      "rank": 826,
-      "rating": 1930.922,
-      "name": "MorbidZeus"
+      "rank": 942,
+      "rating": 1930.947,
+      "name": "호투소"
     },
     {
-      "rank": 827,
-      "rating": 1930.844,
-      "name": "wni"
-    },
-    {
-      "rank": 828,
+      "rank": 943,
       "rating": 1930.772,
       "name": "∞"
     },
     {
-      "rank": 829,
+      "rank": 944,
+      "rating": 1930.68,
+      "name": "DrewXXL"
+    },
+    {
+      "rank": 945,
       "rating": 1930.673,
       "name": "sodi"
     },
     {
-      "rank": 830,
-      "rating": 1930.656,
-      "name": "SABER"
-    },
-    {
-      "rank": 831,
+      "rank": 946,
       "rating": 1930.639,
       "name": "R.Saw"
     },
     {
-      "rank": 832,
-      "rating": 1930.636,
-      "name": "わおん"
-    },
-    {
-      "rank": 833,
+      "rank": 947,
       "rating": 1930.559,
       "name": "Alan"
     },
     {
-      "rank": 834,
+      "rank": 948,
+      "rating": 1930.496,
+      "name": "trashstarsha"
+    },
+    {
+      "rank": 949,
       "rating": 1930.373,
       "name": "Alessio"
     },
     {
-      "rank": 835,
-      "rating": 1930.342,
-      "name": "Edvin"
-    },
-    {
-      "rank": 836,
+      "rank": 950,
       "rating": 1930.237,
       "name": "bob"
     },
     {
-      "rank": 837,
-      "rating": 1930.122,
-      "name": "Manu"
+      "rank": 951,
+      "rating": 1930.154,
+      "name": "kamonemu"
     },
     {
-      "rank": 838,
+      "rank": 952,
       "rating": 1930.097,
       "name": "Mystic"
     },
     {
-      "rank": 839,
+      "rank": 953,
+      "rating": 1930.078,
+      "name": "あきひ"
+    },
+    {
+      "rank": 954,
+      "rating": 1930.033,
+      "name": "まっつん"
+    },
+    {
+      "rank": 955,
+      "rating": 1929.845,
+      "name": "SaltWâter7"
+    },
+    {
+      "rank": 956,
+      "rating": 1929.755,
+      "name": "しろくま"
+    },
+    {
+      "rank": 957,
       "rating": 1929.697,
       "name": "AZ"
     },
     {
-      "rank": 840,
-      "rating": 1929.609,
-      "name": "Gusgusgusgus"
+      "rank": 958,
+      "rating": 1929.572,
+      "name": "PATRIOTS"
     },
     {
-      "rank": 841,
+      "rank": 959,
+      "rating": 1929.507,
+      "name": "Naibot"
+    },
+    {
+      "rank": 960,
+      "rating": 1929.486,
+      "name": "淺淺丘粉絲♡"
+    },
+    {
+      "rank": 961,
       "rating": 1929.485,
       "name": "いのり"
     },
     {
-      "rank": 842,
+      "rank": 962,
+      "rating": 1929.418,
+      "name": "Gibbo"
+    },
+    {
+      "rank": 963,
       "rating": 1929.305,
       "name": "TerraGlow"
     },
     {
-      "rank": 843,
-      "rating": 1929.109,
-      "name": "Minato"
+      "rank": 964,
+      "rating": 1929.297,
+      "name": "Longo"
     },
     {
-      "rank": 844,
-      "rating": 1929.006,
-      "name": "wejjkejkej"
+      "rank": 965,
+      "rating": 1929.103,
+      "name": "Cinder D Ace"
     },
     {
-      "rank": 845,
-      "rating": 1928.971,
-      "name": "Zeph"
+      "rank": 966,
+      "rating": 1929.077,
+      "name": "マイキー"
     },
     {
-      "rank": 846,
-      "rating": 1928.949,
-      "name": "Lázaro"
+      "rank": 967,
+      "rating": 1929.019,
+      "name": "金"
     },
     {
-      "rank": 847,
-      "rating": 1928.884,
-      "name": "しろくま"
+      "rank": 968,
+      "rating": 1928.946,
+      "name": "Robby W"
     },
     {
-      "rank": 848,
+      "rank": 969,
+      "rating": 1928.825,
+      "name": "みなドン"
+    },
+    {
+      "rank": 970,
       "rating": 1928.815,
       "name": "Miwa"
     },
     {
-      "rank": 849,
-      "rating": 1928.785,
-      "name": "Pelkino"
+      "rank": 971,
+      "rating": 1928.632,
+      "name": "Jlynpers123"
     },
     {
-      "rank": 850,
-      "rating": 1928.774,
-      "name": "Noelle"
-    },
-    {
-      "rank": 851,
-      "rating": 1928.716,
-      "name": "kaede"
-    },
-    {
-      "rank": 852,
-      "rating": 1928.624,
-      "name": "バッキー"
-    },
-    {
-      "rank": 853,
+      "rank": 972,
       "rating": 1928.584,
       "name": "Prox"
     },
     {
-      "rank": 854,
-      "rating": 1928.569,
-      "name": "マギカウラ"
+      "rank": 973,
+      "rating": 1928.567,
+      "name": "Chip"
     },
     {
-      "rank": 855,
-      "rating": 1928.527,
-      "name": "keisuke"
-    },
-    {
-      "rank": 856,
+      "rank": 974,
       "rating": 1928.511,
       "name": "アザラシ"
     },
     {
-      "rank": 857,
+      "rank": 975,
       "rating": 1928.403,
       "name": "Trinop"
     },
     {
-      "rank": 858,
-      "rating": 1928.327,
-      "name": "ちくわぶ"
+      "rank": 976,
+      "rating": 1928.372,
+      "name": "Menko"
     },
     {
-      "rank": 859,
-      "rating": 1928.183,
-      "name": "かなぽん"
+      "rank": 977,
+      "rating": 1928.371,
+      "name": "James"
     },
     {
-      "rank": 860,
+      "rank": 978,
+      "rating": 1928.223,
+      "name": "かざまやひろ"
+    },
+    {
+      "rank": 979,
       "rating": 1928.139,
       "name": "Farigiboy"
     },
     {
-      "rank": 861,
-      "rating": 1927.825,
-      "name": "JUN"
+      "rank": 980,
+      "rating": 1928.13,
+      "name": "FT"
     },
     {
-      "rank": 862,
-      "rating": 1927.78,
-      "name": "Sayamama"
+      "rank": 981,
+      "rating": 1928.088,
+      "name": "Dadoago"
     },
     {
-      "rank": 863,
-      "rating": 1927.744,
-      "name": "くろ"
+      "rank": 982,
+      "rating": 1928.051,
+      "name": "Snoopy"
     },
     {
-      "rank": 864,
-      "rating": 1927.737,
-      "name": "망소"
+      "rank": 983,
+      "rating": 1927.57,
+      "name": "ろぼ"
     },
     {
-      "rank": 865,
-      "rating": 1927.494,
-      "name": "かてるりゆう"
+      "rank": 984,
+      "rating": 1927.503,
+      "name": "トシニキ"
     },
     {
-      "rank": 866,
-      "rating": 1927.483,
-      "name": "さいはる"
-    },
-    {
-      "rank": 867,
+      "rank": 985,
       "rating": 1927.439,
       "name": "Kibaso"
     },
     {
-      "rank": 868,
-      "rating": 1927.189,
-      "name": "Jewel"
+      "rank": 986,
+      "rating": 1927.391,
+      "name": "ゆい"
     },
     {
-      "rank": 869,
-      "rating": 1927.121,
-      "name": "Santi14"
+      "rank": 987,
+      "rating": 1927.374,
+      "name": "OLDHAM"
     },
     {
-      "rank": 870,
-      "rating": 1927.099,
-      "name": "Michael"
+      "rank": 988,
+      "rating": 1927.333,
+      "name": "Averianna"
     },
     {
-      "rank": 871,
-      "rating": 1926.964,
-      "name": "ThePhil"
+      "rank": 989,
+      "rating": 1927.106,
+      "name": "Lemon"
     },
     {
-      "rank": 872,
-      "rating": 1926.915,
-      "name": "Gab"
-    },
-    {
-      "rank": 873,
-      "rating": 1926.84,
-      "name": "Gigio"
-    },
-    {
-      "rank": 874,
-      "rating": 1926.811,
-      "name": "Tuna"
-    },
-    {
-      "rank": 875,
-      "rating": 1926.736,
-      "name": "Ryusei"
-    },
-    {
-      "rank": 876,
+      "rank": 990,
       "rating": 1926.707,
       "name": "txocru"
     },
     {
-      "rank": 877,
-      "rating": 1926.663,
-      "name": "jayden"
+      "rank": 991,
+      "rating": 1926.447,
+      "name": "はせ"
     },
     {
-      "rank": 878,
-      "rating": 1926.415,
-      "name": "ArchPony"
-    },
-    {
-      "rank": 879,
+      "rank": 992,
       "rating": 1926.391,
       "name": "Lev"
     },
     {
-      "rank": 880,
-      "rating": 1926.27,
-      "name": "Post"
+      "rank": 993,
+      "rating": 1926.387,
+      "name": "リーフ"
     },
     {
-      "rank": 881,
+      "rank": 994,
+      "rating": 1926.375,
+      "name": "NWE~Python"
+    },
+    {
+      "rank": 995,
+      "rating": 1926.361,
+      "name": "Amir"
+    },
+    {
+      "rank": 996,
+      "rating": 1926.291,
+      "name": "Felonio"
+    },
+    {
+      "rank": 997,
       "rating": 1926.158,
       "name": "Comos"
     },
     {
-      "rank": 882,
-      "rating": 1925.951,
-      "name": "Slayer"
-    },
-    {
-      "rank": 883,
-      "rating": 1925.829,
-      "name": "Jason"
-    },
-    {
-      "rank": 884,
-      "rating": 1925.779,
-      "name": "kensin(kaede"
-    },
-    {
-      "rank": 885,
-      "rating": 1925.753,
-      "name": "Mel's"
-    },
-    {
-      "rank": 886,
-      "rating": 1925.724,
-      "name": "じ"
-    },
-    {
-      "rank": 887,
-      "rating": 1925.708,
-      "name": "Sven"
-    },
-    {
-      "rank": 888,
-      "rating": 1925.655,
-      "name": "Ninjay"
-    },
-    {
-      "rank": 889,
-      "rating": 1925.622,
-      "name": "司令罗"
-    },
-    {
-      "rank": 890,
-      "rating": 1925.621,
-      "name": "凌霜羽翼"
-    },
-    {
-      "rank": 891,
-      "rating": 1925.59,
-      "name": "御剑一生"
-    },
-    {
-      "rank": 892,
-      "rating": 1925.546,
-      "name": "わらびもち"
-    },
-    {
-      "rank": 893,
-      "rating": 1925.509,
-      "name": "CuP"
-    },
-    {
-      "rank": 894,
-      "rating": 1925.422,
-      "name": "はるピヨ"
-    },
-    {
-      "rank": 895,
-      "rating": 1925.404,
-      "name": "ぱぱぱ"
-    },
-    {
-      "rank": 896,
-      "rating": 1925.339,
-      "name": "きょーか"
-    },
-    {
-      "rank": 897,
-      "rating": 1925.254,
-      "name": "ゆみかたん"
-    },
-    {
-      "rank": 898,
-      "rating": 1925.218,
-      "name": "Gold"
-    },
-    {
-      "rank": 899,
-      "rating": 1925.157,
-      "name": "OneWngdAngl"
-    },
-    {
-      "rank": 900,
-      "rating": 1925.146,
-      "name": "kami"
-    },
-    {
-      "rank": 901,
-      "rating": 1925.094,
-      "name": "EgoTunnel"
-    },
-    {
-      "rank": 902,
-      "rating": 1925.074,
-      "name": "GSN"
-    },
-    {
-      "rank": 903,
-      "rating": 1925.067,
-      "name": "Djelefant"
-    },
-    {
-      "rank": 904,
-      "rating": 1924.859,
-      "name": "Kr0nne"
-    },
-    {
-      "rank": 905,
-      "rating": 1924.712,
-      "name": "けろ"
-    },
-    {
-      "rank": 906,
-      "rating": 1924.706,
-      "name": "ChocoPau"
-    },
-    {
-      "rank": 907,
-      "rating": 1924.669,
-      "name": "Pluto"
-    },
-    {
-      "rank": 908,
-      "rating": 1924.66,
-      "name": "Amir"
-    },
-    {
-      "rank": 909,
-      "rating": 1924.401,
-      "name": "Invarn"
-    },
-    {
-      "rank": 910,
-      "rating": 1924.285,
-      "name": "44%"
-    },
-    {
-      "rank": 911,
-      "rating": 1924.177,
-      "name": "Shankley"
-    },
-    {
-      "rank": 912,
-      "rating": 1924.14,
-      "name": "TFZ Cutiepon"
-    },
-    {
-      "rank": 913,
-      "rating": 1923.992,
-      "name": "James"
-    },
-    {
-      "rank": 914,
-      "rating": 1923.899,
-      "name": "장산범"
-    },
-    {
-      "rank": 915,
-      "rating": 1923.851,
-      "name": "Pedro"
-    },
-    {
-      "rank": 916,
-      "rating": 1923.81,
-      "name": "凌霜羽翼"
-    },
-    {
-      "rank": 917,
-      "rating": 1923.806,
-      "name": "36ra1"
-    },
-    {
-      "rank": 918,
-      "rating": 1923.745,
-      "name": "Saret"
-    },
-    {
-      "rank": 919,
-      "rating": 1923.716,
-      "name": "탕구리"
-    },
-    {
-      "rank": 920,
-      "rating": 1923.667,
-      "name": "とがめ"
-    },
-    {
-      "rank": 921,
-      "rating": 1923.578,
-      "name": "James"
-    },
-    {
-      "rank": 922,
-      "rating": 1923.575,
-      "name": "なつ"
-    },
-    {
-      "rank": 923,
-      "rating": 1923.507,
-      "name": "finn"
-    },
-    {
-      "rank": 924,
-      "rating": 1923.505,
-      "name": "Omega"
-    },
-    {
-      "rank": 925,
-      "rating": 1923.47,
-      "name": "ヤスナ"
-    },
-    {
-      "rank": 926,
-      "rating": 1923.405,
-      "name": "Rash"
-    },
-    {
-      "rank": 927,
-      "rating": 1923.363,
-      "name": "ふぉーる"
-    },
-    {
-      "rank": 928,
-      "rating": 1923.335,
-      "name": "Byrd"
-    },
-    {
-      "rank": 929,
-      "rating": 1923.191,
-      "name": "サウダージ"
-    },
-    {
-      "rank": 930,
-      "rating": 1922.945,
-      "name": "こーひー"
-    },
-    {
-      "rank": 931,
-      "rating": 1922.722,
-      "name": "화니니"
-    },
-    {
-      "rank": 932,
-      "rating": 1922.664,
-      "name": "ねね"
-    },
-    {
-      "rank": 933,
-      "rating": 1922.496,
-      "name": "Di"
-    },
-    {
-      "rank": 934,
-      "rating": 1922.491,
-      "name": "Lil Salami"
-    },
-    {
-      "rank": 935,
-      "rating": 1922.426,
-      "name": "L"
-    },
-    {
-      "rank": 936,
-      "rating": 1922.397,
-      "name": "호투소"
-    },
-    {
-      "rank": 937,
-      "rating": 1922.384,
-      "name": "けー"
-    },
-    {
-      "rank": 938,
-      "rating": 1922.248,
-      "name": "淳议"
-    },
-    {
-      "rank": 939,
-      "rating": 1922.151,
-      "name": "Xifl"
-    },
-    {
-      "rank": 940,
-      "rating": 1921.957,
-      "name": "Bellakon"
-    },
-    {
-      "rank": 941,
-      "rating": 1921.783,
-      "name": "DrewXXL"
-    },
-    {
-      "rank": 942,
-      "rating": 1921.732,
-      "name": "Dkhoi3005"
-    },
-    {
-      "rank": 943,
-      "rating": 1921.647,
-      "name": "Fortubruno"
-    },
-    {
-      "rank": 944,
-      "rating": 1921.64,
-      "name": "コメット"
-    },
-    {
-      "rank": 945,
-      "rating": 1921.587,
-      "name": "Humbi"
-    },
-    {
-      "rank": 946,
-      "rating": 1921.475,
-      "name": "Jaw"
-    },
-    {
-      "rank": 947,
-      "rating": 1921.397,
-      "name": "しぶきらん♡"
-    },
-    {
-      "rank": 948,
-      "rating": 1921.206,
-      "name": "エリシン"
-    },
-    {
-      "rank": 949,
-      "rating": 1921.2,
-      "name": "B1doof"
-    },
-    {
-      "rank": 950,
-      "rating": 1921.101,
-      "name": "샤비"
-    },
-    {
-      "rank": 951,
-      "rating": 1921.062,
-      "name": "ぐっち"
-    },
-    {
-      "rank": 952,
-      "rating": 1921.021,
-      "name": "James"
-    },
-    {
-      "rank": 953,
-      "rating": 1920.884,
-      "name": "ミラザール"
-    },
-    {
-      "rank": 954,
-      "rating": 1920.881,
-      "name": "ライム"
-    },
-    {
-      "rank": 955,
-      "rating": 1920.748,
-      "name": "EulerMuffin"
-    },
-    {
-      "rank": 956,
-      "rating": 1920.615,
-      "name": "KianA"
-    },
-    {
-      "rank": 957,
-      "rating": 1920.498,
-      "name": "Anthony"
-    },
-    {
-      "rank": 958,
-      "rating": 1920.452,
-      "name": "老巴黎正白旗"
-    },
-    {
-      "rank": 959,
-      "rating": 1920.434,
-      "name": "StAlphonso"
-    },
-    {
-      "rank": 960,
-      "rating": 1920.341,
-      "name": "Rennen"
-    },
-    {
-      "rank": 960,
-      "rating": 1920.341,
-      "name": "y"
-    },
-    {
-      "rank": 962,
-      "rating": 1920.286,
-      "name": "Zephyr"
-    },
-    {
-      "rank": 963,
-      "rating": 1920.285,
-      "name": "k"
-    },
-    {
-      "rank": 964,
-      "rating": 1920.257,
-      "name": "凌霜羽翼"
-    },
-    {
-      "rank": 965,
-      "rating": 1920.255,
-      "name": "としあき"
-    },
-    {
-      "rank": 966,
-      "rating": 1920.095,
-      "name": "イチP"
-    },
-    {
-      "rank": 967,
-      "rating": 1920.06,
-      "name": "みれい"
-    },
-    {
-      "rank": 968,
-      "rating": 1919.796,
-      "name": "Bocchia"
-    },
-    {
-      "rank": 969,
-      "rating": 1919.599,
-      "name": "philo"
-    },
-    {
-      "rank": 970,
-      "rating": 1919.518,
-      "name": "うちけん"
-    },
-    {
-      "rank": 971,
-      "rating": 1919.505,
-      "name": "MJ"
-    },
-    {
-      "rank": 972,
-      "rating": 1919.473,
-      "name": "Rinni"
-    },
-    {
-      "rank": 973,
-      "rating": 1919.263,
-      "name": "jzdr"
-    },
-    {
-      "rank": 974,
-      "rating": 1919.206,
-      "name": "ゆめをみない"
-    },
-    {
-      "rank": 975,
-      "rating": 1919.111,
-      "name": "Jack G"
-    },
-    {
-      "rank": 976,
-      "rating": 1918.99,
-      "name": "mole"
-    },
-    {
-      "rank": 977,
-      "rating": 1918.923,
-      "name": "UNION"
-    },
-    {
-      "rank": 978,
-      "rating": 1918.9,
-      "name": "Guardian"
-    },
-    {
-      "rank": 979,
-      "rating": 1918.83,
-      "name": "Mengakyo"
-    },
-    {
-      "rank": 980,
-      "rating": 1918.827,
-      "name": "Elson"
-    },
-    {
-      "rank": 981,
-      "rating": 1918.813,
-      "name": "TARIPC"
-    },
-    {
-      "rank": 982,
-      "rating": 1918.809,
-      "name": "Luca"
-    },
-    {
-      "rank": 983,
-      "rating": 1918.756,
-      "name": "你无水我啦"
-    },
-    {
-      "rank": 984,
-      "rating": 1918.733,
-      "name": "ゆうた"
-    },
-    {
-      "rank": 985,
-      "rating": 1918.724,
-      "name": "Correiazinho"
-    },
-    {
-      "rank": 986,
-      "rating": 1918.65,
-      "name": "鬼鬼"
-    },
-    {
-      "rank": 987,
-      "rating": 1918.57,
-      "name": "ccf"
-    },
-    {
-      "rank": 988,
-      "rating": 1918.537,
-      "name": "つむり"
-    },
-    {
-      "rank": 989,
-      "rating": 1918.365,
-      "name": "Jeversonnn"
-    },
-    {
-      "rank": 990,
-      "rating": 1918.308,
-      "name": "把拔"
-    },
-    {
-      "rank": 991,
-      "rating": 1918.287,
-      "name": "Brax"
-    },
-    {
-      "rank": 992,
-      "rating": 1918.272,
-      "name": "pokema"
-    },
-    {
-      "rank": 993,
-      "rating": 1918.27,
-      "name": "Snakeburger"
-    },
-    {
-      "rank": 994,
-      "rating": 1918.235,
-      "name": "Alex"
-    },
-    {
-      "rank": 995,
-      "rating": 1918.223,
-      "name": "EasyK"
-    },
-    {
-      "rank": 996,
-      "rating": 1918.089,
-      "name": "Luke"
-    },
-    {
-      "rank": 997,
-      "rating": 1918.079,
-      "name": "NPC"
-    },
-    {
       "rank": 998,
-      "rating": 1918.051,
-      "name": "MB"
+      "rating": 1926.11,
+      "name": "Shafofficiel"
     },
     {
       "rank": 999,
-      "rating": 1918.007,
-      "name": "Snooze"
+      "rating": 1926.097,
+      "name": "탕구리"
     },
     {
       "rank": 1000,
-      "rating": 1917.946,
-      "name": "BeruFifty"
+      "rating": 1925.933,
+      "name": "モリアオ"
     }
   ],
   "entries": {
