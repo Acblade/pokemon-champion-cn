@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T13:13:01.649Z",
+  "updatedAt": "2026-11-24T13:58:26.848Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -24714,7 +24714,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/sinistiwoof/status/2120643548047458332?s=46",
-      "platformUrl": "https://pokepast.es/0fb2fcf40a712f0c",
+      "platformUrl": "https://pokepast.es/5c38349bdc939b74",
       "season": "M-C",
       "format": "区域赛 / Gdańsk Regional 2027",
       "updatedAt": "2026-11-01",
@@ -24742,7 +24742,7 @@
           "moves": [
             "热风",
             "气象球",
-            "日光束",
+            "原始之力",
             "守住"
           ]
         },
@@ -24808,7 +24808,7 @@
           "item": "Choice Scarf",
           "ability": "Rough Skin",
           "nature": "Adamant",
-          "spread": "8 HP / 32 Atk / 26 Spe",
+          "spread": "16 HP / 32 Atk / 2 SpD / 16 Spe",
           "moves": [
             "地震",
             "跺脚",
