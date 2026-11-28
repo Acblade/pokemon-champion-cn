@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T12:46:07.086Z",
+  "updatedAt": "2026-11-28T12:00:53.461Z",
   "sources": [
     {
       "name": "VGCPastes Repository",
@@ -11250,7 +11250,7 @@
       "source": "VGCPastes Repository",
       "sourceGroup": "VGCPastes Repository",
       "sourceUrl": "https://x.com/last_dress3/status/2124633616093507923",
-      "platformUrl": "https://pokepast.es/510f24158c17bb53",
+      "platformUrl": "https://pokepast.es/7d5d6bd8c614e74e",
       "season": "M-C",
       "format": "国际赛 / LAIC 2027",
       "updatedAt": "2026-11-21",
@@ -11259,7 +11259,7 @@
       "eventType": "国际赛",
       "region": "拉美",
       "category": "表格收录队伍",
-      "detailLevel": "sets",
+      "detailLevel": "full",
       "tags": [
         "M-C",
         "国际赛",
@@ -11267,7 +11267,7 @@
         "耿鬼（Mega）",
         "巨沼怪（Mega）"
       ],
-      "summary": "LAIC 2027，作者 Masahiro Taoka",
+      "summary": "LAIC 2027，作者 Masahiro Taoka，队伍码 N4BL4FBR4D",
       "members": [
         {
           "pokemonId": "gengarmega",
@@ -11275,7 +11275,7 @@
           "item": "Gengarite",
           "ability": "Cursed Body",
           "nature": "Modest",
-          "spread": "-",
+          "spread": "32 HP / 2 SpA / 21 SpD / 11 Spe",
           "moves": [
             "暗影球",
             "污泥炸弹",
@@ -11289,7 +11289,7 @@
           "item": "Swampertite",
           "ability": "Torrent",
           "nature": "Adamant",
-          "spread": "-",
+          "spread": "1 HP / 30 Atk / 6 Def / 29 Spe",
           "moves": [
             "波动冲",
             "十万马力",
@@ -11303,7 +11303,7 @@
           "item": "Chople Berry",
           "ability": "Intimidate",
           "nature": "Relaxed",
-          "spread": "-",
+          "spread": "32 HP / 14 Def / 20 SpD",
           "moves": [
             "闪焰冲锋",
             "抛下狠话",
@@ -11317,12 +11317,12 @@
           "item": "Sitrus Berry",
           "ability": "Drizzle",
           "nature": "Bold",
-          "spread": "-",
+          "spread": "32 HP / 22 Def / 11 SpA / 1 SpD",
           "moves": [
-            "气象球",
-            "灭亡之歌",
             "催眠术",
-            "守住"
+            "气象球",
+            "守住",
+            "灭亡之歌"
           ]
         },
         {
@@ -11331,7 +11331,7 @@
           "item": "Occa Berry",
           "ability": "Grassy Surge",
           "nature": "Relaxed",
-          "spread": "-",
+          "spread": "32 HP / 9 Def / 25 SpD",
           "moves": [
             "青草滑梯",
             "急速折返",
@@ -11345,11 +11345,11 @@
           "item": "Leftovers",
           "ability": "Stamina",
           "nature": "Calm",
-          "spread": "-",
+          "spread": "32 HP / 1 Def / 1 SpA / 19 SpD / 13 Spe",
           "moves": [
-            "流星群",
             "电光束",
             "大声咆哮",
+            "流星群",
             "守住"
           ]
         }
